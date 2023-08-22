@@ -26,11 +26,10 @@ class GetTokens200Response {
      * @alias module:model/GetTokens200Response
      * @param meta {module:model/Meta} 
      * @param apiKeys {Array.<module:model/ApiKey>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, apiKeys, responseId) { 
+    constructor(meta, apiKeys) { 
         
-        GetTokens200Response.initialize(this, meta, apiKeys, responseId);
+        GetTokens200Response.initialize(this, meta, apiKeys);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetTokens200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, apiKeys, responseId) { 
+    static initialize(obj, meta, apiKeys) { 
         obj['meta'] = meta;
         obj['api_keys'] = apiKeys;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetTokens200Response {
             }
             if (data.hasOwnProperty('api_keys')) {
                 obj['api_keys'] = ApiClient.convertToType(data['api_keys'], [ApiKey]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetTokens200Response {
                 ApiKey.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetTokens200Response {
 
 }
 
-GetTokens200Response.RequiredProperties = ["meta", "api_keys", "response_id"];
+GetTokens200Response.RequiredProperties = ["meta", "api_keys"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetTokens200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/ApiKey>} api_keys
  */
 GetTokens200Response.prototype['api_keys'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetTokens200Response.prototype['response_id'] = undefined;
 
 
 

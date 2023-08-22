@@ -26,11 +26,10 @@ class GetConfigurators200Response {
      * @alias module:model/GetConfigurators200Response
      * @param meta {module:model/Meta} 
      * @param serverConfigurators {Array.<module:model/ServersConfigurator>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, serverConfigurators, responseId) { 
+    constructor(meta, serverConfigurators) { 
         
-        GetConfigurators200Response.initialize(this, meta, serverConfigurators, responseId);
+        GetConfigurators200Response.initialize(this, meta, serverConfigurators);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetConfigurators200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, serverConfigurators, responseId) { 
+    static initialize(obj, meta, serverConfigurators) { 
         obj['meta'] = meta;
         obj['server_configurators'] = serverConfigurators;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetConfigurators200Response {
             }
             if (data.hasOwnProperty('server_configurators')) {
                 obj['server_configurators'] = ApiClient.convertToType(data['server_configurators'], [ServersConfigurator]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetConfigurators200Response {
                 ServersConfigurator.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetConfigurators200Response {
 
 }
 
-GetConfigurators200Response.RequiredProperties = ["meta", "server_configurators", "response_id"];
+GetConfigurators200Response.RequiredProperties = ["meta", "server_configurators"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetConfigurators200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/ServersConfigurator>} server_configurators
  */
 GetConfigurators200Response.prototype['server_configurators'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetConfigurators200Response.prototype['response_id'] = undefined;
 
 
 

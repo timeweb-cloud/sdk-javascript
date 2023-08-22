@@ -71,13 +71,13 @@ class ImageDownloadAPI {
                 obj['image'] = ApiClient.convertToType(data['image'], 'String');
             }
             if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], URLType);
+                obj['type'] = URLType.constructFromObject(data['type']);
             }
             if (data.hasOwnProperty('url')) {
                 obj['url'] = ApiClient.convertToType(data['url'], 'String');
             }
             if (data.hasOwnProperty('status')) {
-                obj['status'] = ApiClient.convertToType(data['status'], UrlStatus);
+                obj['status'] = UrlStatus.constructFromObject(data['status']);
             }
             if (data.hasOwnProperty('progress')) {
                 obj['progress'] = ApiClient.convertToType(data['progress'], 'Number');

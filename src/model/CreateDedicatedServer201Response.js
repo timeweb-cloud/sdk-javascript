@@ -24,11 +24,10 @@ class CreateDedicatedServer201Response {
      * Constructs a new <code>CreateDedicatedServer201Response</code>.
      * @alias module:model/CreateDedicatedServer201Response
      * @param dedicatedServer {module:model/DedicatedServer} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(dedicatedServer, responseId) { 
+    constructor(dedicatedServer) { 
         
-        CreateDedicatedServer201Response.initialize(this, dedicatedServer, responseId);
+        CreateDedicatedServer201Response.initialize(this, dedicatedServer);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateDedicatedServer201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, dedicatedServer, responseId) { 
+    static initialize(obj, dedicatedServer) { 
         obj['dedicated_server'] = dedicatedServer;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateDedicatedServer201Response {
 
             if (data.hasOwnProperty('dedicated_server')) {
                 obj['dedicated_server'] = DedicatedServer.constructFromObject(data['dedicated_server']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateDedicatedServer201Response {
         if (data['dedicated_server']) { // data not null
           DedicatedServer.validateJSON(data['dedicated_server']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateDedicatedServer201Response {
 
 }
 
-CreateDedicatedServer201Response.RequiredProperties = ["dedicated_server", "response_id"];
+CreateDedicatedServer201Response.RequiredProperties = ["dedicated_server"];
 
 /**
  * @member {module:model/DedicatedServer} dedicated_server
  */
 CreateDedicatedServer201Response.prototype['dedicated_server'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateDedicatedServer201Response.prototype['response_id'] = undefined;
 
 
 

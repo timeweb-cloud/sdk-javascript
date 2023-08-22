@@ -26,11 +26,10 @@ class GetProjectDedicatedServers200Response {
      * @alias module:model/GetProjectDedicatedServers200Response
      * @param dedicatedServers {Array.<module:model/DedicatedServer>} 
      * @param meta {module:model/Meta} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(dedicatedServers, meta, responseId) { 
+    constructor(dedicatedServers, meta) { 
         
-        GetProjectDedicatedServers200Response.initialize(this, dedicatedServers, meta, responseId);
+        GetProjectDedicatedServers200Response.initialize(this, dedicatedServers, meta);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetProjectDedicatedServers200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, dedicatedServers, meta, responseId) { 
+    static initialize(obj, dedicatedServers, meta) { 
         obj['dedicated_servers'] = dedicatedServers;
         obj['meta'] = meta;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetProjectDedicatedServers200Response {
             }
             if (data.hasOwnProperty('meta')) {
                 obj['meta'] = Meta.constructFromObject(data['meta']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetProjectDedicatedServers200Response {
         if (data['meta']) { // data not null
           Meta.validateJSON(data['meta']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetProjectDedicatedServers200Response {
 
 }
 
-GetProjectDedicatedServers200Response.RequiredProperties = ["dedicated_servers", "meta", "response_id"];
+GetProjectDedicatedServers200Response.RequiredProperties = ["dedicated_servers", "meta"];
 
 /**
  * @member {Array.<module:model/DedicatedServer>} dedicated_servers
@@ -116,12 +107,6 @@ GetProjectDedicatedServers200Response.prototype['dedicated_servers'] = undefined
  * @member {module:model/Meta} meta
  */
 GetProjectDedicatedServers200Response.prototype['meta'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetProjectDedicatedServers200Response.prototype['response_id'] = undefined;
 
 
 

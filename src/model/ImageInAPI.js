@@ -62,10 +62,10 @@ class ImageInAPI {
                 obj['upload_url'] = ApiClient.convertToType(data['upload_url'], 'String');
             }
             if (data.hasOwnProperty('location')) {
-                obj['location'] = ApiClient.convertToType(data['location'], Location);
+                obj['location'] = Location.constructFromObject(data['location']);
             }
             if (data.hasOwnProperty('os')) {
-                obj['os'] = ApiClient.convertToType(data['os'], OS);
+                obj['os'] = OS.constructFromObject(data['os']);
             }
         }
         return obj;

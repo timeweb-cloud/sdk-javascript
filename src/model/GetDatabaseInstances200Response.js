@@ -26,11 +26,10 @@ class GetDatabaseInstances200Response {
      * @alias module:model/GetDatabaseInstances200Response
      * @param meta {module:model/Meta} 
      * @param instances {Array.<module:model/DatabaseInstance>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, instances, responseId) { 
+    constructor(meta, instances) { 
         
-        GetDatabaseInstances200Response.initialize(this, meta, instances, responseId);
+        GetDatabaseInstances200Response.initialize(this, meta, instances);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetDatabaseInstances200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, instances, responseId) { 
+    static initialize(obj, meta, instances) { 
         obj['meta'] = meta;
         obj['instances'] = instances;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetDatabaseInstances200Response {
             }
             if (data.hasOwnProperty('instances')) {
                 obj['instances'] = ApiClient.convertToType(data['instances'], [DatabaseInstance]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetDatabaseInstances200Response {
                 DatabaseInstance.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetDatabaseInstances200Response {
 
 }
 
-GetDatabaseInstances200Response.RequiredProperties = ["meta", "instances", "response_id"];
+GetDatabaseInstances200Response.RequiredProperties = ["meta", "instances"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetDatabaseInstances200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/DatabaseInstance>} instances
  */
 GetDatabaseInstances200Response.prototype['instances'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetDatabaseInstances200Response.prototype['response_id'] = undefined;
 
 
 

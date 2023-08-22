@@ -56,7 +56,7 @@ class NetworkDriversResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('meta')) {
-                obj['meta'] = ApiClient.convertToType(data['meta'], Meta);
+                obj['meta'] = Meta.constructFromObject(data['meta']);
             }
             if (data.hasOwnProperty('network_drivers')) {
                 obj['network_drivers'] = ApiClient.convertToType(data['network_drivers'], ['String']);

@@ -24,11 +24,10 @@ class CreateStorage201Response {
      * Constructs a new <code>CreateStorage201Response</code>.
      * @alias module:model/CreateStorage201Response
      * @param bucket {module:model/Bucket} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(bucket, responseId) { 
+    constructor(bucket) { 
         
-        CreateStorage201Response.initialize(this, bucket, responseId);
+        CreateStorage201Response.initialize(this, bucket);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateStorage201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, bucket, responseId) { 
+    static initialize(obj, bucket) { 
         obj['bucket'] = bucket;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateStorage201Response {
 
             if (data.hasOwnProperty('bucket')) {
                 obj['bucket'] = Bucket.constructFromObject(data['bucket']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateStorage201Response {
         if (data['bucket']) { // data not null
           Bucket.validateJSON(data['bucket']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateStorage201Response {
 
 }
 
-CreateStorage201Response.RequiredProperties = ["bucket", "response_id"];
+CreateStorage201Response.RequiredProperties = ["bucket"];
 
 /**
  * @member {module:model/Bucket} bucket
  */
 CreateStorage201Response.prototype['bucket'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateStorage201Response.prototype['response_id'] = undefined;
 
 
 

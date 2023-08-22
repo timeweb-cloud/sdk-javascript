@@ -16,7 +16,6 @@ import ApiClient from "../ApiClient";
 import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
 import CreateVPC201Response from '../model/CreateVPC201Response';
 import CreateVpc from '../model/CreateVpc';
-import DeleteVPC204Response from '../model/DeleteVPC204Response';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances403Response from '../model/GetFinances403Response';
@@ -93,7 +92,7 @@ export default class VPCApi {
      * Callback function to receive the result of the deleteVPC operation.
      * @callback module:api/VPCApi~deleteVPCCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/DeleteVPC204Response} data The data returned by the service call.
+     * @param {module:model/CreateVPC201Response} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -102,7 +101,7 @@ export default class VPCApi {
      * Чтобы удалить VPC, отправьте DELETE-запрос на `/api/v1/vpcs/{vpc_id}`
      * @param {String} vpcId Идентификатор сети
      * @param {module:api/VPCApi~deleteVPCCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/DeleteVPC204Response}
+     * data is of type: {@link module:model/CreateVPC201Response}
      */
     deleteVPC(vpcId, callback) {
       let postBody = null;
@@ -124,7 +123,7 @@ export default class VPCApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = DeleteVPC204Response;
+      let returnType = CreateVPC201Response;
       return this.apiClient.callApi(
         '/api/v1/vpcs/{vpc_id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,

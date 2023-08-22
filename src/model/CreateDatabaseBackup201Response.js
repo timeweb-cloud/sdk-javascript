@@ -24,11 +24,10 @@ class CreateDatabaseBackup201Response {
      * Constructs a new <code>CreateDatabaseBackup201Response</code>.
      * @alias module:model/CreateDatabaseBackup201Response
      * @param backup {module:model/Backup} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(backup, responseId) { 
+    constructor(backup) { 
         
-        CreateDatabaseBackup201Response.initialize(this, backup, responseId);
+        CreateDatabaseBackup201Response.initialize(this, backup);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateDatabaseBackup201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, backup, responseId) { 
+    static initialize(obj, backup) { 
         obj['backup'] = backup;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateDatabaseBackup201Response {
 
             if (data.hasOwnProperty('backup')) {
                 obj['backup'] = Backup.constructFromObject(data['backup']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateDatabaseBackup201Response {
         if (data['backup']) { // data not null
           Backup.validateJSON(data['backup']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateDatabaseBackup201Response {
 
 }
 
-CreateDatabaseBackup201Response.RequiredProperties = ["backup", "response_id"];
+CreateDatabaseBackup201Response.RequiredProperties = ["backup"];
 
 /**
  * @member {module:model/Backup} backup
  */
 CreateDatabaseBackup201Response.prototype['backup'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateDatabaseBackup201Response.prototype['response_id'] = undefined;
 
 
 

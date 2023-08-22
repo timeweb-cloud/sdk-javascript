@@ -24,11 +24,10 @@ class UpdateToken200Response {
      * Constructs a new <code>UpdateToken200Response</code>.
      * @alias module:model/UpdateToken200Response
      * @param apiKey {module:model/ApiKey} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(apiKey, responseId) { 
+    constructor(apiKey) { 
         
-        UpdateToken200Response.initialize(this, apiKey, responseId);
+        UpdateToken200Response.initialize(this, apiKey);
     }
 
     /**
@@ -36,9 +35,8 @@ class UpdateToken200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, apiKey, responseId) { 
+    static initialize(obj, apiKey) { 
         obj['api_key'] = apiKey;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class UpdateToken200Response {
 
             if (data.hasOwnProperty('api_key')) {
                 obj['api_key'] = ApiKey.constructFromObject(data['api_key']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class UpdateToken200Response {
         if (data['api_key']) { // data not null
           ApiKey.validateJSON(data['api_key']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class UpdateToken200Response {
 
 }
 
-UpdateToken200Response.RequiredProperties = ["api_key", "response_id"];
+UpdateToken200Response.RequiredProperties = ["api_key"];
 
 /**
  * @member {module:model/ApiKey} api_key
  */
 UpdateToken200Response.prototype['api_key'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-UpdateToken200Response.prototype['response_id'] = undefined;
 
 
 

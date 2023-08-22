@@ -60,12 +60,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property responseId (base name: "response_id")', function() {
-      // uncomment below and update the code to test the property responseId
-      //var instance = new TimewebCloudApi.DeleteServer200Response();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

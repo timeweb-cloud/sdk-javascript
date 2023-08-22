@@ -52,13 +52,13 @@ class Resources {
                 obj['nodes'] = ApiClient.convertToType(data['nodes'], 'Number');
             }
             if (data.hasOwnProperty('cores')) {
-                obj['cores'] = ApiClient.convertToType(data['cores'], Resource);
+                obj['cores'] = Resource.constructFromObject(data['cores']);
             }
             if (data.hasOwnProperty('memory')) {
-                obj['memory'] = ApiClient.convertToType(data['memory'], Resource);
+                obj['memory'] = Resource.constructFromObject(data['memory']);
             }
             if (data.hasOwnProperty('pods')) {
-                obj['pods'] = ApiClient.convertToType(data['pods'], Resource);
+                obj['pods'] = Resource.constructFromObject(data['pods']);
             }
         }
         return obj;

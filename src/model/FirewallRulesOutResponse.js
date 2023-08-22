@@ -57,7 +57,7 @@ class FirewallRulesOutResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('meta')) {
-                obj['meta'] = ApiClient.convertToType(data['meta'], Meta);
+                obj['meta'] = Meta.constructFromObject(data['meta']);
             }
             if (data.hasOwnProperty('rules')) {
                 obj['rules'] = ApiClient.convertToType(data['rules'], [FirewallRuleOutAPI]);

@@ -24,11 +24,10 @@ class DeleteStorage200Response {
      * Constructs a new <code>DeleteStorage200Response</code>.
      * @alias module:model/DeleteStorage200Response
      * @param bucketDelete {module:model/DeleteServiceResponse} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(bucketDelete, responseId) { 
+    constructor(bucketDelete) { 
         
-        DeleteStorage200Response.initialize(this, bucketDelete, responseId);
+        DeleteStorage200Response.initialize(this, bucketDelete);
     }
 
     /**
@@ -36,9 +35,8 @@ class DeleteStorage200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, bucketDelete, responseId) { 
+    static initialize(obj, bucketDelete) { 
         obj['bucket_delete'] = bucketDelete;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class DeleteStorage200Response {
 
             if (data.hasOwnProperty('bucket_delete')) {
                 obj['bucket_delete'] = DeleteServiceResponse.constructFromObject(data['bucket_delete']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class DeleteStorage200Response {
         if (data['bucket_delete']) { // data not null
           DeleteServiceResponse.validateJSON(data['bucket_delete']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class DeleteStorage200Response {
 
 }
 
-DeleteStorage200Response.RequiredProperties = ["bucket_delete", "response_id"];
+DeleteStorage200Response.RequiredProperties = ["bucket_delete"];
 
 /**
  * @member {module:model/DeleteServiceResponse} bucket_delete
  */
 DeleteStorage200Response.prototype['bucket_delete'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-DeleteStorage200Response.prototype['response_id'] = undefined;
 
 
 

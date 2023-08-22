@@ -26,11 +26,10 @@ class GetBalancerRules200Response {
      * @alias module:model/GetBalancerRules200Response
      * @param meta {module:model/Meta} 
      * @param rules {Array.<module:model/Rule>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, rules, responseId) { 
+    constructor(meta, rules) { 
         
-        GetBalancerRules200Response.initialize(this, meta, rules, responseId);
+        GetBalancerRules200Response.initialize(this, meta, rules);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetBalancerRules200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, rules, responseId) { 
+    static initialize(obj, meta, rules) { 
         obj['meta'] = meta;
         obj['rules'] = rules;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetBalancerRules200Response {
             }
             if (data.hasOwnProperty('rules')) {
                 obj['rules'] = ApiClient.convertToType(data['rules'], [Rule]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetBalancerRules200Response {
                 Rule.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetBalancerRules200Response {
 
 }
 
-GetBalancerRules200Response.RequiredProperties = ["meta", "rules", "response_id"];
+GetBalancerRules200Response.RequiredProperties = ["meta", "rules"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetBalancerRules200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/Rule>} rules
  */
 GetBalancerRules200Response.prototype['rules'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetBalancerRules200Response.prototype['response_id'] = undefined;
 
 
 

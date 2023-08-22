@@ -26,11 +26,10 @@ class GetDomainDNSRecords200Response {
      * @alias module:model/GetDomainDNSRecords200Response
      * @param meta {module:model/Meta} 
      * @param dnsRecords {Array.<module:model/DnsRecord>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, dnsRecords, responseId) { 
+    constructor(meta, dnsRecords) { 
         
-        GetDomainDNSRecords200Response.initialize(this, meta, dnsRecords, responseId);
+        GetDomainDNSRecords200Response.initialize(this, meta, dnsRecords);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetDomainDNSRecords200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, dnsRecords, responseId) { 
+    static initialize(obj, meta, dnsRecords) { 
         obj['meta'] = meta;
         obj['dns_records'] = dnsRecords;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetDomainDNSRecords200Response {
             }
             if (data.hasOwnProperty('dns_records')) {
                 obj['dns_records'] = ApiClient.convertToType(data['dns_records'], [DnsRecord]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetDomainDNSRecords200Response {
                 DnsRecord.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetDomainDNSRecords200Response {
 
 }
 
-GetDomainDNSRecords200Response.RequiredProperties = ["meta", "dns_records", "response_id"];
+GetDomainDNSRecords200Response.RequiredProperties = ["meta", "dns_records"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetDomainDNSRecords200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/DnsRecord>} dns_records
  */
 GetDomainDNSRecords200Response.prototype['dns_records'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetDomainDNSRecords200Response.prototype['response_id'] = undefined;
 
 
 

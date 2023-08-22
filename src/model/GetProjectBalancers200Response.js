@@ -26,11 +26,10 @@ class GetProjectBalancers200Response {
      * @alias module:model/GetProjectBalancers200Response
      * @param balancers {Array.<module:model/Balancer>} 
      * @param meta {module:model/Meta} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(balancers, meta, responseId) { 
+    constructor(balancers, meta) { 
         
-        GetProjectBalancers200Response.initialize(this, balancers, meta, responseId);
+        GetProjectBalancers200Response.initialize(this, balancers, meta);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetProjectBalancers200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, balancers, meta, responseId) { 
+    static initialize(obj, balancers, meta) { 
         obj['balancers'] = balancers;
         obj['meta'] = meta;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetProjectBalancers200Response {
             }
             if (data.hasOwnProperty('meta')) {
                 obj['meta'] = Meta.constructFromObject(data['meta']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetProjectBalancers200Response {
         if (data['meta']) { // data not null
           Meta.validateJSON(data['meta']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetProjectBalancers200Response {
 
 }
 
-GetProjectBalancers200Response.RequiredProperties = ["balancers", "meta", "response_id"];
+GetProjectBalancers200Response.RequiredProperties = ["balancers", "meta"];
 
 /**
  * @member {Array.<module:model/Balancer>} balancers
@@ -116,12 +107,6 @@ GetProjectBalancers200Response.prototype['balancers'] = undefined;
  * @member {module:model/Meta} meta
  */
 GetProjectBalancers200Response.prototype['meta'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetProjectBalancers200Response.prototype['response_id'] = undefined;
 
 
 

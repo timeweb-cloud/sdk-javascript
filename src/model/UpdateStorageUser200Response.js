@@ -24,11 +24,10 @@ class UpdateStorageUser200Response {
      * Constructs a new <code>UpdateStorageUser200Response</code>.
      * @alias module:model/UpdateStorageUser200Response
      * @param user {module:model/BucketUser} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(user, responseId) { 
+    constructor(user) { 
         
-        UpdateStorageUser200Response.initialize(this, user, responseId);
+        UpdateStorageUser200Response.initialize(this, user);
     }
 
     /**
@@ -36,9 +35,8 @@ class UpdateStorageUser200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, user, responseId) { 
+    static initialize(obj, user) { 
         obj['user'] = user;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class UpdateStorageUser200Response {
 
             if (data.hasOwnProperty('user')) {
                 obj['user'] = BucketUser.constructFromObject(data['user']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class UpdateStorageUser200Response {
         if (data['user']) { // data not null
           BucketUser.validateJSON(data['user']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class UpdateStorageUser200Response {
 
 }
 
-UpdateStorageUser200Response.RequiredProperties = ["user", "response_id"];
+UpdateStorageUser200Response.RequiredProperties = ["user"];
 
 /**
  * @member {module:model/BucketUser} user
  */
 UpdateStorageUser200Response.prototype['user'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-UpdateStorageUser200Response.prototype['response_id'] = undefined;
 
 
 

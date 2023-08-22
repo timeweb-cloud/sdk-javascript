@@ -26,11 +26,10 @@ class GetDomainRequests200Response {
      * @alias module:model/GetDomainRequests200Response
      * @param meta {module:model/Meta} 
      * @param requests {Array.<module:model/DomainRequest>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, requests, responseId) { 
+    constructor(meta, requests) { 
         
-        GetDomainRequests200Response.initialize(this, meta, requests, responseId);
+        GetDomainRequests200Response.initialize(this, meta, requests);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetDomainRequests200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, requests, responseId) { 
+    static initialize(obj, meta, requests) { 
         obj['meta'] = meta;
         obj['requests'] = requests;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetDomainRequests200Response {
             }
             if (data.hasOwnProperty('requests')) {
                 obj['requests'] = ApiClient.convertToType(data['requests'], [DomainRequest]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetDomainRequests200Response {
                 DomainRequest.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetDomainRequests200Response {
 
 }
 
-GetDomainRequests200Response.RequiredProperties = ["meta", "requests", "response_id"];
+GetDomainRequests200Response.RequiredProperties = ["meta", "requests"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetDomainRequests200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/DomainRequest>} requests
  */
 GetDomainRequests200Response.prototype['requests'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetDomainRequests200Response.prototype['response_id'] = undefined;
 
 
 

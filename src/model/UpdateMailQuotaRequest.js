@@ -22,10 +22,11 @@ class UpdateMailQuotaRequest {
     /**
      * Constructs a new <code>UpdateMailQuotaRequest</code>.
      * @alias module:model/UpdateMailQuotaRequest
+     * @param total {Number} Общее количество места на почте (в Мб).
      */
-    constructor() { 
+    constructor(total) { 
         
-        UpdateMailQuotaRequest.initialize(this);
+        UpdateMailQuotaRequest.initialize(this, total);
     }
 
     /**
@@ -33,7 +34,8 @@ class UpdateMailQuotaRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, total) { 
+        obj['total'] = total;
     }
 
     /**
@@ -60,6 +62,12 @@ class UpdateMailQuotaRequest {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateMailQuotaRequest</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of UpdateMailQuotaRequest.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
 
         return true;
     }
@@ -67,7 +75,7 @@ class UpdateMailQuotaRequest {
 
 }
 
-
+UpdateMailQuotaRequest.RequiredProperties = ["total"];
 
 /**
  * Общее количество места на почте (в Мб).

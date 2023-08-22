@@ -26,11 +26,10 @@ class GetStorageSubdomains200Response {
      * @alias module:model/GetStorageSubdomains200Response
      * @param subdomains {Array.<module:model/S3Subdomain>} 
      * @param meta {module:model/Meta} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(subdomains, meta, responseId) { 
+    constructor(subdomains, meta) { 
         
-        GetStorageSubdomains200Response.initialize(this, subdomains, meta, responseId);
+        GetStorageSubdomains200Response.initialize(this, subdomains, meta);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetStorageSubdomains200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, subdomains, meta, responseId) { 
+    static initialize(obj, subdomains, meta) { 
         obj['subdomains'] = subdomains;
         obj['meta'] = meta;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetStorageSubdomains200Response {
             }
             if (data.hasOwnProperty('meta')) {
                 obj['meta'] = Meta.constructFromObject(data['meta']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetStorageSubdomains200Response {
         if (data['meta']) { // data not null
           Meta.validateJSON(data['meta']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetStorageSubdomains200Response {
 
 }
 
-GetStorageSubdomains200Response.RequiredProperties = ["subdomains", "meta", "response_id"];
+GetStorageSubdomains200Response.RequiredProperties = ["subdomains", "meta"];
 
 /**
  * @member {Array.<module:model/S3Subdomain>} subdomains
@@ -116,12 +107,6 @@ GetStorageSubdomains200Response.prototype['subdomains'] = undefined;
  * @member {module:model/Meta} meta
  */
 GetStorageSubdomains200Response.prototype['meta'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetStorageSubdomains200Response.prototype['response_id'] = undefined;
 
 
 

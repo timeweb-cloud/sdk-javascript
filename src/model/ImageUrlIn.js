@@ -50,13 +50,13 @@ class ImageUrlIn {
             obj = obj || new ImageUrlIn();
 
             if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], URLType);
+                obj['type'] = URLType.constructFromObject(data['type']);
             }
             if (data.hasOwnProperty('filename')) {
                 obj['filename'] = ApiClient.convertToType(data['filename'], 'String');
             }
             if (data.hasOwnProperty('auth')) {
-                obj['auth'] = ApiClient.convertToType(data['auth'], ImageUrlAuth);
+                obj['auth'] = ImageUrlAuth.constructFromObject(data['auth']);
             }
         }
         return obj;

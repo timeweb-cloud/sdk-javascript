@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **statusCode** | **Number** |  | 
 **errorCode** | **String** |  | 
-**message** | [**Message**](Message.md) |  | 
+**message** | **String** |  | 
 **responseId** | **String** |  | [optional] 
 
 

@@ -12,8 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
-import K8SPresetsInner from './K8SPresetsInner';
 import Meta from './Meta';
+import WorkerPresetOutApi from './WorkerPresetOutApi';
 
 /**
  * The PresetsResponse model module.
@@ -25,7 +25,7 @@ class PresetsResponse {
      * Constructs a new <code>PresetsResponse</code>.
      * @alias module:model/PresetsResponse
      * @param meta {module:model/Meta} 
-     * @param k8sPresets {Array.<module:model/K8SPresetsInner>} Массив тарифов k8s
+     * @param k8sPresets {Array.<module:model/WorkerPresetOutApi>} Массив тарифов k8s
      */
     constructor(meta, k8sPresets) { 
         
@@ -57,10 +57,10 @@ class PresetsResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('meta')) {
-                obj['meta'] = ApiClient.convertToType(data['meta'], Meta);
+                obj['meta'] = Meta.constructFromObject(data['meta']);
             }
             if (data.hasOwnProperty('k8s_presets')) {
-                obj['k8s_presets'] = ApiClient.convertToType(data['k8s_presets'], [K8SPresetsInner]);
+                obj['k8s_presets'] = ApiClient.convertToType(data['k8s_presets'], [WorkerPresetOutApi]);
             }
         }
         return obj;
@@ -93,7 +93,7 @@ class PresetsResponse {
             }
             // validate the optional field `k8s_presets` (array)
             for (const item of data['k8s_presets']) {
-                K8SPresetsInner.validateJSON(item);
+                WorkerPresetOutApi.validateJSON(item);
             };
         }
 
@@ -118,7 +118,7 @@ PresetsResponse.prototype['meta'] = undefined;
 
 /**
  * Массив тарифов k8s
- * @member {Array.<module:model/K8SPresetsInner>} k8s_presets
+ * @member {Array.<module:model/WorkerPresetOutApi>} k8s_presets
  */
 PresetsResponse.prototype['k8s_presets'] = undefined;
 

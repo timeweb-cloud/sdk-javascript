@@ -12,7 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import CreateDatabaseBackup409ResponseMessage from './CreateDatabaseBackup409ResponseMessage';
 
 /**
  * The CreateDatabaseBackup409Response model module.
@@ -58,7 +57,7 @@ class CreateDatabaseBackup409Response {
                 obj['status_code'] = ApiClient.convertToType(data['status_code'], 'Number');
             }
             if (data.hasOwnProperty('message')) {
-                obj['message'] = CreateDatabaseBackup409ResponseMessage.constructFromObject(data['message']);
+                obj['message'] = ApiClient.convertToType(data['message'], 'String');
             }
             if (data.hasOwnProperty('error_code')) {
                 obj['error_code'] = ApiClient.convertToType(data['error_code'], 'String');
@@ -82,9 +81,9 @@ class CreateDatabaseBackup409Response {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // validate the optional field `message`
-        if (data['message']) { // data not null
-          CreateDatabaseBackup409ResponseMessage.validateJSON(data['message']);
+        // ensure the json data is a string
+        if (data['message'] && !(typeof data['message'] === 'string' || data['message'] instanceof String)) {
+            throw new Error("Expected the field `message` to be a primitive type in the JSON string but got " + data['message']);
         }
         // ensure the json data is a string
         if (data['error_code'] && !(typeof data['error_code'] === 'string' || data['error_code'] instanceof String)) {
@@ -110,7 +109,8 @@ CreateDatabaseBackup409Response.RequiredProperties = ["status_code", "error_code
 CreateDatabaseBackup409Response.prototype['status_code'] = undefined;
 
 /**
- * @member {module:model/CreateDatabaseBackup409ResponseMessage} message
+ * Сообщение, предоставляющее дополнительную информацию об ошибке, в том числе сведения, помогающие устранить ее, когда это возможно.
+ * @member {String} message
  */
 CreateDatabaseBackup409Response.prototype['message'] = undefined;
 

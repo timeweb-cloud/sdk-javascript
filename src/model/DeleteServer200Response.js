@@ -24,11 +24,10 @@ class DeleteServer200Response {
      * Constructs a new <code>DeleteServer200Response</code>.
      * @alias module:model/DeleteServer200Response
      * @param serverDelete {module:model/DeleteServiceResponse} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(serverDelete, responseId) { 
+    constructor(serverDelete) { 
         
-        DeleteServer200Response.initialize(this, serverDelete, responseId);
+        DeleteServer200Response.initialize(this, serverDelete);
     }
 
     /**
@@ -36,9 +35,8 @@ class DeleteServer200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, serverDelete, responseId) { 
+    static initialize(obj, serverDelete) { 
         obj['server_delete'] = serverDelete;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class DeleteServer200Response {
 
             if (data.hasOwnProperty('server_delete')) {
                 obj['server_delete'] = DeleteServiceResponse.constructFromObject(data['server_delete']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class DeleteServer200Response {
         if (data['server_delete']) { // data not null
           DeleteServiceResponse.validateJSON(data['server_delete']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class DeleteServer200Response {
 
 }
 
-DeleteServer200Response.RequiredProperties = ["server_delete", "response_id"];
+DeleteServer200Response.RequiredProperties = ["server_delete"];
 
 /**
  * @member {module:model/DeleteServiceResponse} server_delete
  */
 DeleteServer200Response.prototype['server_delete'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-DeleteServer200Response.prototype['response_id'] = undefined;
 
 
 

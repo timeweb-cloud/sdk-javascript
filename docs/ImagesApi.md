@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 ## createImage
 
-> CreateImage201Response createImage(imageInAPI)
+> ImageOutResponse createImage(imageInAPI)
 
 Создание образа
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateImage201Response**](CreateImage201Response.md)
+[**ImageOutResponse**](ImageOutResponse.md)
 
 ### Authorization
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ## createImageDownloadUrl
 
-> CreateImageDownloadUrl201Response createImageDownloadUrl(imageId, imageUrlIn)
+> ImageDownloadResponse createImageDownloadUrl(imageId, imageUrlIn)
 
 Создание ссылки на скачивание образа
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateImageDownloadUrl201Response**](CreateImageDownloadUrl201Response.md)
+[**ImageDownloadResponse**](ImageDownloadResponse.md)
 
 ### Authorization
 
@@ -219,7 +219,7 @@ null (empty response body)
 
 ## getImage
 
-> CreateImage201Response getImage(imageId)
+> ImageOutResponse getImage(imageId)
 
 Получение информации о образе
 
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateImage201Response**](CreateImage201Response.md)
+[**ImageOutResponse**](ImageOutResponse.md)
 
 ### Authorization
 
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 ## getImageDownloadURL
 
-> CreateImageDownloadUrl201Response getImageDownloadURL(imageId, imageUrlId)
+> ImageDownloadResponse getImageDownloadURL(imageId, imageUrlId)
 
 Получение информации о ссылке на скачивание образа
 
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateImageDownloadUrl201Response**](CreateImageDownloadUrl201Response.md)
+[**ImageDownloadResponse**](ImageDownloadResponse.md)
 
 ### Authorization
 
@@ -319,7 +319,7 @@ Name | Type | Description  | Notes
 
 ## getImageDownloadURLs
 
-> GetImageDownloadURLs200Response getImageDownloadURLs(imageId, opts)
+> ImageDownloadsResponse getImageDownloadURLs(imageId, opts)
 
 Получение информации о ссылках на скачивание образов
 
@@ -360,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetImageDownloadURLs200Response**](GetImageDownloadURLs200Response.md)
+[**ImageDownloadsResponse**](ImageDownloadsResponse.md)
 
 ### Authorization
 
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 ## getImages
 
-> GetImages200Response getImages(opts)
+> ImagesOutResponse getImages(opts)
 
 Получение списка образов
 
@@ -413,7 +413,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetImages200Response**](GetImages200Response.md)
+[**ImagesOutResponse**](ImagesOutResponse.md)
 
 ### Authorization
 
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 
 ## updateImage
 
-> CreateImage201Response updateImage(imageId, imageUpdateAPI)
+> ImageOutResponse updateImage(imageId, imageUpdateAPI)
 
 Обновление информации о образе
 
@@ -464,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateImage201Response**](CreateImage201Response.md)
+[**ImageOutResponse**](ImageOutResponse.md)
 
 ### Authorization
 
@@ -478,7 +478,7 @@ Name | Type | Description  | Notes
 
 ## uploadImage
 
-> UploadImage200Response uploadImage(imageId, opts)
+> UploadSuccessfulResponse uploadImage(imageId, opts)
 
 Загрузка образа
 
@@ -517,7 +517,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UploadImage200Response**](UploadImage200Response.md)
+[**UploadSuccessfulResponse**](UploadSuccessfulResponse.md)
 
 ### Authorization
 

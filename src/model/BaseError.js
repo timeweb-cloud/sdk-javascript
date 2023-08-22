@@ -12,7 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import Message from './Message';
 
 /**
  * The BaseError model module.
@@ -25,7 +24,7 @@ class BaseError {
      * @alias module:model/BaseError
      * @param statusCode {Number} 
      * @param errorCode {String} 
-     * @param message {module:model/Message} 
+     * @param message {String} 
      */
     constructor(statusCode, errorCode, message) { 
         
@@ -61,7 +60,7 @@ class BaseError {
                 obj['error_code'] = ApiClient.convertToType(data['error_code'], 'String');
             }
             if (data.hasOwnProperty('message')) {
-                obj['message'] = Message.constructFromObject(data['message']);
+                obj['message'] = ApiClient.convertToType(data['message'], 'String');
             }
             if (data.hasOwnProperty('response_id')) {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
@@ -86,9 +85,9 @@ class BaseError {
         if (data['error_code'] && !(typeof data['error_code'] === 'string' || data['error_code'] instanceof String)) {
             throw new Error("Expected the field `error_code` to be a primitive type in the JSON string but got " + data['error_code']);
         }
-        // validate the optional field `message`
-        if (data['message']) { // data not null
-          Message.validateJSON(data['message']);
+        // ensure the json data is a string
+        if (data['message'] && !(typeof data['message'] === 'string' || data['message'] instanceof String)) {
+            throw new Error("Expected the field `message` to be a primitive type in the JSON string but got " + data['message']);
         }
         // ensure the json data is a string
         if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
@@ -114,7 +113,7 @@ BaseError.prototype['status_code'] = undefined;
 BaseError.prototype['error_code'] = undefined;
 
 /**
- * @member {module:model/Message} message
+ * @member {String} message
  */
 BaseError.prototype['message'] = undefined;
 

@@ -26,11 +26,10 @@ class GetDatabaseUsers200Response {
      * @alias module:model/GetDatabaseUsers200Response
      * @param meta {module:model/Meta} 
      * @param admins {Array.<module:model/DatabaseAdmin>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, admins, responseId) { 
+    constructor(meta, admins) { 
         
-        GetDatabaseUsers200Response.initialize(this, meta, admins, responseId);
+        GetDatabaseUsers200Response.initialize(this, meta, admins);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetDatabaseUsers200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, admins, responseId) { 
+    static initialize(obj, meta, admins) { 
         obj['meta'] = meta;
         obj['admins'] = admins;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetDatabaseUsers200Response {
             }
             if (data.hasOwnProperty('admins')) {
                 obj['admins'] = ApiClient.convertToType(data['admins'], [DatabaseAdmin]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetDatabaseUsers200Response {
                 DatabaseAdmin.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetDatabaseUsers200Response {
 
 }
 
-GetDatabaseUsers200Response.RequiredProperties = ["meta", "admins", "response_id"];
+GetDatabaseUsers200Response.RequiredProperties = ["meta", "admins"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetDatabaseUsers200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/DatabaseAdmin>} admins
  */
 GetDatabaseUsers200Response.prototype['admins'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetDatabaseUsers200Response.prototype['response_id'] = undefined;
 
 
 

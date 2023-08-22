@@ -26,11 +26,10 @@ class GetSoftware200Response {
      * @alias module:model/GetSoftware200Response
      * @param meta {module:model/Meta} 
      * @param serversSoftware {Array.<module:model/ServersSoftware>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, serversSoftware, responseId) { 
+    constructor(meta, serversSoftware) { 
         
-        GetSoftware200Response.initialize(this, meta, serversSoftware, responseId);
+        GetSoftware200Response.initialize(this, meta, serversSoftware);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetSoftware200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, serversSoftware, responseId) { 
+    static initialize(obj, meta, serversSoftware) { 
         obj['meta'] = meta;
         obj['servers_software'] = serversSoftware;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetSoftware200Response {
             }
             if (data.hasOwnProperty('servers_software')) {
                 obj['servers_software'] = ApiClient.convertToType(data['servers_software'], [ServersSoftware]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetSoftware200Response {
                 ServersSoftware.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetSoftware200Response {
 
 }
 
-GetSoftware200Response.RequiredProperties = ["meta", "servers_software", "response_id"];
+GetSoftware200Response.RequiredProperties = ["meta", "servers_software"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetSoftware200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/ServersSoftware>} servers_software
  */
 GetSoftware200Response.prototype['servers_software'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetSoftware200Response.prototype['response_id'] = undefined;
 
 
 

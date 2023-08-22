@@ -26,11 +26,10 @@ class GetDatabaseClusters200Response {
      * @alias module:model/GetDatabaseClusters200Response
      * @param meta {module:model/Meta} 
      * @param dbs {Array.<module:model/DatabaseCluster>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, dbs, responseId) { 
+    constructor(meta, dbs) { 
         
-        GetDatabaseClusters200Response.initialize(this, meta, dbs, responseId);
+        GetDatabaseClusters200Response.initialize(this, meta, dbs);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetDatabaseClusters200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, dbs, responseId) { 
+    static initialize(obj, meta, dbs) { 
         obj['meta'] = meta;
         obj['dbs'] = dbs;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetDatabaseClusters200Response {
             }
             if (data.hasOwnProperty('dbs')) {
                 obj['dbs'] = ApiClient.convertToType(data['dbs'], [DatabaseCluster]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetDatabaseClusters200Response {
                 DatabaseCluster.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetDatabaseClusters200Response {
 
 }
 
-GetDatabaseClusters200Response.RequiredProperties = ["meta", "dbs", "response_id"];
+GetDatabaseClusters200Response.RequiredProperties = ["meta", "dbs"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetDatabaseClusters200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/DatabaseCluster>} dbs
  */
 GetDatabaseClusters200Response.prototype['dbs'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetDatabaseClusters200Response.prototype['response_id'] = undefined;
 
 
 

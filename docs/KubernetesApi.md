@@ -28,7 +28,7 @@ Method | HTTP request | Description
 
 ## createCluster
 
-> CreateCluster201Response createCluster(clusterIn)
+> ClusterResponse createCluster(clusterIn)
 
 Создание кластера
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateCluster201Response**](CreateCluster201Response.md)
+[**ClusterResponse**](ClusterResponse.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ## createClusterNodeGroup
 
-> CreateClusterNodeGroup201Response createClusterNodeGroup(clusterId, nodeGroupIn)
+> NodeGroupResponse createClusterNodeGroup(clusterId, nodeGroupIn)
 
 Создание группы нод
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateClusterNodeGroup201Response**](CreateClusterNodeGroup201Response.md)
+[**NodeGroupResponse**](NodeGroupResponse.md)
 
 ### Authorization
 
@@ -285,7 +285,7 @@ null (empty response body)
 
 ## getCluster
 
-> CreateCluster201Response getCluster(clusterId)
+> ClusterResponse getCluster(clusterId)
 
 Получение информации о кластере
 
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateCluster201Response**](CreateCluster201Response.md)
+[**ClusterResponse**](ClusterResponse.md)
 
 ### Authorization
 
@@ -383,7 +383,7 @@ Name | Type | Description  | Notes
 
 ## getClusterNodeGroup
 
-> CreateClusterNodeGroup201Response getClusterNodeGroup(clusterId, groupId)
+> NodeGroupResponse getClusterNodeGroup(clusterId, groupId)
 
 Получение информации о группе нод
 
@@ -420,7 +420,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateClusterNodeGroup201Response**](CreateClusterNodeGroup201Response.md)
+[**NodeGroupResponse**](NodeGroupResponse.md)
 
 ### Authorization
 
@@ -434,7 +434,7 @@ Name | Type | Description  | Notes
 
 ## getClusterNodeGroups
 
-> GetClusterNodeGroups200Response getClusterNodeGroups(clusterId)
+> NodeGroupsResponse getClusterNodeGroups(clusterId)
 
 Получение групп нод кластера
 
@@ -469,7 +469,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetClusterNodeGroups200Response**](GetClusterNodeGroups200Response.md)
+[**NodeGroupsResponse**](NodeGroupsResponse.md)
 
 ### Authorization
 
@@ -483,7 +483,7 @@ Name | Type | Description  | Notes
 
 ## getClusterNodes
 
-> GetClusterNodesFromGroup200Response getClusterNodes(clusterId)
+> NodesResponse getClusterNodes(clusterId)
 
 Получение списка нод
 
@@ -518,7 +518,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetClusterNodesFromGroup200Response**](GetClusterNodesFromGroup200Response.md)
+[**NodesResponse**](NodesResponse.md)
 
 ### Authorization
 
@@ -532,7 +532,7 @@ Name | Type | Description  | Notes
 
 ## getClusterNodesFromGroup
 
-> GetClusterNodesFromGroup200Response getClusterNodesFromGroup(clusterId, groupId, opts)
+> NodesResponse getClusterNodesFromGroup(clusterId, groupId, opts)
 
 Получение списка нод, принадлежащих группе
 
@@ -575,7 +575,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetClusterNodesFromGroup200Response**](GetClusterNodesFromGroup200Response.md)
+[**NodesResponse**](NodesResponse.md)
 
 ### Authorization
 
@@ -589,7 +589,7 @@ Name | Type | Description  | Notes
 
 ## getClusterResources
 
-> GetClusterResources200Response getClusterResources(clusterId)
+> ResourcesResponse getClusterResources(clusterId)
 
 Получение ресурсов кластера
 
@@ -624,7 +624,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetClusterResources200Response**](GetClusterResources200Response.md)
+[**ResourcesResponse**](ResourcesResponse.md)
 
 ### Authorization
 
@@ -638,7 +638,7 @@ Name | Type | Description  | Notes
 
 ## getClusters
 
-> GetClusters200Response getClusters(opts)
+> ClustersResponse getClusters(opts)
 
 Получение списка кластеров
 
@@ -677,7 +677,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetClusters200Response**](GetClusters200Response.md)
+[**ClustersResponse**](ClustersResponse.md)
 
 ### Authorization
 
@@ -691,7 +691,7 @@ Name | Type | Description  | Notes
 
 ## getK8SNetworkDrivers
 
-> GetK8SNetworkDrivers200Response getK8SNetworkDrivers()
+> NetworkDriversResponse getK8SNetworkDrivers()
 
 Получение списка сетевых драйверов k8s
 
@@ -722,7 +722,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**GetK8SNetworkDrivers200Response**](GetK8SNetworkDrivers200Response.md)
+[**NetworkDriversResponse**](NetworkDriversResponse.md)
 
 ### Authorization
 
@@ -736,7 +736,7 @@ This endpoint does not need any parameter.
 
 ## getK8SVersions
 
-> GetK8SVersions200Response getK8SVersions()
+> K8SVersionsResponse getK8SVersions()
 
 Получение списка версий k8s
 
@@ -767,7 +767,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**GetK8SVersions200Response**](GetK8SVersions200Response.md)
+[**K8SVersionsResponse**](K8SVersionsResponse.md)
 
 ### Authorization
 
@@ -781,7 +781,7 @@ This endpoint does not need any parameter.
 
 ## getKubernetesPresets
 
-> GetKubernetesPresets200Response getKubernetesPresets()
+> PresetsResponse getKubernetesPresets()
 
 Получение списка тарифов
 
@@ -812,7 +812,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**GetKubernetesPresets200Response**](GetKubernetesPresets200Response.md)
+[**PresetsResponse**](PresetsResponse.md)
 
 ### Authorization
 
@@ -826,7 +826,7 @@ This endpoint does not need any parameter.
 
 ## increaseCountOfNodesInGroup
 
-> GetClusterNodesFromGroup200Response increaseCountOfNodesInGroup(clusterId, groupId, nodeCount)
+> NodesResponse increaseCountOfNodesInGroup(clusterId, groupId, nodeCount)
 
 Увеличение количества нод в группе на указанное количество
 
@@ -865,7 +865,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetClusterNodesFromGroup200Response**](GetClusterNodesFromGroup200Response.md)
+[**NodesResponse**](NodesResponse.md)
 
 ### Authorization
 
@@ -932,7 +932,7 @@ null (empty response body)
 
 ## updateCluster
 
-> CreateCluster201Response updateCluster(clusterId, clusterEdit)
+> ClusterResponse updateCluster(clusterId, clusterEdit)
 
 Обновление информации о кластере
 
@@ -969,7 +969,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateCluster201Response**](CreateCluster201Response.md)
+[**ClusterResponse**](ClusterResponse.md)
 
 ### Authorization
 

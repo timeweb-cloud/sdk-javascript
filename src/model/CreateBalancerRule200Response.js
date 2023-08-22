@@ -24,11 +24,10 @@ class CreateBalancerRule200Response {
      * Constructs a new <code>CreateBalancerRule200Response</code>.
      * @alias module:model/CreateBalancerRule200Response
      * @param rule {module:model/Rule} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(rule, responseId) { 
+    constructor(rule) { 
         
-        CreateBalancerRule200Response.initialize(this, rule, responseId);
+        CreateBalancerRule200Response.initialize(this, rule);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateBalancerRule200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, rule, responseId) { 
+    static initialize(obj, rule) { 
         obj['rule'] = rule;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateBalancerRule200Response {
 
             if (data.hasOwnProperty('rule')) {
                 obj['rule'] = Rule.constructFromObject(data['rule']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateBalancerRule200Response {
         if (data['rule']) { // data not null
           Rule.validateJSON(data['rule']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateBalancerRule200Response {
 
 }
 
-CreateBalancerRule200Response.RequiredProperties = ["rule", "response_id"];
+CreateBalancerRule200Response.RequiredProperties = ["rule"];
 
 /**
  * @member {module:model/Rule} rule
  */
 CreateBalancerRule200Response.prototype['rule'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateBalancerRule200Response.prototype['response_id'] = undefined;
 
 
 

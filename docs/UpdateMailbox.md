@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**autoReply** | [**UpdateMailboxAutoReply**](UpdateMailboxAutoReply.md) |  | [optional] 
-**spamFilter** | [**UpdateMailboxSpamFilter**](UpdateMailboxSpamFilter.md) |  | [optional] 
-**forwardingIncoming** | [**UpdateMailboxForwardingIncoming**](UpdateMailboxForwardingIncoming.md) |  | [optional] 
-**forwardingOutgoing** | [**UpdateMailboxForwardingOutgoing**](UpdateMailboxForwardingOutgoing.md) |  | [optional] 
+**autoReply** | [**AutoReplyIsDisabled**](AutoReplyIsDisabled.md) |  | [optional] 
+**spamFilter** | [**SpamFilterIsDisabled**](SpamFilterIsDisabled.md) |  | [optional] 
+**forwardingIncoming** | [**ForwardingIncomingIsDisabled**](ForwardingIncomingIsDisabled.md) |  | [optional] 
+**forwardingOutgoing** | [**ForwardingOutgoingIsDisabled**](ForwardingOutgoingIsDisabled.md) |  | [optional] 
 **comment** | **String** | Комментарий к почтовому ящику | [optional] 
 **password** | **String** | Пароль почтового ящика | [optional] 
 

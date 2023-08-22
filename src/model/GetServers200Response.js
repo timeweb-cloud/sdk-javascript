@@ -26,11 +26,10 @@ class GetServers200Response {
      * @alias module:model/GetServers200Response
      * @param meta {module:model/Meta} 
      * @param servers {Array.<module:model/Vds>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, servers, responseId) { 
+    constructor(meta, servers) { 
         
-        GetServers200Response.initialize(this, meta, servers, responseId);
+        GetServers200Response.initialize(this, meta, servers);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetServers200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, servers, responseId) { 
+    static initialize(obj, meta, servers) { 
         obj['meta'] = meta;
         obj['servers'] = servers;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetServers200Response {
             }
             if (data.hasOwnProperty('servers')) {
                 obj['servers'] = ApiClient.convertToType(data['servers'], [Vds]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetServers200Response {
                 Vds.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetServers200Response {
 
 }
 
-GetServers200Response.RequiredProperties = ["meta", "servers", "response_id"];
+GetServers200Response.RequiredProperties = ["meta", "servers"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetServers200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/Vds>} servers
  */
 GetServers200Response.prototype['servers'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetServers200Response.prototype['response_id'] = undefined;
 
 
 

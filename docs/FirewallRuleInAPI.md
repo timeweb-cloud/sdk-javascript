@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **direction** | [**FirewallRuleDirection**](FirewallRuleDirection.md) |  | 
 **port** | **String** | Порт или диапазон портов, в случае tcp или udp | [optional] 
 **protocol** | [**FirewallRuleProtocol**](FirewallRuleProtocol.md) |  | 
-**cidr** | [**Cidr**](Cidr.md) |  | [optional] 
+**cidr** | **String** | Сетевой адрес или подсеть. Поддерживаются протоколы IPv4  и IPv6 | [optional] 
 
 

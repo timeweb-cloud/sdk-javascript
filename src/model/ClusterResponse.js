@@ -54,7 +54,7 @@ class ClusterResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('cluster')) {
-                obj['cluster'] = ApiClient.convertToType(data['cluster'], ClusterOut);
+                obj['cluster'] = ClusterOut.constructFromObject(data['cluster']);
             }
         }
         return obj;

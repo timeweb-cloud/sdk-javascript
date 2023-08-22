@@ -24,11 +24,10 @@ class GetTLD200Response {
      * Constructs a new <code>GetTLD200Response</code>.
      * @alias module:model/GetTLD200Response
      * @param topLevelDomain {module:model/TopLevelDomain} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(topLevelDomain, responseId) { 
+    constructor(topLevelDomain) { 
         
-        GetTLD200Response.initialize(this, topLevelDomain, responseId);
+        GetTLD200Response.initialize(this, topLevelDomain);
     }
 
     /**
@@ -36,9 +35,8 @@ class GetTLD200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, topLevelDomain, responseId) { 
+    static initialize(obj, topLevelDomain) { 
         obj['top_level_domain'] = topLevelDomain;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class GetTLD200Response {
 
             if (data.hasOwnProperty('top_level_domain')) {
                 obj['top_level_domain'] = TopLevelDomain.constructFromObject(data['top_level_domain']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class GetTLD200Response {
         if (data['top_level_domain']) { // data not null
           TopLevelDomain.validateJSON(data['top_level_domain']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class GetTLD200Response {
 
 }
 
-GetTLD200Response.RequiredProperties = ["top_level_domain", "response_id"];
+GetTLD200Response.RequiredProperties = ["top_level_domain"];
 
 /**
  * @member {module:model/TopLevelDomain} top_level_domain
  */
 GetTLD200Response.prototype['top_level_domain'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetTLD200Response.prototype['response_id'] = undefined;
 
 
 

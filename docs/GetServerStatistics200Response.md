@@ -4,10 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cpu** | [**[GetServerStatistics200ResponseAllOfCpuInner]**](GetServerStatistics200ResponseAllOfCpuInner.md) |  | 
-**networkTraffic** | [**[GetServerStatistics200ResponseAllOfNetworkTrafficInner]**](GetServerStatistics200ResponseAllOfNetworkTrafficInner.md) |  | 
-**disk** | [**[GetServerStatistics200ResponseAllOfDiskInner]**](GetServerStatistics200ResponseAllOfDiskInner.md) | Статистика основного диска | 
-**ram** | [**[GetServerStatistics200ResponseAllOfRamInner]**](GetServerStatistics200ResponseAllOfRamInner.md) |  | 
-**responseId** | **String** | Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему. | 
+**cpu** | [**[GetServerStatistics200ResponseCpuInner]**](GetServerStatistics200ResponseCpuInner.md) |  | 
+**networkTraffic** | [**[GetServerStatistics200ResponseNetworkTrafficInner]**](GetServerStatistics200ResponseNetworkTrafficInner.md) |  | 
+**disk** | [**[GetServerStatistics200ResponseDiskInner]**](GetServerStatistics200ResponseDiskInner.md) | Статистика основного диска | 
+**ram** | [**[GetServerStatistics200ResponseRamInner]**](GetServerStatistics200ResponseRamInner.md) |  | 
 
 

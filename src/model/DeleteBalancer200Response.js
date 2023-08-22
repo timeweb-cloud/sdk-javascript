@@ -24,11 +24,10 @@ class DeleteBalancer200Response {
      * Constructs a new <code>DeleteBalancer200Response</code>.
      * @alias module:model/DeleteBalancer200Response
      * @param balancerDelete {module:model/DeleteServiceResponse} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(balancerDelete, responseId) { 
+    constructor(balancerDelete) { 
         
-        DeleteBalancer200Response.initialize(this, balancerDelete, responseId);
+        DeleteBalancer200Response.initialize(this, balancerDelete);
     }
 
     /**
@@ -36,9 +35,8 @@ class DeleteBalancer200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, balancerDelete, responseId) { 
+    static initialize(obj, balancerDelete) { 
         obj['balancer_delete'] = balancerDelete;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class DeleteBalancer200Response {
 
             if (data.hasOwnProperty('balancer_delete')) {
                 obj['balancer_delete'] = DeleteServiceResponse.constructFromObject(data['balancer_delete']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class DeleteBalancer200Response {
         if (data['balancer_delete']) { // data not null
           DeleteServiceResponse.validateJSON(data['balancer_delete']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class DeleteBalancer200Response {
 
 }
 
-DeleteBalancer200Response.RequiredProperties = ["balancer_delete", "response_id"];
+DeleteBalancer200Response.RequiredProperties = ["balancer_delete"];
 
 /**
  * @member {module:model/DeleteServiceResponse} balancer_delete
  */
 DeleteBalancer200Response.prototype['balancer_delete'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-DeleteBalancer200Response.prototype['response_id'] = undefined;
 
 
 

@@ -24,11 +24,10 @@ class GetFinances200Response {
      * Constructs a new <code>GetFinances200Response</code>.
      * @alias module:model/GetFinances200Response
      * @param finances {module:model/Finances} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(finances, responseId) { 
+    constructor(finances) { 
         
-        GetFinances200Response.initialize(this, finances, responseId);
+        GetFinances200Response.initialize(this, finances);
     }
 
     /**
@@ -36,9 +35,8 @@ class GetFinances200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, finances, responseId) { 
+    static initialize(obj, finances) { 
         obj['finances'] = finances;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class GetFinances200Response {
 
             if (data.hasOwnProperty('finances')) {
                 obj['finances'] = Finances.constructFromObject(data['finances']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class GetFinances200Response {
         if (data['finances']) { // data not null
           Finances.validateJSON(data['finances']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class GetFinances200Response {
 
 }
 
-GetFinances200Response.RequiredProperties = ["finances", "response_id"];
+GetFinances200Response.RequiredProperties = ["finances"];
 
 /**
  * @member {module:model/Finances} finances
  */
 GetFinances200Response.prototype['finances'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetFinances200Response.prototype['response_id'] = undefined;
 
 
 

@@ -24,11 +24,10 @@ class GetDomain200Response {
      * Constructs a new <code>GetDomain200Response</code>.
      * @alias module:model/GetDomain200Response
      * @param domain {module:model/Domain} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(domain, responseId) { 
+    constructor(domain) { 
         
-        GetDomain200Response.initialize(this, domain, responseId);
+        GetDomain200Response.initialize(this, domain);
     }
 
     /**
@@ -36,9 +35,8 @@ class GetDomain200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, domain, responseId) { 
+    static initialize(obj, domain) { 
         obj['domain'] = domain;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class GetDomain200Response {
 
             if (data.hasOwnProperty('domain')) {
                 obj['domain'] = Domain.constructFromObject(data['domain']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class GetDomain200Response {
         if (data['domain']) { // data not null
           Domain.validateJSON(data['domain']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class GetDomain200Response {
 
 }
 
-GetDomain200Response.RequiredProperties = ["domain", "response_id"];
+GetDomain200Response.RequiredProperties = ["domain"];
 
 /**
  * @member {module:model/Domain} domain
  */
 GetDomain200Response.prototype['domain'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetDomain200Response.prototype['response_id'] = undefined;
 
 
 

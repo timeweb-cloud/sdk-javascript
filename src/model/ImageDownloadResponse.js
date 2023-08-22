@@ -54,7 +54,7 @@ class ImageDownloadResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('download')) {
-                obj['download'] = ApiClient.convertToType(data['download'], ImageDownloadAPI);
+                obj['download'] = ImageDownloadAPI.constructFromObject(data['download']);
             }
         }
         return obj;

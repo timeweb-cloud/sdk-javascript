@@ -26,11 +26,10 @@ class GetServerIPs200Response {
      * @alias module:model/GetServerIPs200Response
      * @param meta {module:model/Meta} 
      * @param serverIps {Array.<module:model/ServerIp>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, serverIps, responseId) { 
+    constructor(meta, serverIps) { 
         
-        GetServerIPs200Response.initialize(this, meta, serverIps, responseId);
+        GetServerIPs200Response.initialize(this, meta, serverIps);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetServerIPs200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, serverIps, responseId) { 
+    static initialize(obj, meta, serverIps) { 
         obj['meta'] = meta;
         obj['server_ips'] = serverIps;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetServerIPs200Response {
             }
             if (data.hasOwnProperty('server_ips')) {
                 obj['server_ips'] = ApiClient.convertToType(data['server_ips'], [ServerIp]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetServerIPs200Response {
                 ServerIp.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetServerIPs200Response {
 
 }
 
-GetServerIPs200Response.RequiredProperties = ["meta", "server_ips", "response_id"];
+GetServerIPs200Response.RequiredProperties = ["meta", "server_ips"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetServerIPs200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/ServerIp>} server_ips
  */
 GetServerIPs200Response.prototype['server_ips'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetServerIPs200Response.prototype['response_id'] = undefined;
 
 
 

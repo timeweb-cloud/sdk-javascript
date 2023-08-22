@@ -23,11 +23,10 @@ class CreateServerDiskBackup201Response {
     /**
      * Constructs a new <code>CreateServerDiskBackup201Response</code>.
      * @alias module:model/CreateServerDiskBackup201Response
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(responseId) { 
+    constructor() { 
         
-        CreateServerDiskBackup201Response.initialize(this, responseId);
+        CreateServerDiskBackup201Response.initialize(this);
     }
 
     /**
@@ -35,8 +34,7 @@ class CreateServerDiskBackup201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, responseId) { 
-        obj['response_id'] = responseId;
+    static initialize(obj) { 
     }
 
     /**
@@ -53,9 +51,6 @@ class CreateServerDiskBackup201Response {
             if (data.hasOwnProperty('backup')) {
                 obj['backup'] = ServerBackup.constructFromObject(data['backup']);
             }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
-            }
         }
         return obj;
     }
@@ -66,19 +61,9 @@ class CreateServerDiskBackup201Response {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateServerDiskBackup201Response</code>.
      */
     static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of CreateServerDiskBackup201Response.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
         // validate the optional field `backup`
         if (data['backup']) { // data not null
           ServerBackup.validateJSON(data['backup']);
-        }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
         }
 
         return true;
@@ -87,18 +72,12 @@ class CreateServerDiskBackup201Response {
 
 }
 
-CreateServerDiskBackup201Response.RequiredProperties = ["response_id"];
+
 
 /**
  * @member {module:model/ServerBackup} backup
  */
 CreateServerDiskBackup201Response.prototype['backup'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateServerDiskBackup201Response.prototype['response_id'] = undefined;
 
 
 

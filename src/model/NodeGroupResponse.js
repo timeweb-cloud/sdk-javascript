@@ -54,7 +54,7 @@ class NodeGroupResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('node_group')) {
-                obj['node_group'] = ApiClient.convertToType(data['node_group'], NodeGroupOut);
+                obj['node_group'] = NodeGroupOut.constructFromObject(data['node_group']);
             }
         }
         return obj;

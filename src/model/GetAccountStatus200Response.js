@@ -24,11 +24,10 @@ class GetAccountStatus200Response {
      * Constructs a new <code>GetAccountStatus200Response</code>.
      * @alias module:model/GetAccountStatus200Response
      * @param status {module:model/Status} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(status, responseId) { 
+    constructor(status) { 
         
-        GetAccountStatus200Response.initialize(this, status, responseId);
+        GetAccountStatus200Response.initialize(this, status);
     }
 
     /**
@@ -36,9 +35,8 @@ class GetAccountStatus200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, status, responseId) { 
+    static initialize(obj, status) { 
         obj['status'] = status;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class GetAccountStatus200Response {
 
             if (data.hasOwnProperty('status')) {
                 obj['status'] = Status.constructFromObject(data['status']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class GetAccountStatus200Response {
         if (data['status']) { // data not null
           Status.validateJSON(data['status']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class GetAccountStatus200Response {
 
 }
 
-GetAccountStatus200Response.RequiredProperties = ["status", "response_id"];
+GetAccountStatus200Response.RequiredProperties = ["status"];
 
 /**
  * @member {module:model/Status} status
  */
 GetAccountStatus200Response.prototype['status'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetAccountStatus200Response.prototype['response_id'] = undefined;
 
 
 

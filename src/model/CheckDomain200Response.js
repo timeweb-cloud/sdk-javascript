@@ -23,11 +23,10 @@ class CheckDomain200Response {
      * Constructs a new <code>CheckDomain200Response</code>.
      * @alias module:model/CheckDomain200Response
      * @param isDomainAvailable {Boolean} Это логическое значение, которое показывает, доступен ли домен для регистрации.
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(isDomainAvailable, responseId) { 
+    constructor(isDomainAvailable) { 
         
-        CheckDomain200Response.initialize(this, isDomainAvailable, responseId);
+        CheckDomain200Response.initialize(this, isDomainAvailable);
     }
 
     /**
@@ -35,9 +34,8 @@ class CheckDomain200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, isDomainAvailable, responseId) { 
+    static initialize(obj, isDomainAvailable) { 
         obj['is_domain_available'] = isDomainAvailable;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -53,9 +51,6 @@ class CheckDomain200Response {
 
             if (data.hasOwnProperty('is_domain_available')) {
                 obj['is_domain_available'] = ApiClient.convertToType(data['is_domain_available'], 'Boolean');
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -73,10 +68,6 @@ class CheckDomain200Response {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -84,19 +75,13 @@ class CheckDomain200Response {
 
 }
 
-CheckDomain200Response.RequiredProperties = ["is_domain_available", "response_id"];
+CheckDomain200Response.RequiredProperties = ["is_domain_available"];
 
 /**
  * Это логическое значение, которое показывает, доступен ли домен для регистрации.
  * @member {Boolean} is_domain_available
  */
 CheckDomain200Response.prototype['is_domain_available'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CheckDomain200Response.prototype['response_id'] = undefined;
 
 
 

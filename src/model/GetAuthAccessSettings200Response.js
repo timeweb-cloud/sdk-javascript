@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import GetAuthAccessSettings200ResponseAllOfWhiteList from './GetAuthAccessSettings200ResponseAllOfWhiteList';
+import GetAuthAccessSettings200ResponseWhiteList from './GetAuthAccessSettings200ResponseWhiteList';
 
 /**
  * The GetAuthAccessSettings200Response model module.
@@ -25,12 +25,11 @@ class GetAuthAccessSettings200Response {
      * @alias module:model/GetAuthAccessSettings200Response
      * @param isIpRestrictionsEnabled {Boolean} Это логическое значение, которое показывает, включено ли ограничение доступа по IP-адресу.
      * @param isCountryRestrictionsEnabled {Boolean} Это логическое значение, которое показывает, включено ли ограничение доступа по стране.
-     * @param whiteList {module:model/GetAuthAccessSettings200ResponseAllOfWhiteList} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
+     * @param whiteList {module:model/GetAuthAccessSettings200ResponseWhiteList} 
      */
-    constructor(isIpRestrictionsEnabled, isCountryRestrictionsEnabled, whiteList, responseId) { 
+    constructor(isIpRestrictionsEnabled, isCountryRestrictionsEnabled, whiteList) { 
         
-        GetAuthAccessSettings200Response.initialize(this, isIpRestrictionsEnabled, isCountryRestrictionsEnabled, whiteList, responseId);
+        GetAuthAccessSettings200Response.initialize(this, isIpRestrictionsEnabled, isCountryRestrictionsEnabled, whiteList);
     }
 
     /**
@@ -38,11 +37,10 @@ class GetAuthAccessSettings200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, isIpRestrictionsEnabled, isCountryRestrictionsEnabled, whiteList, responseId) { 
+    static initialize(obj, isIpRestrictionsEnabled, isCountryRestrictionsEnabled, whiteList) { 
         obj['is_ip_restrictions_enabled'] = isIpRestrictionsEnabled;
         obj['is_country_restrictions_enabled'] = isCountryRestrictionsEnabled;
         obj['white_list'] = whiteList;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -63,10 +61,7 @@ class GetAuthAccessSettings200Response {
                 obj['is_country_restrictions_enabled'] = ApiClient.convertToType(data['is_country_restrictions_enabled'], 'Boolean');
             }
             if (data.hasOwnProperty('white_list')) {
-                obj['white_list'] = GetAuthAccessSettings200ResponseAllOfWhiteList.constructFromObject(data['white_list']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
+                obj['white_list'] = GetAuthAccessSettings200ResponseWhiteList.constructFromObject(data['white_list']);
             }
         }
         return obj;
@@ -86,11 +81,7 @@ class GetAuthAccessSettings200Response {
         }
         // validate the optional field `white_list`
         if (data['white_list']) { // data not null
-          GetAuthAccessSettings200ResponseAllOfWhiteList.validateJSON(data['white_list']);
-        }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
+          GetAuthAccessSettings200ResponseWhiteList.validateJSON(data['white_list']);
         }
 
         return true;
@@ -99,7 +90,7 @@ class GetAuthAccessSettings200Response {
 
 }
 
-GetAuthAccessSettings200Response.RequiredProperties = ["is_ip_restrictions_enabled", "is_country_restrictions_enabled", "white_list", "response_id"];
+GetAuthAccessSettings200Response.RequiredProperties = ["is_ip_restrictions_enabled", "is_country_restrictions_enabled", "white_list"];
 
 /**
  * Это логическое значение, которое показывает, включено ли ограничение доступа по IP-адресу.
@@ -114,15 +105,9 @@ GetAuthAccessSettings200Response.prototype['is_ip_restrictions_enabled'] = undef
 GetAuthAccessSettings200Response.prototype['is_country_restrictions_enabled'] = undefined;
 
 /**
- * @member {module:model/GetAuthAccessSettings200ResponseAllOfWhiteList} white_list
+ * @member {module:model/GetAuthAccessSettings200ResponseWhiteList} white_list
  */
 GetAuthAccessSettings200Response.prototype['white_list'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetAuthAccessSettings200Response.prototype['response_id'] = undefined;
 
 
 

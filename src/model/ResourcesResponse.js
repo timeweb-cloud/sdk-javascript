@@ -54,7 +54,7 @@ class ResourcesResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('resources')) {
-                obj['resources'] = ApiClient.convertToType(data['resources'], Resources);
+                obj['resources'] = Resources.constructFromObject(data['resources']);
             }
         }
         return obj;

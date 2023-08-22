@@ -12,7 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import Cidr from './Cidr';
 import FirewallRuleDirection from './FirewallRuleDirection';
 import FirewallRuleProtocol from './FirewallRuleProtocol';
 
@@ -67,16 +66,16 @@ class FirewallRuleOutAPI {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
             if (data.hasOwnProperty('direction')) {
-                obj['direction'] = ApiClient.convertToType(data['direction'], FirewallRuleDirection);
+                obj['direction'] = FirewallRuleDirection.constructFromObject(data['direction']);
             }
             if (data.hasOwnProperty('protocol')) {
-                obj['protocol'] = ApiClient.convertToType(data['protocol'], FirewallRuleProtocol);
+                obj['protocol'] = FirewallRuleProtocol.constructFromObject(data['protocol']);
             }
             if (data.hasOwnProperty('port')) {
                 obj['port'] = ApiClient.convertToType(data['port'], 'String');
             }
             if (data.hasOwnProperty('cidr')) {
-                obj['cidr'] = Cidr.constructFromObject(data['cidr']);
+                obj['cidr'] = ApiClient.convertToType(data['cidr'], 'String');
             }
             if (data.hasOwnProperty('group_id')) {
                 obj['group_id'] = ApiClient.convertToType(data['group_id'], 'String');
@@ -109,9 +108,9 @@ class FirewallRuleOutAPI {
         if (data['port'] && !(typeof data['port'] === 'string' || data['port'] instanceof String)) {
             throw new Error("Expected the field `port` to be a primitive type in the JSON string but got " + data['port']);
         }
-        // validate the optional field `cidr`
-        if (data['cidr']) { // data not null
-          Cidr.validateJSON(data['cidr']);
+        // ensure the json data is a string
+        if (data['cidr'] && !(typeof data['cidr'] === 'string' || data['cidr'] instanceof String)) {
+            throw new Error("Expected the field `cidr` to be a primitive type in the JSON string but got " + data['cidr']);
         }
         // ensure the json data is a string
         if (data['group_id'] && !(typeof data['group_id'] === 'string' || data['group_id'] instanceof String)) {
@@ -155,7 +154,8 @@ FirewallRuleOutAPI.prototype['protocol'] = undefined;
 FirewallRuleOutAPI.prototype['port'] = undefined;
 
 /**
- * @member {module:model/Cidr} cidr
+ * Сетевой адрес или подсеть. Поддерживаются протоколы IPv4  и IPv6
+ * @member {String} cidr
  */
 FirewallRuleOutAPI.prototype['cidr'] = undefined;
 

@@ -24,11 +24,10 @@ class CreateDomainRequest201Response {
      * Constructs a new <code>CreateDomainRequest201Response</code>.
      * @alias module:model/CreateDomainRequest201Response
      * @param request {module:model/DomainRequest} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(request, responseId) { 
+    constructor(request) { 
         
-        CreateDomainRequest201Response.initialize(this, request, responseId);
+        CreateDomainRequest201Response.initialize(this, request);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateDomainRequest201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, request, responseId) { 
+    static initialize(obj, request) { 
         obj['request'] = request;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateDomainRequest201Response {
 
             if (data.hasOwnProperty('request')) {
                 obj['request'] = DomainRequest.constructFromObject(data['request']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateDomainRequest201Response {
         if (data['request']) { // data not null
           DomainRequest.validateJSON(data['request']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateDomainRequest201Response {
 
 }
 
-CreateDomainRequest201Response.RequiredProperties = ["request", "response_id"];
+CreateDomainRequest201Response.RequiredProperties = ["request"];
 
 /**
  * @member {module:model/DomainRequest} request
  */
 CreateDomainRequest201Response.prototype['request'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateDomainRequest201Response.prototype['response_id'] = undefined;
 
 
 

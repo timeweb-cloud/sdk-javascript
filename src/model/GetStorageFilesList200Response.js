@@ -26,11 +26,10 @@ class GetStorageFilesList200Response {
      * @alias module:model/GetStorageFilesList200Response
      * @param files {Array.<module:model/S3Object>} 
      * @param meta {module:model/Meta} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(files, meta, responseId) { 
+    constructor(files, meta) { 
         
-        GetStorageFilesList200Response.initialize(this, files, meta, responseId);
+        GetStorageFilesList200Response.initialize(this, files, meta);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetStorageFilesList200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, files, meta, responseId) { 
+    static initialize(obj, files, meta) { 
         obj['files'] = files;
         obj['meta'] = meta;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetStorageFilesList200Response {
             }
             if (data.hasOwnProperty('meta')) {
                 obj['meta'] = Meta.constructFromObject(data['meta']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetStorageFilesList200Response {
         if (data['meta']) { // data not null
           Meta.validateJSON(data['meta']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetStorageFilesList200Response {
 
 }
 
-GetStorageFilesList200Response.RequiredProperties = ["files", "meta", "response_id"];
+GetStorageFilesList200Response.RequiredProperties = ["files", "meta"];
 
 /**
  * @member {Array.<module:model/S3Object>} files
@@ -116,12 +107,6 @@ GetStorageFilesList200Response.prototype['files'] = undefined;
  * @member {module:model/Meta} meta
  */
 GetStorageFilesList200Response.prototype['meta'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetStorageFilesList200Response.prototype['response_id'] = undefined;
 
 
 

@@ -75,7 +75,7 @@ class ImageOutAPI {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
             if (data.hasOwnProperty('status')) {
-                obj['status'] = ApiClient.convertToType(data['status'], ImageStatus);
+                obj['status'] = ImageStatus.constructFromObject(data['status']);
             }
             if (data.hasOwnProperty('created_at')) {
                 obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
@@ -99,7 +99,7 @@ class ImageOutAPI {
                 obj['location'] = ApiClient.convertToType(data['location'], 'String');
             }
             if (data.hasOwnProperty('os')) {
-                obj['os'] = ApiClient.convertToType(data['os'], OS);
+                obj['os'] = OS.constructFromObject(data['os']);
             }
             if (data.hasOwnProperty('progress')) {
                 obj['progress'] = ApiClient.convertToType(data['progress'], 'Number');

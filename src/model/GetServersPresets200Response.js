@@ -26,11 +26,10 @@ class GetServersPresets200Response {
      * @alias module:model/GetServersPresets200Response
      * @param meta {module:model/Meta} 
      * @param serverPresets {Array.<module:model/ServersPreset>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, serverPresets, responseId) { 
+    constructor(meta, serverPresets) { 
         
-        GetServersPresets200Response.initialize(this, meta, serverPresets, responseId);
+        GetServersPresets200Response.initialize(this, meta, serverPresets);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetServersPresets200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, serverPresets, responseId) { 
+    static initialize(obj, meta, serverPresets) { 
         obj['meta'] = meta;
         obj['server_presets'] = serverPresets;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetServersPresets200Response {
             }
             if (data.hasOwnProperty('server_presets')) {
                 obj['server_presets'] = ApiClient.convertToType(data['server_presets'], [ServersPreset]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetServersPresets200Response {
                 ServersPreset.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetServersPresets200Response {
 
 }
 
-GetServersPresets200Response.RequiredProperties = ["meta", "server_presets", "response_id"];
+GetServersPresets200Response.RequiredProperties = ["meta", "server_presets"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetServersPresets200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/ServersPreset>} server_presets
  */
 GetServersPresets200Response.prototype['server_presets'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetServersPresets200Response.prototype['response_id'] = undefined;
 
 
 

@@ -24,11 +24,10 @@ class CreateProject201Response {
      * Constructs a new <code>CreateProject201Response</code>.
      * @alias module:model/CreateProject201Response
      * @param project {module:model/Project} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(project, responseId) { 
+    constructor(project) { 
         
-        CreateProject201Response.initialize(this, project, responseId);
+        CreateProject201Response.initialize(this, project);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateProject201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, project, responseId) { 
+    static initialize(obj, project) { 
         obj['project'] = project;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateProject201Response {
 
             if (data.hasOwnProperty('project')) {
                 obj['project'] = Project.constructFromObject(data['project']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateProject201Response {
         if (data['project']) { // data not null
           Project.validateJSON(data['project']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateProject201Response {
 
 }
 
-CreateProject201Response.RequiredProperties = ["project", "response_id"];
+CreateProject201Response.RequiredProperties = ["project"];
 
 /**
  * @member {module:model/Project} project
  */
 CreateProject201Response.prototype['project'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateProject201Response.prototype['response_id'] = undefined;
 
 
 

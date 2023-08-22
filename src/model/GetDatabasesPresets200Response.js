@@ -26,11 +26,10 @@ class GetDatabasesPresets200Response {
      * @alias module:model/GetDatabasesPresets200Response
      * @param meta {module:model/Meta} 
      * @param databasesPresets {Array.<module:model/PresetsDbs>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, databasesPresets, responseId) { 
+    constructor(meta, databasesPresets) { 
         
-        GetDatabasesPresets200Response.initialize(this, meta, databasesPresets, responseId);
+        GetDatabasesPresets200Response.initialize(this, meta, databasesPresets);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetDatabasesPresets200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, databasesPresets, responseId) { 
+    static initialize(obj, meta, databasesPresets) { 
         obj['meta'] = meta;
         obj['databases_presets'] = databasesPresets;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetDatabasesPresets200Response {
             }
             if (data.hasOwnProperty('databases_presets')) {
                 obj['databases_presets'] = ApiClient.convertToType(data['databases_presets'], [PresetsDbs]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetDatabasesPresets200Response {
                 PresetsDbs.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetDatabasesPresets200Response {
 
 }
 
-GetDatabasesPresets200Response.RequiredProperties = ["meta", "databases_presets", "response_id"];
+GetDatabasesPresets200Response.RequiredProperties = ["meta", "databases_presets"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetDatabasesPresets200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/PresetsDbs>} databases_presets
  */
 GetDatabasesPresets200Response.prototype['databases_presets'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetDatabasesPresets200Response.prototype['response_id'] = undefined;
 
 
 

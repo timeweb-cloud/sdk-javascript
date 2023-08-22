@@ -19,7 +19,6 @@ import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Res
 import CreateDns from '../model/CreateDns';
 import CreateDomainDNSRecord201Response from '../model/CreateDomainDNSRecord201Response';
 import CreateDomainRequest201Response from '../model/CreateDomainRequest201Response';
-import CreateDomainRequestRequest from '../model/CreateDomainRequestRequest';
 import GetDomain200Response from '../model/GetDomain200Response';
 import GetDomainDNSRecords200Response from '../model/GetDomainDNSRecords200Response';
 import GetDomainNameServers200Response from '../model/GetDomainNameServers200Response';
@@ -32,10 +31,11 @@ import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetTLD200Response from '../model/GetTLD200Response';
 import GetTLDs200Response from '../model/GetTLDs200Response';
+import Register from '../model/Register';
 import UpdateDomain from '../model/UpdateDomain';
 import UpdateDomainAutoProlongation200Response from '../model/UpdateDomainAutoProlongation200Response';
 import UpdateDomainNameServers from '../model/UpdateDomainNameServers';
-import UpdateDomainRequestRequest from '../model/UpdateDomainRequestRequest';
+import Use from '../model/Use';
 
 /**
 * Domains service.
@@ -249,15 +249,15 @@ export default class DomainsApi {
     /**
      * Создание заявки на регистрацию/продление/трансфер домена
      * Чтобы создать заявку на регистрацию/продление/трансфер домена, отправьте POST-запрос в `api/v1/domains-requests`, задав необходимые атрибуты.  Заявка будет создана с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданной заявке.
-     * @param {module:model/CreateDomainRequestRequest} createDomainRequestRequest 
+     * @param {module:model/Register} register 
      * @param {module:api/DomainsApi~createDomainRequestCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateDomainRequest201Response}
      */
-    createDomainRequest(createDomainRequestRequest, callback) {
-      let postBody = createDomainRequestRequest;
-      // verify the required parameter 'createDomainRequestRequest' is set
-      if (createDomainRequestRequest === undefined || createDomainRequestRequest === null) {
-        throw new Error("Missing the required parameter 'createDomainRequestRequest' when calling createDomainRequest");
+    createDomainRequest(register, callback) {
+      let postBody = register;
+      // verify the required parameter 'register' is set
+      if (register === undefined || register === null) {
+        throw new Error("Missing the required parameter 'register' when calling createDomainRequest");
       }
 
       let pathParams = {
@@ -985,19 +985,19 @@ export default class DomainsApi {
      * Оплата/обновление заявки на регистрацию/продление/трансфер домена
      * Чтобы оплатить/обновить заявку на регистрацию/продление/трансфер домена, отправьте запрос PATCH на `/api/v1/domains-requests/{request_id}`, задав необходимые атрибуты.  Заявка будет обновлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о обновленной заявке.
      * @param {Number} requestId Идентификатор заявки на регистрацию/продление/трансфер домена.
-     * @param {module:model/UpdateDomainRequestRequest} updateDomainRequestRequest 
+     * @param {module:model/Use} use 
      * @param {module:api/DomainsApi~updateDomainRequestCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateDomainRequest201Response}
      */
-    updateDomainRequest(requestId, updateDomainRequestRequest, callback) {
-      let postBody = updateDomainRequestRequest;
+    updateDomainRequest(requestId, use, callback) {
+      let postBody = use;
       // verify the required parameter 'requestId' is set
       if (requestId === undefined || requestId === null) {
         throw new Error("Missing the required parameter 'requestId' when calling updateDomainRequest");
       }
-      // verify the required parameter 'updateDomainRequestRequest' is set
-      if (updateDomainRequestRequest === undefined || updateDomainRequestRequest === null) {
-        throw new Error("Missing the required parameter 'updateDomainRequestRequest' when calling updateDomainRequest");
+      // verify the required parameter 'use' is set
+      if (use === undefined || use === null) {
+        throw new Error("Missing the required parameter 'use' when calling updateDomainRequest");
       }
 
       let pathParams = {

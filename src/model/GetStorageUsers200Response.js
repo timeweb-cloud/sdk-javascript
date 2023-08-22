@@ -26,11 +26,10 @@ class GetStorageUsers200Response {
      * @alias module:model/GetStorageUsers200Response
      * @param users {Array.<module:model/BucketUser>} 
      * @param meta {module:model/Meta} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(users, meta, responseId) { 
+    constructor(users, meta) { 
         
-        GetStorageUsers200Response.initialize(this, users, meta, responseId);
+        GetStorageUsers200Response.initialize(this, users, meta);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetStorageUsers200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, users, meta, responseId) { 
+    static initialize(obj, users, meta) { 
         obj['users'] = users;
         obj['meta'] = meta;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetStorageUsers200Response {
             }
             if (data.hasOwnProperty('meta')) {
                 obj['meta'] = Meta.constructFromObject(data['meta']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetStorageUsers200Response {
         if (data['meta']) { // data not null
           Meta.validateJSON(data['meta']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetStorageUsers200Response {
 
 }
 
-GetStorageUsers200Response.RequiredProperties = ["users", "meta", "response_id"];
+GetStorageUsers200Response.RequiredProperties = ["users", "meta"];
 
 /**
  * @member {Array.<module:model/BucketUser>} users
@@ -116,12 +107,6 @@ GetStorageUsers200Response.prototype['users'] = undefined;
  * @member {module:model/Meta} meta
  */
 GetStorageUsers200Response.prototype['meta'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetStorageUsers200Response.prototype['response_id'] = undefined;
 
 
 

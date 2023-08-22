@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## addResourceToGroup
 
-> AddResourceToGroup201Response addResourceToGroup(groupId, resourceId, opts)
+> FirewallGroupResourceOutResponse addResourceToGroup(groupId, resourceId, opts)
 
 Линковка ресурса в firewall group
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AddResourceToGroup201Response**](AddResourceToGroup201Response.md)
+[**FirewallGroupResourceOutResponse**](FirewallGroupResourceOutResponse.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ## createGroup
 
-> CreateGroup201Response createGroup(firewallGroupInAPI)
+> FirewallGroupOutResponse createGroup(firewallGroupInAPI)
 
 Создание группы правил
 
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateGroup201Response**](CreateGroup201Response.md)
+[**FirewallGroupOutResponse**](FirewallGroupOutResponse.md)
 
 ### Authorization
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ## createGroupRule
 
-> CreateGroupRule201Response createGroupRule(groupId, firewallRuleInAPI)
+> FirewallRuleOutResponse createGroupRule(groupId, firewallRuleInAPI)
 
 Создание firewall правила
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateGroupRule201Response**](CreateGroupRule201Response.md)
+[**FirewallRuleOutResponse**](FirewallRuleOutResponse.md)
 
 ### Authorization
 
@@ -333,7 +333,7 @@ null (empty response body)
 
 ## getGroup
 
-> CreateGroup201Response getGroup(groupId)
+> FirewallGroupOutResponse getGroup(groupId)
 
 Получение информации о группе правил
 
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateGroup201Response**](CreateGroup201Response.md)
+[**FirewallGroupOutResponse**](FirewallGroupOutResponse.md)
 
 ### Authorization
 
@@ -382,7 +382,7 @@ Name | Type | Description  | Notes
 
 ## getGroupResources
 
-> GetGroupResources200Response getGroupResources(groupId, opts)
+> FirewallGroupResourcesOutResponse getGroupResources(groupId, opts)
 
 Получение слинкованных ресурсов
 
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetGroupResources200Response**](GetGroupResources200Response.md)
+[**FirewallGroupResourcesOutResponse**](FirewallGroupResourcesOutResponse.md)
 
 ### Authorization
 
@@ -437,7 +437,7 @@ Name | Type | Description  | Notes
 
 ## getGroupRule
 
-> CreateGroupRule201Response getGroupRule(ruleId, groupId)
+> FirewallRuleOutResponse getGroupRule(ruleId, groupId)
 
 Получение информации о правиле
 
@@ -474,7 +474,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateGroupRule201Response**](CreateGroupRule201Response.md)
+[**FirewallRuleOutResponse**](FirewallRuleOutResponse.md)
 
 ### Authorization
 
@@ -488,7 +488,7 @@ Name | Type | Description  | Notes
 
 ## getGroupRules
 
-> GetGroupRules200Response getGroupRules(groupId, opts)
+> FirewallRulesOutResponse getGroupRules(groupId, opts)
 
 Получение списка правил
 
@@ -529,7 +529,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetGroupRules200Response**](GetGroupRules200Response.md)
+[**FirewallRulesOutResponse**](FirewallRulesOutResponse.md)
 
 ### Authorization
 
@@ -543,7 +543,7 @@ Name | Type | Description  | Notes
 
 ## getGroups
 
-> GetGroups200Response getGroups(opts)
+> FirewallGroupsOutResponse getGroups(opts)
 
 Получение групп правил
 
@@ -582,7 +582,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetGroups200Response**](GetGroups200Response.md)
+[**FirewallGroupsOutResponse**](FirewallGroupsOutResponse.md)
 
 ### Authorization
 
@@ -596,7 +596,7 @@ Name | Type | Description  | Notes
 
 ## getRulesForResource
 
-> GetGroups200Response getRulesForResource(resourceId, resourceType, opts)
+> FirewallGroupsOutResponse getRulesForResource(resourceId, resourceType, opts)
 
 Получение групп правил для ресурса
 
@@ -639,7 +639,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetGroups200Response**](GetGroups200Response.md)
+[**FirewallGroupsOutResponse**](FirewallGroupsOutResponse.md)
 
 ### Authorization
 
@@ -653,7 +653,7 @@ Name | Type | Description  | Notes
 
 ## updateGroup
 
-> CreateGroup201Response updateGroup(groupId, firewallGroupInAPI)
+> FirewallGroupOutResponse updateGroup(groupId, firewallGroupInAPI)
 
 Обновление группы правил
 
@@ -690,7 +690,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateGroup201Response**](CreateGroup201Response.md)
+[**FirewallGroupOutResponse**](FirewallGroupOutResponse.md)
 
 ### Authorization
 
@@ -704,7 +704,7 @@ Name | Type | Description  | Notes
 
 ## updateGroupRule
 
-> CreateGroupRule201Response updateGroupRule(groupId, ruleId, firewallRuleInAPI)
+> FirewallRuleOutResponse updateGroupRule(groupId, ruleId, firewallRuleInAPI)
 
 Обновление firewall правила
 
@@ -743,7 +743,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateGroupRule201Response**](CreateGroupRule201Response.md)
+[**FirewallRuleOutResponse**](FirewallRuleOutResponse.md)
 
 ### Authorization
 

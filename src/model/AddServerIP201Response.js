@@ -24,11 +24,10 @@ class AddServerIP201Response {
      * Constructs a new <code>AddServerIP201Response</code>.
      * @alias module:model/AddServerIP201Response
      * @param serverIp {module:model/ServerIp} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(serverIp, responseId) { 
+    constructor(serverIp) { 
         
-        AddServerIP201Response.initialize(this, serverIp, responseId);
+        AddServerIP201Response.initialize(this, serverIp);
     }
 
     /**
@@ -36,9 +35,8 @@ class AddServerIP201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, serverIp, responseId) { 
+    static initialize(obj, serverIp) { 
         obj['server_ip'] = serverIp;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class AddServerIP201Response {
 
             if (data.hasOwnProperty('server_ip')) {
                 obj['server_ip'] = ServerIp.constructFromObject(data['server_ip']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class AddServerIP201Response {
         if (data['server_ip']) { // data not null
           ServerIp.validateJSON(data['server_ip']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class AddServerIP201Response {
 
 }
 
-AddServerIP201Response.RequiredProperties = ["server_ip", "response_id"];
+AddServerIP201Response.RequiredProperties = ["server_ip"];
 
 /**
  * @member {module:model/ServerIp} server_ip
  */
 AddServerIP201Response.prototype['server_ip'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-AddServerIP201Response.prototype['response_id'] = undefined;
 
 
 

@@ -24,11 +24,10 @@ class CreateDatabaseInstance201Response {
      * Constructs a new <code>CreateDatabaseInstance201Response</code>.
      * @alias module:model/CreateDatabaseInstance201Response
      * @param instance {module:model/DatabaseInstance} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(instance, responseId) { 
+    constructor(instance) { 
         
-        CreateDatabaseInstance201Response.initialize(this, instance, responseId);
+        CreateDatabaseInstance201Response.initialize(this, instance);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateDatabaseInstance201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, instance, responseId) { 
+    static initialize(obj, instance) { 
         obj['instance'] = instance;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateDatabaseInstance201Response {
 
             if (data.hasOwnProperty('instance')) {
                 obj['instance'] = DatabaseInstance.constructFromObject(data['instance']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateDatabaseInstance201Response {
         if (data['instance']) { // data not null
           DatabaseInstance.validateJSON(data['instance']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateDatabaseInstance201Response {
 
 }
 
-CreateDatabaseInstance201Response.RequiredProperties = ["instance", "response_id"];
+CreateDatabaseInstance201Response.RequiredProperties = ["instance"];
 
 /**
  * @member {module:model/DatabaseInstance} instance
  */
 CreateDatabaseInstance201Response.prototype['instance'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateDatabaseInstance201Response.prototype['response_id'] = undefined;
 
 
 

@@ -134,7 +134,7 @@ class DomainRequest {
                 obj['person_id'] = ApiClient.convertToType(data['person_id'], 'Number');
             }
             if (data.hasOwnProperty('prime')) {
-                obj['prime'] = ApiClient.convertToType(data['prime'], DomainPrimeType);
+                obj['prime'] = DomainPrimeType.constructFromObject(data['prime']);
             }
             if (data.hasOwnProperty('soon_expire')) {
                 obj['soon_expire'] = ApiClient.convertToType(data['soon_expire'], 'Number');

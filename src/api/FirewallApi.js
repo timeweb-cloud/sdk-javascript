@@ -13,19 +13,19 @@
 
 
 import ApiClient from "../ApiClient";
-import AddResourceToGroup201Response from '../model/AddResourceToGroup201Response';
-import CreateGroup201Response from '../model/CreateGroup201Response';
-import CreateGroupRule201Response from '../model/CreateGroupRule201Response';
 import FirewallGroupInAPI from '../model/FirewallGroupInAPI';
+import FirewallGroupOutResponse from '../model/FirewallGroupOutResponse';
+import FirewallGroupResourceOutResponse from '../model/FirewallGroupResourceOutResponse';
+import FirewallGroupResourcesOutResponse from '../model/FirewallGroupResourcesOutResponse';
+import FirewallGroupsOutResponse from '../model/FirewallGroupsOutResponse';
 import FirewallRuleInAPI from '../model/FirewallRuleInAPI';
+import FirewallRuleOutResponse from '../model/FirewallRuleOutResponse';
+import FirewallRulesOutResponse from '../model/FirewallRulesOutResponse';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances404Response from '../model/GetFinances404Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
-import GetGroupResources200Response from '../model/GetGroupResources200Response';
-import GetGroupRules200Response from '../model/GetGroupRules200Response';
-import GetGroups200Response from '../model/GetGroups200Response';
 import ResourceType from '../model/ResourceType';
 
 /**
@@ -51,7 +51,7 @@ export default class FirewallApi {
      * Callback function to receive the result of the addResourceToGroup operation.
      * @callback module:api/FirewallApi~addResourceToGroupCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/AddResourceToGroup201Response} data The data returned by the service call.
+     * @param {module:model/FirewallGroupResourceOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -63,7 +63,7 @@ export default class FirewallApi {
      * @param {Object} opts Optional parameters
      * @param {module:model/ResourceType} [resourceType] 
      * @param {module:api/FirewallApi~addResourceToGroupCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/AddResourceToGroup201Response}
+     * data is of type: {@link module:model/FirewallGroupResourceOutResponse}
      */
     addResourceToGroup(groupId, resourceId, opts, callback) {
       opts = opts || {};
@@ -92,7 +92,7 @@ export default class FirewallApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = AddResourceToGroup201Response;
+      let returnType = FirewallGroupResourceOutResponse;
       return this.apiClient.callApi(
         '/api/v1/firewall/groups/{group_id}/resources/{resource_id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -104,7 +104,7 @@ export default class FirewallApi {
      * Callback function to receive the result of the createGroup operation.
      * @callback module:api/FirewallApi~createGroupCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateGroup201Response} data The data returned by the service call.
+     * @param {module:model/FirewallGroupOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -113,7 +113,7 @@ export default class FirewallApi {
      * Чтобы создать группу правил, отправьте POST запрос на `/api/v1/firewall/groups`
      * @param {module:model/FirewallGroupInAPI} firewallGroupInAPI 
      * @param {module:api/FirewallApi~createGroupCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateGroup201Response}
+     * data is of type: {@link module:model/FirewallGroupOutResponse}
      */
     createGroup(firewallGroupInAPI, callback) {
       let postBody = firewallGroupInAPI;
@@ -134,7 +134,7 @@ export default class FirewallApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = CreateGroup201Response;
+      let returnType = FirewallGroupOutResponse;
       return this.apiClient.callApi(
         '/api/v1/firewall/groups', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -146,7 +146,7 @@ export default class FirewallApi {
      * Callback function to receive the result of the createGroupRule operation.
      * @callback module:api/FirewallApi~createGroupRuleCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateGroupRule201Response} data The data returned by the service call.
+     * @param {module:model/FirewallRuleOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -156,7 +156,7 @@ export default class FirewallApi {
      * @param {String} groupId Идентификатор группы правил
      * @param {module:model/FirewallRuleInAPI} firewallRuleInAPI 
      * @param {module:api/FirewallApi~createGroupRuleCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateGroupRule201Response}
+     * data is of type: {@link module:model/FirewallRuleOutResponse}
      */
     createGroupRule(groupId, firewallRuleInAPI, callback) {
       let postBody = firewallRuleInAPI;
@@ -182,7 +182,7 @@ export default class FirewallApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = CreateGroupRule201Response;
+      let returnType = FirewallRuleOutResponse;
       return this.apiClient.callApi(
         '/api/v1/firewall/groups/{group_id}/rules', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -336,7 +336,7 @@ export default class FirewallApi {
      * Callback function to receive the result of the getGroup operation.
      * @callback module:api/FirewallApi~getGroupCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateGroup201Response} data The data returned by the service call.
+     * @param {module:model/FirewallGroupOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -345,7 +345,7 @@ export default class FirewallApi {
      * Чтобы получить информацию о группе правил, отправьте GET запрос на `/api/v1/firewall/groups/{group_id}`
      * @param {String} groupId Идентификатор группы правил
      * @param {module:api/FirewallApi~getGroupCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateGroup201Response}
+     * data is of type: {@link module:model/FirewallGroupOutResponse}
      */
     getGroup(groupId, callback) {
       let postBody = null;
@@ -367,7 +367,7 @@ export default class FirewallApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = CreateGroup201Response;
+      let returnType = FirewallGroupOutResponse;
       return this.apiClient.callApi(
         '/api/v1/firewall/groups/{group_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -379,7 +379,7 @@ export default class FirewallApi {
      * Callback function to receive the result of the getGroupResources operation.
      * @callback module:api/FirewallApi~getGroupResourcesCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetGroupResources200Response} data The data returned by the service call.
+     * @param {module:model/FirewallGroupResourcesOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -391,7 +391,7 @@ export default class FirewallApi {
      * @param {Number} [limit = 100)] Обозначает количество записей, которое необходимо вернуть.
      * @param {Number} [offset = 0)] Указывает на смещение относительно начала списка.
      * @param {module:api/FirewallApi~getGroupResourcesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetGroupResources200Response}
+     * data is of type: {@link module:model/FirewallGroupResourcesOutResponse}
      */
     getGroupResources(groupId, opts, callback) {
       opts = opts || {};
@@ -416,7 +416,7 @@ export default class FirewallApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetGroupResources200Response;
+      let returnType = FirewallGroupResourcesOutResponse;
       return this.apiClient.callApi(
         '/api/v1/firewall/groups/{group_id}/resources', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -428,7 +428,7 @@ export default class FirewallApi {
      * Callback function to receive the result of the getGroupRule operation.
      * @callback module:api/FirewallApi~getGroupRuleCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateGroupRule201Response} data The data returned by the service call.
+     * @param {module:model/FirewallRuleOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -438,7 +438,7 @@ export default class FirewallApi {
      * @param {String} ruleId Идентификатор правила
      * @param {String} groupId Идентификатор группы правил
      * @param {module:api/FirewallApi~getGroupRuleCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateGroupRule201Response}
+     * data is of type: {@link module:model/FirewallRuleOutResponse}
      */
     getGroupRule(ruleId, groupId, callback) {
       let postBody = null;
@@ -465,7 +465,7 @@ export default class FirewallApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = CreateGroupRule201Response;
+      let returnType = FirewallRuleOutResponse;
       return this.apiClient.callApi(
         '/api/v1/firewall/groups/{group_id}/rules/{rule_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -477,7 +477,7 @@ export default class FirewallApi {
      * Callback function to receive the result of the getGroupRules operation.
      * @callback module:api/FirewallApi~getGroupRulesCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetGroupRules200Response} data The data returned by the service call.
+     * @param {module:model/FirewallRulesOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -489,7 +489,7 @@ export default class FirewallApi {
      * @param {Number} [limit = 100)] Обозначает количество записей, которое необходимо вернуть.
      * @param {Number} [offset = 0)] Указывает на смещение относительно начала списка.
      * @param {module:api/FirewallApi~getGroupRulesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetGroupRules200Response}
+     * data is of type: {@link module:model/FirewallRulesOutResponse}
      */
     getGroupRules(groupId, opts, callback) {
       opts = opts || {};
@@ -514,7 +514,7 @@ export default class FirewallApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetGroupRules200Response;
+      let returnType = FirewallRulesOutResponse;
       return this.apiClient.callApi(
         '/api/v1/firewall/groups/{group_id}/rules', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -526,7 +526,7 @@ export default class FirewallApi {
      * Callback function to receive the result of the getGroups operation.
      * @callback module:api/FirewallApi~getGroupsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetGroups200Response} data The data returned by the service call.
+     * @param {module:model/FirewallGroupsOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -537,7 +537,7 @@ export default class FirewallApi {
      * @param {Number} [limit = 100)] Обозначает количество записей, которое необходимо вернуть.
      * @param {Number} [offset = 0)] Указывает на смещение относительно начала списка.
      * @param {module:api/FirewallApi~getGroupsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetGroups200Response}
+     * data is of type: {@link module:model/FirewallGroupsOutResponse}
      */
     getGroups(opts, callback) {
       opts = opts || {};
@@ -557,7 +557,7 @@ export default class FirewallApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetGroups200Response;
+      let returnType = FirewallGroupsOutResponse;
       return this.apiClient.callApi(
         '/api/v1/firewall/groups', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -569,7 +569,7 @@ export default class FirewallApi {
      * Callback function to receive the result of the getRulesForResource operation.
      * @callback module:api/FirewallApi~getRulesForResourceCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetGroups200Response} data The data returned by the service call.
+     * @param {module:model/FirewallGroupsOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -582,7 +582,7 @@ export default class FirewallApi {
      * @param {Number} [limit = 100)] Обозначает количество записей, которое необходимо вернуть.
      * @param {Number} [offset = 0)] Указывает на смещение относительно начала списка.
      * @param {module:api/FirewallApi~getRulesForResourceCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetGroups200Response}
+     * data is of type: {@link module:model/FirewallGroupsOutResponse}
      */
     getRulesForResource(resourceId, resourceType, opts, callback) {
       opts = opts || {};
@@ -612,7 +612,7 @@ export default class FirewallApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetGroups200Response;
+      let returnType = FirewallGroupsOutResponse;
       return this.apiClient.callApi(
         '/api/v1/firewall/service/{resource_type}/{resource_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -624,7 +624,7 @@ export default class FirewallApi {
      * Callback function to receive the result of the updateGroup operation.
      * @callback module:api/FirewallApi~updateGroupCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateGroup201Response} data The data returned by the service call.
+     * @param {module:model/FirewallGroupOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -634,7 +634,7 @@ export default class FirewallApi {
      * @param {String} groupId Идентификатор группы правил
      * @param {module:model/FirewallGroupInAPI} firewallGroupInAPI 
      * @param {module:api/FirewallApi~updateGroupCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateGroup201Response}
+     * data is of type: {@link module:model/FirewallGroupOutResponse}
      */
     updateGroup(groupId, firewallGroupInAPI, callback) {
       let postBody = firewallGroupInAPI;
@@ -660,7 +660,7 @@ export default class FirewallApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = CreateGroup201Response;
+      let returnType = FirewallGroupOutResponse;
       return this.apiClient.callApi(
         '/api/v1/firewall/groups/{group_id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -672,7 +672,7 @@ export default class FirewallApi {
      * Callback function to receive the result of the updateGroupRule operation.
      * @callback module:api/FirewallApi~updateGroupRuleCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateGroupRule201Response} data The data returned by the service call.
+     * @param {module:model/FirewallRuleOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -683,7 +683,7 @@ export default class FirewallApi {
      * @param {String} ruleId Идентификатор правила
      * @param {module:model/FirewallRuleInAPI} firewallRuleInAPI 
      * @param {module:api/FirewallApi~updateGroupRuleCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateGroupRule201Response}
+     * data is of type: {@link module:model/FirewallRuleOutResponse}
      */
     updateGroupRule(groupId, ruleId, firewallRuleInAPI, callback) {
       let postBody = firewallRuleInAPI;
@@ -714,7 +714,7 @@ export default class FirewallApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = CreateGroupRule201Response;
+      let returnType = FirewallRuleOutResponse;
       return this.apiClient.callApi(
         '/api/v1/firewall/groups/{group_id}/rules/{rule_id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,

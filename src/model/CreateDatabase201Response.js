@@ -24,11 +24,10 @@ class CreateDatabase201Response {
      * Constructs a new <code>CreateDatabase201Response</code>.
      * @alias module:model/CreateDatabase201Response
      * @param db {module:model/Db} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(db, responseId) { 
+    constructor(db) { 
         
-        CreateDatabase201Response.initialize(this, db, responseId);
+        CreateDatabase201Response.initialize(this, db);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateDatabase201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, db, responseId) { 
+    static initialize(obj, db) { 
         obj['db'] = db;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateDatabase201Response {
 
             if (data.hasOwnProperty('db')) {
                 obj['db'] = Db.constructFromObject(data['db']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateDatabase201Response {
         if (data['db']) { // data not null
           Db.validateJSON(data['db']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateDatabase201Response {
 
 }
 
-CreateDatabase201Response.RequiredProperties = ["db", "response_id"];
+CreateDatabase201Response.RequiredProperties = ["db"];
 
 /**
  * @member {module:model/Db} db
  */
 CreateDatabase201Response.prototype['db'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateDatabase201Response.prototype['response_id'] = undefined;
 
 
 

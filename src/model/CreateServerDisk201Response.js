@@ -24,11 +24,10 @@ class CreateServerDisk201Response {
      * Constructs a new <code>CreateServerDisk201Response</code>.
      * @alias module:model/CreateServerDisk201Response
      * @param serverDisk {module:model/ServerDisk} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(serverDisk, responseId) { 
+    constructor(serverDisk) { 
         
-        CreateServerDisk201Response.initialize(this, serverDisk, responseId);
+        CreateServerDisk201Response.initialize(this, serverDisk);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateServerDisk201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, serverDisk, responseId) { 
+    static initialize(obj, serverDisk) { 
         obj['server_disk'] = serverDisk;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateServerDisk201Response {
 
             if (data.hasOwnProperty('server_disk')) {
                 obj['server_disk'] = ServerDisk.constructFromObject(data['server_disk']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateServerDisk201Response {
         if (data['server_disk']) { // data not null
           ServerDisk.validateJSON(data['server_disk']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateServerDisk201Response {
 
 }
 
-CreateServerDisk201Response.RequiredProperties = ["server_disk", "response_id"];
+CreateServerDisk201Response.RequiredProperties = ["server_disk"];
 
 /**
  * @member {module:model/ServerDisk} server_disk
  */
 CreateServerDisk201Response.prototype['server_disk'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateServerDisk201Response.prototype['response_id'] = undefined;
 
 
 

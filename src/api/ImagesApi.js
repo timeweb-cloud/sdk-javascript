@@ -14,19 +14,19 @@
 
 import ApiClient from "../ApiClient";
 import BaseError from '../model/BaseError';
-import CreateImage201Response from '../model/CreateImage201Response';
-import CreateImageDownloadUrl201Response from '../model/CreateImageDownloadUrl201Response';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances404Response from '../model/GetFinances404Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
-import GetImageDownloadURLs200Response from '../model/GetImageDownloadURLs200Response';
-import GetImages200Response from '../model/GetImages200Response';
+import ImageDownloadResponse from '../model/ImageDownloadResponse';
+import ImageDownloadsResponse from '../model/ImageDownloadsResponse';
 import ImageInAPI from '../model/ImageInAPI';
+import ImageOutResponse from '../model/ImageOutResponse';
 import ImageUpdateAPI from '../model/ImageUpdateAPI';
 import ImageUrlIn from '../model/ImageUrlIn';
-import UploadImage200Response from '../model/UploadImage200Response';
+import ImagesOutResponse from '../model/ImagesOutResponse';
+import UploadSuccessfulResponse from '../model/UploadSuccessfulResponse';
 
 /**
 * Images service.
@@ -51,7 +51,7 @@ export default class ImagesApi {
      * Callback function to receive the result of the createImage operation.
      * @callback module:api/ImagesApi~createImageCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateImage201Response} data The data returned by the service call.
+     * @param {module:model/ImageOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -60,7 +60,7 @@ export default class ImagesApi {
      * Чтобы создать образ, отправьте POST запрос в `/api/v1/images`, задав необходимые атрибуты.   Для загрузки собственного образа вам нужно отправить параметры `location`, `os` и не указывать `disk_id`. Поддерживается два способа загрузки:  1. По ссылке. Для этого укажите `upload_url` с ссылкой на загрузку образа 2. Из файла. Для этого воспользуйтесь методом POST `/api/v1/images/{image_id}` Образ будет создан с использованием предоставленной информации.    Тело ответа будет содержать объект JSON с информацией о созданном образе.
      * @param {module:model/ImageInAPI} imageInAPI 
      * @param {module:api/ImagesApi~createImageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateImage201Response}
+     * data is of type: {@link module:model/ImageOutResponse}
      */
     createImage(imageInAPI, callback) {
       let postBody = imageInAPI;
@@ -81,7 +81,7 @@ export default class ImagesApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = CreateImage201Response;
+      let returnType = ImageOutResponse;
       return this.apiClient.callApi(
         '/api/v1/images', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -93,7 +93,7 @@ export default class ImagesApi {
      * Callback function to receive the result of the createImageDownloadUrl operation.
      * @callback module:api/ImagesApi~createImageDownloadUrlCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateImageDownloadUrl201Response} data The data returned by the service call.
+     * @param {module:model/ImageDownloadResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -103,7 +103,7 @@ export default class ImagesApi {
      * @param {String} imageId Идентификатор образа
      * @param {module:model/ImageUrlIn} imageUrlIn 
      * @param {module:api/ImagesApi~createImageDownloadUrlCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateImageDownloadUrl201Response}
+     * data is of type: {@link module:model/ImageDownloadResponse}
      */
     createImageDownloadUrl(imageId, imageUrlIn, callback) {
       let postBody = imageUrlIn;
@@ -129,7 +129,7 @@ export default class ImagesApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = CreateImageDownloadUrl201Response;
+      let returnType = ImageDownloadResponse;
       return this.apiClient.callApi(
         '/api/v1/images/{image_id}/download-url', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -231,7 +231,7 @@ export default class ImagesApi {
      * Callback function to receive the result of the getImage operation.
      * @callback module:api/ImagesApi~getImageCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateImage201Response} data The data returned by the service call.
+     * @param {module:model/ImageOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -240,7 +240,7 @@ export default class ImagesApi {
      * Чтобы получить образ, отправьте запрос GET в `/api/v1/images/{image_id}`.
      * @param {String} imageId Идентификатор образа
      * @param {module:api/ImagesApi~getImageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateImage201Response}
+     * data is of type: {@link module:model/ImageOutResponse}
      */
     getImage(imageId, callback) {
       let postBody = null;
@@ -262,7 +262,7 @@ export default class ImagesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = CreateImage201Response;
+      let returnType = ImageOutResponse;
       return this.apiClient.callApi(
         '/api/v1/images/{image_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -274,7 +274,7 @@ export default class ImagesApi {
      * Callback function to receive the result of the getImageDownloadURL operation.
      * @callback module:api/ImagesApi~getImageDownloadURLCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateImageDownloadUrl201Response} data The data returned by the service call.
+     * @param {module:model/ImageDownloadResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -284,7 +284,7 @@ export default class ImagesApi {
      * @param {String} imageId Идентификатор образа
      * @param {String} imageUrlId Идентификатор ссылки
      * @param {module:api/ImagesApi~getImageDownloadURLCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateImageDownloadUrl201Response}
+     * data is of type: {@link module:model/ImageDownloadResponse}
      */
     getImageDownloadURL(imageId, imageUrlId, callback) {
       let postBody = null;
@@ -311,7 +311,7 @@ export default class ImagesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = CreateImageDownloadUrl201Response;
+      let returnType = ImageDownloadResponse;
       return this.apiClient.callApi(
         '/api/v1/images/{image_id}/download-url/{image_url_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -323,7 +323,7 @@ export default class ImagesApi {
      * Callback function to receive the result of the getImageDownloadURLs operation.
      * @callback module:api/ImagesApi~getImageDownloadURLsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetImageDownloadURLs200Response} data The data returned by the service call.
+     * @param {module:model/ImageDownloadsResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -335,7 +335,7 @@ export default class ImagesApi {
      * @param {Number} [limit = 100)] 
      * @param {Number} [offset = 0)] 
      * @param {module:api/ImagesApi~getImageDownloadURLsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetImageDownloadURLs200Response}
+     * data is of type: {@link module:model/ImageDownloadsResponse}
      */
     getImageDownloadURLs(imageId, opts, callback) {
       opts = opts || {};
@@ -360,7 +360,7 @@ export default class ImagesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetImageDownloadURLs200Response;
+      let returnType = ImageDownloadsResponse;
       return this.apiClient.callApi(
         '/api/v1/images/{image_id}/download-url', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -372,7 +372,7 @@ export default class ImagesApi {
      * Callback function to receive the result of the getImages operation.
      * @callback module:api/ImagesApi~getImagesCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetImages200Response} data The data returned by the service call.
+     * @param {module:model/ImagesOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -383,7 +383,7 @@ export default class ImagesApi {
      * @param {Number} [limit = 100)] 
      * @param {Number} [offset = 0)] 
      * @param {module:api/ImagesApi~getImagesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetImages200Response}
+     * data is of type: {@link module:model/ImagesOutResponse}
      */
     getImages(opts, callback) {
       opts = opts || {};
@@ -403,7 +403,7 @@ export default class ImagesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetImages200Response;
+      let returnType = ImagesOutResponse;
       return this.apiClient.callApi(
         '/api/v1/images', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -415,7 +415,7 @@ export default class ImagesApi {
      * Callback function to receive the result of the updateImage operation.
      * @callback module:api/ImagesApi~updateImageCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateImage201Response} data The data returned by the service call.
+     * @param {module:model/ImageOutResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -425,7 +425,7 @@ export default class ImagesApi {
      * @param {String} imageId Идентификатор образа
      * @param {module:model/ImageUpdateAPI} imageUpdateAPI 
      * @param {module:api/ImagesApi~updateImageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateImage201Response}
+     * data is of type: {@link module:model/ImageOutResponse}
      */
     updateImage(imageId, imageUpdateAPI, callback) {
       let postBody = imageUpdateAPI;
@@ -451,7 +451,7 @@ export default class ImagesApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = CreateImage201Response;
+      let returnType = ImageOutResponse;
       return this.apiClient.callApi(
         '/api/v1/images/{image_id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -463,7 +463,7 @@ export default class ImagesApi {
      * Callback function to receive the result of the uploadImage operation.
      * @callback module:api/ImagesApi~uploadImageCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/UploadImage200Response} data The data returned by the service call.
+     * @param {module:model/UploadSuccessfulResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -474,7 +474,7 @@ export default class ImagesApi {
      * @param {Object} opts Optional parameters
      * @param {String} [contentDisposition] 
      * @param {module:api/ImagesApi~uploadImageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/UploadImage200Response}
+     * data is of type: {@link module:model/UploadSuccessfulResponse}
      */
     uploadImage(imageId, opts, callback) {
       opts = opts || {};
@@ -498,7 +498,7 @@ export default class ImagesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = UploadImage200Response;
+      let returnType = UploadSuccessfulResponse;
       return this.apiClient.callApi(
         '/api/v1/images/{image_id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

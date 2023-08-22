@@ -24,11 +24,10 @@ class CreateDomainDNSRecord201Response {
      * Constructs a new <code>CreateDomainDNSRecord201Response</code>.
      * @alias module:model/CreateDomainDNSRecord201Response
      * @param dnsRecord {module:model/DnsRecord} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(dnsRecord, responseId) { 
+    constructor(dnsRecord) { 
         
-        CreateDomainDNSRecord201Response.initialize(this, dnsRecord, responseId);
+        CreateDomainDNSRecord201Response.initialize(this, dnsRecord);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateDomainDNSRecord201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, dnsRecord, responseId) { 
+    static initialize(obj, dnsRecord) { 
         obj['dns_record'] = dnsRecord;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateDomainDNSRecord201Response {
 
             if (data.hasOwnProperty('dns_record')) {
                 obj['dns_record'] = DnsRecord.constructFromObject(data['dns_record']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateDomainDNSRecord201Response {
         if (data['dns_record']) { // data not null
           DnsRecord.validateJSON(data['dns_record']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateDomainDNSRecord201Response {
 
 }
 
-CreateDomainDNSRecord201Response.RequiredProperties = ["dns_record", "response_id"];
+CreateDomainDNSRecord201Response.RequiredProperties = ["dns_record"];
 
 /**
  * @member {module:model/DnsRecord} dns_record
  */
 CreateDomainDNSRecord201Response.prototype['dns_record'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateDomainDNSRecord201Response.prototype['response_id'] = undefined;
 
 
 

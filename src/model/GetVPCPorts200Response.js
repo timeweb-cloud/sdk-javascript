@@ -26,11 +26,10 @@ class GetVPCPorts200Response {
      * @alias module:model/GetVPCPorts200Response
      * @param meta {module:model/Meta} 
      * @param vpcPorts {Array.<module:model/VpcPort>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, vpcPorts, responseId) { 
+    constructor(meta, vpcPorts) { 
         
-        GetVPCPorts200Response.initialize(this, meta, vpcPorts, responseId);
+        GetVPCPorts200Response.initialize(this, meta, vpcPorts);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetVPCPorts200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, vpcPorts, responseId) { 
+    static initialize(obj, meta, vpcPorts) { 
         obj['meta'] = meta;
         obj['vpc_ports'] = vpcPorts;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetVPCPorts200Response {
             }
             if (data.hasOwnProperty('vpc_ports')) {
                 obj['vpc_ports'] = ApiClient.convertToType(data['vpc_ports'], [VpcPort]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetVPCPorts200Response {
                 VpcPort.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetVPCPorts200Response {
 
 }
 
-GetVPCPorts200Response.RequiredProperties = ["meta", "vpc_ports", "response_id"];
+GetVPCPorts200Response.RequiredProperties = ["meta", "vpc_ports"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetVPCPorts200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/VpcPort>} vpc_ports
  */
 GetVPCPorts200Response.prototype['vpc_ports'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetVPCPorts200Response.prototype['response_id'] = undefined;
 
 
 

@@ -24,11 +24,10 @@ class CreateKey201Response {
      * Constructs a new <code>CreateKey201Response</code>.
      * @alias module:model/CreateKey201Response
      * @param sshKey {module:model/SshKey} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(sshKey, responseId) { 
+    constructor(sshKey) { 
         
-        CreateKey201Response.initialize(this, sshKey, responseId);
+        CreateKey201Response.initialize(this, sshKey);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateKey201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sshKey, responseId) { 
+    static initialize(obj, sshKey) { 
         obj['ssh-key'] = sshKey;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateKey201Response {
 
             if (data.hasOwnProperty('ssh-key')) {
                 obj['ssh-key'] = SshKey.constructFromObject(data['ssh-key']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateKey201Response {
         if (data['ssh-key']) { // data not null
           SshKey.validateJSON(data['ssh-key']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateKey201Response {
 
 }
 
-CreateKey201Response.RequiredProperties = ["ssh-key", "response_id"];
+CreateKey201Response.RequiredProperties = ["ssh-key"];
 
 /**
  * @member {module:model/SshKey} ssh-key
  */
 CreateKey201Response.prototype['ssh-key'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateKey201Response.prototype['response_id'] = undefined;
 
 
 

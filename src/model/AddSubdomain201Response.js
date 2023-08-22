@@ -24,11 +24,10 @@ class AddSubdomain201Response {
      * Constructs a new <code>AddSubdomain201Response</code>.
      * @alias module:model/AddSubdomain201Response
      * @param subdomain {module:model/Subdomain} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(subdomain, responseId) { 
+    constructor(subdomain) { 
         
-        AddSubdomain201Response.initialize(this, subdomain, responseId);
+        AddSubdomain201Response.initialize(this, subdomain);
     }
 
     /**
@@ -36,9 +35,8 @@ class AddSubdomain201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, subdomain, responseId) { 
+    static initialize(obj, subdomain) { 
         obj['subdomain'] = subdomain;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class AddSubdomain201Response {
 
             if (data.hasOwnProperty('subdomain')) {
                 obj['subdomain'] = Subdomain.constructFromObject(data['subdomain']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class AddSubdomain201Response {
         if (data['subdomain']) { // data not null
           Subdomain.validateJSON(data['subdomain']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class AddSubdomain201Response {
 
 }
 
-AddSubdomain201Response.RequiredProperties = ["subdomain", "response_id"];
+AddSubdomain201Response.RequiredProperties = ["subdomain"];
 
 /**
  * @member {module:model/Subdomain} subdomain
  */
 AddSubdomain201Response.prototype['subdomain'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-AddSubdomain201Response.prototype['response_id'] = undefined;
 
 
 

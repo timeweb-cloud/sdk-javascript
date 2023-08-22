@@ -26,7 +26,6 @@ import AddIPsToAllowedListRequest from './model/AddIPsToAllowedListRequest';
 import AddIPsToBalancerRequest from './model/AddIPsToBalancerRequest';
 import AddIps from './model/AddIps';
 import AddKeyToServerRequest from './model/AddKeyToServerRequest';
-import AddResourceToGroup201Response from './model/AddResourceToGroup201Response';
 import AddServerIP201Response from './model/AddServerIP201Response';
 import AddServerIPRequest from './model/AddServerIPRequest';
 import AddServerToProjectRequest from './model/AddServerToProjectRequest';
@@ -48,7 +47,6 @@ import Bucket from './model/Bucket';
 import BucketDiskStats from './model/BucketDiskStats';
 import BucketUser from './model/BucketUser';
 import CheckDomain200Response from './model/CheckDomain200Response';
-import Cidr from './model/Cidr';
 import ClusterEdit from './model/ClusterEdit';
 import ClusterIn from './model/ClusterIn';
 import ClusterOut from './model/ClusterOut';
@@ -63,14 +61,11 @@ import CreateBalancer from './model/CreateBalancer';
 import CreateBalancer200Response from './model/CreateBalancer200Response';
 import CreateBalancerRule200Response from './model/CreateBalancerRule200Response';
 import CreateCluster from './model/CreateCluster';
-import CreateCluster201Response from './model/CreateCluster201Response';
 import CreateClusterAdmin from './model/CreateClusterAdmin';
 import CreateClusterInstance from './model/CreateClusterInstance';
-import CreateClusterNodeGroup201Response from './model/CreateClusterNodeGroup201Response';
 import CreateDatabase201Response from './model/CreateDatabase201Response';
 import CreateDatabaseBackup201Response from './model/CreateDatabaseBackup201Response';
 import CreateDatabaseBackup409Response from './model/CreateDatabaseBackup409Response';
-import CreateDatabaseBackup409ResponseMessage from './model/CreateDatabaseBackup409ResponseMessage';
 import CreateDatabaseCluster201Response from './model/CreateDatabaseCluster201Response';
 import CreateDatabaseInstance201Response from './model/CreateDatabaseInstance201Response';
 import CreateDatabaseUser201Response from './model/CreateDatabaseUser201Response';
@@ -82,12 +77,7 @@ import CreateDomainDNSRecord201Response from './model/CreateDomainDNSRecord201Re
 import CreateDomainMailbox201Response from './model/CreateDomainMailbox201Response';
 import CreateDomainMailboxRequest from './model/CreateDomainMailboxRequest';
 import CreateDomainRequest201Response from './model/CreateDomainRequest201Response';
-import CreateDomainRequestRequest from './model/CreateDomainRequestRequest';
 import CreateFolderInStorageRequest from './model/CreateFolderInStorageRequest';
-import CreateGroup201Response from './model/CreateGroup201Response';
-import CreateGroupRule201Response from './model/CreateGroupRule201Response';
-import CreateImage201Response from './model/CreateImage201Response';
-import CreateImageDownloadUrl201Response from './model/CreateImageDownloadUrl201Response';
 import CreateInstance from './model/CreateInstance';
 import CreateKey201Response from './model/CreateKey201Response';
 import CreateKeyRequest from './model/CreateKeyRequest';
@@ -135,7 +125,6 @@ import DeleteServerIPRequest from './model/DeleteServerIPRequest';
 import DeleteServiceResponse from './model/DeleteServiceResponse';
 import DeleteStorage200Response from './model/DeleteStorage200Response';
 import DeleteStorageFileRequest from './model/DeleteStorageFileRequest';
-import DeleteVPC204Response from './model/DeleteVPC204Response';
 import DnsRecord from './model/DnsRecord';
 import DnsRecordData from './model/DnsRecordData';
 import Domain from './model/Domain';
@@ -169,15 +158,11 @@ import Free from './model/Free';
 import GetAccountStatus200Response from './model/GetAccountStatus200Response';
 import GetAllProjectResources200Response from './model/GetAllProjectResources200Response';
 import GetAuthAccessSettings200Response from './model/GetAuthAccessSettings200Response';
-import GetAuthAccessSettings200ResponseAllOfWhiteList from './model/GetAuthAccessSettings200ResponseAllOfWhiteList';
+import GetAuthAccessSettings200ResponseWhiteList from './model/GetAuthAccessSettings200ResponseWhiteList';
 import GetBalancerIPs200Response from './model/GetBalancerIPs200Response';
 import GetBalancerRules200Response from './model/GetBalancerRules200Response';
 import GetBalancers200Response from './model/GetBalancers200Response';
 import GetBalancersPresets200Response from './model/GetBalancersPresets200Response';
-import GetClusterNodeGroups200Response from './model/GetClusterNodeGroups200Response';
-import GetClusterNodesFromGroup200Response from './model/GetClusterNodesFromGroup200Response';
-import GetClusterResources200Response from './model/GetClusterResources200Response';
-import GetClusters200Response from './model/GetClusters200Response';
 import GetConfigurators200Response from './model/GetConfigurators200Response';
 import GetCountries200Response from './model/GetCountries200Response';
 import GetDatabaseAutoBackupsSettings200Response from './model/GetDatabaseAutoBackupsSettings200Response';
@@ -198,27 +183,13 @@ import GetDomainRequests200Response from './model/GetDomainRequests200Response';
 import GetDomains200Response from './model/GetDomains200Response';
 import GetFinances200Response from './model/GetFinances200Response';
 import GetFinances400Response from './model/GetFinances400Response';
-import GetFinances400ResponseMessage from './model/GetFinances400ResponseMessage';
 import GetFinances401Response from './model/GetFinances401Response';
-import GetFinances401ResponseMessage from './model/GetFinances401ResponseMessage';
 import GetFinances403Response from './model/GetFinances403Response';
-import GetFinances403ResponseMessage from './model/GetFinances403ResponseMessage';
 import GetFinances404Response from './model/GetFinances404Response';
-import GetFinances404ResponseMessage from './model/GetFinances404ResponseMessage';
 import GetFinances429Response from './model/GetFinances429Response';
-import GetFinances429ResponseMessage from './model/GetFinances429ResponseMessage';
 import GetFinances500Response from './model/GetFinances500Response';
-import GetFinances500ResponseMessage from './model/GetFinances500ResponseMessage';
-import GetGroupResources200Response from './model/GetGroupResources200Response';
-import GetGroupRules200Response from './model/GetGroupRules200Response';
-import GetGroups200Response from './model/GetGroups200Response';
-import GetImageDownloadURLs200Response from './model/GetImageDownloadURLs200Response';
-import GetImages200Response from './model/GetImages200Response';
-import GetK8SNetworkDrivers200Response from './model/GetK8SNetworkDrivers200Response';
-import GetK8SVersions200Response from './model/GetK8SVersions200Response';
 import GetKey200Response from './model/GetKey200Response';
 import GetKeys200Response from './model/GetKeys200Response';
-import GetKubernetesPresets200Response from './model/GetKubernetesPresets200Response';
 import GetMailQuota200Response from './model/GetMailQuota200Response';
 import GetMailboxes200Response from './model/GetMailboxes200Response';
 import GetNotificationSettings200Response from './model/GetNotificationSettings200Response';
@@ -237,10 +208,10 @@ import GetServerDisks200Response from './model/GetServerDisks200Response';
 import GetServerIPs200Response from './model/GetServerIPs200Response';
 import GetServerLogs200Response from './model/GetServerLogs200Response';
 import GetServerStatistics200Response from './model/GetServerStatistics200Response';
-import GetServerStatistics200ResponseAllOfCpuInner from './model/GetServerStatistics200ResponseAllOfCpuInner';
-import GetServerStatistics200ResponseAllOfDiskInner from './model/GetServerStatistics200ResponseAllOfDiskInner';
-import GetServerStatistics200ResponseAllOfNetworkTrafficInner from './model/GetServerStatistics200ResponseAllOfNetworkTrafficInner';
-import GetServerStatistics200ResponseAllOfRamInner from './model/GetServerStatistics200ResponseAllOfRamInner';
+import GetServerStatistics200ResponseCpuInner from './model/GetServerStatistics200ResponseCpuInner';
+import GetServerStatistics200ResponseDiskInner from './model/GetServerStatistics200ResponseDiskInner';
+import GetServerStatistics200ResponseNetworkTrafficInner from './model/GetServerStatistics200ResponseNetworkTrafficInner';
+import GetServerStatistics200ResponseRamInner from './model/GetServerStatistics200ResponseRamInner';
 import GetServers200Response from './model/GetServers200Response';
 import GetServersPresets200Response from './model/GetServersPresets200Response';
 import GetSoftware200Response from './model/GetSoftware200Response';
@@ -267,7 +238,6 @@ import ImageUrlAuth from './model/ImageUrlAuth';
 import ImageUrlIn from './model/ImageUrlIn';
 import ImagesOutResponse from './model/ImagesOutResponse';
 import Invoice from './model/Invoice';
-import K8SPresetsInner from './model/K8SPresetsInner';
 import K8SVersionsResponse from './model/K8SVersionsResponse';
 import Location from './model/Location';
 import Mailbox from './model/Mailbox';
@@ -276,7 +246,6 @@ import MailboxForwardingIncoming from './model/MailboxForwardingIncoming';
 import MailboxForwardingOutgoing from './model/MailboxForwardingOutgoing';
 import MailboxSpamFilter from './model/MailboxSpamFilter';
 import MasterPresetOutApi from './model/MasterPresetOutApi';
-import Message from './model/Message';
 import Meta from './model/Meta';
 import Network from './model/Network';
 import NetworkDriversResponse from './model/NetworkDriversResponse';
@@ -355,15 +324,10 @@ import UpdateDomainAutoProlongation200Response from './model/UpdateDomainAutoPro
 import UpdateDomainMailInfoRequest from './model/UpdateDomainMailInfoRequest';
 import UpdateDomainNameServers from './model/UpdateDomainNameServers';
 import UpdateDomainNameServersNameServersInner from './model/UpdateDomainNameServersNameServersInner';
-import UpdateDomainRequestRequest from './model/UpdateDomainRequestRequest';
 import UpdateInstance from './model/UpdateInstance';
 import UpdateKeyRequest from './model/UpdateKeyRequest';
 import UpdateMailQuotaRequest from './model/UpdateMailQuotaRequest';
 import UpdateMailbox from './model/UpdateMailbox';
-import UpdateMailboxAutoReply from './model/UpdateMailboxAutoReply';
-import UpdateMailboxForwardingIncoming from './model/UpdateMailboxForwardingIncoming';
-import UpdateMailboxForwardingOutgoing from './model/UpdateMailboxForwardingOutgoing';
-import UpdateMailboxSpamFilter from './model/UpdateMailboxSpamFilter';
 import UpdateNotificationSettingsRequest from './model/UpdateNotificationSettingsRequest';
 import UpdateNotificationSettingsRequestSettingsInner from './model/UpdateNotificationSettingsRequestSettingsInner';
 import UpdateNotificationSettingsRequestSettingsInnerChannels from './model/UpdateNotificationSettingsRequestSettingsInnerChannels';
@@ -381,7 +345,6 @@ import UpdateStorageUser200Response from './model/UpdateStorageUser200Response';
 import UpdateStorageUserRequest from './model/UpdateStorageUserRequest';
 import UpdateToken200Response from './model/UpdateToken200Response';
 import UpdateVpc from './model/UpdateVpc';
-import UploadImage200Response from './model/UploadImage200Response';
 import UploadSuccessful from './model/UploadSuccessful';
 import UploadSuccessfulResponse from './model/UploadSuccessfulResponse';
 import UrlStatus from './model/UrlStatus';
@@ -531,12 +494,6 @@ export {
     AddKeyToServerRequest,
 
     /**
-     * The AddResourceToGroup201Response model constructor.
-     * @property {module:model/AddResourceToGroup201Response}
-     */
-    AddResourceToGroup201Response,
-
-    /**
      * The AddServerIP201Response model constructor.
      * @property {module:model/AddServerIP201Response}
      */
@@ -663,12 +620,6 @@ export {
     CheckDomain200Response,
 
     /**
-     * The Cidr model constructor.
-     * @property {module:model/Cidr}
-     */
-    Cidr,
-
-    /**
      * The ClusterEdit model constructor.
      * @property {module:model/ClusterEdit}
      */
@@ -753,12 +704,6 @@ export {
     CreateCluster,
 
     /**
-     * The CreateCluster201Response model constructor.
-     * @property {module:model/CreateCluster201Response}
-     */
-    CreateCluster201Response,
-
-    /**
      * The CreateClusterAdmin model constructor.
      * @property {module:model/CreateClusterAdmin}
      */
@@ -769,12 +714,6 @@ export {
      * @property {module:model/CreateClusterInstance}
      */
     CreateClusterInstance,
-
-    /**
-     * The CreateClusterNodeGroup201Response model constructor.
-     * @property {module:model/CreateClusterNodeGroup201Response}
-     */
-    CreateClusterNodeGroup201Response,
 
     /**
      * The CreateDatabase201Response model constructor.
@@ -793,12 +732,6 @@ export {
      * @property {module:model/CreateDatabaseBackup409Response}
      */
     CreateDatabaseBackup409Response,
-
-    /**
-     * The CreateDatabaseBackup409ResponseMessage model constructor.
-     * @property {module:model/CreateDatabaseBackup409ResponseMessage}
-     */
-    CreateDatabaseBackup409ResponseMessage,
 
     /**
      * The CreateDatabaseCluster201Response model constructor.
@@ -867,40 +800,10 @@ export {
     CreateDomainRequest201Response,
 
     /**
-     * The CreateDomainRequestRequest model constructor.
-     * @property {module:model/CreateDomainRequestRequest}
-     */
-    CreateDomainRequestRequest,
-
-    /**
      * The CreateFolderInStorageRequest model constructor.
      * @property {module:model/CreateFolderInStorageRequest}
      */
     CreateFolderInStorageRequest,
-
-    /**
-     * The CreateGroup201Response model constructor.
-     * @property {module:model/CreateGroup201Response}
-     */
-    CreateGroup201Response,
-
-    /**
-     * The CreateGroupRule201Response model constructor.
-     * @property {module:model/CreateGroupRule201Response}
-     */
-    CreateGroupRule201Response,
-
-    /**
-     * The CreateImage201Response model constructor.
-     * @property {module:model/CreateImage201Response}
-     */
-    CreateImage201Response,
-
-    /**
-     * The CreateImageDownloadUrl201Response model constructor.
-     * @property {module:model/CreateImageDownloadUrl201Response}
-     */
-    CreateImageDownloadUrl201Response,
 
     /**
      * The CreateInstance model constructor.
@@ -1185,12 +1088,6 @@ export {
     DeleteStorageFileRequest,
 
     /**
-     * The DeleteVPC204Response model constructor.
-     * @property {module:model/DeleteVPC204Response}
-     */
-    DeleteVPC204Response,
-
-    /**
      * The DnsRecord model constructor.
      * @property {module:model/DnsRecord}
      */
@@ -1389,10 +1286,10 @@ export {
     GetAuthAccessSettings200Response,
 
     /**
-     * The GetAuthAccessSettings200ResponseAllOfWhiteList model constructor.
-     * @property {module:model/GetAuthAccessSettings200ResponseAllOfWhiteList}
+     * The GetAuthAccessSettings200ResponseWhiteList model constructor.
+     * @property {module:model/GetAuthAccessSettings200ResponseWhiteList}
      */
-    GetAuthAccessSettings200ResponseAllOfWhiteList,
+    GetAuthAccessSettings200ResponseWhiteList,
 
     /**
      * The GetBalancerIPs200Response model constructor.
@@ -1417,30 +1314,6 @@ export {
      * @property {module:model/GetBalancersPresets200Response}
      */
     GetBalancersPresets200Response,
-
-    /**
-     * The GetClusterNodeGroups200Response model constructor.
-     * @property {module:model/GetClusterNodeGroups200Response}
-     */
-    GetClusterNodeGroups200Response,
-
-    /**
-     * The GetClusterNodesFromGroup200Response model constructor.
-     * @property {module:model/GetClusterNodesFromGroup200Response}
-     */
-    GetClusterNodesFromGroup200Response,
-
-    /**
-     * The GetClusterResources200Response model constructor.
-     * @property {module:model/GetClusterResources200Response}
-     */
-    GetClusterResources200Response,
-
-    /**
-     * The GetClusters200Response model constructor.
-     * @property {module:model/GetClusters200Response}
-     */
-    GetClusters200Response,
 
     /**
      * The GetConfigurators200Response model constructor.
@@ -1563,22 +1436,10 @@ export {
     GetFinances400Response,
 
     /**
-     * The GetFinances400ResponseMessage model constructor.
-     * @property {module:model/GetFinances400ResponseMessage}
-     */
-    GetFinances400ResponseMessage,
-
-    /**
      * The GetFinances401Response model constructor.
      * @property {module:model/GetFinances401Response}
      */
     GetFinances401Response,
-
-    /**
-     * The GetFinances401ResponseMessage model constructor.
-     * @property {module:model/GetFinances401ResponseMessage}
-     */
-    GetFinances401ResponseMessage,
 
     /**
      * The GetFinances403Response model constructor.
@@ -1587,22 +1448,10 @@ export {
     GetFinances403Response,
 
     /**
-     * The GetFinances403ResponseMessage model constructor.
-     * @property {module:model/GetFinances403ResponseMessage}
-     */
-    GetFinances403ResponseMessage,
-
-    /**
      * The GetFinances404Response model constructor.
      * @property {module:model/GetFinances404Response}
      */
     GetFinances404Response,
-
-    /**
-     * The GetFinances404ResponseMessage model constructor.
-     * @property {module:model/GetFinances404ResponseMessage}
-     */
-    GetFinances404ResponseMessage,
 
     /**
      * The GetFinances429Response model constructor.
@@ -1611,64 +1460,10 @@ export {
     GetFinances429Response,
 
     /**
-     * The GetFinances429ResponseMessage model constructor.
-     * @property {module:model/GetFinances429ResponseMessage}
-     */
-    GetFinances429ResponseMessage,
-
-    /**
      * The GetFinances500Response model constructor.
      * @property {module:model/GetFinances500Response}
      */
     GetFinances500Response,
-
-    /**
-     * The GetFinances500ResponseMessage model constructor.
-     * @property {module:model/GetFinances500ResponseMessage}
-     */
-    GetFinances500ResponseMessage,
-
-    /**
-     * The GetGroupResources200Response model constructor.
-     * @property {module:model/GetGroupResources200Response}
-     */
-    GetGroupResources200Response,
-
-    /**
-     * The GetGroupRules200Response model constructor.
-     * @property {module:model/GetGroupRules200Response}
-     */
-    GetGroupRules200Response,
-
-    /**
-     * The GetGroups200Response model constructor.
-     * @property {module:model/GetGroups200Response}
-     */
-    GetGroups200Response,
-
-    /**
-     * The GetImageDownloadURLs200Response model constructor.
-     * @property {module:model/GetImageDownloadURLs200Response}
-     */
-    GetImageDownloadURLs200Response,
-
-    /**
-     * The GetImages200Response model constructor.
-     * @property {module:model/GetImages200Response}
-     */
-    GetImages200Response,
-
-    /**
-     * The GetK8SNetworkDrivers200Response model constructor.
-     * @property {module:model/GetK8SNetworkDrivers200Response}
-     */
-    GetK8SNetworkDrivers200Response,
-
-    /**
-     * The GetK8SVersions200Response model constructor.
-     * @property {module:model/GetK8SVersions200Response}
-     */
-    GetK8SVersions200Response,
 
     /**
      * The GetKey200Response model constructor.
@@ -1681,12 +1476,6 @@ export {
      * @property {module:model/GetKeys200Response}
      */
     GetKeys200Response,
-
-    /**
-     * The GetKubernetesPresets200Response model constructor.
-     * @property {module:model/GetKubernetesPresets200Response}
-     */
-    GetKubernetesPresets200Response,
 
     /**
      * The GetMailQuota200Response model constructor.
@@ -1797,28 +1586,28 @@ export {
     GetServerStatistics200Response,
 
     /**
-     * The GetServerStatistics200ResponseAllOfCpuInner model constructor.
-     * @property {module:model/GetServerStatistics200ResponseAllOfCpuInner}
+     * The GetServerStatistics200ResponseCpuInner model constructor.
+     * @property {module:model/GetServerStatistics200ResponseCpuInner}
      */
-    GetServerStatistics200ResponseAllOfCpuInner,
+    GetServerStatistics200ResponseCpuInner,
 
     /**
-     * The GetServerStatistics200ResponseAllOfDiskInner model constructor.
-     * @property {module:model/GetServerStatistics200ResponseAllOfDiskInner}
+     * The GetServerStatistics200ResponseDiskInner model constructor.
+     * @property {module:model/GetServerStatistics200ResponseDiskInner}
      */
-    GetServerStatistics200ResponseAllOfDiskInner,
+    GetServerStatistics200ResponseDiskInner,
 
     /**
-     * The GetServerStatistics200ResponseAllOfNetworkTrafficInner model constructor.
-     * @property {module:model/GetServerStatistics200ResponseAllOfNetworkTrafficInner}
+     * The GetServerStatistics200ResponseNetworkTrafficInner model constructor.
+     * @property {module:model/GetServerStatistics200ResponseNetworkTrafficInner}
      */
-    GetServerStatistics200ResponseAllOfNetworkTrafficInner,
+    GetServerStatistics200ResponseNetworkTrafficInner,
 
     /**
-     * The GetServerStatistics200ResponseAllOfRamInner model constructor.
-     * @property {module:model/GetServerStatistics200ResponseAllOfRamInner}
+     * The GetServerStatistics200ResponseRamInner model constructor.
+     * @property {module:model/GetServerStatistics200ResponseRamInner}
      */
-    GetServerStatistics200ResponseAllOfRamInner,
+    GetServerStatistics200ResponseRamInner,
 
     /**
      * The GetServers200Response model constructor.
@@ -1977,12 +1766,6 @@ export {
     Invoice,
 
     /**
-     * The K8SPresetsInner model constructor.
-     * @property {module:model/K8SPresetsInner}
-     */
-    K8SPresetsInner,
-
-    /**
      * The K8SVersionsResponse model constructor.
      * @property {module:model/K8SVersionsResponse}
      */
@@ -2029,12 +1812,6 @@ export {
      * @property {module:model/MasterPresetOutApi}
      */
     MasterPresetOutApi,
-
-    /**
-     * The Message model constructor.
-     * @property {module:model/Message}
-     */
-    Message,
 
     /**
      * The Meta model constructor.
@@ -2505,12 +2282,6 @@ export {
     UpdateDomainNameServersNameServersInner,
 
     /**
-     * The UpdateDomainRequestRequest model constructor.
-     * @property {module:model/UpdateDomainRequestRequest}
-     */
-    UpdateDomainRequestRequest,
-
-    /**
      * The UpdateInstance model constructor.
      * @property {module:model/UpdateInstance}
      */
@@ -2533,30 +2304,6 @@ export {
      * @property {module:model/UpdateMailbox}
      */
     UpdateMailbox,
-
-    /**
-     * The UpdateMailboxAutoReply model constructor.
-     * @property {module:model/UpdateMailboxAutoReply}
-     */
-    UpdateMailboxAutoReply,
-
-    /**
-     * The UpdateMailboxForwardingIncoming model constructor.
-     * @property {module:model/UpdateMailboxForwardingIncoming}
-     */
-    UpdateMailboxForwardingIncoming,
-
-    /**
-     * The UpdateMailboxForwardingOutgoing model constructor.
-     * @property {module:model/UpdateMailboxForwardingOutgoing}
-     */
-    UpdateMailboxForwardingOutgoing,
-
-    /**
-     * The UpdateMailboxSpamFilter model constructor.
-     * @property {module:model/UpdateMailboxSpamFilter}
-     */
-    UpdateMailboxSpamFilter,
 
     /**
      * The UpdateNotificationSettingsRequest model constructor.
@@ -2659,12 +2406,6 @@ export {
      * @property {module:model/UpdateVpc}
      */
     UpdateVpc,
-
-    /**
-     * The UploadImage200Response model constructor.
-     * @property {module:model/UploadImage200Response}
-     */
-    UploadImage200Response,
 
     /**
      * The UploadSuccessful model constructor.

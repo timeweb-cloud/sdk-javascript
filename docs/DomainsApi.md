@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## createDomainRequest
 
-> CreateDomainRequest201Response createDomainRequest(createDomainRequestRequest)
+> CreateDomainRequest201Response createDomainRequest(register)
 
 Создание заявки на регистрацию/продление/трансфер домена
 
@@ -246,8 +246,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DomainsApi();
-let createDomainRequestRequest = new TimewebCloudApi.CreateDomainRequestRequest(); // CreateDomainRequestRequest | 
-apiInstance.createDomainRequest(createDomainRequestRequest, (error, data, response) => {
+let register = new TimewebCloudApi.Register(); // Register | 
+apiInstance.createDomainRequest(register, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -261,7 +261,7 @@ apiInstance.createDomainRequest(createDomainRequestRequest, (error, data, respon
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createDomainRequestRequest** | [**CreateDomainRequestRequest**](CreateDomainRequestRequest.md)|  | 
+ **register** | [**Register**](Register.md)|  | 
 
 ### Return type
 
@@ -1056,7 +1056,7 @@ Name | Type | Description  | Notes
 
 ## updateDomainRequest
 
-> CreateDomainRequest201Response updateDomainRequest(requestId, updateDomainRequestRequest)
+> CreateDomainRequest201Response updateDomainRequest(requestId, use)
 
 Оплата/обновление заявки на регистрацию/продление/трансфер домена
 
@@ -1073,8 +1073,8 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DomainsApi();
 let requestId = 123; // Number | Идентификатор заявки на регистрацию/продление/трансфер домена.
-let updateDomainRequestRequest = new TimewebCloudApi.UpdateDomainRequestRequest(); // UpdateDomainRequestRequest | 
-apiInstance.updateDomainRequest(requestId, updateDomainRequestRequest, (error, data, response) => {
+let use = new TimewebCloudApi.Use(); // Use | 
+apiInstance.updateDomainRequest(requestId, use, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -1089,7 +1089,7 @@ apiInstance.updateDomainRequest(requestId, updateDomainRequestRequest, (error, d
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requestId** | **Number**| Идентификатор заявки на регистрацию/продление/трансфер домена. | 
- **updateDomainRequestRequest** | [**UpdateDomainRequestRequest**](UpdateDomainRequestRequest.md)|  | 
+ **use** | [**Use**](Use.md)|  | 
 
 ### Return type
 

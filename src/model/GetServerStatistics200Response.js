@@ -12,10 +12,10 @@
  */
 
 import ApiClient from '../ApiClient';
-import GetServerStatistics200ResponseAllOfCpuInner from './GetServerStatistics200ResponseAllOfCpuInner';
-import GetServerStatistics200ResponseAllOfDiskInner from './GetServerStatistics200ResponseAllOfDiskInner';
-import GetServerStatistics200ResponseAllOfNetworkTrafficInner from './GetServerStatistics200ResponseAllOfNetworkTrafficInner';
-import GetServerStatistics200ResponseAllOfRamInner from './GetServerStatistics200ResponseAllOfRamInner';
+import GetServerStatistics200ResponseCpuInner from './GetServerStatistics200ResponseCpuInner';
+import GetServerStatistics200ResponseDiskInner from './GetServerStatistics200ResponseDiskInner';
+import GetServerStatistics200ResponseNetworkTrafficInner from './GetServerStatistics200ResponseNetworkTrafficInner';
+import GetServerStatistics200ResponseRamInner from './GetServerStatistics200ResponseRamInner';
 
 /**
  * The GetServerStatistics200Response model module.
@@ -26,15 +26,14 @@ class GetServerStatistics200Response {
     /**
      * Constructs a new <code>GetServerStatistics200Response</code>.
      * @alias module:model/GetServerStatistics200Response
-     * @param cpu {Array.<module:model/GetServerStatistics200ResponseAllOfCpuInner>} 
-     * @param networkTraffic {Array.<module:model/GetServerStatistics200ResponseAllOfNetworkTrafficInner>} 
-     * @param disk {Array.<module:model/GetServerStatistics200ResponseAllOfDiskInner>} Статистика основного диска
-     * @param ram {Array.<module:model/GetServerStatistics200ResponseAllOfRamInner>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
+     * @param cpu {Array.<module:model/GetServerStatistics200ResponseCpuInner>} 
+     * @param networkTraffic {Array.<module:model/GetServerStatistics200ResponseNetworkTrafficInner>} 
+     * @param disk {Array.<module:model/GetServerStatistics200ResponseDiskInner>} Статистика основного диска
+     * @param ram {Array.<module:model/GetServerStatistics200ResponseRamInner>} 
      */
-    constructor(cpu, networkTraffic, disk, ram, responseId) { 
+    constructor(cpu, networkTraffic, disk, ram) { 
         
-        GetServerStatistics200Response.initialize(this, cpu, networkTraffic, disk, ram, responseId);
+        GetServerStatistics200Response.initialize(this, cpu, networkTraffic, disk, ram);
     }
 
     /**
@@ -42,12 +41,11 @@ class GetServerStatistics200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, cpu, networkTraffic, disk, ram, responseId) { 
+    static initialize(obj, cpu, networkTraffic, disk, ram) { 
         obj['cpu'] = cpu;
         obj['network_traffic'] = networkTraffic;
         obj['disk'] = disk;
         obj['ram'] = ram;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -62,19 +60,16 @@ class GetServerStatistics200Response {
             obj = obj || new GetServerStatistics200Response();
 
             if (data.hasOwnProperty('cpu')) {
-                obj['cpu'] = ApiClient.convertToType(data['cpu'], [GetServerStatistics200ResponseAllOfCpuInner]);
+                obj['cpu'] = ApiClient.convertToType(data['cpu'], [GetServerStatistics200ResponseCpuInner]);
             }
             if (data.hasOwnProperty('network_traffic')) {
-                obj['network_traffic'] = ApiClient.convertToType(data['network_traffic'], [GetServerStatistics200ResponseAllOfNetworkTrafficInner]);
+                obj['network_traffic'] = ApiClient.convertToType(data['network_traffic'], [GetServerStatistics200ResponseNetworkTrafficInner]);
             }
             if (data.hasOwnProperty('disk')) {
-                obj['disk'] = ApiClient.convertToType(data['disk'], [GetServerStatistics200ResponseAllOfDiskInner]);
+                obj['disk'] = ApiClient.convertToType(data['disk'], [GetServerStatistics200ResponseDiskInner]);
             }
             if (data.hasOwnProperty('ram')) {
-                obj['ram'] = ApiClient.convertToType(data['ram'], [GetServerStatistics200ResponseAllOfRamInner]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
+                obj['ram'] = ApiClient.convertToType(data['ram'], [GetServerStatistics200ResponseRamInner]);
             }
         }
         return obj;
@@ -99,7 +94,7 @@ class GetServerStatistics200Response {
             }
             // validate the optional field `cpu` (array)
             for (const item of data['cpu']) {
-                GetServerStatistics200ResponseAllOfCpuInner.validateJSON(item);
+                GetServerStatistics200ResponseCpuInner.validateJSON(item);
             };
         }
         if (data['network_traffic']) { // data not null
@@ -109,7 +104,7 @@ class GetServerStatistics200Response {
             }
             // validate the optional field `network_traffic` (array)
             for (const item of data['network_traffic']) {
-                GetServerStatistics200ResponseAllOfNetworkTrafficInner.validateJSON(item);
+                GetServerStatistics200ResponseNetworkTrafficInner.validateJSON(item);
             };
         }
         if (data['disk']) { // data not null
@@ -119,7 +114,7 @@ class GetServerStatistics200Response {
             }
             // validate the optional field `disk` (array)
             for (const item of data['disk']) {
-                GetServerStatistics200ResponseAllOfDiskInner.validateJSON(item);
+                GetServerStatistics200ResponseDiskInner.validateJSON(item);
             };
         }
         if (data['ram']) { // data not null
@@ -129,12 +124,8 @@ class GetServerStatistics200Response {
             }
             // validate the optional field `ram` (array)
             for (const item of data['ram']) {
-                GetServerStatistics200ResponseAllOfRamInner.validateJSON(item);
+                GetServerStatistics200ResponseRamInner.validateJSON(item);
             };
-        }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
         }
 
         return true;
@@ -143,34 +134,28 @@ class GetServerStatistics200Response {
 
 }
 
-GetServerStatistics200Response.RequiredProperties = ["cpu", "network_traffic", "disk", "ram", "response_id"];
+GetServerStatistics200Response.RequiredProperties = ["cpu", "network_traffic", "disk", "ram"];
 
 /**
- * @member {Array.<module:model/GetServerStatistics200ResponseAllOfCpuInner>} cpu
+ * @member {Array.<module:model/GetServerStatistics200ResponseCpuInner>} cpu
  */
 GetServerStatistics200Response.prototype['cpu'] = undefined;
 
 /**
- * @member {Array.<module:model/GetServerStatistics200ResponseAllOfNetworkTrafficInner>} network_traffic
+ * @member {Array.<module:model/GetServerStatistics200ResponseNetworkTrafficInner>} network_traffic
  */
 GetServerStatistics200Response.prototype['network_traffic'] = undefined;
 
 /**
  * Статистика основного диска
- * @member {Array.<module:model/GetServerStatistics200ResponseAllOfDiskInner>} disk
+ * @member {Array.<module:model/GetServerStatistics200ResponseDiskInner>} disk
  */
 GetServerStatistics200Response.prototype['disk'] = undefined;
 
 /**
- * @member {Array.<module:model/GetServerStatistics200ResponseAllOfRamInner>} ram
+ * @member {Array.<module:model/GetServerStatistics200ResponseRamInner>} ram
  */
 GetServerStatistics200Response.prototype['ram'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetServerStatistics200Response.prototype['response_id'] = undefined;
 
 
 

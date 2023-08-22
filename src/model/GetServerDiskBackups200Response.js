@@ -26,11 +26,10 @@ class GetServerDiskBackups200Response {
      * @alias module:model/GetServerDiskBackups200Response
      * @param meta {module:model/Meta} 
      * @param backups {Array.<module:model/ServerBackup>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, backups, responseId) { 
+    constructor(meta, backups) { 
         
-        GetServerDiskBackups200Response.initialize(this, meta, backups, responseId);
+        GetServerDiskBackups200Response.initialize(this, meta, backups);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetServerDiskBackups200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, backups, responseId) { 
+    static initialize(obj, meta, backups) { 
         obj['meta'] = meta;
         obj['backups'] = backups;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetServerDiskBackups200Response {
             }
             if (data.hasOwnProperty('backups')) {
                 obj['backups'] = ApiClient.convertToType(data['backups'], [ServerBackup]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetServerDiskBackups200Response {
                 ServerBackup.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetServerDiskBackups200Response {
 
 }
 
-GetServerDiskBackups200Response.RequiredProperties = ["meta", "backups", "response_id"];
+GetServerDiskBackups200Response.RequiredProperties = ["meta", "backups"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetServerDiskBackups200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/ServerBackup>} backups
  */
 GetServerDiskBackups200Response.prototype['backups'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetServerDiskBackups200Response.prototype['response_id'] = undefined;
 
 
 

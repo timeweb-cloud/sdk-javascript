@@ -24,11 +24,10 @@ class CreateToken201Response {
      * Constructs a new <code>CreateToken201Response</code>.
      * @alias module:model/CreateToken201Response
      * @param apiKey {module:model/CreatedApiKey} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(apiKey, responseId) { 
+    constructor(apiKey) { 
         
-        CreateToken201Response.initialize(this, apiKey, responseId);
+        CreateToken201Response.initialize(this, apiKey);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateToken201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, apiKey, responseId) { 
+    static initialize(obj, apiKey) { 
         obj['api_key'] = apiKey;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateToken201Response {
 
             if (data.hasOwnProperty('api_key')) {
                 obj['api_key'] = CreatedApiKey.constructFromObject(data['api_key']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateToken201Response {
         if (data['api_key']) { // data not null
           CreatedApiKey.validateJSON(data['api_key']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateToken201Response {
 
 }
 
-CreateToken201Response.RequiredProperties = ["api_key", "response_id"];
+CreateToken201Response.RequiredProperties = ["api_key"];
 
 /**
  * @member {module:model/CreatedApiKey} api_key
  */
 CreateToken201Response.prototype['api_key'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateToken201Response.prototype['response_id'] = undefined;
 
 
 

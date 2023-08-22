@@ -54,7 +54,7 @@ class FirewallGroupOutResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('group')) {
-                obj['group'] = ApiClient.convertToType(data['group'], FirewallGroupOutAPI);
+                obj['group'] = FirewallGroupOutAPI.constructFromObject(data['group']);
             }
         }
         return obj;

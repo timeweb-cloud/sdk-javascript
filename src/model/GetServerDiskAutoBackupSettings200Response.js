@@ -24,11 +24,10 @@ class GetServerDiskAutoBackupSettings200Response {
      * Constructs a new <code>GetServerDiskAutoBackupSettings200Response</code>.
      * @alias module:model/GetServerDiskAutoBackupSettings200Response
      * @param autoBackupsSettings {module:model/AutoBackup} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(autoBackupsSettings, responseId) { 
+    constructor(autoBackupsSettings) { 
         
-        GetServerDiskAutoBackupSettings200Response.initialize(this, autoBackupsSettings, responseId);
+        GetServerDiskAutoBackupSettings200Response.initialize(this, autoBackupsSettings);
     }
 
     /**
@@ -36,9 +35,8 @@ class GetServerDiskAutoBackupSettings200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, autoBackupsSettings, responseId) { 
+    static initialize(obj, autoBackupsSettings) { 
         obj['auto_backups_settings'] = autoBackupsSettings;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class GetServerDiskAutoBackupSettings200Response {
 
             if (data.hasOwnProperty('auto_backups_settings')) {
                 obj['auto_backups_settings'] = AutoBackup.constructFromObject(data['auto_backups_settings']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class GetServerDiskAutoBackupSettings200Response {
         if (data['auto_backups_settings']) { // data not null
           AutoBackup.validateJSON(data['auto_backups_settings']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class GetServerDiskAutoBackupSettings200Response {
 
 }
 
-GetServerDiskAutoBackupSettings200Response.RequiredProperties = ["auto_backups_settings", "response_id"];
+GetServerDiskAutoBackupSettings200Response.RequiredProperties = ["auto_backups_settings"];
 
 /**
  * @member {module:model/AutoBackup} auto_backups_settings
  */
 GetServerDiskAutoBackupSettings200Response.prototype['auto_backups_settings'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetServerDiskAutoBackupSettings200Response.prototype['response_id'] = undefined;
 
 
 

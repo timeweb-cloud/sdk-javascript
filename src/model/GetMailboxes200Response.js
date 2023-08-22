@@ -26,11 +26,10 @@ class GetMailboxes200Response {
      * @alias module:model/GetMailboxes200Response
      * @param meta {module:model/Meta} 
      * @param mailboxes {Array.<module:model/Mailbox>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, mailboxes, responseId) { 
+    constructor(meta, mailboxes) { 
         
-        GetMailboxes200Response.initialize(this, meta, mailboxes, responseId);
+        GetMailboxes200Response.initialize(this, meta, mailboxes);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetMailboxes200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, mailboxes, responseId) { 
+    static initialize(obj, meta, mailboxes) { 
         obj['meta'] = meta;
         obj['mailboxes'] = mailboxes;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetMailboxes200Response {
             }
             if (data.hasOwnProperty('mailboxes')) {
                 obj['mailboxes'] = ApiClient.convertToType(data['mailboxes'], [Mailbox]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetMailboxes200Response {
                 Mailbox.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetMailboxes200Response {
 
 }
 
-GetMailboxes200Response.RequiredProperties = ["meta", "mailboxes", "response_id"];
+GetMailboxes200Response.RequiredProperties = ["meta", "mailboxes"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetMailboxes200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/Mailbox>} mailboxes
  */
 GetMailboxes200Response.prototype['mailboxes'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetMailboxes200Response.prototype['response_id'] = undefined;
 
 
 

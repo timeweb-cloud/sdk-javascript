@@ -24,11 +24,10 @@ class DeleteCluster200Response {
      * Constructs a new <code>DeleteCluster200Response</code>.
      * @alias module:model/DeleteCluster200Response
      * @param clusterDelete {module:model/DeleteServiceResponse} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(clusterDelete, responseId) { 
+    constructor(clusterDelete) { 
         
-        DeleteCluster200Response.initialize(this, clusterDelete, responseId);
+        DeleteCluster200Response.initialize(this, clusterDelete);
     }
 
     /**
@@ -36,9 +35,8 @@ class DeleteCluster200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, clusterDelete, responseId) { 
+    static initialize(obj, clusterDelete) { 
         obj['cluster_delete'] = clusterDelete;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class DeleteCluster200Response {
 
             if (data.hasOwnProperty('cluster_delete')) {
                 obj['cluster_delete'] = DeleteServiceResponse.constructFromObject(data['cluster_delete']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class DeleteCluster200Response {
         if (data['cluster_delete']) { // data not null
           DeleteServiceResponse.validateJSON(data['cluster_delete']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class DeleteCluster200Response {
 
 }
 
-DeleteCluster200Response.RequiredProperties = ["cluster_delete", "response_id"];
+DeleteCluster200Response.RequiredProperties = ["cluster_delete"];
 
 /**
  * @member {module:model/DeleteServiceResponse} cluster_delete
  */
 DeleteCluster200Response.prototype['cluster_delete'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-DeleteCluster200Response.prototype['response_id'] = undefined;
 
 
 

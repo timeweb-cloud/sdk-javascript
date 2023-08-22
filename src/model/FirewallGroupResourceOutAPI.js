@@ -56,7 +56,7 @@ class FirewallGroupResourceOutAPI {
                 obj['id'] = ApiClient.convertToType(data['id'], 'Number');
             }
             if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], ResourceType);
+                obj['type'] = ResourceType.constructFromObject(data['type']);
             }
         }
         return obj;

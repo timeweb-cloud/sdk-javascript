@@ -26,11 +26,10 @@ class GetBalancersPresets200Response {
      * @alias module:model/GetBalancersPresets200Response
      * @param meta {module:model/Meta} 
      * @param balancersPresets {Array.<module:model/PresetsBalancer>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, balancersPresets, responseId) { 
+    constructor(meta, balancersPresets) { 
         
-        GetBalancersPresets200Response.initialize(this, meta, balancersPresets, responseId);
+        GetBalancersPresets200Response.initialize(this, meta, balancersPresets);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetBalancersPresets200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, balancersPresets, responseId) { 
+    static initialize(obj, meta, balancersPresets) { 
         obj['meta'] = meta;
         obj['balancers_presets'] = balancersPresets;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetBalancersPresets200Response {
             }
             if (data.hasOwnProperty('balancers_presets')) {
                 obj['balancers_presets'] = ApiClient.convertToType(data['balancers_presets'], [PresetsBalancer]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetBalancersPresets200Response {
                 PresetsBalancer.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetBalancersPresets200Response {
 
 }
 
-GetBalancersPresets200Response.RequiredProperties = ["meta", "balancers_presets", "response_id"];
+GetBalancersPresets200Response.RequiredProperties = ["meta", "balancers_presets"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetBalancersPresets200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/PresetsBalancer>} balancers_presets
  */
 GetBalancersPresets200Response.prototype['balancers_presets'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetBalancersPresets200Response.prototype['response_id'] = undefined;
 
 
 

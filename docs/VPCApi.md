@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ## deleteVPC
 
-> DeleteVPC204Response deleteVPC(vpcId)
+> CreateVPC201Response deleteVPC(vpcId)
 
 Удаление VPC по идентификатору сети
 
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteVPC204Response**](DeleteVPC204Response.md)
+[**CreateVPC201Response**](CreateVPC201Response.md)
 
 ### Authorization
 

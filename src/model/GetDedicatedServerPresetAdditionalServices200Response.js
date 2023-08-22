@@ -26,11 +26,10 @@ class GetDedicatedServerPresetAdditionalServices200Response {
      * @alias module:model/GetDedicatedServerPresetAdditionalServices200Response
      * @param meta {module:model/Meta} 
      * @param dedicatedServerAdditionalServices {Array.<module:model/DedicatedServerAdditionalService>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, dedicatedServerAdditionalServices, responseId) { 
+    constructor(meta, dedicatedServerAdditionalServices) { 
         
-        GetDedicatedServerPresetAdditionalServices200Response.initialize(this, meta, dedicatedServerAdditionalServices, responseId);
+        GetDedicatedServerPresetAdditionalServices200Response.initialize(this, meta, dedicatedServerAdditionalServices);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetDedicatedServerPresetAdditionalServices200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, dedicatedServerAdditionalServices, responseId) { 
+    static initialize(obj, meta, dedicatedServerAdditionalServices) { 
         obj['meta'] = meta;
         obj['dedicated_server_additional_services'] = dedicatedServerAdditionalServices;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetDedicatedServerPresetAdditionalServices200Response {
             }
             if (data.hasOwnProperty('dedicated_server_additional_services')) {
                 obj['dedicated_server_additional_services'] = ApiClient.convertToType(data['dedicated_server_additional_services'], [DedicatedServerAdditionalService]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetDedicatedServerPresetAdditionalServices200Response {
                 DedicatedServerAdditionalService.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetDedicatedServerPresetAdditionalServices200Response {
 
 }
 
-GetDedicatedServerPresetAdditionalServices200Response.RequiredProperties = ["meta", "dedicated_server_additional_services", "response_id"];
+GetDedicatedServerPresetAdditionalServices200Response.RequiredProperties = ["meta", "dedicated_server_additional_services"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetDedicatedServerPresetAdditionalServices200Response.prototype['meta'] = undefi
  * @member {Array.<module:model/DedicatedServerAdditionalService>} dedicated_server_additional_services
  */
 GetDedicatedServerPresetAdditionalServices200Response.prototype['dedicated_server_additional_services'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetDedicatedServerPresetAdditionalServices200Response.prototype['response_id'] = undefined;
 
 
 

@@ -24,11 +24,10 @@ class DeleteDatabase200Response {
      * Constructs a new <code>DeleteDatabase200Response</code>.
      * @alias module:model/DeleteDatabase200Response
      * @param databaseDelete {module:model/DeleteServiceResponse} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(databaseDelete, responseId) { 
+    constructor(databaseDelete) { 
         
-        DeleteDatabase200Response.initialize(this, databaseDelete, responseId);
+        DeleteDatabase200Response.initialize(this, databaseDelete);
     }
 
     /**
@@ -36,9 +35,8 @@ class DeleteDatabase200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, databaseDelete, responseId) { 
+    static initialize(obj, databaseDelete) { 
         obj['database_delete'] = databaseDelete;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class DeleteDatabase200Response {
 
             if (data.hasOwnProperty('database_delete')) {
                 obj['database_delete'] = DeleteServiceResponse.constructFromObject(data['database_delete']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class DeleteDatabase200Response {
         if (data['database_delete']) { // data not null
           DeleteServiceResponse.validateJSON(data['database_delete']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class DeleteDatabase200Response {
 
 }
 
-DeleteDatabase200Response.RequiredProperties = ["database_delete", "response_id"];
+DeleteDatabase200Response.RequiredProperties = ["database_delete"];
 
 /**
  * @member {module:model/DeleteServiceResponse} database_delete
  */
 DeleteDatabase200Response.prototype['database_delete'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-DeleteDatabase200Response.prototype['response_id'] = undefined;
 
 
 

@@ -26,11 +26,10 @@ class GetServerLogs200Response {
      * @alias module:model/GetServerLogs200Response
      * @param meta {module:model/Meta} 
      * @param serverLogs {Array.<module:model/ServerLog>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, serverLogs, responseId) { 
+    constructor(meta, serverLogs) { 
         
-        GetServerLogs200Response.initialize(this, meta, serverLogs, responseId);
+        GetServerLogs200Response.initialize(this, meta, serverLogs);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetServerLogs200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, serverLogs, responseId) { 
+    static initialize(obj, meta, serverLogs) { 
         obj['meta'] = meta;
         obj['server_logs'] = serverLogs;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetServerLogs200Response {
             }
             if (data.hasOwnProperty('server_logs')) {
                 obj['server_logs'] = ApiClient.convertToType(data['server_logs'], [ServerLog]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetServerLogs200Response {
                 ServerLog.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetServerLogs200Response {
 
 }
 
-GetServerLogs200Response.RequiredProperties = ["meta", "server_logs", "response_id"];
+GetServerLogs200Response.RequiredProperties = ["meta", "server_logs"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetServerLogs200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/ServerLog>} server_logs
  */
 GetServerLogs200Response.prototype['server_logs'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetServerLogs200Response.prototype['response_id'] = undefined;
 
 
 

@@ -24,11 +24,10 @@ class CreateServer201Response {
      * Constructs a new <code>CreateServer201Response</code>.
      * @alias module:model/CreateServer201Response
      * @param server {module:model/Vds} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(server, responseId) { 
+    constructor(server) { 
         
-        CreateServer201Response.initialize(this, server, responseId);
+        CreateServer201Response.initialize(this, server);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateServer201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, server, responseId) { 
+    static initialize(obj, server) { 
         obj['server'] = server;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateServer201Response {
 
             if (data.hasOwnProperty('server')) {
                 obj['server'] = Vds.constructFromObject(data['server']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateServer201Response {
         if (data['server']) { // data not null
           Vds.validateJSON(data['server']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateServer201Response {
 
 }
 
-CreateServer201Response.RequiredProperties = ["server", "response_id"];
+CreateServer201Response.RequiredProperties = ["server"];
 
 /**
  * @member {module:model/Vds} server
  */
 CreateServer201Response.prototype['server'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateServer201Response.prototype['response_id'] = undefined;
 
 
 

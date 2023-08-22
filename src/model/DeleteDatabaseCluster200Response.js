@@ -23,11 +23,10 @@ class DeleteDatabaseCluster200Response {
      * Constructs a new <code>DeleteDatabaseCluster200Response</code>.
      * @alias module:model/DeleteDatabaseCluster200Response
      * @param hash {String} Хеш, который совместно с кодом авторизации надо будет отправить для удаления
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(hash, responseId) { 
+    constructor(hash) { 
         
-        DeleteDatabaseCluster200Response.initialize(this, hash, responseId);
+        DeleteDatabaseCluster200Response.initialize(this, hash);
     }
 
     /**
@@ -35,9 +34,8 @@ class DeleteDatabaseCluster200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, hash, responseId) { 
+    static initialize(obj, hash) { 
         obj['hash'] = hash;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -53,9 +51,6 @@ class DeleteDatabaseCluster200Response {
 
             if (data.hasOwnProperty('hash')) {
                 obj['hash'] = ApiClient.convertToType(data['hash'], 'String');
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -77,10 +72,6 @@ class DeleteDatabaseCluster200Response {
         if (data['hash'] && !(typeof data['hash'] === 'string' || data['hash'] instanceof String)) {
             throw new Error("Expected the field `hash` to be a primitive type in the JSON string but got " + data['hash']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -88,19 +79,13 @@ class DeleteDatabaseCluster200Response {
 
 }
 
-DeleteDatabaseCluster200Response.RequiredProperties = ["hash", "response_id"];
+DeleteDatabaseCluster200Response.RequiredProperties = ["hash"];
 
 /**
  * Хеш, который совместно с кодом авторизации надо будет отправить для удаления
  * @member {String} hash
  */
 DeleteDatabaseCluster200Response.prototype['hash'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-DeleteDatabaseCluster200Response.prototype['response_id'] = undefined;
 
 
 

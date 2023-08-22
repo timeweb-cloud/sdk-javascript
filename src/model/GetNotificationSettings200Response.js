@@ -26,11 +26,10 @@ class GetNotificationSettings200Response {
      * @alias module:model/GetNotificationSettings200Response
      * @param notificationSettings {Array.<module:model/NotificationSetting>} 
      * @param meta {module:model/Meta} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(notificationSettings, meta, responseId) { 
+    constructor(notificationSettings, meta) { 
         
-        GetNotificationSettings200Response.initialize(this, notificationSettings, meta, responseId);
+        GetNotificationSettings200Response.initialize(this, notificationSettings, meta);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetNotificationSettings200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, notificationSettings, meta, responseId) { 
+    static initialize(obj, notificationSettings, meta) { 
         obj['notification_settings'] = notificationSettings;
         obj['meta'] = meta;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetNotificationSettings200Response {
             }
             if (data.hasOwnProperty('meta')) {
                 obj['meta'] = Meta.constructFromObject(data['meta']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetNotificationSettings200Response {
         if (data['meta']) { // data not null
           Meta.validateJSON(data['meta']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetNotificationSettings200Response {
 
 }
 
-GetNotificationSettings200Response.RequiredProperties = ["notification_settings", "meta", "response_id"];
+GetNotificationSettings200Response.RequiredProperties = ["notification_settings", "meta"];
 
 /**
  * @member {Array.<module:model/NotificationSetting>} notification_settings
@@ -116,12 +107,6 @@ GetNotificationSettings200Response.prototype['notification_settings'] = undefine
  * @member {module:model/Meta} meta
  */
 GetNotificationSettings200Response.prototype['meta'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetNotificationSettings200Response.prototype['response_id'] = undefined;
 
 
 

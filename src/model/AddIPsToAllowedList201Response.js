@@ -24,11 +24,10 @@ class AddIPsToAllowedList201Response {
      * Constructs a new <code>AddIPsToAllowedList201Response</code>.
      * @alias module:model/AddIPsToAllowedList201Response
      * @param ips {module:model/AddIps} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(ips, responseId) { 
+    constructor(ips) { 
         
-        AddIPsToAllowedList201Response.initialize(this, ips, responseId);
+        AddIPsToAllowedList201Response.initialize(this, ips);
     }
 
     /**
@@ -36,9 +35,8 @@ class AddIPsToAllowedList201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, ips, responseId) { 
+    static initialize(obj, ips) { 
         obj['ips'] = ips;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class AddIPsToAllowedList201Response {
 
             if (data.hasOwnProperty('ips')) {
                 obj['ips'] = AddIps.constructFromObject(data['ips']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class AddIPsToAllowedList201Response {
         if (data['ips']) { // data not null
           AddIps.validateJSON(data['ips']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class AddIPsToAllowedList201Response {
 
 }
 
-AddIPsToAllowedList201Response.RequiredProperties = ["ips", "response_id"];
+AddIPsToAllowedList201Response.RequiredProperties = ["ips"];
 
 /**
  * @member {module:model/AddIps} ips
  */
 AddIPsToAllowedList201Response.prototype['ips'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-AddIPsToAllowedList201Response.prototype['response_id'] = undefined;
 
 
 

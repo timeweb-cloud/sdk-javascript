@@ -26,11 +26,10 @@ class GetOsList200Response {
      * @alias module:model/GetOsList200Response
      * @param meta {module:model/Meta} 
      * @param serversOs {Array.<module:model/ServersOs>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, serversOs, responseId) { 
+    constructor(meta, serversOs) { 
         
-        GetOsList200Response.initialize(this, meta, serversOs, responseId);
+        GetOsList200Response.initialize(this, meta, serversOs);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetOsList200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, serversOs, responseId) { 
+    static initialize(obj, meta, serversOs) { 
         obj['meta'] = meta;
         obj['servers_os'] = serversOs;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetOsList200Response {
             }
             if (data.hasOwnProperty('servers_os')) {
                 obj['servers_os'] = ApiClient.convertToType(data['servers_os'], [ServersOs]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetOsList200Response {
                 ServersOs.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetOsList200Response {
 
 }
 
-GetOsList200Response.RequiredProperties = ["meta", "servers_os", "response_id"];
+GetOsList200Response.RequiredProperties = ["meta", "servers_os"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetOsList200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/ServersOs>} servers_os
  */
 GetOsList200Response.prototype['servers_os'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetOsList200Response.prototype['response_id'] = undefined;
 
 
 

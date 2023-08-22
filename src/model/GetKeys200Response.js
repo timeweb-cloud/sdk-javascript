@@ -26,11 +26,10 @@ class GetKeys200Response {
      * @alias module:model/GetKeys200Response
      * @param meta {module:model/Meta} 
      * @param sshKeys {Array.<module:model/SshKey>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, sshKeys, responseId) { 
+    constructor(meta, sshKeys) { 
         
-        GetKeys200Response.initialize(this, meta, sshKeys, responseId);
+        GetKeys200Response.initialize(this, meta, sshKeys);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetKeys200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, sshKeys, responseId) { 
+    static initialize(obj, meta, sshKeys) { 
         obj['meta'] = meta;
         obj['ssh-keys'] = sshKeys;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetKeys200Response {
             }
             if (data.hasOwnProperty('ssh-keys')) {
                 obj['ssh-keys'] = ApiClient.convertToType(data['ssh-keys'], [SshKey]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetKeys200Response {
                 SshKey.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetKeys200Response {
 
 }
 
-GetKeys200Response.RequiredProperties = ["meta", "ssh-keys", "response_id"];
+GetKeys200Response.RequiredProperties = ["meta", "ssh-keys"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetKeys200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/SshKey>} ssh-keys
  */
 GetKeys200Response.prototype['ssh-keys'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetKeys200Response.prototype['response_id'] = undefined;
 
 
 

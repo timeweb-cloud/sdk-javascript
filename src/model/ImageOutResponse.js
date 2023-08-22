@@ -54,7 +54,7 @@ class ImageOutResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('image')) {
-                obj['image'] = ApiClient.convertToType(data['image'], ImageOutAPI);
+                obj['image'] = ImageOutAPI.constructFromObject(data['image']);
             }
         }
         return obj;

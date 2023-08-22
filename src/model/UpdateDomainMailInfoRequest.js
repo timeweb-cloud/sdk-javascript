@@ -22,10 +22,11 @@ class UpdateDomainMailInfoRequest {
     /**
      * Constructs a new <code>UpdateDomainMailInfoRequest</code>.
      * @alias module:model/UpdateDomainMailInfoRequest
+     * @param email {String} Адрес для сбора почты с ошибочных ящиков
      */
-    constructor() { 
+    constructor(email) { 
         
-        UpdateDomainMailInfoRequest.initialize(this);
+        UpdateDomainMailInfoRequest.initialize(this, email);
     }
 
     /**
@@ -33,7 +34,8 @@ class UpdateDomainMailInfoRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, email) { 
+        obj['email'] = email;
     }
 
     /**
@@ -60,6 +62,12 @@ class UpdateDomainMailInfoRequest {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateDomainMailInfoRequest</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of UpdateDomainMailInfoRequest.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['email'] && !(typeof data['email'] === 'string' || data['email'] instanceof String)) {
             throw new Error("Expected the field `email` to be a primitive type in the JSON string but got " + data['email']);
@@ -71,7 +79,7 @@ class UpdateDomainMailInfoRequest {
 
 }
 
-
+UpdateDomainMailInfoRequest.RequiredProperties = ["email"];
 
 /**
  * Адрес для сбора почты с ошибочных ящиков

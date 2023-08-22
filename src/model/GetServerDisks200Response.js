@@ -26,11 +26,10 @@ class GetServerDisks200Response {
      * @alias module:model/GetServerDisks200Response
      * @param meta {module:model/Meta} 
      * @param serverDisks {Array.<module:model/ServerDisk>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, serverDisks, responseId) { 
+    constructor(meta, serverDisks) { 
         
-        GetServerDisks200Response.initialize(this, meta, serverDisks, responseId);
+        GetServerDisks200Response.initialize(this, meta, serverDisks);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetServerDisks200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, serverDisks, responseId) { 
+    static initialize(obj, meta, serverDisks) { 
         obj['meta'] = meta;
         obj['server_disks'] = serverDisks;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetServerDisks200Response {
             }
             if (data.hasOwnProperty('server_disks')) {
                 obj['server_disks'] = ApiClient.convertToType(data['server_disks'], [ServerDisk]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetServerDisks200Response {
                 ServerDisk.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetServerDisks200Response {
 
 }
 
-GetServerDisks200Response.RequiredProperties = ["meta", "server_disks", "response_id"];
+GetServerDisks200Response.RequiredProperties = ["meta", "server_disks"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetServerDisks200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/ServerDisk>} server_disks
  */
 GetServerDisks200Response.prototype['server_disks'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetServerDisks200Response.prototype['response_id'] = undefined;
 
 
 

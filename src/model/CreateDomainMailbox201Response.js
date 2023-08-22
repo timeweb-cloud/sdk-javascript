@@ -24,11 +24,10 @@ class CreateDomainMailbox201Response {
      * Constructs a new <code>CreateDomainMailbox201Response</code>.
      * @alias module:model/CreateDomainMailbox201Response
      * @param mailbox {module:model/Mailbox} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(mailbox, responseId) { 
+    constructor(mailbox) { 
         
-        CreateDomainMailbox201Response.initialize(this, mailbox, responseId);
+        CreateDomainMailbox201Response.initialize(this, mailbox);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateDomainMailbox201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, mailbox, responseId) { 
+    static initialize(obj, mailbox) { 
         obj['mailbox'] = mailbox;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateDomainMailbox201Response {
 
             if (data.hasOwnProperty('mailbox')) {
                 obj['mailbox'] = Mailbox.constructFromObject(data['mailbox']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateDomainMailbox201Response {
         if (data['mailbox']) { // data not null
           Mailbox.validateJSON(data['mailbox']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateDomainMailbox201Response {
 
 }
 
-CreateDomainMailbox201Response.RequiredProperties = ["mailbox", "response_id"];
+CreateDomainMailbox201Response.RequiredProperties = ["mailbox"];
 
 /**
  * @member {module:model/Mailbox} mailbox
  */
 CreateDomainMailbox201Response.prototype['mailbox'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateDomainMailbox201Response.prototype['response_id'] = undefined;
 
 
 

@@ -12,10 +12,10 @@
  */
 
 import ApiClient from '../ApiClient';
-import UpdateMailboxAutoReply from './UpdateMailboxAutoReply';
-import UpdateMailboxForwardingIncoming from './UpdateMailboxForwardingIncoming';
-import UpdateMailboxForwardingOutgoing from './UpdateMailboxForwardingOutgoing';
-import UpdateMailboxSpamFilter from './UpdateMailboxSpamFilter';
+import AutoReplyIsDisabled from './AutoReplyIsDisabled';
+import ForwardingIncomingIsDisabled from './ForwardingIncomingIsDisabled';
+import ForwardingOutgoingIsDisabled from './ForwardingOutgoingIsDisabled';
+import SpamFilterIsDisabled from './SpamFilterIsDisabled';
 
 /**
  * The UpdateMailbox model module.
@@ -53,16 +53,16 @@ class UpdateMailbox {
             obj = obj || new UpdateMailbox();
 
             if (data.hasOwnProperty('auto_reply')) {
-                obj['auto_reply'] = UpdateMailboxAutoReply.constructFromObject(data['auto_reply']);
+                obj['auto_reply'] = AutoReplyIsDisabled.constructFromObject(data['auto_reply']);
             }
             if (data.hasOwnProperty('spam_filter')) {
-                obj['spam_filter'] = UpdateMailboxSpamFilter.constructFromObject(data['spam_filter']);
+                obj['spam_filter'] = SpamFilterIsDisabled.constructFromObject(data['spam_filter']);
             }
             if (data.hasOwnProperty('forwarding_incoming')) {
-                obj['forwarding_incoming'] = UpdateMailboxForwardingIncoming.constructFromObject(data['forwarding_incoming']);
+                obj['forwarding_incoming'] = ForwardingIncomingIsDisabled.constructFromObject(data['forwarding_incoming']);
             }
             if (data.hasOwnProperty('forwarding_outgoing')) {
-                obj['forwarding_outgoing'] = UpdateMailboxForwardingOutgoing.constructFromObject(data['forwarding_outgoing']);
+                obj['forwarding_outgoing'] = ForwardingOutgoingIsDisabled.constructFromObject(data['forwarding_outgoing']);
             }
             if (data.hasOwnProperty('comment')) {
                 obj['comment'] = ApiClient.convertToType(data['comment'], 'String');
@@ -82,19 +82,19 @@ class UpdateMailbox {
     static validateJSON(data) {
         // validate the optional field `auto_reply`
         if (data['auto_reply']) { // data not null
-          UpdateMailboxAutoReply.validateJSON(data['auto_reply']);
+          AutoReplyIsDisabled.validateJSON(data['auto_reply']);
         }
         // validate the optional field `spam_filter`
         if (data['spam_filter']) { // data not null
-          UpdateMailboxSpamFilter.validateJSON(data['spam_filter']);
+          SpamFilterIsDisabled.validateJSON(data['spam_filter']);
         }
         // validate the optional field `forwarding_incoming`
         if (data['forwarding_incoming']) { // data not null
-          UpdateMailboxForwardingIncoming.validateJSON(data['forwarding_incoming']);
+          ForwardingIncomingIsDisabled.validateJSON(data['forwarding_incoming']);
         }
         // validate the optional field `forwarding_outgoing`
         if (data['forwarding_outgoing']) { // data not null
-          UpdateMailboxForwardingOutgoing.validateJSON(data['forwarding_outgoing']);
+          ForwardingOutgoingIsDisabled.validateJSON(data['forwarding_outgoing']);
         }
         // ensure the json data is a string
         if (data['comment'] && !(typeof data['comment'] === 'string' || data['comment'] instanceof String)) {
@@ -114,22 +114,22 @@ class UpdateMailbox {
 
 
 /**
- * @member {module:model/UpdateMailboxAutoReply} auto_reply
+ * @member {module:model/AutoReplyIsDisabled} auto_reply
  */
 UpdateMailbox.prototype['auto_reply'] = undefined;
 
 /**
- * @member {module:model/UpdateMailboxSpamFilter} spam_filter
+ * @member {module:model/SpamFilterIsDisabled} spam_filter
  */
 UpdateMailbox.prototype['spam_filter'] = undefined;
 
 /**
- * @member {module:model/UpdateMailboxForwardingIncoming} forwarding_incoming
+ * @member {module:model/ForwardingIncomingIsDisabled} forwarding_incoming
  */
 UpdateMailbox.prototype['forwarding_incoming'] = undefined;
 
 /**
- * @member {module:model/UpdateMailboxForwardingOutgoing} forwarding_outgoing
+ * @member {module:model/ForwardingOutgoingIsDisabled} forwarding_outgoing
  */
 UpdateMailbox.prototype['forwarding_outgoing'] = undefined;
 

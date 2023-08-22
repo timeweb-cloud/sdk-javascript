@@ -24,11 +24,10 @@ class GetStorageTransferStatus200Response {
      * Constructs a new <code>GetStorageTransferStatus200Response</code>.
      * @alias module:model/GetStorageTransferStatus200Response
      * @param transferStatus {module:model/TransferStatus} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(transferStatus, responseId) { 
+    constructor(transferStatus) { 
         
-        GetStorageTransferStatus200Response.initialize(this, transferStatus, responseId);
+        GetStorageTransferStatus200Response.initialize(this, transferStatus);
     }
 
     /**
@@ -36,9 +35,8 @@ class GetStorageTransferStatus200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, transferStatus, responseId) { 
+    static initialize(obj, transferStatus) { 
         obj['transfer_status'] = transferStatus;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class GetStorageTransferStatus200Response {
 
             if (data.hasOwnProperty('transfer_status')) {
                 obj['transfer_status'] = TransferStatus.constructFromObject(data['transfer_status']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class GetStorageTransferStatus200Response {
         if (data['transfer_status']) { // data not null
           TransferStatus.validateJSON(data['transfer_status']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class GetStorageTransferStatus200Response {
 
 }
 
-GetStorageTransferStatus200Response.RequiredProperties = ["transfer_status", "response_id"];
+GetStorageTransferStatus200Response.RequiredProperties = ["transfer_status"];
 
 /**
  * @member {module:model/TransferStatus} transfer_status
  */
 GetStorageTransferStatus200Response.prototype['transfer_status'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetStorageTransferStatus200Response.prototype['response_id'] = undefined;
 
 
 

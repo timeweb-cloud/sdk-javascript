@@ -24,11 +24,10 @@ class CreateBalancer200Response {
      * Constructs a new <code>CreateBalancer200Response</code>.
      * @alias module:model/CreateBalancer200Response
      * @param balancer {module:model/Balancer} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(balancer, responseId) { 
+    constructor(balancer) { 
         
-        CreateBalancer200Response.initialize(this, balancer, responseId);
+        CreateBalancer200Response.initialize(this, balancer);
     }
 
     /**
@@ -36,9 +35,8 @@ class CreateBalancer200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, balancer, responseId) { 
+    static initialize(obj, balancer) { 
         obj['balancer'] = balancer;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class CreateBalancer200Response {
 
             if (data.hasOwnProperty('balancer')) {
                 obj['balancer'] = Balancer.constructFromObject(data['balancer']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class CreateBalancer200Response {
         if (data['balancer']) { // data not null
           Balancer.validateJSON(data['balancer']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class CreateBalancer200Response {
 
 }
 
-CreateBalancer200Response.RequiredProperties = ["balancer", "response_id"];
+CreateBalancer200Response.RequiredProperties = ["balancer"];
 
 /**
  * @member {module:model/Balancer} balancer
  */
 CreateBalancer200Response.prototype['balancer'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-CreateBalancer200Response.prototype['response_id'] = undefined;
 
 
 

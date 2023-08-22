@@ -26,11 +26,10 @@ class GetTLDs200Response {
      * @alias module:model/GetTLDs200Response
      * @param meta {module:model/Meta} 
      * @param topLevelDomains {Array.<module:model/TopLevelDomain>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, topLevelDomains, responseId) { 
+    constructor(meta, topLevelDomains) { 
         
-        GetTLDs200Response.initialize(this, meta, topLevelDomains, responseId);
+        GetTLDs200Response.initialize(this, meta, topLevelDomains);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetTLDs200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, topLevelDomains, responseId) { 
+    static initialize(obj, meta, topLevelDomains) { 
         obj['meta'] = meta;
         obj['top_level_domains'] = topLevelDomains;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetTLDs200Response {
             }
             if (data.hasOwnProperty('top_level_domains')) {
                 obj['top_level_domains'] = ApiClient.convertToType(data['top_level_domains'], [TopLevelDomain]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetTLDs200Response {
                 TopLevelDomain.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetTLDs200Response {
 
 }
 
-GetTLDs200Response.RequiredProperties = ["meta", "top_level_domains", "response_id"];
+GetTLDs200Response.RequiredProperties = ["meta", "top_level_domains"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetTLDs200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/TopLevelDomain>} top_level_domains
  */
 GetTLDs200Response.prototype['top_level_domains'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetTLDs200Response.prototype['response_id'] = undefined;
 
 
 

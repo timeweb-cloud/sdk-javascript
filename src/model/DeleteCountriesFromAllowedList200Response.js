@@ -24,11 +24,10 @@ class DeleteCountriesFromAllowedList200Response {
      * Constructs a new <code>DeleteCountriesFromAllowedList200Response</code>.
      * @alias module:model/DeleteCountriesFromAllowedList200Response
      * @param countries {module:model/RemoveCountries} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(countries, responseId) { 
+    constructor(countries) { 
         
-        DeleteCountriesFromAllowedList200Response.initialize(this, countries, responseId);
+        DeleteCountriesFromAllowedList200Response.initialize(this, countries);
     }
 
     /**
@@ -36,9 +35,8 @@ class DeleteCountriesFromAllowedList200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, countries, responseId) { 
+    static initialize(obj, countries) { 
         obj['countries'] = countries;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -54,9 +52,6 @@ class DeleteCountriesFromAllowedList200Response {
 
             if (data.hasOwnProperty('countries')) {
                 obj['countries'] = RemoveCountries.constructFromObject(data['countries']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -78,10 +73,6 @@ class DeleteCountriesFromAllowedList200Response {
         if (data['countries']) { // data not null
           RemoveCountries.validateJSON(data['countries']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -89,18 +80,12 @@ class DeleteCountriesFromAllowedList200Response {
 
 }
 
-DeleteCountriesFromAllowedList200Response.RequiredProperties = ["countries", "response_id"];
+DeleteCountriesFromAllowedList200Response.RequiredProperties = ["countries"];
 
 /**
  * @member {module:model/RemoveCountries} countries
  */
 DeleteCountriesFromAllowedList200Response.prototype['countries'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-DeleteCountriesFromAllowedList200Response.prototype['response_id'] = undefined;
 
 
 

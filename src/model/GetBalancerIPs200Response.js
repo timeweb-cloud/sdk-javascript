@@ -25,11 +25,10 @@ class GetBalancerIPs200Response {
      * @alias module:model/GetBalancerIPs200Response
      * @param meta {module:model/Meta} 
      * @param ips {Array.<String>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, ips, responseId) { 
+    constructor(meta, ips) { 
         
-        GetBalancerIPs200Response.initialize(this, meta, ips, responseId);
+        GetBalancerIPs200Response.initialize(this, meta, ips);
     }
 
     /**
@@ -37,10 +36,9 @@ class GetBalancerIPs200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, ips, responseId) { 
+    static initialize(obj, meta, ips) { 
         obj['meta'] = meta;
         obj['ips'] = ips;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -59,9 +57,6 @@ class GetBalancerIPs200Response {
             }
             if (data.hasOwnProperty('ips')) {
                 obj['ips'] = ApiClient.convertToType(data['ips'], ['String']);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -87,10 +82,6 @@ class GetBalancerIPs200Response {
         if (!Array.isArray(data['ips'])) {
             throw new Error("Expected the field `ips` to be an array in the JSON data but got " + data['ips']);
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -98,7 +89,7 @@ class GetBalancerIPs200Response {
 
 }
 
-GetBalancerIPs200Response.RequiredProperties = ["meta", "ips", "response_id"];
+GetBalancerIPs200Response.RequiredProperties = ["meta", "ips"];
 
 /**
  * @member {module:model/Meta} meta
@@ -109,12 +100,6 @@ GetBalancerIPs200Response.prototype['meta'] = undefined;
  * @member {Array.<String>} ips
  */
 GetBalancerIPs200Response.prototype['ips'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetBalancerIPs200Response.prototype['response_id'] = undefined;
 
 
 

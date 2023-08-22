@@ -26,11 +26,10 @@ class GetVPCs200Response {
      * @alias module:model/GetVPCs200Response
      * @param meta {module:model/Meta} 
      * @param vpcs {Array.<module:model/Vpc>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, vpcs, responseId) { 
+    constructor(meta, vpcs) { 
         
-        GetVPCs200Response.initialize(this, meta, vpcs, responseId);
+        GetVPCs200Response.initialize(this, meta, vpcs);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetVPCs200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, vpcs, responseId) { 
+    static initialize(obj, meta, vpcs) { 
         obj['meta'] = meta;
         obj['vpcs'] = vpcs;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetVPCs200Response {
             }
             if (data.hasOwnProperty('vpcs')) {
                 obj['vpcs'] = ApiClient.convertToType(data['vpcs'], [Vpc]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetVPCs200Response {
                 Vpc.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetVPCs200Response {
 
 }
 
-GetVPCs200Response.RequiredProperties = ["meta", "vpcs", "response_id"];
+GetVPCs200Response.RequiredProperties = ["meta", "vpcs"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetVPCs200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/Vpc>} vpcs
  */
 GetVPCs200Response.prototype['vpcs'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetVPCs200Response.prototype['response_id'] = undefined;
 
 
 

@@ -26,11 +26,10 @@ class GetDomainNameServers200Response {
      * @alias module:model/GetDomainNameServers200Response
      * @param meta {module:model/Meta} 
      * @param nameServers {Array.<module:model/DomainNameServer>} 
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(meta, nameServers, responseId) { 
+    constructor(meta, nameServers) { 
         
-        GetDomainNameServers200Response.initialize(this, meta, nameServers, responseId);
+        GetDomainNameServers200Response.initialize(this, meta, nameServers);
     }
 
     /**
@@ -38,10 +37,9 @@ class GetDomainNameServers200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, nameServers, responseId) { 
+    static initialize(obj, meta, nameServers) { 
         obj['meta'] = meta;
         obj['name_servers'] = nameServers;
-        obj['response_id'] = responseId;
     }
 
     /**
@@ -60,9 +58,6 @@ class GetDomainNameServers200Response {
             }
             if (data.hasOwnProperty('name_servers')) {
                 obj['name_servers'] = ApiClient.convertToType(data['name_servers'], [DomainNameServer]);
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
         }
         return obj;
@@ -94,10 +89,6 @@ class GetDomainNameServers200Response {
                 DomainNameServer.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
 
         return true;
     }
@@ -105,7 +96,7 @@ class GetDomainNameServers200Response {
 
 }
 
-GetDomainNameServers200Response.RequiredProperties = ["meta", "name_servers", "response_id"];
+GetDomainNameServers200Response.RequiredProperties = ["meta", "name_servers"];
 
 /**
  * @member {module:model/Meta} meta
@@ -116,12 +107,6 @@ GetDomainNameServers200Response.prototype['meta'] = undefined;
  * @member {Array.<module:model/DomainNameServer>} name_servers
  */
 GetDomainNameServers200Response.prototype['name_servers'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetDomainNameServers200Response.prototype['response_id'] = undefined;
 
 
 

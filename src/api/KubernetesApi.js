@@ -15,24 +15,24 @@
 import ApiClient from "../ApiClient";
 import ClusterEdit from '../model/ClusterEdit';
 import ClusterIn from '../model/ClusterIn';
-import CreateCluster201Response from '../model/CreateCluster201Response';
-import CreateClusterNodeGroup201Response from '../model/CreateClusterNodeGroup201Response';
+import ClusterResponse from '../model/ClusterResponse';
+import ClustersResponse from '../model/ClustersResponse';
 import DeleteCluster200Response from '../model/DeleteCluster200Response';
-import GetClusterNodeGroups200Response from '../model/GetClusterNodeGroups200Response';
-import GetClusterNodesFromGroup200Response from '../model/GetClusterNodesFromGroup200Response';
-import GetClusterResources200Response from '../model/GetClusterResources200Response';
-import GetClusters200Response from '../model/GetClusters200Response';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances403Response from '../model/GetFinances403Response';
 import GetFinances404Response from '../model/GetFinances404Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
-import GetK8SNetworkDrivers200Response from '../model/GetK8SNetworkDrivers200Response';
-import GetK8SVersions200Response from '../model/GetK8SVersions200Response';
-import GetKubernetesPresets200Response from '../model/GetKubernetesPresets200Response';
+import K8SVersionsResponse from '../model/K8SVersionsResponse';
+import NetworkDriversResponse from '../model/NetworkDriversResponse';
 import NodeCount from '../model/NodeCount';
 import NodeGroupIn from '../model/NodeGroupIn';
+import NodeGroupResponse from '../model/NodeGroupResponse';
+import NodeGroupsResponse from '../model/NodeGroupsResponse';
+import NodesResponse from '../model/NodesResponse';
+import PresetsResponse from '../model/PresetsResponse';
+import ResourcesResponse from '../model/ResourcesResponse';
 
 /**
 * Kubernetes service.
@@ -57,7 +57,7 @@ export default class KubernetesApi {
      * Callback function to receive the result of the createCluster operation.
      * @callback module:api/KubernetesApi~createClusterCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateCluster201Response} data The data returned by the service call.
+     * @param {module:model/ClusterResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -66,7 +66,7 @@ export default class KubernetesApi {
      * Чтобы создать кластер, отправьте POST-запрос на `/api/v1/k8s/clusters`.
      * @param {module:model/ClusterIn} clusterIn 
      * @param {module:api/KubernetesApi~createClusterCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateCluster201Response}
+     * data is of type: {@link module:model/ClusterResponse}
      */
     createCluster(clusterIn, callback) {
       let postBody = clusterIn;
@@ -87,7 +87,7 @@ export default class KubernetesApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = CreateCluster201Response;
+      let returnType = ClusterResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/clusters', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -99,7 +99,7 @@ export default class KubernetesApi {
      * Callback function to receive the result of the createClusterNodeGroup operation.
      * @callback module:api/KubernetesApi~createClusterNodeGroupCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateClusterNodeGroup201Response} data The data returned by the service call.
+     * @param {module:model/NodeGroupResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -109,7 +109,7 @@ export default class KubernetesApi {
      * @param {Number} clusterId Уникальный идентификатор кластера
      * @param {module:model/NodeGroupIn} nodeGroupIn 
      * @param {module:api/KubernetesApi~createClusterNodeGroupCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateClusterNodeGroup201Response}
+     * data is of type: {@link module:model/NodeGroupResponse}
      */
     createClusterNodeGroup(clusterId, nodeGroupIn, callback) {
       let postBody = nodeGroupIn;
@@ -135,7 +135,7 @@ export default class KubernetesApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = CreateClusterNodeGroup201Response;
+      let returnType = NodeGroupResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/clusters/{cluster_id}/groups', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -292,7 +292,7 @@ export default class KubernetesApi {
      * Callback function to receive the result of the getCluster operation.
      * @callback module:api/KubernetesApi~getClusterCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateCluster201Response} data The data returned by the service call.
+     * @param {module:model/ClusterResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -301,7 +301,7 @@ export default class KubernetesApi {
      * Чтобы получить информацию о кластере, отправьте GET-запрос в `/api/v1/k8s/clusters/{cluster_id}`
      * @param {Number} clusterId Уникальный идентификатор кластера
      * @param {module:api/KubernetesApi~getClusterCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateCluster201Response}
+     * data is of type: {@link module:model/ClusterResponse}
      */
     getCluster(clusterId, callback) {
       let postBody = null;
@@ -323,7 +323,7 @@ export default class KubernetesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = CreateCluster201Response;
+      let returnType = ClusterResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/clusters/{cluster_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -378,7 +378,7 @@ export default class KubernetesApi {
      * Callback function to receive the result of the getClusterNodeGroup operation.
      * @callback module:api/KubernetesApi~getClusterNodeGroupCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateClusterNodeGroup201Response} data The data returned by the service call.
+     * @param {module:model/NodeGroupResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -388,7 +388,7 @@ export default class KubernetesApi {
      * @param {Number} clusterId Уникальный идентификатор кластера
      * @param {Number} groupId Уникальный идентификатор группы
      * @param {module:api/KubernetesApi~getClusterNodeGroupCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateClusterNodeGroup201Response}
+     * data is of type: {@link module:model/NodeGroupResponse}
      */
     getClusterNodeGroup(clusterId, groupId, callback) {
       let postBody = null;
@@ -415,7 +415,7 @@ export default class KubernetesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = CreateClusterNodeGroup201Response;
+      let returnType = NodeGroupResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -427,7 +427,7 @@ export default class KubernetesApi {
      * Callback function to receive the result of the getClusterNodeGroups operation.
      * @callback module:api/KubernetesApi~getClusterNodeGroupsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetClusterNodeGroups200Response} data The data returned by the service call.
+     * @param {module:model/NodeGroupsResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -436,7 +436,7 @@ export default class KubernetesApi {
      * Чтобы получить группы нод кластера, отправьте GET-запрос в `/api/v1/k8s/clusters/{cluster_id}/groups`.
      * @param {Number} clusterId Уникальный идентификатор кластера
      * @param {module:api/KubernetesApi~getClusterNodeGroupsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetClusterNodeGroups200Response}
+     * data is of type: {@link module:model/NodeGroupsResponse}
      */
     getClusterNodeGroups(clusterId, callback) {
       let postBody = null;
@@ -458,7 +458,7 @@ export default class KubernetesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetClusterNodeGroups200Response;
+      let returnType = NodeGroupsResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/clusters/{cluster_id}/groups', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -470,7 +470,7 @@ export default class KubernetesApi {
      * Callback function to receive the result of the getClusterNodes operation.
      * @callback module:api/KubernetesApi~getClusterNodesCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetClusterNodesFromGroup200Response} data The data returned by the service call.
+     * @param {module:model/NodesResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -479,7 +479,7 @@ export default class KubernetesApi {
      * Чтобы получить список нод, отправьте GET-запрос в `/api/v1/k8s/clusters/{cluster_id}/nodes`.
      * @param {Number} clusterId Уникальный идентификатор кластера
      * @param {module:api/KubernetesApi~getClusterNodesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetClusterNodesFromGroup200Response}
+     * data is of type: {@link module:model/NodesResponse}
      */
     getClusterNodes(clusterId, callback) {
       let postBody = null;
@@ -501,7 +501,7 @@ export default class KubernetesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetClusterNodesFromGroup200Response;
+      let returnType = NodesResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/clusters/{cluster_id}/nodes', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -513,7 +513,7 @@ export default class KubernetesApi {
      * Callback function to receive the result of the getClusterNodesFromGroup operation.
      * @callback module:api/KubernetesApi~getClusterNodesFromGroupCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetClusterNodesFromGroup200Response} data The data returned by the service call.
+     * @param {module:model/NodesResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -526,7 +526,7 @@ export default class KubernetesApi {
      * @param {Number} [limit = 100)] Обозначает количество записей, которое необходимо вернуть.
      * @param {Number} [offset = 0)] Указывает на смещение, относительно начала списка.
      * @param {module:api/KubernetesApi~getClusterNodesFromGroupCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetClusterNodesFromGroup200Response}
+     * data is of type: {@link module:model/NodesResponse}
      */
     getClusterNodesFromGroup(clusterId, groupId, opts, callback) {
       opts = opts || {};
@@ -556,7 +556,7 @@ export default class KubernetesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetClusterNodesFromGroup200Response;
+      let returnType = NodesResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -568,7 +568,7 @@ export default class KubernetesApi {
      * Callback function to receive the result of the getClusterResources operation.
      * @callback module:api/KubernetesApi~getClusterResourcesCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetClusterResources200Response} data The data returned by the service call.
+     * @param {module:model/ResourcesResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -577,7 +577,7 @@ export default class KubernetesApi {
      * Чтобы получить ресурсы кластера, отправьте GET-запрос в `/api/v1/k8s/clusters/{cluster_id}/resources`.
      * @param {Number} clusterId Уникальный идентификатор кластера
      * @param {module:api/KubernetesApi~getClusterResourcesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetClusterResources200Response}
+     * data is of type: {@link module:model/ResourcesResponse}
      */
     getClusterResources(clusterId, callback) {
       let postBody = null;
@@ -599,7 +599,7 @@ export default class KubernetesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetClusterResources200Response;
+      let returnType = ResourcesResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/clusters/{cluster_id}/resources', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -611,7 +611,7 @@ export default class KubernetesApi {
      * Callback function to receive the result of the getClusters operation.
      * @callback module:api/KubernetesApi~getClustersCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetClusters200Response} data The data returned by the service call.
+     * @param {module:model/ClustersResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -622,7 +622,7 @@ export default class KubernetesApi {
      * @param {Number} [limit = 100)] Обозначает количество записей, которое необходимо вернуть.
      * @param {Number} [offset = 0)] Указывает на смещение относительно начала списка.
      * @param {module:api/KubernetesApi~getClustersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetClusters200Response}
+     * data is of type: {@link module:model/ClustersResponse}
      */
     getClusters(opts, callback) {
       opts = opts || {};
@@ -642,7 +642,7 @@ export default class KubernetesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetClusters200Response;
+      let returnType = ClustersResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/clusters', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -654,7 +654,7 @@ export default class KubernetesApi {
      * Callback function to receive the result of the getK8SNetworkDrivers operation.
      * @callback module:api/KubernetesApi~getK8SNetworkDriversCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetK8SNetworkDrivers200Response} data The data returned by the service call.
+     * @param {module:model/NetworkDriversResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -662,7 +662,7 @@ export default class KubernetesApi {
      * Получение списка сетевых драйверов k8s
      * Чтобы получить список сетевых драйверов k8s, отправьте GET-запрос в `/api/v1/k8s/network_drivers`.
      * @param {module:api/KubernetesApi~getK8SNetworkDriversCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetK8SNetworkDrivers200Response}
+     * data is of type: {@link module:model/NetworkDriversResponse}
      */
     getK8SNetworkDrivers(callback) {
       let postBody = null;
@@ -679,7 +679,7 @@ export default class KubernetesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetK8SNetworkDrivers200Response;
+      let returnType = NetworkDriversResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/network_drivers', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -691,7 +691,7 @@ export default class KubernetesApi {
      * Callback function to receive the result of the getK8SVersions operation.
      * @callback module:api/KubernetesApi~getK8SVersionsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetK8SVersions200Response} data The data returned by the service call.
+     * @param {module:model/K8SVersionsResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -699,7 +699,7 @@ export default class KubernetesApi {
      * Получение списка версий k8s
      * Чтобы получить список версий k8s, отправьте GET-запрос в `/api/v1/k8s/k8s_versions`.
      * @param {module:api/KubernetesApi~getK8SVersionsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetK8SVersions200Response}
+     * data is of type: {@link module:model/K8SVersionsResponse}
      */
     getK8SVersions(callback) {
       let postBody = null;
@@ -716,7 +716,7 @@ export default class KubernetesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetK8SVersions200Response;
+      let returnType = K8SVersionsResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/k8s_versions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -728,7 +728,7 @@ export default class KubernetesApi {
      * Callback function to receive the result of the getKubernetesPresets operation.
      * @callback module:api/KubernetesApi~getKubernetesPresetsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetKubernetesPresets200Response} data The data returned by the service call.
+     * @param {module:model/PresetsResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -736,7 +736,7 @@ export default class KubernetesApi {
      * Получение списка тарифов
      * Чтобы получить список тарифов, отправьте GET-запрос в `/api/v1/presets/k8s`.
      * @param {module:api/KubernetesApi~getKubernetesPresetsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetKubernetesPresets200Response}
+     * data is of type: {@link module:model/PresetsResponse}
      */
     getKubernetesPresets(callback) {
       let postBody = null;
@@ -753,7 +753,7 @@ export default class KubernetesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetKubernetesPresets200Response;
+      let returnType = PresetsResponse;
       return this.apiClient.callApi(
         '/api/v1/presets/k8s', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -765,7 +765,7 @@ export default class KubernetesApi {
      * Callback function to receive the result of the increaseCountOfNodesInGroup operation.
      * @callback module:api/KubernetesApi~increaseCountOfNodesInGroupCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetClusterNodesFromGroup200Response} data The data returned by the service call.
+     * @param {module:model/NodesResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -776,7 +776,7 @@ export default class KubernetesApi {
      * @param {Number} groupId Уникальный идентификатор группы
      * @param {module:model/NodeCount} nodeCount 
      * @param {module:api/KubernetesApi~increaseCountOfNodesInGroupCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetClusterNodesFromGroup200Response}
+     * data is of type: {@link module:model/NodesResponse}
      */
     increaseCountOfNodesInGroup(clusterId, groupId, nodeCount, callback) {
       let postBody = nodeCount;
@@ -807,7 +807,7 @@ export default class KubernetesApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = GetClusterNodesFromGroup200Response;
+      let returnType = NodesResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -872,7 +872,7 @@ export default class KubernetesApi {
      * Callback function to receive the result of the updateCluster operation.
      * @callback module:api/KubernetesApi~updateClusterCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateCluster201Response} data The data returned by the service call.
+     * @param {module:model/ClusterResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -882,7 +882,7 @@ export default class KubernetesApi {
      * @param {Number} clusterId Уникальный идентификатор кластера
      * @param {module:model/ClusterEdit} clusterEdit 
      * @param {module:api/KubernetesApi~updateClusterCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateCluster201Response}
+     * data is of type: {@link module:model/ClusterResponse}
      */
     updateCluster(clusterId, clusterEdit, callback) {
       let postBody = clusterEdit;
@@ -908,7 +908,7 @@ export default class KubernetesApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = CreateCluster201Response;
+      let returnType = ClusterResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/clusters/{cluster_id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
