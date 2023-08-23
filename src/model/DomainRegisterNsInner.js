@@ -14,22 +14,20 @@
 import ApiClient from '../ApiClient';
 
 /**
- * The Transfer model module.
- * @module model/Transfer
+ * The DomainRegisterNsInner model module.
+ * @module model/DomainRegisterNsInner
  * @version 1.0.0
  */
-class Transfer {
+class DomainRegisterNsInner {
     /**
-     * Constructs a new <code>Transfer</code>.
-     * Заявка на перенос домена
-     * @alias module:model/Transfer
-     * @param action {module:model/Transfer.ActionEnum} Тип создаваемой заявки.
-     * @param authCode {String} Код авторизации для переноса домена.
-     * @param fqdn {String} Полное имя домена.
+     * Constructs a new <code>DomainRegisterNsInner</code>.
+     * @alias module:model/DomainRegisterNsInner
+     * @param host {String} Хост name-сервера.
+     * @param ips {Array.<String>} Список IP-адресов name-сервера
      */
-    constructor(action, authCode, fqdn) { 
+    constructor(host, ips) { 
         
-        Transfer.initialize(this, action, authCode, fqdn);
+        DomainRegisterNsInner.initialize(this, host, ips);
     }
 
     /**
@@ -37,59 +35,51 @@ class Transfer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, action, authCode, fqdn) { 
-        obj['action'] = action;
-        obj['auth_code'] = authCode;
-        obj['fqdn'] = fqdn;
+    static initialize(obj, host, ips) { 
+        obj['host'] = host;
+        obj['ips'] = ips;
     }
 
     /**
-     * Constructs a <code>Transfer</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>DomainRegisterNsInner</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/Transfer} obj Optional instance to populate.
-     * @return {module:model/Transfer} The populated <code>Transfer</code> instance.
+     * @param {module:model/DomainRegisterNsInner} obj Optional instance to populate.
+     * @return {module:model/DomainRegisterNsInner} The populated <code>DomainRegisterNsInner</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new Transfer();
+            obj = obj || new DomainRegisterNsInner();
 
-            if (data.hasOwnProperty('action')) {
-                obj['action'] = ApiClient.convertToType(data['action'], 'String');
+            if (data.hasOwnProperty('host')) {
+                obj['host'] = ApiClient.convertToType(data['host'], 'String');
             }
-            if (data.hasOwnProperty('auth_code')) {
-                obj['auth_code'] = ApiClient.convertToType(data['auth_code'], 'String');
-            }
-            if (data.hasOwnProperty('fqdn')) {
-                obj['fqdn'] = ApiClient.convertToType(data['fqdn'], 'String');
+            if (data.hasOwnProperty('ips')) {
+                obj['ips'] = ApiClient.convertToType(data['ips'], ['String']);
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>Transfer</code>.
+     * Validates the JSON data with respect to <code>DomainRegisterNsInner</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Transfer</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DomainRegisterNsInner</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of Transfer.RequiredProperties) {
+        for (const property of DomainRegisterNsInner.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
-        if (data['action'] && !(typeof data['action'] === 'string' || data['action'] instanceof String)) {
-            throw new Error("Expected the field `action` to be a primitive type in the JSON string but got " + data['action']);
+        if (data['host'] && !(typeof data['host'] === 'string' || data['host'] instanceof String)) {
+            throw new Error("Expected the field `host` to be a primitive type in the JSON string but got " + data['host']);
         }
-        // ensure the json data is a string
-        if (data['auth_code'] && !(typeof data['auth_code'] === 'string' || data['auth_code'] instanceof String)) {
-            throw new Error("Expected the field `auth_code` to be a primitive type in the JSON string but got " + data['auth_code']);
-        }
-        // ensure the json data is a string
-        if (data['fqdn'] && !(typeof data['fqdn'] === 'string' || data['fqdn'] instanceof String)) {
-            throw new Error("Expected the field `fqdn` to be a primitive type in the JSON string but got " + data['fqdn']);
+        // ensure the json data is an array
+        if (!Array.isArray(data['ips'])) {
+            throw new Error("Expected the field `ips` to be an array in the JSON data but got " + data['ips']);
         }
 
         return true;
@@ -98,45 +88,24 @@ class Transfer {
 
 }
 
-Transfer.RequiredProperties = ["action", "auth_code", "fqdn"];
+DomainRegisterNsInner.RequiredProperties = ["host", "ips"];
 
 /**
- * Тип создаваемой заявки.
- * @member {module:model/Transfer.ActionEnum} action
+ * Хост name-сервера.
+ * @member {String} host
  */
-Transfer.prototype['action'] = undefined;
+DomainRegisterNsInner.prototype['host'] = undefined;
 
 /**
- * Код авторизации для переноса домена.
- * @member {String} auth_code
+ * Список IP-адресов name-сервера
+ * @member {Array.<String>} ips
  */
-Transfer.prototype['auth_code'] = undefined;
-
-/**
- * Полное имя домена.
- * @member {String} fqdn
- */
-Transfer.prototype['fqdn'] = undefined;
+DomainRegisterNsInner.prototype['ips'] = undefined;
 
 
 
 
 
-/**
- * Allowed values for the <code>action</code> property.
- * @enum {String}
- * @readonly
- */
-Transfer['ActionEnum'] = {
 
-    /**
-     * value: "transfer"
-     * @const
-     */
-    "transfer": "transfer"
-};
-
-
-
-export default Transfer;
+export default DomainRegisterNsInner;
 

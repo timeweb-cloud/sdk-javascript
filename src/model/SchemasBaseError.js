@@ -119,9 +119,8 @@ SchemasBaseError.prototype['message'] = undefined;
 
 /**
  * @member {String} response_id
- * @default '9c38a13d-ef14-45c7-a23a-1429f6a03824'
  */
-SchemasBaseError.prototype['response_id'] = '9c38a13d-ef14-45c7-a23a-1429f6a03824';
+SchemasBaseError.prototype['response_id'] = undefined;
 
 
 

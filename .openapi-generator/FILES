@@ -129,7 +129,11 @@ docs/DomainNameServer.md
 docs/DomainNameServerItemsInner.md
 docs/DomainPaymentPeriod.md
 docs/DomainPrimeType.md
+docs/DomainProlong.md
+docs/DomainRegister.md
+docs/DomainRegisterNsInner.md
 docs/DomainRequest.md
+docs/DomainTransfer.md
 docs/DomainsApi.md
 docs/EditApiKey.md
 docs/Finances.md
@@ -270,11 +274,8 @@ docs/PresetsStorage.md
 docs/Project.md
 docs/ProjectResource.md
 docs/ProjectsApi.md
-docs/Prolong.md
 docs/Quota.md
 docs/RefreshApiKey.md
-docs/Register.md
-docs/RegisterNsInner.md
 docs/RemoveCountries.md
 docs/RemoveIps.md
 docs/RenameStorageFileRequest.md
@@ -312,7 +313,6 @@ docs/StatusCompanyInfo.md
 docs/Subdomain.md
 docs/TopLevelDomain.md
 docs/TopLevelDomainAllowedBuyPeriodsInner.md
-docs/Transfer.md
 docs/TransferStatus.md
 docs/TransferStatusErrorsInner.md
 docs/TransferStorageRequest.md
@@ -506,7 +506,11 @@ src/model/DomainNameServer.js
 src/model/DomainNameServerItemsInner.js
 src/model/DomainPaymentPeriod.js
 src/model/DomainPrimeType.js
+src/model/DomainProlong.js
+src/model/DomainRegister.js
+src/model/DomainRegisterNsInner.js
 src/model/DomainRequest.js
+src/model/DomainTransfer.js
 src/model/EditApiKey.js
 src/model/Finances.js
 src/model/FirewallGroupInAPI.js
@@ -641,11 +645,8 @@ src/model/PresetsResponse.js
 src/model/PresetsStorage.js
 src/model/Project.js
 src/model/ProjectResource.js
-src/model/Prolong.js
 src/model/Quota.js
 src/model/RefreshApiKey.js
-src/model/Register.js
-src/model/RegisterNsInner.js
 src/model/RemoveCountries.js
 src/model/RemoveIps.js
 src/model/RenameStorageFileRequest.js
@@ -680,7 +681,6 @@ src/model/StatusCompanyInfo.js
 src/model/Subdomain.js
 src/model/TopLevelDomain.js
 src/model/TopLevelDomainAllowedBuyPeriodsInner.js
-src/model/Transfer.js
 src/model/TransferStatus.js
 src/model/TransferStatusErrorsInner.js
 src/model/TransferStorageRequest.js
@@ -868,7 +868,11 @@ test/model/DomainNameServer.spec.js
 test/model/DomainNameServerItemsInner.spec.js
 test/model/DomainPaymentPeriod.spec.js
 test/model/DomainPrimeType.spec.js
+test/model/DomainProlong.spec.js
+test/model/DomainRegister.spec.js
+test/model/DomainRegisterNsInner.spec.js
 test/model/DomainRequest.spec.js
+test/model/DomainTransfer.spec.js
 test/model/EditApiKey.spec.js
 test/model/Finances.spec.js
 test/model/FirewallGroupInAPI.spec.js
@@ -1003,11 +1007,8 @@ test/model/PresetsResponse.spec.js
 test/model/PresetsStorage.spec.js
 test/model/Project.spec.js
 test/model/ProjectResource.spec.js
-test/model/Prolong.spec.js
 test/model/Quota.spec.js
 test/model/RefreshApiKey.spec.js
-test/model/Register.spec.js
-test/model/RegisterNsInner.spec.js
 test/model/RemoveCountries.spec.js
 test/model/RemoveIps.spec.js
 test/model/RenameStorageFileRequest.spec.js
@@ -1042,7 +1043,6 @@ test/model/StatusCompanyInfo.spec.js
 test/model/Subdomain.spec.js
 test/model/TopLevelDomain.spec.js
 test/model/TopLevelDomainAllowedBuyPeriodsInner.spec.js
-test/model/Transfer.spec.js
 test/model/TransferStatus.spec.js
 test/model/TransferStatusErrorsInner.spec.js
 test/model/TransferStorageRequest.spec.js

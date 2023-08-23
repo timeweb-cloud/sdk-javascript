@@ -134,7 +134,11 @@ import DomainNameServer from './model/DomainNameServer';
 import DomainNameServerItemsInner from './model/DomainNameServerItemsInner';
 import DomainPaymentPeriod from './model/DomainPaymentPeriod';
 import DomainPrimeType from './model/DomainPrimeType';
+import DomainProlong from './model/DomainProlong';
+import DomainRegister from './model/DomainRegister';
+import DomainRegisterNsInner from './model/DomainRegisterNsInner';
 import DomainRequest from './model/DomainRequest';
+import DomainTransfer from './model/DomainTransfer';
 import EditApiKey from './model/EditApiKey';
 import Finances from './model/Finances';
 import FirewallGroupInAPI from './model/FirewallGroupInAPI';
@@ -269,11 +273,8 @@ import PresetsResponse from './model/PresetsResponse';
 import PresetsStorage from './model/PresetsStorage';
 import Project from './model/Project';
 import ProjectResource from './model/ProjectResource';
-import Prolong from './model/Prolong';
 import Quota from './model/Quota';
 import RefreshApiKey from './model/RefreshApiKey';
-import Register from './model/Register';
-import RegisterNsInner from './model/RegisterNsInner';
 import RemoveCountries from './model/RemoveCountries';
 import RemoveIps from './model/RemoveIps';
 import RenameStorageFileRequest from './model/RenameStorageFileRequest';
@@ -308,7 +309,6 @@ import StatusCompanyInfo from './model/StatusCompanyInfo';
 import Subdomain from './model/Subdomain';
 import TopLevelDomain from './model/TopLevelDomain';
 import TopLevelDomainAllowedBuyPeriodsInner from './model/TopLevelDomainAllowedBuyPeriodsInner';
-import Transfer from './model/Transfer';
 import TransferStatus from './model/TransferStatus';
 import TransferStatusErrorsInner from './model/TransferStatusErrorsInner';
 import TransferStorageRequest from './model/TransferStorageRequest';
@@ -1142,10 +1142,34 @@ export {
     DomainPrimeType,
 
     /**
+     * The DomainProlong model constructor.
+     * @property {module:model/DomainProlong}
+     */
+    DomainProlong,
+
+    /**
+     * The DomainRegister model constructor.
+     * @property {module:model/DomainRegister}
+     */
+    DomainRegister,
+
+    /**
+     * The DomainRegisterNsInner model constructor.
+     * @property {module:model/DomainRegisterNsInner}
+     */
+    DomainRegisterNsInner,
+
+    /**
      * The DomainRequest model constructor.
      * @property {module:model/DomainRequest}
      */
     DomainRequest,
+
+    /**
+     * The DomainTransfer model constructor.
+     * @property {module:model/DomainTransfer}
+     */
+    DomainTransfer,
 
     /**
      * The EditApiKey model constructor.
@@ -1952,12 +1976,6 @@ export {
     ProjectResource,
 
     /**
-     * The Prolong model constructor.
-     * @property {module:model/Prolong}
-     */
-    Prolong,
-
-    /**
      * The Quota model constructor.
      * @property {module:model/Quota}
      */
@@ -1968,18 +1986,6 @@ export {
      * @property {module:model/RefreshApiKey}
      */
     RefreshApiKey,
-
-    /**
-     * The Register model constructor.
-     * @property {module:model/Register}
-     */
-    Register,
-
-    /**
-     * The RegisterNsInner model constructor.
-     * @property {module:model/RegisterNsInner}
-     */
-    RegisterNsInner,
 
     /**
      * The RemoveCountries model constructor.
@@ -2184,12 +2190,6 @@ export {
      * @property {module:model/TopLevelDomainAllowedBuyPeriodsInner}
      */
     TopLevelDomainAllowedBuyPeriodsInner,
-
-    /**
-     * The Transfer model constructor.
-     * @property {module:model/Transfer}
-     */
-    Transfer,
 
     /**
      * The TransferStatus model constructor.

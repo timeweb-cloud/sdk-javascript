@@ -144,9 +144,8 @@ ClusterIn.prototype['name'] = undefined;
 /**
  * Описание кластера
  * @member {String} description
- * @default ''
  */
-ClusterIn.prototype['description'] = '';
+ClusterIn.prototype['description'] = undefined;
 
 /**
  * Описание появится позднее

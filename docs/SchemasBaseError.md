@@ -7,6 +7,6 @@ Name | Type | Description | Notes
 **statusCode** | **Number** |  | 
 **errorCode** | **String** |  | 
 **message** | **String** |  | 
-**responseId** | **String** |  | [optional] [default to &#39;9c38a13d-ef14-45c7-a23a-1429f6a03824&#39;]
+**responseId** | **String** |  | [optional] 
 
 

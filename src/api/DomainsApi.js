@@ -19,6 +19,7 @@ import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Res
 import CreateDns from '../model/CreateDns';
 import CreateDomainDNSRecord201Response from '../model/CreateDomainDNSRecord201Response';
 import CreateDomainRequest201Response from '../model/CreateDomainRequest201Response';
+import DomainRegister from '../model/DomainRegister';
 import GetDomain200Response from '../model/GetDomain200Response';
 import GetDomainDNSRecords200Response from '../model/GetDomainDNSRecords200Response';
 import GetDomainNameServers200Response from '../model/GetDomainNameServers200Response';
@@ -31,7 +32,6 @@ import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetTLD200Response from '../model/GetTLD200Response';
 import GetTLDs200Response from '../model/GetTLDs200Response';
-import Register from '../model/Register';
 import UpdateDomain from '../model/UpdateDomain';
 import UpdateDomainAutoProlongation200Response from '../model/UpdateDomainAutoProlongation200Response';
 import UpdateDomainNameServers from '../model/UpdateDomainNameServers';
@@ -249,15 +249,15 @@ export default class DomainsApi {
     /**
      * Создание заявки на регистрацию/продление/трансфер домена
      * Чтобы создать заявку на регистрацию/продление/трансфер домена, отправьте POST-запрос в `api/v1/domains-requests`, задав необходимые атрибуты.  Заявка будет создана с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданной заявке.
-     * @param {module:model/Register} register 
+     * @param {module:model/DomainRegister} domainRegister 
      * @param {module:api/DomainsApi~createDomainRequestCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateDomainRequest201Response}
      */
-    createDomainRequest(register, callback) {
-      let postBody = register;
-      // verify the required parameter 'register' is set
-      if (register === undefined || register === null) {
-        throw new Error("Missing the required parameter 'register' when calling createDomainRequest");
+    createDomainRequest(domainRegister, callback) {
+      let postBody = domainRegister;
+      // verify the required parameter 'domainRegister' is set
+      if (domainRegister === undefined || domainRegister === null) {
+        throw new Error("Missing the required parameter 'domainRegister' when calling createDomainRequest");
       }
 
       let pathParams = {

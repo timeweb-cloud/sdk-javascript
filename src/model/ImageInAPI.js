@@ -101,16 +101,14 @@ class ImageInAPI {
 /**
  * Имя образа
  * @member {String} name
- * @default ''
  */
-ImageInAPI.prototype['name'] = '';
+ImageInAPI.prototype['name'] = undefined;
 
 /**
  * Описание образа
  * @member {String} description
- * @default ''
  */
-ImageInAPI.prototype['description'] = '';
+ImageInAPI.prototype['description'] = undefined;
 
 /**
  * Идентификатор диска, для которого создается образ

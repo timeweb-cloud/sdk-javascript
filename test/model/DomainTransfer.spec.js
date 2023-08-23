@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.RegisterNsInner();
+    instance = new TimewebCloudApi.DomainTransfer();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,22 +47,28 @@
       object[property] = value;
   }
 
-  describe('RegisterNsInner', function() {
-    it('should create an instance of RegisterNsInner', function() {
-      // uncomment below and update the code to test RegisterNsInner
-      //var instance = new TimewebCloudApi.RegisterNsInner();
-      //expect(instance).to.be.a(TimewebCloudApi.RegisterNsInner);
+  describe('DomainTransfer', function() {
+    it('should create an instance of DomainTransfer', function() {
+      // uncomment below and update the code to test DomainTransfer
+      //var instance = new TimewebCloudApi.DomainTransfer();
+      //expect(instance).to.be.a(TimewebCloudApi.DomainTransfer);
     });
 
-    it('should have the property host (base name: "host")', function() {
-      // uncomment below and update the code to test the property host
-      //var instance = new TimewebCloudApi.RegisterNsInner();
+    it('should have the property action (base name: "action")', function() {
+      // uncomment below and update the code to test the property action
+      //var instance = new TimewebCloudApi.DomainTransfer();
       //expect(instance).to.be();
     });
 
-    it('should have the property ips (base name: "ips")', function() {
-      // uncomment below and update the code to test the property ips
-      //var instance = new TimewebCloudApi.RegisterNsInner();
+    it('should have the property authCode (base name: "auth_code")', function() {
+      // uncomment below and update the code to test the property authCode
+      //var instance = new TimewebCloudApi.DomainTransfer();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fqdn (base name: "fqdn")', function() {
+      // uncomment below and update the code to test the property fqdn
+      //var instance = new TimewebCloudApi.DomainTransfer();
       //expect(instance).to.be();
     });
 

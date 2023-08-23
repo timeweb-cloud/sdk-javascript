@@ -12,22 +12,25 @@
  */
 
 import ApiClient from '../ApiClient';
+import DomainPaymentPeriod from './DomainPaymentPeriod';
+import DomainPrimeType from './DomainPrimeType';
 
 /**
- * The RegisterNsInner model module.
- * @module model/RegisterNsInner
+ * The DomainProlong model module.
+ * @module model/DomainProlong
  * @version 1.0.0
  */
-class RegisterNsInner {
+class DomainProlong {
     /**
-     * Constructs a new <code>RegisterNsInner</code>.
-     * @alias module:model/RegisterNsInner
-     * @param host {String} Хост name-сервера.
-     * @param ips {Array.<String>} Список IP-адресов name-сервера
+     * Constructs a new <code>DomainProlong</code>.
+     * Заявка на продление домена
+     * @alias module:model/DomainProlong
+     * @param action {module:model/DomainProlong.ActionEnum} Тип создаваемой заявки.
+     * @param fqdn {String} Полное имя домена.
      */
-    constructor(host, ips) { 
+    constructor(action, fqdn) { 
         
-        RegisterNsInner.initialize(this, host, ips);
+        DomainProlong.initialize(this, action, fqdn);
     }
 
     /**
@@ -35,51 +38,69 @@ class RegisterNsInner {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, host, ips) { 
-        obj['host'] = host;
-        obj['ips'] = ips;
+    static initialize(obj, action, fqdn) { 
+        obj['action'] = action;
+        obj['fqdn'] = fqdn;
     }
 
     /**
-     * Constructs a <code>RegisterNsInner</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>DomainProlong</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/RegisterNsInner} obj Optional instance to populate.
-     * @return {module:model/RegisterNsInner} The populated <code>RegisterNsInner</code> instance.
+     * @param {module:model/DomainProlong} obj Optional instance to populate.
+     * @return {module:model/DomainProlong} The populated <code>DomainProlong</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new RegisterNsInner();
+            obj = obj || new DomainProlong();
 
-            if (data.hasOwnProperty('host')) {
-                obj['host'] = ApiClient.convertToType(data['host'], 'String');
+            if (data.hasOwnProperty('action')) {
+                obj['action'] = ApiClient.convertToType(data['action'], 'String');
             }
-            if (data.hasOwnProperty('ips')) {
-                obj['ips'] = ApiClient.convertToType(data['ips'], ['String']);
+            if (data.hasOwnProperty('fqdn')) {
+                obj['fqdn'] = ApiClient.convertToType(data['fqdn'], 'String');
+            }
+            if (data.hasOwnProperty('is_antispam_enabled')) {
+                obj['is_antispam_enabled'] = ApiClient.convertToType(data['is_antispam_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_autoprolong_enabled')) {
+                obj['is_autoprolong_enabled'] = ApiClient.convertToType(data['is_autoprolong_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_whois_privacy_enabled')) {
+                obj['is_whois_privacy_enabled'] = ApiClient.convertToType(data['is_whois_privacy_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('period')) {
+                obj['period'] = DomainPaymentPeriod.constructFromObject(data['period']);
+            }
+            if (data.hasOwnProperty('person_id')) {
+                obj['person_id'] = ApiClient.convertToType(data['person_id'], 'Number');
+            }
+            if (data.hasOwnProperty('prime')) {
+                obj['prime'] = DomainPrimeType.constructFromObject(data['prime']);
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>RegisterNsInner</code>.
+     * Validates the JSON data with respect to <code>DomainProlong</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>RegisterNsInner</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DomainProlong</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of RegisterNsInner.RequiredProperties) {
+        for (const property of DomainProlong.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
-        if (data['host'] && !(typeof data['host'] === 'string' || data['host'] instanceof String)) {
-            throw new Error("Expected the field `host` to be a primitive type in the JSON string but got " + data['host']);
+        if (data['action'] && !(typeof data['action'] === 'string' || data['action'] instanceof String)) {
+            throw new Error("Expected the field `action` to be a primitive type in the JSON string but got " + data['action']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['ips'])) {
-            throw new Error("Expected the field `ips` to be an array in the JSON data but got " + data['ips']);
+        // ensure the json data is a string
+        if (data['fqdn'] && !(typeof data['fqdn'] === 'string' || data['fqdn'] instanceof String)) {
+            throw new Error("Expected the field `fqdn` to be a primitive type in the JSON string but got " + data['fqdn']);
         }
 
         return true;
@@ -88,24 +109,73 @@ class RegisterNsInner {
 
 }
 
-RegisterNsInner.RequiredProperties = ["host", "ips"];
+DomainProlong.RequiredProperties = ["action", "fqdn"];
 
 /**
- * Хост name-сервера.
- * @member {String} host
+ * Тип создаваемой заявки.
+ * @member {module:model/DomainProlong.ActionEnum} action
  */
-RegisterNsInner.prototype['host'] = undefined;
+DomainProlong.prototype['action'] = undefined;
 
 /**
- * Список IP-адресов name-сервера
- * @member {Array.<String>} ips
+ * Полное имя домена.
+ * @member {String} fqdn
  */
-RegisterNsInner.prototype['ips'] = undefined;
+DomainProlong.prototype['fqdn'] = undefined;
+
+/**
+ * Это логическое значение, которое показывает включена ли услуга \"Антиспам\" для домена
+ * @member {Boolean} is_antispam_enabled
+ */
+DomainProlong.prototype['is_antispam_enabled'] = undefined;
+
+/**
+ * Это логическое значение, которое показывает, включено ли автопродление домена.
+ * @member {Boolean} is_autoprolong_enabled
+ */
+DomainProlong.prototype['is_autoprolong_enabled'] = undefined;
+
+/**
+ * Это логическое значение, которое показывает, включено ли скрытие данных администратора домена для whois. Опция недоступна для доменов в зонах .ru и .рф.
+ * @member {Boolean} is_whois_privacy_enabled
+ */
+DomainProlong.prototype['is_whois_privacy_enabled'] = undefined;
+
+/**
+ * @member {module:model/DomainPaymentPeriod} period
+ */
+DomainProlong.prototype['period'] = undefined;
+
+/**
+ * Идентификатор администратора, на которого зарегистрирован домен.
+ * @member {Number} person_id
+ */
+DomainProlong.prototype['person_id'] = undefined;
+
+/**
+ * @member {module:model/DomainPrimeType} prime
+ */
+DomainProlong.prototype['prime'] = undefined;
 
 
 
 
 
+/**
+ * Allowed values for the <code>action</code> property.
+ * @enum {String}
+ * @readonly
+ */
+DomainProlong['ActionEnum'] = {
 
-export default RegisterNsInner;
+    /**
+     * value: "prolong"
+     * @const
+     */
+    "prolong": "prolong"
+};
+
+
+
+export default DomainProlong;
 

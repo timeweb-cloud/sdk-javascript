@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.Transfer();
+    instance = new TimewebCloudApi.DomainRegisterNsInner();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,28 +47,22 @@
       object[property] = value;
   }
 
-  describe('Transfer', function() {
-    it('should create an instance of Transfer', function() {
-      // uncomment below and update the code to test Transfer
-      //var instance = new TimewebCloudApi.Transfer();
-      //expect(instance).to.be.a(TimewebCloudApi.Transfer);
+  describe('DomainRegisterNsInner', function() {
+    it('should create an instance of DomainRegisterNsInner', function() {
+      // uncomment below and update the code to test DomainRegisterNsInner
+      //var instance = new TimewebCloudApi.DomainRegisterNsInner();
+      //expect(instance).to.be.a(TimewebCloudApi.DomainRegisterNsInner);
     });
 
-    it('should have the property action (base name: "action")', function() {
-      // uncomment below and update the code to test the property action
-      //var instance = new TimewebCloudApi.Transfer();
+    it('should have the property host (base name: "host")', function() {
+      // uncomment below and update the code to test the property host
+      //var instance = new TimewebCloudApi.DomainRegisterNsInner();
       //expect(instance).to.be();
     });
 
-    it('should have the property authCode (base name: "auth_code")', function() {
-      // uncomment below and update the code to test the property authCode
-      //var instance = new TimewebCloudApi.Transfer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property fqdn (base name: "fqdn")', function() {
-      // uncomment below and update the code to test the property fqdn
-      //var instance = new TimewebCloudApi.Transfer();
+    it('should have the property ips (base name: "ips")', function() {
+      // uncomment below and update the code to test the property ips
+      //var instance = new TimewebCloudApi.DomainRegisterNsInner();
       //expect(instance).to.be();
     });
 

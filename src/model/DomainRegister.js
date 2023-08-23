@@ -13,25 +13,25 @@
 
 import ApiClient from '../ApiClient';
 import DomainPaymentPeriod from './DomainPaymentPeriod';
-import RegisterNsInner from './RegisterNsInner';
+import DomainRegisterNsInner from './DomainRegisterNsInner';
 
 /**
- * The Register model module.
- * @module model/Register
+ * The DomainRegister model module.
+ * @module model/DomainRegister
  * @version 1.0.0
  */
-class Register {
+class DomainRegister {
     /**
-     * Constructs a new <code>Register</code>.
+     * Constructs a new <code>DomainRegister</code>.
      * Заявка на регистрацию домена
-     * @alias module:model/Register
-     * @param action {module:model/Register.ActionEnum} Тип создаваемой заявки.
+     * @alias module:model/DomainRegister
+     * @param action {module:model/DomainRegister.ActionEnum} Тип создаваемой заявки.
      * @param fqdn {String} Полное имя домена.
      * @param personId {Number} Идентификатор администратора, на которого регистрируется домен.
      */
     constructor(action, fqdn, personId) { 
         
-        Register.initialize(this, action, fqdn, personId);
+        DomainRegister.initialize(this, action, fqdn, personId);
     }
 
     /**
@@ -46,15 +46,15 @@ class Register {
     }
 
     /**
-     * Constructs a <code>Register</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>DomainRegister</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/Register} obj Optional instance to populate.
-     * @return {module:model/Register} The populated <code>Register</code> instance.
+     * @param {module:model/DomainRegister} obj Optional instance to populate.
+     * @return {module:model/DomainRegister} The populated <code>DomainRegister</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new Register();
+            obj = obj || new DomainRegister();
 
             if (data.hasOwnProperty('action')) {
                 obj['action'] = ApiClient.convertToType(data['action'], 'String');
@@ -69,7 +69,7 @@ class Register {
                 obj['is_whois_privacy_enabled'] = ApiClient.convertToType(data['is_whois_privacy_enabled'], 'Boolean');
             }
             if (data.hasOwnProperty('ns')) {
-                obj['ns'] = ApiClient.convertToType(data['ns'], [RegisterNsInner]);
+                obj['ns'] = ApiClient.convertToType(data['ns'], [DomainRegisterNsInner]);
             }
             if (data.hasOwnProperty('period')) {
                 obj['period'] = DomainPaymentPeriod.constructFromObject(data['period']);
@@ -82,13 +82,13 @@ class Register {
     }
 
     /**
-     * Validates the JSON data with respect to <code>Register</code>.
+     * Validates the JSON data with respect to <code>DomainRegister</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Register</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DomainRegister</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of Register.RequiredProperties) {
+        for (const property of DomainRegister.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
@@ -108,7 +108,7 @@ class Register {
             }
             // validate the optional field `ns` (array)
             for (const item of data['ns']) {
-                RegisterNsInner.validateJSON(item);
+                DomainRegisterNsInner.validateJSON(item);
             };
         }
 
@@ -118,48 +118,48 @@ class Register {
 
 }
 
-Register.RequiredProperties = ["action", "fqdn", "person_id"];
+DomainRegister.RequiredProperties = ["action", "fqdn", "person_id"];
 
 /**
  * Тип создаваемой заявки.
- * @member {module:model/Register.ActionEnum} action
+ * @member {module:model/DomainRegister.ActionEnum} action
  */
-Register.prototype['action'] = undefined;
+DomainRegister.prototype['action'] = undefined;
 
 /**
  * Полное имя домена.
  * @member {String} fqdn
  */
-Register.prototype['fqdn'] = undefined;
+DomainRegister.prototype['fqdn'] = undefined;
 
 /**
  * Это логическое значение, которое показывает, включено ли автопродление домена.
  * @member {Boolean} is_autoprolong_enabled
  */
-Register.prototype['is_autoprolong_enabled'] = undefined;
+DomainRegister.prototype['is_autoprolong_enabled'] = undefined;
 
 /**
  * Это логическое значение, которое показывает, включено ли скрытие данных администратора домена для whois. Опция недоступна для доменов в зонах .ru и .рф.
  * @member {Boolean} is_whois_privacy_enabled
  */
-Register.prototype['is_whois_privacy_enabled'] = undefined;
+DomainRegister.prototype['is_whois_privacy_enabled'] = undefined;
 
 /**
  * Name-серверы для регистрации домена. Если не передавать этот параметр, будут использованы наши стандартные name-серверы. Нужно указать как минимум 2 name-сервера.
- * @member {Array.<module:model/RegisterNsInner>} ns
+ * @member {Array.<module:model/DomainRegisterNsInner>} ns
  */
-Register.prototype['ns'] = undefined;
+DomainRegister.prototype['ns'] = undefined;
 
 /**
  * @member {module:model/DomainPaymentPeriod} period
  */
-Register.prototype['period'] = undefined;
+DomainRegister.prototype['period'] = undefined;
 
 /**
  * Идентификатор администратора, на которого регистрируется домен.
  * @member {Number} person_id
  */
-Register.prototype['person_id'] = undefined;
+DomainRegister.prototype['person_id'] = undefined;
 
 
 
@@ -170,7 +170,7 @@ Register.prototype['person_id'] = undefined;
  * @enum {String}
  * @readonly
  */
-Register['ActionEnum'] = {
+DomainRegister['ActionEnum'] = {
 
     /**
      * value: "register"
@@ -181,5 +181,5 @@ Register['ActionEnum'] = {
 
 
 
-export default Register;
+export default DomainRegister;
 

@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.Prolong();
+    instance = new TimewebCloudApi.DomainProlong();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,58 +47,58 @@
       object[property] = value;
   }
 
-  describe('Prolong', function() {
-    it('should create an instance of Prolong', function() {
-      // uncomment below and update the code to test Prolong
-      //var instance = new TimewebCloudApi.Prolong();
-      //expect(instance).to.be.a(TimewebCloudApi.Prolong);
+  describe('DomainProlong', function() {
+    it('should create an instance of DomainProlong', function() {
+      // uncomment below and update the code to test DomainProlong
+      //var instance = new TimewebCloudApi.DomainProlong();
+      //expect(instance).to.be.a(TimewebCloudApi.DomainProlong);
     });
 
     it('should have the property action (base name: "action")', function() {
       // uncomment below and update the code to test the property action
-      //var instance = new TimewebCloudApi.Prolong();
+      //var instance = new TimewebCloudApi.DomainProlong();
       //expect(instance).to.be();
     });
 
     it('should have the property fqdn (base name: "fqdn")', function() {
       // uncomment below and update the code to test the property fqdn
-      //var instance = new TimewebCloudApi.Prolong();
+      //var instance = new TimewebCloudApi.DomainProlong();
       //expect(instance).to.be();
     });
 
     it('should have the property isAntispamEnabled (base name: "is_antispam_enabled")', function() {
       // uncomment below and update the code to test the property isAntispamEnabled
-      //var instance = new TimewebCloudApi.Prolong();
+      //var instance = new TimewebCloudApi.DomainProlong();
       //expect(instance).to.be();
     });
 
     it('should have the property isAutoprolongEnabled (base name: "is_autoprolong_enabled")', function() {
       // uncomment below and update the code to test the property isAutoprolongEnabled
-      //var instance = new TimewebCloudApi.Prolong();
+      //var instance = new TimewebCloudApi.DomainProlong();
       //expect(instance).to.be();
     });
 
     it('should have the property isWhoisPrivacyEnabled (base name: "is_whois_privacy_enabled")', function() {
       // uncomment below and update the code to test the property isWhoisPrivacyEnabled
-      //var instance = new TimewebCloudApi.Prolong();
+      //var instance = new TimewebCloudApi.DomainProlong();
       //expect(instance).to.be();
     });
 
     it('should have the property period (base name: "period")', function() {
       // uncomment below and update the code to test the property period
-      //var instance = new TimewebCloudApi.Prolong();
+      //var instance = new TimewebCloudApi.DomainProlong();
       //expect(instance).to.be();
     });
 
     it('should have the property personId (base name: "person_id")', function() {
       // uncomment below and update the code to test the property personId
-      //var instance = new TimewebCloudApi.Prolong();
+      //var instance = new TimewebCloudApi.DomainProlong();
       //expect(instance).to.be();
     });
 
     it('should have the property prime (base name: "prime")', function() {
       // uncomment below and update the code to test the property prime
-      //var instance = new TimewebCloudApi.Prolong();
+      //var instance = new TimewebCloudApi.DomainProlong();
       //expect(instance).to.be();
     });
 

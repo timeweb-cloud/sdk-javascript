@@ -11,171 +11,91 @@
  *
  */
 
-import ApiClient from '../ApiClient';
-import DomainPaymentPeriod from './DomainPaymentPeriod';
-import DomainPrimeType from './DomainPrimeType';
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', process.cwd()+'/src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.TimewebCloudApi);
+  }
+}(this, function(expect, TimewebCloudApi) {
+  'use strict';
 
-/**
- * The Prolong model module.
- * @module model/Prolong
- * @version 1.0.0
- */
-class Prolong {
-    /**
-     * Constructs a new <code>Prolong</code>.
-     * Заявка на продление домена
-     * @alias module:model/Prolong
-     * @param action {module:model/Prolong.ActionEnum} Тип создаваемой заявки.
-     * @param fqdn {String} Полное имя домена.
-     */
-    constructor(action, fqdn) { 
-        
-        Prolong.initialize(this, action, fqdn);
-    }
+  var instance;
 
-    /**
-     * Initializes the fields of this object.
-     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
-     * Only for internal use.
-     */
-    static initialize(obj, action, fqdn) { 
-        obj['action'] = action;
-        obj['fqdn'] = fqdn;
-    }
+  beforeEach(function() {
+    instance = new TimewebCloudApi.DomainRegister();
+  });
 
-    /**
-     * Constructs a <code>Prolong</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/Prolong} obj Optional instance to populate.
-     * @return {module:model/Prolong} The populated <code>Prolong</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new Prolong();
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
-            if (data.hasOwnProperty('action')) {
-                obj['action'] = ApiClient.convertToType(data['action'], 'String');
-            }
-            if (data.hasOwnProperty('fqdn')) {
-                obj['fqdn'] = ApiClient.convertToType(data['fqdn'], 'String');
-            }
-            if (data.hasOwnProperty('is_antispam_enabled')) {
-                obj['is_antispam_enabled'] = ApiClient.convertToType(data['is_antispam_enabled'], 'Boolean');
-            }
-            if (data.hasOwnProperty('is_autoprolong_enabled')) {
-                obj['is_autoprolong_enabled'] = ApiClient.convertToType(data['is_autoprolong_enabled'], 'Boolean');
-            }
-            if (data.hasOwnProperty('is_whois_privacy_enabled')) {
-                obj['is_whois_privacy_enabled'] = ApiClient.convertToType(data['is_whois_privacy_enabled'], 'Boolean');
-            }
-            if (data.hasOwnProperty('period')) {
-                obj['period'] = DomainPaymentPeriod.constructFromObject(data['period']);
-            }
-            if (data.hasOwnProperty('person_id')) {
-                obj['person_id'] = ApiClient.convertToType(data['person_id'], 'Number');
-            }
-            if (data.hasOwnProperty('prime')) {
-                obj['prime'] = DomainPrimeType.constructFromObject(data['prime']);
-            }
-        }
-        return obj;
-    }
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-    /**
-     * Validates the JSON data with respect to <code>Prolong</code>.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Prolong</code>.
-     */
-    static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of Prolong.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
-        // ensure the json data is a string
-        if (data['action'] && !(typeof data['action'] === 'string' || data['action'] instanceof String)) {
-            throw new Error("Expected the field `action` to be a primitive type in the JSON string but got " + data['action']);
-        }
-        // ensure the json data is a string
-        if (data['fqdn'] && !(typeof data['fqdn'] === 'string' || data['fqdn'] instanceof String)) {
-            throw new Error("Expected the field `fqdn` to be a primitive type in the JSON string but got " + data['fqdn']);
-        }
+  describe('DomainRegister', function() {
+    it('should create an instance of DomainRegister', function() {
+      // uncomment below and update the code to test DomainRegister
+      //var instance = new TimewebCloudApi.DomainRegister();
+      //expect(instance).to.be.a(TimewebCloudApi.DomainRegister);
+    });
 
-        return true;
-    }
+    it('should have the property action (base name: "action")', function() {
+      // uncomment below and update the code to test the property action
+      //var instance = new TimewebCloudApi.DomainRegister();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property fqdn (base name: "fqdn")', function() {
+      // uncomment below and update the code to test the property fqdn
+      //var instance = new TimewebCloudApi.DomainRegister();
+      //expect(instance).to.be();
+    });
 
-}
+    it('should have the property isAutoprolongEnabled (base name: "is_autoprolong_enabled")', function() {
+      // uncomment below and update the code to test the property isAutoprolongEnabled
+      //var instance = new TimewebCloudApi.DomainRegister();
+      //expect(instance).to.be();
+    });
 
-Prolong.RequiredProperties = ["action", "fqdn"];
+    it('should have the property isWhoisPrivacyEnabled (base name: "is_whois_privacy_enabled")', function() {
+      // uncomment below and update the code to test the property isWhoisPrivacyEnabled
+      //var instance = new TimewebCloudApi.DomainRegister();
+      //expect(instance).to.be();
+    });
 
-/**
- * Тип создаваемой заявки.
- * @member {module:model/Prolong.ActionEnum} action
- */
-Prolong.prototype['action'] = undefined;
+    it('should have the property ns (base name: "ns")', function() {
+      // uncomment below and update the code to test the property ns
+      //var instance = new TimewebCloudApi.DomainRegister();
+      //expect(instance).to.be();
+    });
 
-/**
- * Полное имя домена.
- * @member {String} fqdn
- */
-Prolong.prototype['fqdn'] = undefined;
+    it('should have the property period (base name: "period")', function() {
+      // uncomment below and update the code to test the property period
+      //var instance = new TimewebCloudApi.DomainRegister();
+      //expect(instance).to.be();
+    });
 
-/**
- * Это логическое значение, которое показывает включена ли услуга \"Антиспам\" для домена
- * @member {Boolean} is_antispam_enabled
- */
-Prolong.prototype['is_antispam_enabled'] = undefined;
+    it('should have the property personId (base name: "person_id")', function() {
+      // uncomment below and update the code to test the property personId
+      //var instance = new TimewebCloudApi.DomainRegister();
+      //expect(instance).to.be();
+    });
 
-/**
- * Это логическое значение, которое показывает, включено ли автопродление домена.
- * @member {Boolean} is_autoprolong_enabled
- */
-Prolong.prototype['is_autoprolong_enabled'] = undefined;
+  });
 
-/**
- * Это логическое значение, которое показывает, включено ли скрытие данных администратора домена для whois. Опция недоступна для доменов в зонах .ru и .рф.
- * @member {Boolean} is_whois_privacy_enabled
- */
-Prolong.prototype['is_whois_privacy_enabled'] = undefined;
-
-/**
- * @member {module:model/DomainPaymentPeriod} period
- */
-Prolong.prototype['period'] = undefined;
-
-/**
- * Идентификатор администратора, на которого зарегистрирован домен.
- * @member {Number} person_id
- */
-Prolong.prototype['person_id'] = undefined;
-
-/**
- * @member {module:model/DomainPrimeType} prime
- */
-Prolong.prototype['prime'] = undefined;
-
-
-
-
-
-/**
- * Allowed values for the <code>action</code> property.
- * @enum {String}
- * @readonly
- */
-Prolong['ActionEnum'] = {
-
-    /**
-     * value: "prolong"
-     * @const
-     */
-    "prolong": "prolong"
-};
-
-
-
-export default Prolong;
-
+}));

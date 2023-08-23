@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## createDomainRequest
 
-> CreateDomainRequest201Response createDomainRequest(register)
+> CreateDomainRequest201Response createDomainRequest(domainRegister)
 
 Создание заявки на регистрацию/продление/трансфер домена
 
@@ -246,8 +246,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DomainsApi();
-let register = new TimewebCloudApi.Register(); // Register | 
-apiInstance.createDomainRequest(register, (error, data, response) => {
+let domainRegister = new TimewebCloudApi.DomainRegister(); // DomainRegister | 
+apiInstance.createDomainRequest(domainRegister, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -261,7 +261,7 @@ apiInstance.createDomainRequest(register, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **register** | [**Register**](Register.md)|  | 
+ **domainRegister** | [**DomainRegister**](DomainRegister.md)|  | 
 
 ### Return type
 

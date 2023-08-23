@@ -1,4 +1,4 @@
-# TimewebCloudApi.Transfer
+# TimewebCloudApi.DomainTransfer
 
 ## Properties
 
