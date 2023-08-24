@@ -86,9 +86,6 @@ class UpdateBalancer {
             if (data.hasOwnProperty('rise')) {
                 obj['rise'] = ApiClient.convertToType(data['rise'], 'Number');
             }
-            if (data.hasOwnProperty('preset_id')) {
-                obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
-            }
         }
         return obj;
     }
@@ -201,12 +198,6 @@ UpdateBalancer.prototype['fall'] = undefined;
  * @member {Number} rise
  */
 UpdateBalancer.prototype['rise'] = undefined;
-
-/**
- * Идентификатор тарифа.
- * @member {Number} preset_id
- */
-UpdateBalancer.prototype['preset_id'] = undefined;
 
 
 

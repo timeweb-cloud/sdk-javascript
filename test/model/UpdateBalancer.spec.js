@@ -132,12 +132,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property presetId (base name: "preset_id")', function() {
-      // uncomment below and update the code to test the property presetId
-      //var instance = new TimewebCloudApi.UpdateBalancer();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));
