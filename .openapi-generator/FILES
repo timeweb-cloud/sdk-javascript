@@ -356,6 +356,7 @@ docs/Use.md
 docs/VPCApi.md
 docs/Vds.md
 docs/VdsDisksInner.md
+docs/VdsImage.md
 docs/VdsNetworksInner.md
 docs/VdsNetworksInnerIpsInner.md
 docs/VdsOs.md
@@ -723,6 +724,7 @@ src/model/UrlStatus.js
 src/model/Use.js
 src/model/Vds.js
 src/model/VdsDisksInner.js
+src/model/VdsImage.js
 src/model/VdsNetworksInner.js
 src/model/VdsNetworksInnerIpsInner.js
 src/model/VdsOs.js
@@ -1085,6 +1087,7 @@ test/model/UrlStatus.spec.js
 test/model/Use.spec.js
 test/model/Vds.spec.js
 test/model/VdsDisksInner.spec.js
+test/model/VdsImage.spec.js
 test/model/VdsNetworksInner.spec.js
 test/model/VdsNetworksInnerIpsInner.spec.js
 test/model/VdsOs.spec.js

@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.Vds();
+    instance = new TimewebCloudApi.VdsImage();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,142 +47,28 @@
       object[property] = value;
   }
 
-  describe('Vds', function() {
-    it('should create an instance of Vds', function() {
-      // uncomment below and update the code to test Vds
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be.a(TimewebCloudApi.Vds);
+  describe('VdsImage', function() {
+    it('should create an instance of VdsImage', function() {
+      // uncomment below and update the code to test VdsImage
+      //var instance = new TimewebCloudApi.VdsImage();
+      //expect(instance).to.be.a(TimewebCloudApi.VdsImage);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new TimewebCloudApi.Vds();
+      //var instance = new TimewebCloudApi.VdsImage();
       //expect(instance).to.be();
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new TimewebCloudApi.Vds();
+      //var instance = new TimewebCloudApi.VdsImage();
       //expect(instance).to.be();
     });
 
-    it('should have the property comment (base name: "comment")', function() {
-      // uncomment below and update the code to test the property comment
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property createdAt (base name: "created_at")', function() {
-      // uncomment below and update the code to test the property createdAt
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property os (base name: "os")', function() {
-      // uncomment below and update the code to test the property os
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property software (base name: "software")', function() {
-      // uncomment below and update the code to test the property software
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property presetId (base name: "preset_id")', function() {
-      // uncomment below and update the code to test the property presetId
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property location (base name: "location")', function() {
-      // uncomment below and update the code to test the property location
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property configuratorId (base name: "configurator_id")', function() {
-      // uncomment below and update the code to test the property configuratorId
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property bootMode (base name: "boot_mode")', function() {
-      // uncomment below and update the code to test the property bootMode
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property startAt (base name: "start_at")', function() {
-      // uncomment below and update the code to test the property startAt
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property isDdosGuard (base name: "is_ddos_guard")', function() {
-      // uncomment below and update the code to test the property isDdosGuard
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property cpu (base name: "cpu")', function() {
-      // uncomment below and update the code to test the property cpu
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property cpuFrequency (base name: "cpu_frequency")', function() {
-      // uncomment below and update the code to test the property cpuFrequency
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property ram (base name: "ram")', function() {
-      // uncomment below and update the code to test the property ram
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property disks (base name: "disks")', function() {
-      // uncomment below and update the code to test the property disks
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property avatarId (base name: "avatar_id")', function() {
-      // uncomment below and update the code to test the property avatarId
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property vncPass (base name: "vnc_pass")', function() {
-      // uncomment below and update the code to test the property vncPass
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property rootPass (base name: "root_pass")', function() {
-      // uncomment below and update the code to test the property rootPass
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property image (base name: "image")', function() {
-      // uncomment below and update the code to test the property image
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property networks (base name: "networks")', function() {
-      // uncomment below and update the code to test the property networks
-      //var instance = new TimewebCloudApi.Vds();
+    it('should have the property isCustom (base name: "is_custom")', function() {
+      // uncomment below and update the code to test the property isCustom
+      //var instance = new TimewebCloudApi.VdsImage();
       //expect(instance).to.be();
     });
 

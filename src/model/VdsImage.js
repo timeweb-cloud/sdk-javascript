@@ -11,181 +11,113 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
 
-  var instance;
+/**
+ * The VdsImage model module.
+ * @module model/VdsImage
+ * @version 1.0.0
+ */
+class VdsImage {
+    /**
+     * Constructs a new <code>VdsImage</code>.
+     * Образ сервера.
+     * @alias module:model/VdsImage
+     * @param id {String} Уникальный идентификатор образа сервера.
+     * @param name {String} Название образа сервера.
+     * @param isCustom {Boolean} Является ли образ кастомным.
+     */
+    constructor(id, name, isCustom) { 
+        
+        VdsImage.initialize(this, id, name, isCustom);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.Vds();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, id, name, isCustom) { 
+        obj['id'] = id;
+        obj['name'] = name;
+        obj['is_custom'] = isCustom;
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>VdsImage</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/VdsImage} obj Optional instance to populate.
+     * @return {module:model/VdsImage} The populated <code>VdsImage</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new VdsImage();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('id')) {
+                obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            }
+            if (data.hasOwnProperty('name')) {
+                obj['name'] = ApiClient.convertToType(data['name'], 'String');
+            }
+            if (data.hasOwnProperty('is_custom')) {
+                obj['is_custom'] = ApiClient.convertToType(data['is_custom'], 'Boolean');
+            }
+        }
+        return obj;
+    }
 
-  describe('Vds', function() {
-    it('should create an instance of Vds', function() {
-      // uncomment below and update the code to test Vds
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be.a(TimewebCloudApi.Vds);
-    });
+    /**
+     * Validates the JSON data with respect to <code>VdsImage</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>VdsImage</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of VdsImage.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        }
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
+        return true;
+    }
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property comment (base name: "comment")', function() {
-      // uncomment below and update the code to test the property comment
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
+}
 
-    it('should have the property createdAt (base name: "created_at")', function() {
-      // uncomment below and update the code to test the property createdAt
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
+VdsImage.RequiredProperties = ["id", "name", "is_custom"];
 
-    it('should have the property os (base name: "os")', function() {
-      // uncomment below and update the code to test the property os
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
+/**
+ * Уникальный идентификатор образа сервера.
+ * @member {String} id
+ */
+VdsImage.prototype['id'] = undefined;
 
-    it('should have the property software (base name: "software")', function() {
-      // uncomment below and update the code to test the property software
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
+/**
+ * Название образа сервера.
+ * @member {String} name
+ */
+VdsImage.prototype['name'] = undefined;
 
-    it('should have the property presetId (base name: "preset_id")', function() {
-      // uncomment below and update the code to test the property presetId
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
+/**
+ * Является ли образ кастомным.
+ * @member {Boolean} is_custom
+ */
+VdsImage.prototype['is_custom'] = undefined;
 
-    it('should have the property location (base name: "location")', function() {
-      // uncomment below and update the code to test the property location
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property configuratorId (base name: "configurator_id")', function() {
-      // uncomment below and update the code to test the property configuratorId
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property bootMode (base name: "boot_mode")', function() {
-      // uncomment below and update the code to test the property bootMode
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property startAt (base name: "start_at")', function() {
-      // uncomment below and update the code to test the property startAt
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property isDdosGuard (base name: "is_ddos_guard")', function() {
-      // uncomment below and update the code to test the property isDdosGuard
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
+export default VdsImage;
 
-    it('should have the property cpu (base name: "cpu")', function() {
-      // uncomment below and update the code to test the property cpu
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property cpuFrequency (base name: "cpu_frequency")', function() {
-      // uncomment below and update the code to test the property cpuFrequency
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property ram (base name: "ram")', function() {
-      // uncomment below and update the code to test the property ram
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property disks (base name: "disks")', function() {
-      // uncomment below and update the code to test the property disks
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property avatarId (base name: "avatar_id")', function() {
-      // uncomment below and update the code to test the property avatarId
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property vncPass (base name: "vnc_pass")', function() {
-      // uncomment below and update the code to test the property vncPass
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property rootPass (base name: "root_pass")', function() {
-      // uncomment below and update the code to test the property rootPass
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property image (base name: "image")', function() {
-      // uncomment below and update the code to test the property image
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property networks (base name: "networks")', function() {
-      // uncomment below and update the code to test the property networks
-      //var instance = new TimewebCloudApi.Vds();
-      //expect(instance).to.be();
-    });
-
-  });
-
-}));

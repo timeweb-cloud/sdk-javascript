@@ -351,6 +351,7 @@ import UrlStatus from './model/UrlStatus';
 import Use from './model/Use';
 import Vds from './model/Vds';
 import VdsDisksInner from './model/VdsDisksInner';
+import VdsImage from './model/VdsImage';
 import VdsNetworksInner from './model/VdsNetworksInner';
 import VdsNetworksInnerIpsInner from './model/VdsNetworksInnerIpsInner';
 import VdsOs from './model/VdsOs';
@@ -2442,6 +2443,12 @@ export {
      * @property {module:model/VdsDisksInner}
      */
     VdsDisksInner,
+
+    /**
+     * The VdsImage model constructor.
+     * @property {module:model/VdsImage}
+     */
+    VdsImage,
 
     /**
      * The VdsNetworksInner model constructor.

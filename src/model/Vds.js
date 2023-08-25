@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import VdsDisksInner from './VdsDisksInner';
+import VdsImage from './VdsImage';
 import VdsNetworksInner from './VdsNetworksInner';
 import VdsOs from './VdsOs';
 import VdsSoftware from './VdsSoftware';
@@ -47,11 +48,12 @@ class Vds {
      * @param avatarId {String} Уникальный идентификатор аватара сервера. Описание методов работы с аватарами появится позднее.
      * @param vncPass {String} Пароль от VNC.
      * @param rootPass {String} Пароль root сервера или пароль Администратора для серверов Windows.
+     * @param image {module:model/VdsImage} 
      * @param networks {Array.<module:model/VdsNetworksInner>} Список сетей диска.
      */
-    constructor(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, networks) { 
+    constructor(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks) { 
         
-        Vds.initialize(this, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, networks);
+        Vds.initialize(this, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks);
     }
 
     /**
@@ -59,7 +61,7 @@ class Vds {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, networks) { 
+    static initialize(obj, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks) { 
         obj['id'] = id;
         obj['name'] = name;
         obj['comment'] = comment;
@@ -80,6 +82,7 @@ class Vds {
         obj['avatar_id'] = avatarId;
         obj['vnc_pass'] = vncPass;
         obj['root_pass'] = rootPass;
+        obj['image'] = image;
         obj['networks'] = networks;
     }
 
@@ -153,6 +156,9 @@ class Vds {
             }
             if (data.hasOwnProperty('root_pass')) {
                 obj['root_pass'] = ApiClient.convertToType(data['root_pass'], 'String');
+            }
+            if (data.hasOwnProperty('image')) {
+                obj['image'] = VdsImage.constructFromObject(data['image']);
             }
             if (data.hasOwnProperty('networks')) {
                 obj['networks'] = ApiClient.convertToType(data['networks'], [VdsNetworksInner]);
@@ -231,6 +237,10 @@ class Vds {
         if (data['root_pass'] && !(typeof data['root_pass'] === 'string' || data['root_pass'] instanceof String)) {
             throw new Error("Expected the field `root_pass` to be a primitive type in the JSON string but got " + data['root_pass']);
         }
+        // validate the optional field `image`
+        if (data['image']) { // data not null
+          VdsImage.validateJSON(data['image']);
+        }
         if (data['networks']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['networks'])) {
@@ -248,7 +258,7 @@ class Vds {
 
 }
 
-Vds.RequiredProperties = ["id", "name", "comment", "created_at", "os", "software", "preset_id", "location", "configurator_id", "boot_mode", "status", "start_at", "is_ddos_guard", "cpu", "cpu_frequency", "ram", "disks", "avatar_id", "vnc_pass", "root_pass", "networks"];
+Vds.RequiredProperties = ["id", "name", "comment", "created_at", "os", "software", "preset_id", "location", "configurator_id", "boot_mode", "status", "start_at", "is_ddos_guard", "cpu", "cpu_frequency", "ram", "disks", "avatar_id", "vnc_pass", "root_pass", "image", "networks"];
 
 /**
  * Уникальный идентификатор для каждого экземпляра сервера. Автоматически генерируется при создании.
@@ -367,6 +377,11 @@ Vds.prototype['vnc_pass'] = undefined;
  * @member {String} root_pass
  */
 Vds.prototype['root_pass'] = undefined;
+
+/**
+ * @member {module:model/VdsImage} image
+ */
+Vds.prototype['image'] = undefined;
 
 /**
  * Список сетей диска.

@@ -842,6 +842,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Use](docs/Use.md)
  - [TimewebCloudApi.Vds](docs/Vds.md)
  - [TimewebCloudApi.VdsDisksInner](docs/VdsDisksInner.md)
+ - [TimewebCloudApi.VdsImage](docs/VdsImage.md)
  - [TimewebCloudApi.VdsNetworksInner](docs/VdsNetworksInner.md)
  - [TimewebCloudApi.VdsNetworksInnerIpsInner](docs/VdsNetworksInnerIpsInner.md)
  - [TimewebCloudApi.VdsOs](docs/VdsOs.md)
