@@ -50,10 +50,11 @@ class Vds {
      * @param rootPass {String} Пароль root сервера или пароль Администратора для серверов Windows.
      * @param image {module:model/VdsImage} 
      * @param networks {Array.<module:model/VdsNetworksInner>} Список сетей диска.
+     * @param cloudInit {String} Cloud-init скрипт
      */
-    constructor(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks) { 
+    constructor(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit) { 
         
-        Vds.initialize(this, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks);
+        Vds.initialize(this, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit);
     }
 
     /**
@@ -61,7 +62,7 @@ class Vds {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks) { 
+    static initialize(obj, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit) { 
         obj['id'] = id;
         obj['name'] = name;
         obj['comment'] = comment;
@@ -84,6 +85,7 @@ class Vds {
         obj['root_pass'] = rootPass;
         obj['image'] = image;
         obj['networks'] = networks;
+        obj['cloud_init'] = cloudInit;
     }
 
     /**
@@ -162,6 +164,9 @@ class Vds {
             }
             if (data.hasOwnProperty('networks')) {
                 obj['networks'] = ApiClient.convertToType(data['networks'], [VdsNetworksInner]);
+            }
+            if (data.hasOwnProperty('cloud_init')) {
+                obj['cloud_init'] = ApiClient.convertToType(data['cloud_init'], 'String');
             }
         }
         return obj;
@@ -251,6 +256,10 @@ class Vds {
                 VdsNetworksInner.validateJSON(item);
             };
         }
+        // ensure the json data is a string
+        if (data['cloud_init'] && !(typeof data['cloud_init'] === 'string' || data['cloud_init'] instanceof String)) {
+            throw new Error("Expected the field `cloud_init` to be a primitive type in the JSON string but got " + data['cloud_init']);
+        }
 
         return true;
     }
@@ -258,7 +267,7 @@ class Vds {
 
 }
 
-Vds.RequiredProperties = ["id", "name", "comment", "created_at", "os", "software", "preset_id", "location", "configurator_id", "boot_mode", "status", "start_at", "is_ddos_guard", "cpu", "cpu_frequency", "ram", "disks", "avatar_id", "vnc_pass", "root_pass", "image", "networks"];
+Vds.RequiredProperties = ["id", "name", "comment", "created_at", "os", "software", "preset_id", "location", "configurator_id", "boot_mode", "status", "start_at", "is_ddos_guard", "cpu", "cpu_frequency", "ram", "disks", "avatar_id", "vnc_pass", "root_pass", "image", "networks", "cloud_init"];
 
 /**
  * Уникальный идентификатор для каждого экземпляра сервера. Автоматически генерируется при создании.
@@ -388,6 +397,12 @@ Vds.prototype['image'] = undefined;
  * @member {Array.<module:model/VdsNetworksInner>} networks
  */
 Vds.prototype['networks'] = undefined;
+
+/**
+ * Cloud-init скрипт
+ * @member {String} cloud_init
+ */
+Vds.prototype['cloud_init'] = undefined;
 
 
 

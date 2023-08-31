@@ -108,6 +108,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property cloudInit (base name: "cloud_init")', function() {
+      // uncomment below and update the code to test the property cloudInit
+      //var instance = new TimewebCloudApi.UpdateServer();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

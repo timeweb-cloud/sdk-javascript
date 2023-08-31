@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **rootPass** | **String** | Пароль root сервера или пароль Администратора для серверов Windows. | 
 **image** | [**VdsImage**](VdsImage.md) |  | 
 **networks** | [**[VdsNetworksInner]**](VdsNetworksInner.md) | Список сетей диска. | 
+**cloudInit** | **String** | Cloud-init скрипт | 
 
 
 

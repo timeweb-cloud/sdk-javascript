@@ -94,6 +94,9 @@ class CreateServer {
             if (data.hasOwnProperty('network')) {
                 obj['network'] = Network.constructFromObject(data['network']);
             }
+            if (data.hasOwnProperty('cloud_init')) {
+                obj['cloud_init'] = ApiClient.convertToType(data['cloud_init'], 'String');
+            }
         }
         return obj;
     }
@@ -137,6 +140,10 @@ class CreateServer {
         // validate the optional field `network`
         if (data['network']) { // data not null
           Network.validateJSON(data['network']);
+        }
+        // ensure the json data is a string
+        if (data['cloud_init'] && !(typeof data['cloud_init'] === 'string' || data['cloud_init'] instanceof String)) {
+            throw new Error("Expected the field `cloud_init` to be a primitive type in the JSON string but got " + data['cloud_init']);
         }
 
         return true;
@@ -222,6 +229,12 @@ CreateServer.prototype['is_local_network'] = undefined;
  * @member {module:model/Network} network
  */
 CreateServer.prototype['network'] = undefined;
+
+/**
+ * Cloud-init скрипт
+ * @member {String} cloud_init
+ */
+CreateServer.prototype['cloud_init'] = undefined;
 
 
 

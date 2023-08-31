@@ -75,6 +75,9 @@ class UpdateServer {
             if (data.hasOwnProperty('image_id')) {
                 obj['image_id'] = ApiClient.convertToType(data['image_id'], 'String');
             }
+            if (data.hasOwnProperty('cloud_init')) {
+                obj['cloud_init'] = ApiClient.convertToType(data['cloud_init'], 'String');
+            }
         }
         return obj;
     }
@@ -104,6 +107,10 @@ class UpdateServer {
         // ensure the json data is a string
         if (data['image_id'] && !(typeof data['image_id'] === 'string' || data['image_id'] instanceof String)) {
             throw new Error("Expected the field `image_id` to be a primitive type in the JSON string but got " + data['image_id']);
+        }
+        // ensure the json data is a string
+        if (data['cloud_init'] && !(typeof data['cloud_init'] === 'string' || data['cloud_init'] instanceof String)) {
+            throw new Error("Expected the field `cloud_init` to be a primitive type in the JSON string but got " + data['cloud_init']);
         }
 
         return true;
@@ -166,6 +173,12 @@ UpdateServer.prototype['comment'] = undefined;
  * @member {String} image_id
  */
 UpdateServer.prototype['image_id'] = undefined;
+
+/**
+ * Cloud-init скрипт
+ * @member {String} cloud_init
+ */
+UpdateServer.prototype['cloud_init'] = undefined;
 
 
 
