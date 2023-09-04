@@ -200,7 +200,7 @@ export default class DatabasesApi {
 
     /**
      * Создание инстанса базы данных
-     * Чтобы создать инстанс базы данных, отправьте POST-запрос на `/api/v1/databases/{db_cluster_id}/instances`.
+     * Чтобы создать инстанс базы данных, отправьте POST-запрос на `/api/v1/databases/{db_cluster_id}/instances`.\\    Существующие пользователи не будут иметь доступа к новой базе данных после создания. Вы можете изменить привилегии для пользователя через <a href='#tag/Bazy-dannyh/operation/updateDatabaseUser'>метод изменения пользователя</a> 
      * @param {Number} dbClusterId Идентификатор кластера базы данных
      * @param {module:model/CreateInstance} createInstance 
      * @param {module:api/DatabasesApi~createDatabaseInstanceCallback} callback The callback function, accepting three arguments: error, data, response

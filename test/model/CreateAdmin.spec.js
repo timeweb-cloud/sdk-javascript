@@ -72,6 +72,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property instanceId (base name: "instance_id")', function() {
+      // uncomment below and update the code to test the property instanceId
+      //var instance = new TimewebCloudApi.CreateAdmin();
+      //expect(instance).to.be();
+    });
+
     it('should have the property privileges (base name: "privileges")', function() {
       // uncomment below and update the code to test the property privileges
       //var instance = new TimewebCloudApi.CreateAdmin();

@@ -62,6 +62,9 @@ class CreateAdmin {
             if (data.hasOwnProperty('host')) {
                 obj['host'] = ApiClient.convertToType(data['host'], 'String');
             }
+            if (data.hasOwnProperty('instance_id')) {
+                obj['instance_id'] = ApiClient.convertToType(data['instance_id'], 'Number');
+            }
             if (data.hasOwnProperty('privileges')) {
                 obj['privileges'] = ApiClient.convertToType(data['privileges'], ['String']);
             }
@@ -130,6 +133,12 @@ CreateAdmin.prototype['password'] = undefined;
  * @member {String} host
  */
 CreateAdmin.prototype['host'] = undefined;
+
+/**
+ * Уникальный идентификатор инстанса базы данных для приминения привилегий. В данных момент поле доступно только для кластеров MySQL. Если поле не передано, то привилегии будут применены ко всем инстансам
+ * @member {Number} instance_id
+ */
+CreateAdmin.prototype['instance_id'] = undefined;
 
 /**
  * Список привилегий пользователя базы данных

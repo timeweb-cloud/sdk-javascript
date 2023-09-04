@@ -56,6 +56,9 @@ class UpdateAdmin {
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
+            if (data.hasOwnProperty('instance_id')) {
+                obj['instance_id'] = ApiClient.convertToType(data['instance_id'], 'Number');
+            }
         }
         return obj;
     }
@@ -104,6 +107,12 @@ UpdateAdmin.prototype['privileges'] = undefined;
  * @member {String} description
  */
 UpdateAdmin.prototype['description'] = undefined;
+
+/**
+ * Уникальный идентификатор инстанса базы данных для приминения привилегий. В данных момент поле доступно только для кластеров MySQL. Если поле не передано, то привилегии будут применены ко всем инстансам
+ * @member {Number} instance_id
+ */
+UpdateAdmin.prototype['instance_id'] = undefined;
 
 
 
