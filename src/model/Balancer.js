@@ -45,10 +45,11 @@ class Balancer {
      * @param isUseProxy {Boolean} Это логическое значение, которое показывает, выступает ли балансировщик в качестве прокси.
      * @param rules {Array.<module:model/Rule>} 
      * @param ips {Array.<String>} Список IP-адресов, привязанных к балансировщику
+     * @param location {module:model/Balancer.LocationEnum} Географическое расположение балансировщика
      */
-    constructor(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips) { 
+    constructor(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location) { 
         
-        Balancer.initialize(this, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips);
+        Balancer.initialize(this, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location);
     }
 
     /**
@@ -56,7 +57,7 @@ class Balancer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips) { 
+    static initialize(obj, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location) { 
         obj['id'] = id;
         obj['algo'] = algo;
         obj['created_at'] = createdAt;
@@ -78,6 +79,7 @@ class Balancer {
         obj['is_use_proxy'] = isUseProxy;
         obj['rules'] = rules;
         obj['ips'] = ips;
+        obj['location'] = location;
     }
 
     /**
@@ -154,6 +156,9 @@ class Balancer {
             if (data.hasOwnProperty('ips')) {
                 obj['ips'] = ApiClient.convertToType(data['ips'], ['String']);
             }
+            if (data.hasOwnProperty('location')) {
+                obj['location'] = ApiClient.convertToType(data['location'], 'String');
+            }
         }
         return obj;
     }
@@ -212,6 +217,10 @@ class Balancer {
         if (!Array.isArray(data['ips'])) {
             throw new Error("Expected the field `ips` to be an array in the JSON data but got " + data['ips']);
         }
+        // ensure the json data is a string
+        if (data['location'] && !(typeof data['location'] === 'string' || data['location'] instanceof String)) {
+            throw new Error("Expected the field `location` to be a primitive type in the JSON string but got " + data['location']);
+        }
 
         return true;
     }
@@ -219,7 +228,7 @@ class Balancer {
 
 }
 
-Balancer.RequiredProperties = ["id", "algo", "created_at", "fall", "inter", "ip", "local_ip", "is_keepalive", "name", "path", "port", "proto", "rise", "preset_id", "is_ssl", "status", "is_sticky", "timeout", "is_use_proxy", "rules", "ips"];
+Balancer.RequiredProperties = ["id", "algo", "created_at", "fall", "inter", "ip", "local_ip", "is_keepalive", "name", "path", "port", "proto", "rise", "preset_id", "is_ssl", "status", "is_sticky", "timeout", "is_use_proxy", "rules", "ips", "location"];
 
 /**
  * Уникальный идентификатор для каждого экземпляра балансировщика. Автоматически генерируется при создании.
@@ -346,6 +355,12 @@ Balancer.prototype['rules'] = undefined;
  */
 Balancer.prototype['ips'] = undefined;
 
+/**
+ * Географическое расположение балансировщика
+ * @member {module:model/Balancer.LocationEnum} location
+ */
+Balancer.prototype['location'] = undefined;
+
 
 
 
@@ -434,6 +449,27 @@ Balancer['StatusEnum'] = {
      * @const
      */
     "no_paid": "no_paid"
+};
+
+
+/**
+ * Allowed values for the <code>location</code> property.
+ * @enum {String}
+ * @readonly
+ */
+Balancer['LocationEnum'] = {
+
+    /**
+     * value: "ru-1"
+     * @const
+     */
+    "ru-1": "ru-1",
+
+    /**
+     * value: "pl-1"
+     * @const
+     */
+    "pl-1": "pl-1"
 };
 
 

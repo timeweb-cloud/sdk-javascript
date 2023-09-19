@@ -180,6 +180,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property location (base name: "location")', function() {
+      // uncomment below and update the code to test the property location
+      //var instance = new TimewebCloudApi.Balancer();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));
