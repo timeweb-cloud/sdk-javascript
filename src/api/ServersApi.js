@@ -968,8 +968,8 @@ export default class ServersApi {
      * Получение статистики сервера
      * Чтобы получить статистику сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/statistics`.
      * @param {Number} serverId Уникальный идентификатор облачного сервера.
-     * @param {String} dateFrom Дата начала сбора статистики
-     * @param {String} dateTo Дата окончания сбора статистики
+     * @param {String} dateFrom Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-25%202023-05-25T14%3A35%3A38`
+     * @param {String} dateTo Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-26%202023-05-25T14%3A35%3A38`
      * @param {module:api/ServersApi~getServerStatisticsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetServerStatistics200Response}
      */
