@@ -192,6 +192,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property qemuAgent (base name: "qemu_agent")', function() {
+      // uncomment below and update the code to test the property qemuAgent
+      //var instance = new TimewebCloudApi.Vds();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));
