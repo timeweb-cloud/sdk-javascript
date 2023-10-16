@@ -51,11 +51,10 @@ class Vds {
      * @param image {module:model/VdsImage} 
      * @param networks {Array.<module:model/VdsNetworksInner>} Список сетей диска.
      * @param cloudInit {String} Cloud-init скрипт
-     * @param qemuAgent {Boolean} Включен ли QEMU-agent на сервере
      */
-    constructor(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, qemuAgent) { 
+    constructor(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit) { 
         
-        Vds.initialize(this, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, qemuAgent);
+        Vds.initialize(this, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit);
     }
 
     /**
@@ -63,7 +62,7 @@ class Vds {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, qemuAgent) { 
+    static initialize(obj, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit) { 
         obj['id'] = id;
         obj['name'] = name;
         obj['comment'] = comment;
@@ -87,7 +86,6 @@ class Vds {
         obj['image'] = image;
         obj['networks'] = networks;
         obj['cloud_init'] = cloudInit;
-        obj['qemu_agent'] = qemuAgent;
     }
 
     /**
@@ -170,8 +168,8 @@ class Vds {
             if (data.hasOwnProperty('cloud_init')) {
                 obj['cloud_init'] = ApiClient.convertToType(data['cloud_init'], 'String');
             }
-            if (data.hasOwnProperty('qemu_agent')) {
-                obj['qemu_agent'] = ApiClient.convertToType(data['qemu_agent'], 'Boolean');
+            if (data.hasOwnProperty('is_qemu_agent')) {
+                obj['is_qemu_agent'] = ApiClient.convertToType(data['is_qemu_agent'], 'Boolean');
             }
         }
         return obj;
@@ -272,7 +270,7 @@ class Vds {
 
 }
 
-Vds.RequiredProperties = ["id", "name", "comment", "created_at", "os", "software", "preset_id", "location", "configurator_id", "boot_mode", "status", "start_at", "is_ddos_guard", "cpu", "cpu_frequency", "ram", "disks", "avatar_id", "vnc_pass", "root_pass", "image", "networks", "cloud_init", "qemu_agent"];
+Vds.RequiredProperties = ["id", "name", "comment", "created_at", "os", "software", "preset_id", "location", "configurator_id", "boot_mode", "status", "start_at", "is_ddos_guard", "cpu", "cpu_frequency", "ram", "disks", "avatar_id", "vnc_pass", "root_pass", "image", "networks", "cloud_init"];
 
 /**
  * Уникальный идентификатор для каждого экземпляра сервера. Автоматически генерируется при создании.
@@ -411,9 +409,9 @@ Vds.prototype['cloud_init'] = undefined;
 
 /**
  * Включен ли QEMU-agent на сервере
- * @member {Boolean} qemu_agent
+ * @member {Boolean} is_qemu_agent
  */
-Vds.prototype['qemu_agent'] = undefined;
+Vds.prototype['is_qemu_agent'] = undefined;
 
 
 

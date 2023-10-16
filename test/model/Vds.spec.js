@@ -192,8 +192,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property qemuAgent (base name: "qemu_agent")', function() {
-      // uncomment below and update the code to test the property qemuAgent
+    it('should have the property isQemuAgent (base name: "is_qemu_agent")', function() {
+      // uncomment below and update the code to test the property isQemuAgent
       //var instance = new TimewebCloudApi.Vds();
       //expect(instance).to.be();
     });
