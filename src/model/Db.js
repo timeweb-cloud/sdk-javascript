@@ -27,7 +27,7 @@ class Db {
      * @alias module:model/Db
      * @param id {Number} Уникальный идентификатор для каждого экземпляра базы данных. Автоматически генерируется при создании.
      * @param createdAt {String} Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда была создана база данных.
-     * @param accountId {String} Идентификатор пользователя
+     * @param accountId {String} Идентификатор пользователя.
      * @param login {String} Логин для подключения к базе данных.
      * @param password {String} Пароль для подключения к базе данных.
      * @param name {String} Название базы данных.
@@ -232,7 +232,7 @@ Db.prototype['id'] = undefined;
 Db.prototype['created_at'] = undefined;
 
 /**
- * Идентификатор пользователя
+ * Идентификатор пользователя.
  * @member {String} account_id
  */
 Db.prototype['account_id'] = undefined;

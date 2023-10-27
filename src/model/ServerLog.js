@@ -24,8 +24,8 @@ class ServerLog {
      * Лог сервера
      * @alias module:model/ServerLog
      * @param id {Number} Уникальный идентификатор диска.
-     * @param loggedAt {Date} Дата лога
-     * @param event {String} Событие сервера
+     * @param loggedAt {Date} Дата лога.
+     * @param event {String} Событие сервера.
      */
     constructor(id, loggedAt, event) { 
         
@@ -99,13 +99,13 @@ ServerLog.RequiredProperties = ["id", "logged_at", "event"];
 ServerLog.prototype['id'] = undefined;
 
 /**
- * Дата лога
+ * Дата лога.
  * @member {Date} logged_at
  */
 ServerLog.prototype['logged_at'] = undefined;
 
 /**
- * Событие сервера
+ * Событие сервера.
  * @member {String} event
  */
 ServerLog.prototype['event'] = undefined;

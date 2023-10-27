@@ -135,7 +135,7 @@ VdsNetworksInner.prototype['bandwidth'] = undefined;
 VdsNetworksInner.prototype['ips'] = undefined;
 
 /**
- * Подключена ли DDoS-защита. Только для публичных сетей
+ * Подключена ли DDoS-защита. Только для публичных сетей.
  * @member {Boolean} is_ddos_guard
  */
 VdsNetworksInner.prototype['is_ddos_guard'] = undefined;

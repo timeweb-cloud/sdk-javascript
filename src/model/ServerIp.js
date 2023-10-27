@@ -23,9 +23,9 @@ class ServerIp {
      * Constructs a new <code>ServerIp</code>.
      * IP-адрес сервера
      * @alias module:model/ServerIp
-     * @param type {module:model/ServerIp.TypeEnum} Тип IP-адреса сети
-     * @param ip {String} IP-адрес сети
-     * @param ptr {String} Запись имени узла
+     * @param type {module:model/ServerIp.TypeEnum} Тип IP-адреса сети.
+     * @param ip {String} IP-адрес сети.
+     * @param ptr {String} Запись имени узла.
      * @param isMain {Boolean} Является ли сеть основной.
      */
     constructor(type, ip, ptr, isMain) { 
@@ -106,19 +106,19 @@ class ServerIp {
 ServerIp.RequiredProperties = ["type", "ip", "ptr", "is_main"];
 
 /**
- * Тип IP-адреса сети
+ * Тип IP-адреса сети.
  * @member {module:model/ServerIp.TypeEnum} type
  */
 ServerIp.prototype['type'] = undefined;
 
 /**
- * IP-адрес сети
+ * IP-адрес сети.
  * @member {String} ip
  */
 ServerIp.prototype['ip'] = undefined;
 
 /**
- * Запись имени узла
+ * Запись имени узла.
  * @member {String} ptr
  */
 ServerIp.prototype['ptr'] = undefined;

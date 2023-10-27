@@ -50,7 +50,7 @@ class Vds {
      * @param rootPass {String} Пароль root сервера или пароль Администратора для серверов Windows.
      * @param image {module:model/VdsImage} 
      * @param networks {Array.<module:model/VdsNetworksInner>} Список сетей диска.
-     * @param cloudInit {String} Cloud-init скрипт
+     * @param cloudInit {String} Cloud-init скрипт.
      */
     constructor(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit) { 
         
@@ -402,13 +402,13 @@ Vds.prototype['image'] = undefined;
 Vds.prototype['networks'] = undefined;
 
 /**
- * Cloud-init скрипт
+ * Cloud-init скрипт.
  * @member {String} cloud_init
  */
 Vds.prototype['cloud_init'] = undefined;
 
 /**
- * Включен ли QEMU-agent на сервере
+ * Включен ли QEMU-agent на сервере.
  * @member {Boolean} is_qemu_agent
  */
 Vds.prototype['is_qemu_agent'] = undefined;

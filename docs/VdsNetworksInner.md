@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **natMode** | **String** | Тип преобразования сетевых адресов. | [optional] 
 **bandwidth** | **Number** | Пропускная способность сети. | [optional] 
 **ips** | [**[VdsNetworksInnerIpsInner]**](VdsNetworksInnerIpsInner.md) | Список IP-адресов сети. | 
-**isDdosGuard** | **Boolean** | Подключена ли DDoS-защита. Только для публичных сетей | [optional] 
+**isDdosGuard** | **Boolean** | Подключена ли DDoS-защита. Только для публичных сетей. | [optional] 
 
 
 

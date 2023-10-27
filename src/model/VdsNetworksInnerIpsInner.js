@@ -23,7 +23,7 @@ class VdsNetworksInnerIpsInner {
      * Constructs a new <code>VdsNetworksInnerIpsInner</code>.
      * @alias module:model/VdsNetworksInnerIpsInner
      * @param type {module:model/VdsNetworksInnerIpsInner.TypeEnum} Тип IP-адреса сети
-     * @param ip {String} IP-адрес сети
+     * @param ip {String} IP-адрес сети.
      * @param isMain {Boolean} Является ли сеть основной.
      */
     constructor(type, ip, isMain) { 
@@ -109,13 +109,13 @@ VdsNetworksInnerIpsInner.RequiredProperties = ["type", "ip", "is_main"];
 VdsNetworksInnerIpsInner.prototype['type'] = undefined;
 
 /**
- * IP-адрес сети
+ * IP-адрес сети.
  * @member {String} ip
  */
 VdsNetworksInnerIpsInner.prototype['ip'] = undefined;
 
 /**
- * Запись имени узла
+ * Запись имени узла.
  * @member {String} ptr
  */
 VdsNetworksInnerIpsInner.prototype['ptr'] = undefined;

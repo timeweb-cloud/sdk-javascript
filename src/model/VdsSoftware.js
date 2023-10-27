@@ -21,7 +21,7 @@ import ApiClient from '../ApiClient';
 class VdsSoftware {
     /**
      * Constructs a new <code>VdsSoftware</code>.
-     * ПО из маркетплейса
+     * ПО из маркетплейса.
      * @alias module:model/VdsSoftware
      */
     constructor() { 
@@ -78,13 +78,13 @@ class VdsSoftware {
 
 
 /**
- * Уникальный идентификатор ПО из маркетплейса
+ * Уникальный идентификатор ПО из маркетплейса.
  * @member {Number} id
  */
 VdsSoftware.prototype['id'] = undefined;
 
 /**
- * Название ПО из маркетплейса
+ * Название ПО из маркетплейса.
  * @member {String} name
  */
 VdsSoftware.prototype['name'] = undefined;
