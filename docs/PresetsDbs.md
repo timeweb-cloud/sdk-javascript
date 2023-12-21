@@ -10,26 +10,9 @@ Name | Type | Description | Notes
 **cpu** | **Number** | Описание процессора тарифа. | [optional] 
 **ram** | **Number** | Описание ОЗУ тарифа. | [optional] 
 **disk** | **Number** | Описание диска тарифа. | [optional] 
-**type** | **String** | Тип тарифа базы данных | [optional] 
+**type** | [**DbType**](DbType.md) |  | [optional] 
 **price** | **Number** | Стоимость тарифа базы данных | [optional] 
 **location** | **String** | Географическое расположение тарифа. | [optional] 
-
-
-
-## Enum: TypeEnum
-
-
-* `mysql` (value: `"mysql"`)
-
-* `mysql5` (value: `"mysql5"`)
-
-* `postgres` (value: `"postgres"`)
-
-* `redis` (value: `"redis"`)
-
-* `mongodb` (value: `"mongodb"`)
-
-
 
 
 

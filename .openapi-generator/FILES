@@ -31,10 +31,12 @@ docs/ApiKey.md
 docs/AutoBackup.md
 docs/AutoReplyIsDisabled.md
 docs/AutoReplyIsEnabled.md
+docs/AvailabilityZone.md
 docs/Backup.md
 docs/Balancer.md
 docs/BalancersApi.md
 docs/BaseError.md
+docs/BindFloatingIp.md
 docs/Bonus.md
 docs/Bucket.md
 docs/BucketDiskStats.md
@@ -70,6 +72,8 @@ docs/CreateDomainDNSRecord201Response.md
 docs/CreateDomainMailbox201Response.md
 docs/CreateDomainMailboxRequest.md
 docs/CreateDomainRequest201Response.md
+docs/CreateFloatingIp.md
+docs/CreateFloatingIp201Response.md
 docs/CreateFolderInStorageRequest.md
 docs/CreateInstance.md
 docs/CreateKey201Response.md
@@ -100,6 +104,7 @@ docs/DatabaseInstance.md
 docs/DatabasesApi.md
 docs/Db.md
 docs/DbDiskStats.md
+docs/DbType.md
 docs/DedicatedServer.md
 docs/DedicatedServerAdditionalService.md
 docs/DedicatedServerPreset.md
@@ -151,6 +156,8 @@ docs/FirewallRuleOutAPI.md
 docs/FirewallRuleOutResponse.md
 docs/FirewallRuleProtocol.md
 docs/FirewallRulesOutResponse.md
+docs/FloatingIPApi.md
+docs/FloatingIp.md
 docs/ForwardingIncomingIsDisabled.md
 docs/ForwardingIncomingIsEnabled.md
 docs/ForwardingOutgoingIsDisabled.md
@@ -189,6 +196,7 @@ docs/GetFinances403Response.md
 docs/GetFinances404Response.md
 docs/GetFinances429Response.md
 docs/GetFinances500Response.md
+docs/GetFloatingIps200Response.md
 docs/GetKey200Response.md
 docs/GetKeys200Response.md
 docs/GetMailQuota200Response.md
@@ -267,6 +275,7 @@ docs/NotificationSettingType.md
 docs/OS.md
 docs/PerformActionOnBackupRequest.md
 docs/PerformActionOnServerRequest.md
+docs/Policy.md
 docs/PresetsBalancer.md
 docs/PresetsDbs.md
 docs/PresetsResponse.md
@@ -328,6 +337,7 @@ docs/UpdateDomainAutoProlongation200Response.md
 docs/UpdateDomainMailInfoRequest.md
 docs/UpdateDomainNameServers.md
 docs/UpdateDomainNameServersNameServersInner.md
+docs/UpdateFloatingIp.md
 docs/UpdateInstance.md
 docs/UpdateKeyRequest.md
 docs/UpdateMailQuotaRequest.md
@@ -377,6 +387,7 @@ src/api/DatabasesApi.js
 src/api/DedicatedServersApi.js
 src/api/DomainsApi.js
 src/api/FirewallApi.js
+src/api/FloatingIPApi.js
 src/api/ImagesApi.js
 src/api/KubernetesApi.js
 src/api/MailApi.js
@@ -412,9 +423,11 @@ src/model/ApiKey.js
 src/model/AutoBackup.js
 src/model/AutoReplyIsDisabled.js
 src/model/AutoReplyIsEnabled.js
+src/model/AvailabilityZone.js
 src/model/Backup.js
 src/model/Balancer.js
 src/model/BaseError.js
+src/model/BindFloatingIp.js
 src/model/Bonus.js
 src/model/Bucket.js
 src/model/BucketDiskStats.js
@@ -450,6 +463,8 @@ src/model/CreateDomainDNSRecord201Response.js
 src/model/CreateDomainMailbox201Response.js
 src/model/CreateDomainMailboxRequest.js
 src/model/CreateDomainRequest201Response.js
+src/model/CreateFloatingIp.js
+src/model/CreateFloatingIp201Response.js
 src/model/CreateFolderInStorageRequest.js
 src/model/CreateInstance.js
 src/model/CreateKey201Response.js
@@ -479,6 +494,7 @@ src/model/DatabaseClusterNetworksInnerIpsInner.js
 src/model/DatabaseInstance.js
 src/model/Db.js
 src/model/DbDiskStats.js
+src/model/DbType.js
 src/model/DedicatedServer.js
 src/model/DedicatedServerAdditionalService.js
 src/model/DedicatedServerPreset.js
@@ -527,6 +543,7 @@ src/model/FirewallRuleOutAPI.js
 src/model/FirewallRuleOutResponse.js
 src/model/FirewallRuleProtocol.js
 src/model/FirewallRulesOutResponse.js
+src/model/FloatingIp.js
 src/model/ForwardingIncomingIsDisabled.js
 src/model/ForwardingIncomingIsEnabled.js
 src/model/ForwardingOutgoingIsDisabled.js
@@ -565,6 +582,7 @@ src/model/GetFinances403Response.js
 src/model/GetFinances404Response.js
 src/model/GetFinances429Response.js
 src/model/GetFinances500Response.js
+src/model/GetFloatingIps200Response.js
 src/model/GetKey200Response.js
 src/model/GetKeys200Response.js
 src/model/GetMailQuota200Response.js
@@ -640,6 +658,7 @@ src/model/NotificationSettingType.js
 src/model/OS.js
 src/model/PerformActionOnBackupRequest.js
 src/model/PerformActionOnServerRequest.js
+src/model/Policy.js
 src/model/PresetsBalancer.js
 src/model/PresetsDbs.js
 src/model/PresetsResponse.js
@@ -697,6 +716,7 @@ src/model/UpdateDomainAutoProlongation200Response.js
 src/model/UpdateDomainMailInfoRequest.js
 src/model/UpdateDomainNameServers.js
 src/model/UpdateDomainNameServersNameServersInner.js
+src/model/UpdateFloatingIp.js
 src/model/UpdateInstance.js
 src/model/UpdateKeyRequest.js
 src/model/UpdateMailQuotaRequest.js
@@ -741,6 +761,7 @@ test/api/DatabasesApi.spec.js
 test/api/DedicatedServersApi.spec.js
 test/api/DomainsApi.spec.js
 test/api/FirewallApi.spec.js
+test/api/FloatingIPApi.spec.js
 test/api/ImagesApi.spec.js
 test/api/KubernetesApi.spec.js
 test/api/MailApi.spec.js
@@ -775,9 +796,11 @@ test/model/ApiKey.spec.js
 test/model/AutoBackup.spec.js
 test/model/AutoReplyIsDisabled.spec.js
 test/model/AutoReplyIsEnabled.spec.js
+test/model/AvailabilityZone.spec.js
 test/model/Backup.spec.js
 test/model/Balancer.spec.js
 test/model/BaseError.spec.js
+test/model/BindFloatingIp.spec.js
 test/model/Bonus.spec.js
 test/model/Bucket.spec.js
 test/model/BucketDiskStats.spec.js
@@ -813,6 +836,8 @@ test/model/CreateDomainDNSRecord201Response.spec.js
 test/model/CreateDomainMailbox201Response.spec.js
 test/model/CreateDomainMailboxRequest.spec.js
 test/model/CreateDomainRequest201Response.spec.js
+test/model/CreateFloatingIp.spec.js
+test/model/CreateFloatingIp201Response.spec.js
 test/model/CreateFolderInStorageRequest.spec.js
 test/model/CreateInstance.spec.js
 test/model/CreateKey201Response.spec.js
@@ -842,6 +867,7 @@ test/model/DatabaseClusterNetworksInnerIpsInner.spec.js
 test/model/DatabaseInstance.spec.js
 test/model/Db.spec.js
 test/model/DbDiskStats.spec.js
+test/model/DbType.spec.js
 test/model/DedicatedServer.spec.js
 test/model/DedicatedServerAdditionalService.spec.js
 test/model/DedicatedServerPreset.spec.js
@@ -890,6 +916,7 @@ test/model/FirewallRuleOutAPI.spec.js
 test/model/FirewallRuleOutResponse.spec.js
 test/model/FirewallRuleProtocol.spec.js
 test/model/FirewallRulesOutResponse.spec.js
+test/model/FloatingIp.spec.js
 test/model/ForwardingIncomingIsDisabled.spec.js
 test/model/ForwardingIncomingIsEnabled.spec.js
 test/model/ForwardingOutgoingIsDisabled.spec.js
@@ -928,6 +955,7 @@ test/model/GetFinances403Response.spec.js
 test/model/GetFinances404Response.spec.js
 test/model/GetFinances429Response.spec.js
 test/model/GetFinances500Response.spec.js
+test/model/GetFloatingIps200Response.spec.js
 test/model/GetKey200Response.spec.js
 test/model/GetKeys200Response.spec.js
 test/model/GetMailQuota200Response.spec.js
@@ -1003,6 +1031,7 @@ test/model/NotificationSettingType.spec.js
 test/model/OS.spec.js
 test/model/PerformActionOnBackupRequest.spec.js
 test/model/PerformActionOnServerRequest.spec.js
+test/model/Policy.spec.js
 test/model/PresetsBalancer.spec.js
 test/model/PresetsDbs.spec.js
 test/model/PresetsResponse.spec.js
@@ -1060,6 +1089,7 @@ test/model/UpdateDomainAutoProlongation200Response.spec.js
 test/model/UpdateDomainMailInfoRequest.spec.js
 test/model/UpdateDomainNameServers.spec.js
 test/model/UpdateDomainNameServersNameServersInner.spec.js
+test/model/UpdateFloatingIp.spec.js
 test/model/UpdateInstance.spec.js
 test/model/UpdateKeyRequest.spec.js
 test/model/UpdateMailQuotaRequest.spec.js

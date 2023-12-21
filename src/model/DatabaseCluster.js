@@ -15,6 +15,7 @@ import ApiClient from '../ApiClient';
 import ConfigParameters from './ConfigParameters';
 import DatabaseClusterDiskStats from './DatabaseClusterDiskStats';
 import DatabaseClusterNetworksInner from './DatabaseClusterNetworksInner';
+import DbType from './DbType';
 
 /**
  * The DatabaseCluster model module.
@@ -31,7 +32,7 @@ class DatabaseCluster {
      * @param location {module:model/DatabaseCluster.LocationEnum} Локация сервера.
      * @param name {String} Название кластера базы данных.
      * @param networks {Array.<module:model/DatabaseClusterNetworksInner>} Список сетей кластера базы данных.
-     * @param type {module:model/DatabaseCluster.TypeEnum} Тип кластера базы данных.
+     * @param type {module:model/DbType} 
      * @param hashType {module:model/DatabaseCluster.HashTypeEnum} Тип хеширования кластера базы данных (mysql5 | mysql | postgres).
      * @param port {Number} Порт
      * @param status {module:model/DatabaseCluster.StatusEnum} Текущий статус кластера базы данных.
@@ -93,7 +94,7 @@ class DatabaseCluster {
                 obj['networks'] = ApiClient.convertToType(data['networks'], [DatabaseClusterNetworksInner]);
             }
             if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], 'String');
+                obj['type'] = DbType.constructFromObject(data['type']);
             }
             if (data.hasOwnProperty('hash_type')) {
                 obj['hash_type'] = ApiClient.convertToType(data['hash_type'], 'String');
@@ -155,10 +156,6 @@ class DatabaseCluster {
             };
         }
         // ensure the json data is a string
-        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
-            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
-        }
-        // ensure the json data is a string
         if (data['hash_type'] && !(typeof data['hash_type'] === 'string' || data['hash_type'] instanceof String)) {
             throw new Error("Expected the field `hash_type` to be a primitive type in the JSON string but got " + data['hash_type']);
         }
@@ -214,8 +211,7 @@ DatabaseCluster.prototype['name'] = undefined;
 DatabaseCluster.prototype['networks'] = undefined;
 
 /**
- * Тип кластера базы данных.
- * @member {module:model/DatabaseCluster.TypeEnum} type
+ * @member {module:model/DbType} type
  */
 DatabaseCluster.prototype['type'] = undefined;
 
@@ -293,45 +289,6 @@ DatabaseCluster['LocationEnum'] = {
      * @const
      */
     "kz-1": "kz-1"
-};
-
-
-/**
- * Allowed values for the <code>type</code> property.
- * @enum {String}
- * @readonly
- */
-DatabaseCluster['TypeEnum'] = {
-
-    /**
-     * value: "mysql"
-     * @const
-     */
-    "mysql": "mysql",
-
-    /**
-     * value: "mysql5"
-     * @const
-     */
-    "mysql5": "mysql5",
-
-    /**
-     * value: "postgres"
-     * @const
-     */
-    "postgres": "postgres",
-
-    /**
-     * value: "redis"
-     * @const
-     */
-    "redis": "redis",
-
-    /**
-     * value: "mongodb"
-     * @const
-     */
-    "mongodb": "mongodb"
 };
 
 

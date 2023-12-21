@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import AvailabilityZone from './AvailabilityZone';
 import VdsDisksInner from './VdsDisksInner';
 import VdsImage from './VdsImage';
 import VdsNetworksInner from './VdsNetworksInner';
@@ -40,7 +41,7 @@ class Vds {
      * @param bootMode {module:model/Vds.BootModeEnum} Режим загрузки ОС сервера.
      * @param status {module:model/Vds.StatusEnum} Статус сервера.
      * @param startAt {Date} Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был запущен сервер.
-     * @param isDdosGuard {Boolean} Это логическое значение, которое показывает, включена ли защита от DDOS у данного сервера.
+     * @param isDdosGuard {Boolean} Это логическое значение, которое показывает, включена ли защита от DDoS у данного сервера.
      * @param cpu {Number} Количество ядер процессора сервера.
      * @param cpuFrequency {String} Частота ядер процессора сервера.
      * @param ram {Number} Размер (в Мб) ОЗУ сервера.
@@ -51,10 +52,11 @@ class Vds {
      * @param image {module:model/VdsImage} 
      * @param networks {Array.<module:model/VdsNetworksInner>} Список сетей диска.
      * @param cloudInit {String} Cloud-init скрипт.
+     * @param availabilityZone {module:model/AvailabilityZone} 
      */
-    constructor(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit) { 
+    constructor(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, availabilityZone) { 
         
-        Vds.initialize(this, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit);
+        Vds.initialize(this, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, availabilityZone);
     }
 
     /**
@@ -62,7 +64,7 @@ class Vds {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit) { 
+    static initialize(obj, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, availabilityZone) { 
         obj['id'] = id;
         obj['name'] = name;
         obj['comment'] = comment;
@@ -86,6 +88,7 @@ class Vds {
         obj['image'] = image;
         obj['networks'] = networks;
         obj['cloud_init'] = cloudInit;
+        obj['availability_zone'] = availabilityZone;
     }
 
     /**
@@ -170,6 +173,9 @@ class Vds {
             }
             if (data.hasOwnProperty('is_qemu_agent')) {
                 obj['is_qemu_agent'] = ApiClient.convertToType(data['is_qemu_agent'], 'Boolean');
+            }
+            if (data.hasOwnProperty('availability_zone')) {
+                obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
             }
         }
         return obj;
@@ -270,7 +276,7 @@ class Vds {
 
 }
 
-Vds.RequiredProperties = ["id", "name", "comment", "created_at", "os", "software", "preset_id", "location", "configurator_id", "boot_mode", "status", "start_at", "is_ddos_guard", "cpu", "cpu_frequency", "ram", "disks", "avatar_id", "vnc_pass", "root_pass", "image", "networks", "cloud_init"];
+Vds.RequiredProperties = ["id", "name", "comment", "created_at", "os", "software", "preset_id", "location", "configurator_id", "boot_mode", "status", "start_at", "is_ddos_guard", "cpu", "cpu_frequency", "ram", "disks", "avatar_id", "vnc_pass", "root_pass", "image", "networks", "cloud_init", "availability_zone"];
 
 /**
  * Уникальный идентификатор для каждого экземпляра сервера. Автоматически генерируется при создании.
@@ -343,7 +349,7 @@ Vds.prototype['status'] = undefined;
 Vds.prototype['start_at'] = undefined;
 
 /**
- * Это логическое значение, которое показывает, включена ли защита от DDOS у данного сервера.
+ * Это логическое значение, которое показывает, включена ли защита от DDoS у данного сервера.
  * @member {Boolean} is_ddos_guard
  */
 Vds.prototype['is_ddos_guard'] = undefined;
@@ -412,6 +418,11 @@ Vds.prototype['cloud_init'] = undefined;
  * @member {Boolean} is_qemu_agent
  */
 Vds.prototype['is_qemu_agent'] = undefined;
+
+/**
+ * @member {module:model/AvailabilityZone} availability_zone
+ */
+Vds.prototype['availability_zone'] = undefined;
 
 
 

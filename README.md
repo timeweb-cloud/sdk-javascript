@@ -370,6 +370,13 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.FirewallApi* | [**getRulesForResource**](docs/FirewallApi.md#getRulesForResource) | **GET** /api/v1/firewall/service/{resource_type}/{resource_id} | Получение групп правил для ресурса
 *TimewebCloudApi.FirewallApi* | [**updateGroup**](docs/FirewallApi.md#updateGroup) | **PATCH** /api/v1/firewall/groups/{group_id} | Обновление группы правил
 *TimewebCloudApi.FirewallApi* | [**updateGroupRule**](docs/FirewallApi.md#updateGroupRule) | **PATCH** /api/v1/firewall/groups/{group_id}/rules/{rule_id} | Обновление firewall правила
+*TimewebCloudApi.FloatingIPApi* | [**bindFloatingIp**](docs/FloatingIPApi.md#bindFloatingIp) | **POST** /api/v1/floating-ips/{floating_ip_id}/bind | Привязать IP к сервису
+*TimewebCloudApi.FloatingIPApi* | [**createFloatingIp**](docs/FloatingIPApi.md#createFloatingIp) | **POST** /api/v1/floating-ips | Создание плавающего IP
+*TimewebCloudApi.FloatingIPApi* | [**deleteFloatingIP**](docs/FloatingIPApi.md#deleteFloatingIP) | **DELETE** /api/v1/floating-ips/{floating_ip_id} | Удаление плавающего IP по идентификатору
+*TimewebCloudApi.FloatingIPApi* | [**getFloatingIp**](docs/FloatingIPApi.md#getFloatingIp) | **GET** /api/v1/floating-ips/{floating_ip_id} | Получение плавающего IP
+*TimewebCloudApi.FloatingIPApi* | [**getFloatingIps**](docs/FloatingIPApi.md#getFloatingIps) | **GET** /api/v1/floating-ips | Получение списка плавающих IP
+*TimewebCloudApi.FloatingIPApi* | [**unbindFloatingIp**](docs/FloatingIPApi.md#unbindFloatingIp) | **POST** /api/v1/floating-ips/{floating_ip_id}/unbind | Отвязать IP от сервиса
+*TimewebCloudApi.FloatingIPApi* | [**updateFloatingIP**](docs/FloatingIPApi.md#updateFloatingIP) | **PATCH** /api/v1/floating-ips/{floating_ip_id} | Изменение плавающего IP по идентификатору
 *TimewebCloudApi.ImagesApi* | [**createImage**](docs/ImagesApi.md#createImage) | **POST** /api/v1/images | Создание образа
 *TimewebCloudApi.ImagesApi* | [**createImageDownloadUrl**](docs/ImagesApi.md#createImageDownloadUrl) | **POST** /api/v1/images/{image_id}/download-url | Создание ссылки на скачивание образа
 *TimewebCloudApi.ImagesApi* | [**deleteImage**](docs/ImagesApi.md#deleteImage) | **DELETE** /api/v1/images/{image_id} | Удаление образа
@@ -530,9 +537,11 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.AutoBackup](docs/AutoBackup.md)
  - [TimewebCloudApi.AutoReplyIsDisabled](docs/AutoReplyIsDisabled.md)
  - [TimewebCloudApi.AutoReplyIsEnabled](docs/AutoReplyIsEnabled.md)
+ - [TimewebCloudApi.AvailabilityZone](docs/AvailabilityZone.md)
  - [TimewebCloudApi.Backup](docs/Backup.md)
  - [TimewebCloudApi.Balancer](docs/Balancer.md)
  - [TimewebCloudApi.BaseError](docs/BaseError.md)
+ - [TimewebCloudApi.BindFloatingIp](docs/BindFloatingIp.md)
  - [TimewebCloudApi.Bonus](docs/Bonus.md)
  - [TimewebCloudApi.Bucket](docs/Bucket.md)
  - [TimewebCloudApi.BucketDiskStats](docs/BucketDiskStats.md)
@@ -568,6 +577,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateDomainMailbox201Response](docs/CreateDomainMailbox201Response.md)
  - [TimewebCloudApi.CreateDomainMailboxRequest](docs/CreateDomainMailboxRequest.md)
  - [TimewebCloudApi.CreateDomainRequest201Response](docs/CreateDomainRequest201Response.md)
+ - [TimewebCloudApi.CreateFloatingIp](docs/CreateFloatingIp.md)
+ - [TimewebCloudApi.CreateFloatingIp201Response](docs/CreateFloatingIp201Response.md)
  - [TimewebCloudApi.CreateFolderInStorageRequest](docs/CreateFolderInStorageRequest.md)
  - [TimewebCloudApi.CreateInstance](docs/CreateInstance.md)
  - [TimewebCloudApi.CreateKey201Response](docs/CreateKey201Response.md)
@@ -597,6 +608,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DatabaseInstance](docs/DatabaseInstance.md)
  - [TimewebCloudApi.Db](docs/Db.md)
  - [TimewebCloudApi.DbDiskStats](docs/DbDiskStats.md)
+ - [TimewebCloudApi.DbType](docs/DbType.md)
  - [TimewebCloudApi.DedicatedServer](docs/DedicatedServer.md)
  - [TimewebCloudApi.DedicatedServerAdditionalService](docs/DedicatedServerAdditionalService.md)
  - [TimewebCloudApi.DedicatedServerPreset](docs/DedicatedServerPreset.md)
@@ -645,6 +657,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.FirewallRuleOutResponse](docs/FirewallRuleOutResponse.md)
  - [TimewebCloudApi.FirewallRuleProtocol](docs/FirewallRuleProtocol.md)
  - [TimewebCloudApi.FirewallRulesOutResponse](docs/FirewallRulesOutResponse.md)
+ - [TimewebCloudApi.FloatingIp](docs/FloatingIp.md)
  - [TimewebCloudApi.ForwardingIncomingIsDisabled](docs/ForwardingIncomingIsDisabled.md)
  - [TimewebCloudApi.ForwardingIncomingIsEnabled](docs/ForwardingIncomingIsEnabled.md)
  - [TimewebCloudApi.ForwardingOutgoingIsDisabled](docs/ForwardingOutgoingIsDisabled.md)
@@ -683,6 +696,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetFinances404Response](docs/GetFinances404Response.md)
  - [TimewebCloudApi.GetFinances429Response](docs/GetFinances429Response.md)
  - [TimewebCloudApi.GetFinances500Response](docs/GetFinances500Response.md)
+ - [TimewebCloudApi.GetFloatingIps200Response](docs/GetFloatingIps200Response.md)
  - [TimewebCloudApi.GetKey200Response](docs/GetKey200Response.md)
  - [TimewebCloudApi.GetKeys200Response](docs/GetKeys200Response.md)
  - [TimewebCloudApi.GetMailQuota200Response](docs/GetMailQuota200Response.md)
@@ -758,6 +772,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.OS](docs/OS.md)
  - [TimewebCloudApi.PerformActionOnBackupRequest](docs/PerformActionOnBackupRequest.md)
  - [TimewebCloudApi.PerformActionOnServerRequest](docs/PerformActionOnServerRequest.md)
+ - [TimewebCloudApi.Policy](docs/Policy.md)
  - [TimewebCloudApi.PresetsBalancer](docs/PresetsBalancer.md)
  - [TimewebCloudApi.PresetsDbs](docs/PresetsDbs.md)
  - [TimewebCloudApi.PresetsResponse](docs/PresetsResponse.md)
@@ -815,6 +830,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateDomainMailInfoRequest](docs/UpdateDomainMailInfoRequest.md)
  - [TimewebCloudApi.UpdateDomainNameServers](docs/UpdateDomainNameServers.md)
  - [TimewebCloudApi.UpdateDomainNameServersNameServersInner](docs/UpdateDomainNameServersNameServersInner.md)
+ - [TimewebCloudApi.UpdateFloatingIp](docs/UpdateFloatingIp.md)
  - [TimewebCloudApi.UpdateInstance](docs/UpdateInstance.md)
  - [TimewebCloudApi.UpdateKeyRequest](docs/UpdateKeyRequest.md)
  - [TimewebCloudApi.UpdateMailQuotaRequest](docs/UpdateMailQuotaRequest.md)

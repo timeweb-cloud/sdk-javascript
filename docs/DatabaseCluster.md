@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **location** | **String** | Локация сервера. | 
 **name** | **String** | Название кластера базы данных. | 
 **networks** | [**[DatabaseClusterNetworksInner]**](DatabaseClusterNetworksInner.md) | Список сетей кластера базы данных. | 
-**type** | **String** | Тип кластера базы данных. | 
+**type** | [**DbType**](DbType.md) |  | 
 **hashType** | **String** | Тип хеширования кластера базы данных (mysql5 | mysql | postgres). | 
 **port** | **Number** | Порт | 
 **status** | **String** | Текущий статус кластера базы данных. | 
@@ -30,23 +30,6 @@ Name | Type | Description | Notes
 * `pl-1` (value: `"pl-1"`)
 
 * `kz-1` (value: `"kz-1"`)
-
-
-
-
-
-## Enum: TypeEnum
-
-
-* `mysql` (value: `"mysql"`)
-
-* `mysql5` (value: `"mysql5"`)
-
-* `postgres` (value: `"postgres"`)
-
-* `redis` (value: `"redis"`)
-
-* `mongodb` (value: `"mongodb"`)
 
 
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | Название кластера базы данных. | 
-**type** | **String** | Тип базы данных. | 
+**type** | [**DbType**](DbType.md) |  | 
 **admin** | [**CreateClusterAdmin**](CreateClusterAdmin.md) |  | [optional] 
 **instance** | [**CreateClusterInstance**](CreateClusterInstance.md) |  | [optional] 
 **hashType** | **String** | Тип хеширования базы данных (mysql5 | mysql | postgres). | [optional] 
@@ -13,23 +13,7 @@ Name | Type | Description | Notes
 **configParameters** | [**ConfigParameters**](ConfigParameters.md) |  | [optional] 
 **network** | [**Network**](Network.md) |  | [optional] 
 **description** | **String** | Описание кластера базы данных | [optional] 
-
-
-
-## Enum: TypeEnum
-
-
-* `mysql` (value: `"mysql"`)
-
-* `mysql5` (value: `"mysql5"`)
-
-* `postgres` (value: `"postgres"`)
-
-* `redis` (value: `"redis"`)
-
-* `mongodb` (value: `"mongodb"`)
-
-
+**availabilityZone** | [**AvailabilityZone**](AvailabilityZone.md) |  | [optional] 
 
 
 

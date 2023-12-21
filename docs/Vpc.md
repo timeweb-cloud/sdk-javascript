@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **location** | **String** | Локация сети. | 
 **createdAt** | **Date** | Дата создания сети. | 
 **description** | **String** | Описание. | [optional] 
+**availabilityZone** | [**AvailabilityZone**](AvailabilityZone.md) |  | 
 
 
 

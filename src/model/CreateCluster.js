@@ -12,9 +12,11 @@
  */
 
 import ApiClient from '../ApiClient';
+import AvailabilityZone from './AvailabilityZone';
 import ConfigParameters from './ConfigParameters';
 import CreateClusterAdmin from './CreateClusterAdmin';
 import CreateClusterInstance from './CreateClusterInstance';
+import DbType from './DbType';
 import Network from './Network';
 
 /**
@@ -27,7 +29,7 @@ class CreateCluster {
      * Constructs a new <code>CreateCluster</code>.
      * @alias module:model/CreateCluster
      * @param name {String} Название кластера базы данных.
-     * @param type {module:model/CreateCluster.TypeEnum} Тип базы данных.
+     * @param type {module:model/DbType} 
      * @param presetId {Number} Идентификатор тарифа.
      */
     constructor(name, type, presetId) { 
@@ -61,7 +63,7 @@ class CreateCluster {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
             if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], 'String');
+                obj['type'] = DbType.constructFromObject(data['type']);
             }
             if (data.hasOwnProperty('admin')) {
                 obj['admin'] = CreateClusterAdmin.constructFromObject(data['admin']);
@@ -84,6 +86,9 @@ class CreateCluster {
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
+            if (data.hasOwnProperty('availability_zone')) {
+                obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
+            }
         }
         return obj;
     }
@@ -103,10 +108,6 @@ class CreateCluster {
         // ensure the json data is a string
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
-        }
-        // ensure the json data is a string
-        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
-            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
         }
         // validate the optional field `admin`
         if (data['admin']) { // data not null
@@ -148,8 +149,7 @@ CreateCluster.RequiredProperties = ["name", "type", "preset_id"];
 CreateCluster.prototype['name'] = undefined;
 
 /**
- * Тип базы данных.
- * @member {module:model/CreateCluster.TypeEnum} type
+ * @member {module:model/DbType} type
  */
 CreateCluster.prototype['type'] = undefined;
 
@@ -191,47 +191,13 @@ CreateCluster.prototype['network'] = undefined;
  */
 CreateCluster.prototype['description'] = undefined;
 
-
-
-
-
 /**
- * Allowed values for the <code>type</code> property.
- * @enum {String}
- * @readonly
+ * @member {module:model/AvailabilityZone} availability_zone
  */
-CreateCluster['TypeEnum'] = {
+CreateCluster.prototype['availability_zone'] = undefined;
 
-    /**
-     * value: "mysql"
-     * @const
-     */
-    "mysql": "mysql",
 
-    /**
-     * value: "mysql5"
-     * @const
-     */
-    "mysql5": "mysql5",
 
-    /**
-     * value: "postgres"
-     * @const
-     */
-    "postgres": "postgres",
-
-    /**
-     * value: "redis"
-     * @const
-     */
-    "redis": "redis",
-
-    /**
-     * value: "mongodb"
-     * @const
-     */
-    "mongodb": "mongodb"
-};
 
 
 /**

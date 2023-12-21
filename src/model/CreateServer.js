@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import AvailabilityZone from './AvailabilityZone';
 import CreateServerConfiguration from './CreateServerConfiguration';
 import Network from './Network';
 
@@ -96,6 +97,9 @@ class CreateServer {
             }
             if (data.hasOwnProperty('cloud_init')) {
                 obj['cloud_init'] = ApiClient.convertToType(data['cloud_init'], 'String');
+            }
+            if (data.hasOwnProperty('availability_zone')) {
+                obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
             }
         }
         return obj;
@@ -235,6 +239,11 @@ CreateServer.prototype['network'] = undefined;
  * @member {String} cloud_init
  */
 CreateServer.prototype['cloud_init'] = undefined;
+
+/**
+ * @member {module:model/AvailabilityZone} availability_zone
+ */
+CreateServer.prototype['availability_zone'] = undefined;
 
 
 

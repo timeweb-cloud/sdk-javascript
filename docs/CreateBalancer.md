@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **rise** | **Number** | Порог количества успешных ответов. | 
 **presetId** | **Number** | Идентификатор тарифа. | 
 **network** | [**Network**](Network.md) |  | [optional] 
+**availabilityZone** | [**AvailabilityZone**](AvailabilityZone.md) |  | [optional] 
 
 
 

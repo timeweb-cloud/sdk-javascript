@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import AvailabilityZone from './AvailabilityZone';
 
 /**
  * The Vpc model module.
@@ -27,10 +28,11 @@ class Vpc {
      * @param subnetV4 {String} Маска подсети.
      * @param location {module:model/Vpc.LocationEnum} Локация сети.
      * @param createdAt {Date} Дата создания сети.
+     * @param availabilityZone {module:model/AvailabilityZone} 
      */
-    constructor(id, name, subnetV4, location, createdAt) { 
+    constructor(id, name, subnetV4, location, createdAt, availabilityZone) { 
         
-        Vpc.initialize(this, id, name, subnetV4, location, createdAt);
+        Vpc.initialize(this, id, name, subnetV4, location, createdAt, availabilityZone);
     }
 
     /**
@@ -38,12 +40,13 @@ class Vpc {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, subnetV4, location, createdAt) { 
+    static initialize(obj, id, name, subnetV4, location, createdAt, availabilityZone) { 
         obj['id'] = id;
         obj['name'] = name;
         obj['subnet_v4'] = subnetV4;
         obj['location'] = location;
         obj['created_at'] = createdAt;
+        obj['availability_zone'] = availabilityZone;
     }
 
     /**
@@ -74,6 +77,9 @@ class Vpc {
             }
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
+            if (data.hasOwnProperty('availability_zone')) {
+                obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
             }
         }
         return obj;
@@ -118,7 +124,7 @@ class Vpc {
 
 }
 
-Vpc.RequiredProperties = ["id", "name", "subnet_v4", "location", "created_at"];
+Vpc.RequiredProperties = ["id", "name", "subnet_v4", "location", "created_at", "availability_zone"];
 
 /**
  * Идентификатор сети.
@@ -155,6 +161,11 @@ Vpc.prototype['created_at'] = undefined;
  * @member {String} description
  */
 Vpc.prototype['description'] = undefined;
+
+/**
+ * @member {module:model/AvailabilityZone} availability_zone
+ */
+Vpc.prototype['availability_zone'] = undefined;
 
 
 

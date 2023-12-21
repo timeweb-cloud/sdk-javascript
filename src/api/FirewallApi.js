@@ -112,10 +112,13 @@ export default class FirewallApi {
      * Создание группы правил
      * Чтобы создать группу правил, отправьте POST запрос на `/api/v1/firewall/groups`
      * @param {module:model/FirewallGroupInAPI} firewallGroupInAPI 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/String} [policy] Тип группы правил
      * @param {module:api/FirewallApi~createGroupCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/FirewallGroupOutResponse}
      */
-    createGroup(firewallGroupInAPI, callback) {
+    createGroup(firewallGroupInAPI, opts, callback) {
+      opts = opts || {};
       let postBody = firewallGroupInAPI;
       // verify the required parameter 'firewallGroupInAPI' is set
       if (firewallGroupInAPI === undefined || firewallGroupInAPI === null) {
@@ -125,6 +128,7 @@ export default class FirewallApi {
       let pathParams = {
       };
       let queryParams = {
+        'policy': opts['policy']
       };
       let headerParams = {
       };

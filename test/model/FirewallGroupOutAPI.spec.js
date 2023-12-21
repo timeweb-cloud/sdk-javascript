@@ -84,6 +84,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property policy (base name: "policy")', function() {
+      // uncomment below and update the code to test the property policy
+      //var instance = new TimewebCloudApi.FirewallGroupOutAPI();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import AvailabilityZone from './AvailabilityZone';
 import Rule from './Rule';
 
 /**
@@ -46,10 +47,11 @@ class Balancer {
      * @param rules {Array.<module:model/Rule>} 
      * @param ips {Array.<String>} Список IP-адресов, привязанных к балансировщику
      * @param location {module:model/Balancer.LocationEnum} Географическое расположение балансировщика
+     * @param availabilityZone {module:model/AvailabilityZone} 
      */
-    constructor(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location) { 
+    constructor(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone) { 
         
-        Balancer.initialize(this, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location);
+        Balancer.initialize(this, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone);
     }
 
     /**
@@ -57,7 +59,7 @@ class Balancer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location) { 
+    static initialize(obj, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone) { 
         obj['id'] = id;
         obj['algo'] = algo;
         obj['created_at'] = createdAt;
@@ -80,6 +82,7 @@ class Balancer {
         obj['rules'] = rules;
         obj['ips'] = ips;
         obj['location'] = location;
+        obj['availability_zone'] = availabilityZone;
     }
 
     /**
@@ -159,6 +162,9 @@ class Balancer {
             if (data.hasOwnProperty('location')) {
                 obj['location'] = ApiClient.convertToType(data['location'], 'String');
             }
+            if (data.hasOwnProperty('availability_zone')) {
+                obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
+            }
         }
         return obj;
     }
@@ -228,7 +234,7 @@ class Balancer {
 
 }
 
-Balancer.RequiredProperties = ["id", "algo", "created_at", "fall", "inter", "ip", "local_ip", "is_keepalive", "name", "path", "port", "proto", "rise", "preset_id", "is_ssl", "status", "is_sticky", "timeout", "is_use_proxy", "rules", "ips", "location"];
+Balancer.RequiredProperties = ["id", "algo", "created_at", "fall", "inter", "ip", "local_ip", "is_keepalive", "name", "path", "port", "proto", "rise", "preset_id", "is_ssl", "status", "is_sticky", "timeout", "is_use_proxy", "rules", "ips", "location", "availability_zone"];
 
 /**
  * Уникальный идентификатор для каждого экземпляра балансировщика. Автоматически генерируется при создании.
@@ -360,6 +366,11 @@ Balancer.prototype['ips'] = undefined;
  * @member {module:model/Balancer.LocationEnum} location
  */
 Balancer.prototype['location'] = undefined;
+
+/**
+ * @member {module:model/AvailabilityZone} availability_zone
+ */
+Balancer.prototype['availability_zone'] = undefined;
 
 
 

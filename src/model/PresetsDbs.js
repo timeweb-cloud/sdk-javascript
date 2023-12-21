@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import DbType from './DbType';
 
 /**
  * The PresetsDbs model module.
@@ -66,7 +67,7 @@ class PresetsDbs {
                 obj['disk'] = ApiClient.convertToType(data['disk'], 'Number');
             }
             if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], 'String');
+                obj['type'] = DbType.constructFromObject(data['type']);
             }
             if (data.hasOwnProperty('price')) {
                 obj['price'] = ApiClient.convertToType(data['price'], 'Number');
@@ -91,10 +92,6 @@ class PresetsDbs {
         // ensure the json data is a string
         if (data['description_short'] && !(typeof data['description_short'] === 'string' || data['description_short'] instanceof String)) {
             throw new Error("Expected the field `description_short` to be a primitive type in the JSON string but got " + data['description_short']);
-        }
-        // ensure the json data is a string
-        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
-            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
         }
         // ensure the json data is a string
         if (data['location'] && !(typeof data['location'] === 'string' || data['location'] instanceof String)) {
@@ -146,8 +143,7 @@ PresetsDbs.prototype['ram'] = undefined;
 PresetsDbs.prototype['disk'] = undefined;
 
 /**
- * Тип тарифа базы данных
- * @member {module:model/PresetsDbs.TypeEnum} type
+ * @member {module:model/DbType} type
  */
 PresetsDbs.prototype['type'] = undefined;
 
@@ -165,45 +161,6 @@ PresetsDbs.prototype['location'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>type</code> property.
- * @enum {String}
- * @readonly
- */
-PresetsDbs['TypeEnum'] = {
-
-    /**
-     * value: "mysql"
-     * @const
-     */
-    "mysql": "mysql",
-
-    /**
-     * value: "mysql5"
-     * @const
-     */
-    "mysql5": "mysql5",
-
-    /**
-     * value: "postgres"
-     * @const
-     */
-    "postgres": "postgres",
-
-    /**
-     * value: "redis"
-     * @const
-     */
-    "redis": "redis",
-
-    /**
-     * value: "mongodb"
-     * @const
-     */
-    "mongodb": "mongodb"
-};
 
 
 /**

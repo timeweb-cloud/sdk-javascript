@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import ConfigParameters from './ConfigParameters';
+import DbType from './DbType';
 import Network from './Network';
 
 /**
@@ -26,7 +27,7 @@ class CreateDb {
      * @alias module:model/CreateDb
      * @param password {String} Пароль для подключения к базе данных.
      * @param name {String} Название базы данных.
-     * @param type {module:model/CreateDb.TypeEnum} Тип базы данных.
+     * @param type {module:model/DbType} 
      * @param presetId {Number} Идентификатор тарифа.
      */
     constructor(password, name, type, presetId) { 
@@ -67,7 +68,7 @@ class CreateDb {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
             if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], 'String');
+                obj['type'] = DbType.constructFromObject(data['type']);
             }
             if (data.hasOwnProperty('hash_type')) {
                 obj['hash_type'] = ApiClient.convertToType(data['hash_type'], 'String');
@@ -110,10 +111,6 @@ class CreateDb {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
-        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
-            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
-        }
-        // ensure the json data is a string
         if (data['hash_type'] && !(typeof data['hash_type'] === 'string' || data['hash_type'] instanceof String)) {
             throw new Error("Expected the field `hash_type` to be a primitive type in the JSON string but got " + data['hash_type']);
         }
@@ -153,8 +150,7 @@ CreateDb.prototype['password'] = undefined;
 CreateDb.prototype['name'] = undefined;
 
 /**
- * Тип базы данных.
- * @member {module:model/CreateDb.TypeEnum} type
+ * @member {module:model/DbType} type
  */
 CreateDb.prototype['type'] = undefined;
 
@@ -182,45 +178,6 @@ CreateDb.prototype['network'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>type</code> property.
- * @enum {String}
- * @readonly
- */
-CreateDb['TypeEnum'] = {
-
-    /**
-     * value: "mysql"
-     * @const
-     */
-    "mysql": "mysql",
-
-    /**
-     * value: "mysql5"
-     * @const
-     */
-    "mysql5": "mysql5",
-
-    /**
-     * value: "postgres"
-     * @const
-     */
-    "postgres": "postgres",
-
-    /**
-     * value: "redis"
-     * @const
-     */
-    "redis": "redis",
-
-    /**
-     * value: "mongodb"
-     * @const
-     */
-    "mongodb": "mongodb"
-};
 
 
 /**

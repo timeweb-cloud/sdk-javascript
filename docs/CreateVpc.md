@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **subnetV4** | **String** | Маска подсети. | 
 **location** | **String** | Локация сети. | 
 **description** | **String** | Описание. | [optional] 
+**availabilityZone** | [**AvailabilityZone**](AvailabilityZone.md) |  | [optional] 
 
 
 

@@ -12,8 +12,10 @@
  */
 
 import ApiClient from '../ApiClient';
+import AvailabilityZone from './AvailabilityZone';
 import ConfigParameters from './ConfigParameters';
 import DbDiskStats from './DbDiskStats';
+import DbType from './DbType';
 
 /**
  * The Db model module.
@@ -32,7 +34,7 @@ class Db {
      * @param password {String} Пароль для подключения к базе данных.
      * @param name {String} Название базы данных.
      * @param host {String} Хост.
-     * @param type {module:model/Db.TypeEnum} Тип базы данных.
+     * @param type {module:model/DbType} 
      * @param hashType {module:model/Db.HashTypeEnum} Тип хеширования базы данных (mysql5 | mysql | postgres).
      * @param port {Number} Порт
      * @param ip {String} IP-адрес сетевого интерфейса IPv4.
@@ -42,10 +44,11 @@ class Db {
      * @param diskStats {module:model/DbDiskStats} 
      * @param configParameters {module:model/ConfigParameters} 
      * @param isOnlyLocalIpAccess {Boolean} Это логическое значение, которое показывает, доступна ли база данных только по локальному IP адресу.
+     * @param availabilityZone {module:model/AvailabilityZone} 
      */
-    constructor(id, createdAt, accountId, login, password, name, host, type, hashType, port, ip, localIp, status, presetId, diskStats, configParameters, isOnlyLocalIpAccess) { 
+    constructor(id, createdAt, accountId, login, password, name, host, type, hashType, port, ip, localIp, status, presetId, diskStats, configParameters, isOnlyLocalIpAccess, availabilityZone) { 
         
-        Db.initialize(this, id, createdAt, accountId, login, password, name, host, type, hashType, port, ip, localIp, status, presetId, diskStats, configParameters, isOnlyLocalIpAccess);
+        Db.initialize(this, id, createdAt, accountId, login, password, name, host, type, hashType, port, ip, localIp, status, presetId, diskStats, configParameters, isOnlyLocalIpAccess, availabilityZone);
     }
 
     /**
@@ -53,7 +56,7 @@ class Db {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, createdAt, accountId, login, password, name, host, type, hashType, port, ip, localIp, status, presetId, diskStats, configParameters, isOnlyLocalIpAccess) { 
+    static initialize(obj, id, createdAt, accountId, login, password, name, host, type, hashType, port, ip, localIp, status, presetId, diskStats, configParameters, isOnlyLocalIpAccess, availabilityZone) { 
         obj['id'] = id;
         obj['created_at'] = createdAt;
         obj['account_id'] = accountId;
@@ -71,6 +74,7 @@ class Db {
         obj['disk_stats'] = diskStats;
         obj['config_parameters'] = configParameters;
         obj['is_only_local_ip_access'] = isOnlyLocalIpAccess;
+        obj['availability_zone'] = availabilityZone;
     }
 
     /**
@@ -109,7 +113,7 @@ class Db {
                 obj['host'] = ApiClient.convertToType(data['host'], 'String');
             }
             if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], 'String');
+                obj['type'] = DbType.constructFromObject(data['type']);
             }
             if (data.hasOwnProperty('hash_type')) {
                 obj['hash_type'] = ApiClient.convertToType(data['hash_type'], 'String');
@@ -137,6 +141,9 @@ class Db {
             }
             if (data.hasOwnProperty('is_only_local_ip_access')) {
                 obj['is_only_local_ip_access'] = ApiClient.convertToType(data['is_only_local_ip_access'], 'Boolean');
+            }
+            if (data.hasOwnProperty('availability_zone')) {
+                obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
             }
         }
         return obj;
@@ -183,10 +190,6 @@ class Db {
             throw new Error("Expected the field `host` to be a primitive type in the JSON string but got " + data['host']);
         }
         // ensure the json data is a string
-        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
-            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
-        }
-        // ensure the json data is a string
         if (data['hash_type'] && !(typeof data['hash_type'] === 'string' || data['hash_type'] instanceof String)) {
             throw new Error("Expected the field `hash_type` to be a primitive type in the JSON string but got " + data['hash_type']);
         }
@@ -217,7 +220,7 @@ class Db {
 
 }
 
-Db.RequiredProperties = ["id", "created_at", "account_id", "login", "password", "name", "host", "type", "hash_type", "port", "ip", "local_ip", "status", "preset_id", "disk_stats", "config_parameters", "is_only_local_ip_access"];
+Db.RequiredProperties = ["id", "created_at", "account_id", "login", "password", "name", "host", "type", "hash_type", "port", "ip", "local_ip", "status", "preset_id", "disk_stats", "config_parameters", "is_only_local_ip_access", "availability_zone"];
 
 /**
  * Уникальный идентификатор для каждого экземпляра базы данных. Автоматически генерируется при создании.
@@ -268,8 +271,7 @@ Db.prototype['name'] = undefined;
 Db.prototype['host'] = undefined;
 
 /**
- * Тип базы данных.
- * @member {module:model/Db.TypeEnum} type
+ * @member {module:model/DbType} type
  */
 Db.prototype['type'] = undefined;
 
@@ -325,6 +327,11 @@ Db.prototype['config_parameters'] = undefined;
  */
 Db.prototype['is_only_local_ip_access'] = undefined;
 
+/**
+ * @member {module:model/AvailabilityZone} availability_zone
+ */
+Db.prototype['availability_zone'] = undefined;
+
 
 
 
@@ -359,45 +366,6 @@ Db['LocationEnum'] = {
      * @const
      */
     "kz-1": "kz-1"
-};
-
-
-/**
- * Allowed values for the <code>type</code> property.
- * @enum {String}
- * @readonly
- */
-Db['TypeEnum'] = {
-
-    /**
-     * value: "mysql"
-     * @const
-     */
-    "mysql": "mysql",
-
-    /**
-     * value: "mysql5"
-     * @const
-     */
-    "mysql5": "mysql5",
-
-    /**
-     * value: "postgres"
-     * @const
-     */
-    "postgres": "postgres",
-
-    /**
-     * value: "redis"
-     * @const
-     */
-    "redis": "redis",
-
-    /**
-     * value: "mongodb"
-     * @const
-     */
-    "mongodb": "mongodb"
 };
 
 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **password** | **String** | Пароль для подключения к базе данных. | 
 **name** | **String** | Название базы данных. | 
 **host** | **String** | Хост. | 
-**type** | **String** | Тип базы данных. | 
+**type** | [**DbType**](DbType.md) |  | 
 **hashType** | **String** | Тип хеширования базы данных (mysql5 | mysql | postgres). | 
 **port** | **Number** | Порт | 
 **ip** | **String** | IP-адрес сетевого интерфейса IPv4. | 
@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **diskStats** | [**DbDiskStats**](DbDiskStats.md) |  | 
 **configParameters** | [**ConfigParameters**](ConfigParameters.md) |  | 
 **isOnlyLocalIpAccess** | **Boolean** | Это логическое значение, которое показывает, доступна ли база данных только по локальному IP адресу. | 
+**availabilityZone** | [**AvailabilityZone**](AvailabilityZone.md) |  | 
 
 
 
@@ -35,23 +36,6 @@ Name | Type | Description | Notes
 * `pl-1` (value: `"pl-1"`)
 
 * `kz-1` (value: `"kz-1"`)
-
-
-
-
-
-## Enum: TypeEnum
-
-
-* `mysql` (value: `"mysql"`)
-
-* `mysql5` (value: `"mysql5"`)
-
-* `postgres` (value: `"postgres"`)
-
-* `redis` (value: `"redis"`)
-
-* `mongodb` (value: `"mongodb"`)
 
 
 

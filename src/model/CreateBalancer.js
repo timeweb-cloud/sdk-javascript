@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import AvailabilityZone from './AvailabilityZone';
 import Network from './Network';
 
 /**
@@ -120,6 +121,9 @@ class CreateBalancer {
             }
             if (data.hasOwnProperty('network')) {
                 obj['network'] = Network.constructFromObject(data['network']);
+            }
+            if (data.hasOwnProperty('availability_zone')) {
+                obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
             }
         }
         return obj;
@@ -254,6 +258,11 @@ CreateBalancer.prototype['preset_id'] = undefined;
  * @member {module:model/Network} network
  */
 CreateBalancer.prototype['network'] = undefined;
+
+/**
+ * @member {module:model/AvailabilityZone} availability_zone
+ */
+CreateBalancer.prototype['availability_zone'] = undefined;
 
 
 

@@ -18,5 +18,6 @@ Name | Type | Description | Notes
 **isLocalNetwork** | **Boolean** | Локальная сеть. | [optional] 
 **network** | [**Network**](Network.md) |  | [optional] 
 **cloudInit** | **String** | Cloud-init скрипт | [optional] 
+**availabilityZone** | [**AvailabilityZone**](AvailabilityZone.md) |  | [optional] 
 
 

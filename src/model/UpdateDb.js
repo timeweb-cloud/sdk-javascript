@@ -119,7 +119,7 @@ UpdateDb.prototype['preset_id'] = undefined;
 UpdateDb.prototype['config_parameters'] = undefined;
 
 /**
- * Использовать или нет внешний ip.
+ * Использовать или нет внешний IP.
  * @member {Boolean} is_external_ip
  */
 UpdateDb.prototype['is_external_ip'] = undefined;

@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import AvailabilityZone from './AvailabilityZone';
 
 /**
  * The CreateVpc model module.
@@ -64,6 +65,9 @@ class CreateVpc {
             }
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
+            if (data.hasOwnProperty('availability_zone')) {
+                obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
             }
         }
         return obj;
@@ -129,6 +133,11 @@ CreateVpc.prototype['location'] = undefined;
  * @member {String} description
  */
 CreateVpc.prototype['description'] = undefined;
+
+/**
+ * @member {module:model/AvailabilityZone} availability_zone
+ */
+CreateVpc.prototype['availability_zone'] = undefined;
 
 
 

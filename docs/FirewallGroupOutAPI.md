@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **updatedAt** | **Date** | Дата и время последнего обновления | 
 **name** | **String** | Имя группы правил | 
 **description** | **String** | Описание группы правил | 
+**policy** | [**Policy**](Policy.md) |  | 
 
 

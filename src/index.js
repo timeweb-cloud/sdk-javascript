@@ -39,9 +39,11 @@ import ApiKey from './model/ApiKey';
 import AutoBackup from './model/AutoBackup';
 import AutoReplyIsDisabled from './model/AutoReplyIsDisabled';
 import AutoReplyIsEnabled from './model/AutoReplyIsEnabled';
+import AvailabilityZone from './model/AvailabilityZone';
 import Backup from './model/Backup';
 import Balancer from './model/Balancer';
 import BaseError from './model/BaseError';
+import BindFloatingIp from './model/BindFloatingIp';
 import Bonus from './model/Bonus';
 import Bucket from './model/Bucket';
 import BucketDiskStats from './model/BucketDiskStats';
@@ -77,6 +79,8 @@ import CreateDomainDNSRecord201Response from './model/CreateDomainDNSRecord201Re
 import CreateDomainMailbox201Response from './model/CreateDomainMailbox201Response';
 import CreateDomainMailboxRequest from './model/CreateDomainMailboxRequest';
 import CreateDomainRequest201Response from './model/CreateDomainRequest201Response';
+import CreateFloatingIp from './model/CreateFloatingIp';
+import CreateFloatingIp201Response from './model/CreateFloatingIp201Response';
 import CreateFolderInStorageRequest from './model/CreateFolderInStorageRequest';
 import CreateInstance from './model/CreateInstance';
 import CreateKey201Response from './model/CreateKey201Response';
@@ -106,6 +110,7 @@ import DatabaseClusterNetworksInnerIpsInner from './model/DatabaseClusterNetwork
 import DatabaseInstance from './model/DatabaseInstance';
 import Db from './model/Db';
 import DbDiskStats from './model/DbDiskStats';
+import DbType from './model/DbType';
 import DedicatedServer from './model/DedicatedServer';
 import DedicatedServerAdditionalService from './model/DedicatedServerAdditionalService';
 import DedicatedServerPreset from './model/DedicatedServerPreset';
@@ -154,6 +159,7 @@ import FirewallRuleOutAPI from './model/FirewallRuleOutAPI';
 import FirewallRuleOutResponse from './model/FirewallRuleOutResponse';
 import FirewallRuleProtocol from './model/FirewallRuleProtocol';
 import FirewallRulesOutResponse from './model/FirewallRulesOutResponse';
+import FloatingIp from './model/FloatingIp';
 import ForwardingIncomingIsDisabled from './model/ForwardingIncomingIsDisabled';
 import ForwardingIncomingIsEnabled from './model/ForwardingIncomingIsEnabled';
 import ForwardingOutgoingIsDisabled from './model/ForwardingOutgoingIsDisabled';
@@ -192,6 +198,7 @@ import GetFinances403Response from './model/GetFinances403Response';
 import GetFinances404Response from './model/GetFinances404Response';
 import GetFinances429Response from './model/GetFinances429Response';
 import GetFinances500Response from './model/GetFinances500Response';
+import GetFloatingIps200Response from './model/GetFloatingIps200Response';
 import GetKey200Response from './model/GetKey200Response';
 import GetKeys200Response from './model/GetKeys200Response';
 import GetMailQuota200Response from './model/GetMailQuota200Response';
@@ -267,6 +274,7 @@ import NotificationSettingType from './model/NotificationSettingType';
 import OS from './model/OS';
 import PerformActionOnBackupRequest from './model/PerformActionOnBackupRequest';
 import PerformActionOnServerRequest from './model/PerformActionOnServerRequest';
+import Policy from './model/Policy';
 import PresetsBalancer from './model/PresetsBalancer';
 import PresetsDbs from './model/PresetsDbs';
 import PresetsResponse from './model/PresetsResponse';
@@ -324,6 +332,7 @@ import UpdateDomainAutoProlongation200Response from './model/UpdateDomainAutoPro
 import UpdateDomainMailInfoRequest from './model/UpdateDomainMailInfoRequest';
 import UpdateDomainNameServers from './model/UpdateDomainNameServers';
 import UpdateDomainNameServersNameServersInner from './model/UpdateDomainNameServersNameServersInner';
+import UpdateFloatingIp from './model/UpdateFloatingIp';
 import UpdateInstance from './model/UpdateInstance';
 import UpdateKeyRequest from './model/UpdateKeyRequest';
 import UpdateMailQuotaRequest from './model/UpdateMailQuotaRequest';
@@ -368,6 +377,7 @@ import DatabasesApi from './api/DatabasesApi';
 import DedicatedServersApi from './api/DedicatedServersApi';
 import DomainsApi from './api/DomainsApi';
 import FirewallApi from './api/FirewallApi';
+import FloatingIPApi from './api/FloatingIPApi';
 import ImagesApi from './api/ImagesApi';
 import KubernetesApi from './api/KubernetesApi';
 import MailApi from './api/MailApi';
@@ -573,6 +583,12 @@ export {
     AutoReplyIsEnabled,
 
     /**
+     * The AvailabilityZone model constructor.
+     * @property {module:model/AvailabilityZone}
+     */
+    AvailabilityZone,
+
+    /**
      * The Backup model constructor.
      * @property {module:model/Backup}
      */
@@ -589,6 +605,12 @@ export {
      * @property {module:model/BaseError}
      */
     BaseError,
+
+    /**
+     * The BindFloatingIp model constructor.
+     * @property {module:model/BindFloatingIp}
+     */
+    BindFloatingIp,
 
     /**
      * The Bonus model constructor.
@@ -801,6 +823,18 @@ export {
     CreateDomainRequest201Response,
 
     /**
+     * The CreateFloatingIp model constructor.
+     * @property {module:model/CreateFloatingIp}
+     */
+    CreateFloatingIp,
+
+    /**
+     * The CreateFloatingIp201Response model constructor.
+     * @property {module:model/CreateFloatingIp201Response}
+     */
+    CreateFloatingIp201Response,
+
+    /**
      * The CreateFolderInStorageRequest model constructor.
      * @property {module:model/CreateFolderInStorageRequest}
      */
@@ -973,6 +1007,12 @@ export {
      * @property {module:model/DbDiskStats}
      */
     DbDiskStats,
+
+    /**
+     * The DbType model constructor.
+     * @property {module:model/DbType}
+     */
+    DbType,
 
     /**
      * The DedicatedServer model constructor.
@@ -1263,6 +1303,12 @@ export {
     FirewallRulesOutResponse,
 
     /**
+     * The FloatingIp model constructor.
+     * @property {module:model/FloatingIp}
+     */
+    FloatingIp,
+
+    /**
      * The ForwardingIncomingIsDisabled model constructor.
      * @property {module:model/ForwardingIncomingIsDisabled}
      */
@@ -1489,6 +1535,12 @@ export {
      * @property {module:model/GetFinances500Response}
      */
     GetFinances500Response,
+
+    /**
+     * The GetFloatingIps200Response model constructor.
+     * @property {module:model/GetFloatingIps200Response}
+     */
+    GetFloatingIps200Response,
 
     /**
      * The GetKey200Response model constructor.
@@ -1941,6 +1993,12 @@ export {
     PerformActionOnServerRequest,
 
     /**
+     * The Policy model constructor.
+     * @property {module:model/Policy}
+     */
+    Policy,
+
+    /**
      * The PresetsBalancer model constructor.
      * @property {module:model/PresetsBalancer}
      */
@@ -2283,6 +2341,12 @@ export {
     UpdateDomainNameServersNameServersInner,
 
     /**
+     * The UpdateFloatingIp model constructor.
+     * @property {module:model/UpdateFloatingIp}
+     */
+    UpdateFloatingIp,
+
+    /**
      * The UpdateInstance model constructor.
      * @property {module:model/UpdateInstance}
      */
@@ -2545,6 +2609,12 @@ export {
     * @property {module:api/FirewallApi}
     */
     FirewallApi,
+
+    /**
+    * The FloatingIPApi service constructor.
+    * @property {module:api/FloatingIPApi}
+    */
+    FloatingIPApi,
 
     /**
     * The ImagesApi service constructor.

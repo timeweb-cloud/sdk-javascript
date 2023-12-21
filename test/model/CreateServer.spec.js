@@ -138,6 +138,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property availabilityZone (base name: "availability_zone")', function() {
+      // uncomment below and update the code to test the property availabilityZone
+      //var instance = new TimewebCloudApi.CreateServer();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

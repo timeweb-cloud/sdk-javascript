@@ -52,6 +52,9 @@ class Network {
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
+            if (data.hasOwnProperty('floating_ip')) {
+                obj['floating_ip'] = ApiClient.convertToType(data['floating_ip'], 'String');
+            }
             if (data.hasOwnProperty('ip')) {
                 obj['ip'] = ApiClient.convertToType(data['ip'], 'String');
             }
@@ -76,6 +79,10 @@ class Network {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
         // ensure the json data is a string
+        if (data['floating_ip'] && !(typeof data['floating_ip'] === 'string' || data['floating_ip'] instanceof String)) {
+            throw new Error("Expected the field `floating_ip` to be a primitive type in the JSON string but got " + data['floating_ip']);
+        }
+        // ensure the json data is a string
         if (data['ip'] && !(typeof data['ip'] === 'string' || data['ip'] instanceof String)) {
             throw new Error("Expected the field `ip` to be a primitive type in the JSON string but got " + data['ip']);
         }
@@ -93,6 +100,12 @@ Network.RequiredProperties = ["id"];
  * @member {String} id
  */
 Network.prototype['id'] = undefined;
+
+/**
+ * Плавающий IP-адрес
+ * @member {String} floating_ip
+ */
+Network.prototype['floating_ip'] = undefined;
 
 /**
  * IP-адрес в сети.

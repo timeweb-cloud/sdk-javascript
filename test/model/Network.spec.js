@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property floatingIp (base name: "floating_ip")', function() {
+      // uncomment below and update the code to test the property floatingIp
+      //var instance = new TimewebCloudApi.Network();
+      //expect(instance).to.be();
+    });
+
     it('should have the property ip (base name: "ip")', function() {
       // uncomment below and update the code to test the property ip
       //var instance = new TimewebCloudApi.Network();

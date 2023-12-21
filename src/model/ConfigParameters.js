@@ -323,91 +323,91 @@ ConfigParameters.prototype['max_allowed_packet'] = undefined;
 ConfigParameters.prototype['max_heap_table_size'] = undefined;
 
 /**
- * Доля измененных или удаленных записей в таблице, при которой процесс автоочистки выполнит команду `ANALYZE` (`postgres`).
+ * Доля измененных или удаленных записей в таблице, при которой процесс автоочистки выполнит команду `ANALYZE` (`postgres` | `postgres14`| `postgres15`).
  * @member {String} autovacuum_analyze_scale_factor
  */
 ConfigParameters.prototype['autovacuum_analyze_scale_factor'] = undefined;
 
 /**
- * Задержка между запусками процесса фоновой записи (`postgres`).
+ * Задержка между запусками процесса фоновой записи (`postgres` | `postgres14`| `postgres15`).
  * @member {String} bgwriter_delay
  */
 ConfigParameters.prototype['bgwriter_delay'] = undefined;
 
 /**
- * Максимальное число элементов буферного кеша (`postgres`).
+ * Максимальное число элементов буферного кеша (`postgres` | `postgres14`| `postgres15`).
  * @member {String} bgwriter_lru_maxpages
  */
 ConfigParameters.prototype['bgwriter_lru_maxpages'] = undefined;
 
 /**
- * Время ожидания, по истечении которого будет выполняться проверка состояния перекрестной блокировки (`postgres`).
+ * Время ожидания, по истечении которого будет выполняться проверка состояния перекрестной блокировки (`postgres` | `postgres14`| `postgres15`).
  * @member {String} deadlock_timeout
  */
 ConfigParameters.prototype['deadlock_timeout'] = undefined;
 
 /**
- * Максимальный размер очереди записей индекса `GIN` (`postgres`).
+ * Максимальный размер очереди записей индекса `GIN` (`postgres` | `postgres14`| `postgres15`).
  * @member {String} gin_pending_list_limit
  */
 ConfigParameters.prototype['gin_pending_list_limit'] = undefined;
 
 /**
- * Время простоя открытой транзакции, при превышении которого будет завершена сессия с этой транзакцией (`postgres`).
+ * Время простоя открытой транзакции, при превышении которого будет завершена сессия с этой транзакцией (`postgres` | `postgres14`| `postgres15`).
  * @member {String} idle_in_transaction_session_timeout
  */
 ConfigParameters.prototype['idle_in_transaction_session_timeout'] = undefined;
 
 /**
- * Время простоя не открытой транзакции, при превышении которого будет завершена сессия с этой транзакцией (`postgres`).
+ * Время простоя не открытой транзакции, при превышении которого будет завершена сессия с этой транзакцией (`postgres` | `postgres14`| `postgres15`).
  * @member {String} idle_session_timeout
  */
 ConfigParameters.prototype['idle_session_timeout'] = undefined;
 
 /**
- * Значение количества элементов в списке `FROM` при превышении которого, планировщик будет переносить в список явные инструкции `JOIN` (`postgres`).
+ * Значение количества элементов в списке `FROM` при превышении которого, планировщик будет переносить в список явные инструкции `JOIN` (`postgres` | `postgres14`| `postgres15`).
  * @member {String} join_collapse_limit
  */
 ConfigParameters.prototype['join_collapse_limit'] = undefined;
 
 /**
- * Время ожидания освобождения блокировки (`postgres`).
+ * Время ожидания освобождения блокировки (`postgres` | `postgres14`| `postgres15`).
  * @member {String} lock_timeout
  */
 ConfigParameters.prototype['lock_timeout'] = undefined;
 
 /**
- * Максимальное число транзакций, которые могут одновременно находиться в подготовленном состоянии (`postgres`).
+ * Максимальное число транзакций, которые могут одновременно находиться в подготовленном состоянии (`postgres` | `postgres14`| `postgres15`).
  * @member {String} max_prepared_transactions
  */
 ConfigParameters.prototype['max_prepared_transactions'] = undefined;
 
 /**
- * Допустимое количество соединений (`postgres` | `mysql`).
+ * Допустимое количество соединений (`postgres` | `postgres14`| `postgres15` | `mysql`).
  * @member {String} max_connections
  */
 ConfigParameters.prototype['max_connections'] = undefined;
 
 /**
- * Устанавливает количество буферов общей памяти, используемых сервером (`postgres`).
+ * Устанавливает количество буферов общей памяти, используемых сервером (`postgres` | `postgres14`| `postgres15`).
  * @member {String} shared_buffers
  */
 ConfigParameters.prototype['shared_buffers'] = undefined;
 
 /**
- * Устанавливает количество буферов дисковых страниц в общей памяти для WAL (`postgres`).
+ * Устанавливает количество буферов дисковых страниц в общей памяти для WAL (`postgres` | `postgres14`| `postgres15`).
  * @member {String} wal_buffers
  */
 ConfigParameters.prototype['wal_buffers'] = undefined;
 
 /**
- * Устанавливает максимальное количество временных буферов, используемых каждой сессией (`postgres`).
+ * Устанавливает максимальное количество временных буферов, используемых каждой сессией (`postgres` | `postgres14`| `postgres15`).
  * @member {String} temp_buffers
  */
 ConfigParameters.prototype['temp_buffers'] = undefined;
 
 /**
- * Устанавливает максимальное количество памяти, используемое для рабочих пространств запросов (`postgres`).
+ * Устанавливает максимальное количество памяти, используемое для рабочих пространств запросов (`postgres` | `postgres14`| `postgres15`).
  * @member {String} work_mem
  */
 ConfigParameters.prototype['work_mem'] = undefined;

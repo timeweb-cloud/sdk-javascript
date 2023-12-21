@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ## createGroup
 
-> FirewallGroupOutResponse createGroup(firewallGroupInAPI)
+> FirewallGroupOutResponse createGroup(firewallGroupInAPI, opts)
 
 Создание группы правил
 
@@ -95,7 +95,10 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FirewallApi();
 let firewallGroupInAPI = new TimewebCloudApi.FirewallGroupInAPI(); // FirewallGroupInAPI | 
-apiInstance.createGroup(firewallGroupInAPI, (error, data, response) => {
+let opts = {
+  'policy': "policy_example" // String | Тип группы правил
+};
+apiInstance.createGroup(firewallGroupInAPI, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -110,6 +113,7 @@ apiInstance.createGroup(firewallGroupInAPI, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **firewallGroupInAPI** | [**FirewallGroupInAPI**](FirewallGroupInAPI.md)|  | 
+ **policy** | **String**| Тип группы правил | [optional] 
 
 ### Return type
 

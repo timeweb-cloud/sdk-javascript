@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import Policy from './Policy';
 
 /**
  * The FirewallGroupOutAPI model module.
@@ -27,10 +28,11 @@ class FirewallGroupOutAPI {
      * @param updatedAt {Date} Дата и время последнего обновления
      * @param name {String} Имя группы правил
      * @param description {String} Описание группы правил
+     * @param policy {module:model/Policy} 
      */
-    constructor(id, createdAt, updatedAt, name, description) { 
+    constructor(id, createdAt, updatedAt, name, description, policy) { 
         
-        FirewallGroupOutAPI.initialize(this, id, createdAt, updatedAt, name, description);
+        FirewallGroupOutAPI.initialize(this, id, createdAt, updatedAt, name, description, policy);
     }
 
     /**
@@ -38,12 +40,13 @@ class FirewallGroupOutAPI {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, createdAt, updatedAt, name, description) { 
+    static initialize(obj, id, createdAt, updatedAt, name, description, policy) { 
         obj['id'] = id;
         obj['created_at'] = createdAt;
         obj['updated_at'] = updatedAt;
         obj['name'] = name;
         obj['description'] = description;
+        obj['policy'] = policy;
     }
 
     /**
@@ -71,6 +74,9 @@ class FirewallGroupOutAPI {
             }
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
+            if (data.hasOwnProperty('policy')) {
+                obj['policy'] = Policy.constructFromObject(data['policy']);
             }
         }
         return obj;
@@ -107,7 +113,7 @@ class FirewallGroupOutAPI {
 
 }
 
-FirewallGroupOutAPI.RequiredProperties = ["id", "created_at", "updated_at", "name", "description"];
+FirewallGroupOutAPI.RequiredProperties = ["id", "created_at", "updated_at", "name", "description", "policy"];
 
 /**
  * Идентификатор группы правил
@@ -138,6 +144,11 @@ FirewallGroupOutAPI.prototype['name'] = undefined;
  * @member {String} description
  */
 FirewallGroupOutAPI.prototype['description'] = undefined;
+
+/**
+ * @member {module:model/Policy} policy
+ */
+FirewallGroupOutAPI.prototype['policy'] = undefined;
 
 
 
