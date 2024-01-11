@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **ram** | **Number** | Количество памяти | 
 **disk** | **Number** | Количество пространства | 
 **network** | **Number** | Пропускная способность сети | 
+**nodeIp** | **String** | Ip-адрес ноды | 
 
 

@@ -32,10 +32,11 @@ class NodeOut {
      * @param ram {Number} Количество памяти
      * @param disk {Number} Количество пространства
      * @param network {Number} Пропускная способность сети
+     * @param nodeIp {String} Ip-адрес ноды
      */
-    constructor(id, createdAt, type, groupId, status, presetId, cpu, ram, disk, network) { 
+    constructor(id, createdAt, type, groupId, status, presetId, cpu, ram, disk, network, nodeIp) { 
         
-        NodeOut.initialize(this, id, createdAt, type, groupId, status, presetId, cpu, ram, disk, network);
+        NodeOut.initialize(this, id, createdAt, type, groupId, status, presetId, cpu, ram, disk, network, nodeIp);
     }
 
     /**
@@ -43,7 +44,7 @@ class NodeOut {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, createdAt, type, groupId, status, presetId, cpu, ram, disk, network) { 
+    static initialize(obj, id, createdAt, type, groupId, status, presetId, cpu, ram, disk, network, nodeIp) { 
         obj['id'] = id;
         obj['created_at'] = createdAt;
         obj['type'] = type;
@@ -54,6 +55,7 @@ class NodeOut {
         obj['ram'] = ram;
         obj['disk'] = disk;
         obj['network'] = network;
+        obj['node_ip'] = nodeIp;
     }
 
     /**
@@ -97,6 +99,9 @@ class NodeOut {
             if (data.hasOwnProperty('network')) {
                 obj['network'] = ApiClient.convertToType(data['network'], 'Number');
             }
+            if (data.hasOwnProperty('node_ip')) {
+                obj['node_ip'] = ApiClient.convertToType(data['node_ip'], 'String');
+            }
         }
         return obj;
     }
@@ -121,6 +126,10 @@ class NodeOut {
         if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
             throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
         }
+        // ensure the json data is a string
+        if (data['node_ip'] && !(typeof data['node_ip'] === 'string' || data['node_ip'] instanceof String)) {
+            throw new Error("Expected the field `node_ip` to be a primitive type in the JSON string but got " + data['node_ip']);
+        }
 
         return true;
     }
@@ -128,7 +137,7 @@ class NodeOut {
 
 }
 
-NodeOut.RequiredProperties = ["id", "created_at", "type", "group_id", "status", "preset_id", "cpu", "ram", "disk", "network"];
+NodeOut.RequiredProperties = ["id", "created_at", "type", "group_id", "status", "preset_id", "cpu", "ram", "disk", "network", "node_ip"];
 
 /**
  * Уникальный идентификатор ноды
@@ -189,6 +198,12 @@ NodeOut.prototype['disk'] = undefined;
  * @member {Number} network
  */
 NodeOut.prototype['network'] = undefined;
+
+/**
+ * Ip-адрес ноды
+ * @member {String} node_ip
+ */
+NodeOut.prototype['node_ip'] = undefined;
 
 
 

@@ -114,6 +114,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property nodeIp (base name: "node_ip")', function() {
+      // uncomment below and update the code to test the property nodeIp
+      //var instance = new TimewebCloudApi.NodeOut();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));
