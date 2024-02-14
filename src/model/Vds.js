@@ -50,7 +50,7 @@ class Vds {
      * @param vncPass {String} Пароль от VNC.
      * @param rootPass {String} Пароль root сервера или пароль Администратора для серверов Windows.
      * @param image {module:model/VdsImage} 
-     * @param networks {Array.<module:model/VdsNetworksInner>} Список сетей диска.
+     * @param networks {Array.<module:model/VdsNetworksInner>} Список сетей сервера.
      * @param cloudInit {String} Cloud-init скрипт.
      * @param availabilityZone {module:model/AvailabilityZone} 
      */
@@ -402,7 +402,7 @@ Vds.prototype['root_pass'] = undefined;
 Vds.prototype['image'] = undefined;
 
 /**
- * Список сетей диска.
+ * Список сетей сервера.
  * @member {Array.<module:model/VdsNetworksInner>} networks
  */
 Vds.prototype['networks'] = undefined;
