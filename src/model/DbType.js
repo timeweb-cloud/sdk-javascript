@@ -89,6 +89,13 @@ export default class DbType {
         "rabbitmq" = "rabbitmq";
 
     
+        /**
+         * value: "clickhouse"
+         * @const
+         */
+        "clickhouse" = "clickhouse";
+
+    
 
     /**
     * Returns a <code>DbType</code> enum value from a Javascript object name.
