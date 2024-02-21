@@ -21,6 +21,7 @@ import ApiClient from '../ApiClient';
 class CreateClusterAdmin {
     /**
      * Constructs a new <code>CreateClusterAdmin</code>.
+     * Пользователь базы данных.
      * @alias module:model/CreateClusterAdmin
      */
     constructor() { 
