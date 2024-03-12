@@ -16,6 +16,7 @@ import AvailabilityZone from './AvailabilityZone';
 import ConfigParameters from './ConfigParameters';
 import CreateClusterAdmin from './CreateClusterAdmin';
 import CreateClusterInstance from './CreateClusterInstance';
+import CreateDbAutoBackups from './CreateDbAutoBackups';
 import DbType from './DbType';
 import Network from './Network';
 
@@ -89,6 +90,9 @@ class CreateCluster {
             if (data.hasOwnProperty('availability_zone')) {
                 obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
             }
+            if (data.hasOwnProperty('auto_backups')) {
+                obj['auto_backups'] = CreateDbAutoBackups.constructFromObject(data['auto_backups']);
+            }
         }
         return obj;
     }
@@ -132,6 +136,10 @@ class CreateCluster {
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // validate the optional field `auto_backups`
+        if (data['auto_backups']) { // data not null
+          CreateDbAutoBackups.validateJSON(data['auto_backups']);
         }
 
         return true;
@@ -195,6 +203,11 @@ CreateCluster.prototype['description'] = undefined;
  * @member {module:model/AvailabilityZone} availability_zone
  */
 CreateCluster.prototype['availability_zone'] = undefined;
+
+/**
+ * @member {module:model/CreateDbAutoBackups} auto_backups
+ */
+CreateCluster.prototype['auto_backups'] = undefined;
 
 
 

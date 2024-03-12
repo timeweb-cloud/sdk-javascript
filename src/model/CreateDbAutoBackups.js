@@ -11,115 +11,147 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
 
-  var instance;
+/**
+ * The CreateDbAutoBackups model module.
+ * @module model/CreateDbAutoBackups
+ * @version 1.0.0
+ */
+class CreateDbAutoBackups {
+    /**
+     * Constructs a new <code>CreateDbAutoBackups</code>.
+     * База данных
+     * @alias module:model/CreateDbAutoBackups
+     * @param copyCount {Number} Количество копий для хранения. Минимальное количество `1`, максимальное `99`
+     * @param creationStartAt {Date} Дата начала создания первого автобэкапа. Значение в формате `ISO8601`. Время не учитывается.
+     * @param interval {module:model/CreateDbAutoBackups.IntervalEnum} Периодичность создания автобэкапов
+     * @param dayOfWeek {Number} День недели, в который будут создаваться автобэкапы. Работает только со значением `interval`: `week`. Доступные значение от `1 `до `7`.
+     */
+    constructor(copyCount, creationStartAt, interval, dayOfWeek) { 
+        
+        CreateDbAutoBackups.initialize(this, copyCount, creationStartAt, interval, dayOfWeek);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.CreateCluster();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, copyCount, creationStartAt, interval, dayOfWeek) { 
+        obj['copy_count'] = copyCount;
+        obj['creation_start_at'] = creationStartAt;
+        obj['interval'] = interval;
+        obj['day_of_week'] = dayOfWeek;
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>CreateDbAutoBackups</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/CreateDbAutoBackups} obj Optional instance to populate.
+     * @return {module:model/CreateDbAutoBackups} The populated <code>CreateDbAutoBackups</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new CreateDbAutoBackups();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('copy_count')) {
+                obj['copy_count'] = ApiClient.convertToType(data['copy_count'], 'Number');
+            }
+            if (data.hasOwnProperty('creation_start_at')) {
+                obj['creation_start_at'] = ApiClient.convertToType(data['creation_start_at'], 'Date');
+            }
+            if (data.hasOwnProperty('interval')) {
+                obj['interval'] = ApiClient.convertToType(data['interval'], 'String');
+            }
+            if (data.hasOwnProperty('day_of_week')) {
+                obj['day_of_week'] = ApiClient.convertToType(data['day_of_week'], 'Number');
+            }
+        }
+        return obj;
+    }
 
-  describe('CreateCluster', function() {
-    it('should create an instance of CreateCluster', function() {
-      // uncomment below and update the code to test CreateCluster
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be.a(TimewebCloudApi.CreateCluster);
-    });
+    /**
+     * Validates the JSON data with respect to <code>CreateDbAutoBackups</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateDbAutoBackups</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of CreateDbAutoBackups.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['interval'] && !(typeof data['interval'] === 'string' || data['interval'] instanceof String)) {
+            throw new Error("Expected the field `interval` to be a primitive type in the JSON string but got " + data['interval']);
+        }
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
+        return true;
+    }
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property admin (base name: "admin")', function() {
-      // uncomment below and update the code to test the property admin
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
+}
 
-    it('should have the property instance (base name: "instance")', function() {
-      // uncomment below and update the code to test the property instance
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
+CreateDbAutoBackups.RequiredProperties = ["copy_count", "creation_start_at", "interval", "day_of_week"];
 
-    it('should have the property hashType (base name: "hash_type")', function() {
-      // uncomment below and update the code to test the property hashType
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
+/**
+ * Количество копий для хранения. Минимальное количество `1`, максимальное `99`
+ * @member {Number} copy_count
+ */
+CreateDbAutoBackups.prototype['copy_count'] = undefined;
 
-    it('should have the property presetId (base name: "preset_id")', function() {
-      // uncomment below and update the code to test the property presetId
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
+/**
+ * Дата начала создания первого автобэкапа. Значение в формате `ISO8601`. Время не учитывается.
+ * @member {Date} creation_start_at
+ */
+CreateDbAutoBackups.prototype['creation_start_at'] = undefined;
 
-    it('should have the property configParameters (base name: "config_parameters")', function() {
-      // uncomment below and update the code to test the property configParameters
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
+/**
+ * Периодичность создания автобэкапов
+ * @member {module:model/CreateDbAutoBackups.IntervalEnum} interval
+ */
+CreateDbAutoBackups.prototype['interval'] = undefined;
 
-    it('should have the property network (base name: "network")', function() {
-      // uncomment below and update the code to test the property network
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
+/**
+ * День недели, в который будут создаваться автобэкапы. Работает только со значением `interval`: `week`. Доступные значение от `1 `до `7`.
+ * @member {Number} day_of_week
+ */
+CreateDbAutoBackups.prototype['day_of_week'] = undefined;
 
-    it('should have the property description (base name: "description")', function() {
-      // uncomment below and update the code to test the property description
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property availabilityZone (base name: "availability_zone")', function() {
-      // uncomment below and update the code to test the property availabilityZone
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property autoBackups (base name: "auto_backups")', function() {
-      // uncomment below and update the code to test the property autoBackups
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
 
-  });
 
-}));
+/**
+ * Allowed values for the <code>interval</code> property.
+ * @enum {String}
+ * @readonly
+ */
+CreateDbAutoBackups['IntervalEnum'] = {
+
+    /**
+     * value: "day"
+     * @const
+     */
+    "day": "day",
+
+    /**
+     * value: "week"
+     * @const
+     */
+    "week": "week",
+
+    /**
+     * value: "month"
+     * @const
+     */
+    "month": "month"
+};
+
+
+
+export default CreateDbAutoBackups;
+

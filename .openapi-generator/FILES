@@ -65,6 +65,7 @@ docs/CreateDatabaseCluster201Response.md
 docs/CreateDatabaseInstance201Response.md
 docs/CreateDatabaseUser201Response.md
 docs/CreateDb.md
+docs/CreateDbAutoBackups.md
 docs/CreateDedicatedServer.md
 docs/CreateDedicatedServer201Response.md
 docs/CreateDns.md
@@ -456,6 +457,7 @@ src/model/CreateDatabaseCluster201Response.js
 src/model/CreateDatabaseInstance201Response.js
 src/model/CreateDatabaseUser201Response.js
 src/model/CreateDb.js
+src/model/CreateDbAutoBackups.js
 src/model/CreateDedicatedServer.js
 src/model/CreateDedicatedServer201Response.js
 src/model/CreateDns.js
@@ -829,6 +831,7 @@ test/model/CreateDatabaseCluster201Response.spec.js
 test/model/CreateDatabaseInstance201Response.spec.js
 test/model/CreateDatabaseUser201Response.spec.js
 test/model/CreateDb.spec.js
+test/model/CreateDbAutoBackups.spec.js
 test/model/CreateDedicatedServer.spec.js
 test/model/CreateDedicatedServer201Response.spec.js
 test/model/CreateDns.spec.js

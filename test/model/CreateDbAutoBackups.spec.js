@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.CreateCluster();
+    instance = new TimewebCloudApi.CreateDbAutoBackups();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,76 +47,34 @@
       object[property] = value;
   }
 
-  describe('CreateCluster', function() {
-    it('should create an instance of CreateCluster', function() {
-      // uncomment below and update the code to test CreateCluster
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be.a(TimewebCloudApi.CreateCluster);
+  describe('CreateDbAutoBackups', function() {
+    it('should create an instance of CreateDbAutoBackups', function() {
+      // uncomment below and update the code to test CreateDbAutoBackups
+      //var instance = new TimewebCloudApi.CreateDbAutoBackups();
+      //expect(instance).to.be.a(TimewebCloudApi.CreateDbAutoBackups);
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new TimewebCloudApi.CreateCluster();
+    it('should have the property copyCount (base name: "copy_count")', function() {
+      // uncomment below and update the code to test the property copyCount
+      //var instance = new TimewebCloudApi.CreateDbAutoBackups();
       //expect(instance).to.be();
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instance = new TimewebCloudApi.CreateCluster();
+    it('should have the property creationStartAt (base name: "creation_start_at")', function() {
+      // uncomment below and update the code to test the property creationStartAt
+      //var instance = new TimewebCloudApi.CreateDbAutoBackups();
       //expect(instance).to.be();
     });
 
-    it('should have the property admin (base name: "admin")', function() {
-      // uncomment below and update the code to test the property admin
-      //var instance = new TimewebCloudApi.CreateCluster();
+    it('should have the property interval (base name: "interval")', function() {
+      // uncomment below and update the code to test the property interval
+      //var instance = new TimewebCloudApi.CreateDbAutoBackups();
       //expect(instance).to.be();
     });
 
-    it('should have the property instance (base name: "instance")', function() {
-      // uncomment below and update the code to test the property instance
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property hashType (base name: "hash_type")', function() {
-      // uncomment below and update the code to test the property hashType
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property presetId (base name: "preset_id")', function() {
-      // uncomment below and update the code to test the property presetId
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property configParameters (base name: "config_parameters")', function() {
-      // uncomment below and update the code to test the property configParameters
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property network (base name: "network")', function() {
-      // uncomment below and update the code to test the property network
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property description (base name: "description")', function() {
-      // uncomment below and update the code to test the property description
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property availabilityZone (base name: "availability_zone")', function() {
-      // uncomment below and update the code to test the property availabilityZone
-      //var instance = new TimewebCloudApi.CreateCluster();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property autoBackups (base name: "auto_backups")', function() {
-      // uncomment below and update the code to test the property autoBackups
-      //var instance = new TimewebCloudApi.CreateCluster();
+    it('should have the property dayOfWeek (base name: "day_of_week")', function() {
+      // uncomment below and update the code to test the property dayOfWeek
+      //var instance = new TimewebCloudApi.CreateDbAutoBackups();
       //expect(instance).to.be();
     });
 

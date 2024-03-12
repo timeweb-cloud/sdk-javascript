@@ -72,6 +72,7 @@ import CreateDatabaseCluster201Response from './model/CreateDatabaseCluster201Re
 import CreateDatabaseInstance201Response from './model/CreateDatabaseInstance201Response';
 import CreateDatabaseUser201Response from './model/CreateDatabaseUser201Response';
 import CreateDb from './model/CreateDb';
+import CreateDbAutoBackups from './model/CreateDbAutoBackups';
 import CreateDedicatedServer from './model/CreateDedicatedServer';
 import CreateDedicatedServer201Response from './model/CreateDedicatedServer201Response';
 import CreateDns from './model/CreateDns';
@@ -779,6 +780,12 @@ export {
      * @property {module:model/CreateDb}
      */
     CreateDb,
+
+    /**
+     * The CreateDbAutoBackups model constructor.
+     * @property {module:model/CreateDbAutoBackups}
+     */
+    CreateDbAutoBackups,
 
     /**
      * The CreateDedicatedServer model constructor.

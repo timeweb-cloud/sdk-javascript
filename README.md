@@ -570,6 +570,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateDatabaseInstance201Response](docs/CreateDatabaseInstance201Response.md)
  - [TimewebCloudApi.CreateDatabaseUser201Response](docs/CreateDatabaseUser201Response.md)
  - [TimewebCloudApi.CreateDb](docs/CreateDb.md)
+ - [TimewebCloudApi.CreateDbAutoBackups](docs/CreateDbAutoBackups.md)
  - [TimewebCloudApi.CreateDedicatedServer](docs/CreateDedicatedServer.md)
  - [TimewebCloudApi.CreateDedicatedServer201Response](docs/CreateDedicatedServer201Response.md)
  - [TimewebCloudApi.CreateDns](docs/CreateDns.md)
