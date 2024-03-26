@@ -55,6 +55,13 @@ export default class DbType {
 
     
         /**
+         * value: "postgres16"
+         * @const
+         */
+        "postgres16" = "postgres16";
+
+    
+        /**
          * value: "redis"
          * @const
          */
@@ -62,10 +69,31 @@ export default class DbType {
 
     
         /**
+         * value: "mongodb4"
+         * @const
+         */
+        "mongodb4" = "mongodb4";
+
+    
+        /**
          * value: "mongodb"
          * @const
          */
         "mongodb" = "mongodb";
+
+    
+        /**
+         * value: "mongodb6"
+         * @const
+         */
+        "mongodb6" = "mongodb6";
+
+    
+        /**
+         * value: "mongodb7"
+         * @const
+         */
+        "mongodb7" = "mongodb7";
 
     
         /**

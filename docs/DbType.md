@@ -13,9 +13,17 @@
 
 * `postgres15` (value: `"postgres15"`)
 
+* `postgres16` (value: `"postgres16"`)
+
 * `redis` (value: `"redis"`)
 
+* `mongodb4` (value: `"mongodb4"`)
+
 * `mongodb` (value: `"mongodb"`)
+
+* `mongodb6` (value: `"mongodb6"`)
+
+* `mongodb7` (value: `"mongodb7"`)
 
 * `opensearch` (value: `"opensearch"`)
 
