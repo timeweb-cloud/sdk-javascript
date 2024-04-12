@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 
 * `database` (value: `"database"`)
 
+* `network` (value: `"network"`)
+
 
 
 

@@ -125,7 +125,13 @@ BindFloatingIp['ResourceTypeEnum'] = {
      * value: "database"
      * @const
      */
-    "database": "database"
+    "database": "database",
+
+    /**
+     * value: "network"
+     * @const
+     */
+    "network": "network"
 };
 
 

@@ -102,7 +102,7 @@ export default class FloatingIPApi {
 
     /**
      * Создание плавающего IP
-     * Чтобы создать создать плавающий IP, отправьте POST-запрос в `/api/v1/floating-ip`, задав необходимые атрибуты.
+     * Чтобы создать создать плавающий IP, отправьте POST-запрос в `/api/v1/floating-ips`, задав необходимые атрибуты.
      * @param {module:model/CreateFloatingIp} createFloatingIp 
      * @param {module:api/FloatingIPApi~createFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateFloatingIp201Response}

@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **ip** | **String** | IP-адрес | 
 **isDdosGuard** | **Boolean** | Это логическое значение, которое показывает, включена ли защита от DDoS. | 
 **availabilityZone** | [**AvailabilityZone**](AvailabilityZone.md) |  | 
-**resourceType** | **String** | Тип ресурса. | [optional] 
-**resourceId** | **Number** | Id ресурса. | [optional] 
-**comment** | **String** | Комментарий | [optional] 
-**ptr** | **String** | Запись имени узла. | [optional] 
+**resourceType** | **String** | Тип ресурса. | 
+**resourceId** | **Number** | Id ресурса. | 
+**comment** | **String** | Комментарий | 
+**ptr** | **String** | Запись имени узла. | 
 
 
 
@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 * `balancer` (value: `"balancer"`)
 
 * `database` (value: `"database"`)
+
+* `network` (value: `"network"`)
 
 
 

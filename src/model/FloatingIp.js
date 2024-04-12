@@ -27,10 +27,14 @@ class FloatingIp {
      * @param ip {String} IP-адрес
      * @param isDdosGuard {Boolean} Это логическое значение, которое показывает, включена ли защита от DDoS.
      * @param availabilityZone {module:model/AvailabilityZone} 
+     * @param resourceType {module:model/FloatingIp.ResourceTypeEnum} Тип ресурса.
+     * @param resourceId {Number} Id ресурса.
+     * @param comment {String} Комментарий
+     * @param ptr {String} Запись имени узла.
      */
-    constructor(id, ip, isDdosGuard, availabilityZone) { 
+    constructor(id, ip, isDdosGuard, availabilityZone, resourceType, resourceId, comment, ptr) { 
         
-        FloatingIp.initialize(this, id, ip, isDdosGuard, availabilityZone);
+        FloatingIp.initialize(this, id, ip, isDdosGuard, availabilityZone, resourceType, resourceId, comment, ptr);
     }
 
     /**
@@ -38,11 +42,15 @@ class FloatingIp {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, ip, isDdosGuard, availabilityZone) { 
+    static initialize(obj, id, ip, isDdosGuard, availabilityZone, resourceType, resourceId, comment, ptr) { 
         obj['id'] = id;
         obj['ip'] = ip;
         obj['is_ddos_guard'] = isDdosGuard;
         obj['availability_zone'] = availabilityZone;
+        obj['resource_type'] = resourceType;
+        obj['resource_id'] = resourceId;
+        obj['comment'] = comment;
+        obj['ptr'] = ptr;
     }
 
     /**
@@ -123,7 +131,7 @@ class FloatingIp {
 
 }
 
-FloatingIp.RequiredProperties = ["id", "ip", "is_ddos_guard", "availability_zone"];
+FloatingIp.RequiredProperties = ["id", "ip", "is_ddos_guard", "availability_zone", "resource_type", "resource_id", "comment", "ptr"];
 
 /**
  * Идентификатор IP.
@@ -199,7 +207,13 @@ FloatingIp['ResourceTypeEnum'] = {
      * value: "database"
      * @const
      */
-    "database": "database"
+    "database": "database",
+
+    /**
+     * value: "network"
+     * @const
+     */
+    "network": "network"
 };
 
 
