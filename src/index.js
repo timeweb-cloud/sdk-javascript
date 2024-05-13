@@ -202,6 +202,7 @@ import GetFinances500Response from './model/GetFinances500Response';
 import GetFloatingIps200Response from './model/GetFloatingIps200Response';
 import GetKey200Response from './model/GetKey200Response';
 import GetKeys200Response from './model/GetKeys200Response';
+import GetLocations200Response from './model/GetLocations200Response';
 import GetMailQuota200Response from './model/GetMailQuota200Response';
 import GetMailboxes200Response from './model/GetMailboxes200Response';
 import GetNotificationSettings200Response from './model/GetNotificationSettings200Response';
@@ -252,6 +253,7 @@ import ImagesOutResponse from './model/ImagesOutResponse';
 import Invoice from './model/Invoice';
 import K8SVersionsResponse from './model/K8SVersionsResponse';
 import Location from './model/Location';
+import LocationDto from './model/LocationDto';
 import Mailbox from './model/Mailbox';
 import MailboxAutoReply from './model/MailboxAutoReply';
 import MailboxForwardingIncoming from './model/MailboxForwardingIncoming';
@@ -381,6 +383,7 @@ import FirewallApi from './api/FirewallApi';
 import FloatingIPApi from './api/FloatingIPApi';
 import ImagesApi from './api/ImagesApi';
 import KubernetesApi from './api/KubernetesApi';
+import LocationsApi from './api/LocationsApi';
 import MailApi from './api/MailApi';
 import ProjectsApi from './api/ProjectsApi';
 import S3Api from './api/S3Api';
@@ -1562,6 +1565,12 @@ export {
     GetKeys200Response,
 
     /**
+     * The GetLocations200Response model constructor.
+     * @property {module:model/GetLocations200Response}
+     */
+    GetLocations200Response,
+
+    /**
      * The GetMailQuota200Response model constructor.
      * @property {module:model/GetMailQuota200Response}
      */
@@ -1860,6 +1869,12 @@ export {
      * @property {module:model/Location}
      */
     Location,
+
+    /**
+     * The LocationDto model constructor.
+     * @property {module:model/LocationDto}
+     */
+    LocationDto,
 
     /**
      * The Mailbox model constructor.
@@ -2634,6 +2649,12 @@ export {
     * @property {module:api/KubernetesApi}
     */
     KubernetesApi,
+
+    /**
+    * The LocationsApi service constructor.
+    * @property {module:api/LocationsApi}
+    */
+    LocationsApi,
 
     /**
     * The MailApi service constructor.

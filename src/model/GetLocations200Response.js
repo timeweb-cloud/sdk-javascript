@@ -12,77 +12,106 @@
  */
 
 import ApiClient from '../ApiClient';
+import LocationDto from './LocationDto';
+import Meta from './Meta';
+
 /**
-* Enum class Location.
-* @enum {}
-* @readonly
-*/
-export default class Location {
-    
-        /**
-         * value: "ru-1"
-         * @const
-         */
-        "ru-1" = "ru-1";
-
-    
-        /**
-         * value: "ru-2"
-         * @const
-         */
-        "ru-2" = "ru-2";
-
-    
-        /**
-         * value: "ru-3"
-         * @const
-         */
-        "ru-3" = "ru-3";
-
-    
-        /**
-         * value: "pl-1"
-         * @const
-         */
-        "pl-1" = "pl-1";
-
-    
-        /**
-         * value: "kz-1"
-         * @const
-         */
-        "kz-1" = "kz-1";
-
-    
-        /**
-         * value: "nl-1"
-         * @const
-         */
-        "nl-1" = "nl-1";
-
-    
-        /**
-         * value: "us-1"
-         * @const
-         */
-        "us-1" = "us-1";
-
-    
-        /**
-         * value: "us-2"
-         * @const
-         */
-        "us-2" = "us-2";
-
-    
+ * The GetLocations200Response model module.
+ * @module model/GetLocations200Response
+ * @version 1.0.0
+ */
+class GetLocations200Response {
+    /**
+     * Constructs a new <code>GetLocations200Response</code>.
+     * @alias module:model/GetLocations200Response
+     * @param meta {module:model/Meta} 
+     * @param locations {Array.<module:model/LocationDto>} 
+     */
+    constructor(meta, locations) { 
+        
+        GetLocations200Response.initialize(this, meta, locations);
+    }
 
     /**
-    * Returns a <code>Location</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:model/Location} The enum <code>Location</code> value.
-    */
-    static constructFromObject(object) {
-        return object;
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, meta, locations) { 
+        obj['meta'] = meta;
+        obj['locations'] = locations;
     }
+
+    /**
+     * Constructs a <code>GetLocations200Response</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/GetLocations200Response} obj Optional instance to populate.
+     * @return {module:model/GetLocations200Response} The populated <code>GetLocations200Response</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new GetLocations200Response();
+
+            if (data.hasOwnProperty('meta')) {
+                obj['meta'] = Meta.constructFromObject(data['meta']);
+            }
+            if (data.hasOwnProperty('locations')) {
+                obj['locations'] = ApiClient.convertToType(data['locations'], [LocationDto]);
+            }
+        }
+        return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>GetLocations200Response</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetLocations200Response</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of GetLocations200Response.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // validate the optional field `meta`
+        if (data['meta']) { // data not null
+          Meta.validateJSON(data['meta']);
+        }
+        if (data['locations']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['locations'])) {
+                throw new Error("Expected the field `locations` to be an array in the JSON data but got " + data['locations']);
+            }
+            // validate the optional field `locations` (array)
+            for (const item of data['locations']) {
+                LocationDto.validateJSON(item);
+            };
+        }
+
+        return true;
+    }
+
+
 }
+
+GetLocations200Response.RequiredProperties = ["meta", "locations"];
+
+/**
+ * @member {module:model/Meta} meta
+ */
+GetLocations200Response.prototype['meta'] = undefined;
+
+/**
+ * @member {Array.<module:model/LocationDto>} locations
+ */
+GetLocations200Response.prototype['locations'] = undefined;
+
+
+
+
+
+
+export default GetLocations200Response;
 

@@ -200,6 +200,7 @@ docs/GetFinances500Response.md
 docs/GetFloatingIps200Response.md
 docs/GetKey200Response.md
 docs/GetKeys200Response.md
+docs/GetLocations200Response.md
 docs/GetMailQuota200Response.md
 docs/GetMailboxes200Response.md
 docs/GetNotificationSettings200Response.md
@@ -252,6 +253,8 @@ docs/Invoice.md
 docs/K8SVersionsResponse.md
 docs/KubernetesApi.md
 docs/Location.md
+docs/LocationDto.md
+docs/LocationsApi.md
 docs/MailApi.md
 docs/Mailbox.md
 docs/MailboxAutoReply.md
@@ -391,6 +394,7 @@ src/api/FirewallApi.js
 src/api/FloatingIPApi.js
 src/api/ImagesApi.js
 src/api/KubernetesApi.js
+src/api/LocationsApi.js
 src/api/MailApi.js
 src/api/ProjectsApi.js
 src/api/S3Api.js
@@ -587,6 +591,7 @@ src/model/GetFinances500Response.js
 src/model/GetFloatingIps200Response.js
 src/model/GetKey200Response.js
 src/model/GetKeys200Response.js
+src/model/GetLocations200Response.js
 src/model/GetMailQuota200Response.js
 src/model/GetMailboxes200Response.js
 src/model/GetNotificationSettings200Response.js
@@ -637,6 +642,7 @@ src/model/ImagesOutResponse.js
 src/model/Invoice.js
 src/model/K8SVersionsResponse.js
 src/model/Location.js
+src/model/LocationDto.js
 src/model/Mailbox.js
 src/model/MailboxAutoReply.js
 src/model/MailboxForwardingIncoming.js
@@ -766,6 +772,7 @@ test/api/FirewallApi.spec.js
 test/api/FloatingIPApi.spec.js
 test/api/ImagesApi.spec.js
 test/api/KubernetesApi.spec.js
+test/api/LocationsApi.spec.js
 test/api/MailApi.spec.js
 test/api/ProjectsApi.spec.js
 test/api/S3Api.spec.js
@@ -961,6 +968,7 @@ test/model/GetFinances500Response.spec.js
 test/model/GetFloatingIps200Response.spec.js
 test/model/GetKey200Response.spec.js
 test/model/GetKeys200Response.spec.js
+test/model/GetLocations200Response.spec.js
 test/model/GetMailQuota200Response.spec.js
 test/model/GetMailboxes200Response.spec.js
 test/model/GetNotificationSettings200Response.spec.js
@@ -1011,6 +1019,7 @@ test/model/ImagesOutResponse.spec.js
 test/model/Invoice.spec.js
 test/model/K8SVersionsResponse.spec.js
 test/model/Location.spec.js
+test/model/LocationDto.spec.js
 test/model/Mailbox.spec.js
 test/model/MailboxAutoReply.spec.js
 test/model/MailboxForwardingIncoming.spec.js

@@ -12,77 +12,112 @@
  */
 
 import ApiClient from '../ApiClient';
+import Location from './Location';
+
 /**
-* Enum class Location.
-* @enum {}
-* @readonly
-*/
-export default class Location {
-    
-        /**
-         * value: "ru-1"
-         * @const
-         */
-        "ru-1" = "ru-1";
-
-    
-        /**
-         * value: "ru-2"
-         * @const
-         */
-        "ru-2" = "ru-2";
-
-    
-        /**
-         * value: "ru-3"
-         * @const
-         */
-        "ru-3" = "ru-3";
-
-    
-        /**
-         * value: "pl-1"
-         * @const
-         */
-        "pl-1" = "pl-1";
-
-    
-        /**
-         * value: "kz-1"
-         * @const
-         */
-        "kz-1" = "kz-1";
-
-    
-        /**
-         * value: "nl-1"
-         * @const
-         */
-        "nl-1" = "nl-1";
-
-    
-        /**
-         * value: "us-1"
-         * @const
-         */
-        "us-1" = "us-1";
-
-    
-        /**
-         * value: "us-2"
-         * @const
-         */
-        "us-2" = "us-2";
-
-    
+ * The LocationDto model module.
+ * @module model/LocationDto
+ * @version 1.0.0
+ */
+class LocationDto {
+    /**
+     * Constructs a new <code>LocationDto</code>.
+     * Локация
+     * @alias module:model/LocationDto
+     * @param location {module:model/Location} 
+     * @param locationCode {String} Код локации в формате `ISO 3166`
+     * @param availabilityZones {Array.<String>} Список зон, доступных в данной локации
+     */
+    constructor(location, locationCode, availabilityZones) { 
+        
+        LocationDto.initialize(this, location, locationCode, availabilityZones);
+    }
 
     /**
-    * Returns a <code>Location</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:model/Location} The enum <code>Location</code> value.
-    */
-    static constructFromObject(object) {
-        return object;
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, location, locationCode, availabilityZones) { 
+        obj['location'] = location;
+        obj['location_code'] = locationCode;
+        obj['availability_zones'] = availabilityZones;
     }
+
+    /**
+     * Constructs a <code>LocationDto</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/LocationDto} obj Optional instance to populate.
+     * @return {module:model/LocationDto} The populated <code>LocationDto</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new LocationDto();
+
+            if (data.hasOwnProperty('location')) {
+                obj['location'] = Location.constructFromObject(data['location']);
+            }
+            if (data.hasOwnProperty('location_code')) {
+                obj['location_code'] = ApiClient.convertToType(data['location_code'], 'String');
+            }
+            if (data.hasOwnProperty('availability_zones')) {
+                obj['availability_zones'] = ApiClient.convertToType(data['availability_zones'], ['String']);
+            }
+        }
+        return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>LocationDto</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>LocationDto</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of LocationDto.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['location_code'] && !(typeof data['location_code'] === 'string' || data['location_code'] instanceof String)) {
+            throw new Error("Expected the field `location_code` to be a primitive type in the JSON string but got " + data['location_code']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['availability_zones'])) {
+            throw new Error("Expected the field `availability_zones` to be an array in the JSON data but got " + data['availability_zones']);
+        }
+
+        return true;
+    }
+
+
 }
+
+LocationDto.RequiredProperties = ["location", "location_code", "availability_zones"];
+
+/**
+ * @member {module:model/Location} location
+ */
+LocationDto.prototype['location'] = undefined;
+
+/**
+ * Код локации в формате `ISO 3166`
+ * @member {String} location_code
+ */
+LocationDto.prototype['location_code'] = undefined;
+
+/**
+ * Список зон, доступных в данной локации
+ * @member {Array.<String>} availability_zones
+ */
+LocationDto.prototype['availability_zones'] = undefined;
+
+
+
+
+
+
+export default LocationDto;
 

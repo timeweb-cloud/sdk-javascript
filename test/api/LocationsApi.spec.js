@@ -11,78 +11,53 @@
  *
  */
 
-import ApiClient from '../ApiClient';
-/**
-* Enum class Location.
-* @enum {}
-* @readonly
-*/
-export default class Location {
-    
-        /**
-         * value: "ru-1"
-         * @const
-         */
-        "ru-1" = "ru-1";
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', process.cwd()+'/src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.TimewebCloudApi);
+  }
+}(this, function(expect, TimewebCloudApi) {
+  'use strict';
 
-    
-        /**
-         * value: "ru-2"
-         * @const
-         */
-        "ru-2" = "ru-2";
+  var instance;
 
-    
-        /**
-         * value: "ru-3"
-         * @const
-         */
-        "ru-3" = "ru-3";
+  beforeEach(function() {
+    instance = new TimewebCloudApi.LocationsApi();
+  });
 
-    
-        /**
-         * value: "pl-1"
-         * @const
-         */
-        "pl-1" = "pl-1";
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
-    
-        /**
-         * value: "kz-1"
-         * @const
-         */
-        "kz-1" = "kz-1";
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-    
-        /**
-         * value: "nl-1"
-         * @const
-         */
-        "nl-1" = "nl-1";
+  describe('LocationsApi', function() {
+    describe('getLocations', function() {
+      it('should call getLocations successfully', function(done) {
+        //uncomment below and update the code to test getLocations
+        //instance.getLocations(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+  });
 
-    
-        /**
-         * value: "us-1"
-         * @const
-         */
-        "us-1" = "us-1";
-
-    
-        /**
-         * value: "us-2"
-         * @const
-         */
-        "us-2" = "us-2";
-
-    
-
-    /**
-    * Returns a <code>Location</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:model/Location} The enum <code>Location</code> value.
-    */
-    static constructFromObject(object) {
-        return object;
-    }
-}
-
+}));

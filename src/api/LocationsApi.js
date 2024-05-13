@@ -11,78 +11,70 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+
+import ApiClient from "../ApiClient";
+import GetFinances400Response from '../model/GetFinances400Response';
+import GetFinances401Response from '../model/GetFinances401Response';
+import GetFinances403Response from '../model/GetFinances403Response';
+import GetFinances429Response from '../model/GetFinances429Response';
+import GetFinances500Response from '../model/GetFinances500Response';
+import GetLocations200Response from '../model/GetLocations200Response';
+
 /**
-* Enum class Location.
-* @enum {}
-* @readonly
+* Locations service.
+* @module api/LocationsApi
+* @version 1.0.0
 */
-export default class Location {
-    
-        /**
-         * value: "ru-1"
-         * @const
-         */
-        "ru-1" = "ru-1";
-
-    
-        /**
-         * value: "ru-2"
-         * @const
-         */
-        "ru-2" = "ru-2";
-
-    
-        /**
-         * value: "ru-3"
-         * @const
-         */
-        "ru-3" = "ru-3";
-
-    
-        /**
-         * value: "pl-1"
-         * @const
-         */
-        "pl-1" = "pl-1";
-
-    
-        /**
-         * value: "kz-1"
-         * @const
-         */
-        "kz-1" = "kz-1";
-
-    
-        /**
-         * value: "nl-1"
-         * @const
-         */
-        "nl-1" = "nl-1";
-
-    
-        /**
-         * value: "us-1"
-         * @const
-         */
-        "us-1" = "us-1";
-
-    
-        /**
-         * value: "us-2"
-         * @const
-         */
-        "us-2" = "us-2";
-
-    
+export default class LocationsApi {
 
     /**
-    * Returns a <code>Location</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:model/Location} The enum <code>Location</code> value.
+    * Constructs a new LocationsApi. 
+    * @alias module:api/LocationsApi
+    * @class
+    * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link module:ApiClient#instance} if unspecified.
     */
-    static constructFromObject(object) {
-        return object;
+    constructor(apiClient) {
+        this.apiClient = apiClient || ApiClient.instance;
     }
-}
 
+
+    /**
+     * Callback function to receive the result of the getLocations operation.
+     * @callback module:api/LocationsApi~getLocationsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetLocations200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка локаций
+     * Чтобы получить список локаций, отправьте GET-запрос на `/api/v2/locations`.   Тело ответа будет представлять собой объект JSON с ключом `locations`.
+     * @param {module:api/LocationsApi~getLocationsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetLocations200Response}
+     */
+    getLocations(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetLocations200Response;
+      return this.apiClient.callApi(
+        '/api/v2/locations', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+
+}

@@ -406,6 +406,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.KubernetesApi* | [**increaseCountOfNodesInGroup**](docs/KubernetesApi.md#increaseCountOfNodesInGroup) | **POST** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Увеличение количества нод в группе на указанное количество
 *TimewebCloudApi.KubernetesApi* | [**reduceCountOfNodesInGroup**](docs/KubernetesApi.md#reduceCountOfNodesInGroup) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Уменьшение количества нод в группе на указанное количество
 *TimewebCloudApi.KubernetesApi* | [**updateCluster**](docs/KubernetesApi.md#updateCluster) | **PATCH** /api/v1/k8s/clusters/{cluster_id} | Обновление информации о кластере
+*TimewebCloudApi.LocationsApi* | [**getLocations**](docs/LocationsApi.md#getLocations) | **GET** /api/v2/locations | Получение списка локаций
 *TimewebCloudApi.MailApi* | [**createDomainMailbox**](docs/MailApi.md#createDomainMailbox) | **POST** /api/v1/mail/domains/{domain} | Создание почтового ящика
 *TimewebCloudApi.MailApi* | [**deleteMailbox**](docs/MailApi.md#deleteMailbox) | **DELETE** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Удаление почтового ящика
 *TimewebCloudApi.MailApi* | [**getDomainMailInfo**](docs/MailApi.md#getDomainMailInfo) | **GET** /api/v1/mail/domains/{domain}/info | Получение почтовой информации о домене
@@ -700,6 +701,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetFloatingIps200Response](docs/GetFloatingIps200Response.md)
  - [TimewebCloudApi.GetKey200Response](docs/GetKey200Response.md)
  - [TimewebCloudApi.GetKeys200Response](docs/GetKeys200Response.md)
+ - [TimewebCloudApi.GetLocations200Response](docs/GetLocations200Response.md)
  - [TimewebCloudApi.GetMailQuota200Response](docs/GetMailQuota200Response.md)
  - [TimewebCloudApi.GetMailboxes200Response](docs/GetMailboxes200Response.md)
  - [TimewebCloudApi.GetNotificationSettings200Response](docs/GetNotificationSettings200Response.md)
@@ -750,6 +752,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Invoice](docs/Invoice.md)
  - [TimewebCloudApi.K8SVersionsResponse](docs/K8SVersionsResponse.md)
  - [TimewebCloudApi.Location](docs/Location.md)
+ - [TimewebCloudApi.LocationDto](docs/LocationDto.md)
  - [TimewebCloudApi.Mailbox](docs/Mailbox.md)
  - [TimewebCloudApi.MailboxAutoReply](docs/MailboxAutoReply.md)
  - [TimewebCloudApi.MailboxForwardingIncoming](docs/MailboxForwardingIncoming.md)
