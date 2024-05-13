@@ -15,8 +15,4 @@
 
 * `nl-1` (value: `"nl-1"`)
 
-* `us-1` (value: `"us-1"`)
-
-* `us-2` (value: `"us-2"`)
-
 

@@ -102,6 +102,7 @@ docs/DatabaseClusterDiskStats.md
 docs/DatabaseClusterNetworksInner.md
 docs/DatabaseClusterNetworksInnerIpsInner.md
 docs/DatabaseInstance.md
+docs/DatabaseType.md
 docs/DatabasesApi.md
 docs/Db.md
 docs/DbDiskStats.md
@@ -176,6 +177,7 @@ docs/GetConfigurators200Response.md
 docs/GetCountries200Response.md
 docs/GetDatabaseAutoBackupsSettings200Response.md
 docs/GetDatabaseBackups200Response.md
+docs/GetDatabaseClusterTypes200Response.md
 docs/GetDatabaseClusters200Response.md
 docs/GetDatabaseInstances200Response.md
 docs/GetDatabaseUsers200Response.md
@@ -498,6 +500,7 @@ src/model/DatabaseClusterDiskStats.js
 src/model/DatabaseClusterNetworksInner.js
 src/model/DatabaseClusterNetworksInnerIpsInner.js
 src/model/DatabaseInstance.js
+src/model/DatabaseType.js
 src/model/Db.js
 src/model/DbDiskStats.js
 src/model/DbType.js
@@ -567,6 +570,7 @@ src/model/GetConfigurators200Response.js
 src/model/GetCountries200Response.js
 src/model/GetDatabaseAutoBackupsSettings200Response.js
 src/model/GetDatabaseBackups200Response.js
+src/model/GetDatabaseClusterTypes200Response.js
 src/model/GetDatabaseClusters200Response.js
 src/model/GetDatabaseInstances200Response.js
 src/model/GetDatabaseUsers200Response.js
@@ -875,6 +879,7 @@ test/model/DatabaseClusterDiskStats.spec.js
 test/model/DatabaseClusterNetworksInner.spec.js
 test/model/DatabaseClusterNetworksInnerIpsInner.spec.js
 test/model/DatabaseInstance.spec.js
+test/model/DatabaseType.spec.js
 test/model/Db.spec.js
 test/model/DbDiskStats.spec.js
 test/model/DbType.spec.js
@@ -944,6 +949,7 @@ test/model/GetConfigurators200Response.spec.js
 test/model/GetCountries200Response.spec.js
 test/model/GetDatabaseAutoBackupsSettings200Response.spec.js
 test/model/GetDatabaseBackups200Response.spec.js
+test/model/GetDatabaseClusterTypes200Response.spec.js
 test/model/GetDatabaseClusters200Response.spec.js
 test/model/GetDatabaseInstances200Response.spec.js
 test/model/GetDatabaseUsers200Response.spec.js

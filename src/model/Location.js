@@ -61,20 +61,6 @@ export default class Location {
         "nl-1" = "nl-1";
 
     
-        /**
-         * value: "us-1"
-         * @const
-         */
-        "us-1" = "us-1";
-
-    
-        /**
-         * value: "us-2"
-         * @const
-         */
-        "us-2" = "us-2";
-
-    
 
     /**
     * Returns a <code>Location</code> enum value from a Javascript object name.

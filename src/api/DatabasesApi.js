@@ -28,6 +28,7 @@ import DeleteDatabase200Response from '../model/DeleteDatabase200Response';
 import DeleteDatabaseCluster200Response from '../model/DeleteDatabaseCluster200Response';
 import GetDatabaseAutoBackupsSettings200Response from '../model/GetDatabaseAutoBackupsSettings200Response';
 import GetDatabaseBackups200Response from '../model/GetDatabaseBackups200Response';
+import GetDatabaseClusterTypes200Response from '../model/GetDatabaseClusterTypes200Response';
 import GetDatabaseClusters200Response from '../model/GetDatabaseClusters200Response';
 import GetDatabaseInstances200Response from '../model/GetDatabaseInstances200Response';
 import GetDatabaseUsers200Response from '../model/GetDatabaseUsers200Response';
@@ -750,6 +751,43 @@ export default class DatabasesApi {
       let returnType = CreateDatabaseCluster201Response;
       return this.apiClient.callApi(
         '/api/v1/databases/{db_cluster_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getDatabaseClusterTypes operation.
+     * @callback module:api/DatabasesApi~getDatabaseClusterTypesCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetDatabaseClusterTypes200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка типов кластеров баз данных
+     * Чтобы получить список типов баз данных на вашем аккаунте, отправьте GET-запрос на `/api/v1/database-types`.
+     * @param {module:api/DatabasesApi~getDatabaseClusterTypesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetDatabaseClusterTypes200Response}
+     */
+    getDatabaseClusterTypes(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetDatabaseClusterTypes200Response;
+      return this.apiClient.callApi(
+        '/api/v1/database-types', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

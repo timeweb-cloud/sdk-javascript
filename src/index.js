@@ -109,6 +109,7 @@ import DatabaseClusterDiskStats from './model/DatabaseClusterDiskStats';
 import DatabaseClusterNetworksInner from './model/DatabaseClusterNetworksInner';
 import DatabaseClusterNetworksInnerIpsInner from './model/DatabaseClusterNetworksInnerIpsInner';
 import DatabaseInstance from './model/DatabaseInstance';
+import DatabaseType from './model/DatabaseType';
 import Db from './model/Db';
 import DbDiskStats from './model/DbDiskStats';
 import DbType from './model/DbType';
@@ -178,6 +179,7 @@ import GetConfigurators200Response from './model/GetConfigurators200Response';
 import GetCountries200Response from './model/GetCountries200Response';
 import GetDatabaseAutoBackupsSettings200Response from './model/GetDatabaseAutoBackupsSettings200Response';
 import GetDatabaseBackups200Response from './model/GetDatabaseBackups200Response';
+import GetDatabaseClusterTypes200Response from './model/GetDatabaseClusterTypes200Response';
 import GetDatabaseClusters200Response from './model/GetDatabaseClusters200Response';
 import GetDatabaseInstances200Response from './model/GetDatabaseInstances200Response';
 import GetDatabaseUsers200Response from './model/GetDatabaseUsers200Response';
@@ -1007,6 +1009,12 @@ export {
     DatabaseInstance,
 
     /**
+     * The DatabaseType model constructor.
+     * @property {module:model/DatabaseType}
+     */
+    DatabaseType,
+
+    /**
      * The Db model constructor.
      * @property {module:model/Db}
      */
@@ -1419,6 +1427,12 @@ export {
      * @property {module:model/GetDatabaseBackups200Response}
      */
     GetDatabaseBackups200Response,
+
+    /**
+     * The GetDatabaseClusterTypes200Response model constructor.
+     * @property {module:model/GetDatabaseClusterTypes200Response}
+     */
+    GetDatabaseClusterTypes200Response,
 
     /**
      * The GetDatabaseClusters200Response model constructor.

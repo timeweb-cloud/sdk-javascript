@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.DatabasesApi();
+    instance = new TimewebCloudApi.GetDatabaseClusterTypes200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,297 +47,25 @@
       object[property] = value;
   }
 
-  describe('DatabasesApi', function() {
-    describe('createDatabase', function() {
-      it('should call createDatabase successfully', function(done) {
-        //uncomment below and update the code to test createDatabase
-        //instance.createDatabase(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('GetDatabaseClusterTypes200Response', function() {
+    it('should create an instance of GetDatabaseClusterTypes200Response', function() {
+      // uncomment below and update the code to test GetDatabaseClusterTypes200Response
+      //var instance = new TimewebCloudApi.GetDatabaseClusterTypes200Response();
+      //expect(instance).to.be.a(TimewebCloudApi.GetDatabaseClusterTypes200Response);
     });
-    describe('createDatabaseBackup', function() {
-      it('should call createDatabaseBackup successfully', function(done) {
-        //uncomment below and update the code to test createDatabaseBackup
-        //instance.createDatabaseBackup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property meta (base name: "meta")', function() {
+      // uncomment below and update the code to test the property meta
+      //var instance = new TimewebCloudApi.GetDatabaseClusterTypes200Response();
+      //expect(instance).to.be();
     });
-    describe('createDatabaseCluster', function() {
-      it('should call createDatabaseCluster successfully', function(done) {
-        //uncomment below and update the code to test createDatabaseCluster
-        //instance.createDatabaseCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property types (base name: "types")', function() {
+      // uncomment below and update the code to test the property types
+      //var instance = new TimewebCloudApi.GetDatabaseClusterTypes200Response();
+      //expect(instance).to.be();
     });
-    describe('createDatabaseInstance', function() {
-      it('should call createDatabaseInstance successfully', function(done) {
-        //uncomment below and update the code to test createDatabaseInstance
-        //instance.createDatabaseInstance(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createDatabaseUser', function() {
-      it('should call createDatabaseUser successfully', function(done) {
-        //uncomment below and update the code to test createDatabaseUser
-        //instance.createDatabaseUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDatabase', function() {
-      it('should call deleteDatabase successfully', function(done) {
-        //uncomment below and update the code to test deleteDatabase
-        //instance.deleteDatabase(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDatabaseBackup', function() {
-      it('should call deleteDatabaseBackup successfully', function(done) {
-        //uncomment below and update the code to test deleteDatabaseBackup
-        //instance.deleteDatabaseBackup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDatabaseCluster', function() {
-      it('should call deleteDatabaseCluster successfully', function(done) {
-        //uncomment below and update the code to test deleteDatabaseCluster
-        //instance.deleteDatabaseCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDatabaseInstance', function() {
-      it('should call deleteDatabaseInstance successfully', function(done) {
-        //uncomment below and update the code to test deleteDatabaseInstance
-        //instance.deleteDatabaseInstance(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDatabaseUser', function() {
-      it('should call deleteDatabaseUser successfully', function(done) {
-        //uncomment below and update the code to test deleteDatabaseUser
-        //instance.deleteDatabaseUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabase', function() {
-      it('should call getDatabase successfully', function(done) {
-        //uncomment below and update the code to test getDatabase
-        //instance.getDatabase(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseAutoBackupsSettings', function() {
-      it('should call getDatabaseAutoBackupsSettings successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseAutoBackupsSettings
-        //instance.getDatabaseAutoBackupsSettings(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseBackup', function() {
-      it('should call getDatabaseBackup successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseBackup
-        //instance.getDatabaseBackup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseBackups', function() {
-      it('should call getDatabaseBackups successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseBackups
-        //instance.getDatabaseBackups(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseCluster', function() {
-      it('should call getDatabaseCluster successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseCluster
-        //instance.getDatabaseCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseClusterTypes', function() {
-      it('should call getDatabaseClusterTypes successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseClusterTypes
-        //instance.getDatabaseClusterTypes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseClusters', function() {
-      it('should call getDatabaseClusters successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseClusters
-        //instance.getDatabaseClusters(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseInstance', function() {
-      it('should call getDatabaseInstance successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseInstance
-        //instance.getDatabaseInstance(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseInstances', function() {
-      it('should call getDatabaseInstances successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseInstances
-        //instance.getDatabaseInstances(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseUser', function() {
-      it('should call getDatabaseUser successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseUser
-        //instance.getDatabaseUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseUsers', function() {
-      it('should call getDatabaseUsers successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseUsers
-        //instance.getDatabaseUsers(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabases', function() {
-      it('should call getDatabases successfully', function(done) {
-        //uncomment below and update the code to test getDatabases
-        //instance.getDatabases(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabasesPresets', function() {
-      it('should call getDatabasesPresets successfully', function(done) {
-        //uncomment below and update the code to test getDatabasesPresets
-        //instance.getDatabasesPresets(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('restoreDatabaseFromBackup', function() {
-      it('should call restoreDatabaseFromBackup successfully', function(done) {
-        //uncomment below and update the code to test restoreDatabaseFromBackup
-        //instance.restoreDatabaseFromBackup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDatabase', function() {
-      it('should call updateDatabase successfully', function(done) {
-        //uncomment below and update the code to test updateDatabase
-        //instance.updateDatabase(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDatabaseAutoBackupsSettings', function() {
-      it('should call updateDatabaseAutoBackupsSettings successfully', function(done) {
-        //uncomment below and update the code to test updateDatabaseAutoBackupsSettings
-        //instance.updateDatabaseAutoBackupsSettings(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDatabaseCluster', function() {
-      it('should call updateDatabaseCluster successfully', function(done) {
-        //uncomment below and update the code to test updateDatabaseCluster
-        //instance.updateDatabaseCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDatabaseInstance', function() {
-      it('should call updateDatabaseInstance successfully', function(done) {
-        //uncomment below and update the code to test updateDatabaseInstance
-        //instance.updateDatabaseInstance(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDatabaseUser', function() {
-      it('should call updateDatabaseUser successfully', function(done) {
-        //uncomment below and update the code to test updateDatabaseUser
-        //instance.updateDatabaseUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
+
   });
 
 }));

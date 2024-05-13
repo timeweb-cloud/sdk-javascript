@@ -315,6 +315,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseBackup**](docs/DatabasesApi.md#getDatabaseBackup) | **GET** /api/v1/dbs/{db_id}/backups/{backup_id} | Получение бэкапа базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseBackups**](docs/DatabasesApi.md#getDatabaseBackups) | **GET** /api/v1/dbs/{db_id}/backups | Список бэкапов базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseCluster**](docs/DatabasesApi.md#getDatabaseCluster) | **GET** /api/v1/databases/{db_cluster_id} | Получение кластера базы данных
+*TimewebCloudApi.DatabasesApi* | [**getDatabaseClusterTypes**](docs/DatabasesApi.md#getDatabaseClusterTypes) | **GET** /api/v1/database-types | Получение списка типов кластеров баз данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseClusters**](docs/DatabasesApi.md#getDatabaseClusters) | **GET** /api/v1/databases | Получение списка кластеров баз данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseInstance**](docs/DatabasesApi.md#getDatabaseInstance) | **GET** /api/v1/databases/{db_cluster_id}/instances/{instance_id} | Получение инстанса базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseInstances**](docs/DatabasesApi.md#getDatabaseInstances) | **GET** /api/v1/databases/{db_cluster_id}/instances | Получение списка инстансов баз данных
@@ -608,6 +609,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DatabaseClusterNetworksInner](docs/DatabaseClusterNetworksInner.md)
  - [TimewebCloudApi.DatabaseClusterNetworksInnerIpsInner](docs/DatabaseClusterNetworksInnerIpsInner.md)
  - [TimewebCloudApi.DatabaseInstance](docs/DatabaseInstance.md)
+ - [TimewebCloudApi.DatabaseType](docs/DatabaseType.md)
  - [TimewebCloudApi.Db](docs/Db.md)
  - [TimewebCloudApi.DbDiskStats](docs/DbDiskStats.md)
  - [TimewebCloudApi.DbType](docs/DbType.md)
@@ -677,6 +679,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetCountries200Response](docs/GetCountries200Response.md)
  - [TimewebCloudApi.GetDatabaseAutoBackupsSettings200Response](docs/GetDatabaseAutoBackupsSettings200Response.md)
  - [TimewebCloudApi.GetDatabaseBackups200Response](docs/GetDatabaseBackups200Response.md)
+ - [TimewebCloudApi.GetDatabaseClusterTypes200Response](docs/GetDatabaseClusterTypes200Response.md)
  - [TimewebCloudApi.GetDatabaseClusters200Response](docs/GetDatabaseClusters200Response.md)
  - [TimewebCloudApi.GetDatabaseInstances200Response](docs/GetDatabaseInstances200Response.md)
  - [TimewebCloudApi.GetDatabaseUsers200Response](docs/GetDatabaseUsers200Response.md)

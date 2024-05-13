@@ -11,333 +11,107 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
+import DatabaseType from './DatabaseType';
+import Meta from './Meta';
 
-  var instance;
+/**
+ * The GetDatabaseClusterTypes200Response model module.
+ * @module model/GetDatabaseClusterTypes200Response
+ * @version 1.0.0
+ */
+class GetDatabaseClusterTypes200Response {
+    /**
+     * Constructs a new <code>GetDatabaseClusterTypes200Response</code>.
+     * @alias module:model/GetDatabaseClusterTypes200Response
+     * @param meta {module:model/Meta} 
+     * @param types {Array.<module:model/DatabaseType>} 
+     */
+    constructor(meta, types) { 
+        
+        GetDatabaseClusterTypes200Response.initialize(this, meta, types);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.DatabasesApi();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, meta, types) { 
+        obj['meta'] = meta;
+        obj['types'] = types;
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>GetDatabaseClusterTypes200Response</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/GetDatabaseClusterTypes200Response} obj Optional instance to populate.
+     * @return {module:model/GetDatabaseClusterTypes200Response} The populated <code>GetDatabaseClusterTypes200Response</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new GetDatabaseClusterTypes200Response();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('meta')) {
+                obj['meta'] = Meta.constructFromObject(data['meta']);
+            }
+            if (data.hasOwnProperty('types')) {
+                obj['types'] = ApiClient.convertToType(data['types'], [DatabaseType]);
+            }
+        }
+        return obj;
+    }
 
-  describe('DatabasesApi', function() {
-    describe('createDatabase', function() {
-      it('should call createDatabase successfully', function(done) {
-        //uncomment below and update the code to test createDatabase
-        //instance.createDatabase(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createDatabaseBackup', function() {
-      it('should call createDatabaseBackup successfully', function(done) {
-        //uncomment below and update the code to test createDatabaseBackup
-        //instance.createDatabaseBackup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createDatabaseCluster', function() {
-      it('should call createDatabaseCluster successfully', function(done) {
-        //uncomment below and update the code to test createDatabaseCluster
-        //instance.createDatabaseCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createDatabaseInstance', function() {
-      it('should call createDatabaseInstance successfully', function(done) {
-        //uncomment below and update the code to test createDatabaseInstance
-        //instance.createDatabaseInstance(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createDatabaseUser', function() {
-      it('should call createDatabaseUser successfully', function(done) {
-        //uncomment below and update the code to test createDatabaseUser
-        //instance.createDatabaseUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDatabase', function() {
-      it('should call deleteDatabase successfully', function(done) {
-        //uncomment below and update the code to test deleteDatabase
-        //instance.deleteDatabase(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDatabaseBackup', function() {
-      it('should call deleteDatabaseBackup successfully', function(done) {
-        //uncomment below and update the code to test deleteDatabaseBackup
-        //instance.deleteDatabaseBackup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDatabaseCluster', function() {
-      it('should call deleteDatabaseCluster successfully', function(done) {
-        //uncomment below and update the code to test deleteDatabaseCluster
-        //instance.deleteDatabaseCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDatabaseInstance', function() {
-      it('should call deleteDatabaseInstance successfully', function(done) {
-        //uncomment below and update the code to test deleteDatabaseInstance
-        //instance.deleteDatabaseInstance(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDatabaseUser', function() {
-      it('should call deleteDatabaseUser successfully', function(done) {
-        //uncomment below and update the code to test deleteDatabaseUser
-        //instance.deleteDatabaseUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabase', function() {
-      it('should call getDatabase successfully', function(done) {
-        //uncomment below and update the code to test getDatabase
-        //instance.getDatabase(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseAutoBackupsSettings', function() {
-      it('should call getDatabaseAutoBackupsSettings successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseAutoBackupsSettings
-        //instance.getDatabaseAutoBackupsSettings(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseBackup', function() {
-      it('should call getDatabaseBackup successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseBackup
-        //instance.getDatabaseBackup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseBackups', function() {
-      it('should call getDatabaseBackups successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseBackups
-        //instance.getDatabaseBackups(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseCluster', function() {
-      it('should call getDatabaseCluster successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseCluster
-        //instance.getDatabaseCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseClusterTypes', function() {
-      it('should call getDatabaseClusterTypes successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseClusterTypes
-        //instance.getDatabaseClusterTypes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseClusters', function() {
-      it('should call getDatabaseClusters successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseClusters
-        //instance.getDatabaseClusters(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseInstance', function() {
-      it('should call getDatabaseInstance successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseInstance
-        //instance.getDatabaseInstance(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseInstances', function() {
-      it('should call getDatabaseInstances successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseInstances
-        //instance.getDatabaseInstances(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseUser', function() {
-      it('should call getDatabaseUser successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseUser
-        //instance.getDatabaseUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabaseUsers', function() {
-      it('should call getDatabaseUsers successfully', function(done) {
-        //uncomment below and update the code to test getDatabaseUsers
-        //instance.getDatabaseUsers(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabases', function() {
-      it('should call getDatabases successfully', function(done) {
-        //uncomment below and update the code to test getDatabases
-        //instance.getDatabases(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabasesPresets', function() {
-      it('should call getDatabasesPresets successfully', function(done) {
-        //uncomment below and update the code to test getDatabasesPresets
-        //instance.getDatabasesPresets(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('restoreDatabaseFromBackup', function() {
-      it('should call restoreDatabaseFromBackup successfully', function(done) {
-        //uncomment below and update the code to test restoreDatabaseFromBackup
-        //instance.restoreDatabaseFromBackup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDatabase', function() {
-      it('should call updateDatabase successfully', function(done) {
-        //uncomment below and update the code to test updateDatabase
-        //instance.updateDatabase(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDatabaseAutoBackupsSettings', function() {
-      it('should call updateDatabaseAutoBackupsSettings successfully', function(done) {
-        //uncomment below and update the code to test updateDatabaseAutoBackupsSettings
-        //instance.updateDatabaseAutoBackupsSettings(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDatabaseCluster', function() {
-      it('should call updateDatabaseCluster successfully', function(done) {
-        //uncomment below and update the code to test updateDatabaseCluster
-        //instance.updateDatabaseCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDatabaseInstance', function() {
-      it('should call updateDatabaseInstance successfully', function(done) {
-        //uncomment below and update the code to test updateDatabaseInstance
-        //instance.updateDatabaseInstance(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDatabaseUser', function() {
-      it('should call updateDatabaseUser successfully', function(done) {
-        //uncomment below and update the code to test updateDatabaseUser
-        //instance.updateDatabaseUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-  });
+    /**
+     * Validates the JSON data with respect to <code>GetDatabaseClusterTypes200Response</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetDatabaseClusterTypes200Response</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of GetDatabaseClusterTypes200Response.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // validate the optional field `meta`
+        if (data['meta']) { // data not null
+          Meta.validateJSON(data['meta']);
+        }
+        if (data['types']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['types'])) {
+                throw new Error("Expected the field `types` to be an array in the JSON data but got " + data['types']);
+            }
+            // validate the optional field `types` (array)
+            for (const item of data['types']) {
+                DatabaseType.validateJSON(item);
+            };
+        }
 
-}));
+        return true;
+    }
+
+
+}
+
+GetDatabaseClusterTypes200Response.RequiredProperties = ["meta", "types"];
+
+/**
+ * @member {module:model/Meta} meta
+ */
+GetDatabaseClusterTypes200Response.prototype['meta'] = undefined;
+
+/**
+ * @member {Array.<module:model/DatabaseType>} types
+ */
+GetDatabaseClusterTypes200Response.prototype['types'] = undefined;
+
+
+
+
+
+
+export default GetDatabaseClusterTypes200Response;
+
