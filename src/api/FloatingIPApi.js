@@ -55,7 +55,7 @@ export default class FloatingIPApi {
 
     /**
      * Привязать IP к сервису
-     * Чтобы привязать IP к сервису, отправьте POST-запрос на `/api/v1/floating-ip/{floating_ip_id}/bind`.
+     * Чтобы привязать IP к сервису, отправьте POST-запрос на `/api/v1/floating-ips/{floating_ip_id}/bind`.
      * @param {String} floatingIpId Идентификатор плавающего IP
      * @param {module:model/BindFloatingIp} bindFloatingIp 
      * @param {module:api/FloatingIPApi~bindFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
@@ -266,7 +266,7 @@ export default class FloatingIPApi {
 
     /**
      * Отвязать IP от сервиса
-     * Чтобы отвязать IP от сервиса, отправьте POST-запрос на `/api/v1/floating-ip/{floating_ip_id}/unbind`.
+     * Чтобы отвязать IP от сервиса, отправьте POST-запрос на `/api/v1/floating-ips/{floating_ip_id}/unbind`.
      * @param {String} floatingIpId Идентификатор плавающего IP
      * @param {module:api/FloatingIPApi~unbindFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
      */
