@@ -4,6 +4,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**actionOnServer**](ServersApi.md#actionOnServer) | **POST** /api/v2/{account_id}/servers/{server_id}/{action} | Выполнение действия над сервером
 [**addServerIP**](ServersApi.md#addServerIP) | **POST** /api/v1/servers/{server_id}/ips | Добавление IP-адреса сервера
 [**cloneServer**](ServersApi.md#cloneServer) | **POST** /api/v1/servers/{server_id}/clone | Клонирование сервера
 [**createServer**](ServersApi.md#createServer) | **POST** /api/v1/servers | Создание сервера
@@ -38,6 +39,57 @@ Method | HTTP request | Description
 [**updateServerNAT**](ServersApi.md#updateServerNAT) | **PATCH** /api/v1/servers/{server_id}/local-networks/nat-mode | Изменение правил маршрутизации трафика сервера (NAT)
 [**updateServerOSBootMode**](ServersApi.md#updateServerOSBootMode) | **POST** /api/v1/servers/{server_id}/boot-mode | Выбор типа загрузки операционной системы сервера
 
+
+
+## actionOnServer
+
+> actionOnServer(serverId, action)
+
+Выполнение действия над сервером
+
+Чтобы выполнить действие над сервером, отправьте POST-запрос на &#x60;/api/v2/{account_id}/servers/{server_id}/{action}&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.ServersApi();
+let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let action = install; // String | Действие над сервером
+apiInstance.actionOnServer(serverId, action, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **action** | **String**| Действие над сервером | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## addServerIP
@@ -1311,7 +1363,7 @@ null (empty response body)
 
 ## performActionOnServer
 
-> performActionOnServer(serverId, performActionOnServerRequest)
+> performActionOnServer(serverId, opts)
 
 Выполнение действия над сервером
 
@@ -1328,8 +1380,10 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
 let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
-let performActionOnServerRequest = new TimewebCloudApi.PerformActionOnServerRequest(); // PerformActionOnServerRequest | 
-apiInstance.performActionOnServer(serverId, performActionOnServerRequest, (error, data, response) => {
+let opts = {
+  'performActionOnServerRequest': new TimewebCloudApi.PerformActionOnServerRequest() // PerformActionOnServerRequest | 
+};
+apiInstance.performActionOnServer(serverId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -1344,7 +1398,7 @@ apiInstance.performActionOnServer(serverId, performActionOnServerRequest, (error
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
- **performActionOnServerRequest** | [**PerformActionOnServerRequest**](PerformActionOnServerRequest.md)|  | 
+ **performActionOnServerRequest** | [**PerformActionOnServerRequest**](PerformActionOnServerRequest.md)|  | [optional] 
 
 ### Return type
 

@@ -48,6 +48,16 @@
   }
 
   describe('ServersApi', function() {
+    describe('actionOnServer', function() {
+      it('should call actionOnServer successfully', function(done) {
+        //uncomment below and update the code to test actionOnServer
+        //instance.actionOnServer(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('addServerIP', function() {
       it('should call addServerIP successfully', function(done) {
         //uncomment below and update the code to test addServerIP
