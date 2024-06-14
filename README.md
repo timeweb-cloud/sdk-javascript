@@ -469,7 +469,6 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.SSHApi* | [**getKey**](docs/SSHApi.md#getKey) | **GET** /api/v1/ssh-keys/{ssh_key_id} | Получение SSH-ключа по уникальному идентификатору
 *TimewebCloudApi.SSHApi* | [**getKeys**](docs/SSHApi.md#getKeys) | **GET** /api/v1/ssh-keys | Получение списка SSH-ключей
 *TimewebCloudApi.SSHApi* | [**updateKey**](docs/SSHApi.md#updateKey) | **PATCH** /api/v1/ssh-keys/{ssh_key_id} | Изменение SSH-ключа по уникальному идентификатору
-*TimewebCloudApi.ServersApi* | [**actionOnServer**](docs/ServersApi.md#actionOnServer) | **POST** /api/v2/{account_id}/servers/{server_id}/{action} | Выполнение действия над сервером
 *TimewebCloudApi.ServersApi* | [**addServerIP**](docs/ServersApi.md#addServerIP) | **POST** /api/v1/servers/{server_id}/ips | Добавление IP-адреса сервера
 *TimewebCloudApi.ServersApi* | [**cloneServer**](docs/ServersApi.md#cloneServer) | **POST** /api/v1/servers/{server_id}/clone | Клонирование сервера
 *TimewebCloudApi.ServersApi* | [**createServer**](docs/ServersApi.md#createServer) | **POST** /api/v1/servers | Создание сервера
@@ -493,9 +492,15 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.ServersApi* | [**getServers**](docs/ServersApi.md#getServers) | **GET** /api/v1/servers | Получение списка серверов
 *TimewebCloudApi.ServersApi* | [**getServersPresets**](docs/ServersApi.md#getServersPresets) | **GET** /api/v1/presets/servers | Получение списка тарифов серверов
 *TimewebCloudApi.ServersApi* | [**getSoftware**](docs/ServersApi.md#getSoftware) | **GET** /api/v1/software/servers | Получение списка ПО из маркетплейса
+*TimewebCloudApi.ServersApi* | [**hardShutdownServer**](docs/ServersApi.md#hardShutdownServer) | **POST** /api/v1/servers/{server_id}/hard-shutdown | Принудительное выключение сервера
 *TimewebCloudApi.ServersApi* | [**imageUnmountAndServerReload**](docs/ServersApi.md#imageUnmountAndServerReload) | **POST** /api/v1/servers/{server_id}/image-unmount | Отмонтирование ISO образа и перезагрузка сервера
+*TimewebCloudApi.ServersApi* | [**installServer**](docs/ServersApi.md#installServer) | **POST** /api/v1/servers/{server_id}/install | Установка сервера
 *TimewebCloudApi.ServersApi* | [**performActionOnBackup**](docs/ServersApi.md#performActionOnBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/action | Выполнение действия над бэкапом диска сервера
 *TimewebCloudApi.ServersApi* | [**performActionOnServer**](docs/ServersApi.md#performActionOnServer) | **POST** /api/v1/servers/{server_id}/action | Выполнение действия над сервером
+*TimewebCloudApi.ServersApi* | [**rebootServer**](docs/ServersApi.md#rebootServer) | **POST** /api/v1/servers/{server_id}/reboot | Перезагрузка сервера
+*TimewebCloudApi.ServersApi* | [**resetServerPassword**](docs/ServersApi.md#resetServerPassword) | **POST** /api/v1/servers/{server_id}/reset-password | Сброс пароля сервера
+*TimewebCloudApi.ServersApi* | [**shutdownServer**](docs/ServersApi.md#shutdownServer) | **POST** /api/v1/servers/{server_id}/shutdown | Выключение сервера
+*TimewebCloudApi.ServersApi* | [**startServer**](docs/ServersApi.md#startServer) | **POST** /api/v1/servers/{server_id}/start | Запуск сервера
 *TimewebCloudApi.ServersApi* | [**updateServer**](docs/ServersApi.md#updateServer) | **PATCH** /api/v1/servers/{server_id} | Изменение сервера
 *TimewebCloudApi.ServersApi* | [**updateServerDisk**](docs/ServersApi.md#updateServerDisk) | **PATCH** /api/v1/servers/{server_id}/disks/{disk_id} | Изменение параметров диска сервера
 *TimewebCloudApi.ServersApi* | [**updateServerDiskAutoBackupSettings**](docs/ServersApi.md#updateServerDiskAutoBackupSettings) | **PATCH** /api/v1/servers/{server_id}/disks/{disk_id}/auto-backups | Изменение настроек автобэкапов диска сервера

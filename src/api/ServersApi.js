@@ -72,54 +72,6 @@ export default class ServersApi {
 
 
     /**
-     * Callback function to receive the result of the actionOnServer operation.
-     * @callback module:api/ServersApi~actionOnServerCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Выполнение действия над сервером
-     * Чтобы выполнить действие над сервером, отправьте POST-запрос на `/api/v2/{account_id}/servers/{server_id}/{action}`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
-     * @param {module:model/String} action Действие над сервером
-     * @param {module:api/ServersApi~actionOnServerCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    actionOnServer(serverId, action, callback) {
-      let postBody = null;
-      // verify the required parameter 'serverId' is set
-      if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling actionOnServer");
-      }
-      // verify the required parameter 'action' is set
-      if (action === undefined || action === null) {
-        throw new Error("Missing the required parameter 'action' when calling actionOnServer");
-      }
-
-      let pathParams = {
-        'server_id': serverId,
-        'action': action
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/v2/{account_id}/servers/{server_id}/{action}', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the addServerIP operation.
      * @callback module:api/ServersApi~addServerIPCallback
      * @param {String} error Error message, if any.
@@ -1177,6 +1129,48 @@ export default class ServersApi {
     }
 
     /**
+     * Callback function to receive the result of the hardShutdownServer operation.
+     * @callback module:api/ServersApi~hardShutdownServerCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Принудительное выключение сервера
+     * Чтобы выполнить принудительное выключение сервера, отправьте POST-запрос на `/api/v1/servers/{server_id}/hard-shutdown`.
+     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {module:api/ServersApi~hardShutdownServerCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    hardShutdownServer(serverId, callback) {
+      let postBody = null;
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling hardShutdownServer");
+      }
+
+      let pathParams = {
+        'server_id': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/servers/{server_id}/hard-shutdown', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the imageUnmountAndServerReload operation.
      * @callback module:api/ServersApi~imageUnmountAndServerReloadCallback
      * @param {String} error Error message, if any.
@@ -1213,6 +1207,48 @@ export default class ServersApi {
       let returnType = null;
       return this.apiClient.callApi(
         '/api/v1/servers/{server_id}/image-unmount', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the installServer operation.
+     * @callback module:api/ServersApi~installServerCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Установка сервера
+     * Чтобы установить сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/install`.
+     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {module:api/ServersApi~installServerCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    installServer(serverId, callback) {
+      let postBody = null;
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling installServer");
+      }
+
+      let pathParams = {
+        'server_id': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/servers/{server_id}/install', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -1315,6 +1351,174 @@ export default class ServersApi {
       let returnType = null;
       return this.apiClient.callApi(
         '/api/v1/servers/{server_id}/action', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the rebootServer operation.
+     * @callback module:api/ServersApi~rebootServerCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Перезагрузка сервера
+     * Чтобы перезагрузить сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/reboot`.
+     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {module:api/ServersApi~rebootServerCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    rebootServer(serverId, callback) {
+      let postBody = null;
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling rebootServer");
+      }
+
+      let pathParams = {
+        'server_id': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/servers/{server_id}/reboot', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the resetServerPassword operation.
+     * @callback module:api/ServersApi~resetServerPasswordCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Сброс пароля сервера
+     * Чтобы сбросить пароль сервера, отправьте POST-запрос на `/api/v1/servers/{server_id}/reset-password`.
+     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {module:api/ServersApi~resetServerPasswordCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    resetServerPassword(serverId, callback) {
+      let postBody = null;
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling resetServerPassword");
+      }
+
+      let pathParams = {
+        'server_id': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/servers/{server_id}/reset-password', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the shutdownServer operation.
+     * @callback module:api/ServersApi~shutdownServerCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Выключение сервера
+     * Чтобы выключить сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/shutdown`.
+     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {module:api/ServersApi~shutdownServerCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    shutdownServer(serverId, callback) {
+      let postBody = null;
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling shutdownServer");
+      }
+
+      let pathParams = {
+        'server_id': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/servers/{server_id}/shutdown', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the startServer operation.
+     * @callback module:api/ServersApi~startServerCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Запуск сервера
+     * Чтобы запустить сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/start`.
+     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {module:api/ServersApi~startServerCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    startServer(serverId, callback) {
+      let postBody = null;
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling startServer");
+      }
+
+      let pathParams = {
+        'server_id': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/servers/{server_id}/start', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

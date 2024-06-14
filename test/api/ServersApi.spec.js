@@ -48,16 +48,6 @@
   }
 
   describe('ServersApi', function() {
-    describe('actionOnServer', function() {
-      it('should call actionOnServer successfully', function(done) {
-        //uncomment below and update the code to test actionOnServer
-        //instance.actionOnServer(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('addServerIP', function() {
       it('should call addServerIP successfully', function(done) {
         //uncomment below and update the code to test addServerIP
@@ -288,10 +278,30 @@
         done();
       });
     });
+    describe('hardShutdownServer', function() {
+      it('should call hardShutdownServer successfully', function(done) {
+        //uncomment below and update the code to test hardShutdownServer
+        //instance.hardShutdownServer(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('imageUnmountAndServerReload', function() {
       it('should call imageUnmountAndServerReload successfully', function(done) {
         //uncomment below and update the code to test imageUnmountAndServerReload
         //instance.imageUnmountAndServerReload(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('installServer', function() {
+      it('should call installServer successfully', function(done) {
+        //uncomment below and update the code to test installServer
+        //instance.installServer(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -312,6 +322,46 @@
       it('should call performActionOnServer successfully', function(done) {
         //uncomment below and update the code to test performActionOnServer
         //instance.performActionOnServer(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('rebootServer', function() {
+      it('should call rebootServer successfully', function(done) {
+        //uncomment below and update the code to test rebootServer
+        //instance.rebootServer(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('resetServerPassword', function() {
+      it('should call resetServerPassword successfully', function(done) {
+        //uncomment below and update the code to test resetServerPassword
+        //instance.resetServerPassword(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('shutdownServer', function() {
+      it('should call shutdownServer successfully', function(done) {
+        //uncomment below and update the code to test shutdownServer
+        //instance.shutdownServer(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('startServer', function() {
+      it('should call startServer successfully', function(done) {
+        //uncomment below and update the code to test startServer
+        //instance.startServer(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
