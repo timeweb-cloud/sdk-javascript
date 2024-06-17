@@ -143,7 +143,6 @@ import DomainPaymentPeriod from './model/DomainPaymentPeriod';
 import DomainPrimeType from './model/DomainPrimeType';
 import DomainProlong from './model/DomainProlong';
 import DomainRegister from './model/DomainRegister';
-import DomainRegisterNsInner from './model/DomainRegisterNsInner';
 import DomainRequest from './model/DomainRequest';
 import DomainTransfer from './model/DomainTransfer';
 import EditApiKey from './model/EditApiKey';
@@ -1211,12 +1210,6 @@ export {
      * @property {module:model/DomainRegister}
      */
     DomainRegister,
-
-    /**
-     * The DomainRegisterNsInner model constructor.
-     * @property {module:model/DomainRegisterNsInner}
-     */
-    DomainRegisterNsInner,
 
     /**
      * The DomainRequest model constructor.

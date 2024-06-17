@@ -138,7 +138,6 @@ docs/DomainPaymentPeriod.md
 docs/DomainPrimeType.md
 docs/DomainProlong.md
 docs/DomainRegister.md
-docs/DomainRegisterNsInner.md
 docs/DomainRequest.md
 docs/DomainTransfer.md
 docs/DomainsApi.md
@@ -534,7 +533,6 @@ src/model/DomainPaymentPeriod.js
 src/model/DomainPrimeType.js
 src/model/DomainProlong.js
 src/model/DomainRegister.js
-src/model/DomainRegisterNsInner.js
 src/model/DomainRequest.js
 src/model/DomainTransfer.js
 src/model/EditApiKey.js
@@ -913,7 +911,6 @@ test/model/DomainPaymentPeriod.spec.js
 test/model/DomainPrimeType.spec.js
 test/model/DomainProlong.spec.js
 test/model/DomainRegister.spec.js
-test/model/DomainRegisterNsInner.spec.js
 test/model/DomainRequest.spec.js
 test/model/DomainTransfer.spec.js
 test/model/EditApiKey.spec.js

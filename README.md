@@ -649,7 +649,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DomainPrimeType](docs/DomainPrimeType.md)
  - [TimewebCloudApi.DomainProlong](docs/DomainProlong.md)
  - [TimewebCloudApi.DomainRegister](docs/DomainRegister.md)
- - [TimewebCloudApi.DomainRegisterNsInner](docs/DomainRegisterNsInner.md)
  - [TimewebCloudApi.DomainRequest](docs/DomainRequest.md)
  - [TimewebCloudApi.DomainTransfer](docs/DomainTransfer.md)
  - [TimewebCloudApi.EditApiKey](docs/EditApiKey.md)

@@ -13,7 +13,6 @@
 
 import ApiClient from '../ApiClient';
 import DomainPaymentPeriod from './DomainPaymentPeriod';
-import DomainRegisterNsInner from './DomainRegisterNsInner';
 
 /**
  * The DomainRegister model module.
@@ -68,9 +67,6 @@ class DomainRegister {
             if (data.hasOwnProperty('is_whois_privacy_enabled')) {
                 obj['is_whois_privacy_enabled'] = ApiClient.convertToType(data['is_whois_privacy_enabled'], 'Boolean');
             }
-            if (data.hasOwnProperty('ns')) {
-                obj['ns'] = ApiClient.convertToType(data['ns'], [DomainRegisterNsInner]);
-            }
             if (data.hasOwnProperty('period')) {
                 obj['period'] = DomainPaymentPeriod.constructFromObject(data['period']);
             }
@@ -100,16 +96,6 @@ class DomainRegister {
         // ensure the json data is a string
         if (data['fqdn'] && !(typeof data['fqdn'] === 'string' || data['fqdn'] instanceof String)) {
             throw new Error("Expected the field `fqdn` to be a primitive type in the JSON string but got " + data['fqdn']);
-        }
-        if (data['ns']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['ns'])) {
-                throw new Error("Expected the field `ns` to be an array in the JSON data but got " + data['ns']);
-            }
-            // validate the optional field `ns` (array)
-            for (const item of data['ns']) {
-                DomainRegisterNsInner.validateJSON(item);
-            };
         }
 
         return true;
@@ -143,12 +129,6 @@ DomainRegister.prototype['is_autoprolong_enabled'] = undefined;
  * @member {Boolean} is_whois_privacy_enabled
  */
 DomainRegister.prototype['is_whois_privacy_enabled'] = undefined;
-
-/**
- * Name-серверы для регистрации домена. Если не передавать этот параметр, будут использованы наши стандартные name-серверы. Нужно указать как минимум 2 name-сервера.
- * @member {Array.<module:model/DomainRegisterNsInner>} ns
- */
-DomainRegister.prototype['ns'] = undefined;
 
 /**
  * @member {module:model/DomainPaymentPeriod} period

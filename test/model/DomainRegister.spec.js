@@ -78,12 +78,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property ns (base name: "ns")', function() {
-      // uncomment below and update the code to test the property ns
-      //var instance = new TimewebCloudApi.DomainRegister();
-      //expect(instance).to.be();
-    });
-
     it('should have the property period (base name: "period")', function() {
       // uncomment below and update the code to test the property period
       //var instance = new TimewebCloudApi.DomainRegister();
