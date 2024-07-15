@@ -1213,48 +1213,6 @@ export default class ServersApi {
     }
 
     /**
-     * Callback function to receive the result of the installServer operation.
-     * @callback module:api/ServersApi~installServerCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Установка сервера
-     * Чтобы установить сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/install`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
-     * @param {module:api/ServersApi~installServerCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    installServer(serverId, callback) {
-      let postBody = null;
-      // verify the required parameter 'serverId' is set
-      if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling installServer");
-      }
-
-      let pathParams = {
-        'server_id': serverId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/v1/servers/{server_id}/install', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the performActionOnBackup operation.
      * @callback module:api/ServersApi~performActionOnBackupCallback
      * @param {String} error Error message, if any.

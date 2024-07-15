@@ -29,7 +29,6 @@ Method | HTTP request | Description
 [**getSoftware**](ServersApi.md#getSoftware) | **GET** /api/v1/software/servers | Получение списка ПО из маркетплейса
 [**hardShutdownServer**](ServersApi.md#hardShutdownServer) | **POST** /api/v1/servers/{server_id}/hard-shutdown | Принудительное выключение сервера
 [**imageUnmountAndServerReload**](ServersApi.md#imageUnmountAndServerReload) | **POST** /api/v1/servers/{server_id}/image-unmount | Отмонтирование ISO образа и перезагрузка сервера
-[**installServer**](ServersApi.md#installServer) | **POST** /api/v1/servers/{server_id}/install | Установка сервера
 [**performActionOnBackup**](ServersApi.md#performActionOnBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/action | Выполнение действия над бэкапом диска сервера
 [**performActionOnServer**](ServersApi.md#performActionOnServer) | **POST** /api/v1/servers/{server_id}/action | Выполнение действия над сервером
 [**rebootServer**](ServersApi.md#rebootServer) | **POST** /api/v1/servers/{server_id}/reboot | Перезагрузка сервера
@@ -1278,55 +1277,6 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new TimewebCloudApi.ServersApi();
 let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
 apiInstance.imageUnmountAndServerReload(serverId, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## installServer
-
-> installServer(serverId)
-
-Установка сервера
-
-Чтобы установить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/install&#x60;.
-
-### Example
-
-```javascript
-import TimewebCloudApi from 'timeweb_cloud_api';
-let defaultClient = TimewebCloudApi.ApiClient.instance;
-// Configure Bearer (JWT) access token for authorization: Bearer
-let Bearer = defaultClient.authentications['Bearer'];
-Bearer.accessToken = "YOUR ACCESS TOKEN"
-
-let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
-apiInstance.installServer(serverId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {

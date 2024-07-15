@@ -298,16 +298,6 @@
         done();
       });
     });
-    describe('installServer', function() {
-      it('should call installServer successfully', function(done) {
-        //uncomment below and update the code to test installServer
-        //instance.installServer(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('performActionOnBackup', function() {
       it('should call performActionOnBackup successfully', function(done) {
         //uncomment below and update the code to test performActionOnBackup
