@@ -720,7 +720,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Free](docs/Free.md)
  - [TimewebCloudApi.GetAccountStatus200Response](docs/GetAccountStatus200Response.md)
  - [TimewebCloudApi.GetAllProjectResources200Response](docs/GetAllProjectResources200Response.md)
- - [TimewebCloudApi.GetApp200Response](docs/GetApp200Response.md)
  - [TimewebCloudApi.GetAppDeploys200Response](docs/GetAppDeploys200Response.md)
  - [TimewebCloudApi.GetAppLogs200Response](docs/GetAppLogs200Response.md)
  - [TimewebCloudApi.GetApps200Response](docs/GetApps200Response.md)

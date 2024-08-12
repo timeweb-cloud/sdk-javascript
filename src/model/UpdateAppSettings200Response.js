@@ -24,7 +24,7 @@ class UpdateAppSettings200Response {
     /**
      * Constructs a new <code>UpdateAppSettings200Response</code>.
      * @alias module:model/UpdateAppSettings200Response
-     * @param app {Array.<module:model/App>} 
+     * @param app {module:model/App} 
      * @param meta {module:model/Meta} 
      */
     constructor(app, meta) { 
@@ -54,7 +54,7 @@ class UpdateAppSettings200Response {
             obj = obj || new UpdateAppSettings200Response();
 
             if (data.hasOwnProperty('app')) {
-                obj['app'] = ApiClient.convertToType(data['app'], [App]);
+                obj['app'] = App.constructFromObject(data['app']);
             }
             if (data.hasOwnProperty('meta')) {
                 obj['meta'] = Meta.constructFromObject(data['meta']);
@@ -75,15 +75,9 @@ class UpdateAppSettings200Response {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
+        // validate the optional field `app`
         if (data['app']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['app'])) {
-                throw new Error("Expected the field `app` to be an array in the JSON data but got " + data['app']);
-            }
-            // validate the optional field `app` (array)
-            for (const item of data['app']) {
-                App.validateJSON(item);
-            };
+          App.validateJSON(data['app']);
         }
         // validate the optional field `meta`
         if (data['meta']) { // data not null
@@ -99,7 +93,7 @@ class UpdateAppSettings200Response {
 UpdateAppSettings200Response.RequiredProperties = ["app", "meta"];
 
 /**
- * @member {Array.<module:model/App>} app
+ * @member {module:model/App} app
  */
 UpdateAppSettings200Response.prototype['app'] = undefined;
 

@@ -262,7 +262,7 @@ CreateApp.prototype['env_version'] = undefined;
 CreateApp.prototype['framework'] = undefined;
 
 /**
- * Директория с индексным файлом. Обязателен для приложений `type: frontend`. Не используется для приложений `type: backend`. Должно начинаться с `/`.
+ * Путь к директории с индексным файлом. Обязателен для приложений `type: frontend`. Не используется для приложений `type: backend`. Значение всегда должно начинаться с `/`.
  * @member {String} index_dir
  */
 CreateApp.prototype['index_dir'] = undefined;

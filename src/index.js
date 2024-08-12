@@ -194,7 +194,6 @@ import Frameworks from './model/Frameworks';
 import Free from './model/Free';
 import GetAccountStatus200Response from './model/GetAccountStatus200Response';
 import GetAllProjectResources200Response from './model/GetAllProjectResources200Response';
-import GetApp200Response from './model/GetApp200Response';
 import GetAppDeploys200Response from './model/GetAppDeploys200Response';
 import GetAppLogs200Response from './model/GetAppLogs200Response';
 import GetApps200Response from './model/GetApps200Response';
@@ -1558,12 +1557,6 @@ export {
      * @property {module:model/GetAllProjectResources200Response}
      */
     GetAllProjectResources200Response,
-
-    /**
-     * The GetApp200Response model constructor.
-     * @property {module:model/GetApp200Response}
-     */
-    GetApp200Response,
 
     /**
      * The GetAppDeploys200Response model constructor.

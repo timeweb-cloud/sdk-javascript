@@ -22,7 +22,6 @@ import CreateApp201Response from '../model/CreateApp201Response';
 import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
 import CreateDeploy201Response from '../model/CreateDeploy201Response';
 import CreateDeployRequest from '../model/CreateDeployRequest';
-import GetApp200Response from '../model/GetApp200Response';
 import GetAppDeploys200Response from '../model/GetAppDeploys200Response';
 import GetAppLogs200Response from '../model/GetAppLogs200Response';
 import GetApps200Response from '../model/GetApps200Response';
@@ -330,7 +329,7 @@ export default class AppsApi {
      * Callback function to receive the result of the getApp operation.
      * @callback module:api/AppsApi~getAppCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetApp200Response} data The data returned by the service call.
+     * @param {module:model/CreateApp201Response} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -339,7 +338,7 @@ export default class AppsApi {
      * Чтобы получить приложение по id, отправьте GET-запрос на `/api/v1/apps/{app_id}`.
      * @param {String} appId 
      * @param {module:api/AppsApi~getAppCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetApp200Response}
+     * data is of type: {@link module:model/CreateApp201Response}
      */
     getApp(appId, callback) {
       let postBody = null;
@@ -361,7 +360,7 @@ export default class AppsApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetApp200Response;
+      let returnType = CreateApp201Response;
       return this.apiClient.callApi(
         '/api/v1/apps/{app_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,

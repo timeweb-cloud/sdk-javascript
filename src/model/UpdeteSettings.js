@@ -172,13 +172,13 @@ UpdeteSettings.prototype['commit_sha'] = undefined;
 UpdeteSettings.prototype['env_version'] = undefined;
 
 /**
- * Директория с индексным файлом. Обязателен для приложений `type: frontend`. Не используется для приложений `type: backend`.
+ * Путь к директории с индексным файлом. Используется для приложений `type: frontend`. Не используется для приложений `type: backend`. Значение всегда должно начинаться с `/`.
  * @member {String} index_dir
  */
 UpdeteSettings.prototype['index_dir'] = undefined;
 
 /**
- * Команда для запуска приложения. Обязателен для приложений `type: backend`. Не используется для приложений `type: frontend`.
+ * Команда для запуска приложения. Используется для приложений `type: backend`. Не используется для приложений `type: frontend`.
  * @member {String} run_cmd
  */
 UpdeteSettings.prototype['run_cmd'] = undefined;

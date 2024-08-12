@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **presetId** | **Number** | Идентификатор тарифа. | 
 **envVersion** | **String** | Версия окружения. | [optional] 
 **framework** | [**Frameworks**](Frameworks.md) |  | 
-**indexDir** | **String** | Директория с индексным файлом. Обязателен для приложений &#x60;type: frontend&#x60;. Не используется для приложений &#x60;type: backend&#x60;. Должно начинаться с &#x60;/&#x60;. | [optional] 
+**indexDir** | **String** | Путь к директории с индексным файлом. Обязателен для приложений &#x60;type: frontend&#x60;. Не используется для приложений &#x60;type: backend&#x60;. Значение всегда должно начинаться с &#x60;/&#x60;. | [optional] 
 **runCmd** | **String** | Команда для запуска приложения. Обязателен для приложений &#x60;type: backend&#x60;. Не используется для приложений &#x60;type: frontend&#x60;. | [optional] 
 
 

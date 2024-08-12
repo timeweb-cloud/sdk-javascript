@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**app** | [**[App]**](App.md) |  | 
+**app** | [**App**](App.md) |  | 
 **meta** | [**Meta**](Meta.md) |  | 
 
 

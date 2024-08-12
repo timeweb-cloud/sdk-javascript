@@ -193,7 +193,6 @@ docs/Frameworks.md
 docs/Free.md
 docs/GetAccountStatus200Response.md
 docs/GetAllProjectResources200Response.md
-docs/GetApp200Response.md
 docs/GetAppDeploys200Response.md
 docs/GetAppLogs200Response.md
 docs/GetApps200Response.md
@@ -627,7 +626,6 @@ src/model/Frameworks.js
 src/model/Free.js
 src/model/GetAccountStatus200Response.js
 src/model/GetAllProjectResources200Response.js
-src/model/GetApp200Response.js
 src/model/GetAppDeploys200Response.js
 src/model/GetAppLogs200Response.js
 src/model/GetApps200Response.js
@@ -1047,7 +1045,6 @@ test/model/Frameworks.spec.js
 test/model/Free.spec.js
 test/model/GetAccountStatus200Response.spec.js
 test/model/GetAllProjectResources200Response.spec.js
-test/model/GetApp200Response.spec.js
 test/model/GetAppDeploys200Response.spec.js
 test/model/GetAppLogs200Response.spec.js
 test/model/GetApps200Response.spec.js

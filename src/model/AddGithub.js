@@ -21,10 +21,10 @@ import ApiClient from '../ApiClient';
 class AddGithub {
     /**
      * Constructs a new <code>AddGithub</code>.
-     * Добавление аккаунта github
+     * Добавление аккаунта GitHub
      * @alias module:model/AddGithub
      * @param providerType {module:model/AddGithub.ProviderTypeEnum} Тип провайдера.
-     * @param providerToken {String} Токен доступа. <br> Для GitHub необходимо использовать 'Fine-grained personal access token'. Инструкции по созданию можно найти в <a target='_blank' href='https://docs.github.com/ru/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token'>документации GitHub</a>. <br> Выберите репозитории, к которым хотите предоставить доступ, и установите следующие разрешения: `Webhooks: read and write`, `Contents: read-only`.
+     * @param providerToken {String} Токен доступа. <br> Для GitHub необходимо использовать 'Fine-grained personal access token'. Инструкции по созданию можно найти в <a target='_blank' href='https://docs.GitHub.com/ru/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token'>документации GitHub</a>. <br> Выберите репозитории, к которым хотите предоставить доступ, и установите следующие разрешения: `Webhooks: read and write`, `Contents: read-only`.
      */
     constructor(providerType, providerToken) { 
         
@@ -98,7 +98,7 @@ AddGithub.RequiredProperties = ["provider_type", "provider_token"];
 AddGithub.prototype['provider_type'] = undefined;
 
 /**
- * Токен доступа. <br> Для GitHub необходимо использовать 'Fine-grained personal access token'. Инструкции по созданию можно найти в <a target='_blank' href='https://docs.github.com/ru/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token'>документации GitHub</a>. <br> Выберите репозитории, к которым хотите предоставить доступ, и установите следующие разрешения: `Webhooks: read and write`, `Contents: read-only`.
+ * Токен доступа. <br> Для GitHub необходимо использовать 'Fine-grained personal access token'. Инструкции по созданию можно найти в <a target='_blank' href='https://docs.GitHub.com/ru/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token'>документации GitHub</a>. <br> Выберите репозитории, к которым хотите предоставить доступ, и установите следующие разрешения: `Webhooks: read and write`, `Contents: read-only`.
  * @member {String} provider_token
  */
 AddGithub.prototype['provider_token'] = undefined;
@@ -115,10 +115,10 @@ AddGithub.prototype['provider_token'] = undefined;
 AddGithub['ProviderTypeEnum'] = {
 
     /**
-     * value: "github"
+     * value: "Github"
      * @const
      */
-    "github": "github"
+    "Github": "Github"
 };
 
 

@@ -21,10 +21,10 @@ import ApiClient from '../ApiClient';
 class AddGitlab {
     /**
      * Constructs a new <code>AddGitlab</code>.
-     * Добавление аккаунта gitlab
+     * Добавление аккаунта GitLab
      * @alias module:model/AddGitlab
      * @param providerType {module:model/AddGitlab.ProviderTypeEnum} Тип провайдера.
-     * @param providerToken {String} Токен доступа. <br> Для Gitlab необходимо использовать персональный токен доступа. Инструкции по созданию можно найти в <a target='_blank' href='https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token'>документации GitLab</a>. <br> Установите следующие разрешения: `api`
+     * @param providerToken {String} Токен доступа. <br> Для GitLab необходимо использовать персональный токен доступа. Инструкции по созданию можно найти в <a target='_blank' href='https://docs.GitLab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token'>документации GitLab</a>. <br> Установите следующие разрешения: `api`
      */
     constructor(providerType, providerToken) { 
         
@@ -98,7 +98,7 @@ AddGitlab.RequiredProperties = ["provider_type", "provider_token"];
 AddGitlab.prototype['provider_type'] = undefined;
 
 /**
- * Токен доступа. <br> Для Gitlab необходимо использовать персональный токен доступа. Инструкции по созданию можно найти в <a target='_blank' href='https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token'>документации GitLab</a>. <br> Установите следующие разрешения: `api`
+ * Токен доступа. <br> Для GitLab необходимо использовать персональный токен доступа. Инструкции по созданию можно найти в <a target='_blank' href='https://docs.GitLab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token'>документации GitLab</a>. <br> Установите следующие разрешения: `api`
  * @member {String} provider_token
  */
 AddGitlab.prototype['provider_token'] = undefined;
@@ -115,10 +115,10 @@ AddGitlab.prototype['provider_token'] = undefined;
 AddGitlab['ProviderTypeEnum'] = {
 
     /**
-     * value: "gitlab"
+     * value: "Gitlab"
      * @const
      */
-    "gitlab": "gitlab"
+    "Gitlab": "Gitlab"
 };
 
 

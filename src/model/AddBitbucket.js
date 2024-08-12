@@ -25,7 +25,7 @@ class AddBitbucket {
      * @alias module:model/AddBitbucket
      * @param providerType {module:model/AddBitbucket.ProviderTypeEnum} Тип провайдера.
      * @param providerToken {String} Токен доступа. <br> Для Bitbucket необходимо использовать 'App password'. Инструкции по созданию можно найти в <a target='_blank' href='https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/'>документации Bitbucket</a>. <br> Установите следующие разрешения: `Account: Read`, `Projects: Read`, `Repositories: Read`, `Webhooks: Read and write`
-     * @param login {String} Логин пользователя BitBucket.
+     * @param login {String} Логин пользователя Bitbucket.
      */
     constructor(providerType, providerToken, login) { 
         
@@ -113,7 +113,7 @@ AddBitbucket.prototype['provider_type'] = undefined;
 AddBitbucket.prototype['provider_token'] = undefined;
 
 /**
- * Логин пользователя BitBucket.
+ * Логин пользователя Bitbucket.
  * @member {String} login
  */
 AddBitbucket.prototype['login'] = undefined;

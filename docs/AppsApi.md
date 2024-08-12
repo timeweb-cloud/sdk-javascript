@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ## getApp
 
-> GetApp200Response getApp(appId)
+> CreateApp201Response getApp(appId)
 
 Получение приложения по id
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetApp200Response**](GetApp200Response.md)
+[**CreateApp201Response**](CreateApp201Response.md)
 
 ### Authorization
 
