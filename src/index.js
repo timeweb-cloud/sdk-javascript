@@ -15,17 +15,22 @@
 import ApiClient from './ApiClient';
 import AddBalancerToProject200Response from './model/AddBalancerToProject200Response';
 import AddBalancerToProjectRequest from './model/AddBalancerToProjectRequest';
+import AddBitbucket from './model/AddBitbucket';
 import AddClusterToProjectRequest from './model/AddClusterToProjectRequest';
 import AddCountries from './model/AddCountries';
 import AddCountriesToAllowedList201Response from './model/AddCountriesToAllowedList201Response';
 import AddCountriesToAllowedListRequest from './model/AddCountriesToAllowedListRequest';
 import AddDatabaseToProjectRequest from './model/AddDatabaseToProjectRequest';
 import AddDedicatedServerToProjectRequest from './model/AddDedicatedServerToProjectRequest';
+import AddGit from './model/AddGit';
+import AddGithub from './model/AddGithub';
+import AddGitlab from './model/AddGitlab';
 import AddIPsToAllowedList201Response from './model/AddIPsToAllowedList201Response';
 import AddIPsToAllowedListRequest from './model/AddIPsToAllowedListRequest';
 import AddIPsToBalancerRequest from './model/AddIPsToBalancerRequest';
 import AddIps from './model/AddIps';
 import AddKeyToServerRequest from './model/AddKeyToServerRequest';
+import AddProvider201Response from './model/AddProvider201Response';
 import AddServerIP201Response from './model/AddServerIP201Response';
 import AddServerIPRequest from './model/AddServerIPRequest';
 import AddServerToProjectRequest from './model/AddServerToProjectRequest';
@@ -36,15 +41,27 @@ import AddStorageToProjectRequest from './model/AddStorageToProjectRequest';
 import AddSubdomain201Response from './model/AddSubdomain201Response';
 import AddedSubdomain from './model/AddedSubdomain';
 import ApiKey from './model/ApiKey';
+import App from './model/App';
+import AppConfiguration from './model/AppConfiguration';
+import AppDiskStatus from './model/AppDiskStatus';
+import AppDomainsInner from './model/AppDomainsInner';
+import AppProvider from './model/AppProvider';
+import AppsPresets from './model/AppsPresets';
+import AppsPresetsBackendPresetsInner from './model/AppsPresetsBackendPresetsInner';
+import AppsPresetsFrontendPresetsInner from './model/AppsPresetsFrontendPresetsInner';
 import AutoBackup from './model/AutoBackup';
 import AutoReplyIsDisabled from './model/AutoReplyIsDisabled';
 import AutoReplyIsEnabled from './model/AutoReplyIsEnabled';
 import AvailabilityZone from './model/AvailabilityZone';
+import AvailableFrameworks from './model/AvailableFrameworks';
+import AvailableFrameworksBackendFrameworksInner from './model/AvailableFrameworksBackendFrameworksInner';
+import AvailableFrameworksFrontendFrameworksInner from './model/AvailableFrameworksFrontendFrameworksInner';
 import Backup from './model/Backup';
 import Balancer from './model/Balancer';
 import BaseError from './model/BaseError';
 import BindFloatingIp from './model/BindFloatingIp';
 import Bonus from './model/Bonus';
+import Branch from './model/Branch';
 import Bucket from './model/Bucket';
 import BucketDiskStats from './model/BucketDiskStats';
 import BucketUser from './model/BucketUser';
@@ -55,10 +72,13 @@ import ClusterOut from './model/ClusterOut';
 import ClusterResponse from './model/ClusterResponse';
 import Clusterk8s from './model/Clusterk8s';
 import ClustersResponse from './model/ClustersResponse';
+import Commit from './model/Commit';
 import ConfigParameters from './model/ConfigParameters';
 import CopyStorageFileRequest from './model/CopyStorageFileRequest';
 import CreateAdmin from './model/CreateAdmin';
 import CreateApiKey from './model/CreateApiKey';
+import CreateApp from './model/CreateApp';
+import CreateApp201Response from './model/CreateApp201Response';
 import CreateBalancer from './model/CreateBalancer';
 import CreateBalancer200Response from './model/CreateBalancer200Response';
 import CreateBalancerRule200Response from './model/CreateBalancerRule200Response';
@@ -75,6 +95,8 @@ import CreateDb from './model/CreateDb';
 import CreateDbAutoBackups from './model/CreateDbAutoBackups';
 import CreateDedicatedServer from './model/CreateDedicatedServer';
 import CreateDedicatedServer201Response from './model/CreateDedicatedServer201Response';
+import CreateDeploy201Response from './model/CreateDeploy201Response';
+import CreateDeployRequest from './model/CreateDeployRequest';
 import CreateDns from './model/CreateDns';
 import CreateDomainDNSRecord201Response from './model/CreateDomainDNSRecord201Response';
 import CreateDomainMailbox201Response from './model/CreateDomainMailbox201Response';
@@ -132,6 +154,9 @@ import DeleteServerIPRequest from './model/DeleteServerIPRequest';
 import DeleteServiceResponse from './model/DeleteServiceResponse';
 import DeleteStorage200Response from './model/DeleteStorage200Response';
 import DeleteStorageFileRequest from './model/DeleteStorageFileRequest';
+import Deploy from './model/Deploy';
+import DeploySettingsInner from './model/DeploySettingsInner';
+import DeployStatus from './model/DeployStatus';
 import DnsRecord from './model/DnsRecord';
 import DnsRecordData from './model/DnsRecordData';
 import Domain from './model/Domain';
@@ -165,15 +190,22 @@ import ForwardingIncomingIsDisabled from './model/ForwardingIncomingIsDisabled';
 import ForwardingIncomingIsEnabled from './model/ForwardingIncomingIsEnabled';
 import ForwardingOutgoingIsDisabled from './model/ForwardingOutgoingIsDisabled';
 import ForwardingOutgoingIsEnabled from './model/ForwardingOutgoingIsEnabled';
+import Frameworks from './model/Frameworks';
 import Free from './model/Free';
 import GetAccountStatus200Response from './model/GetAccountStatus200Response';
 import GetAllProjectResources200Response from './model/GetAllProjectResources200Response';
+import GetApp200Response from './model/GetApp200Response';
+import GetAppDeploys200Response from './model/GetAppDeploys200Response';
+import GetAppLogs200Response from './model/GetAppLogs200Response';
+import GetApps200Response from './model/GetApps200Response';
 import GetAuthAccessSettings200Response from './model/GetAuthAccessSettings200Response';
 import GetAuthAccessSettings200ResponseWhiteList from './model/GetAuthAccessSettings200ResponseWhiteList';
 import GetBalancerIPs200Response from './model/GetBalancerIPs200Response';
 import GetBalancerRules200Response from './model/GetBalancerRules200Response';
 import GetBalancers200Response from './model/GetBalancers200Response';
 import GetBalancersPresets200Response from './model/GetBalancersPresets200Response';
+import GetBranches200Response from './model/GetBranches200Response';
+import GetCommits200Response from './model/GetCommits200Response';
 import GetConfigurators200Response from './model/GetConfigurators200Response';
 import GetCountries200Response from './model/GetCountries200Response';
 import GetDatabaseAutoBackupsSettings200Response from './model/GetDatabaseAutoBackupsSettings200Response';
@@ -187,6 +219,8 @@ import GetDatabasesPresets200Response from './model/GetDatabasesPresets200Respon
 import GetDedicatedServerPresetAdditionalServices200Response from './model/GetDedicatedServerPresetAdditionalServices200Response';
 import GetDedicatedServers200Response from './model/GetDedicatedServers200Response';
 import GetDedicatedServersPresets200Response from './model/GetDedicatedServersPresets200Response';
+import GetDeployLogs200Response from './model/GetDeployLogs200Response';
+import GetDeploySettings200Response from './model/GetDeploySettings200Response';
 import GetDomain200Response from './model/GetDomain200Response';
 import GetDomainDNSRecords200Response from './model/GetDomainDNSRecords200Response';
 import GetDomainMailInfo200Response from './model/GetDomainMailInfo200Response';
@@ -215,6 +249,8 @@ import GetProjectDedicatedServers200Response from './model/GetProjectDedicatedSe
 import GetProjectServers200Response from './model/GetProjectServers200Response';
 import GetProjectStorages200Response from './model/GetProjectStorages200Response';
 import GetProjects200Response from './model/GetProjects200Response';
+import GetProviders200Response from './model/GetProviders200Response';
+import GetRepositories200Response from './model/GetRepositories200Response';
 import GetServerDiskAutoBackupSettings200Response from './model/GetServerDiskAutoBackupSettings200Response';
 import GetServerDiskBackup200Response from './model/GetServerDiskBackup200Response';
 import GetServerDiskBackups200Response from './model/GetServerDiskBackups200Response';
@@ -285,11 +321,14 @@ import PresetsResponse from './model/PresetsResponse';
 import PresetsStorage from './model/PresetsStorage';
 import Project from './model/Project';
 import ProjectResource from './model/ProjectResource';
+import Provider from './model/Provider';
+import Providers from './model/Providers';
 import Quota from './model/Quota';
 import RefreshApiKey from './model/RefreshApiKey';
 import RemoveCountries from './model/RemoveCountries';
 import RemoveIps from './model/RemoveIps';
 import RenameStorageFileRequest from './model/RenameStorageFileRequest';
+import Repository from './model/Repository';
 import Resource from './model/Resource';
 import ResourceTransfer from './model/ResourceTransfer';
 import ResourceType from './model/ResourceType';
@@ -326,6 +365,7 @@ import TransferStatusErrorsInner from './model/TransferStatusErrorsInner';
 import TransferStorageRequest from './model/TransferStorageRequest';
 import URLType from './model/URLType';
 import UpdateAdmin from './model/UpdateAdmin';
+import UpdateAppSettings200Response from './model/UpdateAppSettings200Response';
 import UpdateAuthRestrictionsByCountriesRequest from './model/UpdateAuthRestrictionsByCountriesRequest';
 import UpdateBalancer from './model/UpdateBalancer';
 import UpdateCluster from './model/UpdateCluster';
@@ -358,6 +398,7 @@ import UpdateStorageUser200Response from './model/UpdateStorageUser200Response';
 import UpdateStorageUserRequest from './model/UpdateStorageUserRequest';
 import UpdateToken200Response from './model/UpdateToken200Response';
 import UpdateVpc from './model/UpdateVpc';
+import UpdeteSettings from './model/UpdeteSettings';
 import UploadSuccessful from './model/UploadSuccessful';
 import UploadSuccessfulResponse from './model/UploadSuccessfulResponse';
 import UrlStatus from './model/UrlStatus';
@@ -376,6 +417,7 @@ import VpcService from './model/VpcService';
 import WorkerPresetOutApi from './model/WorkerPresetOutApi';
 import APIKeysApi from './api/APIKeysApi';
 import AccountApi from './api/AccountApi';
+import AppsApi from './api/AppsApi';
 import BalancersApi from './api/BalancersApi';
 import DatabasesApi from './api/DatabasesApi';
 import DedicatedServersApi from './api/DedicatedServersApi';
@@ -444,6 +486,12 @@ export {
     AddBalancerToProjectRequest,
 
     /**
+     * The AddBitbucket model constructor.
+     * @property {module:model/AddBitbucket}
+     */
+    AddBitbucket,
+
+    /**
      * The AddClusterToProjectRequest model constructor.
      * @property {module:model/AddClusterToProjectRequest}
      */
@@ -480,6 +528,24 @@ export {
     AddDedicatedServerToProjectRequest,
 
     /**
+     * The AddGit model constructor.
+     * @property {module:model/AddGit}
+     */
+    AddGit,
+
+    /**
+     * The AddGithub model constructor.
+     * @property {module:model/AddGithub}
+     */
+    AddGithub,
+
+    /**
+     * The AddGitlab model constructor.
+     * @property {module:model/AddGitlab}
+     */
+    AddGitlab,
+
+    /**
      * The AddIPsToAllowedList201Response model constructor.
      * @property {module:model/AddIPsToAllowedList201Response}
      */
@@ -508,6 +574,12 @@ export {
      * @property {module:model/AddKeyToServerRequest}
      */
     AddKeyToServerRequest,
+
+    /**
+     * The AddProvider201Response model constructor.
+     * @property {module:model/AddProvider201Response}
+     */
+    AddProvider201Response,
 
     /**
      * The AddServerIP201Response model constructor.
@@ -570,6 +642,54 @@ export {
     ApiKey,
 
     /**
+     * The App model constructor.
+     * @property {module:model/App}
+     */
+    App,
+
+    /**
+     * The AppConfiguration model constructor.
+     * @property {module:model/AppConfiguration}
+     */
+    AppConfiguration,
+
+    /**
+     * The AppDiskStatus model constructor.
+     * @property {module:model/AppDiskStatus}
+     */
+    AppDiskStatus,
+
+    /**
+     * The AppDomainsInner model constructor.
+     * @property {module:model/AppDomainsInner}
+     */
+    AppDomainsInner,
+
+    /**
+     * The AppProvider model constructor.
+     * @property {module:model/AppProvider}
+     */
+    AppProvider,
+
+    /**
+     * The AppsPresets model constructor.
+     * @property {module:model/AppsPresets}
+     */
+    AppsPresets,
+
+    /**
+     * The AppsPresetsBackendPresetsInner model constructor.
+     * @property {module:model/AppsPresetsBackendPresetsInner}
+     */
+    AppsPresetsBackendPresetsInner,
+
+    /**
+     * The AppsPresetsFrontendPresetsInner model constructor.
+     * @property {module:model/AppsPresetsFrontendPresetsInner}
+     */
+    AppsPresetsFrontendPresetsInner,
+
+    /**
      * The AutoBackup model constructor.
      * @property {module:model/AutoBackup}
      */
@@ -592,6 +712,24 @@ export {
      * @property {module:model/AvailabilityZone}
      */
     AvailabilityZone,
+
+    /**
+     * The AvailableFrameworks model constructor.
+     * @property {module:model/AvailableFrameworks}
+     */
+    AvailableFrameworks,
+
+    /**
+     * The AvailableFrameworksBackendFrameworksInner model constructor.
+     * @property {module:model/AvailableFrameworksBackendFrameworksInner}
+     */
+    AvailableFrameworksBackendFrameworksInner,
+
+    /**
+     * The AvailableFrameworksFrontendFrameworksInner model constructor.
+     * @property {module:model/AvailableFrameworksFrontendFrameworksInner}
+     */
+    AvailableFrameworksFrontendFrameworksInner,
 
     /**
      * The Backup model constructor.
@@ -622,6 +760,12 @@ export {
      * @property {module:model/Bonus}
      */
     Bonus,
+
+    /**
+     * The Branch model constructor.
+     * @property {module:model/Branch}
+     */
+    Branch,
 
     /**
      * The Bucket model constructor.
@@ -684,6 +828,12 @@ export {
     ClustersResponse,
 
     /**
+     * The Commit model constructor.
+     * @property {module:model/Commit}
+     */
+    Commit,
+
+    /**
      * The ConfigParameters model constructor.
      * @property {module:model/ConfigParameters}
      */
@@ -706,6 +856,18 @@ export {
      * @property {module:model/CreateApiKey}
      */
     CreateApiKey,
+
+    /**
+     * The CreateApp model constructor.
+     * @property {module:model/CreateApp}
+     */
+    CreateApp,
+
+    /**
+     * The CreateApp201Response model constructor.
+     * @property {module:model/CreateApp201Response}
+     */
+    CreateApp201Response,
 
     /**
      * The CreateBalancer model constructor.
@@ -802,6 +964,18 @@ export {
      * @property {module:model/CreateDedicatedServer201Response}
      */
     CreateDedicatedServer201Response,
+
+    /**
+     * The CreateDeploy201Response model constructor.
+     * @property {module:model/CreateDeploy201Response}
+     */
+    CreateDeploy201Response,
+
+    /**
+     * The CreateDeployRequest model constructor.
+     * @property {module:model/CreateDeployRequest}
+     */
+    CreateDeployRequest,
 
     /**
      * The CreateDns model constructor.
@@ -1146,6 +1320,24 @@ export {
     DeleteStorageFileRequest,
 
     /**
+     * The Deploy model constructor.
+     * @property {module:model/Deploy}
+     */
+    Deploy,
+
+    /**
+     * The DeploySettingsInner model constructor.
+     * @property {module:model/DeploySettingsInner}
+     */
+    DeploySettingsInner,
+
+    /**
+     * The DeployStatus model constructor.
+     * @property {module:model/DeployStatus}
+     */
+    DeployStatus,
+
+    /**
      * The DnsRecord model constructor.
      * @property {module:model/DnsRecord}
      */
@@ -1344,6 +1536,12 @@ export {
     ForwardingOutgoingIsEnabled,
 
     /**
+     * The Frameworks model constructor.
+     * @property {module:model/Frameworks}
+     */
+    Frameworks,
+
+    /**
      * The Free model constructor.
      * @property {module:model/Free}
      */
@@ -1360,6 +1558,30 @@ export {
      * @property {module:model/GetAllProjectResources200Response}
      */
     GetAllProjectResources200Response,
+
+    /**
+     * The GetApp200Response model constructor.
+     * @property {module:model/GetApp200Response}
+     */
+    GetApp200Response,
+
+    /**
+     * The GetAppDeploys200Response model constructor.
+     * @property {module:model/GetAppDeploys200Response}
+     */
+    GetAppDeploys200Response,
+
+    /**
+     * The GetAppLogs200Response model constructor.
+     * @property {module:model/GetAppLogs200Response}
+     */
+    GetAppLogs200Response,
+
+    /**
+     * The GetApps200Response model constructor.
+     * @property {module:model/GetApps200Response}
+     */
+    GetApps200Response,
 
     /**
      * The GetAuthAccessSettings200Response model constructor.
@@ -1396,6 +1618,18 @@ export {
      * @property {module:model/GetBalancersPresets200Response}
      */
     GetBalancersPresets200Response,
+
+    /**
+     * The GetBranches200Response model constructor.
+     * @property {module:model/GetBranches200Response}
+     */
+    GetBranches200Response,
+
+    /**
+     * The GetCommits200Response model constructor.
+     * @property {module:model/GetCommits200Response}
+     */
+    GetCommits200Response,
 
     /**
      * The GetConfigurators200Response model constructor.
@@ -1474,6 +1708,18 @@ export {
      * @property {module:model/GetDedicatedServersPresets200Response}
      */
     GetDedicatedServersPresets200Response,
+
+    /**
+     * The GetDeployLogs200Response model constructor.
+     * @property {module:model/GetDeployLogs200Response}
+     */
+    GetDeployLogs200Response,
+
+    /**
+     * The GetDeploySettings200Response model constructor.
+     * @property {module:model/GetDeploySettings200Response}
+     */
+    GetDeploySettings200Response,
 
     /**
      * The GetDomain200Response model constructor.
@@ -1642,6 +1888,18 @@ export {
      * @property {module:model/GetProjects200Response}
      */
     GetProjects200Response,
+
+    /**
+     * The GetProviders200Response model constructor.
+     * @property {module:model/GetProviders200Response}
+     */
+    GetProviders200Response,
+
+    /**
+     * The GetRepositories200Response model constructor.
+     * @property {module:model/GetRepositories200Response}
+     */
+    GetRepositories200Response,
 
     /**
      * The GetServerDiskAutoBackupSettings200Response model constructor.
@@ -2064,6 +2322,18 @@ export {
     ProjectResource,
 
     /**
+     * The Provider model constructor.
+     * @property {module:model/Provider}
+     */
+    Provider,
+
+    /**
+     * The Providers model constructor.
+     * @property {module:model/Providers}
+     */
+    Providers,
+
+    /**
      * The Quota model constructor.
      * @property {module:model/Quota}
      */
@@ -2092,6 +2362,12 @@ export {
      * @property {module:model/RenameStorageFileRequest}
      */
     RenameStorageFileRequest,
+
+    /**
+     * The Repository model constructor.
+     * @property {module:model/Repository}
+     */
+    Repository,
 
     /**
      * The Resource model constructor.
@@ -2310,6 +2586,12 @@ export {
     UpdateAdmin,
 
     /**
+     * The UpdateAppSettings200Response model constructor.
+     * @property {module:model/UpdateAppSettings200Response}
+     */
+    UpdateAppSettings200Response,
+
+    /**
      * The UpdateAuthRestrictionsByCountriesRequest model constructor.
      * @property {module:model/UpdateAuthRestrictionsByCountriesRequest}
      */
@@ -2502,6 +2784,12 @@ export {
     UpdateVpc,
 
     /**
+     * The UpdeteSettings model constructor.
+     * @property {module:model/UpdeteSettings}
+     */
+    UpdeteSettings,
+
+    /**
      * The UploadSuccessful model constructor.
      * @property {module:model/UploadSuccessful}
      */
@@ -2608,6 +2896,12 @@ export {
     * @property {module:api/AccountApi}
     */
     AccountApi,
+
+    /**
+    * The AppsApi service constructor.
+    * @property {module:api/AppsApi}
+    */
+    AppsApi,
 
     /**
     * The BalancersApi service constructor.

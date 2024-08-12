@@ -287,6 +287,27 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.AccountApi* | [**updateAuthRestrictionsByCountries**](docs/AccountApi.md#updateAuthRestrictionsByCountries) | **POST** /api/v1/auth/access/countries/enabled | Включение/отключение ограничений по стране
 *TimewebCloudApi.AccountApi* | [**updateAuthRestrictionsByIP**](docs/AccountApi.md#updateAuthRestrictionsByIP) | **POST** /api/v1/auth/access/ips/enabled | Включение/отключение ограничений по IP-адресу
 *TimewebCloudApi.AccountApi* | [**updateNotificationSettings**](docs/AccountApi.md#updateNotificationSettings) | **PATCH** /api/v1/account/notification-settings | Изменение настроек уведомлений аккаунта
+*TimewebCloudApi.AppsApi* | [**addProvider**](docs/AppsApi.md#addProvider) | **POST** /api/v1/vcs-provider | Привязка vcs провайдера
+*TimewebCloudApi.AppsApi* | [**createApp**](docs/AppsApi.md#createApp) | **POST** /api/v1/apps | Создание приложения
+*TimewebCloudApi.AppsApi* | [**createDeploy**](docs/AppsApi.md#createDeploy) | **POST** /api/v1/apps/{app_id}/deploy | Запуск деплоя приложения
+*TimewebCloudApi.AppsApi* | [**deleteApp**](docs/AppsApi.md#deleteApp) | **DELETE** /api/v1/apps/{app_id} | Удаление приложения
+*TimewebCloudApi.AppsApi* | [**deleteProvider**](docs/AppsApi.md#deleteProvider) | **DELETE** /api/v1/vcs-provider/{provider_id} | Отвязка vcs провайдера от аккаунта
+*TimewebCloudApi.AppsApi* | [**deployAction**](docs/AppsApi.md#deployAction) | **POST** /api/v1/apps/{app_id}/deploy/{deploy_id}/stop | Остановка деплоя приложения
+*TimewebCloudApi.AppsApi* | [**getApp**](docs/AppsApi.md#getApp) | **GET** /api/v1/apps/{app_id} | Получение приложения по id
+*TimewebCloudApi.AppsApi* | [**getAppDeploys**](docs/AppsApi.md#getAppDeploys) | **GET** /api/v1/apps/{app_id}/deploys | Получение списка деплоев приложения
+*TimewebCloudApi.AppsApi* | [**getAppLogs**](docs/AppsApi.md#getAppLogs) | **GET** /api/v1/apps/{app_id}/logs | Получение логов приложения
+*TimewebCloudApi.AppsApi* | [**getAppStatistics**](docs/AppsApi.md#getAppStatistics) | **GET** /api/v1/apps/{app_id}/statistics | Получение статистики приложения
+*TimewebCloudApi.AppsApi* | [**getApps**](docs/AppsApi.md#getApps) | **GET** /api/v1/apps | Получение списка приложений
+*TimewebCloudApi.AppsApi* | [**getAppsPresets**](docs/AppsApi.md#getAppsPresets) | **GET** /api/v1/presets/apps | Получение списка доступных тарифов для приложения
+*TimewebCloudApi.AppsApi* | [**getBranches**](docs/AppsApi.md#getBranches) | **GET** /api/v1/vcs-provider/{provider_id}/repository/{repository_id} | Получение списка веток репозитория
+*TimewebCloudApi.AppsApi* | [**getCommits**](docs/AppsApi.md#getCommits) | **GET** /api/v1/vcs-provider/{provider_id}/repository/{repository_id}/branch | Получение списка коммитов ветки репозитория
+*TimewebCloudApi.AppsApi* | [**getDeployLogs**](docs/AppsApi.md#getDeployLogs) | **GET** /api/v1/apps/{app_id}/deploy/{deploy_id}/logs | Получение логов деплоя приложения
+*TimewebCloudApi.AppsApi* | [**getDeploySettings**](docs/AppsApi.md#getDeploySettings) | **GET** /api/v1/deploy-settings/apps | Получение списка дефолтных настроек деплоя для приложения
+*TimewebCloudApi.AppsApi* | [**getFrameworks**](docs/AppsApi.md#getFrameworks) | **GET** /api/v1/frameworks/apps | Получение списка доступных фреймворков для приложения
+*TimewebCloudApi.AppsApi* | [**getProviders**](docs/AppsApi.md#getProviders) | **GET** /api/v1/vcs-provider | Получение списка vcs провайдеров
+*TimewebCloudApi.AppsApi* | [**getRepositories**](docs/AppsApi.md#getRepositories) | **GET** /api/v1/vcs-provider/{provider_id} | Получение списка репозиториев vcs провайдера
+*TimewebCloudApi.AppsApi* | [**updateAppSettings**](docs/AppsApi.md#updateAppSettings) | **PATCH** /api/v1/apps/{app_id} | Изменение настроек приложения
+*TimewebCloudApi.AppsApi* | [**updateAppState**](docs/AppsApi.md#updateAppState) | **PATCH** /api/v1/apps/{app_id}/action/{action} | Изменение состояния приложения
 *TimewebCloudApi.BalancersApi* | [**addIPsToBalancer**](docs/BalancersApi.md#addIPsToBalancer) | **POST** /api/v1/balancers/{balancer_id}/ips | Добавление IP-адресов к балансировщику
 *TimewebCloudApi.BalancersApi* | [**createBalancer**](docs/BalancersApi.md#createBalancer) | **POST** /api/v1/balancers | Создание бaлансировщика
 *TimewebCloudApi.BalancersApi* | [**createBalancerRule**](docs/BalancersApi.md#createBalancerRule) | **POST** /api/v1/balancers/{balancer_id}/rules | Создание правила для балансировщика
@@ -520,17 +541,22 @@ Class | Method | HTTP request | Description
 
  - [TimewebCloudApi.AddBalancerToProject200Response](docs/AddBalancerToProject200Response.md)
  - [TimewebCloudApi.AddBalancerToProjectRequest](docs/AddBalancerToProjectRequest.md)
+ - [TimewebCloudApi.AddBitbucket](docs/AddBitbucket.md)
  - [TimewebCloudApi.AddClusterToProjectRequest](docs/AddClusterToProjectRequest.md)
  - [TimewebCloudApi.AddCountries](docs/AddCountries.md)
  - [TimewebCloudApi.AddCountriesToAllowedList201Response](docs/AddCountriesToAllowedList201Response.md)
  - [TimewebCloudApi.AddCountriesToAllowedListRequest](docs/AddCountriesToAllowedListRequest.md)
  - [TimewebCloudApi.AddDatabaseToProjectRequest](docs/AddDatabaseToProjectRequest.md)
  - [TimewebCloudApi.AddDedicatedServerToProjectRequest](docs/AddDedicatedServerToProjectRequest.md)
+ - [TimewebCloudApi.AddGit](docs/AddGit.md)
+ - [TimewebCloudApi.AddGithub](docs/AddGithub.md)
+ - [TimewebCloudApi.AddGitlab](docs/AddGitlab.md)
  - [TimewebCloudApi.AddIPsToAllowedList201Response](docs/AddIPsToAllowedList201Response.md)
  - [TimewebCloudApi.AddIPsToAllowedListRequest](docs/AddIPsToAllowedListRequest.md)
  - [TimewebCloudApi.AddIPsToBalancerRequest](docs/AddIPsToBalancerRequest.md)
  - [TimewebCloudApi.AddIps](docs/AddIps.md)
  - [TimewebCloudApi.AddKeyToServerRequest](docs/AddKeyToServerRequest.md)
+ - [TimewebCloudApi.AddProvider201Response](docs/AddProvider201Response.md)
  - [TimewebCloudApi.AddServerIP201Response](docs/AddServerIP201Response.md)
  - [TimewebCloudApi.AddServerIPRequest](docs/AddServerIPRequest.md)
  - [TimewebCloudApi.AddServerToProjectRequest](docs/AddServerToProjectRequest.md)
@@ -541,15 +567,27 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.AddSubdomain201Response](docs/AddSubdomain201Response.md)
  - [TimewebCloudApi.AddedSubdomain](docs/AddedSubdomain.md)
  - [TimewebCloudApi.ApiKey](docs/ApiKey.md)
+ - [TimewebCloudApi.App](docs/App.md)
+ - [TimewebCloudApi.AppConfiguration](docs/AppConfiguration.md)
+ - [TimewebCloudApi.AppDiskStatus](docs/AppDiskStatus.md)
+ - [TimewebCloudApi.AppDomainsInner](docs/AppDomainsInner.md)
+ - [TimewebCloudApi.AppProvider](docs/AppProvider.md)
+ - [TimewebCloudApi.AppsPresets](docs/AppsPresets.md)
+ - [TimewebCloudApi.AppsPresetsBackendPresetsInner](docs/AppsPresetsBackendPresetsInner.md)
+ - [TimewebCloudApi.AppsPresetsFrontendPresetsInner](docs/AppsPresetsFrontendPresetsInner.md)
  - [TimewebCloudApi.AutoBackup](docs/AutoBackup.md)
  - [TimewebCloudApi.AutoReplyIsDisabled](docs/AutoReplyIsDisabled.md)
  - [TimewebCloudApi.AutoReplyIsEnabled](docs/AutoReplyIsEnabled.md)
  - [TimewebCloudApi.AvailabilityZone](docs/AvailabilityZone.md)
+ - [TimewebCloudApi.AvailableFrameworks](docs/AvailableFrameworks.md)
+ - [TimewebCloudApi.AvailableFrameworksBackendFrameworksInner](docs/AvailableFrameworksBackendFrameworksInner.md)
+ - [TimewebCloudApi.AvailableFrameworksFrontendFrameworksInner](docs/AvailableFrameworksFrontendFrameworksInner.md)
  - [TimewebCloudApi.Backup](docs/Backup.md)
  - [TimewebCloudApi.Balancer](docs/Balancer.md)
  - [TimewebCloudApi.BaseError](docs/BaseError.md)
  - [TimewebCloudApi.BindFloatingIp](docs/BindFloatingIp.md)
  - [TimewebCloudApi.Bonus](docs/Bonus.md)
+ - [TimewebCloudApi.Branch](docs/Branch.md)
  - [TimewebCloudApi.Bucket](docs/Bucket.md)
  - [TimewebCloudApi.BucketDiskStats](docs/BucketDiskStats.md)
  - [TimewebCloudApi.BucketUser](docs/BucketUser.md)
@@ -560,10 +598,13 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ClusterResponse](docs/ClusterResponse.md)
  - [TimewebCloudApi.Clusterk8s](docs/Clusterk8s.md)
  - [TimewebCloudApi.ClustersResponse](docs/ClustersResponse.md)
+ - [TimewebCloudApi.Commit](docs/Commit.md)
  - [TimewebCloudApi.ConfigParameters](docs/ConfigParameters.md)
  - [TimewebCloudApi.CopyStorageFileRequest](docs/CopyStorageFileRequest.md)
  - [TimewebCloudApi.CreateAdmin](docs/CreateAdmin.md)
  - [TimewebCloudApi.CreateApiKey](docs/CreateApiKey.md)
+ - [TimewebCloudApi.CreateApp](docs/CreateApp.md)
+ - [TimewebCloudApi.CreateApp201Response](docs/CreateApp201Response.md)
  - [TimewebCloudApi.CreateBalancer](docs/CreateBalancer.md)
  - [TimewebCloudApi.CreateBalancer200Response](docs/CreateBalancer200Response.md)
  - [TimewebCloudApi.CreateBalancerRule200Response](docs/CreateBalancerRule200Response.md)
@@ -580,6 +621,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateDbAutoBackups](docs/CreateDbAutoBackups.md)
  - [TimewebCloudApi.CreateDedicatedServer](docs/CreateDedicatedServer.md)
  - [TimewebCloudApi.CreateDedicatedServer201Response](docs/CreateDedicatedServer201Response.md)
+ - [TimewebCloudApi.CreateDeploy201Response](docs/CreateDeploy201Response.md)
+ - [TimewebCloudApi.CreateDeployRequest](docs/CreateDeployRequest.md)
  - [TimewebCloudApi.CreateDns](docs/CreateDns.md)
  - [TimewebCloudApi.CreateDomainDNSRecord201Response](docs/CreateDomainDNSRecord201Response.md)
  - [TimewebCloudApi.CreateDomainMailbox201Response](docs/CreateDomainMailbox201Response.md)
@@ -637,6 +680,9 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DeleteServiceResponse](docs/DeleteServiceResponse.md)
  - [TimewebCloudApi.DeleteStorage200Response](docs/DeleteStorage200Response.md)
  - [TimewebCloudApi.DeleteStorageFileRequest](docs/DeleteStorageFileRequest.md)
+ - [TimewebCloudApi.Deploy](docs/Deploy.md)
+ - [TimewebCloudApi.DeploySettingsInner](docs/DeploySettingsInner.md)
+ - [TimewebCloudApi.DeployStatus](docs/DeployStatus.md)
  - [TimewebCloudApi.DnsRecord](docs/DnsRecord.md)
  - [TimewebCloudApi.DnsRecordData](docs/DnsRecordData.md)
  - [TimewebCloudApi.Domain](docs/Domain.md)
@@ -670,15 +716,22 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ForwardingIncomingIsEnabled](docs/ForwardingIncomingIsEnabled.md)
  - [TimewebCloudApi.ForwardingOutgoingIsDisabled](docs/ForwardingOutgoingIsDisabled.md)
  - [TimewebCloudApi.ForwardingOutgoingIsEnabled](docs/ForwardingOutgoingIsEnabled.md)
+ - [TimewebCloudApi.Frameworks](docs/Frameworks.md)
  - [TimewebCloudApi.Free](docs/Free.md)
  - [TimewebCloudApi.GetAccountStatus200Response](docs/GetAccountStatus200Response.md)
  - [TimewebCloudApi.GetAllProjectResources200Response](docs/GetAllProjectResources200Response.md)
+ - [TimewebCloudApi.GetApp200Response](docs/GetApp200Response.md)
+ - [TimewebCloudApi.GetAppDeploys200Response](docs/GetAppDeploys200Response.md)
+ - [TimewebCloudApi.GetAppLogs200Response](docs/GetAppLogs200Response.md)
+ - [TimewebCloudApi.GetApps200Response](docs/GetApps200Response.md)
  - [TimewebCloudApi.GetAuthAccessSettings200Response](docs/GetAuthAccessSettings200Response.md)
  - [TimewebCloudApi.GetAuthAccessSettings200ResponseWhiteList](docs/GetAuthAccessSettings200ResponseWhiteList.md)
  - [TimewebCloudApi.GetBalancerIPs200Response](docs/GetBalancerIPs200Response.md)
  - [TimewebCloudApi.GetBalancerRules200Response](docs/GetBalancerRules200Response.md)
  - [TimewebCloudApi.GetBalancers200Response](docs/GetBalancers200Response.md)
  - [TimewebCloudApi.GetBalancersPresets200Response](docs/GetBalancersPresets200Response.md)
+ - [TimewebCloudApi.GetBranches200Response](docs/GetBranches200Response.md)
+ - [TimewebCloudApi.GetCommits200Response](docs/GetCommits200Response.md)
  - [TimewebCloudApi.GetConfigurators200Response](docs/GetConfigurators200Response.md)
  - [TimewebCloudApi.GetCountries200Response](docs/GetCountries200Response.md)
  - [TimewebCloudApi.GetDatabaseAutoBackupsSettings200Response](docs/GetDatabaseAutoBackupsSettings200Response.md)
@@ -692,6 +745,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetDedicatedServerPresetAdditionalServices200Response](docs/GetDedicatedServerPresetAdditionalServices200Response.md)
  - [TimewebCloudApi.GetDedicatedServers200Response](docs/GetDedicatedServers200Response.md)
  - [TimewebCloudApi.GetDedicatedServersPresets200Response](docs/GetDedicatedServersPresets200Response.md)
+ - [TimewebCloudApi.GetDeployLogs200Response](docs/GetDeployLogs200Response.md)
+ - [TimewebCloudApi.GetDeploySettings200Response](docs/GetDeploySettings200Response.md)
  - [TimewebCloudApi.GetDomain200Response](docs/GetDomain200Response.md)
  - [TimewebCloudApi.GetDomainDNSRecords200Response](docs/GetDomainDNSRecords200Response.md)
  - [TimewebCloudApi.GetDomainMailInfo200Response](docs/GetDomainMailInfo200Response.md)
@@ -720,6 +775,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetProjectServers200Response](docs/GetProjectServers200Response.md)
  - [TimewebCloudApi.GetProjectStorages200Response](docs/GetProjectStorages200Response.md)
  - [TimewebCloudApi.GetProjects200Response](docs/GetProjects200Response.md)
+ - [TimewebCloudApi.GetProviders200Response](docs/GetProviders200Response.md)
+ - [TimewebCloudApi.GetRepositories200Response](docs/GetRepositories200Response.md)
  - [TimewebCloudApi.GetServerDiskAutoBackupSettings200Response](docs/GetServerDiskAutoBackupSettings200Response.md)
  - [TimewebCloudApi.GetServerDiskBackup200Response](docs/GetServerDiskBackup200Response.md)
  - [TimewebCloudApi.GetServerDiskBackups200Response](docs/GetServerDiskBackups200Response.md)
@@ -790,11 +847,14 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.PresetsStorage](docs/PresetsStorage.md)
  - [TimewebCloudApi.Project](docs/Project.md)
  - [TimewebCloudApi.ProjectResource](docs/ProjectResource.md)
+ - [TimewebCloudApi.Provider](docs/Provider.md)
+ - [TimewebCloudApi.Providers](docs/Providers.md)
  - [TimewebCloudApi.Quota](docs/Quota.md)
  - [TimewebCloudApi.RefreshApiKey](docs/RefreshApiKey.md)
  - [TimewebCloudApi.RemoveCountries](docs/RemoveCountries.md)
  - [TimewebCloudApi.RemoveIps](docs/RemoveIps.md)
  - [TimewebCloudApi.RenameStorageFileRequest](docs/RenameStorageFileRequest.md)
+ - [TimewebCloudApi.Repository](docs/Repository.md)
  - [TimewebCloudApi.Resource](docs/Resource.md)
  - [TimewebCloudApi.ResourceTransfer](docs/ResourceTransfer.md)
  - [TimewebCloudApi.ResourceType](docs/ResourceType.md)
@@ -831,6 +891,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.TransferStorageRequest](docs/TransferStorageRequest.md)
  - [TimewebCloudApi.URLType](docs/URLType.md)
  - [TimewebCloudApi.UpdateAdmin](docs/UpdateAdmin.md)
+ - [TimewebCloudApi.UpdateAppSettings200Response](docs/UpdateAppSettings200Response.md)
  - [TimewebCloudApi.UpdateAuthRestrictionsByCountriesRequest](docs/UpdateAuthRestrictionsByCountriesRequest.md)
  - [TimewebCloudApi.UpdateBalancer](docs/UpdateBalancer.md)
  - [TimewebCloudApi.UpdateCluster](docs/UpdateCluster.md)
@@ -863,6 +924,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateStorageUserRequest](docs/UpdateStorageUserRequest.md)
  - [TimewebCloudApi.UpdateToken200Response](docs/UpdateToken200Response.md)
  - [TimewebCloudApi.UpdateVpc](docs/UpdateVpc.md)
+ - [TimewebCloudApi.UpdeteSettings](docs/UpdeteSettings.md)
  - [TimewebCloudApi.UploadSuccessful](docs/UploadSuccessful.md)
  - [TimewebCloudApi.UploadSuccessfulResponse](docs/UploadSuccessfulResponse.md)
  - [TimewebCloudApi.UrlStatus](docs/UrlStatus.md)
