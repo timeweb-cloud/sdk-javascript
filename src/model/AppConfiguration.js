@@ -21,7 +21,7 @@ import ApiClient from '../ApiClient';
 class AppConfiguration {
     /**
      * Constructs a new <code>AppConfiguration</code>.
-     * Объект с конфигурацией сервера. Определено для приложений &#x60;type: backend&#x60;.Для приложений &#x60;type: frontend&#x60; всегда null.
+     * Объект с конфигурацией сервера. Определен для приложений &#x60;type: backend&#x60;.Для приложений &#x60;type: frontend&#x60; всегда null.
      * @alias module:model/AppConfiguration
      */
     constructor() { 

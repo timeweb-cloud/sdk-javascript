@@ -21,9 +21,9 @@ Name | Type | Description | Notes
 **commitSha** | **String** | Хэш коммита из которого собрано приложеие. | 
 **comment** | **String** | Комментарий к приложению. | 
 **presetId** | **Number** | Идентификатор тарифа. | 
-**indexDir** | **String** | Директория с индексным файлом. Определено для приложений &#x60;type: frontend&#x60;. Для приложений &#x60;type: backend&#x60; всегда null. | 
+**indexDir** | **String** | Путь к директории с индексным файлом. Определен для приложений &#x60;type: frontend&#x60;. Для приложений &#x60;type: backend&#x60; всегда null. | 
 **buildCmd** | **String** | Команда сборки приложения. | 
-**runCmd** | **String** | Команда для запуска приложения. Определено для приложений &#x60;type: backend&#x60;. Для приложений &#x60;type: frontend&#x60; всегда null. | 
+**runCmd** | **String** | Команда для запуска приложения. Определена для приложений &#x60;type: backend&#x60;. Для приложений &#x60;type: frontend&#x60; всегда null. | 
 **configuration** | [**AppConfiguration**](AppConfiguration.md) |  | 
 **diskStatus** | [**AppDiskStatus**](AppDiskStatus.md) |  | 
 **isQemuAgent** | **Boolean** | Включен ли агент QEMU. | 

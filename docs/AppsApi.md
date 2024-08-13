@@ -738,7 +738,7 @@ Name | Type | Description  | Notes
 
 Получение логов деплоя приложения
 
-Чтобы получить информацию о деплое, отправьте GET-запрос на &#x60;/app/{app_id}/deploy/{deploy_id}&#x60;.
+Чтобы получить информацию о деплое, отправьте GET-запрос на &#x60;api/v1/apps/{app_id}/deploy/{deploy_id}/logs&#x60;.
 
 ### Example
 

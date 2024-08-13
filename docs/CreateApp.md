@@ -13,12 +13,12 @@ Name | Type | Description | Notes
 **isAutoDeploy** | **Boolean** | Автоматический деплой. | 
 **commitSha** | **String** | Хэш коммита из которого необходимо собрать приложение. | 
 **name** | **String** | Имя приложения. | 
-**comment** | **String** | Комментарий к приложения. | 
+**comment** | **String** | Комментарий к приложению. | 
 **presetId** | **Number** | Идентификатор тарифа. | 
 **envVersion** | **String** | Версия окружения. | [optional] 
 **framework** | [**Frameworks**](Frameworks.md) |  | 
 **indexDir** | **String** | Путь к директории с индексным файлом. Обязателен для приложений &#x60;type: frontend&#x60;. Не используется для приложений &#x60;type: backend&#x60;. Значение всегда должно начинаться с &#x60;/&#x60;. | [optional] 
-**runCmd** | **String** | Команда для запуска приложения. Обязателен для приложений &#x60;type: backend&#x60;. Не используется для приложений &#x60;type: frontend&#x60;. | [optional] 
+**runCmd** | **String** | Команда для запуска приложения. Обязательна для приложений &#x60;type: backend&#x60;. Не используется для приложений &#x60;type: frontend&#x60;. | [optional] 
 
 
 

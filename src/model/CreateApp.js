@@ -31,7 +31,7 @@ class CreateApp {
      * @param isAutoDeploy {Boolean} Автоматический деплой.
      * @param commitSha {String} Хэш коммита из которого необходимо собрать приложение.
      * @param name {String} Имя приложения.
-     * @param comment {String} Комментарий к приложения.
+     * @param comment {String} Комментарий к приложению.
      * @param presetId {Number} Идентификатор тарифа.
      * @param framework {module:model/Frameworks} 
      */
@@ -239,7 +239,7 @@ CreateApp.prototype['commit_sha'] = undefined;
 CreateApp.prototype['name'] = undefined;
 
 /**
- * Комментарий к приложения.
+ * Комментарий к приложению.
  * @member {String} comment
  */
 CreateApp.prototype['comment'] = undefined;
@@ -268,7 +268,7 @@ CreateApp.prototype['framework'] = undefined;
 CreateApp.prototype['index_dir'] = undefined;
 
 /**
- * Команда для запуска приложения. Обязателен для приложений `type: backend`. Не используется для приложений `type: frontend`.
+ * Команда для запуска приложения. Обязательна для приложений `type: backend`. Не используется для приложений `type: frontend`.
  * @member {String} run_cmd
  */
 CreateApp.prototype['run_cmd'] = undefined;

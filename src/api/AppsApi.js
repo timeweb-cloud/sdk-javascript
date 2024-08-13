@@ -715,7 +715,7 @@ export default class AppsApi {
 
     /**
      * Получение логов деплоя приложения
-     * Чтобы получить информацию о деплое, отправьте GET-запрос на `/app/{app_id}/deploy/{deploy_id}`.
+     * Чтобы получить информацию о деплое, отправьте GET-запрос на `api/v1/apps/{app_id}/deploy/{deploy_id}/logs`.
      * @param {String} appId 
      * @param {String} deployId 
      * @param {Object} opts Optional parameters

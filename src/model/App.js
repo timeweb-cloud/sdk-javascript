@@ -46,9 +46,9 @@ class App {
      * @param commitSha {String} Хэш коммита из которого собрано приложеие.
      * @param comment {String} Комментарий к приложению.
      * @param presetId {Number} Идентификатор тарифа.
-     * @param indexDir {String} Директория с индексным файлом. Определено для приложений `type: frontend`. Для приложений `type: backend` всегда null.
+     * @param indexDir {String} Путь к директории с индексным файлом. Определен для приложений `type: frontend`. Для приложений `type: backend` всегда null.
      * @param buildCmd {String} Команда сборки приложения.
-     * @param runCmd {String} Команда для запуска приложения. Определено для приложений `type: backend`. Для приложений `type: frontend` всегда null.
+     * @param runCmd {String} Команда для запуска приложения. Определена для приложений `type: backend`. Для приложений `type: frontend` всегда null.
      * @param configuration {module:model/AppConfiguration} 
      * @param diskStatus {module:model/AppDiskStatus} 
      * @param isQemuAgent {Boolean} Включен ли агент QEMU.
@@ -381,7 +381,7 @@ App.prototype['comment'] = undefined;
 App.prototype['preset_id'] = undefined;
 
 /**
- * Директория с индексным файлом. Определено для приложений `type: frontend`. Для приложений `type: backend` всегда null.
+ * Путь к директории с индексным файлом. Определен для приложений `type: frontend`. Для приложений `type: backend` всегда null.
  * @member {String} index_dir
  */
 App.prototype['index_dir'] = undefined;
@@ -393,7 +393,7 @@ App.prototype['index_dir'] = undefined;
 App.prototype['build_cmd'] = undefined;
 
 /**
- * Команда для запуска приложения. Определено для приложений `type: backend`. Для приложений `type: frontend` всегда null.
+ * Команда для запуска приложения. Определена для приложений `type: backend`. Для приложений `type: frontend` всегда null.
  * @member {String} run_cmd
  */
 App.prototype['run_cmd'] = undefined;

@@ -195,7 +195,7 @@ UpdeteSettings.prototype['framework'] = undefined;
 UpdeteSettings.prototype['name'] = undefined;
 
 /**
- * Комментарий к приложения.
+ * Комментарий к приложению.
  * @member {String} comment
  */
 UpdeteSettings.prototype['comment'] = undefined;
