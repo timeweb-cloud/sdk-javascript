@@ -422,8 +422,8 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.KubernetesApi* | [**getClusterNodesFromGroup**](docs/KubernetesApi.md#getClusterNodesFromGroup) | **GET** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Получение списка нод, принадлежащих группе
 *TimewebCloudApi.KubernetesApi* | [**getClusterResources**](docs/KubernetesApi.md#getClusterResources) | **GET** /api/v1/k8s/clusters/{cluster_id}/resources | Получение ресурсов кластера
 *TimewebCloudApi.KubernetesApi* | [**getClusters**](docs/KubernetesApi.md#getClusters) | **GET** /api/v1/k8s/clusters | Получение списка кластеров
-*TimewebCloudApi.KubernetesApi* | [**getK8SNetworkDrivers**](docs/KubernetesApi.md#getK8SNetworkDrivers) | **GET** /api/v1/k8s/network_drivers | Получение списка сетевых драйверов k8s
-*TimewebCloudApi.KubernetesApi* | [**getK8SVersions**](docs/KubernetesApi.md#getK8SVersions) | **GET** /api/v1/k8s/k8s_versions | Получение списка версий k8s
+*TimewebCloudApi.KubernetesApi* | [**getK8SNetworkDrivers**](docs/KubernetesApi.md#getK8SNetworkDrivers) | **GET** /api/v1/k8s/network-drivers | Получение списка сетевых драйверов k8s
+*TimewebCloudApi.KubernetesApi* | [**getK8SVersions**](docs/KubernetesApi.md#getK8SVersions) | **GET** /api/v1/k8s/k8s-versions | Получение списка версий k8s
 *TimewebCloudApi.KubernetesApi* | [**getKubernetesPresets**](docs/KubernetesApi.md#getKubernetesPresets) | **GET** /api/v1/presets/k8s | Получение списка тарифов
 *TimewebCloudApi.KubernetesApi* | [**increaseCountOfNodesInGroup**](docs/KubernetesApi.md#increaseCountOfNodesInGroup) | **POST** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Увеличение количества нод в группе на указанное количество
 *TimewebCloudApi.KubernetesApi* | [**reduceCountOfNodesInGroup**](docs/KubernetesApi.md#reduceCountOfNodesInGroup) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Уменьшение количества нод в группе на указанное количество

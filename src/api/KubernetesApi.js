@@ -660,7 +660,7 @@ export default class KubernetesApi {
 
     /**
      * Получение списка сетевых драйверов k8s
-     * Чтобы получить список сетевых драйверов k8s, отправьте GET-запрос в `/api/v1/k8s/network_drivers`.
+     * Чтобы получить список сетевых драйверов k8s, отправьте GET-запрос в `/api/v1/k8s/network-drivers`.
      * @param {module:api/KubernetesApi~getK8SNetworkDriversCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/NetworkDriversResponse}
      */
@@ -681,7 +681,7 @@ export default class KubernetesApi {
       let accepts = ['application/json'];
       let returnType = NetworkDriversResponse;
       return this.apiClient.callApi(
-        '/api/v1/k8s/network_drivers', 'GET',
+        '/api/v1/k8s/network-drivers', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -697,7 +697,7 @@ export default class KubernetesApi {
 
     /**
      * Получение списка версий k8s
-     * Чтобы получить список версий k8s, отправьте GET-запрос в `/api/v1/k8s/k8s_versions`.
+     * Чтобы получить список версий k8s, отправьте GET-запрос в `/api/v1/k8s/k8s-versions`.
      * @param {module:api/KubernetesApi~getK8SVersionsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/K8SVersionsResponse}
      */
@@ -718,7 +718,7 @@ export default class KubernetesApi {
       let accepts = ['application/json'];
       let returnType = K8SVersionsResponse;
       return this.apiClient.callApi(
-        '/api/v1/k8s/k8s_versions', 'GET',
+        '/api/v1/k8s/k8s-versions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
