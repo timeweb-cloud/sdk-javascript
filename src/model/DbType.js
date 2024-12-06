@@ -34,13 +34,6 @@ export default class DbType {
 
     
         /**
-         * value: "postgres"
-         * @const
-         */
-        "postgres" = "postgres";
-
-    
-        /**
          * value: "postgres14"
          * @const
          */
@@ -62,10 +55,24 @@ export default class DbType {
 
     
         /**
+         * value: "postgres17"
+         * @const
+         */
+        "postgres17" = "postgres17";
+
+    
+        /**
          * value: "redis"
          * @const
          */
         "redis" = "redis";
+
+    
+        /**
+         * value: "redis7"
+         * @const
+         */
+        "redis7" = "redis7";
 
     
         /**
