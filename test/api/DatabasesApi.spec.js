@@ -238,6 +238,16 @@
         done();
       });
     });
+    describe('getDatabaseParameters', function() {
+      it('should call getDatabaseParameters successfully', function(done) {
+        //uncomment below and update the code to test getDatabaseParameters
+        //instance.getDatabaseParameters(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getDatabaseUser', function() {
       it('should call getDatabaseUser successfully', function(done) {
         //uncomment below and update the code to test getDatabaseUser
