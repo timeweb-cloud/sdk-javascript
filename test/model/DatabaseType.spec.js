@@ -72,6 +72,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isAvailableReplication (base name: "is_available_replication")', function() {
+      // uncomment below and update the code to test the property isAvailableReplication
+      //var instance = new TimewebCloudApi.DatabaseType();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property requirements (base name: "requirements")', function() {
+      // uncomment below and update the code to test the property requirements
+      //var instance = new TimewebCloudApi.DatabaseType();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

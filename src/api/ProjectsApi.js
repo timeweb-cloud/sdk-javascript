@@ -1006,7 +1006,7 @@ export default class ProjectsApi {
 
     /**
      * Получение списка проектов
-     * Чтобы получить список всех проектов на вашем аккаунте, отправьте GET-запрос на `/api/v1/dedicated-servers`.   Тело ответа будет представлять собой объект JSON с ключом `projects`.
+     * Чтобы получить список всех проектов на вашем аккаунте, отправьте GET-запрос на `/api/v1/projects`.   Тело ответа будет представлять собой объект JSON с ключом `projects`.
      * @param {module:api/ProjectsApi~getProjectsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetProjects200Response}
      */

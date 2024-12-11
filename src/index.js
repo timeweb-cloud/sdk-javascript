@@ -132,6 +132,7 @@ import DatabaseClusterNetworksInner from './model/DatabaseClusterNetworksInner';
 import DatabaseClusterNetworksInnerIpsInner from './model/DatabaseClusterNetworksInnerIpsInner';
 import DatabaseInstance from './model/DatabaseInstance';
 import DatabaseType from './model/DatabaseType';
+import DatabaseTypeRequirements from './model/DatabaseTypeRequirements';
 import Db from './model/Db';
 import DbDiskStats from './model/DbDiskStats';
 import DbType from './model/DbType';
@@ -1185,6 +1186,12 @@ export {
      * @property {module:model/DatabaseType}
      */
     DatabaseType,
+
+    /**
+     * The DatabaseTypeRequirements model constructor.
+     * @property {module:model/DatabaseTypeRequirements}
+     */
+    DatabaseTypeRequirements,
 
     /**
      * The Db model constructor.

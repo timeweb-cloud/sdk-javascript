@@ -11,141 +11,67 @@
  *
  */
 
-import ApiClient from '../ApiClient';
-import DatabaseTypeRequirements from './DatabaseTypeRequirements';
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', process.cwd()+'/src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.TimewebCloudApi);
+  }
+}(this, function(expect, TimewebCloudApi) {
+  'use strict';
 
-/**
- * The DatabaseType model module.
- * @module model/DatabaseType
- * @version 1.0.0
- */
-class DatabaseType {
-    /**
-     * Constructs a new <code>DatabaseType</code>.
-     * Тип кластера базы данных
-     * @alias module:model/DatabaseType
-     * @param name {String} Название кластера базы данных.
-     * @param version {String} Версия кластера базы данных.
-     * @param type {String} Тип кластера базы данных. Передается при создании кластера в поле `type`
-     * @param isAvailableReplication {Boolean} Поддерживает ли база данных репликацию.
-     */
-    constructor(name, version, type, isAvailableReplication) { 
-        
-        DatabaseType.initialize(this, name, version, type, isAvailableReplication);
-    }
+  var instance;
 
-    /**
-     * Initializes the fields of this object.
-     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
-     * Only for internal use.
-     */
-    static initialize(obj, name, version, type, isAvailableReplication) { 
-        obj['name'] = name;
-        obj['version'] = version;
-        obj['type'] = type;
-        obj['is_available_replication'] = isAvailableReplication;
-    }
+  beforeEach(function() {
+    instance = new TimewebCloudApi.DatabaseTypeRequirements();
+  });
 
-    /**
-     * Constructs a <code>DatabaseType</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/DatabaseType} obj Optional instance to populate.
-     * @return {module:model/DatabaseType} The populated <code>DatabaseType</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new DatabaseType();
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('version')) {
-                obj['version'] = ApiClient.convertToType(data['version'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], 'String');
-            }
-            if (data.hasOwnProperty('is_available_replication')) {
-                obj['is_available_replication'] = ApiClient.convertToType(data['is_available_replication'], 'Boolean');
-            }
-            if (data.hasOwnProperty('requirements')) {
-                obj['requirements'] = DatabaseTypeRequirements.constructFromObject(data['requirements']);
-            }
-        }
-        return obj;
-    }
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-    /**
-     * Validates the JSON data with respect to <code>DatabaseType</code>.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DatabaseType</code>.
-     */
-    static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of DatabaseType.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
-        // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
-            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
-        }
-        // ensure the json data is a string
-        if (data['version'] && !(typeof data['version'] === 'string' || data['version'] instanceof String)) {
-            throw new Error("Expected the field `version` to be a primitive type in the JSON string but got " + data['version']);
-        }
-        // ensure the json data is a string
-        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
-            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
-        }
-        // validate the optional field `requirements`
-        if (data['requirements']) { // data not null
-          DatabaseTypeRequirements.validateJSON(data['requirements']);
-        }
+  describe('DatabaseTypeRequirements', function() {
+    it('should create an instance of DatabaseTypeRequirements', function() {
+      // uncomment below and update the code to test DatabaseTypeRequirements
+      //var instance = new TimewebCloudApi.DatabaseTypeRequirements();
+      //expect(instance).to.be.a(TimewebCloudApi.DatabaseTypeRequirements);
+    });
 
-        return true;
-    }
+    it('should have the property cpuMin (base name: "cpu_min")', function() {
+      // uncomment below and update the code to test the property cpuMin
+      //var instance = new TimewebCloudApi.DatabaseTypeRequirements();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property ramMin (base name: "ram_min")', function() {
+      // uncomment below and update the code to test the property ramMin
+      //var instance = new TimewebCloudApi.DatabaseTypeRequirements();
+      //expect(instance).to.be();
+    });
 
-}
+    it('should have the property diskMin (base name: "disk_min")', function() {
+      // uncomment below and update the code to test the property diskMin
+      //var instance = new TimewebCloudApi.DatabaseTypeRequirements();
+      //expect(instance).to.be();
+    });
 
-DatabaseType.RequiredProperties = ["name", "version", "type", "is_available_replication"];
+  });
 
-/**
- * Название кластера базы данных.
- * @member {String} name
- */
-DatabaseType.prototype['name'] = undefined;
-
-/**
- * Версия кластера базы данных.
- * @member {String} version
- */
-DatabaseType.prototype['version'] = undefined;
-
-/**
- * Тип кластера базы данных. Передается при создании кластера в поле `type`
- * @member {String} type
- */
-DatabaseType.prototype['type'] = undefined;
-
-/**
- * Поддерживает ли база данных репликацию.
- * @member {Boolean} is_available_replication
- */
-DatabaseType.prototype['is_available_replication'] = undefined;
-
-/**
- * @member {module:model/DatabaseTypeRequirements} requirements
- */
-DatabaseType.prototype['requirements'] = undefined;
-
-
-
-
-
-
-export default DatabaseType;
-
+}));

@@ -12,26 +12,21 @@
  */
 
 import ApiClient from '../ApiClient';
-import DatabaseTypeRequirements from './DatabaseTypeRequirements';
 
 /**
- * The DatabaseType model module.
- * @module model/DatabaseType
+ * The DatabaseTypeRequirements model module.
+ * @module model/DatabaseTypeRequirements
  * @version 1.0.0
  */
-class DatabaseType {
+class DatabaseTypeRequirements {
     /**
-     * Constructs a new <code>DatabaseType</code>.
-     * Тип кластера базы данных
-     * @alias module:model/DatabaseType
-     * @param name {String} Название кластера базы данных.
-     * @param version {String} Версия кластера базы данных.
-     * @param type {String} Тип кластера базы данных. Передается при создании кластера в поле `type`
-     * @param isAvailableReplication {Boolean} Поддерживает ли база данных репликацию.
+     * Constructs a new <code>DatabaseTypeRequirements</code>.
+     * Требования к кластеру базы данных.
+     * @alias module:model/DatabaseTypeRequirements
      */
-    constructor(name, version, type, isAvailableReplication) { 
+    constructor() { 
         
-        DatabaseType.initialize(this, name, version, type, isAvailableReplication);
+        DatabaseTypeRequirements.initialize(this);
     }
 
     /**
@@ -39,71 +34,39 @@ class DatabaseType {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, version, type, isAvailableReplication) { 
-        obj['name'] = name;
-        obj['version'] = version;
-        obj['type'] = type;
-        obj['is_available_replication'] = isAvailableReplication;
+    static initialize(obj) { 
     }
 
     /**
-     * Constructs a <code>DatabaseType</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>DatabaseTypeRequirements</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/DatabaseType} obj Optional instance to populate.
-     * @return {module:model/DatabaseType} The populated <code>DatabaseType</code> instance.
+     * @param {module:model/DatabaseTypeRequirements} obj Optional instance to populate.
+     * @return {module:model/DatabaseTypeRequirements} The populated <code>DatabaseTypeRequirements</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new DatabaseType();
+            obj = obj || new DatabaseTypeRequirements();
 
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
+            if (data.hasOwnProperty('cpu_min')) {
+                obj['cpu_min'] = ApiClient.convertToType(data['cpu_min'], 'Number');
             }
-            if (data.hasOwnProperty('version')) {
-                obj['version'] = ApiClient.convertToType(data['version'], 'String');
+            if (data.hasOwnProperty('ram_min')) {
+                obj['ram_min'] = ApiClient.convertToType(data['ram_min'], 'Number');
             }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], 'String');
-            }
-            if (data.hasOwnProperty('is_available_replication')) {
-                obj['is_available_replication'] = ApiClient.convertToType(data['is_available_replication'], 'Boolean');
-            }
-            if (data.hasOwnProperty('requirements')) {
-                obj['requirements'] = DatabaseTypeRequirements.constructFromObject(data['requirements']);
+            if (data.hasOwnProperty('disk_min')) {
+                obj['disk_min'] = ApiClient.convertToType(data['disk_min'], 'Number');
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>DatabaseType</code>.
+     * Validates the JSON data with respect to <code>DatabaseTypeRequirements</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DatabaseType</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DatabaseTypeRequirements</code>.
      */
     static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of DatabaseType.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
-        // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
-            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
-        }
-        // ensure the json data is a string
-        if (data['version'] && !(typeof data['version'] === 'string' || data['version'] instanceof String)) {
-            throw new Error("Expected the field `version` to be a primitive type in the JSON string but got " + data['version']);
-        }
-        // ensure the json data is a string
-        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
-            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
-        }
-        // validate the optional field `requirements`
-        if (data['requirements']) { // data not null
-          DatabaseTypeRequirements.validateJSON(data['requirements']);
-        }
 
         return true;
     }
@@ -111,41 +74,30 @@ class DatabaseType {
 
 }
 
-DatabaseType.RequiredProperties = ["name", "version", "type", "is_available_replication"];
+
 
 /**
- * Название кластера базы данных.
- * @member {String} name
+ * Минимальное количество CPU.
+ * @member {Number} cpu_min
  */
-DatabaseType.prototype['name'] = undefined;
+DatabaseTypeRequirements.prototype['cpu_min'] = undefined;
 
 /**
- * Версия кластера базы данных.
- * @member {String} version
+ * Минимальный объем оперативной памяти.
+ * @member {Number} ram_min
  */
-DatabaseType.prototype['version'] = undefined;
+DatabaseTypeRequirements.prototype['ram_min'] = undefined;
 
 /**
- * Тип кластера базы данных. Передается при создании кластера в поле `type`
- * @member {String} type
+ * Минимальный объем дискового пространства.
+ * @member {Number} disk_min
  */
-DatabaseType.prototype['type'] = undefined;
-
-/**
- * Поддерживает ли база данных репликацию.
- * @member {Boolean} is_available_replication
- */
-DatabaseType.prototype['is_available_replication'] = undefined;
-
-/**
- * @member {module:model/DatabaseTypeRequirements} requirements
- */
-DatabaseType.prototype['requirements'] = undefined;
+DatabaseTypeRequirements.prototype['disk_min'] = undefined;
 
 
 
 
 
 
-export default DatabaseType;
+export default DatabaseTypeRequirements;
 

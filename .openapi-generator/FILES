@@ -126,6 +126,7 @@ docs/DatabaseClusterNetworksInner.md
 docs/DatabaseClusterNetworksInnerIpsInner.md
 docs/DatabaseInstance.md
 docs/DatabaseType.md
+docs/DatabaseTypeRequirements.md
 docs/DatabasesApi.md
 docs/Db.md
 docs/DbDiskStats.md
@@ -564,6 +565,7 @@ src/model/DatabaseClusterNetworksInner.js
 src/model/DatabaseClusterNetworksInnerIpsInner.js
 src/model/DatabaseInstance.js
 src/model/DatabaseType.js
+src/model/DatabaseTypeRequirements.js
 src/model/Db.js
 src/model/DbDiskStats.js
 src/model/DbType.js
@@ -983,6 +985,7 @@ test/model/DatabaseClusterNetworksInner.spec.js
 test/model/DatabaseClusterNetworksInnerIpsInner.spec.js
 test/model/DatabaseInstance.spec.js
 test/model/DatabaseType.spec.js
+test/model/DatabaseTypeRequirements.spec.js
 test/model/Db.spec.js
 test/model/DbDiskStats.spec.js
 test/model/DbType.spec.js

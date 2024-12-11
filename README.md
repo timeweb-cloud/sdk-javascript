@@ -658,6 +658,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DatabaseClusterNetworksInnerIpsInner](docs/DatabaseClusterNetworksInnerIpsInner.md)
  - [TimewebCloudApi.DatabaseInstance](docs/DatabaseInstance.md)
  - [TimewebCloudApi.DatabaseType](docs/DatabaseType.md)
+ - [TimewebCloudApi.DatabaseTypeRequirements](docs/DatabaseTypeRequirements.md)
  - [TimewebCloudApi.Db](docs/Db.md)
  - [TimewebCloudApi.DbDiskStats](docs/DbDiskStats.md)
  - [TimewebCloudApi.DbType](docs/DbType.md)
