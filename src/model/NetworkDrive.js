@@ -33,7 +33,7 @@ class NetworkDrive {
      * @param status {module:model/NetworkDrive.StatusEnum} Статус сетевого диска.
      * @param availabilityZone {module:model/AvailabilityZone} 
      * @param type {module:model/NetworkDrive.TypeEnum} Тип сетевого диска.
-     * @param presetId {Number} Идентификатор сетевого диска.
+     * @param presetId {Number} Идентификатор тарифа.
      */
     constructor(id, name, comment, size, serviceList, location, status, availabilityZone, type, presetId) { 
         
@@ -212,7 +212,7 @@ NetworkDrive.prototype['availability_zone'] = undefined;
 NetworkDrive.prototype['type'] = undefined;
 
 /**
- * Идентификатор сетевого диска.
+ * Идентификатор тарифа.
  * @member {Number} preset_id
  */
 NetworkDrive.prototype['preset_id'] = undefined;
