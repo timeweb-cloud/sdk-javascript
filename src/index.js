@@ -108,6 +108,8 @@ import CreateFolderInStorageRequest from './model/CreateFolderInStorageRequest';
 import CreateInstance from './model/CreateInstance';
 import CreateKey201Response from './model/CreateKey201Response';
 import CreateKeyRequest from './model/CreateKeyRequest';
+import CreateNetworkDrive from './model/CreateNetworkDrive';
+import CreateNetworkDrive201Response from './model/CreateNetworkDrive201Response';
 import CreateProject from './model/CreateProject';
 import CreateProject201Response from './model/CreateProject201Response';
 import CreateRule from './model/CreateRule';
@@ -240,6 +242,9 @@ import GetKeys200Response from './model/GetKeys200Response';
 import GetLocations200Response from './model/GetLocations200Response';
 import GetMailQuota200Response from './model/GetMailQuota200Response';
 import GetMailboxes200Response from './model/GetMailboxes200Response';
+import GetNetworkDrives200Response from './model/GetNetworkDrives200Response';
+import GetNetworkDrivesAvailableResources200Response from './model/GetNetworkDrivesAvailableResources200Response';
+import GetNetworkDrivesPresets200Response from './model/GetNetworkDrivesPresets200Response';
 import GetNotificationSettings200Response from './model/GetNotificationSettings200Response';
 import GetOsList200Response from './model/GetOsList200Response';
 import GetProjectBalancers200Response from './model/GetProjectBalancers200Response';
@@ -298,7 +303,14 @@ import MailboxForwardingOutgoing from './model/MailboxForwardingOutgoing';
 import MailboxSpamFilter from './model/MailboxSpamFilter';
 import MasterPresetOutApi from './model/MasterPresetOutApi';
 import Meta from './model/Meta';
+import MountNetworkDrive from './model/MountNetworkDrive';
 import Network from './model/Network';
+import NetworkDrive from './model/NetworkDrive';
+import NetworkDriveAvailableResource from './model/NetworkDriveAvailableResource';
+import NetworkDrivePreset from './model/NetworkDrivePreset';
+import NetworkDrivePresetRead from './model/NetworkDrivePresetRead';
+import NetworkDrivePresetWrite from './model/NetworkDrivePresetWrite';
+import NetworkDriveServiceListInner from './model/NetworkDriveServiceListInner';
 import NetworkDriversResponse from './model/NetworkDriversResponse';
 import NodeCount from './model/NodeCount';
 import NodeGroupIn from './model/NodeGroupIn';
@@ -381,6 +393,7 @@ import UpdateInstance from './model/UpdateInstance';
 import UpdateKeyRequest from './model/UpdateKeyRequest';
 import UpdateMailQuotaRequest from './model/UpdateMailQuotaRequest';
 import UpdateMailbox from './model/UpdateMailbox';
+import UpdateNetworkDrive from './model/UpdateNetworkDrive';
 import UpdateNotificationSettingsRequest from './model/UpdateNotificationSettingsRequest';
 import UpdateNotificationSettingsRequestSettingsInner from './model/UpdateNotificationSettingsRequestSettingsInner';
 import UpdateNotificationSettingsRequestSettingsInnerChannels from './model/UpdateNotificationSettingsRequestSettingsInnerChannels';
@@ -428,6 +441,7 @@ import ImagesApi from './api/ImagesApi';
 import KubernetesApi from './api/KubernetesApi';
 import LocationsApi from './api/LocationsApi';
 import MailApi from './api/MailApi';
+import NetworkDrivesApi from './api/NetworkDrivesApi';
 import ProjectsApi from './api/ProjectsApi';
 import S3Api from './api/S3Api';
 import SSHApi from './api/SSHApi';
@@ -1042,6 +1056,18 @@ export {
      * @property {module:model/CreateKeyRequest}
      */
     CreateKeyRequest,
+
+    /**
+     * The CreateNetworkDrive model constructor.
+     * @property {module:model/CreateNetworkDrive}
+     */
+    CreateNetworkDrive,
+
+    /**
+     * The CreateNetworkDrive201Response model constructor.
+     * @property {module:model/CreateNetworkDrive201Response}
+     */
+    CreateNetworkDrive201Response,
 
     /**
      * The CreateProject model constructor.
@@ -1836,6 +1862,24 @@ export {
     GetMailboxes200Response,
 
     /**
+     * The GetNetworkDrives200Response model constructor.
+     * @property {module:model/GetNetworkDrives200Response}
+     */
+    GetNetworkDrives200Response,
+
+    /**
+     * The GetNetworkDrivesAvailableResources200Response model constructor.
+     * @property {module:model/GetNetworkDrivesAvailableResources200Response}
+     */
+    GetNetworkDrivesAvailableResources200Response,
+
+    /**
+     * The GetNetworkDrivesPresets200Response model constructor.
+     * @property {module:model/GetNetworkDrivesPresets200Response}
+     */
+    GetNetworkDrivesPresets200Response,
+
+    /**
      * The GetNotificationSettings200Response model constructor.
      * @property {module:model/GetNotificationSettings200Response}
      */
@@ -2184,10 +2228,52 @@ export {
     Meta,
 
     /**
+     * The MountNetworkDrive model constructor.
+     * @property {module:model/MountNetworkDrive}
+     */
+    MountNetworkDrive,
+
+    /**
      * The Network model constructor.
      * @property {module:model/Network}
      */
     Network,
+
+    /**
+     * The NetworkDrive model constructor.
+     * @property {module:model/NetworkDrive}
+     */
+    NetworkDrive,
+
+    /**
+     * The NetworkDriveAvailableResource model constructor.
+     * @property {module:model/NetworkDriveAvailableResource}
+     */
+    NetworkDriveAvailableResource,
+
+    /**
+     * The NetworkDrivePreset model constructor.
+     * @property {module:model/NetworkDrivePreset}
+     */
+    NetworkDrivePreset,
+
+    /**
+     * The NetworkDrivePresetRead model constructor.
+     * @property {module:model/NetworkDrivePresetRead}
+     */
+    NetworkDrivePresetRead,
+
+    /**
+     * The NetworkDrivePresetWrite model constructor.
+     * @property {module:model/NetworkDrivePresetWrite}
+     */
+    NetworkDrivePresetWrite,
+
+    /**
+     * The NetworkDriveServiceListInner model constructor.
+     * @property {module:model/NetworkDriveServiceListInner}
+     */
+    NetworkDriveServiceListInner,
 
     /**
      * The NetworkDriversResponse model constructor.
@@ -2682,6 +2768,12 @@ export {
     UpdateMailbox,
 
     /**
+     * The UpdateNetworkDrive model constructor.
+     * @property {module:model/UpdateNetworkDrive}
+     */
+    UpdateNetworkDrive,
+
+    /**
      * The UpdateNotificationSettingsRequest model constructor.
      * @property {module:model/UpdateNotificationSettingsRequest}
      */
@@ -2962,6 +3054,12 @@ export {
     * @property {module:api/MailApi}
     */
     MailApi,
+
+    /**
+    * The NetworkDrivesApi service constructor.
+    * @property {module:api/NetworkDrivesApi}
+    */
+    NetworkDrivesApi,
 
     /**
     * The ProjectsApi service constructor.

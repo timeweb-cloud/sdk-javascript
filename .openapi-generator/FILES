@@ -102,6 +102,8 @@ docs/CreateFolderInStorageRequest.md
 docs/CreateInstance.md
 docs/CreateKey201Response.md
 docs/CreateKeyRequest.md
+docs/CreateNetworkDrive.md
+docs/CreateNetworkDrive201Response.md
 docs/CreateProject.md
 docs/CreateProject201Response.md
 docs/CreateRule.md
@@ -239,6 +241,9 @@ docs/GetKeys200Response.md
 docs/GetLocations200Response.md
 docs/GetMailQuota200Response.md
 docs/GetMailboxes200Response.md
+docs/GetNetworkDrives200Response.md
+docs/GetNetworkDrivesAvailableResources200Response.md
+docs/GetNetworkDrivesPresets200Response.md
 docs/GetNotificationSettings200Response.md
 docs/GetOsList200Response.md
 docs/GetProjectBalancers200Response.md
@@ -301,8 +306,16 @@ docs/MailboxForwardingOutgoing.md
 docs/MailboxSpamFilter.md
 docs/MasterPresetOutApi.md
 docs/Meta.md
+docs/MountNetworkDrive.md
 docs/Network.md
+docs/NetworkDrive.md
+docs/NetworkDriveAvailableResource.md
+docs/NetworkDrivePreset.md
+docs/NetworkDrivePresetRead.md
+docs/NetworkDrivePresetWrite.md
+docs/NetworkDriveServiceListInner.md
 docs/NetworkDriversResponse.md
+docs/NetworkDrivesApi.md
 docs/NodeCount.md
 docs/NodeGroupIn.md
 docs/NodeGroupOut.md
@@ -388,6 +401,7 @@ docs/UpdateInstance.md
 docs/UpdateKeyRequest.md
 docs/UpdateMailQuotaRequest.md
 docs/UpdateMailbox.md
+docs/UpdateNetworkDrive.md
 docs/UpdateNotificationSettingsRequest.md
 docs/UpdateNotificationSettingsRequestSettingsInner.md
 docs/UpdateNotificationSettingsRequestSettingsInnerChannels.md
@@ -440,6 +454,7 @@ src/api/ImagesApi.js
 src/api/KubernetesApi.js
 src/api/LocationsApi.js
 src/api/MailApi.js
+src/api/NetworkDrivesApi.js
 src/api/ProjectsApi.js
 src/api/S3Api.js
 src/api/SSHApi.js
@@ -541,6 +556,8 @@ src/model/CreateFolderInStorageRequest.js
 src/model/CreateInstance.js
 src/model/CreateKey201Response.js
 src/model/CreateKeyRequest.js
+src/model/CreateNetworkDrive.js
+src/model/CreateNetworkDrive201Response.js
 src/model/CreateProject.js
 src/model/CreateProject201Response.js
 src/model/CreateRule.js
@@ -673,6 +690,9 @@ src/model/GetKeys200Response.js
 src/model/GetLocations200Response.js
 src/model/GetMailQuota200Response.js
 src/model/GetMailboxes200Response.js
+src/model/GetNetworkDrives200Response.js
+src/model/GetNetworkDrivesAvailableResources200Response.js
+src/model/GetNetworkDrivesPresets200Response.js
 src/model/GetNotificationSettings200Response.js
 src/model/GetOsList200Response.js
 src/model/GetProjectBalancers200Response.js
@@ -731,7 +751,14 @@ src/model/MailboxForwardingOutgoing.js
 src/model/MailboxSpamFilter.js
 src/model/MasterPresetOutApi.js
 src/model/Meta.js
+src/model/MountNetworkDrive.js
 src/model/Network.js
+src/model/NetworkDrive.js
+src/model/NetworkDriveAvailableResource.js
+src/model/NetworkDrivePreset.js
+src/model/NetworkDrivePresetRead.js
+src/model/NetworkDrivePresetWrite.js
+src/model/NetworkDriveServiceListInner.js
 src/model/NetworkDriversResponse.js
 src/model/NodeCount.js
 src/model/NodeGroupIn.js
@@ -814,6 +841,7 @@ src/model/UpdateInstance.js
 src/model/UpdateKeyRequest.js
 src/model/UpdateMailQuotaRequest.js
 src/model/UpdateMailbox.js
+src/model/UpdateNetworkDrive.js
 src/model/UpdateNotificationSettingsRequest.js
 src/model/UpdateNotificationSettingsRequestSettingsInner.js
 src/model/UpdateNotificationSettingsRequestSettingsInnerChannels.js
@@ -861,6 +889,7 @@ test/api/ImagesApi.spec.js
 test/api/KubernetesApi.spec.js
 test/api/LocationsApi.spec.js
 test/api/MailApi.spec.js
+test/api/NetworkDrivesApi.spec.js
 test/api/ProjectsApi.spec.js
 test/api/S3Api.spec.js
 test/api/SSHApi.spec.js
@@ -961,6 +990,8 @@ test/model/CreateFolderInStorageRequest.spec.js
 test/model/CreateInstance.spec.js
 test/model/CreateKey201Response.spec.js
 test/model/CreateKeyRequest.spec.js
+test/model/CreateNetworkDrive.spec.js
+test/model/CreateNetworkDrive201Response.spec.js
 test/model/CreateProject.spec.js
 test/model/CreateProject201Response.spec.js
 test/model/CreateRule.spec.js
@@ -1093,6 +1124,9 @@ test/model/GetKeys200Response.spec.js
 test/model/GetLocations200Response.spec.js
 test/model/GetMailQuota200Response.spec.js
 test/model/GetMailboxes200Response.spec.js
+test/model/GetNetworkDrives200Response.spec.js
+test/model/GetNetworkDrivesAvailableResources200Response.spec.js
+test/model/GetNetworkDrivesPresets200Response.spec.js
 test/model/GetNotificationSettings200Response.spec.js
 test/model/GetOsList200Response.spec.js
 test/model/GetProjectBalancers200Response.spec.js
@@ -1151,7 +1185,14 @@ test/model/MailboxForwardingOutgoing.spec.js
 test/model/MailboxSpamFilter.spec.js
 test/model/MasterPresetOutApi.spec.js
 test/model/Meta.spec.js
+test/model/MountNetworkDrive.spec.js
 test/model/Network.spec.js
+test/model/NetworkDrive.spec.js
+test/model/NetworkDriveAvailableResource.spec.js
+test/model/NetworkDrivePreset.spec.js
+test/model/NetworkDrivePresetRead.spec.js
+test/model/NetworkDrivePresetWrite.spec.js
+test/model/NetworkDriveServiceListInner.spec.js
 test/model/NetworkDriversResponse.spec.js
 test/model/NodeCount.spec.js
 test/model/NodeGroupIn.spec.js
@@ -1234,6 +1275,7 @@ test/model/UpdateInstance.spec.js
 test/model/UpdateKeyRequest.spec.js
 test/model/UpdateMailQuotaRequest.spec.js
 test/model/UpdateMailbox.spec.js
+test/model/UpdateNetworkDrive.spec.js
 test/model/UpdateNotificationSettingsRequest.spec.js
 test/model/UpdateNotificationSettingsRequestSettingsInner.spec.js
 test/model/UpdateNotificationSettingsRequestSettingsInnerChannels.spec.js

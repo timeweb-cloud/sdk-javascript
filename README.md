@@ -440,6 +440,15 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.MailApi* | [**updateDomainMailInfo**](docs/MailApi.md#updateDomainMailInfo) | **PATCH** /api/v1/mail/domains/{domain}/info | Изменение почтовой информации о домене
 *TimewebCloudApi.MailApi* | [**updateMailQuota**](docs/MailApi.md#updateMailQuota) | **PATCH** /api/v1/mail/quota | Изменение квоты почты аккаунта
 *TimewebCloudApi.MailApi* | [**updateMailbox**](docs/MailApi.md#updateMailbox) | **PATCH** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Изменение почтового ящика
+*TimewebCloudApi.NetworkDrivesApi* | [**createNetworkDrive**](docs/NetworkDrivesApi.md#createNetworkDrive) | **POST** /api/v1/network-drives | Создание сетевого диска
+*TimewebCloudApi.NetworkDrivesApi* | [**deleteNetworkDrive**](docs/NetworkDrivesApi.md#deleteNetworkDrive) | **DELETE** /api/v1/network-drives/{network_drive_id} | Удаление сетевого диска по идентификатору
+*TimewebCloudApi.NetworkDrivesApi* | [**getNetworkDrive**](docs/NetworkDrivesApi.md#getNetworkDrive) | **GET** /api/v1/network-drives/{network_drive_id} | Получение сетевого диска
+*TimewebCloudApi.NetworkDrivesApi* | [**getNetworkDrives**](docs/NetworkDrivesApi.md#getNetworkDrives) | **GET** /api/v1/network-drives | Получение списка cетевых дисков
+*TimewebCloudApi.NetworkDrivesApi* | [**getNetworkDrivesAvailableResources**](docs/NetworkDrivesApi.md#getNetworkDrivesAvailableResources) | **GET** /api/v1/network-drives/available-resources | Получение списка сервисов доступных для подключения диска
+*TimewebCloudApi.NetworkDrivesApi* | [**getNetworkDrivesPresets**](docs/NetworkDrivesApi.md#getNetworkDrivesPresets) | **GET** /api/v1/presets/network-drives | Получение списка доступных тарифов для сетевого диска
+*TimewebCloudApi.NetworkDrivesApi* | [**mountNetworkDrive**](docs/NetworkDrivesApi.md#mountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/bind | Подключить сетевой диск к сервису
+*TimewebCloudApi.NetworkDrivesApi* | [**unmountNetworkDrive**](docs/NetworkDrivesApi.md#unmountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/unbind | Отключить сетевой диск от сервиса
+*TimewebCloudApi.NetworkDrivesApi* | [**updateNetworkDrive**](docs/NetworkDrivesApi.md#updateNetworkDrive) | **PATCH** /api/v1/network-drives/{network_drive_id} | Изменение сетевого диска по идентификатору
 *TimewebCloudApi.ProjectsApi* | [**addBalancerToProject**](docs/ProjectsApi.md#addBalancerToProject) | **POST** /api/v1/projects/{project_id}/resources/balancers | Добавление балансировщика в проект
 *TimewebCloudApi.ProjectsApi* | [**addClusterToProject**](docs/ProjectsApi.md#addClusterToProject) | **POST** /api/v1/projects/{project_id}/resources/clusters | Добавление кластера в проект
 *TimewebCloudApi.ProjectsApi* | [**addDatabaseToProject**](docs/ProjectsApi.md#addDatabaseToProject) | **POST** /api/v1/projects/{project_id}/resources/databases | Добавление базы данных в проект
@@ -635,6 +644,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateInstance](docs/CreateInstance.md)
  - [TimewebCloudApi.CreateKey201Response](docs/CreateKey201Response.md)
  - [TimewebCloudApi.CreateKeyRequest](docs/CreateKeyRequest.md)
+ - [TimewebCloudApi.CreateNetworkDrive](docs/CreateNetworkDrive.md)
+ - [TimewebCloudApi.CreateNetworkDrive201Response](docs/CreateNetworkDrive201Response.md)
  - [TimewebCloudApi.CreateProject](docs/CreateProject.md)
  - [TimewebCloudApi.CreateProject201Response](docs/CreateProject201Response.md)
  - [TimewebCloudApi.CreateRule](docs/CreateRule.md)
@@ -767,6 +778,9 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetLocations200Response](docs/GetLocations200Response.md)
  - [TimewebCloudApi.GetMailQuota200Response](docs/GetMailQuota200Response.md)
  - [TimewebCloudApi.GetMailboxes200Response](docs/GetMailboxes200Response.md)
+ - [TimewebCloudApi.GetNetworkDrives200Response](docs/GetNetworkDrives200Response.md)
+ - [TimewebCloudApi.GetNetworkDrivesAvailableResources200Response](docs/GetNetworkDrivesAvailableResources200Response.md)
+ - [TimewebCloudApi.GetNetworkDrivesPresets200Response](docs/GetNetworkDrivesPresets200Response.md)
  - [TimewebCloudApi.GetNotificationSettings200Response](docs/GetNotificationSettings200Response.md)
  - [TimewebCloudApi.GetOsList200Response](docs/GetOsList200Response.md)
  - [TimewebCloudApi.GetProjectBalancers200Response](docs/GetProjectBalancers200Response.md)
@@ -825,7 +839,14 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.MailboxSpamFilter](docs/MailboxSpamFilter.md)
  - [TimewebCloudApi.MasterPresetOutApi](docs/MasterPresetOutApi.md)
  - [TimewebCloudApi.Meta](docs/Meta.md)
+ - [TimewebCloudApi.MountNetworkDrive](docs/MountNetworkDrive.md)
  - [TimewebCloudApi.Network](docs/Network.md)
+ - [TimewebCloudApi.NetworkDrive](docs/NetworkDrive.md)
+ - [TimewebCloudApi.NetworkDriveAvailableResource](docs/NetworkDriveAvailableResource.md)
+ - [TimewebCloudApi.NetworkDrivePreset](docs/NetworkDrivePreset.md)
+ - [TimewebCloudApi.NetworkDrivePresetRead](docs/NetworkDrivePresetRead.md)
+ - [TimewebCloudApi.NetworkDrivePresetWrite](docs/NetworkDrivePresetWrite.md)
+ - [TimewebCloudApi.NetworkDriveServiceListInner](docs/NetworkDriveServiceListInner.md)
  - [TimewebCloudApi.NetworkDriversResponse](docs/NetworkDriversResponse.md)
  - [TimewebCloudApi.NodeCount](docs/NodeCount.md)
  - [TimewebCloudApi.NodeGroupIn](docs/NodeGroupIn.md)
@@ -908,6 +929,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateKeyRequest](docs/UpdateKeyRequest.md)
  - [TimewebCloudApi.UpdateMailQuotaRequest](docs/UpdateMailQuotaRequest.md)
  - [TimewebCloudApi.UpdateMailbox](docs/UpdateMailbox.md)
+ - [TimewebCloudApi.UpdateNetworkDrive](docs/UpdateNetworkDrive.md)
  - [TimewebCloudApi.UpdateNotificationSettingsRequest](docs/UpdateNotificationSettingsRequest.md)
  - [TimewebCloudApi.UpdateNotificationSettingsRequestSettingsInner](docs/UpdateNotificationSettingsRequestSettingsInner.md)
  - [TimewebCloudApi.UpdateNotificationSettingsRequestSettingsInnerChannels](docs/UpdateNotificationSettingsRequestSettingsInnerChannels.md)
