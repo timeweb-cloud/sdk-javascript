@@ -70,6 +70,12 @@ class VdsNetworksInner {
             if (data.hasOwnProperty('is_ddos_guard')) {
                 obj['is_ddos_guard'] = ApiClient.convertToType(data['is_ddos_guard'], 'Boolean');
             }
+            if (data.hasOwnProperty('is_image_mounted')) {
+                obj['is_image_mounted'] = ApiClient.convertToType(data['is_image_mounted'], 'Boolean');
+            }
+            if (data.hasOwnProperty('blocked_ports')) {
+                obj['blocked_ports'] = ApiClient.convertToType(data['blocked_ports'], ['Number']);
+            }
         }
         return obj;
     }
@@ -107,6 +113,10 @@ class VdsNetworksInner {
             for (const item of data['ips']) {
                 VdsNetworksInnerIpsInner.validateJSON(item);
             };
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['blocked_ports'])) {
+            throw new Error("Expected the field `blocked_ports` to be an array in the JSON data but got " + data['blocked_ports']);
         }
 
         return true;
@@ -148,10 +158,22 @@ VdsNetworksInner.prototype['bandwidth'] = undefined;
 VdsNetworksInner.prototype['ips'] = undefined;
 
 /**
- * Подключена ли DDoS-защита. Только для публичных сетей.
+ * Это логическое значение, которое показывает, подключена ли DDoS-защита. Только для публичных сетей.
  * @member {Boolean} is_ddos_guard
  */
 VdsNetworksInner.prototype['is_ddos_guard'] = undefined;
+
+/**
+ * Это логическое значение, которое показывает, примонтирован ли образ к серверу.
+ * @member {Boolean} is_image_mounted
+ */
+VdsNetworksInner.prototype['is_image_mounted'] = undefined;
+
+/**
+ * Список заблокированных портов на сервере.
+ * @member {Array.<Number>} blocked_ports
+ */
+VdsNetworksInner.prototype['blocked_ports'] = undefined;
 
 
 

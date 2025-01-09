@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**responseId** | **String** | Идентификатор запроса | [optional] 
+**responseId** | **String** | ID запроса. | [optional] 
 **meta** | [**Meta**](Meta.md) |  | 
-**images** | [**[ImageOutAPI]**](ImageOutAPI.md) | Массив объектов Образ | 
+**images** | [**[Image]**](Image.md) |  | 
 
 

@@ -22,8 +22,8 @@ class ResourceTransfer {
     /**
      * Constructs a new <code>ResourceTransfer</code>.
      * @alias module:model/ResourceTransfer
-     * @param toProject {Number} Идентификатор проекта, куда переносится ресурс.
-     * @param resourceId {Number} Идентификатор перемещаемого ресурса (сервера, хранилища, кластера, балансировщика, базы данных или выделенного сервера).
+     * @param toProject {Number} ID проекта, куда переносится ресурс.
+     * @param resourceId {Number} ID перемещаемого ресурса (сервера, хранилища, кластера, балансировщика, базы данных или выделенного сервера).
      * @param resourceType {module:model/ResourceTransfer.ResourceTypeEnum} Тип перемещаемого ресурса.
      */
     constructor(toProject, resourceId, resourceType) { 
@@ -92,13 +92,13 @@ class ResourceTransfer {
 ResourceTransfer.RequiredProperties = ["to_project", "resource_id", "resource_type"];
 
 /**
- * Идентификатор проекта, куда переносится ресурс.
+ * ID проекта, куда переносится ресурс.
  * @member {Number} to_project
  */
 ResourceTransfer.prototype['to_project'] = undefined;
 
 /**
- * Идентификатор перемещаемого ресурса (сервера, хранилища, кластера, балансировщика, базы данных или выделенного сервера).
+ * ID перемещаемого ресурса (сервера, хранилища, кластера, балансировщика, базы данных или выделенного сервера).
  * @member {Number} resource_id
  */
 ResourceTransfer.prototype['resource_id'] = undefined;

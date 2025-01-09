@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import ImageOutAPI from './ImageOutAPI';
+import Image from './Image';
 import Meta from './Meta';
 
 /**
@@ -25,7 +25,7 @@ class ImagesOutResponse {
      * Constructs a new <code>ImagesOutResponse</code>.
      * @alias module:model/ImagesOutResponse
      * @param meta {module:model/Meta} 
-     * @param images {Array.<module:model/ImageOutAPI>} Массив объектов Образ
+     * @param images {Array.<module:model/Image>} 
      */
     constructor(meta, images) { 
         
@@ -60,7 +60,7 @@ class ImagesOutResponse {
                 obj['meta'] = Meta.constructFromObject(data['meta']);
             }
             if (data.hasOwnProperty('images')) {
-                obj['images'] = ApiClient.convertToType(data['images'], [ImageOutAPI]);
+                obj['images'] = ApiClient.convertToType(data['images'], [Image]);
             }
         }
         return obj;
@@ -93,7 +93,7 @@ class ImagesOutResponse {
             }
             // validate the optional field `images` (array)
             for (const item of data['images']) {
-                ImageOutAPI.validateJSON(item);
+                Image.validateJSON(item);
             };
         }
 
@@ -106,7 +106,7 @@ class ImagesOutResponse {
 ImagesOutResponse.RequiredProperties = ["meta", "images"];
 
 /**
- * Идентификатор запроса
+ * ID запроса.
  * @member {String} response_id
  */
 ImagesOutResponse.prototype['response_id'] = undefined;
@@ -117,8 +117,7 @@ ImagesOutResponse.prototype['response_id'] = undefined;
 ImagesOutResponse.prototype['meta'] = undefined;
 
 /**
- * Массив объектов Образ
- * @member {Array.<module:model/ImageOutAPI>} images
+ * @member {Array.<module:model/Image>} images
  */
 ImagesOutResponse.prototype['images'] = undefined;
 

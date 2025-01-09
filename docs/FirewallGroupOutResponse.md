@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**responseId** | **String** | Идентификатор запроса | [optional] 
-**group** | [**FirewallGroupOutAPI**](FirewallGroupOutAPI.md) |  | 
+**responseId** | **String** | ID запроса. | [optional] 
+**group** | [**FirewallGroup**](FirewallGroup.md) |  | 
 
 

@@ -395,11 +395,11 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.FirewallApi* | [**updateGroupRule**](docs/FirewallApi.md#updateGroupRule) | **PATCH** /api/v1/firewall/groups/{group_id}/rules/{rule_id} | Обновление firewall правила
 *TimewebCloudApi.FloatingIPApi* | [**bindFloatingIp**](docs/FloatingIPApi.md#bindFloatingIp) | **POST** /api/v1/floating-ips/{floating_ip_id}/bind | Привязать IP к сервису
 *TimewebCloudApi.FloatingIPApi* | [**createFloatingIp**](docs/FloatingIPApi.md#createFloatingIp) | **POST** /api/v1/floating-ips | Создание плавающего IP
-*TimewebCloudApi.FloatingIPApi* | [**deleteFloatingIP**](docs/FloatingIPApi.md#deleteFloatingIP) | **DELETE** /api/v1/floating-ips/{floating_ip_id} | Удаление плавающего IP по идентификатору
+*TimewebCloudApi.FloatingIPApi* | [**deleteFloatingIP**](docs/FloatingIPApi.md#deleteFloatingIP) | **DELETE** /api/v1/floating-ips/{floating_ip_id} | Удаление плавающего IP по ID
 *TimewebCloudApi.FloatingIPApi* | [**getFloatingIp**](docs/FloatingIPApi.md#getFloatingIp) | **GET** /api/v1/floating-ips/{floating_ip_id} | Получение плавающего IP
 *TimewebCloudApi.FloatingIPApi* | [**getFloatingIps**](docs/FloatingIPApi.md#getFloatingIps) | **GET** /api/v1/floating-ips | Получение списка плавающих IP
 *TimewebCloudApi.FloatingIPApi* | [**unbindFloatingIp**](docs/FloatingIPApi.md#unbindFloatingIp) | **POST** /api/v1/floating-ips/{floating_ip_id}/unbind | Отвязать IP от сервиса
-*TimewebCloudApi.FloatingIPApi* | [**updateFloatingIP**](docs/FloatingIPApi.md#updateFloatingIP) | **PATCH** /api/v1/floating-ips/{floating_ip_id} | Изменение плавающего IP по идентификатору
+*TimewebCloudApi.FloatingIPApi* | [**updateFloatingIP**](docs/FloatingIPApi.md#updateFloatingIP) | **PATCH** /api/v1/floating-ips/{floating_ip_id} | Изменение плавающего IP по ID
 *TimewebCloudApi.ImagesApi* | [**createImage**](docs/ImagesApi.md#createImage) | **POST** /api/v1/images | Создание образа
 *TimewebCloudApi.ImagesApi* | [**createImageDownloadUrl**](docs/ImagesApi.md#createImageDownloadUrl) | **POST** /api/v1/images/{image_id}/download-url | Создание ссылки на скачивание образа
 *TimewebCloudApi.ImagesApi* | [**deleteImage**](docs/ImagesApi.md#deleteImage) | **DELETE** /api/v1/images/{image_id} | Удаление образа
@@ -449,7 +449,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.NetworkDrivesApi* | [**getNetworkDrivesPresets**](docs/NetworkDrivesApi.md#getNetworkDrivesPresets) | **GET** /api/v1/presets/network-drives | Получение списка доступных тарифов для сетевого диска
 *TimewebCloudApi.NetworkDrivesApi* | [**mountNetworkDrive**](docs/NetworkDrivesApi.md#mountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/bind | Подключить сетевой диск к сервису
 *TimewebCloudApi.NetworkDrivesApi* | [**unmountNetworkDrive**](docs/NetworkDrivesApi.md#unmountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/unbind | Отключить сетевой диск от сервиса
-*TimewebCloudApi.NetworkDrivesApi* | [**updateNetworkDrive**](docs/NetworkDrivesApi.md#updateNetworkDrive) | **PATCH** /api/v1/network-drives/{network_drive_id} | Изменение сетевого диска по идентификатору
+*TimewebCloudApi.NetworkDrivesApi* | [**updateNetworkDrive**](docs/NetworkDrivesApi.md#updateNetworkDrive) | **PATCH** /api/v1/network-drives/{network_drive_id} | Изменение сетевого диска по ID
 *TimewebCloudApi.ProjectsApi* | [**addBalancerToProject**](docs/ProjectsApi.md#addBalancerToProject) | **POST** /api/v1/projects/{project_id}/resources/balancers | Добавление балансировщика в проект
 *TimewebCloudApi.ProjectsApi* | [**addClusterToProject**](docs/ProjectsApi.md#addClusterToProject) | **POST** /api/v1/projects/{project_id}/resources/clusters | Добавление кластера в проект
 *TimewebCloudApi.ProjectsApi* | [**addDatabaseToProject**](docs/ProjectsApi.md#addDatabaseToProject) | **POST** /api/v1/projects/{project_id}/resources/databases | Добавление базы данных в проект
@@ -496,11 +496,11 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.S3Api* | [**uploadFileToStorage**](docs/S3Api.md#uploadFileToStorage) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/upload | Загрузка файлов в хранилище
 *TimewebCloudApi.SSHApi* | [**addKeyToServer**](docs/SSHApi.md#addKeyToServer) | **POST** /api/v1/servers/{server_id}/ssh-keys | Добавление SSH-ключей на сервер
 *TimewebCloudApi.SSHApi* | [**createKey**](docs/SSHApi.md#createKey) | **POST** /api/v1/ssh-keys | Создание SSH-ключа
-*TimewebCloudApi.SSHApi* | [**deleteKey**](docs/SSHApi.md#deleteKey) | **DELETE** /api/v1/ssh-keys/{ssh_key_id} | Удаление SSH-ключа по уникальному идентификатору
+*TimewebCloudApi.SSHApi* | [**deleteKey**](docs/SSHApi.md#deleteKey) | **DELETE** /api/v1/ssh-keys/{ssh_key_id} | Удаление SSH-ключа по ID
 *TimewebCloudApi.SSHApi* | [**deleteKeyFromServer**](docs/SSHApi.md#deleteKeyFromServer) | **DELETE** /api/v1/servers/{server_id}/ssh-keys/{ssh_key_id} | Удаление SSH-ключей с сервера
-*TimewebCloudApi.SSHApi* | [**getKey**](docs/SSHApi.md#getKey) | **GET** /api/v1/ssh-keys/{ssh_key_id} | Получение SSH-ключа по уникальному идентификатору
+*TimewebCloudApi.SSHApi* | [**getKey**](docs/SSHApi.md#getKey) | **GET** /api/v1/ssh-keys/{ssh_key_id} | Получение SSH-ключа по ID
 *TimewebCloudApi.SSHApi* | [**getKeys**](docs/SSHApi.md#getKeys) | **GET** /api/v1/ssh-keys | Получение списка SSH-ключей
-*TimewebCloudApi.SSHApi* | [**updateKey**](docs/SSHApi.md#updateKey) | **PATCH** /api/v1/ssh-keys/{ssh_key_id} | Изменение SSH-ключа по уникальному идентификатору
+*TimewebCloudApi.SSHApi* | [**updateKey**](docs/SSHApi.md#updateKey) | **PATCH** /api/v1/ssh-keys/{ssh_key_id} | Изменение SSH-ключа по ID
 *TimewebCloudApi.ServersApi* | [**addServerIP**](docs/ServersApi.md#addServerIP) | **POST** /api/v1/servers/{server_id}/ips | Добавление IP-адреса сервера
 *TimewebCloudApi.ServersApi* | [**cloneServer**](docs/ServersApi.md#cloneServer) | **POST** /api/v1/servers/{server_id}/clone | Клонирование сервера
 *TimewebCloudApi.ServersApi* | [**createServer**](docs/ServersApi.md#createServer) | **POST** /api/v1/servers | Создание сервера
@@ -610,6 +610,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Clusterk8s](docs/Clusterk8s.md)
  - [TimewebCloudApi.ClustersResponse](docs/ClustersResponse.md)
  - [TimewebCloudApi.Commit](docs/Commit.md)
+ - [TimewebCloudApi.ComponentsSchemasBaseError](docs/ComponentsSchemasBaseError.md)
  - [TimewebCloudApi.ConfigParameters](docs/ConfigParameters.md)
  - [TimewebCloudApi.CopyStorageFileRequest](docs/CopyStorageFileRequest.md)
  - [TimewebCloudApi.CreateAdmin](docs/CreateAdmin.md)
@@ -715,16 +716,16 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DomainTransfer](docs/DomainTransfer.md)
  - [TimewebCloudApi.EditApiKey](docs/EditApiKey.md)
  - [TimewebCloudApi.Finances](docs/Finances.md)
+ - [TimewebCloudApi.FirewallGroup](docs/FirewallGroup.md)
  - [TimewebCloudApi.FirewallGroupInAPI](docs/FirewallGroupInAPI.md)
- - [TimewebCloudApi.FirewallGroupOutAPI](docs/FirewallGroupOutAPI.md)
  - [TimewebCloudApi.FirewallGroupOutResponse](docs/FirewallGroupOutResponse.md)
- - [TimewebCloudApi.FirewallGroupResourceOutAPI](docs/FirewallGroupResourceOutAPI.md)
+ - [TimewebCloudApi.FirewallGroupResource](docs/FirewallGroupResource.md)
  - [TimewebCloudApi.FirewallGroupResourceOutResponse](docs/FirewallGroupResourceOutResponse.md)
  - [TimewebCloudApi.FirewallGroupResourcesOutResponse](docs/FirewallGroupResourcesOutResponse.md)
  - [TimewebCloudApi.FirewallGroupsOutResponse](docs/FirewallGroupsOutResponse.md)
+ - [TimewebCloudApi.FirewallRule](docs/FirewallRule.md)
  - [TimewebCloudApi.FirewallRuleDirection](docs/FirewallRuleDirection.md)
  - [TimewebCloudApi.FirewallRuleInAPI](docs/FirewallRuleInAPI.md)
- - [TimewebCloudApi.FirewallRuleOutAPI](docs/FirewallRuleOutAPI.md)
  - [TimewebCloudApi.FirewallRuleOutResponse](docs/FirewallRuleOutResponse.md)
  - [TimewebCloudApi.FirewallRuleProtocol](docs/FirewallRuleProtocol.md)
  - [TimewebCloudApi.FirewallRulesOutResponse](docs/FirewallRulesOutResponse.md)
@@ -821,11 +822,11 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetVPCPorts200Response](docs/GetVPCPorts200Response.md)
  - [TimewebCloudApi.GetVPCServices200Response](docs/GetVPCServices200Response.md)
  - [TimewebCloudApi.GetVPCs200Response](docs/GetVPCs200Response.md)
- - [TimewebCloudApi.ImageDownloadAPI](docs/ImageDownloadAPI.md)
+ - [TimewebCloudApi.Image](docs/Image.md)
+ - [TimewebCloudApi.ImageDownload](docs/ImageDownload.md)
  - [TimewebCloudApi.ImageDownloadResponse](docs/ImageDownloadResponse.md)
  - [TimewebCloudApi.ImageDownloadsResponse](docs/ImageDownloadsResponse.md)
  - [TimewebCloudApi.ImageInAPI](docs/ImageInAPI.md)
- - [TimewebCloudApi.ImageOutAPI](docs/ImageOutAPI.md)
  - [TimewebCloudApi.ImageOutResponse](docs/ImageOutResponse.md)
  - [TimewebCloudApi.ImageStatus](docs/ImageStatus.md)
  - [TimewebCloudApi.ImageUpdateAPI](docs/ImageUpdateAPI.md)
@@ -892,6 +893,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.S3ObjectOwner](docs/S3ObjectOwner.md)
  - [TimewebCloudApi.S3Subdomain](docs/S3Subdomain.md)
  - [TimewebCloudApi.SchemasBaseError](docs/SchemasBaseError.md)
+ - [TimewebCloudApi.SchemasMeta](docs/SchemasMeta.md)
  - [TimewebCloudApi.ServerBackup](docs/ServerBackup.md)
  - [TimewebCloudApi.ServerDisk](docs/ServerDisk.md)
  - [TimewebCloudApi.ServerIp](docs/ServerIp.md)

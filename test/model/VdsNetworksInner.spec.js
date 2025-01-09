@@ -90,6 +90,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isImageMounted (base name: "is_image_mounted")', function() {
+      // uncomment below and update the code to test the property isImageMounted
+      //var instance = new TimewebCloudApi.VdsNetworksInner();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property blockedPorts (base name: "blocked_ports")', function() {
+      // uncomment below and update the code to test the property blockedPorts
+      //var instance = new TimewebCloudApi.VdsNetworksInner();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

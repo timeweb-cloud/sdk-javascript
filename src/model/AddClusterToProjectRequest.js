@@ -22,7 +22,7 @@ class AddClusterToProjectRequest {
     /**
      * Constructs a new <code>AddClusterToProjectRequest</code>.
      * @alias module:model/AddClusterToProjectRequest
-     * @param resourceId {Number} Идентификатор добавляемого кластера.
+     * @param resourceId {Number} ID добавляемого кластера.
      */
     constructor(resourceId) { 
         
@@ -78,7 +78,7 @@ class AddClusterToProjectRequest {
 AddClusterToProjectRequest.RequiredProperties = ["resource_id"];
 
 /**
- * Идентификатор добавляемого кластера.
+ * ID добавляемого кластера.
  * @member {Number} resource_id
  */
 AddClusterToProjectRequest.prototype['resource_id'] = undefined;

@@ -90,7 +90,7 @@ class UploadSuccessfulResponse {
 UploadSuccessfulResponse.RequiredProperties = ["upload_successful"];
 
 /**
- * Идентификатор запроса
+ * ID запроса.
  * @member {String} response_id
  */
 UploadSuccessfulResponse.prototype['response_id'] = undefined;

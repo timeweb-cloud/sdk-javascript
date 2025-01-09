@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Number** | ID для каждого экземпляра сервера. Автоматически генерируется при создании. | 
-**name** | **String** | Удобочитаемое имя, установленное для выделенного сервера. | 
-**comment** | **String** | Комментарий к выделенному серверу. | 
+**name** | **String** | Удобочитаемое имя, установленное для сервера. | 
+**comment** | **String** | Комментарий к серверу. | 
 **createdAt** | **String** | Дата создания сервера в формате ISO8061. | 
 **os** | [**VdsOs**](VdsOs.md) |  | 
 **software** | [**VdsSoftware**](VdsSoftware.md) |  | 
@@ -17,6 +17,9 @@ Name | Type | Description | Notes
 **status** | **String** | Статус сервера. | 
 **startAt** | **Date** | Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был запущен сервер. | 
 **isDdosGuard** | **Boolean** | Это логическое значение, которое показывает, включена ли защита от DDoS у данного сервера. | 
+**isMasterSsh** | **Boolean** | Это логическое значение, которое показывает, доступно ли подключение по SSH для поддержки. | 
+**isDedicatedCpu** | **Boolean** | Это логическое значение, которое показывает, является ли CPU выделенным. | 
+**gpu** | **Number** | Количество видеокарт сервера. | 
 **cpu** | **Number** | Количество ядер процессора сервера. | 
 **cpuFrequency** | **String** | Частота ядер процессора сервера. | 
 **ram** | **Number** | Размер (в Мб) ОЗУ сервера. | 
@@ -27,7 +30,7 @@ Name | Type | Description | Notes
 **image** | [**VdsImage**](VdsImage.md) |  | 
 **networks** | [**[VdsNetworksInner]**](VdsNetworksInner.md) | Список сетей сервера. | 
 **cloudInit** | **String** | Cloud-init скрипт. | 
-**isQemuAgent** | **Boolean** | Включен ли QEMU-agent на сервере. | [optional] 
+**isQemuAgent** | **Boolean** | Это логическое значение, которое показывает, включен ли QEMU-agent на сервере. | 
 **availabilityZone** | [**AvailabilityZone**](AvailabilityZone.md) |  | 
 
 
@@ -39,9 +42,13 @@ Name | Type | Description | Notes
 
 * `ru-2` (value: `"ru-2"`)
 
+* `ru-3` (value: `"ru-3"`)
+
 * `pl-1` (value: `"pl-1"`)
 
 * `kz-1` (value: `"kz-1"`)
+
+* `nl-1` (value: `"nl-1"`)
 
 
 

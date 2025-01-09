@@ -13,7 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import ClusterOut from './ClusterOut';
-import Meta from './Meta';
+import SchemasMeta from './SchemasMeta';
 
 /**
  * The ClustersResponse model module.
@@ -24,7 +24,7 @@ class ClustersResponse {
     /**
      * Constructs a new <code>ClustersResponse</code>.
      * @alias module:model/ClustersResponse
-     * @param meta {module:model/Meta} 
+     * @param meta {module:model/SchemasMeta} 
      * @param clusters {Array.<module:model/ClusterOut>} Массив объектов Кластер
      */
     constructor(meta, clusters) { 
@@ -57,7 +57,7 @@ class ClustersResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('meta')) {
-                obj['meta'] = Meta.constructFromObject(data['meta']);
+                obj['meta'] = SchemasMeta.constructFromObject(data['meta']);
             }
             if (data.hasOwnProperty('clusters')) {
                 obj['clusters'] = ApiClient.convertToType(data['clusters'], [ClusterOut]);
@@ -84,7 +84,7 @@ class ClustersResponse {
         }
         // validate the optional field `meta`
         if (data['meta']) { // data not null
-          Meta.validateJSON(data['meta']);
+          SchemasMeta.validateJSON(data['meta']);
         }
         if (data['clusters']) { // data not null
             // ensure the json data is an array
@@ -106,13 +106,13 @@ class ClustersResponse {
 ClustersResponse.RequiredProperties = ["meta", "clusters"];
 
 /**
- * Идентификатор запроса
+ * ID запроса
  * @member {String} response_id
  */
 ClustersResponse.prototype['response_id'] = undefined;
 
 /**
- * @member {module:model/Meta} meta
+ * @member {module:model/SchemasMeta} meta
  */
 ClustersResponse.prototype['meta'] = undefined;
 

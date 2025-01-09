@@ -126,6 +126,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property gpuMin (base name: "gpu_min")', function() {
+      // uncomment below and update the code to test the property gpuMin
+      //var instance = new TimewebCloudApi.ServersConfiguratorRequirements();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property gpuMax (base name: "gpu_max")', function() {
+      // uncomment below and update the code to test the property gpuMax
+      //var instance = new TimewebCloudApi.ServersConfiguratorRequirements();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property gpuStep (base name: "gpu_step")', function() {
+      // uncomment below and update the code to test the property gpuStep
+      //var instance = new TimewebCloudApi.ServersConfiguratorRequirements();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

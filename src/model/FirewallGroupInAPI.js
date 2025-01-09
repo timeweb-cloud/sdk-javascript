@@ -22,7 +22,7 @@ class FirewallGroupInAPI {
     /**
      * Constructs a new <code>FirewallGroupInAPI</code>.
      * @alias module:model/FirewallGroupInAPI
-     * @param name {String} Имя группы правил
+     * @param name {String} Имя группы правил.
      */
     constructor(name) { 
         
@@ -89,13 +89,13 @@ class FirewallGroupInAPI {
 FirewallGroupInAPI.RequiredProperties = ["name"];
 
 /**
- * Имя группы правил
+ * Имя группы правил.
  * @member {String} name
  */
 FirewallGroupInAPI.prototype['name'] = undefined;
 
 /**
- * Описание группы правил
+ * Описание группы правил.
  * @member {String} description
  */
 FirewallGroupInAPI.prototype['description'] = undefined;

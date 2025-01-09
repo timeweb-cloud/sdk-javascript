@@ -24,7 +24,7 @@ class NetworkDrive {
     /**
      * Constructs a new <code>NetworkDrive</code>.
      * @alias module:model/NetworkDrive
-     * @param id {String} Идентификатор сетевого диска.
+     * @param id {String} ID сетевого диска.
      * @param name {String} Название сетевого диска.
      * @param comment {String} Комментарий
      * @param size {Number} Размер диска в Гб
@@ -33,7 +33,7 @@ class NetworkDrive {
      * @param status {module:model/NetworkDrive.StatusEnum} Статус сетевого диска.
      * @param availabilityZone {module:model/AvailabilityZone} 
      * @param type {module:model/NetworkDrive.TypeEnum} Тип сетевого диска.
-     * @param presetId {Number} Идентификатор тарифа.
+     * @param presetId {Number} ID тарифа.
      */
     constructor(id, name, comment, size, serviceList, location, status, availabilityZone, type, presetId) { 
         
@@ -159,7 +159,7 @@ class NetworkDrive {
 NetworkDrive.RequiredProperties = ["id", "name", "comment", "size", "service_list", "location", "status", "availability_zone", "type", "preset_id"];
 
 /**
- * Идентификатор сетевого диска.
+ * ID сетевого диска.
  * @member {String} id
  */
 NetworkDrive.prototype['id'] = undefined;
@@ -212,7 +212,7 @@ NetworkDrive.prototype['availability_zone'] = undefined;
 NetworkDrive.prototype['type'] = undefined;
 
 /**
- * Идентификатор тарифа.
+ * ID тарифа.
  * @member {Number} preset_id
  */
 NetworkDrive.prototype['preset_id'] = undefined;

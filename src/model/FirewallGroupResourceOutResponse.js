@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import FirewallGroupResourceOutAPI from './FirewallGroupResourceOutAPI';
+import FirewallGroupResource from './FirewallGroupResource';
 
 /**
  * The FirewallGroupResourceOutResponse model module.
@@ -23,7 +23,7 @@ class FirewallGroupResourceOutResponse {
     /**
      * Constructs a new <code>FirewallGroupResourceOutResponse</code>.
      * @alias module:model/FirewallGroupResourceOutResponse
-     * @param resource {module:model/FirewallGroupResourceOutAPI} 
+     * @param resource {module:model/FirewallGroupResource} 
      */
     constructor(resource) { 
         
@@ -54,7 +54,7 @@ class FirewallGroupResourceOutResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('resource')) {
-                obj['resource'] = FirewallGroupResourceOutAPI.constructFromObject(data['resource']);
+                obj['resource'] = FirewallGroupResource.constructFromObject(data['resource']);
             }
         }
         return obj;
@@ -78,7 +78,7 @@ class FirewallGroupResourceOutResponse {
         }
         // validate the optional field `resource`
         if (data['resource']) { // data not null
-          FirewallGroupResourceOutAPI.validateJSON(data['resource']);
+          FirewallGroupResource.validateJSON(data['resource']);
         }
 
         return true;
@@ -90,13 +90,13 @@ class FirewallGroupResourceOutResponse {
 FirewallGroupResourceOutResponse.RequiredProperties = ["resource"];
 
 /**
- * Идентификатор запроса
+ * ID запроса.
  * @member {String} response_id
  */
 FirewallGroupResourceOutResponse.prototype['response_id'] = undefined;
 
 /**
- * @member {module:model/FirewallGroupResourceOutAPI} resource
+ * @member {module:model/FirewallGroupResource} resource
  */
 FirewallGroupResourceOutResponse.prototype['resource'] = undefined;
 

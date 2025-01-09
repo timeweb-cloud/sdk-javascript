@@ -12,8 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
-import Meta from './Meta';
 import NodeOut from './NodeOut';
+import SchemasMeta from './SchemasMeta';
 
 /**
  * The NodesResponse model module.
@@ -24,7 +24,7 @@ class NodesResponse {
     /**
      * Constructs a new <code>NodesResponse</code>.
      * @alias module:model/NodesResponse
-     * @param meta {module:model/Meta} 
+     * @param meta {module:model/SchemasMeta} 
      * @param nodes {Array.<module:model/NodeOut>} Массив объектов Нода
      */
     constructor(meta, nodes) { 
@@ -57,7 +57,7 @@ class NodesResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('meta')) {
-                obj['meta'] = Meta.constructFromObject(data['meta']);
+                obj['meta'] = SchemasMeta.constructFromObject(data['meta']);
             }
             if (data.hasOwnProperty('nodes')) {
                 obj['nodes'] = ApiClient.convertToType(data['nodes'], [NodeOut]);
@@ -84,7 +84,7 @@ class NodesResponse {
         }
         // validate the optional field `meta`
         if (data['meta']) { // data not null
-          Meta.validateJSON(data['meta']);
+          SchemasMeta.validateJSON(data['meta']);
         }
         if (data['nodes']) { // data not null
             // ensure the json data is an array
@@ -106,13 +106,13 @@ class NodesResponse {
 NodesResponse.RequiredProperties = ["meta", "nodes"];
 
 /**
- * Идентификатор запроса
+ * ID запроса
  * @member {String} response_id
  */
 NodesResponse.prototype['response_id'] = undefined;
 
 /**
- * @member {module:model/Meta} meta
+ * @member {module:model/SchemasMeta} meta
  */
 NodesResponse.prototype['meta'] = undefined;
 

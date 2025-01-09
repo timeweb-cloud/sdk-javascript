@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.FirewallGroupResourceOutAPI();
+    instance = new TimewebCloudApi.SchemasMeta();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,22 +47,16 @@
       object[property] = value;
   }
 
-  describe('FirewallGroupResourceOutAPI', function() {
-    it('should create an instance of FirewallGroupResourceOutAPI', function() {
-      // uncomment below and update the code to test FirewallGroupResourceOutAPI
-      //var instance = new TimewebCloudApi.FirewallGroupResourceOutAPI();
-      //expect(instance).to.be.a(TimewebCloudApi.FirewallGroupResourceOutAPI);
+  describe('SchemasMeta', function() {
+    it('should create an instance of SchemasMeta', function() {
+      // uncomment below and update the code to test SchemasMeta
+      //var instance = new TimewebCloudApi.SchemasMeta();
+      //expect(instance).to.be.a(TimewebCloudApi.SchemasMeta);
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instance = new TimewebCloudApi.FirewallGroupResourceOutAPI();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instance = new TimewebCloudApi.FirewallGroupResourceOutAPI();
+    it('should have the property total (base name: "total")', function() {
+      // uncomment below and update the code to test the property total
+      //var instance = new TimewebCloudApi.SchemasMeta();
       //expect(instance).to.be();
     });
 

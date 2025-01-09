@@ -22,7 +22,7 @@ class AddStorageToProjectRequest {
     /**
      * Constructs a new <code>AddStorageToProjectRequest</code>.
      * @alias module:model/AddStorageToProjectRequest
-     * @param resourceId {Number} Идентификатор добавляемого хранилища.
+     * @param resourceId {Number} ID добавляемого хранилища.
      */
     constructor(resourceId) { 
         
@@ -78,7 +78,7 @@ class AddStorageToProjectRequest {
 AddStorageToProjectRequest.RequiredProperties = ["resource_id"];
 
 /**
- * Идентификатор добавляемого хранилища.
+ * ID добавляемого хранилища.
  * @member {Number} resource_id
  */
 AddStorageToProjectRequest.prototype['resource_id'] = undefined;

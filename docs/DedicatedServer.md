@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **price** | **Number** | Стоимость выделенного сервера. | 
 **location** | **String** | Локация сервера. | 
 **autoinstallReady** | **Number** | Количество готовых к автоматической выдаче серверов. Если значение равно 0, сервер будет установлен через инженеров. | 
+**password** | **String** | Пароль root сервера или пароль Администратора для серверов Windows. | 
 
 
 
@@ -54,6 +55,16 @@ Name | Type | Description | Notes
 * `pl-1` (value: `"pl-1"`)
 
 * `kz-1` (value: `"kz-1"`)
+
+* `nl-1` (value: `"nl-1"`)
+
+* `tr-1` (value: `"tr-1"`)
+
+* `us-2` (value: `"us-2"`)
+
+* `de-1` (value: `"de-1"`)
+
+* `fi-1` (value: `"fi-1"`)
 
 
 

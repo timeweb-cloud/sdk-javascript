@@ -22,7 +22,7 @@ class AddKeyToServerRequest {
     /**
      * Constructs a new <code>AddKeyToServerRequest</code>.
      * @alias module:model/AddKeyToServerRequest
-     * @param sshKeyIds {Array.<Number>} Массив уникальных идентификаторов SSH-ключей
+     * @param sshKeyIds {Array.<Number>} Массив ID SSH-ключей
      */
     constructor(sshKeyIds) { 
         
@@ -82,7 +82,7 @@ class AddKeyToServerRequest {
 AddKeyToServerRequest.RequiredProperties = ["ssh_key_ids"];
 
 /**
- * Массив уникальных идентификаторов SSH-ключей
+ * Массив ID SSH-ключей
  * @member {Array.<Number>} ssh_key_ids
  */
 AddKeyToServerRequest.prototype['ssh_key_ids'] = undefined;

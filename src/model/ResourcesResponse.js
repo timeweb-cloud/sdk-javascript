@@ -90,7 +90,7 @@ class ResourcesResponse {
 ResourcesResponse.RequiredProperties = ["resources"];
 
 /**
- * Идентификатор запроса
+ * ID запроса
  * @member {String} response_id
  */
 ResourcesResponse.prototype['response_id'] = undefined;

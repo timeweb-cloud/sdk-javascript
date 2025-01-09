@@ -72,6 +72,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isPreInstalled (base name: "is_pre_installed")', function() {
+      // uncomment below and update the code to test the property isPreInstalled
+      //var instance = new TimewebCloudApi.DedicatedServerPreset();
+      //expect(instance).to.be();
+    });
+
     it('should have the property cpu (base name: "cpu")', function() {
       // uncomment below and update the code to test the property cpu
       //var instance = new TimewebCloudApi.DedicatedServerPreset();

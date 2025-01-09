@@ -37,7 +37,7 @@ class CreateBalancer {
      * @param timeout {Number} Таймаут ответа балансировщика.
      * @param fall {Number} Порог количества ошибок.
      * @param rise {Number} Порог количества успешных ответов.
-     * @param presetId {Number} Идентификатор тарифа.
+     * @param presetId {Number} ID тарифа.
      */
     constructor(name, algo, isSticky, isUseProxy, isSsl, isKeepalive, proto, port, path, inter, timeout, fall, rise, presetId) { 
         
@@ -249,7 +249,7 @@ CreateBalancer.prototype['fall'] = undefined;
 CreateBalancer.prototype['rise'] = undefined;
 
 /**
- * Идентификатор тарифа.
+ * ID тарифа.
  * @member {Number} preset_id
  */
 CreateBalancer.prototype['preset_id'] = undefined;

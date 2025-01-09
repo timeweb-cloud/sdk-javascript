@@ -6,11 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addKeyToServer**](SSHApi.md#addKeyToServer) | **POST** /api/v1/servers/{server_id}/ssh-keys | Добавление SSH-ключей на сервер
 [**createKey**](SSHApi.md#createKey) | **POST** /api/v1/ssh-keys | Создание SSH-ключа
-[**deleteKey**](SSHApi.md#deleteKey) | **DELETE** /api/v1/ssh-keys/{ssh_key_id} | Удаление SSH-ключа по уникальному идентификатору
+[**deleteKey**](SSHApi.md#deleteKey) | **DELETE** /api/v1/ssh-keys/{ssh_key_id} | Удаление SSH-ключа по ID
 [**deleteKeyFromServer**](SSHApi.md#deleteKeyFromServer) | **DELETE** /api/v1/servers/{server_id}/ssh-keys/{ssh_key_id} | Удаление SSH-ключей с сервера
-[**getKey**](SSHApi.md#getKey) | **GET** /api/v1/ssh-keys/{ssh_key_id} | Получение SSH-ключа по уникальному идентификатору
+[**getKey**](SSHApi.md#getKey) | **GET** /api/v1/ssh-keys/{ssh_key_id} | Получение SSH-ключа по ID
 [**getKeys**](SSHApi.md#getKeys) | **GET** /api/v1/ssh-keys | Получение списка SSH-ключей
-[**updateKey**](SSHApi.md#updateKey) | **PATCH** /api/v1/ssh-keys/{ssh_key_id} | Изменение SSH-ключа по уникальному идентификатору
+[**updateKey**](SSHApi.md#updateKey) | **PATCH** /api/v1/ssh-keys/{ssh_key_id} | Изменение SSH-ключа по ID
 
 
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 
 > deleteKey(sshKeyId)
 
-Удаление SSH-ключа по уникальному идентификатору
+Удаление SSH-ключа по ID
 
 Чтобы удалить SSH-ключ, отправьте DELETE-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
 
@@ -132,7 +132,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.SSHApi();
-let sshKeyId = 1051; // Number | ID SSH-ключа
+let sshKeyId = 1051; // Number | ID SSH-ключа.
 apiInstance.deleteKey(sshKeyId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -147,7 +147,7 @@ apiInstance.deleteKey(sshKeyId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sshKeyId** | **Number**| ID SSH-ключа | 
+ **sshKeyId** | **Number**| ID SSH-ключа. | 
 
 ### Return type
 
@@ -182,7 +182,7 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.SSHApi();
 let serverId = 1051; // Number | ID облачного сервера.
-let sshKeyId = 1051; // Number | ID SSH-ключа
+let sshKeyId = 1051; // Number | ID SSH-ключа.
 apiInstance.deleteKeyFromServer(serverId, sshKeyId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -198,7 +198,7 @@ apiInstance.deleteKeyFromServer(serverId, sshKeyId, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **Number**| ID облачного сервера. | 
- **sshKeyId** | **Number**| ID SSH-ключа | 
+ **sshKeyId** | **Number**| ID SSH-ключа. | 
 
 ### Return type
 
@@ -218,7 +218,7 @@ null (empty response body)
 
 > GetKey200Response getKey(sshKeyId)
 
-Получение SSH-ключа по уникальному идентификатору
+Получение SSH-ключа по ID
 
 Чтобы получить SSH-ключ, отправьте GET-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
 
@@ -232,7 +232,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.SSHApi();
-let sshKeyId = 1051; // Number | ID SSH-ключа
+let sshKeyId = 1051; // Number | ID SSH-ключа.
 apiInstance.getKey(sshKeyId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -247,7 +247,7 @@ apiInstance.getKey(sshKeyId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sshKeyId** | **Number**| ID SSH-ключа | 
+ **sshKeyId** | **Number**| ID SSH-ключа. | 
 
 ### Return type
 
@@ -312,7 +312,7 @@ This endpoint does not need any parameter.
 
 > GetKey200Response updateKey(sshKeyId, updateKeyRequest)
 
-Изменение SSH-ключа по уникальному идентификатору
+Изменение SSH-ключа по ID
 
 Чтобы изменить SSH-ключ, отправьте PATCH-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
 
@@ -326,7 +326,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.SSHApi();
-let sshKeyId = 1051; // Number | ID SSH-ключа
+let sshKeyId = 1051; // Number | ID SSH-ключа.
 let updateKeyRequest = new TimewebCloudApi.UpdateKeyRequest(); // UpdateKeyRequest | 
 apiInstance.updateKey(sshKeyId, updateKeyRequest, (error, data, response) => {
   if (error) {
@@ -342,7 +342,7 @@ apiInstance.updateKey(sshKeyId, updateKeyRequest, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sshKeyId** | **Number**| ID SSH-ключа | 
+ **sshKeyId** | **Number**| ID SSH-ключа. | 
  **updateKeyRequest** | [**UpdateKeyRequest**](UpdateKeyRequest.md)|  | 
 
 ### Return type

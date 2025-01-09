@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import FirewallRuleOutAPI from './FirewallRuleOutAPI';
+import FirewallRule from './FirewallRule';
 
 /**
  * The FirewallRuleOutResponse model module.
@@ -23,7 +23,7 @@ class FirewallRuleOutResponse {
     /**
      * Constructs a new <code>FirewallRuleOutResponse</code>.
      * @alias module:model/FirewallRuleOutResponse
-     * @param rule {module:model/FirewallRuleOutAPI} 
+     * @param rule {module:model/FirewallRule} 
      */
     constructor(rule) { 
         
@@ -54,7 +54,7 @@ class FirewallRuleOutResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('rule')) {
-                obj['rule'] = FirewallRuleOutAPI.constructFromObject(data['rule']);
+                obj['rule'] = FirewallRule.constructFromObject(data['rule']);
             }
         }
         return obj;
@@ -78,7 +78,7 @@ class FirewallRuleOutResponse {
         }
         // validate the optional field `rule`
         if (data['rule']) { // data not null
-          FirewallRuleOutAPI.validateJSON(data['rule']);
+          FirewallRule.validateJSON(data['rule']);
         }
 
         return true;
@@ -90,13 +90,13 @@ class FirewallRuleOutResponse {
 FirewallRuleOutResponse.RequiredProperties = ["rule"];
 
 /**
- * Идентификатор запроса
+ * ID запроса.
  * @member {String} response_id
  */
 FirewallRuleOutResponse.prototype['response_id'] = undefined;
 
 /**
- * @member {module:model/FirewallRuleOutAPI} rule
+ * @member {module:model/FirewallRule} rule
  */
 FirewallRuleOutResponse.prototype['rule'] = undefined;
 

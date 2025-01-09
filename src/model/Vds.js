@@ -30,8 +30,8 @@ class Vds {
      * Сервер
      * @alias module:model/Vds
      * @param id {Number} ID для каждого экземпляра сервера. Автоматически генерируется при создании.
-     * @param name {String} Удобочитаемое имя, установленное для выделенного сервера.
-     * @param comment {String} Комментарий к выделенному серверу.
+     * @param name {String} Удобочитаемое имя, установленное для сервера.
+     * @param comment {String} Комментарий к серверу.
      * @param createdAt {String} Дата создания сервера в формате ISO8061.
      * @param os {module:model/VdsOs} 
      * @param software {module:model/VdsSoftware} 
@@ -42,6 +42,9 @@ class Vds {
      * @param status {module:model/Vds.StatusEnum} Статус сервера.
      * @param startAt {Date} Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был запущен сервер.
      * @param isDdosGuard {Boolean} Это логическое значение, которое показывает, включена ли защита от DDoS у данного сервера.
+     * @param isMasterSsh {Boolean} Это логическое значение, которое показывает, доступно ли подключение по SSH для поддержки.
+     * @param isDedicatedCpu {Boolean} Это логическое значение, которое показывает, является ли CPU выделенным.
+     * @param gpu {Number} Количество видеокарт сервера.
      * @param cpu {Number} Количество ядер процессора сервера.
      * @param cpuFrequency {String} Частота ядер процессора сервера.
      * @param ram {Number} Размер (в Мб) ОЗУ сервера.
@@ -52,11 +55,12 @@ class Vds {
      * @param image {module:model/VdsImage} 
      * @param networks {Array.<module:model/VdsNetworksInner>} Список сетей сервера.
      * @param cloudInit {String} Cloud-init скрипт.
+     * @param isQemuAgent {Boolean} Это логическое значение, которое показывает, включен ли QEMU-agent на сервере.
      * @param availabilityZone {module:model/AvailabilityZone} 
      */
-    constructor(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, availabilityZone) { 
+    constructor(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, isMasterSsh, isDedicatedCpu, gpu, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, isQemuAgent, availabilityZone) { 
         
-        Vds.initialize(this, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, availabilityZone);
+        Vds.initialize(this, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, isMasterSsh, isDedicatedCpu, gpu, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, isQemuAgent, availabilityZone);
     }
 
     /**
@@ -64,7 +68,7 @@ class Vds {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, availabilityZone) { 
+    static initialize(obj, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, isMasterSsh, isDedicatedCpu, gpu, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, isQemuAgent, availabilityZone) { 
         obj['id'] = id;
         obj['name'] = name;
         obj['comment'] = comment;
@@ -78,6 +82,9 @@ class Vds {
         obj['status'] = status;
         obj['start_at'] = startAt;
         obj['is_ddos_guard'] = isDdosGuard;
+        obj['is_master_ssh'] = isMasterSsh;
+        obj['is_dedicated_cpu'] = isDedicatedCpu;
+        obj['gpu'] = gpu;
         obj['cpu'] = cpu;
         obj['cpu_frequency'] = cpuFrequency;
         obj['ram'] = ram;
@@ -88,6 +95,7 @@ class Vds {
         obj['image'] = image;
         obj['networks'] = networks;
         obj['cloud_init'] = cloudInit;
+        obj['is_qemu_agent'] = isQemuAgent;
         obj['availability_zone'] = availabilityZone;
     }
 
@@ -140,6 +148,15 @@ class Vds {
             }
             if (data.hasOwnProperty('is_ddos_guard')) {
                 obj['is_ddos_guard'] = ApiClient.convertToType(data['is_ddos_guard'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_master_ssh')) {
+                obj['is_master_ssh'] = ApiClient.convertToType(data['is_master_ssh'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_dedicated_cpu')) {
+                obj['is_dedicated_cpu'] = ApiClient.convertToType(data['is_dedicated_cpu'], 'Boolean');
+            }
+            if (data.hasOwnProperty('gpu')) {
+                obj['gpu'] = ApiClient.convertToType(data['gpu'], 'Number');
             }
             if (data.hasOwnProperty('cpu')) {
                 obj['cpu'] = ApiClient.convertToType(data['cpu'], 'Number');
@@ -276,7 +293,7 @@ class Vds {
 
 }
 
-Vds.RequiredProperties = ["id", "name", "comment", "created_at", "os", "software", "preset_id", "location", "configurator_id", "boot_mode", "status", "start_at", "is_ddos_guard", "cpu", "cpu_frequency", "ram", "disks", "avatar_id", "vnc_pass", "root_pass", "image", "networks", "cloud_init", "availability_zone"];
+Vds.RequiredProperties = ["id", "name", "comment", "created_at", "os", "software", "preset_id", "location", "configurator_id", "boot_mode", "status", "start_at", "is_ddos_guard", "is_master_ssh", "is_dedicated_cpu", "gpu", "cpu", "cpu_frequency", "ram", "disks", "avatar_id", "vnc_pass", "root_pass", "image", "networks", "cloud_init", "is_qemu_agent", "availability_zone"];
 
 /**
  * ID для каждого экземпляра сервера. Автоматически генерируется при создании.
@@ -285,13 +302,13 @@ Vds.RequiredProperties = ["id", "name", "comment", "created_at", "os", "software
 Vds.prototype['id'] = undefined;
 
 /**
- * Удобочитаемое имя, установленное для выделенного сервера.
+ * Удобочитаемое имя, установленное для сервера.
  * @member {String} name
  */
 Vds.prototype['name'] = undefined;
 
 /**
- * Комментарий к выделенному серверу.
+ * Комментарий к серверу.
  * @member {String} comment
  */
 Vds.prototype['comment'] = undefined;
@@ -355,6 +372,24 @@ Vds.prototype['start_at'] = undefined;
 Vds.prototype['is_ddos_guard'] = undefined;
 
 /**
+ * Это логическое значение, которое показывает, доступно ли подключение по SSH для поддержки.
+ * @member {Boolean} is_master_ssh
+ */
+Vds.prototype['is_master_ssh'] = undefined;
+
+/**
+ * Это логическое значение, которое показывает, является ли CPU выделенным.
+ * @member {Boolean} is_dedicated_cpu
+ */
+Vds.prototype['is_dedicated_cpu'] = undefined;
+
+/**
+ * Количество видеокарт сервера.
+ * @member {Number} gpu
+ */
+Vds.prototype['gpu'] = undefined;
+
+/**
  * Количество ядер процессора сервера.
  * @member {Number} cpu
  */
@@ -414,7 +449,7 @@ Vds.prototype['networks'] = undefined;
 Vds.prototype['cloud_init'] = undefined;
 
 /**
- * Включен ли QEMU-agent на сервере.
+ * Это логическое значение, которое показывает, включен ли QEMU-agent на сервере.
  * @member {Boolean} is_qemu_agent
  */
 Vds.prototype['is_qemu_agent'] = undefined;
@@ -448,6 +483,12 @@ Vds['LocationEnum'] = {
     "ru-2": "ru-2",
 
     /**
+     * value: "ru-3"
+     * @const
+     */
+    "ru-3": "ru-3",
+
+    /**
      * value: "pl-1"
      * @const
      */
@@ -457,7 +498,13 @@ Vds['LocationEnum'] = {
      * value: "kz-1"
      * @const
      */
-    "kz-1": "kz-1"
+    "kz-1": "kz-1",
+
+    /**
+     * value: "nl-1"
+     * @const
+     */
+    "nl-1": "nl-1"
 };
 
 

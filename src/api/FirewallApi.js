@@ -58,7 +58,7 @@ export default class FirewallApi {
     /**
      * Линковка ресурса в firewall group
      * Чтобы слинковать ресурс с группой правил, отправьте POST запрос на `/api/v1/firewall/groups/{group_id}/resources/{resource_id}`
-     * @param {String} groupId ID группы правил
+     * @param {String} groupId ID группы правил.
      * @param {String} resourceId ID ресурса
      * @param {Object} opts Optional parameters
      * @param {module:model/ResourceType} [resourceType] 
@@ -113,7 +113,7 @@ export default class FirewallApi {
      * Чтобы создать группу правил, отправьте POST запрос на `/api/v1/firewall/groups`
      * @param {module:model/FirewallGroupInAPI} firewallGroupInAPI 
      * @param {Object} opts Optional parameters
-     * @param {module:model/String} [policy] Тип группы правил
+     * @param {module:model/String} [policy] Тип группы правил.
      * @param {module:api/FirewallApi~createGroupCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/FirewallGroupOutResponse}
      */
@@ -157,7 +157,7 @@ export default class FirewallApi {
     /**
      * Создание firewall правила
      * Чтобы создать правило в группе, отправьте POST запрос на `/api/v1/firewall/groups/{group_id}/rules`
-     * @param {String} groupId ID группы правил
+     * @param {String} groupId ID группы правил.
      * @param {module:model/FirewallRuleInAPI} firewallRuleInAPI 
      * @param {module:api/FirewallApi~createGroupRuleCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/FirewallRuleOutResponse}
@@ -205,7 +205,7 @@ export default class FirewallApi {
     /**
      * Удаление группы правил
      * Чтобы удалить группу правил, отправьте DELETE запрос на `/api/v1/firewall/groups/{group_id}`
-     * @param {String} groupId ID группы правил
+     * @param {String} groupId ID группы правил.
      * @param {module:api/FirewallApi~deleteGroupCallback} callback The callback function, accepting three arguments: error, data, response
      */
     deleteGroup(groupId, callback) {
@@ -247,7 +247,7 @@ export default class FirewallApi {
     /**
      * Удаление firewall правила
      * Чтобы удалить правило, отправьте DELETE запрос на `/api/v1/firewall/groups/{group_id}/rules/{rule_id}`
-     * @param {String} groupId ID группы правил
+     * @param {String} groupId ID группы правил.
      * @param {String} ruleId ID правила
      * @param {module:api/FirewallApi~deleteGroupRuleCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -295,7 +295,7 @@ export default class FirewallApi {
     /**
      * Отлинковка ресурса из firewall group
      * Чтобы отлинковать ресурс от группы правил, отправьте DELETE запрос на `/api/v1/firewall/groups/{group_id}/resources/{resource_id}`
-     * @param {String} groupId ID группы правил
+     * @param {String} groupId ID группы правил.
      * @param {String} resourceId ID ресурса
      * @param {Object} opts Optional parameters
      * @param {module:model/ResourceType} [resourceType] 
@@ -347,7 +347,7 @@ export default class FirewallApi {
     /**
      * Получение информации о группе правил
      * Чтобы получить информацию о группе правил, отправьте GET запрос на `/api/v1/firewall/groups/{group_id}`
-     * @param {String} groupId ID группы правил
+     * @param {String} groupId ID группы правил.
      * @param {module:api/FirewallApi~getGroupCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/FirewallGroupOutResponse}
      */
@@ -390,7 +390,7 @@ export default class FirewallApi {
     /**
      * Получение слинкованных ресурсов
      * Чтобы получить слинкованных ресурсов для группы правил, отправьте GET запрос на `/api/v1/firewall/groups/{group_id}/resources`
-     * @param {String} groupId ID группы правил
+     * @param {String} groupId ID группы правил.
      * @param {Object} opts Optional parameters
      * @param {Number} [limit = 100)] Обозначает количество записей, которое необходимо вернуть.
      * @param {Number} [offset = 0)] Указывает на смещение относительно начала списка.
@@ -439,8 +439,8 @@ export default class FirewallApi {
     /**
      * Получение информации о правиле
      * Чтобы получить инфомрацию о правиле, отправьте GET запрос на `/api/v1/firewall/groups/{group_id}/rules/{rule_id}`
-     * @param {String} ruleId ID правила
-     * @param {String} groupId ID группы правил
+     * @param {String} ruleId ID правила.
+     * @param {String} groupId ID группы правил.
      * @param {module:api/FirewallApi~getGroupRuleCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/FirewallRuleOutResponse}
      */
@@ -488,7 +488,7 @@ export default class FirewallApi {
     /**
      * Получение списка правил
      * Чтобы получить список правил в группе, отправьте GET запрос на `/api/v1/firewall/groups/{group_id}/rules`
-     * @param {String} groupId ID группы правил
+     * @param {String} groupId ID группы правил.
      * @param {Object} opts Optional parameters
      * @param {Number} [limit = 100)] Обозначает количество записей, которое необходимо вернуть.
      * @param {Number} [offset = 0)] Указывает на смещение относительно начала списка.
@@ -580,7 +580,7 @@ export default class FirewallApi {
     /**
      * Получение групп правил для ресурса
      * Чтобы получить список групп правил, с которыми слинкован ресурс, отправьте GET запрос на `/api/v1/firewall/service/{resource_type}/{resource_id}`
-     * @param {String} resourceId Идентификатор ресурса
+     * @param {String} resourceId ID ресурса
      * @param {module:model/ResourceType} resourceType 
      * @param {Object} opts Optional parameters
      * @param {Number} [limit = 100)] Обозначает количество записей, которое необходимо вернуть.
@@ -635,7 +635,7 @@ export default class FirewallApi {
     /**
      * Обновление группы правил
      * Чтобы изменить группу правил, отправьте PATCH запрос на `/api/v1/firewall/groups/{group_id}`
-     * @param {String} groupId ID группы правил
+     * @param {String} groupId ID группы правил.
      * @param {module:model/FirewallGroupInAPI} firewallGroupInAPI 
      * @param {module:api/FirewallApi~updateGroupCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/FirewallGroupOutResponse}
@@ -683,7 +683,7 @@ export default class FirewallApi {
     /**
      * Обновление firewall правила
      * Чтобы изменить правило, отправьте PATCH запрос на `/api/v1/firewall/groups/{group_id}/rules/{rule_id}`
-     * @param {String} groupId ID группы правил
+     * @param {String} groupId ID группы правил.
      * @param {String} ruleId ID правила
      * @param {module:model/FirewallRuleInAPI} firewallRuleInAPI 
      * @param {module:api/FirewallApi~updateGroupRuleCallback} callback The callback function, accepting three arguments: error, data, response

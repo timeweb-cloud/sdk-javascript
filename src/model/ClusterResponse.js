@@ -90,7 +90,7 @@ class ClusterResponse {
 ClusterResponse.RequiredProperties = ["cluster"];
 
 /**
- * Идентификатор запроса
+ * ID запроса
  * @member {String} response_id
  */
 ClusterResponse.prototype['response_id'] = undefined;

@@ -24,10 +24,12 @@ class ImageInAPI {
     /**
      * Constructs a new <code>ImageInAPI</code>.
      * @alias module:model/ImageInAPI
+     * @param location {module:model/Location} 
+     * @param os {module:model/OS} 
      */
-    constructor() { 
+    constructor(location, os) { 
         
-        ImageInAPI.initialize(this);
+        ImageInAPI.initialize(this, location, os);
     }
 
     /**
@@ -35,7 +37,9 @@ class ImageInAPI {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, location, os) { 
+        obj['location'] = location;
+        obj['os'] = os;
     }
 
     /**
@@ -77,6 +81,12 @@ class ImageInAPI {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ImageInAPI</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ImageInAPI.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
@@ -96,28 +106,28 @@ class ImageInAPI {
 
 }
 
-
+ImageInAPI.RequiredProperties = ["location", "os"];
 
 /**
- * Имя образа
+ * Имя образа.
  * @member {String} name
  */
 ImageInAPI.prototype['name'] = undefined;
 
 /**
- * Описание образа
+ * Описание образа.
  * @member {String} description
  */
 ImageInAPI.prototype['description'] = undefined;
 
 /**
- * Идентификатор диска, для которого создается образ
+ * ID диска, для которого создается образ.
  * @member {Number} disk_id
  */
 ImageInAPI.prototype['disk_id'] = undefined;
 
 /**
- * Cсылка для загрузки образа
+ * Ссылка для загрузки образа.
  * @member {String} upload_url
  */
 ImageInAPI.prototype['upload_url'] = undefined;

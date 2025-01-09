@@ -62,7 +62,7 @@ export default class BalancersApi {
     /**
      * Добавление IP-адресов к балансировщику
      * Чтобы добавить `IP`-адреса к балансировщику, отправьте запрос POST в `api/v1/balancers/{balancer_id}/ips`. 
-     * @param {Number} balancerId Идентификатор балансировщика
+     * @param {Number} balancerId ID балансировщика
      * @param {module:model/AddIPsToBalancerRequest} addIPsToBalancerRequest 
      * @param {module:api/BalancersApi~addIPsToBalancerCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -151,7 +151,7 @@ export default class BalancersApi {
     /**
      * Создание правила для балансировщика
      * Чтобы создать правило для балансировщика, отправьте запрос POST в `api/v1/balancers/{balancer_id}/rules`. 
-     * @param {Number} balancerId Идентификатор балансировщика
+     * @param {Number} balancerId ID балансировщика
      * @param {module:model/CreateRule} createRule 
      * @param {module:api/BalancersApi~createBalancerRuleCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateBalancerRule200Response}
@@ -199,7 +199,7 @@ export default class BalancersApi {
     /**
      * Удаление балансировщика
      * Чтобы удалить балансировщик, отправьте запрос DELETE в `api/v1/balancers/{balancer_id}`. 
-     * @param {Number} balancerId Идентификатор балансировщика
+     * @param {Number} balancerId ID балансировщика
      * @param {Object} opts Optional parameters
      * @param {String} [hash] Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм.
      * @param {String} [code] Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена `is_able_to_delete` установлен в значение `true`
@@ -248,8 +248,8 @@ export default class BalancersApi {
     /**
      * Удаление правила для балансировщика
      * Чтобы удалить правило для балансировщика, отправьте запрос DELETE в `api/v1/balancers/{balancer_id}/rules/{rule_id}`. 
-     * @param {Number} balancerId Идентификатор балансировщика
-     * @param {Number} ruleId Идентификатор правила для балансировщика
+     * @param {Number} balancerId ID балансировщика
+     * @param {Number} ruleId ID правила для балансировщика
      * @param {module:api/BalancersApi~deleteBalancerRuleCallback} callback The callback function, accepting three arguments: error, data, response
      */
     deleteBalancerRule(balancerId, ruleId, callback) {
@@ -296,7 +296,7 @@ export default class BalancersApi {
     /**
      * Удаление IP-адресов из балансировщика
      * Чтобы удалить `IP`-адреса из балансировщика, отправьте запрос DELETE в `api/v1/balancers/{balancer_id}/ips`. 
-     * @param {Number} balancerId Идентификатор балансировщика
+     * @param {Number} balancerId ID балансировщика
      * @param {module:model/AddIPsToBalancerRequest} addIPsToBalancerRequest 
      * @param {module:api/BalancersApi~deleteIPsFromBalancerCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -343,7 +343,7 @@ export default class BalancersApi {
     /**
      * Получение бaлансировщика
      * Чтобы отобразить информацию об отдельном балансировщике, отправьте запрос GET на `api/v1/balancers/{balancer_id}`. 
-     * @param {Number} balancerId Идентификатор балансировщика
+     * @param {Number} balancerId ID балансировщика
      * @param {module:api/BalancersApi~getBalancerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateBalancer200Response}
      */
@@ -386,7 +386,7 @@ export default class BalancersApi {
     /**
      * Получение списка IP-адресов балансировщика
      * Чтобы добавить `IP`-адреса к балансировщику, отправьте запрос GET в `api/v1/balancers/{balancer_id}/ips`. 
-     * @param {Number} balancerId Идентификатор балансировщика
+     * @param {Number} balancerId ID балансировщика
      * @param {module:api/BalancersApi~getBalancerIPsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetBalancerIPs200Response}
      */
@@ -429,7 +429,7 @@ export default class BalancersApi {
     /**
      * Получение правил балансировщика
      * Чтобы получить правила балансировщика, отправьте запрос GET в `api/v1/balancers/{balancer_id}/rules`. 
-     * @param {Number} balancerId Идентификатор балансировщика
+     * @param {Number} balancerId ID балансировщика
      * @param {module:api/BalancersApi~getBalancerRulesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetBalancerRules200Response}
      */
@@ -552,7 +552,7 @@ export default class BalancersApi {
     /**
      * Обновление балансировщика
      * Чтобы обновить только определенные атрибуты балансировщика, отправьте запрос PATCH в `api/v1/balancers/{balancer_id}`. 
-     * @param {Number} balancerId Идентификатор балансировщика
+     * @param {Number} balancerId ID балансировщика
      * @param {module:model/UpdateBalancer} updateBalancer 
      * @param {module:api/BalancersApi~updateBalancerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateBalancer200Response}
@@ -600,8 +600,8 @@ export default class BalancersApi {
     /**
      * Обновление правила для балансировщика
      * Чтобы обновить правило для балансировщика, отправьте запрос PATCH в `api/v1/balancers/{balancer_id}/rules/{rule_id}`. 
-     * @param {Number} balancerId Идентификатор балансировщика
-     * @param {Number} ruleId Идентификатор правила для балансировщика
+     * @param {Number} balancerId ID балансировщика
+     * @param {Number} ruleId ID правила для балансировщика
      * @param {module:model/UpdateRule} updateRule 
      * @param {module:api/BalancersApi~updateBalancerRuleCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateBalancerRule200Response}

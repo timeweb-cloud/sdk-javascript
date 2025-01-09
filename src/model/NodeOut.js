@@ -25,9 +25,9 @@ class NodeOut {
      * @param id {Number} ID ноды
      * @param createdAt {Date} Дата и время создания ноды в формате ISO8601
      * @param type {String} Тип ноды
-     * @param groupId {Number} Идентификатор группы нод
+     * @param groupId {Number} ID группы нод
      * @param status {String} Статус
-     * @param presetId {Number} Идентификатор тарифа ноды
+     * @param presetId {Number} ID тарифа ноды
      * @param cpu {Number} Количество ядер
      * @param ram {Number} Количество памяти
      * @param disk {Number} Количество пространства
@@ -158,7 +158,7 @@ NodeOut.prototype['created_at'] = undefined;
 NodeOut.prototype['type'] = undefined;
 
 /**
- * Идентификатор группы нод
+ * ID группы нод
  * @member {Number} group_id
  */
 NodeOut.prototype['group_id'] = undefined;
@@ -170,7 +170,7 @@ NodeOut.prototype['group_id'] = undefined;
 NodeOut.prototype['status'] = undefined;
 
 /**
- * Идентификатор тарифа ноды
+ * ID тарифа ноды
  * @member {Number} preset_id
  */
 NodeOut.prototype['preset_id'] = undefined;

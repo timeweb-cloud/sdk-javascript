@@ -91,7 +91,7 @@ class ImageUrlIn {
 ImageUrlIn.prototype['type'] = undefined;
 
 /**
- * Имя файла для загрузки в облачное хранилище
+ * Имя файла для загрузки в облачное хранилище.
  * @member {String} filename
  */
 ImageUrlIn.prototype['filename'] = undefined;

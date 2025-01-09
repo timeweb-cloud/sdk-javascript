@@ -144,9 +144,9 @@ export default class SSHApi {
      */
 
     /**
-     * Удаление SSH-ключа по уникальному идентификатору
+     * Удаление SSH-ключа по ID
      * Чтобы удалить SSH-ключ, отправьте DELETE-запрос на `/api/v1/ssh-keys/{ssh_key_id}`
-     * @param {Number} sshKeyId ID SSH-ключа
+     * @param {Number} sshKeyId ID SSH-ключа.
      * @param {module:api/SSHApi~deleteKeyCallback} callback The callback function, accepting three arguments: error, data, response
      */
     deleteKey(sshKeyId, callback) {
@@ -189,7 +189,7 @@ export default class SSHApi {
      * Удаление SSH-ключей с сервера
      * Чтобы удалить SSH-ключ с сервера, отправьте DELETE-запрос на `/api/v1/servers/{server_id}/ssh-keys/{ssh_key_id}`
      * @param {Number} serverId ID облачного сервера.
-     * @param {Number} sshKeyId ID SSH-ключа
+     * @param {Number} sshKeyId ID SSH-ключа.
      * @param {module:api/SSHApi~deleteKeyFromServerCallback} callback The callback function, accepting three arguments: error, data, response
      */
     deleteKeyFromServer(serverId, sshKeyId, callback) {
@@ -234,9 +234,9 @@ export default class SSHApi {
      */
 
     /**
-     * Получение SSH-ключа по уникальному идентификатору
+     * Получение SSH-ключа по ID
      * Чтобы получить SSH-ключ, отправьте GET-запрос на `/api/v1/ssh-keys/{ssh_key_id}`
-     * @param {Number} sshKeyId ID SSH-ключа
+     * @param {Number} sshKeyId ID SSH-ключа.
      * @param {module:api/SSHApi~getKeyCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetKey200Response}
      */
@@ -314,9 +314,9 @@ export default class SSHApi {
      */
 
     /**
-     * Изменение SSH-ключа по уникальному идентификатору
+     * Изменение SSH-ключа по ID
      * Чтобы изменить SSH-ключ, отправьте PATCH-запрос на `/api/v1/ssh-keys/{ssh_key_id}`
-     * @param {Number} sshKeyId ID SSH-ключа
+     * @param {Number} sshKeyId ID SSH-ключа.
      * @param {module:model/UpdateKeyRequest} updateKeyRequest 
      * @param {module:api/SSHApi~updateKeyCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetKey200Response}

@@ -56,7 +56,7 @@ export default class FloatingIPApi {
     /**
      * Привязать IP к сервису
      * Чтобы привязать IP к сервису, отправьте POST-запрос на `/api/v1/floating-ips/{floating_ip_id}/bind`.
-     * @param {String} floatingIpId Идентификатор плавающего IP
+     * @param {String} floatingIpId ID плавающего IP
      * @param {module:model/BindFloatingIp} bindFloatingIp 
      * @param {module:api/FloatingIPApi~bindFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -143,9 +143,9 @@ export default class FloatingIPApi {
      */
 
     /**
-     * Удаление плавающего IP по идентификатору
+     * Удаление плавающего IP по ID
      * Чтобы удалить плавающий IP, отправьте DELETE-запрос на `/api/v1/floating-ips/{floating_ip_id}`
-     * @param {String} floatingIpId Идентификатор плавающего IP
+     * @param {String} floatingIpId ID плавающего IP
      * @param {module:api/FloatingIPApi~deleteFloatingIPCallback} callback The callback function, accepting three arguments: error, data, response
      */
     deleteFloatingIP(floatingIpId, callback) {
@@ -187,7 +187,7 @@ export default class FloatingIPApi {
     /**
      * Получение плавающего IP
      * Чтобы отобразить информацию об отдельном плавающем IP, отправьте запрос GET на `api/v1/floating-ips/{floating_ip_id}`.
-     * @param {String} floatingIpId Идентификатор плавающего IP
+     * @param {String} floatingIpId ID плавающего IP
      * @param {module:api/FloatingIPApi~getFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateFloatingIp201Response}
      */
@@ -267,7 +267,7 @@ export default class FloatingIPApi {
     /**
      * Отвязать IP от сервиса
      * Чтобы отвязать IP от сервиса, отправьте POST-запрос на `/api/v1/floating-ips/{floating_ip_id}/unbind`.
-     * @param {String} floatingIpId Идентификатор плавающего IP
+     * @param {String} floatingIpId ID плавающего IP
      * @param {module:api/FloatingIPApi~unbindFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
      */
     unbindFloatingIp(floatingIpId, callback) {
@@ -307,9 +307,9 @@ export default class FloatingIPApi {
      */
 
     /**
-     * Изменение плавающего IP по идентификатору
+     * Изменение плавающего IP по ID
      * Чтобы изменить плавающий IP, отправьте PATCH-запрос на `/api/v1/floating-ips/{floating_ip_id}`
-     * @param {String} floatingIpId Идентификатор плавающего IP
+     * @param {String} floatingIpId ID плавающего IP
      * @param {module:model/UpdateFloatingIp} updateFloatingIp 
      * @param {module:api/FloatingIPApi~updateFloatingIPCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateFloatingIp201Response}

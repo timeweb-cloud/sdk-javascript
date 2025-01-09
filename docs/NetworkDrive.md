@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Идентификатор сетевого диска. | 
+**id** | **String** | ID сетевого диска. | 
 **name** | **String** | Название сетевого диска. | 
 **comment** | **String** | Комментарий | 
 **size** | **Number** | Размер диска в Гб | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **status** | **String** | Статус сетевого диска. | 
 **availabilityZone** | [**AvailabilityZone**](AvailabilityZone.md) |  | 
 **type** | **String** | Тип сетевого диска. | 
-**presetId** | **Number** | Идентификатор тарифа. | 
+**presetId** | **Number** | ID тарифа. | 
 
 
 

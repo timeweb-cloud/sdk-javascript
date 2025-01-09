@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**getNetworkDrivesPresets**](NetworkDrivesApi.md#getNetworkDrivesPresets) | **GET** /api/v1/presets/network-drives | Получение списка доступных тарифов для сетевого диска
 [**mountNetworkDrive**](NetworkDrivesApi.md#mountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/bind | Подключить сетевой диск к сервису
 [**unmountNetworkDrive**](NetworkDrivesApi.md#unmountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/unbind | Отключить сетевой диск от сервиса
-[**updateNetworkDrive**](NetworkDrivesApi.md#updateNetworkDrive) | **PATCH** /api/v1/network-drives/{network_drive_id} | Изменение сетевого диска по идентификатору
+[**updateNetworkDrive**](NetworkDrivesApi.md#updateNetworkDrive) | **PATCH** /api/v1/network-drives/{network_drive_id} | Изменение сетевого диска по ID
 
 
 
@@ -83,7 +83,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.NetworkDrivesApi();
-let networkDriveId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | Идентификатор сетевого диска
+let networkDriveId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | ID сетевого диска
 apiInstance.deleteNetworkDrive(networkDriveId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -98,7 +98,7 @@ apiInstance.deleteNetworkDrive(networkDriveId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **networkDriveId** | **String**| Идентификатор сетевого диска | 
+ **networkDriveId** | **String**| ID сетевого диска | 
 
 ### Return type
 
@@ -132,7 +132,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.NetworkDrivesApi();
-let networkDriveId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | Идентификатор сетевого диска
+let networkDriveId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | ID сетевого диска
 apiInstance.getNetworkDrive(networkDriveId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -147,7 +147,7 @@ apiInstance.getNetworkDrive(networkDriveId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **networkDriveId** | **String**| Идентификатор сетевого диска | 
+ **networkDriveId** | **String**| ID сетевого диска | 
 
 ### Return type
 
@@ -316,7 +316,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.NetworkDrivesApi();
-let networkDriveId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | Идентификатор сетевого диска
+let networkDriveId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | ID сетевого диска
 let mountNetworkDrive = new TimewebCloudApi.MountNetworkDrive(); // MountNetworkDrive | 
 apiInstance.mountNetworkDrive(networkDriveId, mountNetworkDrive, (error, data, response) => {
   if (error) {
@@ -332,7 +332,7 @@ apiInstance.mountNetworkDrive(networkDriveId, mountNetworkDrive, (error, data, r
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **networkDriveId** | **String**| Идентификатор сетевого диска | 
+ **networkDriveId** | **String**| ID сетевого диска | 
  **mountNetworkDrive** | [**MountNetworkDrive**](MountNetworkDrive.md)|  | 
 
 ### Return type
@@ -367,7 +367,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.NetworkDrivesApi();
-let networkDriveId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | Идентификатор сетевого диска
+let networkDriveId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | ID сетевого диска
 apiInstance.unmountNetworkDrive(networkDriveId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -382,7 +382,7 @@ apiInstance.unmountNetworkDrive(networkDriveId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **networkDriveId** | **String**| Идентификатор сетевого диска | 
+ **networkDriveId** | **String**| ID сетевого диска | 
 
 ### Return type
 
@@ -402,7 +402,7 @@ null (empty response body)
 
 > CreateNetworkDrive201Response updateNetworkDrive(networkDriveId, updateNetworkDrive)
 
-Изменение сетевого диска по идентификатору
+Изменение сетевого диска по ID
 
 Чтобы изменить сетевой диск, отправьте PATCH-запрос на &#x60;/api/v1/network-drives/{network_drive_id}&#x60;
 
@@ -416,7 +416,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.NetworkDrivesApi();
-let networkDriveId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | Идентификатор сетевого диска
+let networkDriveId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | ID сетевого диска
 let updateNetworkDrive = new TimewebCloudApi.UpdateNetworkDrive(); // UpdateNetworkDrive | 
 apiInstance.updateNetworkDrive(networkDriveId, updateNetworkDrive, (error, data, response) => {
   if (error) {
@@ -432,7 +432,7 @@ apiInstance.updateNetworkDrive(networkDriveId, updateNetworkDrive, (error, data,
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **networkDriveId** | **String**| Идентификатор сетевого диска | 
+ **networkDriveId** | **String**| ID сетевого диска | 
  **updateNetworkDrive** | [**UpdateNetworkDrive**](UpdateNetworkDrive.md)|  | 
 
 ### Return type

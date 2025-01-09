@@ -23,7 +23,7 @@ class FloatingIp {
     /**
      * Constructs a new <code>FloatingIp</code>.
      * @alias module:model/FloatingIp
-     * @param id {String} Идентификатор IP.
+     * @param id {String} ID IP.
      * @param ip {String} IP-адрес
      * @param isDdosGuard {Boolean} Это логическое значение, которое показывает, включена ли защита от DDoS.
      * @param availabilityZone {module:model/AvailabilityZone} 
@@ -134,7 +134,7 @@ class FloatingIp {
 FloatingIp.RequiredProperties = ["id", "ip", "is_ddos_guard", "availability_zone", "resource_type", "resource_id", "comment", "ptr"];
 
 /**
- * Идентификатор IP.
+ * ID IP.
  * @member {String} id
  */
 FloatingIp.prototype['id'] = undefined;

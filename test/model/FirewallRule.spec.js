@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.FirewallRuleOutAPI();
+    instance = new TimewebCloudApi.FirewallRule();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,52 +47,52 @@
       object[property] = value;
   }
 
-  describe('FirewallRuleOutAPI', function() {
-    it('should create an instance of FirewallRuleOutAPI', function() {
-      // uncomment below and update the code to test FirewallRuleOutAPI
-      //var instance = new TimewebCloudApi.FirewallRuleOutAPI();
-      //expect(instance).to.be.a(TimewebCloudApi.FirewallRuleOutAPI);
+  describe('FirewallRule', function() {
+    it('should create an instance of FirewallRule', function() {
+      // uncomment below and update the code to test FirewallRule
+      //var instance = new TimewebCloudApi.FirewallRule();
+      //expect(instance).to.be.a(TimewebCloudApi.FirewallRule);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new TimewebCloudApi.FirewallRuleOutAPI();
+      //var instance = new TimewebCloudApi.FirewallRule();
       //expect(instance).to.be();
     });
 
     it('should have the property description (base name: "description")', function() {
       // uncomment below and update the code to test the property description
-      //var instance = new TimewebCloudApi.FirewallRuleOutAPI();
+      //var instance = new TimewebCloudApi.FirewallRule();
       //expect(instance).to.be();
     });
 
     it('should have the property direction (base name: "direction")', function() {
       // uncomment below and update the code to test the property direction
-      //var instance = new TimewebCloudApi.FirewallRuleOutAPI();
+      //var instance = new TimewebCloudApi.FirewallRule();
       //expect(instance).to.be();
     });
 
     it('should have the property protocol (base name: "protocol")', function() {
       // uncomment below and update the code to test the property protocol
-      //var instance = new TimewebCloudApi.FirewallRuleOutAPI();
+      //var instance = new TimewebCloudApi.FirewallRule();
       //expect(instance).to.be();
     });
 
     it('should have the property port (base name: "port")', function() {
       // uncomment below and update the code to test the property port
-      //var instance = new TimewebCloudApi.FirewallRuleOutAPI();
+      //var instance = new TimewebCloudApi.FirewallRule();
       //expect(instance).to.be();
     });
 
     it('should have the property cidr (base name: "cidr")', function() {
       // uncomment below and update the code to test the property cidr
-      //var instance = new TimewebCloudApi.FirewallRuleOutAPI();
+      //var instance = new TimewebCloudApi.FirewallRule();
       //expect(instance).to.be();
     });
 
     it('should have the property groupId (base name: "group_id")', function() {
       // uncomment below and update the code to test the property groupId
-      //var instance = new TimewebCloudApi.FirewallRuleOutAPI();
+      //var instance = new TimewebCloudApi.FirewallRule();
       //expect(instance).to.be();
     });
 

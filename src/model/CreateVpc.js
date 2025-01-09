@@ -157,10 +157,22 @@ CreateVpc['LocationEnum'] = {
     "ru-1": "ru-1",
 
     /**
+     * value: "ru-2"
+     * @const
+     */
+    "ru-2": "ru-2",
+
+    /**
      * value: "pl-1"
      * @const
      */
-    "pl-1": "pl-1"
+    "pl-1": "pl-1",
+
+    /**
+     * value: "nl-1"
+     * @const
+     */
+    "nl-1": "nl-1"
 };
 
 

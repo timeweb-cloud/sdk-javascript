@@ -12,27 +12,27 @@
  */
 
 import ApiClient from '../ApiClient';
-import Policy from './Policy';
+import FirewallRuleDirection from './FirewallRuleDirection';
+import FirewallRuleProtocol from './FirewallRuleProtocol';
 
 /**
- * The FirewallGroupOutAPI model module.
- * @module model/FirewallGroupOutAPI
+ * The FirewallRule model module.
+ * @module model/FirewallRule
  * @version 1.0.0
  */
-class FirewallGroupOutAPI {
+class FirewallRule {
     /**
-     * Constructs a new <code>FirewallGroupOutAPI</code>.
-     * @alias module:model/FirewallGroupOutAPI
-     * @param id {String} Идентификатор группы правил
-     * @param createdAt {Date} Дата и время создания
-     * @param updatedAt {Date} Дата и время последнего обновления
-     * @param name {String} Имя группы правил
-     * @param description {String} Описание группы правил
-     * @param policy {module:model/Policy} 
+     * Constructs a new <code>FirewallRule</code>.
+     * @alias module:model/FirewallRule
+     * @param id {String} ID правила.
+     * @param description {String} Описание правила.
+     * @param direction {module:model/FirewallRuleDirection} 
+     * @param protocol {module:model/FirewallRuleProtocol} 
+     * @param groupId {String} ID группы правил.
      */
-    constructor(id, createdAt, updatedAt, name, description, policy) { 
+    constructor(id, description, direction, protocol, groupId) { 
         
-        FirewallGroupOutAPI.initialize(this, id, createdAt, updatedAt, name, description, policy);
+        FirewallRule.initialize(this, id, description, direction, protocol, groupId);
     }
 
     /**
@@ -40,56 +40,58 @@ class FirewallGroupOutAPI {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, createdAt, updatedAt, name, description, policy) { 
+    static initialize(obj, id, description, direction, protocol, groupId) { 
         obj['id'] = id;
-        obj['created_at'] = createdAt;
-        obj['updated_at'] = updatedAt;
-        obj['name'] = name;
         obj['description'] = description;
-        obj['policy'] = policy;
+        obj['direction'] = direction;
+        obj['protocol'] = protocol;
+        obj['group_id'] = groupId;
     }
 
     /**
-     * Constructs a <code>FirewallGroupOutAPI</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>FirewallRule</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/FirewallGroupOutAPI} obj Optional instance to populate.
-     * @return {module:model/FirewallGroupOutAPI} The populated <code>FirewallGroupOutAPI</code> instance.
+     * @param {module:model/FirewallRule} obj Optional instance to populate.
+     * @return {module:model/FirewallRule} The populated <code>FirewallRule</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new FirewallGroupOutAPI();
+            obj = obj || new FirewallRule();
 
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
-            if (data.hasOwnProperty('created_at')) {
-                obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
-            }
-            if (data.hasOwnProperty('updated_at')) {
-                obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'Date');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
-            if (data.hasOwnProperty('policy')) {
-                obj['policy'] = Policy.constructFromObject(data['policy']);
+            if (data.hasOwnProperty('direction')) {
+                obj['direction'] = FirewallRuleDirection.constructFromObject(data['direction']);
+            }
+            if (data.hasOwnProperty('protocol')) {
+                obj['protocol'] = FirewallRuleProtocol.constructFromObject(data['protocol']);
+            }
+            if (data.hasOwnProperty('port')) {
+                obj['port'] = ApiClient.convertToType(data['port'], 'String');
+            }
+            if (data.hasOwnProperty('cidr')) {
+                obj['cidr'] = ApiClient.convertToType(data['cidr'], 'String');
+            }
+            if (data.hasOwnProperty('group_id')) {
+                obj['group_id'] = ApiClient.convertToType(data['group_id'], 'String');
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>FirewallGroupOutAPI</code>.
+     * Validates the JSON data with respect to <code>FirewallRule</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FirewallGroupOutAPI</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FirewallRule</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of FirewallGroupOutAPI.RequiredProperties) {
+        for (const property of FirewallRule.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
@@ -99,12 +101,20 @@ class FirewallGroupOutAPI {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
         // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
-            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
-        }
-        // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // ensure the json data is a string
+        if (data['port'] && !(typeof data['port'] === 'string' || data['port'] instanceof String)) {
+            throw new Error("Expected the field `port` to be a primitive type in the JSON string but got " + data['port']);
+        }
+        // ensure the json data is a string
+        if (data['cidr'] && !(typeof data['cidr'] === 'string' || data['cidr'] instanceof String)) {
+            throw new Error("Expected the field `cidr` to be a primitive type in the JSON string but got " + data['cidr']);
+        }
+        // ensure the json data is a string
+        if (data['group_id'] && !(typeof data['group_id'] === 'string' || data['group_id'] instanceof String)) {
+            throw new Error("Expected the field `group_id` to be a primitive type in the JSON string but got " + data['group_id']);
         }
 
         return true;
@@ -113,47 +123,52 @@ class FirewallGroupOutAPI {
 
 }
 
-FirewallGroupOutAPI.RequiredProperties = ["id", "created_at", "updated_at", "name", "description", "policy"];
+FirewallRule.RequiredProperties = ["id", "description", "direction", "protocol", "group_id"];
 
 /**
- * Идентификатор группы правил
+ * ID правила.
  * @member {String} id
  */
-FirewallGroupOutAPI.prototype['id'] = undefined;
+FirewallRule.prototype['id'] = undefined;
 
 /**
- * Дата и время создания
- * @member {Date} created_at
- */
-FirewallGroupOutAPI.prototype['created_at'] = undefined;
-
-/**
- * Дата и время последнего обновления
- * @member {Date} updated_at
- */
-FirewallGroupOutAPI.prototype['updated_at'] = undefined;
-
-/**
- * Имя группы правил
- * @member {String} name
- */
-FirewallGroupOutAPI.prototype['name'] = undefined;
-
-/**
- * Описание группы правил
+ * Описание правила.
  * @member {String} description
  */
-FirewallGroupOutAPI.prototype['description'] = undefined;
+FirewallRule.prototype['description'] = undefined;
 
 /**
- * @member {module:model/Policy} policy
+ * @member {module:model/FirewallRuleDirection} direction
  */
-FirewallGroupOutAPI.prototype['policy'] = undefined;
+FirewallRule.prototype['direction'] = undefined;
+
+/**
+ * @member {module:model/FirewallRuleProtocol} protocol
+ */
+FirewallRule.prototype['protocol'] = undefined;
+
+/**
+ * Порт или диапазон портов, в случае tcp или udp.
+ * @member {String} port
+ */
+FirewallRule.prototype['port'] = undefined;
+
+/**
+ * Сетевой адрес или подсеть. Поддерживаются протоколы IPv4  и IPv6.
+ * @member {String} cidr
+ */
+FirewallRule.prototype['cidr'] = undefined;
+
+/**
+ * ID группы правил.
+ * @member {String} group_id
+ */
+FirewallRule.prototype['group_id'] = undefined;
 
 
 
 
 
 
-export default FirewallGroupOutAPI;
+export default FirewallRule;
 

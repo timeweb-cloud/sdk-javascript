@@ -17,7 +17,11 @@ Name | Type | Description | Notes
 
 * `ru-1` (value: `"ru-1"`)
 
+* `ru-2` (value: `"ru-2"`)
+
 * `pl-1` (value: `"pl-1"`)
+
+* `nl-1` (value: `"nl-1"`)
 
 
 

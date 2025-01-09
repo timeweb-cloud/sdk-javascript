@@ -84,7 +84,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ImagesApi();
-let imageId = "imageId_example"; // String | ID образа
+let imageId = "imageId_example"; // String | ID образа.
 let imageUrlIn = new TimewebCloudApi.ImageUrlIn(); // ImageUrlIn | 
 apiInstance.createImageDownloadUrl(imageId, imageUrlIn, (error, data, response) => {
   if (error) {
@@ -100,7 +100,7 @@ apiInstance.createImageDownloadUrl(imageId, imageUrlIn, (error, data, response) 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **imageId** | **String**| ID образа | 
+ **imageId** | **String**| ID образа. | 
  **imageUrlIn** | [**ImageUrlIn**](ImageUrlIn.md)|  | 
 
 ### Return type
@@ -135,7 +135,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ImagesApi();
-let imageId = "imageId_example"; // String | ID образа
+let imageId = "imageId_example"; // String | ID образа.
 apiInstance.deleteImage(imageId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -150,7 +150,7 @@ apiInstance.deleteImage(imageId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **imageId** | **String**| ID образа | 
+ **imageId** | **String**| ID образа. | 
 
 ### Return type
 
@@ -184,8 +184,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ImagesApi();
-let imageId = "imageId_example"; // String | ID образа
-let imageUrlId = "imageUrlId_example"; // String | ID ссылки
+let imageId = "imageId_example"; // String | ID образа.
+let imageUrlId = "imageUrlId_example"; // String | ID ссылки.
 apiInstance.deleteImageDownloadURL(imageId, imageUrlId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -200,8 +200,8 @@ apiInstance.deleteImageDownloadURL(imageId, imageUrlId, (error, data, response) 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **imageId** | **String**| ID образа | 
- **imageUrlId** | **String**| ID ссылки | 
+ **imageId** | **String**| ID образа. | 
+ **imageUrlId** | **String**| ID ссылки. | 
 
 ### Return type
 
@@ -235,7 +235,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ImagesApi();
-let imageId = "imageId_example"; // String | ID образа
+let imageId = "imageId_example"; // String | ID образа.
 apiInstance.getImage(imageId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -250,7 +250,7 @@ apiInstance.getImage(imageId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **imageId** | **String**| ID образа | 
+ **imageId** | **String**| ID образа. | 
 
 ### Return type
 
@@ -284,8 +284,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ImagesApi();
-let imageId = "imageId_example"; // String | ID образа
-let imageUrlId = "imageUrlId_example"; // String | ID ссылки
+let imageId = "imageId_example"; // String | ID образа.
+let imageUrlId = "imageUrlId_example"; // String | ID ссылки.
 apiInstance.getImageDownloadURL(imageId, imageUrlId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -300,8 +300,8 @@ apiInstance.getImageDownloadURL(imageId, imageUrlId, (error, data, response) => 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **imageId** | **String**| ID образа | 
- **imageUrlId** | **String**| ID ссылки | 
+ **imageId** | **String**| ID образа. | 
+ **imageUrlId** | **String**| ID ссылки. | 
 
 ### Return type
 
@@ -335,7 +335,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ImagesApi();
-let imageId = "imageId_example"; // String | ID образа
+let imageId = "imageId_example"; // String | ID образа.
 let opts = {
   'limit': 100, // Number | 
   'offset': 0 // Number | 
@@ -354,7 +354,7 @@ apiInstance.getImageDownloadURLs(imageId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **imageId** | **String**| ID образа | 
+ **imageId** | **String**| ID образа. | 
  **limit** | **Number**|  | [optional] [default to 100]
  **offset** | **Number**|  | [optional] [default to 0]
 
@@ -443,7 +443,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ImagesApi();
-let imageId = "imageId_example"; // String | ID образа
+let imageId = "imageId_example"; // String | ID образа.
 let imageUpdateAPI = new TimewebCloudApi.ImageUpdateAPI(); // ImageUpdateAPI | 
 apiInstance.updateImage(imageId, imageUpdateAPI, (error, data, response) => {
   if (error) {
@@ -459,7 +459,7 @@ apiInstance.updateImage(imageId, imageUpdateAPI, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **imageId** | **String**| ID образа | 
+ **imageId** | **String**| ID образа. | 
  **imageUpdateAPI** | [**ImageUpdateAPI**](ImageUpdateAPI.md)|  | 
 
 ### Return type

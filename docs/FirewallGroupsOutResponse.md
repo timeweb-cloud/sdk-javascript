@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**responseId** | **String** | Идентификатор запроса | [optional] 
+**responseId** | **String** | ID запроса. | [optional] 
 **meta** | [**Meta**](Meta.md) |  | 
-**groups** | [**[FirewallGroupOutAPI]**](FirewallGroupOutAPI.md) | Массив объектов Групп правил | 
+**groups** | [**[FirewallGroup]**](FirewallGroup.md) |  | 
 
 

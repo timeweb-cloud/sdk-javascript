@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**responseId** | **String** | Идентификатор запроса | [optional] 
+**responseId** | **String** | ID запроса. | [optional] 
 **uploadSuccessful** | [**UploadSuccessful**](UploadSuccessful.md) |  | 
 
 

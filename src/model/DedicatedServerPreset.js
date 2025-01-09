@@ -29,14 +29,15 @@ class DedicatedServerPreset {
      * @param id {Number} ID тарифа выделенного сервера.
      * @param description {String} Описание характеристик тарифа выделенного сервера.
      * @param isIpmiEnabled {Boolean} Это логическое значение, которое показывает, доступен ли IPMI у данного тарифа.
+     * @param isPreInstalled {Boolean} Это логическое значение, которое показывает, готов ли выделенный сервер к моментальной выдаче.
      * @param cpu {module:model/DedicatedServerPresetCpu} 
      * @param disk {module:model/DedicatedServerPresetDisk} 
      * @param memory {module:model/DedicatedServerPresetMemory} 
      * @param location {module:model/DedicatedServerPreset.LocationEnum} Локация.
      */
-    constructor(id, description, isIpmiEnabled, cpu, disk, memory, location) { 
+    constructor(id, description, isIpmiEnabled, isPreInstalled, cpu, disk, memory, location) { 
         
-        DedicatedServerPreset.initialize(this, id, description, isIpmiEnabled, cpu, disk, memory, location);
+        DedicatedServerPreset.initialize(this, id, description, isIpmiEnabled, isPreInstalled, cpu, disk, memory, location);
     }
 
     /**
@@ -44,10 +45,11 @@ class DedicatedServerPreset {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, description, isIpmiEnabled, cpu, disk, memory, location) { 
+    static initialize(obj, id, description, isIpmiEnabled, isPreInstalled, cpu, disk, memory, location) { 
         obj['id'] = id;
         obj['description'] = description;
         obj['is_ipmi_enabled'] = isIpmiEnabled;
+        obj['is_pre_installed'] = isPreInstalled;
         obj['cpu'] = cpu;
         obj['disk'] = disk;
         obj['memory'] = memory;
@@ -73,6 +75,9 @@ class DedicatedServerPreset {
             }
             if (data.hasOwnProperty('is_ipmi_enabled')) {
                 obj['is_ipmi_enabled'] = ApiClient.convertToType(data['is_ipmi_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_pre_installed')) {
+                obj['is_pre_installed'] = ApiClient.convertToType(data['is_pre_installed'], 'Boolean');
             }
             if (data.hasOwnProperty('cpu')) {
                 obj['cpu'] = DedicatedServerPresetCpu.constructFromObject(data['cpu']);
@@ -132,7 +137,7 @@ class DedicatedServerPreset {
 
 }
 
-DedicatedServerPreset.RequiredProperties = ["id", "description", "is_ipmi_enabled", "cpu", "disk", "memory", "location"];
+DedicatedServerPreset.RequiredProperties = ["id", "description", "is_ipmi_enabled", "is_pre_installed", "cpu", "disk", "memory", "location"];
 
 /**
  * ID тарифа выделенного сервера.
@@ -151,6 +156,12 @@ DedicatedServerPreset.prototype['description'] = undefined;
  * @member {Boolean} is_ipmi_enabled
  */
 DedicatedServerPreset.prototype['is_ipmi_enabled'] = undefined;
+
+/**
+ * Это логическое значение, которое показывает, готов ли выделенный сервер к моментальной выдаче.
+ * @member {Boolean} is_pre_installed
+ */
+DedicatedServerPreset.prototype['is_pre_installed'] = undefined;
 
 /**
  * @member {module:model/DedicatedServerPresetCpu} cpu
@@ -212,7 +223,37 @@ DedicatedServerPreset['LocationEnum'] = {
      * value: "pl-1"
      * @const
      */
-    "pl-1": "pl-1"
+    "pl-1": "pl-1",
+
+    /**
+     * value: "nl-1"
+     * @const
+     */
+    "nl-1": "nl-1",
+
+    /**
+     * value: "us-2"
+     * @const
+     */
+    "us-2": "us-2",
+
+    /**
+     * value: "tr-1"
+     * @const
+     */
+    "tr-1": "tr-1",
+
+    /**
+     * value: "de-1"
+     * @const
+     */
+    "de-1": "de-1",
+
+    /**
+     * value: "fi-1"
+     * @const
+     */
+    "fi-1": "fi-1"
 };
 
 

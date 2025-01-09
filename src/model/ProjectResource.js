@@ -26,7 +26,7 @@ class ProjectResource {
      * @alias module:model/ProjectResource
      * @param id {Number} ID для каждого ресурса проекта. Автоматически генерируется при создании.
      * @param createdAt {String} Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был создан ресурс.
-     * @param resourceId {Number} Идентификатор ресурса проекта (сервера, хранилища, кластера, балансировщика, базы данных или выделенного сервера).
+     * @param resourceId {Number} ID ресурса проекта (сервера, хранилища, кластера, балансировщика, базы данных или выделенного сервера).
      * @param project {module:model/Project} 
      * @param type {module:model/ProjectResource.TypeEnum} Тип ресурса проекта
      */
@@ -124,7 +124,7 @@ ProjectResource.prototype['id'] = undefined;
 ProjectResource.prototype['created_at'] = undefined;
 
 /**
- * Идентификатор ресурса проекта (сервера, хранилища, кластера, балансировщика, базы данных или выделенного сервера).
+ * ID ресурса проекта (сервера, хранилища, кластера, балансировщика, базы данных или выделенного сервера).
  * @member {Number} resource_id
  */
 ProjectResource.prototype['resource_id'] = undefined;

@@ -23,11 +23,11 @@ class SshKey {
     /**
      * Constructs a new <code>SshKey</code>.
      * @alias module:model/SshKey
-     * @param id {Number} ID SSH-ключа
-     * @param name {String} Название SSH-ключа
-     * @param body {String} Тело SSH-ключа
-     * @param createdAt {Date} Дата создания ключа
-     * @param usedBy {Array.<module:model/SshKeyUsedByInner>} Список серверов, которые используют SSH-ключ
+     * @param id {Number} ID SSH-ключа.
+     * @param name {String} Название SSH-ключа.
+     * @param body {String} Тело SSH-ключа.
+     * @param createdAt {Date} Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был создан SSH-ключ.
+     * @param usedBy {Array.<module:model/SshKeyUsedByInner>} Список серверов, которые используют SSH-ключ.
      */
     constructor(id, name, body, createdAt, usedBy) { 
         
@@ -120,37 +120,37 @@ class SshKey {
 SshKey.RequiredProperties = ["id", "name", "body", "created_at", "used_by"];
 
 /**
- * ID SSH-ключа
+ * ID SSH-ключа.
  * @member {Number} id
  */
 SshKey.prototype['id'] = undefined;
 
 /**
- * Название SSH-ключа
+ * Название SSH-ключа.
  * @member {String} name
  */
 SshKey.prototype['name'] = undefined;
 
 /**
- * Тело SSH-ключа
+ * Тело SSH-ключа.
  * @member {String} body
  */
 SshKey.prototype['body'] = undefined;
 
 /**
- * Дата создания ключа
+ * Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был создан SSH-ключ.
  * @member {Date} created_at
  */
 SshKey.prototype['created_at'] = undefined;
 
 /**
- * Список серверов, которые используют SSH-ключ
+ * Список серверов, которые используют SSH-ключ.
  * @member {Array.<module:model/SshKeyUsedByInner>} used_by
  */
 SshKey.prototype['used_by'] = undefined;
 
 /**
- * Будет ли выбираться SSh-ключ по умолчанию при создании сервера
+ * Это логическое значение, которое показывает, будет ли выбираться SSH-ключ по умолчанию при создании сервера.
  * @member {Boolean} is_default
  */
 SshKey.prototype['is_default'] = undefined;

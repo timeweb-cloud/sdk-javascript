@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import FirewallGroupOutAPI from './FirewallGroupOutAPI';
+import FirewallGroup from './FirewallGroup';
 import Meta from './Meta';
 
 /**
@@ -25,7 +25,7 @@ class FirewallGroupsOutResponse {
      * Constructs a new <code>FirewallGroupsOutResponse</code>.
      * @alias module:model/FirewallGroupsOutResponse
      * @param meta {module:model/Meta} 
-     * @param groups {Array.<module:model/FirewallGroupOutAPI>} Массив объектов Групп правил
+     * @param groups {Array.<module:model/FirewallGroup>} 
      */
     constructor(meta, groups) { 
         
@@ -60,7 +60,7 @@ class FirewallGroupsOutResponse {
                 obj['meta'] = Meta.constructFromObject(data['meta']);
             }
             if (data.hasOwnProperty('groups')) {
-                obj['groups'] = ApiClient.convertToType(data['groups'], [FirewallGroupOutAPI]);
+                obj['groups'] = ApiClient.convertToType(data['groups'], [FirewallGroup]);
             }
         }
         return obj;
@@ -93,7 +93,7 @@ class FirewallGroupsOutResponse {
             }
             // validate the optional field `groups` (array)
             for (const item of data['groups']) {
-                FirewallGroupOutAPI.validateJSON(item);
+                FirewallGroup.validateJSON(item);
             };
         }
 
@@ -106,7 +106,7 @@ class FirewallGroupsOutResponse {
 FirewallGroupsOutResponse.RequiredProperties = ["meta", "groups"];
 
 /**
- * Идентификатор запроса
+ * ID запроса.
  * @member {String} response_id
  */
 FirewallGroupsOutResponse.prototype['response_id'] = undefined;
@@ -117,8 +117,7 @@ FirewallGroupsOutResponse.prototype['response_id'] = undefined;
 FirewallGroupsOutResponse.prototype['meta'] = undefined;
 
 /**
- * Массив объектов Групп правил
- * @member {Array.<module:model/FirewallGroupOutAPI>} groups
+ * @member {Array.<module:model/FirewallGroup>} groups
  */
 FirewallGroupsOutResponse.prototype['groups'] = undefined;
 

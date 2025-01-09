@@ -22,9 +22,9 @@ class CreateKeyRequest {
     /**
      * Constructs a new <code>CreateKeyRequest</code>.
      * @alias module:model/CreateKeyRequest
-     * @param body {String} Тело SSH-ключа
-     * @param isDefault {Boolean} Будет ли выбираться SSH-ключ по умолчанию при создании сервера  
-     * @param name {String} Название SSH-ключа
+     * @param body {String} Тело SSH-ключа.
+     * @param isDefault {Boolean} Будет ли выбираться SSH-ключ по умолчанию при создании сервера.  
+     * @param name {String} Название SSH-ключа.
      */
     constructor(body, isDefault, name) { 
         
@@ -96,19 +96,19 @@ class CreateKeyRequest {
 CreateKeyRequest.RequiredProperties = ["body", "is_default", "name"];
 
 /**
- * Тело SSH-ключа
+ * Тело SSH-ключа.
  * @member {String} body
  */
 CreateKeyRequest.prototype['body'] = undefined;
 
 /**
- * Будет ли выбираться SSH-ключ по умолчанию при создании сервера  
+ * Будет ли выбираться SSH-ключ по умолчанию при создании сервера.  
  * @member {Boolean} is_default
  */
 CreateKeyRequest.prototype['is_default'] = undefined;
 
 /**
- * Название SSH-ключа
+ * Название SSH-ключа.
  * @member {String} name
  */
 CreateKeyRequest.prototype['name'] = undefined;

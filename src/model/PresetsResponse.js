@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import Meta from './Meta';
+import SchemasMeta from './SchemasMeta';
 import WorkerPresetOutApi from './WorkerPresetOutApi';
 
 /**
@@ -24,7 +24,7 @@ class PresetsResponse {
     /**
      * Constructs a new <code>PresetsResponse</code>.
      * @alias module:model/PresetsResponse
-     * @param meta {module:model/Meta} 
+     * @param meta {module:model/SchemasMeta} 
      * @param k8sPresets {Array.<module:model/WorkerPresetOutApi>} Массив тарифов k8s
      */
     constructor(meta, k8sPresets) { 
@@ -57,7 +57,7 @@ class PresetsResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('meta')) {
-                obj['meta'] = Meta.constructFromObject(data['meta']);
+                obj['meta'] = SchemasMeta.constructFromObject(data['meta']);
             }
             if (data.hasOwnProperty('k8s_presets')) {
                 obj['k8s_presets'] = ApiClient.convertToType(data['k8s_presets'], [WorkerPresetOutApi]);
@@ -84,7 +84,7 @@ class PresetsResponse {
         }
         // validate the optional field `meta`
         if (data['meta']) { // data not null
-          Meta.validateJSON(data['meta']);
+          SchemasMeta.validateJSON(data['meta']);
         }
         if (data['k8s_presets']) { // data not null
             // ensure the json data is an array
@@ -106,13 +106,13 @@ class PresetsResponse {
 PresetsResponse.RequiredProperties = ["meta", "k8s_presets"];
 
 /**
- * Идентификатор запроса
+ * ID запроса
  * @member {String} response_id
  */
 PresetsResponse.prototype['response_id'] = undefined;
 
 /**
- * @member {module:model/Meta} meta
+ * @member {module:model/SchemasMeta} meta
  */
 PresetsResponse.prototype['meta'] = undefined;
 

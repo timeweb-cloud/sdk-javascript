@@ -100,7 +100,7 @@ export default class NetworkDrivesApi {
     /**
      * Удаление сетевого диска по идентификатору
      * Чтобы удалить сетевой диск, отправьте DELETE-запрос на `/api/v1/network-drives/{network_drive_id}`
-     * @param {String} networkDriveId Идентификатор сетевого диска
+     * @param {String} networkDriveId ID сетевого диска
      * @param {module:api/NetworkDrivesApi~deleteNetworkDriveCallback} callback The callback function, accepting three arguments: error, data, response
      */
     deleteNetworkDrive(networkDriveId, callback) {
@@ -142,7 +142,7 @@ export default class NetworkDrivesApi {
     /**
      * Получение сетевого диска
      * Чтобы отобразить информацию об отдельном сетевом диске, отправьте запрос GET на `api/v1/network-drives/{network_drive_id}`.
-     * @param {String} networkDriveId Идентификатор сетевого диска
+     * @param {String} networkDriveId ID сетевого диска
      * @param {module:api/NetworkDrivesApi~getNetworkDriveCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateNetworkDrive201Response}
      */
@@ -296,7 +296,7 @@ export default class NetworkDrivesApi {
     /**
      * Подключить сетевой диск к сервису
      * Чтобы подключить сетевой диск к сервису, отправьте POST-запрос на `/api/v1/network-drives/{network_drive_id}/mount`.
-     * @param {String} networkDriveId Идентификатор сетевого диска
+     * @param {String} networkDriveId ID сетевого диска
      * @param {module:model/MountNetworkDrive} mountNetworkDrive 
      * @param {module:api/NetworkDrivesApi~mountNetworkDriveCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -343,7 +343,7 @@ export default class NetworkDrivesApi {
     /**
      * Отключить сетевой диск от сервиса
      * Чтобы отключить сетевой диск от сервиса, отправьте POST-запрос на `/api/v1/network-drives/{network_drive_id}/unmount`.
-     * @param {String} networkDriveId Идентификатор сетевого диска
+     * @param {String} networkDriveId ID сетевого диска
      * @param {module:api/NetworkDrivesApi~unmountNetworkDriveCallback} callback The callback function, accepting three arguments: error, data, response
      */
     unmountNetworkDrive(networkDriveId, callback) {
@@ -383,9 +383,9 @@ export default class NetworkDrivesApi {
      */
 
     /**
-     * Изменение сетевого диска по идентификатору
+     * Изменение сетевого диска по ID
      * Чтобы изменить сетевой диск, отправьте PATCH-запрос на `/api/v1/network-drives/{network_drive_id}`
-     * @param {String} networkDriveId Идентификатор сетевого диска
+     * @param {String} networkDriveId ID сетевого диска
      * @param {module:model/UpdateNetworkDrive} updateNetworkDrive 
      * @param {module:api/NetworkDrivesApi~updateNetworkDriveCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateNetworkDrive201Response}

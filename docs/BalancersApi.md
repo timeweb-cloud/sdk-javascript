@@ -38,7 +38,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.BalancersApi();
-let balancerId = 56; // Number | Идентификатор балансировщика
+let balancerId = 56; // Number | ID балансировщика
 let addIPsToBalancerRequest = new TimewebCloudApi.AddIPsToBalancerRequest(); // AddIPsToBalancerRequest | 
 apiInstance.addIPsToBalancer(balancerId, addIPsToBalancerRequest, (error, data, response) => {
   if (error) {
@@ -54,7 +54,7 @@ apiInstance.addIPsToBalancer(balancerId, addIPsToBalancerRequest, (error, data, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **balancerId** | **Number**| Идентификатор балансировщика | 
+ **balancerId** | **Number**| ID балансировщика | 
  **addIPsToBalancerRequest** | [**AddIPsToBalancerRequest**](AddIPsToBalancerRequest.md)|  | 
 
 ### Return type
@@ -138,7 +138,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.BalancersApi();
-let balancerId = 56; // Number | Идентификатор балансировщика
+let balancerId = 56; // Number | ID балансировщика
 let createRule = new TimewebCloudApi.CreateRule(); // CreateRule | 
 apiInstance.createBalancerRule(balancerId, createRule, (error, data, response) => {
   if (error) {
@@ -154,7 +154,7 @@ apiInstance.createBalancerRule(balancerId, createRule, (error, data, response) =
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **balancerId** | **Number**| Идентификатор балансировщика | 
+ **balancerId** | **Number**| ID балансировщика | 
  **createRule** | [**CreateRule**](CreateRule.md)|  | 
 
 ### Return type
@@ -189,7 +189,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.BalancersApi();
-let balancerId = 56; // Number | Идентификатор балансировщика
+let balancerId = 56; // Number | ID балансировщика
 let opts = {
   'hash': 15095f25-aac3-4d60-a788-96cb5136f186, // String | Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм.
   'code': 0000 // String | Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена `is_able_to_delete` установлен в значение `true`
@@ -208,7 +208,7 @@ apiInstance.deleteBalancer(balancerId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **balancerId** | **Number**| Идентификатор балансировщика | 
+ **balancerId** | **Number**| ID балансировщика | 
  **hash** | **String**| Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. | [optional] 
  **code** | **String**| Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; | [optional] 
 
@@ -244,8 +244,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.BalancersApi();
-let balancerId = 56; // Number | Идентификатор балансировщика
-let ruleId = 56; // Number | Идентификатор правила для балансировщика
+let balancerId = 56; // Number | ID балансировщика
+let ruleId = 56; // Number | ID правила для балансировщика
 apiInstance.deleteBalancerRule(balancerId, ruleId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -260,8 +260,8 @@ apiInstance.deleteBalancerRule(balancerId, ruleId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **balancerId** | **Number**| Идентификатор балансировщика | 
- **ruleId** | **Number**| Идентификатор правила для балансировщика | 
+ **balancerId** | **Number**| ID балансировщика | 
+ **ruleId** | **Number**| ID правила для балансировщика | 
 
 ### Return type
 
@@ -295,7 +295,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.BalancersApi();
-let balancerId = 56; // Number | Идентификатор балансировщика
+let balancerId = 56; // Number | ID балансировщика
 let addIPsToBalancerRequest = new TimewebCloudApi.AddIPsToBalancerRequest(); // AddIPsToBalancerRequest | 
 apiInstance.deleteIPsFromBalancer(balancerId, addIPsToBalancerRequest, (error, data, response) => {
   if (error) {
@@ -311,7 +311,7 @@ apiInstance.deleteIPsFromBalancer(balancerId, addIPsToBalancerRequest, (error, d
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **balancerId** | **Number**| Идентификатор балансировщика | 
+ **balancerId** | **Number**| ID балансировщика | 
  **addIPsToBalancerRequest** | [**AddIPsToBalancerRequest**](AddIPsToBalancerRequest.md)|  | 
 
 ### Return type
@@ -346,7 +346,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.BalancersApi();
-let balancerId = 56; // Number | Идентификатор балансировщика
+let balancerId = 56; // Number | ID балансировщика
 apiInstance.getBalancer(balancerId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -361,7 +361,7 @@ apiInstance.getBalancer(balancerId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **balancerId** | **Number**| Идентификатор балансировщика | 
+ **balancerId** | **Number**| ID балансировщика | 
 
 ### Return type
 
@@ -395,7 +395,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.BalancersApi();
-let balancerId = 56; // Number | Идентификатор балансировщика
+let balancerId = 56; // Number | ID балансировщика
 apiInstance.getBalancerIPs(balancerId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -410,7 +410,7 @@ apiInstance.getBalancerIPs(balancerId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **balancerId** | **Number**| Идентификатор балансировщика | 
+ **balancerId** | **Number**| ID балансировщика | 
 
 ### Return type
 
@@ -444,7 +444,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.BalancersApi();
-let balancerId = 56; // Number | Идентификатор балансировщика
+let balancerId = 56; // Number | ID балансировщика
 apiInstance.getBalancerRules(balancerId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -459,7 +459,7 @@ apiInstance.getBalancerRules(balancerId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **balancerId** | **Number**| Идентификатор балансировщика | 
+ **balancerId** | **Number**| ID балансировщика | 
 
 ### Return type
 
@@ -591,7 +591,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.BalancersApi();
-let balancerId = 56; // Number | Идентификатор балансировщика
+let balancerId = 56; // Number | ID балансировщика
 let updateBalancer = new TimewebCloudApi.UpdateBalancer(); // UpdateBalancer | 
 apiInstance.updateBalancer(balancerId, updateBalancer, (error, data, response) => {
   if (error) {
@@ -607,7 +607,7 @@ apiInstance.updateBalancer(balancerId, updateBalancer, (error, data, response) =
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **balancerId** | **Number**| Идентификатор балансировщика | 
+ **balancerId** | **Number**| ID балансировщика | 
  **updateBalancer** | [**UpdateBalancer**](UpdateBalancer.md)|  | 
 
 ### Return type
@@ -642,8 +642,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.BalancersApi();
-let balancerId = 56; // Number | Идентификатор балансировщика
-let ruleId = 56; // Number | Идентификатор правила для балансировщика
+let balancerId = 56; // Number | ID балансировщика
+let ruleId = 56; // Number | ID правила для балансировщика
 let updateRule = new TimewebCloudApi.UpdateRule(); // UpdateRule | 
 apiInstance.updateBalancerRule(balancerId, ruleId, updateRule, (error, data, response) => {
   if (error) {
@@ -659,8 +659,8 @@ apiInstance.updateBalancerRule(balancerId, ruleId, updateRule, (error, data, res
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **balancerId** | **Number**| Идентификатор балансировщика | 
- **ruleId** | **Number**| Идентификатор правила для балансировщика | 
+ **balancerId** | **Number**| ID балансировщика | 
+ **ruleId** | **Number**| ID правила для балансировщика | 
  **updateRule** | [**UpdateRule**](UpdateRule.md)|  | 
 
 ### Return type

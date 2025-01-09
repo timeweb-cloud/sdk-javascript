@@ -92,7 +92,7 @@ export default class VPCApi {
      * Callback function to receive the result of the deleteVPC operation.
      * @callback module:api/VPCApi~deleteVPCCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateVPC201Response} data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
@@ -101,7 +101,6 @@ export default class VPCApi {
      * Чтобы удалить VPC, отправьте DELETE-запрос на `/api/v1/vpcs/{vpc_id}`
      * @param {String} vpcId ID сети
      * @param {module:api/VPCApi~deleteVPCCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateVPC201Response}
      */
     deleteVPC(vpcId, callback) {
       let postBody = null;
@@ -123,7 +122,7 @@ export default class VPCApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = CreateVPC201Response;
+      let returnType = null;
       return this.apiClient.callApi(
         '/api/v1/vpcs/{vpc_id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,

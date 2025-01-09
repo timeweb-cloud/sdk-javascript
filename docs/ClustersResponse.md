@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**responseId** | **String** | Идентификатор запроса | [optional] 
-**meta** | [**Meta**](Meta.md) |  | 
+**responseId** | **String** | ID запроса | [optional] 
+**meta** | [**SchemasMeta**](SchemasMeta.md) |  | 
 **clusters** | [**[ClusterOut]**](ClusterOut.md) | Массив объектов Кластер | 
 
 

@@ -84,19 +84,19 @@ class UpdateKeyRequest {
 
 
 /**
- * Тело SSH-ключа
+ * Тело SSH-ключа.
  * @member {String} body
  */
 UpdateKeyRequest.prototype['body'] = undefined;
 
 /**
- * Будет ли выбираться SSH-ключ по умолчанию при создании сервера
+ * Будет ли выбираться SSH-ключ по умолчанию при создании сервера.
  * @member {Boolean} is_default
  */
 UpdateKeyRequest.prototype['is_default'] = undefined;
 
 /**
- * Название SSH-ключа
+ * Название SSH-ключа.
  * @member {String} name
  */
 UpdateKeyRequest.prototype['name'] = undefined;

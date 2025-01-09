@@ -12,28 +12,27 @@
  */
 
 import ApiClient from '../ApiClient';
-import URLType from './URLType';
-import UrlStatus from './UrlStatus';
+import Policy from './Policy';
 
 /**
- * The ImageDownloadAPI model module.
- * @module model/ImageDownloadAPI
+ * The FirewallGroup model module.
+ * @module model/FirewallGroup
  * @version 1.0.0
  */
-class ImageDownloadAPI {
+class FirewallGroup {
     /**
-     * Constructs a new <code>ImageDownloadAPI</code>.
-     * @alias module:model/ImageDownloadAPI
-     * @param id {String} ID ссылки
-     * @param createdAt {Date} Дата и время создания ссылки
-     * @param image {String} ID образа
-     * @param type {module:model/URLType} 
-     * @param status {module:model/UrlStatus} 
-     * @param progress {Number} Прогресс загрузки образа
+     * Constructs a new <code>FirewallGroup</code>.
+     * @alias module:model/FirewallGroup
+     * @param id {String} ID группы правил.
+     * @param createdAt {Date} Дата и время создания.
+     * @param updatedAt {Date} Дата и время последнего обновления.
+     * @param name {String} Имя группы правил.
+     * @param description {String} Описание группы правил.
+     * @param policy {module:model/Policy} 
      */
-    constructor(id, createdAt, image, type, status, progress) { 
+    constructor(id, createdAt, updatedAt, name, description, policy) { 
         
-        ImageDownloadAPI.initialize(this, id, createdAt, image, type, status, progress);
+        FirewallGroup.initialize(this, id, createdAt, updatedAt, name, description, policy);
     }
 
     /**
@@ -41,25 +40,25 @@ class ImageDownloadAPI {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, createdAt, image, type, status, progress) { 
+    static initialize(obj, id, createdAt, updatedAt, name, description, policy) { 
         obj['id'] = id;
         obj['created_at'] = createdAt;
-        obj['image'] = image;
-        obj['type'] = type;
-        obj['status'] = status;
-        obj['progress'] = progress;
+        obj['updated_at'] = updatedAt;
+        obj['name'] = name;
+        obj['description'] = description;
+        obj['policy'] = policy;
     }
 
     /**
-     * Constructs a <code>ImageDownloadAPI</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>FirewallGroup</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/ImageDownloadAPI} obj Optional instance to populate.
-     * @return {module:model/ImageDownloadAPI} The populated <code>ImageDownloadAPI</code> instance.
+     * @param {module:model/FirewallGroup} obj Optional instance to populate.
+     * @return {module:model/FirewallGroup} The populated <code>FirewallGroup</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new ImageDownloadAPI();
+            obj = obj || new FirewallGroup();
 
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
@@ -67,33 +66,30 @@ class ImageDownloadAPI {
             if (data.hasOwnProperty('created_at')) {
                 obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
             }
-            if (data.hasOwnProperty('image')) {
-                obj['image'] = ApiClient.convertToType(data['image'], 'String');
+            if (data.hasOwnProperty('updated_at')) {
+                obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'Date');
             }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = URLType.constructFromObject(data['type']);
+            if (data.hasOwnProperty('name')) {
+                obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
-            if (data.hasOwnProperty('url')) {
-                obj['url'] = ApiClient.convertToType(data['url'], 'String');
+            if (data.hasOwnProperty('description')) {
+                obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
-            if (data.hasOwnProperty('status')) {
-                obj['status'] = UrlStatus.constructFromObject(data['status']);
-            }
-            if (data.hasOwnProperty('progress')) {
-                obj['progress'] = ApiClient.convertToType(data['progress'], 'Number');
+            if (data.hasOwnProperty('policy')) {
+                obj['policy'] = Policy.constructFromObject(data['policy']);
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>ImageDownloadAPI</code>.
+     * Validates the JSON data with respect to <code>FirewallGroup</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ImageDownloadAPI</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FirewallGroup</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of ImageDownloadAPI.RequiredProperties) {
+        for (const property of FirewallGroup.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
@@ -103,12 +99,12 @@ class ImageDownloadAPI {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
         // ensure the json data is a string
-        if (data['image'] && !(typeof data['image'] === 'string' || data['image'] instanceof String)) {
-            throw new Error("Expected the field `image` to be a primitive type in the JSON string but got " + data['image']);
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
-        if (data['url'] && !(typeof data['url'] === 'string' || data['url'] instanceof String)) {
-            throw new Error("Expected the field `url` to be a primitive type in the JSON string but got " + data['url']);
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
 
         return true;
@@ -117,52 +113,47 @@ class ImageDownloadAPI {
 
 }
 
-ImageDownloadAPI.RequiredProperties = ["id", "created_at", "image", "type", "status", "progress"];
+FirewallGroup.RequiredProperties = ["id", "created_at", "updated_at", "name", "description", "policy"];
 
 /**
- * ID ссылки
+ * ID группы правил.
  * @member {String} id
  */
-ImageDownloadAPI.prototype['id'] = undefined;
+FirewallGroup.prototype['id'] = undefined;
 
 /**
- * Дата и время создания ссылки
+ * Дата и время создания.
  * @member {Date} created_at
  */
-ImageDownloadAPI.prototype['created_at'] = undefined;
+FirewallGroup.prototype['created_at'] = undefined;
 
 /**
- * ID образа
- * @member {String} image
+ * Дата и время последнего обновления.
+ * @member {Date} updated_at
  */
-ImageDownloadAPI.prototype['image'] = undefined;
+FirewallGroup.prototype['updated_at'] = undefined;
 
 /**
- * @member {module:model/URLType} type
+ * Имя группы правил.
+ * @member {String} name
  */
-ImageDownloadAPI.prototype['type'] = undefined;
+FirewallGroup.prototype['name'] = undefined;
 
 /**
- * Ссылка на скачивание
- * @member {String} url
+ * Описание группы правил.
+ * @member {String} description
  */
-ImageDownloadAPI.prototype['url'] = undefined;
+FirewallGroup.prototype['description'] = undefined;
 
 /**
- * @member {module:model/UrlStatus} status
+ * @member {module:model/Policy} policy
  */
-ImageDownloadAPI.prototype['status'] = undefined;
-
-/**
- * Прогресс загрузки образа
- * @member {Number} progress
- */
-ImageDownloadAPI.prototype['progress'] = undefined;
+FirewallGroup.prototype['policy'] = undefined;
 
 
 
 
 
 
-export default ImageDownloadAPI;
+export default FirewallGroup;
 

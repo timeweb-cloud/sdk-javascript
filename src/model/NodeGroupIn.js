@@ -127,7 +127,7 @@ NodeGroupIn.RequiredProperties = ["name", "node_count"];
 NodeGroupIn.prototype['name'] = undefined;
 
 /**
- * Идентификатор тарифа воркер-ноды. Нельзя передавать вместе с `configuration`. Локация воркер-нод должна совпадать с локацией кластера
+ * ID тарифа воркер-ноды. Нельзя передавать вместе с `configuration`. Локация воркер-нод должна совпадать с локацией кластера
  * @member {Number} preset_id
  */
 NodeGroupIn.prototype['preset_id'] = undefined;

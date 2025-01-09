@@ -22,7 +22,7 @@ class AddDatabaseToProjectRequest {
     /**
      * Constructs a new <code>AddDatabaseToProjectRequest</code>.
      * @alias module:model/AddDatabaseToProjectRequest
-     * @param resourceId {Number} Идентификатор добавляемой базы данных.
+     * @param resourceId {Number} ID добавляемой базы данных.
      */
     constructor(resourceId) { 
         
@@ -78,7 +78,7 @@ class AddDatabaseToProjectRequest {
 AddDatabaseToProjectRequest.RequiredProperties = ["resource_id"];
 
 /**
- * Идентификатор добавляемой базы данных.
+ * ID добавляемой базы данных.
  * @member {Number} resource_id
  */
 AddDatabaseToProjectRequest.prototype['resource_id'] = undefined;

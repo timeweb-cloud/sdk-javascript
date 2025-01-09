@@ -100,7 +100,7 @@ UpdateProject.prototype['name'] = undefined;
 UpdateProject.prototype['description'] = undefined;
 
 /**
- * Идентификатор аватара пользователя. Описание методов работы с аватарами появится позднее.
+ * ID аватара пользователя. Описание методов работы с аватарами появится позднее.
  * @member {String} avatar_id
  */
 UpdateProject.prototype['avatar_id'] = undefined;

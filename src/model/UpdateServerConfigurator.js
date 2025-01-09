@@ -60,6 +60,9 @@ class UpdateServerConfigurator {
             if (data.hasOwnProperty('ram')) {
                 obj['ram'] = ApiClient.convertToType(data['ram'], 'Number');
             }
+            if (data.hasOwnProperty('gpu')) {
+                obj['gpu'] = ApiClient.convertToType(data['gpu'], 'Number');
+            }
         }
         return obj;
     }
@@ -102,6 +105,12 @@ UpdateServerConfigurator.prototype['cpu'] = undefined;
  * @member {Number} ram
  */
 UpdateServerConfigurator.prototype['ram'] = undefined;
+
+/**
+ * Количество видеокарт.
+ * @member {Number} gpu
+ */
+UpdateServerConfigurator.prototype['gpu'] = undefined;
 
 
 

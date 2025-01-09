@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import ImageDownloadAPI from './ImageDownloadAPI';
+import ImageDownload from './ImageDownload';
 
 /**
  * The ImageDownloadResponse model module.
@@ -23,7 +23,7 @@ class ImageDownloadResponse {
     /**
      * Constructs a new <code>ImageDownloadResponse</code>.
      * @alias module:model/ImageDownloadResponse
-     * @param download {module:model/ImageDownloadAPI} 
+     * @param download {module:model/ImageDownload} 
      */
     constructor(download) { 
         
@@ -54,7 +54,7 @@ class ImageDownloadResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('download')) {
-                obj['download'] = ImageDownloadAPI.constructFromObject(data['download']);
+                obj['download'] = ImageDownload.constructFromObject(data['download']);
             }
         }
         return obj;
@@ -78,7 +78,7 @@ class ImageDownloadResponse {
         }
         // validate the optional field `download`
         if (data['download']) { // data not null
-          ImageDownloadAPI.validateJSON(data['download']);
+          ImageDownload.validateJSON(data['download']);
         }
 
         return true;
@@ -90,13 +90,13 @@ class ImageDownloadResponse {
 ImageDownloadResponse.RequiredProperties = ["download"];
 
 /**
- * ID запроса
+ * ID запроса.
  * @member {String} response_id
  */
 ImageDownloadResponse.prototype['response_id'] = undefined;
 
 /**
- * @member {module:model/ImageDownloadAPI} download
+ * @member {module:model/ImageDownload} download
  */
 ImageDownloadResponse.prototype['download'] = undefined;
 

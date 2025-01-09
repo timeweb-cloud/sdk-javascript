@@ -198,6 +198,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property password (base name: "password")', function() {
+      // uncomment below and update the code to test the property password
+      //var instance = new TimewebCloudApi.DedicatedServer();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

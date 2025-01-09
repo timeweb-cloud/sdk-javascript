@@ -1,10 +1,10 @@
-# TimewebCloudApi.FirewallGroupResourceOutAPI
+# TimewebCloudApi.FirewallGroupResource
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Number** | resource id | 
+**id** | **Number** | ID ресурса. | 
 **type** | [**ResourceType**](ResourceType.md) |  | 
 
 

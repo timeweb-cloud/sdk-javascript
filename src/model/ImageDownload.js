@@ -12,27 +12,28 @@
  */
 
 import ApiClient from '../ApiClient';
-import FirewallRuleDirection from './FirewallRuleDirection';
-import FirewallRuleProtocol from './FirewallRuleProtocol';
+import URLType from './URLType';
+import UrlStatus from './UrlStatus';
 
 /**
- * The FirewallRuleOutAPI model module.
- * @module model/FirewallRuleOutAPI
+ * The ImageDownload model module.
+ * @module model/ImageDownload
  * @version 1.0.0
  */
-class FirewallRuleOutAPI {
+class ImageDownload {
     /**
-     * Constructs a new <code>FirewallRuleOutAPI</code>.
-     * @alias module:model/FirewallRuleOutAPI
-     * @param id {String} Идентификатор правила
-     * @param description {String} Описание правила
-     * @param direction {module:model/FirewallRuleDirection} 
-     * @param protocol {module:model/FirewallRuleProtocol} 
-     * @param groupId {String} Идентификатор группы правил
+     * Constructs a new <code>ImageDownload</code>.
+     * @alias module:model/ImageDownload
+     * @param id {String} ID ссылки.
+     * @param createdAt {String} Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда была создана ссылка.
+     * @param image {String} ID образа.
+     * @param type {module:model/URLType} 
+     * @param status {module:model/UrlStatus} 
+     * @param progress {Number} Прогресс загрузки образа.
      */
-    constructor(id, description, direction, protocol, groupId) { 
+    constructor(id, createdAt, image, type, status, progress) { 
         
-        FirewallRuleOutAPI.initialize(this, id, description, direction, protocol, groupId);
+        ImageDownload.initialize(this, id, createdAt, image, type, status, progress);
     }
 
     /**
@@ -40,58 +41,59 @@ class FirewallRuleOutAPI {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, description, direction, protocol, groupId) { 
+    static initialize(obj, id, createdAt, image, type, status, progress) { 
         obj['id'] = id;
-        obj['description'] = description;
-        obj['direction'] = direction;
-        obj['protocol'] = protocol;
-        obj['group_id'] = groupId;
+        obj['created_at'] = createdAt;
+        obj['image'] = image;
+        obj['type'] = type;
+        obj['status'] = status;
+        obj['progress'] = progress;
     }
 
     /**
-     * Constructs a <code>FirewallRuleOutAPI</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>ImageDownload</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/FirewallRuleOutAPI} obj Optional instance to populate.
-     * @return {module:model/FirewallRuleOutAPI} The populated <code>FirewallRuleOutAPI</code> instance.
+     * @param {module:model/ImageDownload} obj Optional instance to populate.
+     * @return {module:model/ImageDownload} The populated <code>ImageDownload</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new FirewallRuleOutAPI();
+            obj = obj || new ImageDownload();
 
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
-            if (data.hasOwnProperty('description')) {
-                obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            if (data.hasOwnProperty('created_at')) {
+                obj['created_at'] = ApiClient.convertToType(data['created_at'], 'String');
             }
-            if (data.hasOwnProperty('direction')) {
-                obj['direction'] = FirewallRuleDirection.constructFromObject(data['direction']);
+            if (data.hasOwnProperty('image')) {
+                obj['image'] = ApiClient.convertToType(data['image'], 'String');
             }
-            if (data.hasOwnProperty('protocol')) {
-                obj['protocol'] = FirewallRuleProtocol.constructFromObject(data['protocol']);
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = URLType.constructFromObject(data['type']);
             }
-            if (data.hasOwnProperty('port')) {
-                obj['port'] = ApiClient.convertToType(data['port'], 'String');
+            if (data.hasOwnProperty('url')) {
+                obj['url'] = ApiClient.convertToType(data['url'], 'String');
             }
-            if (data.hasOwnProperty('cidr')) {
-                obj['cidr'] = ApiClient.convertToType(data['cidr'], 'String');
+            if (data.hasOwnProperty('status')) {
+                obj['status'] = UrlStatus.constructFromObject(data['status']);
             }
-            if (data.hasOwnProperty('group_id')) {
-                obj['group_id'] = ApiClient.convertToType(data['group_id'], 'String');
+            if (data.hasOwnProperty('progress')) {
+                obj['progress'] = ApiClient.convertToType(data['progress'], 'Number');
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>FirewallRuleOutAPI</code>.
+     * Validates the JSON data with respect to <code>ImageDownload</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FirewallRuleOutAPI</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ImageDownload</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of FirewallRuleOutAPI.RequiredProperties) {
+        for (const property of ImageDownload.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
@@ -101,20 +103,16 @@ class FirewallRuleOutAPI {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
         // ensure the json data is a string
-        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
-            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        if (data['created_at'] && !(typeof data['created_at'] === 'string' || data['created_at'] instanceof String)) {
+            throw new Error("Expected the field `created_at` to be a primitive type in the JSON string but got " + data['created_at']);
         }
         // ensure the json data is a string
-        if (data['port'] && !(typeof data['port'] === 'string' || data['port'] instanceof String)) {
-            throw new Error("Expected the field `port` to be a primitive type in the JSON string but got " + data['port']);
+        if (data['image'] && !(typeof data['image'] === 'string' || data['image'] instanceof String)) {
+            throw new Error("Expected the field `image` to be a primitive type in the JSON string but got " + data['image']);
         }
         // ensure the json data is a string
-        if (data['cidr'] && !(typeof data['cidr'] === 'string' || data['cidr'] instanceof String)) {
-            throw new Error("Expected the field `cidr` to be a primitive type in the JSON string but got " + data['cidr']);
-        }
-        // ensure the json data is a string
-        if (data['group_id'] && !(typeof data['group_id'] === 'string' || data['group_id'] instanceof String)) {
-            throw new Error("Expected the field `group_id` to be a primitive type in the JSON string but got " + data['group_id']);
+        if (data['url'] && !(typeof data['url'] === 'string' || data['url'] instanceof String)) {
+            throw new Error("Expected the field `url` to be a primitive type in the JSON string but got " + data['url']);
         }
 
         return true;
@@ -123,52 +121,52 @@ class FirewallRuleOutAPI {
 
 }
 
-FirewallRuleOutAPI.RequiredProperties = ["id", "description", "direction", "protocol", "group_id"];
+ImageDownload.RequiredProperties = ["id", "created_at", "image", "type", "status", "progress"];
 
 /**
- * Идентификатор правила
+ * ID ссылки.
  * @member {String} id
  */
-FirewallRuleOutAPI.prototype['id'] = undefined;
+ImageDownload.prototype['id'] = undefined;
 
 /**
- * Описание правила
- * @member {String} description
+ * Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда была создана ссылка.
+ * @member {String} created_at
  */
-FirewallRuleOutAPI.prototype['description'] = undefined;
+ImageDownload.prototype['created_at'] = undefined;
 
 /**
- * @member {module:model/FirewallRuleDirection} direction
+ * ID образа.
+ * @member {String} image
  */
-FirewallRuleOutAPI.prototype['direction'] = undefined;
+ImageDownload.prototype['image'] = undefined;
 
 /**
- * @member {module:model/FirewallRuleProtocol} protocol
+ * @member {module:model/URLType} type
  */
-FirewallRuleOutAPI.prototype['protocol'] = undefined;
+ImageDownload.prototype['type'] = undefined;
 
 /**
- * Порт или диапазон портов, в случае tcp или udp
- * @member {String} port
+ * Ссылка на скачивание.
+ * @member {String} url
  */
-FirewallRuleOutAPI.prototype['port'] = undefined;
+ImageDownload.prototype['url'] = undefined;
 
 /**
- * Сетевой адрес или подсеть. Поддерживаются протоколы IPv4  и IPv6
- * @member {String} cidr
+ * @member {module:model/UrlStatus} status
  */
-FirewallRuleOutAPI.prototype['cidr'] = undefined;
+ImageDownload.prototype['status'] = undefined;
 
 /**
- * Идентификатор группы правил
- * @member {String} group_id
+ * Прогресс загрузки образа.
+ * @member {Number} progress
  */
-FirewallRuleOutAPI.prototype['group_id'] = undefined;
+ImageDownload.prototype['progress'] = undefined;
 
 
 
 
 
 
-export default FirewallRuleOutAPI;
+export default ImageDownload;
 

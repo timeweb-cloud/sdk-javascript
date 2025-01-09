@@ -9,7 +9,9 @@ Name | Type | Description | Notes
 **natMode** | **String** | Тип преобразования сетевых адресов. | [optional] 
 **bandwidth** | **Number** | Пропускная способность сети. | [optional] 
 **ips** | [**[VdsNetworksInnerIpsInner]**](VdsNetworksInnerIpsInner.md) | Список IP-адресов сети. | 
-**isDdosGuard** | **Boolean** | Подключена ли DDoS-защита. Только для публичных сетей. | [optional] 
+**isDdosGuard** | **Boolean** | Это логическое значение, которое показывает, подключена ли DDoS-защита. Только для публичных сетей. | [optional] 
+**isImageMounted** | **Boolean** | Это логическое значение, которое показывает, примонтирован ли образ к серверу. | [optional] 
+**blockedPorts** | **[Number]** | Список заблокированных портов на сервере. | [optional] 
 
 
 

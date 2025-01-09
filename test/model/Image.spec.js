@@ -11,217 +11,133 @@
  *
  */
 
-import ApiClient from '../ApiClient';
-import ImageStatus from './ImageStatus';
-import OS from './OS';
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', process.cwd()+'/src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.TimewebCloudApi);
+  }
+}(this, function(expect, TimewebCloudApi) {
+  'use strict';
 
-/**
- * The ImageOutAPI model module.
- * @module model/ImageOutAPI
- * @version 1.0.0
- */
-class ImageOutAPI {
-    /**
-     * Constructs a new <code>ImageOutAPI</code>.
-     * @alias module:model/ImageOutAPI
-     * @param id {String} Идентификатор образа
-     * @param status {module:model/ImageStatus} 
-     * @param createdAt {Date} Дата и время создания
-     * @param deletedAt {Date} Дата и время удаления
-     * @param size {Number} Размер в мегабайтах
-     * @param name {String} Имя образа
-     * @param description {String} Описание образа
-     * @param diskId {Number} Идентификатор связанного с образом диска
-     * @param os {module:model/OS} 
-     * @param progress {Number} Процент создания образа
-     * @param isCustom {Boolean} Признак указывающий на то является ли образ кастомным
-     */
-    constructor(id, status, createdAt, deletedAt, size, name, description, diskId, os, progress, isCustom) { 
-        
-        ImageOutAPI.initialize(this, id, status, createdAt, deletedAt, size, name, description, diskId, os, progress, isCustom);
-    }
+  var instance;
 
-    /**
-     * Initializes the fields of this object.
-     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
-     * Only for internal use.
-     */
-    static initialize(obj, id, status, createdAt, deletedAt, size, name, description, diskId, os, progress, isCustom) { 
-        obj['id'] = id;
-        obj['status'] = status;
-        obj['created_at'] = createdAt;
-        obj['deleted_at'] = deletedAt;
-        obj['size'] = size;
-        obj['name'] = name;
-        obj['description'] = description;
-        obj['disk_id'] = diskId;
-        obj['os'] = os;
-        obj['progress'] = progress;
-        obj['is_custom'] = isCustom;
-    }
+  beforeEach(function() {
+    instance = new TimewebCloudApi.Image();
+  });
 
-    /**
-     * Constructs a <code>ImageOutAPI</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/ImageOutAPI} obj Optional instance to populate.
-     * @return {module:model/ImageOutAPI} The populated <code>ImageOutAPI</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new ImageOutAPI();
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
-            }
-            if (data.hasOwnProperty('status')) {
-                obj['status'] = ImageStatus.constructFromObject(data['status']);
-            }
-            if (data.hasOwnProperty('created_at')) {
-                obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
-            }
-            if (data.hasOwnProperty('deleted_at')) {
-                obj['deleted_at'] = ApiClient.convertToType(data['deleted_at'], 'Date');
-            }
-            if (data.hasOwnProperty('size')) {
-                obj['size'] = ApiClient.convertToType(data['size'], 'Number');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('description')) {
-                obj['description'] = ApiClient.convertToType(data['description'], 'String');
-            }
-            if (data.hasOwnProperty('disk_id')) {
-                obj['disk_id'] = ApiClient.convertToType(data['disk_id'], 'Number');
-            }
-            if (data.hasOwnProperty('location')) {
-                obj['location'] = ApiClient.convertToType(data['location'], 'String');
-            }
-            if (data.hasOwnProperty('os')) {
-                obj['os'] = OS.constructFromObject(data['os']);
-            }
-            if (data.hasOwnProperty('progress')) {
-                obj['progress'] = ApiClient.convertToType(data['progress'], 'Number');
-            }
-            if (data.hasOwnProperty('is_custom')) {
-                obj['is_custom'] = ApiClient.convertToType(data['is_custom'], 'Boolean');
-            }
-        }
-        return obj;
-    }
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-    /**
-     * Validates the JSON data with respect to <code>ImageOutAPI</code>.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ImageOutAPI</code>.
-     */
-    static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of ImageOutAPI.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
-        // ensure the json data is a string
-        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
-            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
-        }
-        // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
-            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
-        }
-        // ensure the json data is a string
-        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
-            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
-        }
-        // ensure the json data is a string
-        if (data['location'] && !(typeof data['location'] === 'string' || data['location'] instanceof String)) {
-            throw new Error("Expected the field `location` to be a primitive type in the JSON string but got " + data['location']);
-        }
+  describe('Image', function() {
+    it('should create an instance of Image', function() {
+      // uncomment below and update the code to test Image
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be.a(TimewebCloudApi.Image);
+    });
 
-        return true;
-    }
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property status (base name: "status")', function() {
+      // uncomment below and update the code to test the property status
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be();
+    });
 
-}
+    it('should have the property createdAt (base name: "created_at")', function() {
+      // uncomment below and update the code to test the property createdAt
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be();
+    });
 
-ImageOutAPI.RequiredProperties = ["id", "status", "created_at", "deleted_at", "size", "name", "description", "disk_id", "os", "progress", "is_custom"];
+    it('should have the property deletedAt (base name: "deleted_at")', function() {
+      // uncomment below and update the code to test the property deletedAt
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be();
+    });
 
-/**
- * Идентификатор образа
- * @member {String} id
- */
-ImageOutAPI.prototype['id'] = undefined;
+    it('should have the property size (base name: "size")', function() {
+      // uncomment below and update the code to test the property size
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be();
+    });
 
-/**
- * @member {module:model/ImageStatus} status
- */
-ImageOutAPI.prototype['status'] = undefined;
+    it('should have the property virtualSize (base name: "virtual_size")', function() {
+      // uncomment below and update the code to test the property virtualSize
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be();
+    });
 
-/**
- * Дата и время создания
- * @member {Date} created_at
- */
-ImageOutAPI.prototype['created_at'] = undefined;
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be();
+    });
 
-/**
- * Дата и время удаления
- * @member {Date} deleted_at
- */
-ImageOutAPI.prototype['deleted_at'] = undefined;
+    it('should have the property description (base name: "description")', function() {
+      // uncomment below and update the code to test the property description
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be();
+    });
 
-/**
- * Размер в мегабайтах
- * @member {Number} size
- */
-ImageOutAPI.prototype['size'] = undefined;
+    it('should have the property diskId (base name: "disk_id")', function() {
+      // uncomment below and update the code to test the property diskId
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be();
+    });
 
-/**
- * Имя образа
- * @member {String} name
- */
-ImageOutAPI.prototype['name'] = undefined;
+    it('should have the property location (base name: "location")', function() {
+      // uncomment below and update the code to test the property location
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be();
+    });
 
-/**
- * Описание образа
- * @member {String} description
- */
-ImageOutAPI.prototype['description'] = undefined;
+    it('should have the property os (base name: "os")', function() {
+      // uncomment below and update the code to test the property os
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be();
+    });
 
-/**
- * Идентификатор связанного с образом диска
- * @member {Number} disk_id
- */
-ImageOutAPI.prototype['disk_id'] = undefined;
+    it('should have the property progress (base name: "progress")', function() {
+      // uncomment below and update the code to test the property progress
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be();
+    });
 
-/**
- * Локация, в которой создан образ
- * @member {String} location
- */
-ImageOutAPI.prototype['location'] = undefined;
+    it('should have the property isCustom (base name: "is_custom")', function() {
+      // uncomment below and update the code to test the property isCustom
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be();
+    });
 
-/**
- * @member {module:model/OS} os
- */
-ImageOutAPI.prototype['os'] = undefined;
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instance = new TimewebCloudApi.Image();
+      //expect(instance).to.be();
+    });
 
-/**
- * Процент создания образа
- * @member {Number} progress
- */
-ImageOutAPI.prototype['progress'] = undefined;
+  });
 
-/**
- * Признак указывающий на то является ли образ кастомным
- * @member {Boolean} is_custom
- */
-ImageOutAPI.prototype['is_custom'] = undefined;
-
-
-
-
-
-
-export default ImageOutAPI;
-
+}));

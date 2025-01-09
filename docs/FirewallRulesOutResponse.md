@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**responseId** | **String** | Идентификатор запроса | [optional] 
+**responseId** | **String** | ID запроса. | [optional] 
 **meta** | [**Meta**](Meta.md) |  | 
-**rules** | [**[FirewallRuleOutAPI]**](FirewallRuleOutAPI.md) | Массив объектов Firewall правил | 
+**rules** | [**[FirewallRule]**](FirewallRule.md) |  | 
 
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**responseId** | **String** | Идентификатор запроса | [optional] 
-**image** | [**ImageOutAPI**](ImageOutAPI.md) |  | 
+**responseId** | **String** | ID запроса. | [optional] 
+**image** | [**Image**](Image.md) |  | 
 
 

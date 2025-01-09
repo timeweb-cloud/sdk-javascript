@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import Meta from './Meta';
+import SchemasMeta from './SchemasMeta';
 
 /**
  * The K8SVersionsResponse model module.
@@ -23,7 +23,7 @@ class K8SVersionsResponse {
     /**
      * Constructs a new <code>K8SVersionsResponse</code>.
      * @alias module:model/K8SVersionsResponse
-     * @param meta {module:model/Meta} 
+     * @param meta {module:model/SchemasMeta} 
      * @param k8sVersions {Array.<String>} Массив версий k8s
      */
     constructor(meta, k8sVersions) { 
@@ -56,7 +56,7 @@ class K8SVersionsResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('meta')) {
-                obj['meta'] = Meta.constructFromObject(data['meta']);
+                obj['meta'] = SchemasMeta.constructFromObject(data['meta']);
             }
             if (data.hasOwnProperty('k8s_versions')) {
                 obj['k8s_versions'] = ApiClient.convertToType(data['k8s_versions'], ['String']);
@@ -83,7 +83,7 @@ class K8SVersionsResponse {
         }
         // validate the optional field `meta`
         if (data['meta']) { // data not null
-          Meta.validateJSON(data['meta']);
+          SchemasMeta.validateJSON(data['meta']);
         }
         // ensure the json data is an array
         if (!Array.isArray(data['k8s_versions'])) {
@@ -99,13 +99,13 @@ class K8SVersionsResponse {
 K8SVersionsResponse.RequiredProperties = ["meta", "k8s_versions"];
 
 /**
- * Идентификатор запроса
+ * ID запроса
  * @member {String} response_id
  */
 K8SVersionsResponse.prototype['response_id'] = undefined;
 
 /**
- * @member {module:model/Meta} meta
+ * @member {module:model/SchemasMeta} meta
  */
 K8SVersionsResponse.prototype['meta'] = undefined;
 

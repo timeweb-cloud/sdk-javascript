@@ -25,7 +25,7 @@ class NodeGroupOut {
      * @param id {Number} ID группы
      * @param name {String} Название группы
      * @param createdAt {Date} Дата и время создания группы в формате ISO8601
-     * @param presetId {Number} Идентификатор тарифа мастер-ноды
+     * @param presetId {Number} ID тарифа мастер-ноды
      * @param nodeCount {Number} Количество нод в группе
      */
     constructor(id, name, createdAt, presetId, nodeCount) { 
@@ -120,7 +120,7 @@ NodeGroupOut.prototype['name'] = undefined;
 NodeGroupOut.prototype['created_at'] = undefined;
 
 /**
- * Идентификатор тарифа мастер-ноды
+ * ID тарифа мастер-ноды
  * @member {Number} preset_id
  */
 NodeGroupOut.prototype['preset_id'] = undefined;

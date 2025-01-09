@@ -108,7 +108,7 @@ CreateProject.prototype['name'] = undefined;
 CreateProject.prototype['description'] = undefined;
 
 /**
- * Идентификатор аватара пользователя. Описание методов работы с аватарами появится позднее.
+ * ID аватара пользователя. Описание методов работы с аватарами появится позднее.
  * @member {String} avatar_id
  */
 CreateProject.prototype['avatar_id'] = undefined;

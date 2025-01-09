@@ -34,10 +34,13 @@ class ServersConfiguratorRequirements {
      * @param networkBandwidthMin {Number} Минимальныая пропускная способноть интернет-канала (в Мб)
      * @param networkBandwidthStep {Number} Размер шага пропускной способноти интернет-канала (в Мб)
      * @param networkBandwidthMax {Number} Максимальная пропускная способноть интернет-канала (в Мб)
+     * @param gpuMin {Number} Минимальное количество видеокарт
+     * @param gpuMax {Number} Максимальное количество видеокарт
+     * @param gpuStep {Number} Размер шага видеокарт
      */
-    constructor(cpuMin, cpuStep, cpuMax, ramMin, ramStep, ramMax, diskMin, diskStep, diskMax, networkBandwidthMin, networkBandwidthStep, networkBandwidthMax) { 
+    constructor(cpuMin, cpuStep, cpuMax, ramMin, ramStep, ramMax, diskMin, diskStep, diskMax, networkBandwidthMin, networkBandwidthStep, networkBandwidthMax, gpuMin, gpuMax, gpuStep) { 
         
-        ServersConfiguratorRequirements.initialize(this, cpuMin, cpuStep, cpuMax, ramMin, ramStep, ramMax, diskMin, diskStep, diskMax, networkBandwidthMin, networkBandwidthStep, networkBandwidthMax);
+        ServersConfiguratorRequirements.initialize(this, cpuMin, cpuStep, cpuMax, ramMin, ramStep, ramMax, diskMin, diskStep, diskMax, networkBandwidthMin, networkBandwidthStep, networkBandwidthMax, gpuMin, gpuMax, gpuStep);
     }
 
     /**
@@ -45,7 +48,7 @@ class ServersConfiguratorRequirements {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, cpuMin, cpuStep, cpuMax, ramMin, ramStep, ramMax, diskMin, diskStep, diskMax, networkBandwidthMin, networkBandwidthStep, networkBandwidthMax) { 
+    static initialize(obj, cpuMin, cpuStep, cpuMax, ramMin, ramStep, ramMax, diskMin, diskStep, diskMax, networkBandwidthMin, networkBandwidthStep, networkBandwidthMax, gpuMin, gpuMax, gpuStep) { 
         obj['cpu_min'] = cpuMin;
         obj['cpu_step'] = cpuStep;
         obj['cpu_max'] = cpuMax;
@@ -58,6 +61,9 @@ class ServersConfiguratorRequirements {
         obj['network_bandwidth_min'] = networkBandwidthMin;
         obj['network_bandwidth_step'] = networkBandwidthStep;
         obj['network_bandwidth_max'] = networkBandwidthMax;
+        obj['gpu_min'] = gpuMin;
+        obj['gpu_max'] = gpuMax;
+        obj['gpu_step'] = gpuStep;
     }
 
     /**
@@ -107,6 +113,15 @@ class ServersConfiguratorRequirements {
             if (data.hasOwnProperty('network_bandwidth_max')) {
                 obj['network_bandwidth_max'] = ApiClient.convertToType(data['network_bandwidth_max'], 'Number');
             }
+            if (data.hasOwnProperty('gpu_min')) {
+                obj['gpu_min'] = ApiClient.convertToType(data['gpu_min'], 'Number');
+            }
+            if (data.hasOwnProperty('gpu_max')) {
+                obj['gpu_max'] = ApiClient.convertToType(data['gpu_max'], 'Number');
+            }
+            if (data.hasOwnProperty('gpu_step')) {
+                obj['gpu_step'] = ApiClient.convertToType(data['gpu_step'], 'Number');
+            }
         }
         return obj;
     }
@@ -130,7 +145,7 @@ class ServersConfiguratorRequirements {
 
 }
 
-ServersConfiguratorRequirements.RequiredProperties = ["cpu_min", "cpu_step", "cpu_max", "ram_min", "ram_step", "ram_max", "disk_min", "disk_step", "disk_max", "network_bandwidth_min", "network_bandwidth_step", "network_bandwidth_max"];
+ServersConfiguratorRequirements.RequiredProperties = ["cpu_min", "cpu_step", "cpu_max", "ram_min", "ram_step", "ram_max", "disk_min", "disk_step", "disk_max", "network_bandwidth_min", "network_bandwidth_step", "network_bandwidth_max", "gpu_min", "gpu_max", "gpu_step"];
 
 /**
  * Минимальное количество ядер процессора.
@@ -203,6 +218,24 @@ ServersConfiguratorRequirements.prototype['network_bandwidth_step'] = undefined;
  * @member {Number} network_bandwidth_max
  */
 ServersConfiguratorRequirements.prototype['network_bandwidth_max'] = undefined;
+
+/**
+ * Минимальное количество видеокарт
+ * @member {Number} gpu_min
+ */
+ServersConfiguratorRequirements.prototype['gpu_min'] = undefined;
+
+/**
+ * Максимальное количество видеокарт
+ * @member {Number} gpu_max
+ */
+ServersConfiguratorRequirements.prototype['gpu_max'] = undefined;
+
+/**
+ * Размер шага видеокарт
+ * @member {Number} gpu_step
+ */
+ServersConfiguratorRequirements.prototype['gpu_step'] = undefined;
 
 
 

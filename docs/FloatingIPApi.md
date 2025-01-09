@@ -6,11 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**bindFloatingIp**](FloatingIPApi.md#bindFloatingIp) | **POST** /api/v1/floating-ips/{floating_ip_id}/bind | Привязать IP к сервису
 [**createFloatingIp**](FloatingIPApi.md#createFloatingIp) | **POST** /api/v1/floating-ips | Создание плавающего IP
-[**deleteFloatingIP**](FloatingIPApi.md#deleteFloatingIP) | **DELETE** /api/v1/floating-ips/{floating_ip_id} | Удаление плавающего IP по идентификатору
+[**deleteFloatingIP**](FloatingIPApi.md#deleteFloatingIP) | **DELETE** /api/v1/floating-ips/{floating_ip_id} | Удаление плавающего IP по ID
 [**getFloatingIp**](FloatingIPApi.md#getFloatingIp) | **GET** /api/v1/floating-ips/{floating_ip_id} | Получение плавающего IP
 [**getFloatingIps**](FloatingIPApi.md#getFloatingIps) | **GET** /api/v1/floating-ips | Получение списка плавающих IP
 [**unbindFloatingIp**](FloatingIPApi.md#unbindFloatingIp) | **POST** /api/v1/floating-ips/{floating_ip_id}/unbind | Отвязать IP от сервиса
-[**updateFloatingIP**](FloatingIPApi.md#updateFloatingIP) | **PATCH** /api/v1/floating-ips/{floating_ip_id} | Изменение плавающего IP по идентификатору
+[**updateFloatingIP**](FloatingIPApi.md#updateFloatingIP) | **PATCH** /api/v1/floating-ips/{floating_ip_id} | Изменение плавающего IP по ID
 
 
 
@@ -32,7 +32,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FloatingIPApi();
-let floatingIpId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | Идентификатор плавающего IP
+let floatingIpId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | ID плавающего IP
 let bindFloatingIp = new TimewebCloudApi.BindFloatingIp(); // BindFloatingIp | 
 apiInstance.bindFloatingIp(floatingIpId, bindFloatingIp, (error, data, response) => {
   if (error) {
@@ -48,7 +48,7 @@ apiInstance.bindFloatingIp(floatingIpId, bindFloatingIp, (error, data, response)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **floatingIpId** | **String**| Идентификатор плавающего IP | 
+ **floatingIpId** | **String**| ID плавающего IP | 
  **bindFloatingIp** | [**BindFloatingIp**](BindFloatingIp.md)|  | 
 
 ### Return type
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 
 > deleteFloatingIP(floatingIpId)
 
-Удаление плавающего IP по идентификатору
+Удаление плавающего IP по ID
 
 Чтобы удалить плавающий IP, отправьте DELETE-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}&#x60;
 
@@ -132,7 +132,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FloatingIPApi();
-let floatingIpId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | Идентификатор плавающего IP
+let floatingIpId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | ID плавающего IP
 apiInstance.deleteFloatingIP(floatingIpId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -147,7 +147,7 @@ apiInstance.deleteFloatingIP(floatingIpId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **floatingIpId** | **String**| Идентификатор плавающего IP | 
+ **floatingIpId** | **String**| ID плавающего IP | 
 
 ### Return type
 
@@ -181,7 +181,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FloatingIPApi();
-let floatingIpId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | Идентификатор плавающего IP
+let floatingIpId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | ID плавающего IP
 apiInstance.getFloatingIp(floatingIpId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -196,7 +196,7 @@ apiInstance.getFloatingIp(floatingIpId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **floatingIpId** | **String**| Идентификатор плавающего IP | 
+ **floatingIpId** | **String**| ID плавающего IP | 
 
 ### Return type
 
@@ -275,7 +275,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FloatingIPApi();
-let floatingIpId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | Идентификатор плавающего IP
+let floatingIpId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | ID плавающего IP
 apiInstance.unbindFloatingIp(floatingIpId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -290,7 +290,7 @@ apiInstance.unbindFloatingIp(floatingIpId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **floatingIpId** | **String**| Идентификатор плавающего IP | 
+ **floatingIpId** | **String**| ID плавающего IP | 
 
 ### Return type
 
@@ -310,7 +310,7 @@ null (empty response body)
 
 > CreateFloatingIp201Response updateFloatingIP(floatingIpId, updateFloatingIp)
 
-Изменение плавающего IP по идентификатору
+Изменение плавающего IP по ID
 
 Чтобы изменить плавающий IP, отправьте PATCH-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}&#x60;
 
@@ -324,7 +324,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FloatingIPApi();
-let floatingIpId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | Идентификатор плавающего IP
+let floatingIpId = 87fa289f-1513-4c4d-8d49-5707f411f14b; // String | ID плавающего IP
 let updateFloatingIp = new TimewebCloudApi.UpdateFloatingIp(); // UpdateFloatingIp | 
 apiInstance.updateFloatingIP(floatingIpId, updateFloatingIp, (error, data, response) => {
   if (error) {
@@ -340,7 +340,7 @@ apiInstance.updateFloatingIP(floatingIpId, updateFloatingIp, (error, data, respo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **floatingIpId** | **String**| Идентификатор плавающего IP | 
+ **floatingIpId** | **String**| ID плавающего IP | 
  **updateFloatingIp** | [**UpdateFloatingIp**](UpdateFloatingIp.md)|  | 
 
 ### Return type

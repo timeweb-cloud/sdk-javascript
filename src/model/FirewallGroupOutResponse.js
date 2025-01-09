@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import FirewallGroupOutAPI from './FirewallGroupOutAPI';
+import FirewallGroup from './FirewallGroup';
 
 /**
  * The FirewallGroupOutResponse model module.
@@ -23,7 +23,7 @@ class FirewallGroupOutResponse {
     /**
      * Constructs a new <code>FirewallGroupOutResponse</code>.
      * @alias module:model/FirewallGroupOutResponse
-     * @param group {module:model/FirewallGroupOutAPI} 
+     * @param group {module:model/FirewallGroup} 
      */
     constructor(group) { 
         
@@ -54,7 +54,7 @@ class FirewallGroupOutResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('group')) {
-                obj['group'] = FirewallGroupOutAPI.constructFromObject(data['group']);
+                obj['group'] = FirewallGroup.constructFromObject(data['group']);
             }
         }
         return obj;
@@ -78,7 +78,7 @@ class FirewallGroupOutResponse {
         }
         // validate the optional field `group`
         if (data['group']) { // data not null
-          FirewallGroupOutAPI.validateJSON(data['group']);
+          FirewallGroup.validateJSON(data['group']);
         }
 
         return true;
@@ -90,13 +90,13 @@ class FirewallGroupOutResponse {
 FirewallGroupOutResponse.RequiredProperties = ["group"];
 
 /**
- * Идентификатор запроса
+ * ID запроса.
  * @member {String} response_id
  */
 FirewallGroupOutResponse.prototype['response_id'] = undefined;
 
 /**
- * @member {module:model/FirewallGroupOutAPI} group
+ * @member {module:model/FirewallGroup} group
  */
 FirewallGroupOutResponse.prototype['group'] = undefined;
 

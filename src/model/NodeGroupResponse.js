@@ -90,7 +90,7 @@ class NodeGroupResponse {
 NodeGroupResponse.RequiredProperties = ["node_group"];
 
 /**
- * Идентификатор запроса
+ * ID запроса
  * @member {String} response_id
  */
 NodeGroupResponse.prototype['response_id'] = undefined;

@@ -11,121 +11,121 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
 
-  var instance;
+/**
+ * The ComponentsSchemasBaseError model module.
+ * @module model/ComponentsSchemasBaseError
+ * @version 1.0.0
+ */
+class ComponentsSchemasBaseError {
+    /**
+     * Constructs a new <code>ComponentsSchemasBaseError</code>.
+     * @alias module:model/ComponentsSchemasBaseError
+     * @param statusCode {Number} 
+     * @param errorCode {String} 
+     * @param message {String} 
+     */
+    constructor(statusCode, errorCode, message) { 
+        
+        ComponentsSchemasBaseError.initialize(this, statusCode, errorCode, message);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.ImageOutAPI();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, statusCode, errorCode, message) { 
+        obj['status_code'] = statusCode;
+        obj['error_code'] = errorCode;
+        obj['message'] = message;
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>ComponentsSchemasBaseError</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/ComponentsSchemasBaseError} obj Optional instance to populate.
+     * @return {module:model/ComponentsSchemasBaseError} The populated <code>ComponentsSchemasBaseError</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new ComponentsSchemasBaseError();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('status_code')) {
+                obj['status_code'] = ApiClient.convertToType(data['status_code'], 'Number');
+            }
+            if (data.hasOwnProperty('error_code')) {
+                obj['error_code'] = ApiClient.convertToType(data['error_code'], 'String');
+            }
+            if (data.hasOwnProperty('message')) {
+                obj['message'] = ApiClient.convertToType(data['message'], 'String');
+            }
+            if (data.hasOwnProperty('response_id')) {
+                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
+            }
+        }
+        return obj;
+    }
 
-  describe('ImageOutAPI', function() {
-    it('should create an instance of ImageOutAPI', function() {
-      // uncomment below and update the code to test ImageOutAPI
-      //var instance = new TimewebCloudApi.ImageOutAPI();
-      //expect(instance).to.be.a(TimewebCloudApi.ImageOutAPI);
-    });
+    /**
+     * Validates the JSON data with respect to <code>ComponentsSchemasBaseError</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ComponentsSchemasBaseError</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ComponentsSchemasBaseError.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['error_code'] && !(typeof data['error_code'] === 'string' || data['error_code'] instanceof String)) {
+            throw new Error("Expected the field `error_code` to be a primitive type in the JSON string but got " + data['error_code']);
+        }
+        // ensure the json data is a string
+        if (data['message'] && !(typeof data['message'] === 'string' || data['message'] instanceof String)) {
+            throw new Error("Expected the field `message` to be a primitive type in the JSON string but got " + data['message']);
+        }
+        // ensure the json data is a string
+        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
+            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
+        }
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instance = new TimewebCloudApi.ImageOutAPI();
-      //expect(instance).to.be();
-    });
+        return true;
+    }
 
-    it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instance = new TimewebCloudApi.ImageOutAPI();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property createdAt (base name: "created_at")', function() {
-      // uncomment below and update the code to test the property createdAt
-      //var instance = new TimewebCloudApi.ImageOutAPI();
-      //expect(instance).to.be();
-    });
+}
 
-    it('should have the property deletedAt (base name: "deleted_at")', function() {
-      // uncomment below and update the code to test the property deletedAt
-      //var instance = new TimewebCloudApi.ImageOutAPI();
-      //expect(instance).to.be();
-    });
+ComponentsSchemasBaseError.RequiredProperties = ["status_code", "error_code", "message"];
 
-    it('should have the property size (base name: "size")', function() {
-      // uncomment below and update the code to test the property size
-      //var instance = new TimewebCloudApi.ImageOutAPI();
-      //expect(instance).to.be();
-    });
+/**
+ * @member {Number} status_code
+ */
+ComponentsSchemasBaseError.prototype['status_code'] = undefined;
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new TimewebCloudApi.ImageOutAPI();
-      //expect(instance).to.be();
-    });
+/**
+ * @member {String} error_code
+ */
+ComponentsSchemasBaseError.prototype['error_code'] = undefined;
 
-    it('should have the property description (base name: "description")', function() {
-      // uncomment below and update the code to test the property description
-      //var instance = new TimewebCloudApi.ImageOutAPI();
-      //expect(instance).to.be();
-    });
+/**
+ * @member {String} message
+ */
+ComponentsSchemasBaseError.prototype['message'] = undefined;
 
-    it('should have the property diskId (base name: "disk_id")', function() {
-      // uncomment below and update the code to test the property diskId
-      //var instance = new TimewebCloudApi.ImageOutAPI();
-      //expect(instance).to.be();
-    });
+/**
+ * @member {String} response_id
+ */
+ComponentsSchemasBaseError.prototype['response_id'] = undefined;
 
-    it('should have the property location (base name: "location")', function() {
-      // uncomment below and update the code to test the property location
-      //var instance = new TimewebCloudApi.ImageOutAPI();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property os (base name: "os")', function() {
-      // uncomment below and update the code to test the property os
-      //var instance = new TimewebCloudApi.ImageOutAPI();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property progress (base name: "progress")', function() {
-      // uncomment below and update the code to test the property progress
-      //var instance = new TimewebCloudApi.ImageOutAPI();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property isCustom (base name: "is_custom")', function() {
-      // uncomment below and update the code to test the property isCustom
-      //var instance = new TimewebCloudApi.ImageOutAPI();
-      //expect(instance).to.be();
-    });
 
-  });
 
-}));
+export default ComponentsSchemasBaseError;
+

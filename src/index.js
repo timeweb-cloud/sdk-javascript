@@ -73,6 +73,7 @@ import ClusterResponse from './model/ClusterResponse';
 import Clusterk8s from './model/Clusterk8s';
 import ClustersResponse from './model/ClustersResponse';
 import Commit from './model/Commit';
+import ComponentsSchemasBaseError from './model/ComponentsSchemasBaseError';
 import ConfigParameters from './model/ConfigParameters';
 import CopyStorageFileRequest from './model/CopyStorageFileRequest';
 import CreateAdmin from './model/CreateAdmin';
@@ -178,16 +179,16 @@ import DomainRequest from './model/DomainRequest';
 import DomainTransfer from './model/DomainTransfer';
 import EditApiKey from './model/EditApiKey';
 import Finances from './model/Finances';
+import FirewallGroup from './model/FirewallGroup';
 import FirewallGroupInAPI from './model/FirewallGroupInAPI';
-import FirewallGroupOutAPI from './model/FirewallGroupOutAPI';
 import FirewallGroupOutResponse from './model/FirewallGroupOutResponse';
-import FirewallGroupResourceOutAPI from './model/FirewallGroupResourceOutAPI';
+import FirewallGroupResource from './model/FirewallGroupResource';
 import FirewallGroupResourceOutResponse from './model/FirewallGroupResourceOutResponse';
 import FirewallGroupResourcesOutResponse from './model/FirewallGroupResourcesOutResponse';
 import FirewallGroupsOutResponse from './model/FirewallGroupsOutResponse';
+import FirewallRule from './model/FirewallRule';
 import FirewallRuleDirection from './model/FirewallRuleDirection';
 import FirewallRuleInAPI from './model/FirewallRuleInAPI';
-import FirewallRuleOutAPI from './model/FirewallRuleOutAPI';
 import FirewallRuleOutResponse from './model/FirewallRuleOutResponse';
 import FirewallRuleProtocol from './model/FirewallRuleProtocol';
 import FirewallRulesOutResponse from './model/FirewallRulesOutResponse';
@@ -284,11 +285,11 @@ import GetTokens200Response from './model/GetTokens200Response';
 import GetVPCPorts200Response from './model/GetVPCPorts200Response';
 import GetVPCServices200Response from './model/GetVPCServices200Response';
 import GetVPCs200Response from './model/GetVPCs200Response';
-import ImageDownloadAPI from './model/ImageDownloadAPI';
+import Image from './model/Image';
+import ImageDownload from './model/ImageDownload';
 import ImageDownloadResponse from './model/ImageDownloadResponse';
 import ImageDownloadsResponse from './model/ImageDownloadsResponse';
 import ImageInAPI from './model/ImageInAPI';
-import ImageOutAPI from './model/ImageOutAPI';
 import ImageOutResponse from './model/ImageOutResponse';
 import ImageStatus from './model/ImageStatus';
 import ImageUpdateAPI from './model/ImageUpdateAPI';
@@ -355,6 +356,7 @@ import S3Object from './model/S3Object';
 import S3ObjectOwner from './model/S3ObjectOwner';
 import S3Subdomain from './model/S3Subdomain';
 import SchemasBaseError from './model/SchemasBaseError';
+import SchemasMeta from './model/SchemasMeta';
 import ServerBackup from './model/ServerBackup';
 import ServerDisk from './model/ServerDisk';
 import ServerIp from './model/ServerIp';
@@ -851,6 +853,12 @@ export {
      * @property {module:model/Commit}
      */
     Commit,
+
+    /**
+     * The ComponentsSchemasBaseError model constructor.
+     * @property {module:model/ComponentsSchemasBaseError}
+     */
+    ComponentsSchemasBaseError,
 
     /**
      * The ConfigParameters model constructor.
@@ -1483,16 +1491,16 @@ export {
     Finances,
 
     /**
+     * The FirewallGroup model constructor.
+     * @property {module:model/FirewallGroup}
+     */
+    FirewallGroup,
+
+    /**
      * The FirewallGroupInAPI model constructor.
      * @property {module:model/FirewallGroupInAPI}
      */
     FirewallGroupInAPI,
-
-    /**
-     * The FirewallGroupOutAPI model constructor.
-     * @property {module:model/FirewallGroupOutAPI}
-     */
-    FirewallGroupOutAPI,
 
     /**
      * The FirewallGroupOutResponse model constructor.
@@ -1501,10 +1509,10 @@ export {
     FirewallGroupOutResponse,
 
     /**
-     * The FirewallGroupResourceOutAPI model constructor.
-     * @property {module:model/FirewallGroupResourceOutAPI}
+     * The FirewallGroupResource model constructor.
+     * @property {module:model/FirewallGroupResource}
      */
-    FirewallGroupResourceOutAPI,
+    FirewallGroupResource,
 
     /**
      * The FirewallGroupResourceOutResponse model constructor.
@@ -1525,6 +1533,12 @@ export {
     FirewallGroupsOutResponse,
 
     /**
+     * The FirewallRule model constructor.
+     * @property {module:model/FirewallRule}
+     */
+    FirewallRule,
+
+    /**
      * The FirewallRuleDirection model constructor.
      * @property {module:model/FirewallRuleDirection}
      */
@@ -1535,12 +1549,6 @@ export {
      * @property {module:model/FirewallRuleInAPI}
      */
     FirewallRuleInAPI,
-
-    /**
-     * The FirewallRuleOutAPI model constructor.
-     * @property {module:model/FirewallRuleOutAPI}
-     */
-    FirewallRuleOutAPI,
 
     /**
      * The FirewallRuleOutResponse model constructor.
@@ -2119,10 +2127,16 @@ export {
     GetVPCs200Response,
 
     /**
-     * The ImageDownloadAPI model constructor.
-     * @property {module:model/ImageDownloadAPI}
+     * The Image model constructor.
+     * @property {module:model/Image}
      */
-    ImageDownloadAPI,
+    Image,
+
+    /**
+     * The ImageDownload model constructor.
+     * @property {module:model/ImageDownload}
+     */
+    ImageDownload,
 
     /**
      * The ImageDownloadResponse model constructor.
@@ -2141,12 +2155,6 @@ export {
      * @property {module:model/ImageInAPI}
      */
     ImageInAPI,
-
-    /**
-     * The ImageOutAPI model constructor.
-     * @property {module:model/ImageOutAPI}
-     */
-    ImageOutAPI,
 
     /**
      * The ImageOutResponse model constructor.
@@ -2543,6 +2551,12 @@ export {
      * @property {module:model/SchemasBaseError}
      */
     SchemasBaseError,
+
+    /**
+     * The SchemasMeta model constructor.
+     * @property {module:model/SchemasMeta}
+     */
+    SchemasMeta,
 
     /**
      * The ServerBackup model constructor.

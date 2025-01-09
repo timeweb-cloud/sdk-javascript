@@ -238,7 +238,7 @@ ClusterOut.prototype['disk'] = 0;
 ClusterOut.prototype['availability_zone'] = undefined;
 
 /**
- * Идентификатор проекта
+ * ID проекта
  * @member {Number} project_id
  */
 ClusterOut.prototype['project_id'] = undefined;

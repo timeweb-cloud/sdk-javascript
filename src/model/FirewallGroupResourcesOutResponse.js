@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import FirewallGroupResourceOutAPI from './FirewallGroupResourceOutAPI';
+import FirewallGroupResource from './FirewallGroupResource';
 import Meta from './Meta';
 
 /**
@@ -25,7 +25,7 @@ class FirewallGroupResourcesOutResponse {
      * Constructs a new <code>FirewallGroupResourcesOutResponse</code>.
      * @alias module:model/FirewallGroupResourcesOutResponse
      * @param meta {module:model/Meta} 
-     * @param resources {Array.<module:model/FirewallGroupResourceOutAPI>} 
+     * @param resources {Array.<module:model/FirewallGroupResource>} 
      */
     constructor(meta, resources) { 
         
@@ -60,7 +60,7 @@ class FirewallGroupResourcesOutResponse {
                 obj['meta'] = Meta.constructFromObject(data['meta']);
             }
             if (data.hasOwnProperty('resources')) {
-                obj['resources'] = ApiClient.convertToType(data['resources'], [FirewallGroupResourceOutAPI]);
+                obj['resources'] = ApiClient.convertToType(data['resources'], [FirewallGroupResource]);
             }
         }
         return obj;
@@ -93,7 +93,7 @@ class FirewallGroupResourcesOutResponse {
             }
             // validate the optional field `resources` (array)
             for (const item of data['resources']) {
-                FirewallGroupResourceOutAPI.validateJSON(item);
+                FirewallGroupResource.validateJSON(item);
             };
         }
 
@@ -106,7 +106,7 @@ class FirewallGroupResourcesOutResponse {
 FirewallGroupResourcesOutResponse.RequiredProperties = ["meta", "resources"];
 
 /**
- * Идентификатор запроса
+ * ID запроса.
  * @member {String} response_id
  */
 FirewallGroupResourcesOutResponse.prototype['response_id'] = undefined;
@@ -117,7 +117,7 @@ FirewallGroupResourcesOutResponse.prototype['response_id'] = undefined;
 FirewallGroupResourcesOutResponse.prototype['meta'] = undefined;
 
 /**
- * @member {Array.<module:model/FirewallGroupResourceOutAPI>} resources
+ * @member {Array.<module:model/FirewallGroupResource>} resources
  */
 FirewallGroupResourcesOutResponse.prototype['resources'] = undefined;
 

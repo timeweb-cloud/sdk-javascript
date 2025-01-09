@@ -28,11 +28,14 @@ class Vpc {
      * @param subnetV4 {String} Маска подсети.
      * @param location {module:model/Vpc.LocationEnum} Локация сети.
      * @param createdAt {Date} Дата создания сети.
+     * @param description {String} Описание.
      * @param availabilityZone {module:model/AvailabilityZone} 
+     * @param publicIp {String} Публичный IP-адрес сети.
+     * @param type {module:model/Vpc.TypeEnum} Тип сети.
      */
-    constructor(id, name, subnetV4, location, createdAt, availabilityZone) { 
+    constructor(id, name, subnetV4, location, createdAt, description, availabilityZone, publicIp, type) { 
         
-        Vpc.initialize(this, id, name, subnetV4, location, createdAt, availabilityZone);
+        Vpc.initialize(this, id, name, subnetV4, location, createdAt, description, availabilityZone, publicIp, type);
     }
 
     /**
@@ -40,13 +43,16 @@ class Vpc {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, subnetV4, location, createdAt, availabilityZone) { 
+    static initialize(obj, id, name, subnetV4, location, createdAt, description, availabilityZone, publicIp, type) { 
         obj['id'] = id;
         obj['name'] = name;
         obj['subnet_v4'] = subnetV4;
         obj['location'] = location;
         obj['created_at'] = createdAt;
+        obj['description'] = description;
         obj['availability_zone'] = availabilityZone;
+        obj['public_ip'] = publicIp;
+        obj['type'] = type;
     }
 
     /**
@@ -80,6 +86,12 @@ class Vpc {
             }
             if (data.hasOwnProperty('availability_zone')) {
                 obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
+            }
+            if (data.hasOwnProperty('public_ip')) {
+                obj['public_ip'] = ApiClient.convertToType(data['public_ip'], 'String');
+            }
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = ApiClient.convertToType(data['type'], 'String');
             }
         }
         return obj;
@@ -117,6 +129,14 @@ class Vpc {
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
+        // ensure the json data is a string
+        if (data['public_ip'] && !(typeof data['public_ip'] === 'string' || data['public_ip'] instanceof String)) {
+            throw new Error("Expected the field `public_ip` to be a primitive type in the JSON string but got " + data['public_ip']);
+        }
+        // ensure the json data is a string
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
+        }
 
         return true;
     }
@@ -124,7 +144,7 @@ class Vpc {
 
 }
 
-Vpc.RequiredProperties = ["id", "name", "subnet_v4", "location", "created_at", "availability_zone"];
+Vpc.RequiredProperties = ["id", "name", "subnet_v4", "location", "created_at", "description", "availability_zone", "public_ip", "type"];
 
 /**
  * ID сети.
@@ -167,6 +187,18 @@ Vpc.prototype['description'] = undefined;
  */
 Vpc.prototype['availability_zone'] = undefined;
 
+/**
+ * Публичный IP-адрес сети.
+ * @member {String} public_ip
+ */
+Vpc.prototype['public_ip'] = undefined;
+
+/**
+ * Тип сети.
+ * @member {module:model/Vpc.TypeEnum} type
+ */
+Vpc.prototype['type'] = undefined;
+
 
 
 
@@ -185,10 +217,43 @@ Vpc['LocationEnum'] = {
     "ru-1": "ru-1",
 
     /**
+     * value: "ru-2"
+     * @const
+     */
+    "ru-2": "ru-2",
+
+    /**
      * value: "pl-1"
      * @const
      */
-    "pl-1": "pl-1"
+    "pl-1": "pl-1",
+
+    /**
+     * value: "nl-1"
+     * @const
+     */
+    "nl-1": "nl-1"
+};
+
+
+/**
+ * Allowed values for the <code>type</code> property.
+ * @enum {String}
+ * @readonly
+ */
+Vpc['TypeEnum'] = {
+
+    /**
+     * value: "bgp"
+     * @const
+     */
+    "bgp": "bgp",
+
+    /**
+     * value: "ovn"
+     * @const
+     */
+    "ovn": "ovn"
 };
 
 

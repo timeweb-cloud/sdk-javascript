@@ -68,6 +68,9 @@ class CreateServerConfiguration {
             if (data.hasOwnProperty('ram')) {
                 obj['ram'] = ApiClient.convertToType(data['ram'], 'Number');
             }
+            if (data.hasOwnProperty('gpu')) {
+                obj['gpu'] = ApiClient.convertToType(data['gpu'], 'Number');
+            }
         }
         return obj;
     }
@@ -116,6 +119,12 @@ CreateServerConfiguration.prototype['cpu'] = undefined;
  * @member {Number} ram
  */
 CreateServerConfiguration.prototype['ram'] = undefined;
+
+/**
+ * Количество видеокарт.
+ * @member {Number} gpu
+ */
+CreateServerConfiguration.prototype['gpu'] = undefined;
 
 
 

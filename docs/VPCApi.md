@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ## deleteVPC
 
-> CreateVPC201Response deleteVPC(vpcId)
+> deleteVPC(vpcId)
 
 Удаление VPC по ID сети
 
@@ -86,7 +86,7 @@ apiInstance.deleteVPC(vpcId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 });
 ```
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateVPC201Response**](CreateVPC201Response.md)
+null (empty response body)
 
 ### Authorization
 

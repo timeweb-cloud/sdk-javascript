@@ -12,8 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
-import Meta from './Meta';
 import NodeGroupOut from './NodeGroupOut';
+import SchemasMeta from './SchemasMeta';
 
 /**
  * The NodeGroupsResponse model module.
@@ -24,7 +24,7 @@ class NodeGroupsResponse {
     /**
      * Constructs a new <code>NodeGroupsResponse</code>.
      * @alias module:model/NodeGroupsResponse
-     * @param meta {module:model/Meta} 
+     * @param meta {module:model/SchemasMeta} 
      * @param nodeGroups {Array.<module:model/NodeGroupOut>} Массив объектов Группа нод
      */
     constructor(meta, nodeGroups) { 
@@ -57,7 +57,7 @@ class NodeGroupsResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('meta')) {
-                obj['meta'] = Meta.constructFromObject(data['meta']);
+                obj['meta'] = SchemasMeta.constructFromObject(data['meta']);
             }
             if (data.hasOwnProperty('node_groups')) {
                 obj['node_groups'] = ApiClient.convertToType(data['node_groups'], [NodeGroupOut]);
@@ -84,7 +84,7 @@ class NodeGroupsResponse {
         }
         // validate the optional field `meta`
         if (data['meta']) { // data not null
-          Meta.validateJSON(data['meta']);
+          SchemasMeta.validateJSON(data['meta']);
         }
         if (data['node_groups']) { // data not null
             // ensure the json data is an array
@@ -106,13 +106,13 @@ class NodeGroupsResponse {
 NodeGroupsResponse.RequiredProperties = ["meta", "node_groups"];
 
 /**
- * Идентификатор запроса
+ * ID запроса
  * @member {String} response_id
  */
 NodeGroupsResponse.prototype['response_id'] = undefined;
 
 /**
- * @member {module:model/Meta} meta
+ * @member {module:model/SchemasMeta} meta
  */
 NodeGroupsResponse.prototype['meta'] = undefined;
 

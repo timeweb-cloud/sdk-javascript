@@ -11,91 +11,313 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
+import ImageStatus from './ImageStatus';
+import OS from './OS';
 
-  var instance;
+/**
+ * The Image model module.
+ * @module model/Image
+ * @version 1.0.0
+ */
+class Image {
+    /**
+     * Constructs a new <code>Image</code>.
+     * @alias module:model/Image
+     * @param id {String} ID образа.
+     * @param status {module:model/ImageStatus} 
+     * @param createdAt {String} Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был создан образ.
+     * @param deletedAt {String} Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был удален образ.
+     * @param size {Number} Размер физического диска в мегабайтах.
+     * @param virtualSize {Number} Размер виртуального диска в мегабайтах.
+     * @param name {String} Имя образа.
+     * @param description {String} Описание образа.
+     * @param diskId {Number} ID связанного с образом диска.
+     * @param location {module:model/Image.LocationEnum} Локация образа.
+     * @param os {module:model/OS} 
+     * @param progress {Number} Процент создания образа.
+     * @param isCustom {Boolean} Логическое значение, которое показывает, является ли образ кастомным.
+     * @param type {module:model/Image.TypeEnum} Тип образа.
+     */
+    constructor(id, status, createdAt, deletedAt, size, virtualSize, name, description, diskId, location, os, progress, isCustom, type) { 
+        
+        Image.initialize(this, id, status, createdAt, deletedAt, size, virtualSize, name, description, diskId, location, os, progress, isCustom, type);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.ImageDownloadAPI();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, id, status, createdAt, deletedAt, size, virtualSize, name, description, diskId, location, os, progress, isCustom, type) { 
+        obj['id'] = id;
+        obj['status'] = status;
+        obj['created_at'] = createdAt;
+        obj['deleted_at'] = deletedAt;
+        obj['size'] = size;
+        obj['virtual_size'] = virtualSize;
+        obj['name'] = name;
+        obj['description'] = description;
+        obj['disk_id'] = diskId;
+        obj['location'] = location;
+        obj['os'] = os;
+        obj['progress'] = progress;
+        obj['is_custom'] = isCustom;
+        obj['type'] = type;
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>Image</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/Image} obj Optional instance to populate.
+     * @return {module:model/Image} The populated <code>Image</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new Image();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('id')) {
+                obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            }
+            if (data.hasOwnProperty('status')) {
+                obj['status'] = ImageStatus.constructFromObject(data['status']);
+            }
+            if (data.hasOwnProperty('created_at')) {
+                obj['created_at'] = ApiClient.convertToType(data['created_at'], 'String');
+            }
+            if (data.hasOwnProperty('deleted_at')) {
+                obj['deleted_at'] = ApiClient.convertToType(data['deleted_at'], 'String');
+            }
+            if (data.hasOwnProperty('size')) {
+                obj['size'] = ApiClient.convertToType(data['size'], 'Number');
+            }
+            if (data.hasOwnProperty('virtual_size')) {
+                obj['virtual_size'] = ApiClient.convertToType(data['virtual_size'], 'Number');
+            }
+            if (data.hasOwnProperty('name')) {
+                obj['name'] = ApiClient.convertToType(data['name'], 'String');
+            }
+            if (data.hasOwnProperty('description')) {
+                obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
+            if (data.hasOwnProperty('disk_id')) {
+                obj['disk_id'] = ApiClient.convertToType(data['disk_id'], 'Number');
+            }
+            if (data.hasOwnProperty('location')) {
+                obj['location'] = ApiClient.convertToType(data['location'], 'String');
+            }
+            if (data.hasOwnProperty('os')) {
+                obj['os'] = OS.constructFromObject(data['os']);
+            }
+            if (data.hasOwnProperty('progress')) {
+                obj['progress'] = ApiClient.convertToType(data['progress'], 'Number');
+            }
+            if (data.hasOwnProperty('is_custom')) {
+                obj['is_custom'] = ApiClient.convertToType(data['is_custom'], 'Boolean');
+            }
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = ApiClient.convertToType(data['type'], 'String');
+            }
+        }
+        return obj;
+    }
 
-  describe('ImageDownloadAPI', function() {
-    it('should create an instance of ImageDownloadAPI', function() {
-      // uncomment below and update the code to test ImageDownloadAPI
-      //var instance = new TimewebCloudApi.ImageDownloadAPI();
-      //expect(instance).to.be.a(TimewebCloudApi.ImageDownloadAPI);
-    });
+    /**
+     * Validates the JSON data with respect to <code>Image</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Image</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of Image.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        }
+        // ensure the json data is a string
+        if (data['created_at'] && !(typeof data['created_at'] === 'string' || data['created_at'] instanceof String)) {
+            throw new Error("Expected the field `created_at` to be a primitive type in the JSON string but got " + data['created_at']);
+        }
+        // ensure the json data is a string
+        if (data['deleted_at'] && !(typeof data['deleted_at'] === 'string' || data['deleted_at'] instanceof String)) {
+            throw new Error("Expected the field `deleted_at` to be a primitive type in the JSON string but got " + data['deleted_at']);
+        }
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
+        // ensure the json data is a string
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // ensure the json data is a string
+        if (data['location'] && !(typeof data['location'] === 'string' || data['location'] instanceof String)) {
+            throw new Error("Expected the field `location` to be a primitive type in the JSON string but got " + data['location']);
+        }
+        // ensure the json data is a string
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
+        }
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instance = new TimewebCloudApi.ImageDownloadAPI();
-      //expect(instance).to.be();
-    });
+        return true;
+    }
 
-    it('should have the property createdAt (base name: "created_at")', function() {
-      // uncomment below and update the code to test the property createdAt
-      //var instance = new TimewebCloudApi.ImageDownloadAPI();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property image (base name: "image")', function() {
-      // uncomment below and update the code to test the property image
-      //var instance = new TimewebCloudApi.ImageDownloadAPI();
-      //expect(instance).to.be();
-    });
+}
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instance = new TimewebCloudApi.ImageDownloadAPI();
-      //expect(instance).to.be();
-    });
+Image.RequiredProperties = ["id", "status", "created_at", "deleted_at", "size", "virtual_size", "name", "description", "disk_id", "location", "os", "progress", "is_custom", "type"];
 
-    it('should have the property url (base name: "url")', function() {
-      // uncomment below and update the code to test the property url
-      //var instance = new TimewebCloudApi.ImageDownloadAPI();
-      //expect(instance).to.be();
-    });
+/**
+ * ID образа.
+ * @member {String} id
+ */
+Image.prototype['id'] = undefined;
 
-    it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instance = new TimewebCloudApi.ImageDownloadAPI();
-      //expect(instance).to.be();
-    });
+/**
+ * @member {module:model/ImageStatus} status
+ */
+Image.prototype['status'] = undefined;
 
-    it('should have the property progress (base name: "progress")', function() {
-      // uncomment below and update the code to test the property progress
-      //var instance = new TimewebCloudApi.ImageDownloadAPI();
-      //expect(instance).to.be();
-    });
+/**
+ * Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был создан образ.
+ * @member {String} created_at
+ */
+Image.prototype['created_at'] = undefined;
 
-  });
+/**
+ * Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был удален образ.
+ * @member {String} deleted_at
+ */
+Image.prototype['deleted_at'] = undefined;
 
-}));
+/**
+ * Размер физического диска в мегабайтах.
+ * @member {Number} size
+ */
+Image.prototype['size'] = undefined;
+
+/**
+ * Размер виртуального диска в мегабайтах.
+ * @member {Number} virtual_size
+ */
+Image.prototype['virtual_size'] = undefined;
+
+/**
+ * Имя образа.
+ * @member {String} name
+ */
+Image.prototype['name'] = undefined;
+
+/**
+ * Описание образа.
+ * @member {String} description
+ */
+Image.prototype['description'] = undefined;
+
+/**
+ * ID связанного с образом диска.
+ * @member {Number} disk_id
+ */
+Image.prototype['disk_id'] = undefined;
+
+/**
+ * Локация образа.
+ * @member {module:model/Image.LocationEnum} location
+ */
+Image.prototype['location'] = undefined;
+
+/**
+ * @member {module:model/OS} os
+ */
+Image.prototype['os'] = undefined;
+
+/**
+ * Процент создания образа.
+ * @member {Number} progress
+ */
+Image.prototype['progress'] = undefined;
+
+/**
+ * Логическое значение, которое показывает, является ли образ кастомным.
+ * @member {Boolean} is_custom
+ */
+Image.prototype['is_custom'] = undefined;
+
+/**
+ * Тип образа.
+ * @member {module:model/Image.TypeEnum} type
+ */
+Image.prototype['type'] = undefined;
+
+
+
+
+
+/**
+ * Allowed values for the <code>location</code> property.
+ * @enum {String}
+ * @readonly
+ */
+Image['LocationEnum'] = {
+
+    /**
+     * value: "ru-1"
+     * @const
+     */
+    "ru-1": "ru-1",
+
+    /**
+     * value: "ru-2"
+     * @const
+     */
+    "ru-2": "ru-2",
+
+    /**
+     * value: "pl-1"
+     * @const
+     */
+    "pl-1": "pl-1",
+
+    /**
+     * value: "kz-1"
+     * @const
+     */
+    "kz-1": "kz-1",
+
+    /**
+     * value: "nl-1"
+     * @const
+     */
+    "nl-1": "nl-1"
+};
+
+
+/**
+ * Allowed values for the <code>type</code> property.
+ * @enum {String}
+ * @readonly
+ */
+Image['TypeEnum'] = {
+
+    /**
+     * value: "qcow2"
+     * @const
+     */
+    "qcow2": "qcow2",
+
+    /**
+     * value: "iso"
+     * @const
+     */
+    "iso": "iso"
+};
+
+
+
+export default Image;
+

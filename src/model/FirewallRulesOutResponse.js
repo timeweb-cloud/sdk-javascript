@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import FirewallRuleOutAPI from './FirewallRuleOutAPI';
+import FirewallRule from './FirewallRule';
 import Meta from './Meta';
 
 /**
@@ -25,7 +25,7 @@ class FirewallRulesOutResponse {
      * Constructs a new <code>FirewallRulesOutResponse</code>.
      * @alias module:model/FirewallRulesOutResponse
      * @param meta {module:model/Meta} 
-     * @param rules {Array.<module:model/FirewallRuleOutAPI>} Массив объектов Firewall правил
+     * @param rules {Array.<module:model/FirewallRule>} 
      */
     constructor(meta, rules) { 
         
@@ -60,7 +60,7 @@ class FirewallRulesOutResponse {
                 obj['meta'] = Meta.constructFromObject(data['meta']);
             }
             if (data.hasOwnProperty('rules')) {
-                obj['rules'] = ApiClient.convertToType(data['rules'], [FirewallRuleOutAPI]);
+                obj['rules'] = ApiClient.convertToType(data['rules'], [FirewallRule]);
             }
         }
         return obj;
@@ -93,7 +93,7 @@ class FirewallRulesOutResponse {
             }
             // validate the optional field `rules` (array)
             for (const item of data['rules']) {
-                FirewallRuleOutAPI.validateJSON(item);
+                FirewallRule.validateJSON(item);
             };
         }
 
@@ -106,7 +106,7 @@ class FirewallRulesOutResponse {
 FirewallRulesOutResponse.RequiredProperties = ["meta", "rules"];
 
 /**
- * Идентификатор запроса
+ * ID запроса.
  * @member {String} response_id
  */
 FirewallRulesOutResponse.prototype['response_id'] = undefined;
@@ -117,8 +117,7 @@ FirewallRulesOutResponse.prototype['response_id'] = undefined;
 FirewallRulesOutResponse.prototype['meta'] = undefined;
 
 /**
- * Массив объектов Firewall правил
- * @member {Array.<module:model/FirewallRuleOutAPI>} rules
+ * @member {Array.<module:model/FirewallRule>} rules
  */
 FirewallRulesOutResponse.prototype['rules'] = undefined;
 

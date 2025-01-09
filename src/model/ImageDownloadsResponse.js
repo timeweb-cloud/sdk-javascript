@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import ImageDownloadAPI from './ImageDownloadAPI';
+import ImageDownload from './ImageDownload';
 import Meta from './Meta';
 
 /**
@@ -25,7 +25,7 @@ class ImageDownloadsResponse {
      * Constructs a new <code>ImageDownloadsResponse</code>.
      * @alias module:model/ImageDownloadsResponse
      * @param meta {module:model/Meta} 
-     * @param downloads {Array.<module:model/ImageDownloadAPI>} Массив объектов \"Ссылка на загрузку\"
+     * @param downloads {Array.<module:model/ImageDownload>} 
      */
     constructor(meta, downloads) { 
         
@@ -60,7 +60,7 @@ class ImageDownloadsResponse {
                 obj['meta'] = Meta.constructFromObject(data['meta']);
             }
             if (data.hasOwnProperty('downloads')) {
-                obj['downloads'] = ApiClient.convertToType(data['downloads'], [ImageDownloadAPI]);
+                obj['downloads'] = ApiClient.convertToType(data['downloads'], [ImageDownload]);
             }
         }
         return obj;
@@ -93,7 +93,7 @@ class ImageDownloadsResponse {
             }
             // validate the optional field `downloads` (array)
             for (const item of data['downloads']) {
-                ImageDownloadAPI.validateJSON(item);
+                ImageDownload.validateJSON(item);
             };
         }
 
@@ -106,7 +106,7 @@ class ImageDownloadsResponse {
 ImageDownloadsResponse.RequiredProperties = ["meta", "downloads"];
 
 /**
- * ID запроса
+ * ID запроса.
  * @member {String} response_id
  */
 ImageDownloadsResponse.prototype['response_id'] = undefined;
@@ -117,8 +117,7 @@ ImageDownloadsResponse.prototype['response_id'] = undefined;
 ImageDownloadsResponse.prototype['meta'] = undefined;
 
 /**
- * Массив объектов \"Ссылка на загрузку\"
- * @member {Array.<module:model/ImageDownloadAPI>} downloads
+ * @member {Array.<module:model/ImageDownload>} downloads
  */
 ImageDownloadsResponse.prototype['downloads'] = undefined;
 

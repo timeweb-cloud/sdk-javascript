@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.FirewallGroupOutAPI();
+    instance = new TimewebCloudApi.FirewallGroupResource();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,46 +47,22 @@
       object[property] = value;
   }
 
-  describe('FirewallGroupOutAPI', function() {
-    it('should create an instance of FirewallGroupOutAPI', function() {
-      // uncomment below and update the code to test FirewallGroupOutAPI
-      //var instance = new TimewebCloudApi.FirewallGroupOutAPI();
-      //expect(instance).to.be.a(TimewebCloudApi.FirewallGroupOutAPI);
+  describe('FirewallGroupResource', function() {
+    it('should create an instance of FirewallGroupResource', function() {
+      // uncomment below and update the code to test FirewallGroupResource
+      //var instance = new TimewebCloudApi.FirewallGroupResource();
+      //expect(instance).to.be.a(TimewebCloudApi.FirewallGroupResource);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new TimewebCloudApi.FirewallGroupOutAPI();
+      //var instance = new TimewebCloudApi.FirewallGroupResource();
       //expect(instance).to.be();
     });
 
-    it('should have the property createdAt (base name: "created_at")', function() {
-      // uncomment below and update the code to test the property createdAt
-      //var instance = new TimewebCloudApi.FirewallGroupOutAPI();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property updatedAt (base name: "updated_at")', function() {
-      // uncomment below and update the code to test the property updatedAt
-      //var instance = new TimewebCloudApi.FirewallGroupOutAPI();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new TimewebCloudApi.FirewallGroupOutAPI();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property description (base name: "description")', function() {
-      // uncomment below and update the code to test the property description
-      //var instance = new TimewebCloudApi.FirewallGroupOutAPI();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property policy (base name: "policy")', function() {
-      // uncomment below and update the code to test the property policy
-      //var instance = new TimewebCloudApi.FirewallGroupOutAPI();
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instance = new TimewebCloudApi.FirewallGroupResource();
       //expect(instance).to.be();
     });
 

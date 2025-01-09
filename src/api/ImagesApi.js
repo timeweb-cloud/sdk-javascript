@@ -100,7 +100,7 @@ export default class ImagesApi {
     /**
      * Создание ссылки на скачивание образа
      * Чтобы создать ссылку на скачивание образа, отправьте запрос POST в `/api/v1/images/{image_id}/download-url`.
-     * @param {String} imageId ID образа
+     * @param {String} imageId ID образа.
      * @param {module:model/ImageUrlIn} imageUrlIn 
      * @param {module:api/ImagesApi~createImageDownloadUrlCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ImageDownloadResponse}
@@ -148,7 +148,7 @@ export default class ImagesApi {
     /**
      * Удаление образа
      * Чтобы удалить образ, отправьте запрос DELETE в `/api/v1/images/{image_id}`.
-     * @param {String} imageId ID образа
+     * @param {String} imageId ID образа.
      * @param {module:api/ImagesApi~deleteImageCallback} callback The callback function, accepting three arguments: error, data, response
      */
     deleteImage(imageId, callback) {
@@ -190,8 +190,8 @@ export default class ImagesApi {
     /**
      * Удаление ссылки на образ
      * Чтобы удалить ссылку на образ, отправьте DELETE запрос в `/api/v1/images/{image_id}/download-url/{image_url_id}`.
-     * @param {String} imageId ID образа
-     * @param {String} imageUrlId ID ссылки
+     * @param {String} imageId ID образа.
+     * @param {String} imageUrlId ID ссылки.
      * @param {module:api/ImagesApi~deleteImageDownloadURLCallback} callback The callback function, accepting three arguments: error, data, response
      */
     deleteImageDownloadURL(imageId, imageUrlId, callback) {
@@ -238,7 +238,7 @@ export default class ImagesApi {
     /**
      * Получение информации о образе
      * Чтобы получить образ, отправьте запрос GET в `/api/v1/images/{image_id}`.
-     * @param {String} imageId ID образа
+     * @param {String} imageId ID образа.
      * @param {module:api/ImagesApi~getImageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ImageOutResponse}
      */
@@ -281,8 +281,8 @@ export default class ImagesApi {
     /**
      * Получение информации о ссылке на скачивание образа
      * Чтобы получить информацию о ссылке на скачивание образа, отправьте запрос GET в `/api/v1/images/{image_id}/download-url/{image_url_id}`.
-     * @param {String} imageId ID образа
-     * @param {String} imageUrlId ID ссылки
+     * @param {String} imageId ID образа.
+     * @param {String} imageUrlId ID ссылки.
      * @param {module:api/ImagesApi~getImageDownloadURLCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ImageDownloadResponse}
      */
@@ -330,7 +330,7 @@ export default class ImagesApi {
     /**
      * Получение информации о ссылках на скачивание образов
      * Чтобы получить информацию о ссылках на скачивание образов, отправьте запрос GET в `/api/v1/images/{image_id}/download-url`.
-     * @param {String} imageId ID образа
+     * @param {String} imageId ID образа.
      * @param {Object} opts Optional parameters
      * @param {Number} [limit = 100)] 
      * @param {Number} [offset = 0)] 
@@ -422,7 +422,7 @@ export default class ImagesApi {
     /**
      * Обновление информации о образе
      * Чтобы обновить только определенные атрибуты образа, отправьте запрос PATCH в `/api/v1/images/{image_id}`.
-     * @param {String} imageId ID образа
+     * @param {String} imageId ID образа.
      * @param {module:model/ImageUpdateAPI} imageUpdateAPI 
      * @param {module:api/ImagesApi~updateImageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ImageOutResponse}

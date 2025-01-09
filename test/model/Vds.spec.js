@@ -132,6 +132,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isMasterSsh (base name: "is_master_ssh")', function() {
+      // uncomment below and update the code to test the property isMasterSsh
+      //var instance = new TimewebCloudApi.Vds();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isDedicatedCpu (base name: "is_dedicated_cpu")', function() {
+      // uncomment below and update the code to test the property isDedicatedCpu
+      //var instance = new TimewebCloudApi.Vds();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property gpu (base name: "gpu")', function() {
+      // uncomment below and update the code to test the property gpu
+      //var instance = new TimewebCloudApi.Vds();
+      //expect(instance).to.be();
+    });
+
     it('should have the property cpu (base name: "cpu")', function() {
       // uncomment below and update the code to test the property cpu
       //var instance = new TimewebCloudApi.Vds();

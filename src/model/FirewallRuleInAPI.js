@@ -106,7 +106,7 @@ class FirewallRuleInAPI {
 FirewallRuleInAPI.RequiredProperties = ["direction", "protocol"];
 
 /**
- * Описание правила
+ * Описание правила.
  * @member {String} description
  */
 FirewallRuleInAPI.prototype['description'] = undefined;
@@ -117,7 +117,7 @@ FirewallRuleInAPI.prototype['description'] = undefined;
 FirewallRuleInAPI.prototype['direction'] = undefined;
 
 /**
- * Порт или диапазон портов, в случае tcp или udp
+ * Порт или диапазон портов, в случае tcp или udp.
  * @member {String} port
  */
 FirewallRuleInAPI.prototype['port'] = undefined;
@@ -128,7 +128,7 @@ FirewallRuleInAPI.prototype['port'] = undefined;
 FirewallRuleInAPI.prototype['protocol'] = undefined;
 
 /**
- * Сетевой адрес или подсеть. Поддерживаются протоколы IPv4  и IPv6
+ * Сетевой адрес или подсеть. Поддерживаются протоколы IPv4  и IPv.6
  * @member {String} cidr
  */
 FirewallRuleInAPI.prototype['cidr'] = undefined;

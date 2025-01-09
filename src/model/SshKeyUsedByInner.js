@@ -22,8 +22,8 @@ class SshKeyUsedByInner {
     /**
      * Constructs a new <code>SshKeyUsedByInner</code>.
      * @alias module:model/SshKeyUsedByInner
-     * @param id {Number} ID сервера
-     * @param name {String} Название сервера
+     * @param id {Number} ID сервер.а
+     * @param name {String} Название сервера.
      */
     constructor(id, name) { 
         
@@ -87,13 +87,13 @@ class SshKeyUsedByInner {
 SshKeyUsedByInner.RequiredProperties = ["id", "name"];
 
 /**
- * ID сервера
+ * ID сервер.а
  * @member {Number} id
  */
 SshKeyUsedByInner.prototype['id'] = undefined;
 
 /**
- * Название сервера
+ * Название сервера.
  * @member {String} name
  */
 SshKeyUsedByInner.prototype['name'] = undefined;

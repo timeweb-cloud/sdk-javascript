@@ -22,7 +22,7 @@ class AddServerToProjectRequest {
     /**
      * Constructs a new <code>AddServerToProjectRequest</code>.
      * @alias module:model/AddServerToProjectRequest
-     * @param resourceId {Number} Идентификатор добавляемого сервера.
+     * @param resourceId {Number} ID добавляемого сервера.
      */
     constructor(resourceId) { 
         
@@ -78,7 +78,7 @@ class AddServerToProjectRequest {
 AddServerToProjectRequest.RequiredProperties = ["resource_id"];
 
 /**
- * Идентификатор добавляемого сервера.
+ * ID добавляемого сервера.
  * @member {Number} resource_id
  */
 AddServerToProjectRequest.prototype['resource_id'] = undefined;

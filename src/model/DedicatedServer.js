@@ -47,10 +47,11 @@ class DedicatedServer {
      * @param price {Number} Стоимость выделенного сервера.
      * @param location {module:model/DedicatedServer.LocationEnum} Локация сервера.
      * @param autoinstallReady {Number} Количество готовых к автоматической выдаче серверов. Если значение равно 0, сервер будет установлен через инженеров.
+     * @param password {String} Пароль root сервера или пароль Администратора для серверов Windows.
      */
-    constructor(id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady) { 
+    constructor(id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady, password) { 
         
-        DedicatedServer.initialize(this, id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady);
+        DedicatedServer.initialize(this, id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady, password);
     }
 
     /**
@@ -58,7 +59,7 @@ class DedicatedServer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady) { 
+    static initialize(obj, id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady, password) { 
         obj['id'] = id;
         obj['cpu_description'] = cpuDescription;
         obj['hdd_description'] = hddDescription;
@@ -83,6 +84,7 @@ class DedicatedServer {
         obj['price'] = price;
         obj['location'] = location;
         obj['autoinstall_ready'] = autoinstallReady;
+        obj['password'] = password;
     }
 
     /**
@@ -168,6 +170,9 @@ class DedicatedServer {
             if (data.hasOwnProperty('autoinstall_ready')) {
                 obj['autoinstall_ready'] = ApiClient.convertToType(data['autoinstall_ready'], 'Number');
             }
+            if (data.hasOwnProperty('password')) {
+                obj['password'] = ApiClient.convertToType(data['password'], 'String');
+            }
         }
         return obj;
     }
@@ -244,6 +249,10 @@ class DedicatedServer {
         if (data['location'] && !(typeof data['location'] === 'string' || data['location'] instanceof String)) {
             throw new Error("Expected the field `location` to be a primitive type in the JSON string but got " + data['location']);
         }
+        // ensure the json data is a string
+        if (data['password'] && !(typeof data['password'] === 'string' || data['password'] instanceof String)) {
+            throw new Error("Expected the field `password` to be a primitive type in the JSON string but got " + data['password']);
+        }
 
         return true;
     }
@@ -251,7 +260,7 @@ class DedicatedServer {
 
 }
 
-DedicatedServer.RequiredProperties = ["id", "cpu_description", "hdd_description", "ram_description", "created_at", "ip", "ipmi_ip", "ipmi_login", "ipmi_password", "ipv6", "node_id", "name", "comment", "vnc_pass", "status", "os_id", "cp_id", "bandwidth_id", "network_drive_id", "additional_ip_addr_id", "plan_id", "price", "location", "autoinstall_ready"];
+DedicatedServer.RequiredProperties = ["id", "cpu_description", "hdd_description", "ram_description", "created_at", "ip", "ipmi_ip", "ipmi_login", "ipmi_password", "ipv6", "node_id", "name", "comment", "vnc_pass", "status", "os_id", "cp_id", "bandwidth_id", "network_drive_id", "additional_ip_addr_id", "plan_id", "price", "location", "autoinstall_ready", "password"];
 
 /**
  * ID для каждого экземпляра выделенного сервера. Автоматически генерируется при создании.
@@ -397,6 +406,12 @@ DedicatedServer.prototype['location'] = undefined;
  */
 DedicatedServer.prototype['autoinstall_ready'] = undefined;
 
+/**
+ * Пароль root сервера или пароль Администратора для серверов Windows.
+ * @member {String} password
+ */
+DedicatedServer.prototype['password'] = undefined;
+
 
 
 
@@ -457,7 +472,37 @@ DedicatedServer['LocationEnum'] = {
      * value: "kz-1"
      * @const
      */
-    "kz-1": "kz-1"
+    "kz-1": "kz-1",
+
+    /**
+     * value: "nl-1"
+     * @const
+     */
+    "nl-1": "nl-1",
+
+    /**
+     * value: "tr-1"
+     * @const
+     */
+    "tr-1": "tr-1",
+
+    /**
+     * value: "us-2"
+     * @const
+     */
+    "us-2": "us-2",
+
+    /**
+     * value: "de-1"
+     * @const
+     */
+    "de-1": "de-1",
+
+    /**
+     * value: "fi-1"
+     * @const
+     */
+    "fi-1": "fi-1"
 };
 
 

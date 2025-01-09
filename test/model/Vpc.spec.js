@@ -96,6 +96,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property publicIp (base name: "public_ip")', function() {
+      // uncomment below and update the code to test the property publicIp
+      //var instance = new TimewebCloudApi.Vpc();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instance = new TimewebCloudApi.Vpc();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

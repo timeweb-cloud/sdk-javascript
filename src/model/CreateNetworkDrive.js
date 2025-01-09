@@ -24,7 +24,7 @@ class CreateNetworkDrive {
      * @alias module:model/CreateNetworkDrive
      * @param name {String} Название сетевого диска.
      * @param size {Number} Размер диска в Гб
-     * @param presetId {Number} Идентификатор сетевого диска.
+     * @param presetId {Number} ID сетевого диска.
      */
     constructor(name, size, presetId) { 
         
@@ -117,7 +117,7 @@ CreateNetworkDrive.prototype['comment'] = undefined;
 CreateNetworkDrive.prototype['size'] = undefined;
 
 /**
- * Идентификатор сетевого диска.
+ * ID сетевого диска.
  * @member {Number} preset_id
  */
 CreateNetworkDrive.prototype['preset_id'] = undefined;

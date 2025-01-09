@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import Meta from './Meta';
+import SchemasMeta from './SchemasMeta';
 
 /**
  * The NetworkDriversResponse model module.
@@ -23,7 +23,7 @@ class NetworkDriversResponse {
     /**
      * Constructs a new <code>NetworkDriversResponse</code>.
      * @alias module:model/NetworkDriversResponse
-     * @param meta {module:model/Meta} 
+     * @param meta {module:model/SchemasMeta} 
      * @param networkDrivers {Array.<String>} Массив сетевых драйверов k8s
      */
     constructor(meta, networkDrivers) { 
@@ -56,7 +56,7 @@ class NetworkDriversResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('meta')) {
-                obj['meta'] = Meta.constructFromObject(data['meta']);
+                obj['meta'] = SchemasMeta.constructFromObject(data['meta']);
             }
             if (data.hasOwnProperty('network_drivers')) {
                 obj['network_drivers'] = ApiClient.convertToType(data['network_drivers'], ['String']);
@@ -83,7 +83,7 @@ class NetworkDriversResponse {
         }
         // validate the optional field `meta`
         if (data['meta']) { // data not null
-          Meta.validateJSON(data['meta']);
+          SchemasMeta.validateJSON(data['meta']);
         }
         // ensure the json data is an array
         if (!Array.isArray(data['network_drivers'])) {
@@ -99,13 +99,13 @@ class NetworkDriversResponse {
 NetworkDriversResponse.RequiredProperties = ["meta", "network_drivers"];
 
 /**
- * Идентификатор запроса
+ * ID запроса
  * @member {String} response_id
  */
 NetworkDriversResponse.prototype['response_id'] = undefined;
 
 /**
- * @member {module:model/Meta} meta
+ * @member {module:model/SchemasMeta} meta
  */
 NetworkDriversResponse.prototype['meta'] = undefined;
 

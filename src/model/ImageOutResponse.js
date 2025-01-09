@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import ImageOutAPI from './ImageOutAPI';
+import Image from './Image';
 
 /**
  * The ImageOutResponse model module.
@@ -23,7 +23,7 @@ class ImageOutResponse {
     /**
      * Constructs a new <code>ImageOutResponse</code>.
      * @alias module:model/ImageOutResponse
-     * @param image {module:model/ImageOutAPI} 
+     * @param image {module:model/Image} 
      */
     constructor(image) { 
         
@@ -54,7 +54,7 @@ class ImageOutResponse {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
             }
             if (data.hasOwnProperty('image')) {
-                obj['image'] = ImageOutAPI.constructFromObject(data['image']);
+                obj['image'] = Image.constructFromObject(data['image']);
             }
         }
         return obj;
@@ -78,7 +78,7 @@ class ImageOutResponse {
         }
         // validate the optional field `image`
         if (data['image']) { // data not null
-          ImageOutAPI.validateJSON(data['image']);
+          Image.validateJSON(data['image']);
         }
 
         return true;
@@ -90,13 +90,13 @@ class ImageOutResponse {
 ImageOutResponse.RequiredProperties = ["image"];
 
 /**
- * Идентификатор запроса
+ * ID запроса.
  * @member {String} response_id
  */
 ImageOutResponse.prototype['response_id'] = undefined;
 
 /**
- * @member {module:model/ImageOutAPI} image
+ * @member {module:model/Image} image
  */
 ImageOutResponse.prototype['image'] = undefined;
 

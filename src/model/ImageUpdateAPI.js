@@ -81,13 +81,13 @@ class ImageUpdateAPI {
 
 
 /**
- * Имя образа
+ * Имя образа.
  * @member {String} name
  */
 ImageUpdateAPI.prototype['name'] = undefined;
 
 /**
- * Описание образа
+ * Описание образа.
  * @member {String} description
  */
 ImageUpdateAPI.prototype['description'] = undefined;
