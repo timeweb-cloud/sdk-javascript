@@ -63,7 +63,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 let addServerIPRequest = new TimewebCloudApi.AddServerIPRequest(); // AddServerIPRequest | 
 apiInstance.addServerIP(serverId, addServerIPRequest, (error, data, response) => {
   if (error) {
@@ -79,7 +79,7 @@ apiInstance.addServerIP(serverId, addServerIPRequest, (error, data, response) =>
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
  **addServerIPRequest** | [**AddServerIPRequest**](AddServerIPRequest.md)|  | 
 
 ### Return type
@@ -114,7 +114,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 apiInstance.cloneServer(serverId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -129,7 +129,7 @@ apiInstance.cloneServer(serverId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
 
 ### Return type
 
@@ -212,7 +212,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 let opts = {
   'createServerDiskRequest': new TimewebCloudApi.CreateServerDiskRequest() // CreateServerDiskRequest | 
 };
@@ -230,7 +230,7 @@ apiInstance.createServerDisk(serverId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
  **createServerDiskRequest** | [**CreateServerDiskRequest**](CreateServerDiskRequest.md)|  | [optional] 
 
 ### Return type
@@ -265,8 +265,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
-let diskId = 1051; // Number | Уникальный идентификатор диска сервера.
+let serverId = 1051; // Number | ID облачного сервера.
+let diskId = 1051; // Number | ID диска сервера.
 let opts = {
   'createServerDiskBackupRequest': new TimewebCloudApi.CreateServerDiskBackupRequest() // CreateServerDiskBackupRequest | 
 };
@@ -284,8 +284,8 @@ apiInstance.createServerDiskBackup(serverId, diskId, opts, (error, data, respons
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
- **diskId** | **Number**| Уникальный идентификатор диска сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
+ **diskId** | **Number**| ID диска сервера. | 
  **createServerDiskBackupRequest** | [**CreateServerDiskBackupRequest**](CreateServerDiskBackupRequest.md)|  | [optional] 
 
 ### Return type
@@ -320,7 +320,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 let opts = {
   'hash': 15095f25-aac3-4d60-a788-96cb5136f186, // String | Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм.
   'code': 0000 // String | Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена `is_able_to_delete` установлен в значение `true`
@@ -339,7 +339,7 @@ apiInstance.deleteServer(serverId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
  **hash** | **String**| Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. | [optional] 
  **code** | **String**| Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; | [optional] 
 
@@ -375,8 +375,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
-let diskId = 1051; // Number | Уникальный идентификатор диска сервера.
+let serverId = 1051; // Number | ID облачного сервера.
+let diskId = 1051; // Number | ID диска сервера.
 apiInstance.deleteServerDisk(serverId, diskId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -391,8 +391,8 @@ apiInstance.deleteServerDisk(serverId, diskId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
- **diskId** | **Number**| Уникальный идентификатор диска сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
+ **diskId** | **Number**| ID диска сервера. | 
 
 ### Return type
 
@@ -426,9 +426,9 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
-let diskId = 1051; // Number | Уникальный идентификатор диска сервера.
-let backupId = 1051; // Number | Уникальный идентификатор бэкапа сервера.
+let serverId = 1051; // Number | ID облачного сервера.
+let diskId = 1051; // Number | ID диска сервера.
+let backupId = 1051; // Number | ID бэкапа сервера.
 apiInstance.deleteServerDiskBackup(serverId, diskId, backupId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -443,9 +443,9 @@ apiInstance.deleteServerDiskBackup(serverId, diskId, backupId, (error, data, res
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
- **diskId** | **Number**| Уникальный идентификатор диска сервера. | 
- **backupId** | **Number**| Уникальный идентификатор бэкапа сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
+ **diskId** | **Number**| ID диска сервера. | 
+ **backupId** | **Number**| ID бэкапа сервера. | 
 
 ### Return type
 
@@ -479,7 +479,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 let deleteServerIPRequest = new TimewebCloudApi.DeleteServerIPRequest(); // DeleteServerIPRequest | 
 apiInstance.deleteServerIP(serverId, deleteServerIPRequest, (error, data, response) => {
   if (error) {
@@ -495,7 +495,7 @@ apiInstance.deleteServerIP(serverId, deleteServerIPRequest, (error, data, respon
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
  **deleteServerIPRequest** | [**DeleteServerIPRequest**](DeleteServerIPRequest.md)|  | 
 
 ### Return type
@@ -620,7 +620,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 apiInstance.getServer(serverId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -635,7 +635,7 @@ apiInstance.getServer(serverId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
 
 ### Return type
 
@@ -669,8 +669,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
-let diskId = 1051; // Number | Уникальный идентификатор диска сервера.
+let serverId = 1051; // Number | ID облачного сервера.
+let diskId = 1051; // Number | ID диска сервера.
 apiInstance.getServerDisk(serverId, diskId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -685,8 +685,8 @@ apiInstance.getServerDisk(serverId, diskId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
- **diskId** | **Number**| Уникальный идентификатор диска сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
+ **diskId** | **Number**| ID диска сервера. | 
 
 ### Return type
 
@@ -720,8 +720,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
-let diskId = 1051; // Number | Уникальный идентификатор диска сервера.
+let serverId = 1051; // Number | ID облачного сервера.
+let diskId = 1051; // Number | ID диска сервера.
 apiInstance.getServerDiskAutoBackupSettings(serverId, diskId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -736,8 +736,8 @@ apiInstance.getServerDiskAutoBackupSettings(serverId, diskId, (error, data, resp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
- **diskId** | **Number**| Уникальный идентификатор диска сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
+ **diskId** | **Number**| ID диска сервера. | 
 
 ### Return type
 
@@ -771,9 +771,9 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
-let diskId = 1051; // Number | Уникальный идентификатор диска сервера.
-let backupId = 1051; // Number | Уникальный идентификатор бэкапа сервера.
+let serverId = 1051; // Number | ID облачного сервера.
+let diskId = 1051; // Number | ID диска сервера.
+let backupId = 1051; // Number | ID бэкапа сервера.
 apiInstance.getServerDiskBackup(serverId, diskId, backupId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -788,9 +788,9 @@ apiInstance.getServerDiskBackup(serverId, diskId, backupId, (error, data, respon
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
- **diskId** | **Number**| Уникальный идентификатор диска сервера. | 
- **backupId** | **Number**| Уникальный идентификатор бэкапа сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
+ **diskId** | **Number**| ID диска сервера. | 
+ **backupId** | **Number**| ID бэкапа сервера. | 
 
 ### Return type
 
@@ -824,8 +824,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
-let diskId = 1051; // Number | Уникальный идентификатор диска сервера.
+let serverId = 1051; // Number | ID облачного сервера.
+let diskId = 1051; // Number | ID диска сервера.
 apiInstance.getServerDiskBackups(serverId, diskId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -840,8 +840,8 @@ apiInstance.getServerDiskBackups(serverId, diskId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
- **diskId** | **Number**| Уникальный идентификатор диска сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
+ **diskId** | **Number**| ID диска сервера. | 
 
 ### Return type
 
@@ -875,7 +875,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 apiInstance.getServerDisks(serverId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -890,7 +890,7 @@ apiInstance.getServerDisks(serverId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
 
 ### Return type
 
@@ -924,7 +924,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 apiInstance.getServerIPs(serverId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -939,7 +939,7 @@ apiInstance.getServerIPs(serverId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
 
 ### Return type
 
@@ -973,7 +973,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 let opts = {
   'limit': 100, // Number | Обозначает количество записей, которое необходимо вернуть.
   'offset': 0, // Number | Указывает на смещение относительно начала списка.
@@ -993,7 +993,7 @@ apiInstance.getServerLogs(serverId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
  **limit** | **Number**| Обозначает количество записей, которое необходимо вернуть. | [optional] [default to 100]
  **offset** | **Number**| Указывает на смещение относительно начала списка. | [optional] [default to 0]
  **order** | **String**| Сортировка элементов по дате | [optional] [default to &#39;asc&#39;]
@@ -1030,7 +1030,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 let dateFrom = "dateFrom_example"; // String | Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-25%202023-05-25T14%3A35%3A38`
 let dateTo = "dateTo_example"; // String | Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-26%202023-05-25T14%3A35%3A38`
 apiInstance.getServerStatistics(serverId, dateFrom, dateTo, (error, data, response) => {
@@ -1047,7 +1047,7 @@ apiInstance.getServerStatistics(serverId, dateFrom, dateTo, (error, data, respon
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
  **dateFrom** | **String**| Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25%202023-05-25T14%3A35%3A38&#x60; | 
  **dateTo** | **String**| Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-26%202023-05-25T14%3A35%3A38&#x60; | 
 
@@ -1226,7 +1226,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 apiInstance.hardShutdownServer(serverId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -1241,7 +1241,7 @@ apiInstance.hardShutdownServer(serverId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
 
 ### Return type
 
@@ -1275,7 +1275,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 apiInstance.imageUnmountAndServerReload(serverId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -1290,7 +1290,7 @@ apiInstance.imageUnmountAndServerReload(serverId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
 
 ### Return type
 
@@ -1324,9 +1324,9 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
-let diskId = 1051; // Number | Уникальный идентификатор диска сервера.
-let backupId = 1051; // Number | Уникальный идентификатор бэкапа сервера.
+let serverId = 1051; // Number | ID облачного сервера.
+let diskId = 1051; // Number | ID диска сервера.
+let backupId = 1051; // Number | ID бэкапа сервера.
 let opts = {
   'performActionOnBackupRequest': new TimewebCloudApi.PerformActionOnBackupRequest() // PerformActionOnBackupRequest | 
 };
@@ -1344,9 +1344,9 @@ apiInstance.performActionOnBackup(serverId, diskId, backupId, opts, (error, data
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
- **diskId** | **Number**| Уникальный идентификатор диска сервера. | 
- **backupId** | **Number**| Уникальный идентификатор бэкапа сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
+ **diskId** | **Number**| ID диска сервера. | 
+ **backupId** | **Number**| ID бэкапа сервера. | 
  **performActionOnBackupRequest** | [**PerformActionOnBackupRequest**](PerformActionOnBackupRequest.md)|  | [optional] 
 
 ### Return type
@@ -1381,7 +1381,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 let opts = {
   'performActionOnServerRequest': new TimewebCloudApi.PerformActionOnServerRequest() // PerformActionOnServerRequest | 
 };
@@ -1399,7 +1399,7 @@ apiInstance.performActionOnServer(serverId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
  **performActionOnServerRequest** | [**PerformActionOnServerRequest**](PerformActionOnServerRequest.md)|  | [optional] 
 
 ### Return type
@@ -1434,7 +1434,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 apiInstance.rebootServer(serverId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -1449,7 +1449,7 @@ apiInstance.rebootServer(serverId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
 
 ### Return type
 
@@ -1483,7 +1483,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 apiInstance.resetServerPassword(serverId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -1498,7 +1498,7 @@ apiInstance.resetServerPassword(serverId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
 
 ### Return type
 
@@ -1532,7 +1532,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 apiInstance.shutdownServer(serverId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -1547,7 +1547,7 @@ apiInstance.shutdownServer(serverId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
 
 ### Return type
 
@@ -1581,7 +1581,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 apiInstance.startServer(serverId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -1596,7 +1596,7 @@ apiInstance.startServer(serverId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
 
 ### Return type
 
@@ -1630,7 +1630,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 let updateServer = new TimewebCloudApi.UpdateServer(); // UpdateServer | 
 apiInstance.updateServer(serverId, updateServer, (error, data, response) => {
   if (error) {
@@ -1646,7 +1646,7 @@ apiInstance.updateServer(serverId, updateServer, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
  **updateServer** | [**UpdateServer**](UpdateServer.md)|  | 
 
 ### Return type
@@ -1681,8 +1681,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
-let diskId = 1051; // Number | Уникальный идентификатор диска сервера.
+let serverId = 1051; // Number | ID облачного сервера.
+let diskId = 1051; // Number | ID диска сервера.
 let opts = {
   'updateServerDiskRequest': new TimewebCloudApi.UpdateServerDiskRequest() // UpdateServerDiskRequest | 
 };
@@ -1700,8 +1700,8 @@ apiInstance.updateServerDisk(serverId, diskId, opts, (error, data, response) => 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
- **diskId** | **Number**| Уникальный идентификатор диска сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
+ **diskId** | **Number**| ID диска сервера. | 
  **updateServerDiskRequest** | [**UpdateServerDiskRequest**](UpdateServerDiskRequest.md)|  | [optional] 
 
 ### Return type
@@ -1736,8 +1736,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
-let diskId = 1051; // Number | Уникальный идентификатор диска сервера.
+let serverId = 1051; // Number | ID облачного сервера.
+let diskId = 1051; // Number | ID диска сервера.
 let opts = {
   'autoBackup': new TimewebCloudApi.AutoBackup() // AutoBackup | При значении `is_enabled`: `true`, поля `copy_count`, `creation_start_at`, `interval` являются обязательными
 };
@@ -1755,8 +1755,8 @@ apiInstance.updateServerDiskAutoBackupSettings(serverId, diskId, opts, (error, d
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
- **diskId** | **Number**| Уникальный идентификатор диска сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
+ **diskId** | **Number**| ID диска сервера. | 
  **autoBackup** | [**AutoBackup**](AutoBackup.md)| При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными | [optional] 
 
 ### Return type
@@ -1791,9 +1791,9 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
-let diskId = 1051; // Number | Уникальный идентификатор диска сервера.
-let backupId = 1051; // Number | Уникальный идентификатор бэкапа сервера.
+let serverId = 1051; // Number | ID облачного сервера.
+let diskId = 1051; // Number | ID диска сервера.
+let backupId = 1051; // Number | ID бэкапа сервера.
 let opts = {
   'updateServerDiskBackupRequest': new TimewebCloudApi.UpdateServerDiskBackupRequest() // UpdateServerDiskBackupRequest | 
 };
@@ -1811,9 +1811,9 @@ apiInstance.updateServerDiskBackup(serverId, diskId, backupId, opts, (error, dat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
- **diskId** | **Number**| Уникальный идентификатор диска сервера. | 
- **backupId** | **Number**| Уникальный идентификатор бэкапа сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
+ **diskId** | **Number**| ID диска сервера. | 
+ **backupId** | **Number**| ID бэкапа сервера. | 
  **updateServerDiskBackupRequest** | [**UpdateServerDiskBackupRequest**](UpdateServerDiskBackupRequest.md)|  | [optional] 
 
 ### Return type
@@ -1848,7 +1848,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 let updateServerIPRequest = new TimewebCloudApi.UpdateServerIPRequest(); // UpdateServerIPRequest | 
 apiInstance.updateServerIP(serverId, updateServerIPRequest, (error, data, response) => {
   if (error) {
@@ -1864,7 +1864,7 @@ apiInstance.updateServerIP(serverId, updateServerIPRequest, (error, data, respon
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
  **updateServerIPRequest** | [**UpdateServerIPRequest**](UpdateServerIPRequest.md)|  | 
 
 ### Return type
@@ -1899,7 +1899,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 let opts = {
   'updateServerNATRequest': new TimewebCloudApi.UpdateServerNATRequest() // UpdateServerNATRequest | 
 };
@@ -1917,7 +1917,7 @@ apiInstance.updateServerNAT(serverId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
  **updateServerNATRequest** | [**UpdateServerNATRequest**](UpdateServerNATRequest.md)|  | [optional] 
 
 ### Return type
@@ -1952,7 +1952,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ServersApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 let opts = {
   'updateServerOSBootModeRequest': new TimewebCloudApi.UpdateServerOSBootModeRequest() // UpdateServerOSBootModeRequest | 
 };
@@ -1970,7 +1970,7 @@ apiInstance.updateServerOSBootMode(serverId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
  **updateServerOSBootModeRequest** | [**UpdateServerOSBootModeRequest**](UpdateServerOSBootModeRequest.md)|  | [optional] 
 
 ### Return type

@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **isSendBillLetters** | **Boolean** | Это логическое значение, которое показывает, требуется ли отправлять счета на почту. | 
 **companyInfo** | [**StatusCompanyInfo**](StatusCompanyInfo.md) |  | 
 **lastPasswordChangedAt** | **String** | Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда последний раз изменялся пароль. | 
-**ymClientId** | **String** | Идентификатор аккаунта для яндекс метрики. | 
+**ymClientId** | **String** | ID аккаунта для яндекс метрики. | 
 
 

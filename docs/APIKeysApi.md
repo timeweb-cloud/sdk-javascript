@@ -79,7 +79,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.APIKeysApi();
-let tokenId = "tokenId_example"; // String | Идентификатор токена
+let tokenId = "tokenId_example"; // String | ID токена
 apiInstance.deleteToken(tokenId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -94,7 +94,7 @@ apiInstance.deleteToken(tokenId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tokenId** | **String**| Идентификатор токена | 
+ **tokenId** | **String**| ID токена | 
 
 ### Return type
 
@@ -173,7 +173,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.APIKeysApi();
-let tokenId = "tokenId_example"; // String | Идентификатор токена
+let tokenId = "tokenId_example"; // String | ID токена
 let refreshApiKey = new TimewebCloudApi.RefreshApiKey(); // RefreshApiKey | 
 apiInstance.reissueToken(tokenId, refreshApiKey, (error, data, response) => {
   if (error) {
@@ -189,7 +189,7 @@ apiInstance.reissueToken(tokenId, refreshApiKey, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tokenId** | **String**| Идентификатор токена | 
+ **tokenId** | **String**| ID токена | 
  **refreshApiKey** | [**RefreshApiKey**](RefreshApiKey.md)|  | 
 
 ### Return type
@@ -224,7 +224,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.APIKeysApi();
-let tokenId = "tokenId_example"; // String | Идентификатор токена
+let tokenId = "tokenId_example"; // String | ID токена
 let editApiKey = new TimewebCloudApi.EditApiKey(); // EditApiKey | 
 apiInstance.updateToken(tokenId, editApiKey, (error, data, response) => {
   if (error) {
@@ -240,7 +240,7 @@ apiInstance.updateToken(tokenId, editApiKey, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tokenId** | **String**| Идентификатор токена | 
+ **tokenId** | **String**| ID токена | 
  **editApiKey** | [**EditApiKey**](EditApiKey.md)|  | 
 
 ### Return type

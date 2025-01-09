@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Number** | Идентификатор сервисв. | 
+**id** | **Number** | ID сервисв. | 
 **name** | **String** | Имя сервиса. | 
 **publicIp** | **String** | Публичный IP-адрес сервиса | [optional] 
 **localIp** | **String** | Приватный IP-адрес сервиса | [optional] 

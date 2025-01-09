@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **isAutoprolongEnabled** | **Boolean** | Это логическое значение, которое показывает, включено ли автопродление домена. | [optional] 
 **isWhoisPrivacyEnabled** | **Boolean** | Это логическое значение, которое показывает, включено ли скрытие данных администратора домена для whois. Опция недоступна для доменов в зонах .ru и .рф. | [optional] 
 **period** | [**DomainPaymentPeriod**](DomainPaymentPeriod.md) |  | [optional] 
-**personId** | **Number** | Идентификатор администратора, на которого зарегистрирован домен. | [optional] 
+**personId** | **Number** | ID администратора, на которого зарегистрирован домен. | [optional] 
 **prime** | [**DomainPrimeType**](DomainPrimeType.md) |  | [optional] 
 
 

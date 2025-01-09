@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Number** | Уникальный идентификатор тарифа | 
+**id** | **Number** | ID тарифа | 
 **description** | **String** | Описание тарифа | 
 **descriptionShort** | **String** | Краткое описание тарифа | 
 **price** | **Number** | Стоимость | 

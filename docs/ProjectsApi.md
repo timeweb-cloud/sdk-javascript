@@ -19,7 +19,7 @@ Method | HTTP request | Description
 [**getAccountServers**](ProjectsApi.md#getAccountServers) | **GET** /api/v1/projects/resources/servers | Получение списка всех серверов на аккаунте
 [**getAccountStorages**](ProjectsApi.md#getAccountStorages) | **GET** /api/v1/projects/resources/buckets | Получение списка всех хранилищ на аккаунте
 [**getAllProjectResources**](ProjectsApi.md#getAllProjectResources) | **GET** /api/v1/projects/{project_id}/resources | Получение всех ресурсов проекта
-[**getProject**](ProjectsApi.md#getProject) | **GET** /api/v1/projects/{project_id} | Получение проекта по идентификатору
+[**getProject**](ProjectsApi.md#getProject) | **GET** /api/v1/projects/{project_id} | Получение проекта по ID
 [**getProjectBalancers**](ProjectsApi.md#getProjectBalancers) | **GET** /api/v1/projects/{project_id}/resources/balancers | Получение списка балансировщиков проекта
 [**getProjectClusters**](ProjectsApi.md#getProjectClusters) | **GET** /api/v1/projects/{project_id}/resources/clusters | Получение списка кластеров проекта
 [**getProjectDatabases**](ProjectsApi.md#getProjectDatabases) | **GET** /api/v1/projects/{project_id}/resources/databases | Получение списка баз данных проекта
@@ -50,7 +50,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 let addBalancerToProjectRequest = new TimewebCloudApi.AddBalancerToProjectRequest(); // AddBalancerToProjectRequest | 
 apiInstance.addBalancerToProject(projectId, addBalancerToProjectRequest, (error, data, response) => {
   if (error) {
@@ -66,7 +66,7 @@ apiInstance.addBalancerToProject(projectId, addBalancerToProjectRequest, (error,
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
  **addBalancerToProjectRequest** | [**AddBalancerToProjectRequest**](AddBalancerToProjectRequest.md)|  | 
 
 ### Return type
@@ -101,7 +101,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 let addClusterToProjectRequest = new TimewebCloudApi.AddClusterToProjectRequest(); // AddClusterToProjectRequest | 
 apiInstance.addClusterToProject(projectId, addClusterToProjectRequest, (error, data, response) => {
   if (error) {
@@ -117,7 +117,7 @@ apiInstance.addClusterToProject(projectId, addClusterToProjectRequest, (error, d
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
  **addClusterToProjectRequest** | [**AddClusterToProjectRequest**](AddClusterToProjectRequest.md)|  | 
 
 ### Return type
@@ -152,7 +152,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 let addDatabaseToProjectRequest = new TimewebCloudApi.AddDatabaseToProjectRequest(); // AddDatabaseToProjectRequest | 
 apiInstance.addDatabaseToProject(projectId, addDatabaseToProjectRequest, (error, data, response) => {
   if (error) {
@@ -168,7 +168,7 @@ apiInstance.addDatabaseToProject(projectId, addDatabaseToProjectRequest, (error,
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
  **addDatabaseToProjectRequest** | [**AddDatabaseToProjectRequest**](AddDatabaseToProjectRequest.md)|  | 
 
 ### Return type
@@ -203,7 +203,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 let addDedicatedServerToProjectRequest = new TimewebCloudApi.AddDedicatedServerToProjectRequest(); // AddDedicatedServerToProjectRequest | 
 apiInstance.addDedicatedServerToProject(projectId, addDedicatedServerToProjectRequest, (error, data, response) => {
   if (error) {
@@ -219,7 +219,7 @@ apiInstance.addDedicatedServerToProject(projectId, addDedicatedServerToProjectRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
  **addDedicatedServerToProjectRequest** | [**AddDedicatedServerToProjectRequest**](AddDedicatedServerToProjectRequest.md)|  | 
 
 ### Return type
@@ -254,7 +254,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 let addServerToProjectRequest = new TimewebCloudApi.AddServerToProjectRequest(); // AddServerToProjectRequest | 
 apiInstance.addServerToProject(projectId, addServerToProjectRequest, (error, data, response) => {
   if (error) {
@@ -270,7 +270,7 @@ apiInstance.addServerToProject(projectId, addServerToProjectRequest, (error, dat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
  **addServerToProjectRequest** | [**AddServerToProjectRequest**](AddServerToProjectRequest.md)|  | 
 
 ### Return type
@@ -305,7 +305,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 let addStorageToProjectRequest = new TimewebCloudApi.AddStorageToProjectRequest(); // AddStorageToProjectRequest | 
 apiInstance.addStorageToProject(projectId, addStorageToProjectRequest, (error, data, response) => {
   if (error) {
@@ -321,7 +321,7 @@ apiInstance.addStorageToProject(projectId, addStorageToProjectRequest, (error, d
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
  **addStorageToProjectRequest** | [**AddStorageToProjectRequest**](AddStorageToProjectRequest.md)|  | 
 
 ### Return type
@@ -405,7 +405,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 apiInstance.deleteProject(projectId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -420,7 +420,7 @@ apiInstance.deleteProject(projectId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
 
 ### Return type
 
@@ -724,7 +724,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 apiInstance.getAllProjectResources(projectId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -739,7 +739,7 @@ apiInstance.getAllProjectResources(projectId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
 
 ### Return type
 
@@ -759,9 +759,9 @@ Name | Type | Description  | Notes
 
 > CreateProject201Response getProject(projectId)
 
-Получение проекта по идентификатору
+Получение проекта по ID
 
-Чтобы получить проект по идентификатору, отправьте GET-запрос на &#x60;/api/v1/projects/{project_id}&#x60;.
+Чтобы получить проект по ID, отправьте GET-запрос на &#x60;/api/v1/projects/{project_id}&#x60;.
 
 ### Example
 
@@ -773,7 +773,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 apiInstance.getProject(projectId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -788,7 +788,7 @@ apiInstance.getProject(projectId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
 
 ### Return type
 
@@ -822,7 +822,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 apiInstance.getProjectBalancers(projectId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -837,7 +837,7 @@ apiInstance.getProjectBalancers(projectId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
 
 ### Return type
 
@@ -871,7 +871,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 apiInstance.getProjectClusters(projectId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -886,7 +886,7 @@ apiInstance.getProjectClusters(projectId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
 
 ### Return type
 
@@ -920,7 +920,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 apiInstance.getProjectDatabases(projectId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -935,7 +935,7 @@ apiInstance.getProjectDatabases(projectId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
 
 ### Return type
 
@@ -969,7 +969,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 apiInstance.getProjectDedicatedServers(projectId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -984,7 +984,7 @@ apiInstance.getProjectDedicatedServers(projectId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
 
 ### Return type
 
@@ -1018,7 +1018,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 apiInstance.getProjectServers(projectId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -1033,7 +1033,7 @@ apiInstance.getProjectServers(projectId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
 
 ### Return type
 
@@ -1067,7 +1067,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 apiInstance.getProjectStorages(projectId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -1082,7 +1082,7 @@ apiInstance.getProjectStorages(projectId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
 
 ### Return type
 
@@ -1161,7 +1161,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 let resourceTransfer = new TimewebCloudApi.ResourceTransfer(); // ResourceTransfer | 
 apiInstance.transferResourceToAnotherProject(projectId, resourceTransfer, (error, data, response) => {
   if (error) {
@@ -1177,7 +1177,7 @@ apiInstance.transferResourceToAnotherProject(projectId, resourceTransfer, (error
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
  **resourceTransfer** | [**ResourceTransfer**](ResourceTransfer.md)|  | 
 
 ### Return type
@@ -1212,7 +1212,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.ProjectsApi();
-let projectId = 99; // Number | Уникальный идентификатор проекта.
+let projectId = 99; // Number | ID проекта.
 let updateProject = new TimewebCloudApi.UpdateProject(); // UpdateProject | 
 apiInstance.updateProject(projectId, updateProject, (error, data, response) => {
   if (error) {
@@ -1228,7 +1228,7 @@ apiInstance.updateProject(projectId, updateProject, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **Number**| Уникальный идентификатор проекта. | 
+ **projectId** | **Number**| ID проекта. | 
  **updateProject** | [**UpdateProject**](UpdateProject.md)|  | 
 
 ### Return type

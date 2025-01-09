@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Number** | Уникальный идентификатор для каждого экземпляра тарифа базы данных. | [optional] 
+**id** | **Number** | ID для каждого экземпляра тарифа базы данных. | [optional] 
 **description** | **String** | Описание тарифа. | [optional] 
 **descriptionShort** | **String** | Краткое описание тарифа. | [optional] 
 **cpu** | **Number** | Описание процессора тарифа. | [optional] 

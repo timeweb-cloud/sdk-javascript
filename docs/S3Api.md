@@ -93,7 +93,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | Уникальный идентификатор хранилища.
+let bucketId = 1051; // Number | ID хранилища.
 let addStorageSubdomainsRequest = new TimewebCloudApi.AddStorageSubdomainsRequest(); // AddStorageSubdomainsRequest | 
 apiInstance.addStorageSubdomains(bucketId, addStorageSubdomainsRequest, (error, data, response) => {
   if (error) {
@@ -109,7 +109,7 @@ apiInstance.addStorageSubdomains(bucketId, addStorageSubdomainsRequest, (error, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| Уникальный идентификатор хранилища. | 
+ **bucketId** | **Number**| ID хранилища. | 
  **addStorageSubdomainsRequest** | [**AddStorageSubdomainsRequest**](AddStorageSubdomainsRequest.md)|  | 
 
 ### Return type
@@ -144,7 +144,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | Уникальный идентификатор хранилища.
+let bucketId = 1051; // Number | ID хранилища.
 let copyStorageFileRequest = new TimewebCloudApi.CopyStorageFileRequest(); // CopyStorageFileRequest | 
 apiInstance.copyStorageFile(bucketId, copyStorageFileRequest, (error, data, response) => {
   if (error) {
@@ -160,7 +160,7 @@ apiInstance.copyStorageFile(bucketId, copyStorageFileRequest, (error, data, resp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| Уникальный идентификатор хранилища. | 
+ **bucketId** | **Number**| ID хранилища. | 
  **copyStorageFileRequest** | [**CopyStorageFileRequest**](CopyStorageFileRequest.md)|  | 
 
 ### Return type
@@ -195,7 +195,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | Уникальный идентификатор хранилища.
+let bucketId = 1051; // Number | ID хранилища.
 let createFolderInStorageRequest = new TimewebCloudApi.CreateFolderInStorageRequest(); // CreateFolderInStorageRequest | 
 apiInstance.createFolderInStorage(bucketId, createFolderInStorageRequest, (error, data, response) => {
   if (error) {
@@ -211,7 +211,7 @@ apiInstance.createFolderInStorage(bucketId, createFolderInStorageRequest, (error
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| Уникальный идентификатор хранилища. | 
+ **bucketId** | **Number**| ID хранилища. | 
  **createFolderInStorageRequest** | [**CreateFolderInStorageRequest**](CreateFolderInStorageRequest.md)|  | 
 
 ### Return type
@@ -295,7 +295,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | Уникальный идентификатор хранилища.
+let bucketId = 1051; // Number | ID хранилища.
 let opts = {
   'hash': 15095f25-aac3-4d60-a788-96cb5136f186, // String | Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм.
   'code': 0000 // String | Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена `is_able_to_delete` установлен в значение `true`
@@ -314,7 +314,7 @@ apiInstance.deleteStorage(bucketId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| Уникальный идентификатор хранилища. | 
+ **bucketId** | **Number**| ID хранилища. | 
  **hash** | **String**| Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. | [optional] 
  **code** | **String**| Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; | [optional] 
 
@@ -350,7 +350,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | Уникальный идентификатор хранилища.
+let bucketId = 1051; // Number | ID хранилища.
 let deleteStorageFileRequest = new TimewebCloudApi.DeleteStorageFileRequest(); // DeleteStorageFileRequest | 
 let opts = {
   'isMultipart': true // Boolean | Это логическое значение, которое используется для обозначения multipart-загрузки.
@@ -369,7 +369,7 @@ apiInstance.deleteStorageFile(bucketId, deleteStorageFileRequest, opts, (error, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| Уникальный идентификатор хранилища. | 
+ **bucketId** | **Number**| ID хранилища. | 
  **deleteStorageFileRequest** | [**DeleteStorageFileRequest**](DeleteStorageFileRequest.md)|  | 
  **isMultipart** | **Boolean**| Это логическое значение, которое используется для обозначения multipart-загрузки. | [optional] 
 
@@ -405,7 +405,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | Уникальный идентификатор хранилища.
+let bucketId = 1051; // Number | ID хранилища.
 let addStorageSubdomainsRequest = new TimewebCloudApi.AddStorageSubdomainsRequest(); // AddStorageSubdomainsRequest | 
 apiInstance.deleteStorageSubdomains(bucketId, addStorageSubdomainsRequest, (error, data, response) => {
   if (error) {
@@ -421,7 +421,7 @@ apiInstance.deleteStorageSubdomains(bucketId, addStorageSubdomainsRequest, (erro
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| Уникальный идентификатор хранилища. | 
+ **bucketId** | **Number**| ID хранилища. | 
  **addStorageSubdomainsRequest** | [**AddStorageSubdomainsRequest**](AddStorageSubdomainsRequest.md)|  | 
 
 ### Return type
@@ -456,7 +456,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | Уникальный идентификатор хранилища.
+let bucketId = 1051; // Number | ID хранилища.
 let opts = {
   'prefix': example, // String | Префикс для поиска файла.
   'isMultipart': true // Boolean | Это логическое значение, которое используется для обозначения multipart-загрузки.
@@ -475,7 +475,7 @@ apiInstance.getStorageFilesList(bucketId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| Уникальный идентификатор хранилища. | 
+ **bucketId** | **Number**| ID хранилища. | 
  **prefix** | **String**| Префикс для поиска файла. | [optional] 
  **isMultipart** | **Boolean**| Это логическое значение, которое используется для обозначения multipart-загрузки. | [optional] 
 
@@ -511,7 +511,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | Уникальный идентификатор хранилища.
+let bucketId = 1051; // Number | ID хранилища.
 apiInstance.getStorageSubdomains(bucketId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -526,7 +526,7 @@ apiInstance.getStorageSubdomains(bucketId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| Уникальный идентификатор хранилища. | 
+ **bucketId** | **Number**| ID хранилища. | 
 
 ### Return type
 
@@ -560,7 +560,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | Уникальный идентификатор хранилища.
+let bucketId = 1051; // Number | ID хранилища.
 apiInstance.getStorageTransferStatus(bucketId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -575,7 +575,7 @@ apiInstance.getStorageTransferStatus(bucketId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| Уникальный идентификатор хранилища. | 
+ **bucketId** | **Number**| ID хранилища. | 
 
 ### Return type
 
@@ -744,7 +744,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | Уникальный идентификатор хранилища.
+let bucketId = 1051; // Number | ID хранилища.
 let renameStorageFileRequest = new TimewebCloudApi.RenameStorageFileRequest(); // RenameStorageFileRequest | 
 apiInstance.renameStorageFile(bucketId, renameStorageFileRequest, (error, data, response) => {
   if (error) {
@@ -760,7 +760,7 @@ apiInstance.renameStorageFile(bucketId, renameStorageFileRequest, (error, data, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| Уникальный идентификатор хранилища. | 
+ **bucketId** | **Number**| ID хранилища. | 
  **renameStorageFileRequest** | [**RenameStorageFileRequest**](RenameStorageFileRequest.md)|  | 
 
 ### Return type
@@ -844,7 +844,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | Уникальный идентификатор хранилища.
+let bucketId = 1051; // Number | ID хранилища.
 let updateStorageRequest = new TimewebCloudApi.UpdateStorageRequest(); // UpdateStorageRequest | 
 apiInstance.updateStorage(bucketId, updateStorageRequest, (error, data, response) => {
   if (error) {
@@ -860,7 +860,7 @@ apiInstance.updateStorage(bucketId, updateStorageRequest, (error, data, response
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| Уникальный идентификатор хранилища. | 
+ **bucketId** | **Number**| ID хранилища. | 
  **updateStorageRequest** | [**UpdateStorageRequest**](UpdateStorageRequest.md)|  | 
 
 ### Return type
@@ -895,7 +895,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.S3Api();
-let userId = 1051; // Number | Уникальный идентификатор пользователя хранилища.
+let userId = 1051; // Number | ID пользователя хранилища.
 let updateStorageUserRequest = new TimewebCloudApi.UpdateStorageUserRequest(); // UpdateStorageUserRequest | 
 apiInstance.updateStorageUser(userId, updateStorageUserRequest, (error, data, response) => {
   if (error) {
@@ -911,7 +911,7 @@ apiInstance.updateStorageUser(userId, updateStorageUserRequest, (error, data, re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Number**| Уникальный идентификатор пользователя хранилища. | 
+ **userId** | **Number**| ID пользователя хранилища. | 
  **updateStorageUserRequest** | [**UpdateStorageUserRequest**](UpdateStorageUserRequest.md)|  | 
 
 ### Return type
@@ -946,7 +946,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | Уникальный идентификатор хранилища.
+let bucketId = 1051; // Number | ID хранилища.
 let files = ["null"]; // [File] | 
 let opts = {
   'path': test1/tes2 // String | Путь до директории в хранилище
@@ -965,7 +965,7 @@ apiInstance.uploadFileToStorage(bucketId, files, opts, (error, data, response) =
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| Уникальный идентификатор хранилища. | 
+ **bucketId** | **Number**| ID хранилища. | 
  **files** | **[File]**|  | 
  **path** | **String**| Путь до директории в хранилище | [optional] 
 

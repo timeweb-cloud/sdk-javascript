@@ -1,6 +1,6 @@
 /**
  * Timeweb Cloud API
- * # Введение API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.  Множество функций, которые доступны в панели управления Timeweb Cloud, также доступны через API, что позволяет вам автоматизировать ваши собственные сценарии.  В этой документации сперва будет описан общий дизайн и принципы работы API, а после этого конкретные конечные точки. Также будут приведены примеры запросов к ним.   ## Запросы Запросы должны выполняться по протоколу `HTTPS`, чтобы гарантировать шифрование транзакций. Поддерживаются следующие методы запроса: |Метод|Применение| |--- |--- | |GET|Извлекает данные о коллекциях и отдельных ресурсах.| |POST|Для коллекций создает новый ресурс этого типа. Также используется для выполнения действий с конкретным ресурсом.| |PUT|Обновляет существующий ресурс.| |PATCH|Некоторые ресурсы поддерживают частичное обновление, то есть обновление только части атрибутов ресурса, в этом случае вместо метода PUT будет использован PATCH.| |DELETE|Удаляет ресурс.|  Методы `POST`, `PUT` и `PATCH` могут включать объект в тело запроса с типом содержимого `application/json`.  ### Параметры в запросах Некоторые коллекции поддерживают пагинацию, поиск или сортировку в запросах. В параметрах запроса требуется передать: - `limit` — обозначает количество записей, которое необходимо вернуть  - `offset` — указывает на смещение, относительно начала списка  - `search` — позволяет указать набор символов для поиска  - `sort` — можно задать правило сортировки коллекции  ## Ответы Запросы вернут один из следующих кодов состояния ответа HTTP:  |Статус|Описание| |--- |--- | |200 OK|Действие с ресурсом было выполнено успешно.| |201 Created|Ресурс был успешно создан. При этом ресурс может быть как уже готовым к использованию, так и находиться в процессе запуска.| |204 No Content|Действие с ресурсом было выполнено успешно, и ответ не содержит дополнительной информации в теле.| |400 Bad Request|Был отправлен неверный запрос, например, в нем отсутствуют обязательные параметры и т. д. Тело ответа будет содержать дополнительную информацию об ошибке.| |401 Unauthorized|Ошибка аутентификации.| |403 Forbidden|Аутентификация прошла успешно, но недостаточно прав для выполнения действия.| |404 Not Found|Запрашиваемый ресурс не найден.| |409 Conflict|Запрос конфликтует с текущим состоянием.| |423 Locked|Ресурс из запроса заблокирован от применения к нему указанного метода.| |429 Too Many Requests|Был достигнут лимит по количеству запросов в единицу времени.| |500 Internal Server Error|При выполнении запроса произошла какая-то внутренняя ошибка. Чтобы решить эту проблему, лучше всего создать тикет в панели управления.|  ### Структура успешного ответа Все конечные точки будут возвращать данные в формате `JSON`. Ответы на `GET`-запросы будут иметь на верхнем уровне следующую структуру атрибутов:  |Название поля|Тип|Описание| |--- |--- |--- | |[entity_name]|object, object[], string[], number[], boolean|Динамическое поле, которое будет меняться в зависимости от запрашиваемого ресурса и будет содержать все атрибуты, необходимые для описания этого ресурса. Например, при запросе списка баз данных будет возвращаться поле `dbs`, а при запросе конкретного облачного сервера `server`. Для некоторых конечных точек в ответе может возвращаться сразу несколько ресурсов.| |meta|object|Опционально. Объект, который содержит вспомогательную информацию о ресурсе. Чаще всего будет встречаться при запросе коллекций и содержать поле `total`, которое будет указывать на количество элементов в коллекции.| |response_id|string|Опционально. В большинстве случаев в ответе будет содержаться уникальный идентификатор ответа в формате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот идентификатор — так мы сможем найти ответ на него намного быстрее. Также вы можете использовать этот идентификатор, чтобы убедиться, что это новый ответ на запрос и результат не был получен из кэша.|  Пример запроса на получение списка SSH-ключей: ```     HTTP/2.0 200 OK     {       \"ssh_keys\":[           {             \"body\":\"ssh-rsa AAAAB3NzaC1sdfghjkOAsBwWhs= example@device.local\",             \"created_at\":\"2021-09-15T19:52:27Z\",             \"expired_at\":null,             \"id\":5297,             \"is_default\":false,             \"name\":\"example@device.local\",             \"used_at\":null,             \"used_by\":[]           }       ],       \"meta\":{           \"total\":1       },       \"response_id\":\"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"     } ```  ### Структура ответа с ошибкой |Название поля|Тип|Описание| |--- |--- |--- | |status_code|number|Короткий числовой идентификатор ошибки.| |error_code|string|Короткий текстовый идентификатор ошибки, который уточняет числовой идентификатор и удобен для программной обработки. Самый простой пример — это код `not_found` для ошибки 404.| |message|string, string[]|Опционально. В большинстве случаев в ответе будет содержаться человекочитаемое подробное описание ошибки или ошибок, которые помогут понять, что нужно исправить.| |response_id|string|Опционально. В большинстве случае в ответе будет содержаться уникальный идентификатор ответа в формате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот идентификатор — так мы сможем найти ответ на него намного быстрее.|  Пример: ```     HTTP/2.0 403 Forbidden     {       \"status_code\": 403,       \"error_code\":  \"forbidden\",       \"message\":     \"You do not have access for the attempted action\",       \"response_id\": \"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"     } ```  ## Статусы ресурсов Важно учесть, что при создании большинства ресурсов внутри платформы вам будет сразу возвращен ответ от сервера со статусом `200 OK` или `201 Created` и идентификатором созданного ресурса в теле ответа, но при этом этот ресурс может быть ещё в *состоянии запуска*.  Для того чтобы понять, в каком состоянии сейчас находится ваш ресурс, мы добавили поле `status` в ответ на получение информации о ресурсе.  Список статусов будет отличаться в зависимости от типа ресурса. Увидеть поддерживаемый список статусов вы сможете в описании каждого конкретного ресурса.     ## Ограничение скорости запросов (Rate Limiting) Чтобы обеспечить стабильность для всех пользователей, Timeweb Cloud защищает API от всплесков входящего трафика, анализируя количество запросов c каждого аккаунта к каждой конечной точке.  Если ваше приложение отправляет более 20 запросов в секунду на одну конечную точку, то для этого запроса API может вернуть код состояния HTTP `429 Too Many Requests`.   ## Аутентификация Доступ к API осуществляется с помощью JWT-токена. Токенами можно управлять внутри панели управления Timeweb Cloud в разделе *API и Terraform*.  Токен необходимо передавать в заголовке каждого запроса в формате: ```   Authorization: Bearer $TIMEWEB_CLOUD_TOKEN ```  ## Формат примеров API Примеры в этой документации описаны с помощью `curl`, HTTP-клиента командной строки. На компьютерах `Linux` и `macOS` обычно по умолчанию установлен `curl`, и он доступен для загрузки на всех популярных платформах, включая `Windows`.  Каждый пример разделен на несколько строк символом `\\`, который совместим с `bash`. Типичный пример выглядит так: ```   curl -X PATCH      -H \"Content-Type: application/json\"      -H \"Authorization: Bearer $TIMEWEB_CLOUD_TOKEN\"      -d '{\"name\":\"Cute Corvus\",\"comment\":\"Development Server\"}'      \"https://api.timeweb.cloud/api/v1/dedicated/1051\" ``` - Параметр `-X` задает метод запроса. Для согласованности метод будет указан во всех примерах, даже если он явно не требуется для методов `GET`. - Строки `-H` задают требуемые HTTP-заголовки. - Примеры, для которых требуется объект JSON в теле запроса, передают требуемые данные через параметр `-d`.  Чтобы использовать приведенные примеры, не подставляя каждый раз в них свой токен, вы можете добавить токен один раз в переменные окружения в вашей консоли. Например, на `Linux` это можно сделать с помощью команды:  ``` TIMEWEB_CLOUD_TOKEN=\"token\" ```  После этого токен будет автоматически подставляться в ваши запросы.  Обратите внимание, что все значения в этой документации являются примерами. Не полагайтесь на идентификаторы операционных систем, тарифов и т.д., используемые в примерах. Используйте соответствующую конечную точку для получения значений перед созданием ресурсов.   ## Версионирование API построено согласно принципам [семантического версионирования](https://semver.org/lang/ru). Это значит, что мы гарантируем обратную совместимость всех изменений в пределах одной мажорной версии.  Мажорная версия каждой конечной точки обозначается в пути запроса, например, запрос `/api/v1/servers` указывает, что этот метод имеет версию 1.
+ * # Введение API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.  Множество функций, которые доступны в панели управления Timeweb Cloud, также доступны через API, что позволяет вам автоматизировать ваши собственные сценарии.  В этой документации сперва будет описан общий дизайн и принципы работы API, а после этого конкретные конечные точки. Также будут приведены примеры запросов к ним.   ## Запросы Запросы должны выполняться по протоколу `HTTPS`, чтобы гарантировать шифрование транзакций. Поддерживаются следующие методы запроса: |Метод|Применение| |--- |--- | |GET|Извлекает данные о коллекциях и отдельных ресурсах.| |POST|Для коллекций создает новый ресурс этого типа. Также используется для выполнения действий с конкретным ресурсом.| |PUT|Обновляет существующий ресурс.| |PATCH|Некоторые ресурсы поддерживают частичное обновление, то есть обновление только части атрибутов ресурса, в этом случае вместо метода PUT будет использован PATCH.| |DELETE|Удаляет ресурс.|  Методы `POST`, `PUT` и `PATCH` могут включать объект в тело запроса с типом содержимого `application/json`.  ### Параметры в запросах Некоторые коллекции поддерживают пагинацию, поиск или сортировку в запросах. В параметрах запроса требуется передать: - `limit` — обозначает количество записей, которое необходимо вернуть  - `offset` — указывает на смещение, относительно начала списка  - `search` — позволяет указать набор символов для поиска  - `sort` — можно задать правило сортировки коллекции  ## Ответы Запросы вернут один из следующих кодов состояния ответа HTTP:  |Статус|Описание| |--- |--- | |200 OK|Действие с ресурсом было выполнено успешно.| |201 Created|Ресурс был успешно создан. При этом ресурс может быть как уже готовым к использованию, так и находиться в процессе запуска.| |204 No Content|Действие с ресурсом было выполнено успешно, и ответ не содержит дополнительной информации в теле.| |400 Bad Request|Был отправлен неверный запрос, например, в нем отсутствуют обязательные параметры и т. д. Тело ответа будет содержать дополнительную информацию об ошибке.| |401 Unauthorized|Ошибка аутентификации.| |403 Forbidden|Аутентификация прошла успешно, но недостаточно прав для выполнения действия.| |404 Not Found|Запрашиваемый ресурс не найден.| |409 Conflict|Запрос конфликтует с текущим состоянием.| |423 Locked|Ресурс из запроса заблокирован от применения к нему указанного метода.| |429 Too Many Requests|Был достигнут лимит по количеству запросов в единицу времени.| |500 Internal Server Error|При выполнении запроса произошла какая-то внутренняя ошибка. Чтобы решить эту проблему, лучше всего создать тикет в панели управления.|  ### Структура успешного ответа Все конечные точки будут возвращать данные в формате `JSON`. Ответы на `GET`-запросы будут иметь на верхнем уровне следующую структуру атрибутов:  |Название поля|Тип|Описание| |--- |--- |--- | |[entity_name]|object, object[], string[], number[], boolean|Динамическое поле, которое будет меняться в зависимости от запрашиваемого ресурса и будет содержать все атрибуты, необходимые для описания этого ресурса. Например, при запросе списка баз данных будет возвращаться поле `dbs`, а при запросе конкретного облачного сервера `server`. Для некоторых конечных точек в ответе может возвращаться сразу несколько ресурсов.| |meta|object|Опционально. Объект, который содержит вспомогательную информацию о ресурсе. Чаще всего будет встречаться при запросе коллекций и содержать поле `total`, которое будет указывать на количество элементов в коллекции.| |response_id|string|Опционально. В большинстве случаев в ответе будет содержаться ID ответа в формате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот ID— так мы сможем найти ответ на него намного быстрее. Также вы можете использовать этот ID, чтобы убедиться, что это новый ответ на запрос и результат не был получен из кэша.|  Пример запроса на получение списка SSH-ключей: ```     HTTP/2.0 200 OK     {       \"ssh_keys\":[           {             \"body\":\"ssh-rsa AAAAB3NzaC1sdfghjkOAsBwWhs= example@device.local\",             \"created_at\":\"2021-09-15T19:52:27Z\",             \"expired_at\":null,             \"id\":5297,             \"is_default\":false,             \"name\":\"example@device.local\",             \"used_at\":null,             \"used_by\":[]           }       ],       \"meta\":{           \"total\":1       },       \"response_id\":\"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"     } ```  ### Структура ответа с ошибкой |Название поля|Тип|Описание| |--- |--- |--- | |status_code|number|Короткий числовой идентификатор ошибки.| |error_code|string|Короткий текстовый идентификатор ошибки, который уточняет числовой идентификатор и удобен для программной обработки. Самый простой пример — это код `not_found` для ошибки 404.| |message|string, string[]|Опционально. В большинстве случаев в ответе будет содержаться человекочитаемое подробное описание ошибки или ошибок, которые помогут понять, что нужно исправить.| |response_id|string|Опционально. В большинстве случае в ответе будет содержаться ID ответа в формате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот ID — так мы сможем найти ответ на него намного быстрее.|  Пример: ```     HTTP/2.0 403 Forbidden     {       \"status_code\": 403,       \"error_code\":  \"forbidden\",       \"message\":     \"You do not have access for the attempted action\",       \"response_id\": \"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"     } ```  ## Статусы ресурсов Важно учесть, что при создании большинства ресурсов внутри платформы вам будет сразу возвращен ответ от сервера со статусом `200 OK` или `201 Created` и ID созданного ресурса в теле ответа, но при этом этот ресурс может быть ещё в *состоянии запуска*.  Для того чтобы понять, в каком состоянии сейчас находится ваш ресурс, мы добавили поле `status` в ответ на получение информации о ресурсе.  Список статусов будет отличаться в зависимости от типа ресурса. Увидеть поддерживаемый список статусов вы сможете в описании каждого конкретного ресурса.     ## Ограничение скорости запросов (Rate Limiting) Чтобы обеспечить стабильность для всех пользователей, Timeweb Cloud защищает API от всплесков входящего трафика, анализируя количество запросов c каждого аккаунта к каждой конечной точке.  Если ваше приложение отправляет более 20 запросов в секунду на одну конечную точку, то для этого запроса API может вернуть код состояния HTTP `429 Too Many Requests`.   ## Аутентификация Доступ к API осуществляется с помощью JWT-токена. Токенами можно управлять внутри панели управления Timeweb Cloud в разделе *API и Terraform*.  Токен необходимо передавать в заголовке каждого запроса в формате: ```   Authorization: Bearer $TIMEWEB_CLOUD_TOKEN ```  ## Формат примеров API Примеры в этой документации описаны с помощью `curl`, HTTP-клиента командной строки. На компьютерах `Linux` и `macOS` обычно по умолчанию установлен `curl`, и он доступен для загрузки на всех популярных платформах, включая `Windows`.  Каждый пример разделен на несколько строк символом `\\`, который совместим с `bash`. Типичный пример выглядит так: ```   curl -X PATCH      -H \"Content-Type: application/json\"      -H \"Authorization: Bearer $TIMEWEB_CLOUD_TOKEN\"      -d '{\"name\":\"Cute Corvus\",\"comment\":\"Development Server\"}'      \"https://api.timeweb.cloud/api/v1/dedicated/1051\" ``` - Параметр `-X` задает метод запроса. Для согласованности метод будет указан во всех примерах, даже если он явно не требуется для методов `GET`. - Строки `-H` задают требуемые HTTP-заголовки. - Примеры, для которых требуется объект JSON в теле запроса, передают требуемые данные через параметр `-d`.  Чтобы использовать приведенные примеры, не подставляя каждый раз в них свой токен, вы можете добавить токен один раз в переменные окружения в вашей консоли. Например, на `Linux` это можно сделать с помощью команды:  ``` TIMEWEB_CLOUD_TOKEN=\"token\" ```  После этого токен будет автоматически подставляться в ваши запросы.  Обратите внимание, что все значения в этой документации являются примерами. Не полагайтесь на IDы операционных систем, тарифов и т.д., используемые в примерах. Используйте соответствующую конечную точку для получения значений перед созданием ресурсов.   ## Версионирование API построено согласно принципам [семантического версионирования](https://semver.org/lang/ru). Это значит, что мы гарантируем обратную совместимость всех изменений в пределах одной мажорной версии.  Мажорная версия каждой конечной точки обозначается в пути запроса, например, запрос `/api/v1/servers` указывает, что этот метод имеет версию 1.
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: info@timeweb.cloud
@@ -82,7 +82,7 @@ export default class ServersApi {
     /**
      * Добавление IP-адреса сервера
      * Чтобы добавить IP-адрес сервера, отправьте POST-запрос на `/api/v1/servers/{server_id}/ips`. \\  На данный момент IPv6 доступны только для серверов с локацией `ru-1`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {module:model/AddServerIPRequest} addServerIPRequest 
      * @param {module:api/ServersApi~addServerIPCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/AddServerIP201Response}
@@ -130,7 +130,7 @@ export default class ServersApi {
     /**
      * Клонирование сервера
      * Чтобы клонировать сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/clone`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {module:api/ServersApi~cloneServerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateServer201Response}
      */
@@ -215,7 +215,7 @@ export default class ServersApi {
     /**
      * Создание диска сервера
      * Чтобы создать диск сервера, отправьте POST-запрос на `/api/v1/servers/{server_id}/disks`. Системный диск создать нельзя.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateServerDiskRequest} [createServerDiskRequest] 
      * @param {module:api/ServersApi~createServerDiskCallback} callback The callback function, accepting three arguments: error, data, response
@@ -261,8 +261,8 @@ export default class ServersApi {
     /**
      * Создание бэкапа диска сервера
      * Чтобы создать бэкап диска сервера, отправьте POST-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}/backups`.   Тело ответа будет представлять собой объект JSON с ключом `backup`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
-     * @param {Number} diskId Уникальный идентификатор диска сервера.
+     * @param {Number} serverId ID облачного сервера.
+     * @param {Number} diskId ID диска сервера.
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateServerDiskBackupRequest} [createServerDiskBackupRequest] 
      * @param {module:api/ServersApi~createServerDiskBackupCallback} callback The callback function, accepting three arguments: error, data, response
@@ -313,7 +313,7 @@ export default class ServersApi {
     /**
      * Удаление сервера
      * Чтобы удалить сервер, отправьте запрос DELETE в `/api/v1/servers/{server_id}`.\\  Обратите внимание, если на аккаунте включено удаление серверов по смс, то вернется ошибка 423.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {Object} opts Optional parameters
      * @param {String} [hash] Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм.
      * @param {String} [code] Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена `is_able_to_delete` установлен в значение `true`
@@ -362,8 +362,8 @@ export default class ServersApi {
     /**
      * Удаление диска сервера
      * Чтобы удалить диск сервера, отправьте DELETE-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}`. Нельзя удалять системный диск.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
-     * @param {Number} diskId Уникальный идентификатор диска сервера.
+     * @param {Number} serverId ID облачного сервера.
+     * @param {Number} diskId ID диска сервера.
      * @param {module:api/ServersApi~deleteServerDiskCallback} callback The callback function, accepting three arguments: error, data, response
      */
     deleteServerDisk(serverId, diskId, callback) {
@@ -410,9 +410,9 @@ export default class ServersApi {
     /**
      * Удаление бэкапа диска сервера
      * Чтобы удалить бэкап диска сервера, отправьте DELETE-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
-     * @param {Number} diskId Уникальный идентификатор диска сервера.
-     * @param {Number} backupId Уникальный идентификатор бэкапа сервера.
+     * @param {Number} serverId ID облачного сервера.
+     * @param {Number} diskId ID диска сервера.
+     * @param {Number} backupId ID бэкапа сервера.
      * @param {module:api/ServersApi~deleteServerDiskBackupCallback} callback The callback function, accepting three arguments: error, data, response
      */
     deleteServerDiskBackup(serverId, diskId, backupId, callback) {
@@ -464,7 +464,7 @@ export default class ServersApi {
     /**
      * Удаление IP-адреса сервера
      * Чтобы удалить IP-адрес сервера, отправьте DELETE-запрос на `/api/v1/servers/{server_id}/ips`. Нельзя удалить основной IP-адрес
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {module:model/DeleteServerIPRequest} deleteServerIPRequest 
      * @param {module:api/ServersApi~deleteServerIPCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -585,7 +585,7 @@ export default class ServersApi {
     /**
      * Получение сервера
      * Чтобы получить сервер, отправьте запрос GET в `/api/v1/servers/{server_id}`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {module:api/ServersApi~getServerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateServer201Response}
      */
@@ -628,8 +628,8 @@ export default class ServersApi {
     /**
      * Получение диска сервера
      * Чтобы получить диск сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
-     * @param {Number} diskId Уникальный идентификатор диска сервера.
+     * @param {Number} serverId ID облачного сервера.
+     * @param {Number} diskId ID диска сервера.
      * @param {module:api/ServersApi~getServerDiskCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateServerDisk201Response}
      */
@@ -677,8 +677,8 @@ export default class ServersApi {
     /**
      * Получить настройки автобэкапов диска сервера
      * Чтобы полученить настройки автобэкапов диска сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}/auto-backups`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
-     * @param {Number} diskId Уникальный идентификатор диска сервера.
+     * @param {Number} serverId ID облачного сервера.
+     * @param {Number} diskId ID диска сервера.
      * @param {module:api/ServersApi~getServerDiskAutoBackupSettingsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetServerDiskAutoBackupSettings200Response}
      */
@@ -726,9 +726,9 @@ export default class ServersApi {
     /**
      * Получение бэкапа диска сервера
      * Чтобы получить бэкап диска сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}`.   Тело ответа будет представлять собой объект JSON с ключом `backup`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
-     * @param {Number} diskId Уникальный идентификатор диска сервера.
-     * @param {Number} backupId Уникальный идентификатор бэкапа сервера.
+     * @param {Number} serverId ID облачного сервера.
+     * @param {Number} diskId ID диска сервера.
+     * @param {Number} backupId ID бэкапа сервера.
      * @param {module:api/ServersApi~getServerDiskBackupCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetServerDiskBackup200Response}
      */
@@ -781,8 +781,8 @@ export default class ServersApi {
     /**
      * Получение списка бэкапов диска сервера
      * Чтобы получить список бэкапов диска сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}/backups`.   Тело ответа будет представлять собой объект JSON с ключом `backups`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
-     * @param {Number} diskId Уникальный идентификатор диска сервера.
+     * @param {Number} serverId ID облачного сервера.
+     * @param {Number} diskId ID диска сервера.
      * @param {module:api/ServersApi~getServerDiskBackupsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetServerDiskBackups200Response}
      */
@@ -830,7 +830,7 @@ export default class ServersApi {
     /**
      * Получение списка дисков сервера
      * Чтобы получить список дисков сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/disks`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {module:api/ServersApi~getServerDisksCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetServerDisks200Response}
      */
@@ -873,7 +873,7 @@ export default class ServersApi {
     /**
      * Получение списка IP-адресов сервера
      * Чтобы получить список IP-адресов сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/ips`. \\  На данный момент IPv6 доступны только для локации `ru-1`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {module:api/ServersApi~getServerIPsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetServerIPs200Response}
      */
@@ -916,7 +916,7 @@ export default class ServersApi {
     /**
      * Получение списка логов сервера
      * Чтобы получить список логов сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/logs`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {Object} opts Optional parameters
      * @param {Number} [limit = 100)] Обозначает количество записей, которое необходимо вернуть.
      * @param {Number} [offset = 0)] Указывает на смещение относительно начала списка.
@@ -967,7 +967,7 @@ export default class ServersApi {
     /**
      * Получение статистики сервера
      * Чтобы получить статистику сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/statistics`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {String} dateFrom Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-25%202023-05-25T14%3A35%3A38`
      * @param {String} dateTo Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-26%202023-05-25T14%3A35%3A38`
      * @param {module:api/ServersApi~getServerStatisticsCallback} callback The callback function, accepting three arguments: error, data, response
@@ -1139,7 +1139,7 @@ export default class ServersApi {
     /**
      * Принудительное выключение сервера
      * Чтобы выполнить принудительное выключение сервера, отправьте POST-запрос на `/api/v1/servers/{server_id}/hard-shutdown`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {module:api/ServersApi~hardShutdownServerCallback} callback The callback function, accepting three arguments: error, data, response
      */
     hardShutdownServer(serverId, callback) {
@@ -1181,7 +1181,7 @@ export default class ServersApi {
     /**
      * Отмонтирование ISO образа и перезагрузка сервера
      * Чтобы отмонтировать ISO образ и перезагрузить сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/image-unmount`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {module:api/ServersApi~imageUnmountAndServerReloadCallback} callback The callback function, accepting three arguments: error, data, response
      */
     imageUnmountAndServerReload(serverId, callback) {
@@ -1223,9 +1223,9 @@ export default class ServersApi {
     /**
      * Выполнение действия над бэкапом диска сервера
      * Чтобы выполнить действие над бэкапом диска сервера, отправьте POST-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/action`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
-     * @param {Number} diskId Уникальный идентификатор диска сервера.
-     * @param {Number} backupId Уникальный идентификатор бэкапа сервера.
+     * @param {Number} serverId ID облачного сервера.
+     * @param {Number} diskId ID диска сервера.
+     * @param {Number} backupId ID бэкапа сервера.
      * @param {Object} opts Optional parameters
      * @param {module:model/PerformActionOnBackupRequest} [performActionOnBackupRequest] 
      * @param {module:api/ServersApi~performActionOnBackupCallback} callback The callback function, accepting three arguments: error, data, response
@@ -1280,7 +1280,7 @@ export default class ServersApi {
     /**
      * Выполнение действия над сервером
      * Чтобы выполнить действие над сервером, отправьте POST-запрос на `/api/v1/servers/{server_id}/action`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {Object} opts Optional parameters
      * @param {module:model/PerformActionOnServerRequest} [performActionOnServerRequest] 
      * @param {module:api/ServersApi~performActionOnServerCallback} callback The callback function, accepting three arguments: error, data, response
@@ -1325,7 +1325,7 @@ export default class ServersApi {
     /**
      * Перезагрузка сервера
      * Чтобы перезагрузить сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/reboot`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {module:api/ServersApi~rebootServerCallback} callback The callback function, accepting three arguments: error, data, response
      */
     rebootServer(serverId, callback) {
@@ -1367,7 +1367,7 @@ export default class ServersApi {
     /**
      * Сброс пароля сервера
      * Чтобы сбросить пароль сервера, отправьте POST-запрос на `/api/v1/servers/{server_id}/reset-password`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {module:api/ServersApi~resetServerPasswordCallback} callback The callback function, accepting three arguments: error, data, response
      */
     resetServerPassword(serverId, callback) {
@@ -1409,7 +1409,7 @@ export default class ServersApi {
     /**
      * Выключение сервера
      * Чтобы выключить сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/shutdown`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {module:api/ServersApi~shutdownServerCallback} callback The callback function, accepting three arguments: error, data, response
      */
     shutdownServer(serverId, callback) {
@@ -1451,7 +1451,7 @@ export default class ServersApi {
     /**
      * Запуск сервера
      * Чтобы запустить сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/start`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {module:api/ServersApi~startServerCallback} callback The callback function, accepting three arguments: error, data, response
      */
     startServer(serverId, callback) {
@@ -1493,7 +1493,7 @@ export default class ServersApi {
     /**
      * Изменение сервера
      * Чтобы обновить только определенные атрибуты сервера, отправьте запрос PATCH в `/api/v1/servers/{server_id}`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {module:model/UpdateServer} updateServer 
      * @param {module:api/ServersApi~updateServerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateServer201Response}
@@ -1541,8 +1541,8 @@ export default class ServersApi {
     /**
      * Изменение параметров диска сервера
      * Чтобы изменить параметры диска сервера, отправьте PATCH-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
-     * @param {Number} diskId Уникальный идентификатор диска сервера.
+     * @param {Number} serverId ID облачного сервера.
+     * @param {Number} diskId ID диска сервера.
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateServerDiskRequest} [updateServerDiskRequest] 
      * @param {module:api/ServersApi~updateServerDiskCallback} callback The callback function, accepting three arguments: error, data, response
@@ -1593,8 +1593,8 @@ export default class ServersApi {
     /**
      * Изменение настроек автобэкапов диска сервера
      * Чтобы изменить настройки автобэкапов диска сервера, отправьте PATCH-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}/auto-backups`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
-     * @param {Number} diskId Уникальный идентификатор диска сервера.
+     * @param {Number} serverId ID облачного сервера.
+     * @param {Number} diskId ID диска сервера.
      * @param {Object} opts Optional parameters
      * @param {module:model/AutoBackup} [autoBackup] При значении `is_enabled`: `true`, поля `copy_count`, `creation_start_at`, `interval` являются обязательными
      * @param {module:api/ServersApi~updateServerDiskAutoBackupSettingsCallback} callback The callback function, accepting three arguments: error, data, response
@@ -1645,9 +1645,9 @@ export default class ServersApi {
     /**
      * Изменение бэкапа диска сервера
      * Чтобы изменить бэкап диска сервера, отправьте PATCH-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
-     * @param {Number} diskId Уникальный идентификатор диска сервера.
-     * @param {Number} backupId Уникальный идентификатор бэкапа сервера.
+     * @param {Number} serverId ID облачного сервера.
+     * @param {Number} diskId ID диска сервера.
+     * @param {Number} backupId ID бэкапа сервера.
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateServerDiskBackupRequest} [updateServerDiskBackupRequest] 
      * @param {module:api/ServersApi~updateServerDiskBackupCallback} callback The callback function, accepting three arguments: error, data, response
@@ -1703,7 +1703,7 @@ export default class ServersApi {
     /**
      * Изменение IP-адреса сервера
      * Чтобы изменить IP-адрес сервера, отправьте POST-запрос на `/api/v1/servers/{server_id}/ips`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {module:model/UpdateServerIPRequest} updateServerIPRequest 
      * @param {module:api/ServersApi~updateServerIPCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/AddServerIP201Response}
@@ -1751,7 +1751,7 @@ export default class ServersApi {
     /**
      * Изменение правил маршрутизации трафика сервера (NAT)
      * Чтобы измененить правила маршрутизации трафика сервера (NAT), отправьте PATCH-запрос на `/api/v1/servers/{server_id}/local-networks/nat-mode`.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateServerNATRequest} [updateServerNATRequest] 
      * @param {module:api/ServersApi~updateServerNATCallback} callback The callback function, accepting three arguments: error, data, response
@@ -1796,7 +1796,7 @@ export default class ServersApi {
     /**
      * Выбор типа загрузки операционной системы сервера
      * Чтобы изменить тип загрузки операционной системы сервера, отправьте POST-запрос на `/api/v1/servers/{server_id}/boot-mode`. \\  После смены типа загрузки сервер будет перезапущен.
-     * @param {Number} serverId Уникальный идентификатор облачного сервера.
+     * @param {Number} serverId ID облачного сервера.
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateServerOSBootModeRequest} [updateServerOSBootModeRequest] 
      * @param {module:api/ServersApi~updateServerOSBootModeCallback} callback The callback function, accepting three arguments: error, data, response

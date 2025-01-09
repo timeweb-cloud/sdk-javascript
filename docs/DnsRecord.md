@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | Тип DNS-записи. | 
-**id** | **Number** | Идентификатор DNS-записи. | [optional] 
+**id** | **Number** | ID DNS-записи. | [optional] 
 **data** | [**DnsRecordData**](DnsRecordData.md) |  | 
 
 

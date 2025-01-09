@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **admin** | [**CreateClusterAdmin**](CreateClusterAdmin.md) |  | [optional] 
 **instance** | [**CreateClusterInstance**](CreateClusterInstance.md) |  | [optional] 
 **hashType** | **String** | Тип хеширования базы данных (mysql5 | mysql | postgres). | [optional] 
-**presetId** | **Number** | Идентификатор тарифа. | 
+**presetId** | **Number** | ID тарифа. | 
 **configParameters** | [**ConfigParameters**](ConfigParameters.md) |  | [optional] 
 **network** | [**Network**](Network.md) |  | [optional] 
 **description** | **String** | Описание кластера базы данных | [optional] 

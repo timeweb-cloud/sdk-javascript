@@ -19,7 +19,7 @@ Method | HTTP request | Description
 [**getDomainRequest**](DomainsApi.md#getDomainRequest) | **GET** /api/v1/domains-requests/{request_id} | Получение заявки на регистрацию/продление/трансфер домена
 [**getDomainRequests**](DomainsApi.md#getDomainRequests) | **GET** /api/v1/domains-requests | Получение списка заявок на регистрацию/продление/трансфер домена
 [**getDomains**](DomainsApi.md#getDomains) | **GET** /api/v1/domains | Получение списка всех доменов
-[**getTLD**](DomainsApi.md#getTLD) | **GET** /api/v1/tlds/{tld_id} | Получить информацию о доменной зоне по идентификатору
+[**getTLD**](DomainsApi.md#getTLD) | **GET** /api/v1/tlds/{tld_id} | Получить информацию о доменной зоне по ID
 [**getTLDs**](DomainsApi.md#getTLDs) | **GET** /api/v1/tlds | Получить информацию о доменных зонах
 [**updateDomainAutoProlongation**](DomainsApi.md#updateDomainAutoProlongation) | **PATCH** /api/v1/domains/{fqdn} | Включение/выключение автопродления домена
 [**updateDomainDNSRecord**](DomainsApi.md#updateDomainDNSRecord) | **PATCH** /api/v1/domains/{fqdn}/dns-records/{record_id} | Обновить информацию о DNS-записи домена или поддомена
@@ -345,7 +345,7 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DomainsApi();
 let fqdn = somedomain.ru; // String | Полное имя домена или поддомена.
-let recordId = 123; // Number | Идентификатор DNS-записи домена или поддомена.
+let recordId = 123; // Number | ID DNS-записи домена или поддомена.
 apiInstance.deleteDomainDNSRecord(fqdn, recordId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -361,7 +361,7 @@ apiInstance.deleteDomainDNSRecord(fqdn, recordId, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fqdn** | **String**| Полное имя домена или поддомена. | 
- **recordId** | **Number**| Идентификатор DNS-записи домена или поддомена. | 
+ **recordId** | **Number**| ID DNS-записи домена или поддомена. | 
 
 ### Return type
 
@@ -654,7 +654,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DomainsApi();
-let requestId = 123; // Number | Идентификатор заявки на регистрацию/продление/трансфер домена.
+let requestId = 123; // Number | ID заявки на регистрацию/продление/трансфер домена.
 apiInstance.getDomainRequest(requestId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -669,7 +669,7 @@ apiInstance.getDomainRequest(requestId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestId** | **Number**| Идентификатор заявки на регистрацию/продление/трансфер домена. | 
+ **requestId** | **Number**| ID заявки на регистрацию/продление/трансфер домена. | 
 
 ### Return type
 
@@ -704,7 +704,7 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DomainsApi();
 let opts = {
-  'personId': 123 // Number | Идентификатор администратора, на которого зарегистрирован домен.
+  'personId': 123 // Number | ID администратора, на которого зарегистрирован домен.
 };
 apiInstance.getDomainRequests(opts, (error, data, response) => {
   if (error) {
@@ -720,7 +720,7 @@ apiInstance.getDomainRequests(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **personId** | **Number**| Идентификатор администратора, на которого зарегистрирован домен. | [optional] 
+ **personId** | **Number**| ID администратора, на которого зарегистрирован домен. | [optional] 
 
 ### Return type
 
@@ -801,9 +801,9 @@ Name | Type | Description  | Notes
 
 > GetTLD200Response getTLD(tldId)
 
-Получить информацию о доменной зоне по идентификатору
+Получить информацию о доменной зоне по ID
 
-Чтобы получить информацию о доменной зоне по идентификатору, отправьте запрос GET на &#x60;/api/v1/tlds/{tld_id}&#x60;.
+Чтобы получить информацию о доменной зоне по ID, отправьте запрос GET на &#x60;/api/v1/tlds/{tld_id}&#x60;.
 
 ### Example
 
@@ -815,7 +815,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DomainsApi();
-let tldId = 123; // Number | Идентификатор доменной зоны.
+let tldId = 123; // Number | ID доменной зоны.
 apiInstance.getTLD(tldId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -830,7 +830,7 @@ apiInstance.getTLD(tldId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tldId** | **Number**| Идентификатор доменной зоны. | 
+ **tldId** | **Number**| ID доменной зоны. | 
 
 ### Return type
 
@@ -969,7 +969,7 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DomainsApi();
 let fqdn = somedomain.ru; // String | Полное имя домена или поддомена.
-let recordId = 123; // Number | Идентификатор DNS-записи домена или поддомена.
+let recordId = 123; // Number | ID DNS-записи домена или поддомена.
 let createDns = new TimewebCloudApi.CreateDns(); // CreateDns | 
 apiInstance.updateDomainDNSRecord(fqdn, recordId, createDns, (error, data, response) => {
   if (error) {
@@ -986,7 +986,7 @@ apiInstance.updateDomainDNSRecord(fqdn, recordId, createDns, (error, data, respo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fqdn** | **String**| Полное имя домена или поддомена. | 
- **recordId** | **Number**| Идентификатор DNS-записи домена или поддомена. | 
+ **recordId** | **Number**| ID DNS-записи домена или поддомена. | 
  **createDns** | [**CreateDns**](CreateDns.md)|  | 
 
 ### Return type
@@ -1072,7 +1072,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DomainsApi();
-let requestId = 123; // Number | Идентификатор заявки на регистрацию/продление/трансфер домена.
+let requestId = 123; // Number | ID заявки на регистрацию/продление/трансфер домена.
 let use = new TimewebCloudApi.Use(); // Use | 
 apiInstance.updateDomainRequest(requestId, use, (error, data, response) => {
   if (error) {
@@ -1088,7 +1088,7 @@ apiInstance.updateDomainRequest(requestId, use, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestId** | **Number**| Идентификатор заявки на регистрацию/продление/трансфер домена. | 
+ **requestId** | **Number**| ID заявки на регистрацию/продление/трансфер домена. | 
  **use** | [**Use**](Use.md)|  | 
 
 ### Return type

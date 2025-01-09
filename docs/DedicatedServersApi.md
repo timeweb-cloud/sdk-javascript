@@ -81,7 +81,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DedicatedServersApi();
-let dedicatedId = 1051; // Number | Уникальный идентификатор выделенного сервера.
+let dedicatedId = 1051; // Number | ID выделенного сервера.
 apiInstance.deleteDedicatedServer(dedicatedId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -96,7 +96,7 @@ apiInstance.deleteDedicatedServer(dedicatedId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **dedicatedId** | **Number**| Уникальный идентификатор выделенного сервера. | 
+ **dedicatedId** | **Number**| ID выделенного сервера. | 
 
 ### Return type
 
@@ -130,7 +130,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DedicatedServersApi();
-let dedicatedId = 1051; // Number | Уникальный идентификатор выделенного сервера.
+let dedicatedId = 1051; // Number | ID выделенного сервера.
 apiInstance.getDedicatedServer(dedicatedId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -145,7 +145,7 @@ apiInstance.getDedicatedServer(dedicatedId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **dedicatedId** | **Number**| Уникальный идентификатор выделенного сервера. | 
+ **dedicatedId** | **Number**| ID выделенного сервера. | 
 
 ### Return type
 
@@ -179,7 +179,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DedicatedServersApi();
-let presetId = 1051; // Number | Уникальный идентификатор тарифа выделенного сервера.
+let presetId = 1051; // Number | ID тарифа выделенного сервера.
 apiInstance.getDedicatedServerPresetAdditionalServices(presetId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -194,7 +194,7 @@ apiInstance.getDedicatedServerPresetAdditionalServices(presetId, (error, data, r
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **presetId** | **Number**| Уникальный идентификатор тарифа выделенного сервера. | 
+ **presetId** | **Number**| ID тарифа выделенного сервера. | 
 
 ### Return type
 
@@ -324,7 +324,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DedicatedServersApi();
-let dedicatedId = 1051; // Number | Уникальный идентификатор выделенного сервера.
+let dedicatedId = 1051; // Number | ID выделенного сервера.
 let opts = {
   'updateDedicatedServerRequest': new TimewebCloudApi.UpdateDedicatedServerRequest() // UpdateDedicatedServerRequest | 
 };
@@ -342,7 +342,7 @@ apiInstance.updateDedicatedServer(dedicatedId, opts, (error, data, response) => 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **dedicatedId** | **Number**| Уникальный идентификатор выделенного сервера. | 
+ **dedicatedId** | **Number**| ID выделенного сервера. | 
  **updateDedicatedServerRequest** | [**UpdateDedicatedServerRequest**](UpdateDedicatedServerRequest.md)|  | [optional] 
 
 ### Return type

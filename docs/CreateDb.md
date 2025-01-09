@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **name** | **String** | Название базы данных. | 
 **type** | [**DbType**](DbType.md) |  | 
 **hashType** | **String** | Тип хеширования базы данных (mysql5 | mysql | postgres). | [optional] 
-**presetId** | **Number** | Идентификатор тарифа. | 
+**presetId** | **Number** | ID тарифа. | 
 **configParameters** | [**ConfigParameters**](ConfigParameters.md) |  | [optional] 
 **network** | [**Network**](Network.md) |  | [optional] 
 

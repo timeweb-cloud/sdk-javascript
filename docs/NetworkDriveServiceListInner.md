@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**resourceId** | **Number** | Уникальный идентификатор сервиса. | 
+**resourceId** | **Number** | ID сервиса. | 
 **resourceType** | **String** | Тип ресурса. | 
 
 

@@ -93,7 +93,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KubernetesApi();
-let clusterId = 56; // Number | Уникальный идентификатор кластера
+let clusterId = 56; // Number | ID кластера
 let nodeGroupIn = new TimewebCloudApi.NodeGroupIn(); // NodeGroupIn | 
 apiInstance.createClusterNodeGroup(clusterId, nodeGroupIn, (error, data, response) => {
   if (error) {
@@ -109,7 +109,7 @@ apiInstance.createClusterNodeGroup(clusterId, nodeGroupIn, (error, data, respons
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterId** | **Number**| Уникальный идентификатор кластера | 
+ **clusterId** | **Number**| ID кластера | 
  **nodeGroupIn** | [**NodeGroupIn**](NodeGroupIn.md)|  | 
 
 ### Return type
@@ -144,7 +144,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KubernetesApi();
-let clusterId = 56; // Number | Уникальный идентификатор кластера
+let clusterId = 56; // Number | ID кластера
 let opts = {
   'hash': 15095f25-aac3-4d60-a788-96cb5136f186, // String | Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм.
   'code': 0000 // String | Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена `is_able_to_delete` установлен в значение `true`
@@ -163,7 +163,7 @@ apiInstance.deleteCluster(clusterId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterId** | **Number**| Уникальный идентификатор кластера | 
+ **clusterId** | **Number**| ID кластера | 
  **hash** | **String**| Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. | [optional] 
  **code** | **String**| Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; | [optional] 
 
@@ -199,8 +199,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KubernetesApi();
-let clusterId = 56; // Number | Уникальный идентификатор кластера
-let nodeId = 56; // Number | Уникальный идентификатор группы нод
+let clusterId = 56; // Number | ID кластера
+let nodeId = 56; // Number | ID группы нод
 apiInstance.deleteClusterNode(clusterId, nodeId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -215,8 +215,8 @@ apiInstance.deleteClusterNode(clusterId, nodeId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterId** | **Number**| Уникальный идентификатор кластера | 
- **nodeId** | **Number**| Уникальный идентификатор группы нод | 
+ **clusterId** | **Number**| ID кластера | 
+ **nodeId** | **Number**| ID группы нод | 
 
 ### Return type
 
@@ -250,8 +250,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KubernetesApi();
-let clusterId = 56; // Number | Уникальный идентификатор кластера
-let groupId = 56; // Number | Уникальный идентификатор группы
+let clusterId = 56; // Number | ID кластера
+let groupId = 56; // Number | ID группы
 apiInstance.deleteClusterNodeGroup(clusterId, groupId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -266,8 +266,8 @@ apiInstance.deleteClusterNodeGroup(clusterId, groupId, (error, data, response) =
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterId** | **Number**| Уникальный идентификатор кластера | 
- **groupId** | **Number**| Уникальный идентификатор группы | 
+ **clusterId** | **Number**| ID кластера | 
+ **groupId** | **Number**| ID группы | 
 
 ### Return type
 
@@ -301,7 +301,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KubernetesApi();
-let clusterId = 56; // Number | Уникальный идентификатор кластера
+let clusterId = 56; // Number | ID кластера
 apiInstance.getCluster(clusterId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -316,7 +316,7 @@ apiInstance.getCluster(clusterId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterId** | **Number**| Уникальный идентификатор кластера | 
+ **clusterId** | **Number**| ID кластера | 
 
 ### Return type
 
@@ -350,7 +350,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KubernetesApi();
-let clusterId = 56; // Number | Уникальный идентификатор кластера
+let clusterId = 56; // Number | ID кластера
 apiInstance.getClusterKubeconfig(clusterId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -365,7 +365,7 @@ apiInstance.getClusterKubeconfig(clusterId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterId** | **Number**| Уникальный идентификатор кластера | 
+ **clusterId** | **Number**| ID кластера | 
 
 ### Return type
 
@@ -399,8 +399,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KubernetesApi();
-let clusterId = 56; // Number | Уникальный идентификатор кластера
-let groupId = 56; // Number | Уникальный идентификатор группы
+let clusterId = 56; // Number | ID кластера
+let groupId = 56; // Number | ID группы
 apiInstance.getClusterNodeGroup(clusterId, groupId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -415,8 +415,8 @@ apiInstance.getClusterNodeGroup(clusterId, groupId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterId** | **Number**| Уникальный идентификатор кластера | 
- **groupId** | **Number**| Уникальный идентификатор группы | 
+ **clusterId** | **Number**| ID кластера | 
+ **groupId** | **Number**| ID группы | 
 
 ### Return type
 
@@ -450,7 +450,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KubernetesApi();
-let clusterId = 56; // Number | Уникальный идентификатор кластера
+let clusterId = 56; // Number | ID кластера
 apiInstance.getClusterNodeGroups(clusterId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -465,7 +465,7 @@ apiInstance.getClusterNodeGroups(clusterId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterId** | **Number**| Уникальный идентификатор кластера | 
+ **clusterId** | **Number**| ID кластера | 
 
 ### Return type
 
@@ -499,7 +499,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KubernetesApi();
-let clusterId = 56; // Number | Уникальный идентификатор кластера
+let clusterId = 56; // Number | ID кластера
 apiInstance.getClusterNodes(clusterId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -514,7 +514,7 @@ apiInstance.getClusterNodes(clusterId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterId** | **Number**| Уникальный идентификатор кластера | 
+ **clusterId** | **Number**| ID кластера | 
 
 ### Return type
 
@@ -548,8 +548,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KubernetesApi();
-let clusterId = 56; // Number | Уникальный идентификатор кластера
-let groupId = 56; // Number | Уникальный идентификатор группы
+let clusterId = 56; // Number | ID кластера
+let groupId = 56; // Number | ID группы
 let opts = {
   'limit': 100, // Number | Обозначает количество записей, которое необходимо вернуть.
   'offset': 0 // Number | Указывает на смещение, относительно начала списка.
@@ -568,8 +568,8 @@ apiInstance.getClusterNodesFromGroup(clusterId, groupId, opts, (error, data, res
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterId** | **Number**| Уникальный идентификатор кластера | 
- **groupId** | **Number**| Уникальный идентификатор группы | 
+ **clusterId** | **Number**| ID кластера | 
+ **groupId** | **Number**| ID группы | 
  **limit** | **Number**| Обозначает количество записей, которое необходимо вернуть. | [optional] [default to 100]
  **offset** | **Number**| Указывает на смещение, относительно начала списка. | [optional] [default to 0]
 
@@ -605,7 +605,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KubernetesApi();
-let clusterId = 56; // Number | Уникальный идентификатор кластера
+let clusterId = 56; // Number | ID кластера
 apiInstance.getClusterResources(clusterId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -620,7 +620,7 @@ apiInstance.getClusterResources(clusterId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterId** | **Number**| Уникальный идентификатор кластера | 
+ **clusterId** | **Number**| ID кластера | 
 
 ### Return type
 
@@ -842,8 +842,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KubernetesApi();
-let clusterId = 56; // Number | Уникальный идентификатор кластера
-let groupId = 56; // Number | Уникальный идентификатор группы
+let clusterId = 56; // Number | ID кластера
+let groupId = 56; // Number | ID группы
 let nodeCount = new TimewebCloudApi.NodeCount(); // NodeCount | 
 apiInstance.increaseCountOfNodesInGroup(clusterId, groupId, nodeCount, (error, data, response) => {
   if (error) {
@@ -859,8 +859,8 @@ apiInstance.increaseCountOfNodesInGroup(clusterId, groupId, nodeCount, (error, d
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterId** | **Number**| Уникальный идентификатор кластера | 
- **groupId** | **Number**| Уникальный идентификатор группы | 
+ **clusterId** | **Number**| ID кластера | 
+ **groupId** | **Number**| ID группы | 
  **nodeCount** | [**NodeCount**](NodeCount.md)|  | 
 
 ### Return type
@@ -895,8 +895,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KubernetesApi();
-let clusterId = 56; // Number | Уникальный идентификатор кластера
-let groupId = 56; // Number | Уникальный идентификатор группы
+let clusterId = 56; // Number | ID кластера
+let groupId = 56; // Number | ID группы
 let nodeCount = new TimewebCloudApi.NodeCount(); // NodeCount | 
 apiInstance.reduceCountOfNodesInGroup(clusterId, groupId, nodeCount, (error, data, response) => {
   if (error) {
@@ -912,8 +912,8 @@ apiInstance.reduceCountOfNodesInGroup(clusterId, groupId, nodeCount, (error, dat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterId** | **Number**| Уникальный идентификатор кластера | 
- **groupId** | **Number**| Уникальный идентификатор группы | 
+ **clusterId** | **Number**| ID кластера | 
+ **groupId** | **Number**| ID группы | 
  **nodeCount** | [**NodeCount**](NodeCount.md)|  | 
 
 ### Return type
@@ -948,7 +948,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KubernetesApi();
-let clusterId = 56; // Number | Уникальный идентификатор кластера
+let clusterId = 56; // Number | ID кластера
 let clusterEdit = new TimewebCloudApi.ClusterEdit(); // ClusterEdit | 
 apiInstance.updateCluster(clusterId, clusterEdit, (error, data, response) => {
   if (error) {
@@ -964,7 +964,7 @@ apiInstance.updateCluster(clusterId, clusterEdit, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterId** | **Number**| Уникальный идентификатор кластера | 
+ **clusterId** | **Number**| ID кластера | 
  **clusterEdit** | [**ClusterEdit**](ClusterEdit.md)|  | 
 
 ### Return type

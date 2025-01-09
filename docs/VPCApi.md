@@ -5,12 +5,12 @@ All URIs are relative to *https://api.timeweb.cloud*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createVPC**](VPCApi.md#createVPC) | **POST** /api/v2/vpcs | Создание VPC
-[**deleteVPC**](VPCApi.md#deleteVPC) | **DELETE** /api/v1/vpcs/{vpc_id} | Удаление VPC по идентификатору сети
+[**deleteVPC**](VPCApi.md#deleteVPC) | **DELETE** /api/v1/vpcs/{vpc_id} | Удаление VPC по ID сети
 [**getVPC**](VPCApi.md#getVPC) | **GET** /api/v2/vpcs/{vpc_id} | Получение VPC
 [**getVPCPorts**](VPCApi.md#getVPCPorts) | **GET** /api/v1/vpcs/{vpc_id}/ports | Получение списка портов для VPC
 [**getVPCServices**](VPCApi.md#getVPCServices) | **GET** /api/v2/vpcs/{vpc_id}/services | Получение списка сервисов в VPC
 [**getVPCs**](VPCApi.md#getVPCs) | **GET** /api/v2/vpcs | Получение списка VPCs
-[**updateVPCs**](VPCApi.md#updateVPCs) | **PATCH** /api/v2/vpcs/{vpc_id} | Изменение VPC по идентификатору сети
+[**updateVPCs**](VPCApi.md#updateVPCs) | **PATCH** /api/v2/vpcs/{vpc_id} | Изменение VPC по ID сети
 
 
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 > CreateVPC201Response deleteVPC(vpcId)
 
-Удаление VPC по идентификатору сети
+Удаление VPC по ID сети
 
 Чтобы удалить VPC, отправьте DELETE-запрос на &#x60;/api/v1/vpcs/{vpc_id}&#x60;
 
@@ -81,7 +81,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.VPCApi();
-let vpcId = network-1234567890; // String | Идентификатор сети
+let vpcId = network-1234567890; // String | ID сети
 apiInstance.deleteVPC(vpcId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -96,7 +96,7 @@ apiInstance.deleteVPC(vpcId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vpcId** | **String**| Идентификатор сети | 
+ **vpcId** | **String**| ID сети | 
 
 ### Return type
 
@@ -130,7 +130,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.VPCApi();
-let vpcId = network-1234567890; // String | Идентификатор сети
+let vpcId = network-1234567890; // String | ID сети
 apiInstance.getVPC(vpcId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -145,7 +145,7 @@ apiInstance.getVPC(vpcId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vpcId** | **String**| Идентификатор сети | 
+ **vpcId** | **String**| ID сети | 
 
 ### Return type
 
@@ -179,7 +179,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.VPCApi();
-let vpcId = network-1234567890; // String | Идентификатор сети
+let vpcId = network-1234567890; // String | ID сети
 apiInstance.getVPCPorts(vpcId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -194,7 +194,7 @@ apiInstance.getVPCPorts(vpcId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vpcId** | **String**| Идентификатор сети | 
+ **vpcId** | **String**| ID сети | 
 
 ### Return type
 
@@ -228,7 +228,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.VPCApi();
-let vpcId = network-1234567890; // String | Идентификатор сети
+let vpcId = network-1234567890; // String | ID сети
 apiInstance.getVPCServices(vpcId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -243,7 +243,7 @@ apiInstance.getVPCServices(vpcId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vpcId** | **String**| Идентификатор сети | 
+ **vpcId** | **String**| ID сети | 
 
 ### Return type
 
@@ -308,7 +308,7 @@ This endpoint does not need any parameter.
 
 > CreateVPC201Response updateVPCs(vpcId, updateVpc)
 
-Изменение VPC по идентификатору сети
+Изменение VPC по ID сети
 
 Чтобы изменить VPC, отправьте PATCH-запрос на &#x60;/api/v2/vpcs/{vpc_id}&#x60;
 
@@ -322,7 +322,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.VPCApi();
-let vpcId = network-1234567890; // String | Идентификатор сети
+let vpcId = network-1234567890; // String | ID сети
 let updateVpc = new TimewebCloudApi.UpdateVpc(); // UpdateVpc | 
 apiInstance.updateVPCs(vpcId, updateVpc, (error, data, response) => {
   if (error) {
@@ -338,7 +338,7 @@ apiInstance.updateVPCs(vpcId, updateVpc, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vpcId** | **String**| Идентификатор сети | 
+ **vpcId** | **String**| ID сети | 
  **updateVpc** | [**UpdateVpc**](UpdateVpc.md)|  | 
 
 ### Return type

@@ -15,6 +15,6 @@ Name | Type | Description | Notes
 **framework** | [**Frameworks**](Frameworks.md) |  | [optional] 
 **name** | **String** | Имя приложения. | [optional] 
 **comment** | **String** | Комментарий к приложению. | [optional] 
-**presetId** | **Number** | Идентификатор тарифа. | [optional] 
+**presetId** | **Number** | ID тарифа. | [optional] 
 
 

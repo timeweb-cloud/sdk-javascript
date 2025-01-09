@@ -39,8 +39,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FirewallApi();
-let groupId = "groupId_example"; // String | Идентификатор группы правил
-let resourceId = "resourceId_example"; // String | Идентификатор ресурса
+let groupId = "groupId_example"; // String | ID группы правил
+let resourceId = "resourceId_example"; // String | ID ресурса
 let opts = {
   'resourceType': new TimewebCloudApi.ResourceType() // ResourceType | 
 };
@@ -58,8 +58,8 @@ apiInstance.addResourceToGroup(groupId, resourceId, opts, (error, data, response
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **String**| Идентификатор группы правил | 
- **resourceId** | **String**| Идентификатор ресурса | 
+ **groupId** | **String**| ID группы правил | 
+ **resourceId** | **String**| ID ресурса | 
  **resourceType** | [**ResourceType**](.md)|  | [optional] 
 
 ### Return type
@@ -147,7 +147,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FirewallApi();
-let groupId = "groupId_example"; // String | Идентификатор группы правил
+let groupId = "groupId_example"; // String | ID группы правил
 let firewallRuleInAPI = new TimewebCloudApi.FirewallRuleInAPI(); // FirewallRuleInAPI | 
 apiInstance.createGroupRule(groupId, firewallRuleInAPI, (error, data, response) => {
   if (error) {
@@ -163,7 +163,7 @@ apiInstance.createGroupRule(groupId, firewallRuleInAPI, (error, data, response) 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **String**| Идентификатор группы правил | 
+ **groupId** | **String**| ID группы правил | 
  **firewallRuleInAPI** | [**FirewallRuleInAPI**](FirewallRuleInAPI.md)|  | 
 
 ### Return type
@@ -198,7 +198,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FirewallApi();
-let groupId = "groupId_example"; // String | Идентификатор группы правил
+let groupId = "groupId_example"; // String | ID группы правил
 apiInstance.deleteGroup(groupId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -213,7 +213,7 @@ apiInstance.deleteGroup(groupId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **String**| Идентификатор группы правил | 
+ **groupId** | **String**| ID группы правил | 
 
 ### Return type
 
@@ -247,8 +247,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FirewallApi();
-let groupId = "groupId_example"; // String | Идентификатор группы правил
-let ruleId = "ruleId_example"; // String | Идентификатор правила
+let groupId = "groupId_example"; // String | ID группы правил
+let ruleId = "ruleId_example"; // String | ID правила
 apiInstance.deleteGroupRule(groupId, ruleId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -263,8 +263,8 @@ apiInstance.deleteGroupRule(groupId, ruleId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **String**| Идентификатор группы правил | 
- **ruleId** | **String**| Идентификатор правила | 
+ **groupId** | **String**| ID группы правил | 
+ **ruleId** | **String**| ID правила | 
 
 ### Return type
 
@@ -298,8 +298,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FirewallApi();
-let groupId = "groupId_example"; // String | Идентификатор группы правил
-let resourceId = "resourceId_example"; // String | Идентификатор ресурса
+let groupId = "groupId_example"; // String | ID группы правил
+let resourceId = "resourceId_example"; // String | ID ресурса
 let opts = {
   'resourceType': new TimewebCloudApi.ResourceType() // ResourceType | 
 };
@@ -317,8 +317,8 @@ apiInstance.deleteResourceFromGroup(groupId, resourceId, opts, (error, data, res
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **String**| Идентификатор группы правил | 
- **resourceId** | **String**| Идентификатор ресурса | 
+ **groupId** | **String**| ID группы правил | 
+ **resourceId** | **String**| ID ресурса | 
  **resourceType** | [**ResourceType**](.md)|  | [optional] 
 
 ### Return type
@@ -353,7 +353,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FirewallApi();
-let groupId = "groupId_example"; // String | Идентификатор группы правил
+let groupId = "groupId_example"; // String | ID группы правил
 apiInstance.getGroup(groupId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -368,7 +368,7 @@ apiInstance.getGroup(groupId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **String**| Идентификатор группы правил | 
+ **groupId** | **String**| ID группы правил | 
 
 ### Return type
 
@@ -402,7 +402,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FirewallApi();
-let groupId = "groupId_example"; // String | Идентификатор группы правил
+let groupId = "groupId_example"; // String | ID группы правил
 let opts = {
   'limit': 100, // Number | Обозначает количество записей, которое необходимо вернуть.
   'offset': 0 // Number | Указывает на смещение относительно начала списка.
@@ -421,7 +421,7 @@ apiInstance.getGroupResources(groupId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **String**| Идентификатор группы правил | 
+ **groupId** | **String**| ID группы правил | 
  **limit** | **Number**| Обозначает количество записей, которое необходимо вернуть. | [optional] [default to 100]
  **offset** | **Number**| Указывает на смещение относительно начала списка. | [optional] [default to 0]
 
@@ -457,8 +457,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FirewallApi();
-let ruleId = "ruleId_example"; // String | Идентификатор правила
-let groupId = "groupId_example"; // String | Идентификатор группы правил
+let ruleId = "ruleId_example"; // String | ID правила
+let groupId = "groupId_example"; // String | ID группы правил
 apiInstance.getGroupRule(ruleId, groupId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -473,8 +473,8 @@ apiInstance.getGroupRule(ruleId, groupId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ruleId** | **String**| Идентификатор правила | 
- **groupId** | **String**| Идентификатор группы правил | 
+ **ruleId** | **String**| ID правила | 
+ **groupId** | **String**| ID группы правил | 
 
 ### Return type
 
@@ -508,7 +508,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FirewallApi();
-let groupId = "groupId_example"; // String | Идентификатор группы правил
+let groupId = "groupId_example"; // String | ID группы правил
 let opts = {
   'limit': 100, // Number | Обозначает количество записей, которое необходимо вернуть.
   'offset': 0 // Number | Указывает на смещение относительно начала списка.
@@ -527,7 +527,7 @@ apiInstance.getGroupRules(groupId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **String**| Идентификатор группы правил | 
+ **groupId** | **String**| ID группы правил | 
  **limit** | **Number**| Обозначает количество записей, которое необходимо вернуть. | [optional] [default to 100]
  **offset** | **Number**| Указывает на смещение относительно начала списка. | [optional] [default to 0]
 
@@ -673,7 +673,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FirewallApi();
-let groupId = "groupId_example"; // String | Идентификатор группы правил
+let groupId = "groupId_example"; // String | ID группы правил
 let firewallGroupInAPI = new TimewebCloudApi.FirewallGroupInAPI(); // FirewallGroupInAPI | 
 apiInstance.updateGroup(groupId, firewallGroupInAPI, (error, data, response) => {
   if (error) {
@@ -689,7 +689,7 @@ apiInstance.updateGroup(groupId, firewallGroupInAPI, (error, data, response) => 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **String**| Идентификатор группы правил | 
+ **groupId** | **String**| ID группы правил | 
  **firewallGroupInAPI** | [**FirewallGroupInAPI**](FirewallGroupInAPI.md)|  | 
 
 ### Return type
@@ -724,8 +724,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.FirewallApi();
-let groupId = "groupId_example"; // String | Идентификатор группы правил
-let ruleId = "ruleId_example"; // String | Идентификатор правила
+let groupId = "groupId_example"; // String | ID группы правил
+let ruleId = "ruleId_example"; // String | ID правила
 let firewallRuleInAPI = new TimewebCloudApi.FirewallRuleInAPI(); // FirewallRuleInAPI | 
 apiInstance.updateGroupRule(groupId, ruleId, firewallRuleInAPI, (error, data, response) => {
   if (error) {
@@ -741,8 +741,8 @@ apiInstance.updateGroupRule(groupId, ruleId, firewallRuleInAPI, (error, data, re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **String**| Идентификатор группы правил | 
- **ruleId** | **String**| Идентификатор правила | 
+ **groupId** | **String**| ID группы правил | 
+ **ruleId** | **String**| ID правила | 
  **firewallRuleInAPI** | [**FirewallRuleInAPI**](FirewallRuleInAPI.md)|  | 
 
 ### Return type

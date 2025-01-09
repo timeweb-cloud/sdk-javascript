@@ -321,6 +321,7 @@ docs/NetworkDriversResponse.md
 docs/NetworkDrivesApi.md
 docs/NodeCount.md
 docs/NodeGroupIn.md
+docs/NodeGroupInConfiguration.md
 docs/NodeGroupOut.md
 docs/NodeGroupResponse.md
 docs/NodeGroupsResponse.md
@@ -373,6 +374,7 @@ docs/ServersOsRequirements.md
 docs/ServersPreset.md
 docs/ServersSoftware.md
 docs/ServersSoftwareRequirements.md
+docs/SetLabels.md
 docs/SettingCondition.md
 docs/SpamFilterIsDisabled.md
 docs/SpamFilterIsEnabled.md
@@ -768,6 +770,7 @@ src/model/NetworkDriveServiceListInner.js
 src/model/NetworkDriversResponse.js
 src/model/NodeCount.js
 src/model/NodeGroupIn.js
+src/model/NodeGroupInConfiguration.js
 src/model/NodeGroupOut.js
 src/model/NodeGroupResponse.js
 src/model/NodeGroupsResponse.js
@@ -816,6 +819,7 @@ src/model/ServersOsRequirements.js
 src/model/ServersPreset.js
 src/model/ServersSoftware.js
 src/model/ServersSoftwareRequirements.js
+src/model/SetLabels.js
 src/model/SettingCondition.js
 src/model/SpamFilterIsDisabled.js
 src/model/SpamFilterIsEnabled.js
@@ -1205,6 +1209,7 @@ test/model/NetworkDriveServiceListInner.spec.js
 test/model/NetworkDriversResponse.spec.js
 test/model/NodeCount.spec.js
 test/model/NodeGroupIn.spec.js
+test/model/NodeGroupInConfiguration.spec.js
 test/model/NodeGroupOut.spec.js
 test/model/NodeGroupResponse.spec.js
 test/model/NodeGroupsResponse.spec.js
@@ -1253,6 +1258,7 @@ test/model/ServersOsRequirements.spec.js
 test/model/ServersPreset.spec.js
 test/model/ServersSoftware.spec.js
 test/model/ServersSoftwareRequirements.spec.js
+test/model/SetLabels.spec.js
 test/model/SettingCondition.spec.js
 test/model/SpamFilterIsDisabled.spec.js
 test/model/SpamFilterIsEnabled.spec.js

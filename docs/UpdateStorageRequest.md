@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**presetId** | **Number** | Идентификатор тарифа. | [optional] 
+**presetId** | **Number** | ID тарифа. | [optional] 
 **bucketType** | **String** | Тип хранилища. | [optional] 
 
 

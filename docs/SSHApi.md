@@ -32,7 +32,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.SSHApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
+let serverId = 1051; // Number | ID облачного сервера.
 let addKeyToServerRequest = new TimewebCloudApi.AddKeyToServerRequest(); // AddKeyToServerRequest | 
 apiInstance.addKeyToServer(serverId, addKeyToServerRequest, (error, data, response) => {
   if (error) {
@@ -48,7 +48,7 @@ apiInstance.addKeyToServer(serverId, addKeyToServerRequest, (error, data, respon
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
+ **serverId** | **Number**| ID облачного сервера. | 
  **addKeyToServerRequest** | [**AddKeyToServerRequest**](AddKeyToServerRequest.md)|  | 
 
 ### Return type
@@ -132,7 +132,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.SSHApi();
-let sshKeyId = 1051; // Number | Уникальный идентификатор SSH-ключа
+let sshKeyId = 1051; // Number | ID SSH-ключа
 apiInstance.deleteKey(sshKeyId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -147,7 +147,7 @@ apiInstance.deleteKey(sshKeyId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sshKeyId** | **Number**| Уникальный идентификатор SSH-ключа | 
+ **sshKeyId** | **Number**| ID SSH-ключа | 
 
 ### Return type
 
@@ -181,8 +181,8 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.SSHApi();
-let serverId = 1051; // Number | Уникальный идентификатор облачного сервера.
-let sshKeyId = 1051; // Number | Уникальный идентификатор SSH-ключа
+let serverId = 1051; // Number | ID облачного сервера.
+let sshKeyId = 1051; // Number | ID SSH-ключа
 apiInstance.deleteKeyFromServer(serverId, sshKeyId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -197,8 +197,8 @@ apiInstance.deleteKeyFromServer(serverId, sshKeyId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverId** | **Number**| Уникальный идентификатор облачного сервера. | 
- **sshKeyId** | **Number**| Уникальный идентификатор SSH-ключа | 
+ **serverId** | **Number**| ID облачного сервера. | 
+ **sshKeyId** | **Number**| ID SSH-ключа | 
 
 ### Return type
 
@@ -232,7 +232,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.SSHApi();
-let sshKeyId = 1051; // Number | Уникальный идентификатор SSH-ключа
+let sshKeyId = 1051; // Number | ID SSH-ключа
 apiInstance.getKey(sshKeyId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -247,7 +247,7 @@ apiInstance.getKey(sshKeyId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sshKeyId** | **Number**| Уникальный идентификатор SSH-ключа | 
+ **sshKeyId** | **Number**| ID SSH-ключа | 
 
 ### Return type
 
@@ -326,7 +326,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.SSHApi();
-let sshKeyId = 1051; // Number | Уникальный идентификатор SSH-ключа
+let sshKeyId = 1051; // Number | ID SSH-ключа
 let updateKeyRequest = new TimewebCloudApi.UpdateKeyRequest(); // UpdateKeyRequest | 
 apiInstance.updateKey(sshKeyId, updateKeyRequest, (error, data, response) => {
   if (error) {
@@ -342,7 +342,7 @@ apiInstance.updateKey(sshKeyId, updateKeyRequest, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sshKeyId** | **Number**| Уникальный идентификатор SSH-ключа | 
+ **sshKeyId** | **Number**| ID SSH-ключа | 
  **updateKeyRequest** | [**UpdateKeyRequest**](UpdateKeyRequest.md)|  | 
 
 ### Return type
