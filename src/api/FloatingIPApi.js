@@ -20,10 +20,10 @@ import CreateFloatingIp201Response from '../model/CreateFloatingIp201Response';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances403Response from '../model/GetFinances403Response';
-import GetFinances404Response from '../model/GetFinances404Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetFloatingIps200Response from '../model/GetFloatingIps200Response';
+import GetImage404Response from '../model/GetImage404Response';
 import UpdateFloatingIp from '../model/UpdateFloatingIp';
 
 /**

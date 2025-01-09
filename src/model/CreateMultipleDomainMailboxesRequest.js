@@ -12,21 +12,22 @@
  */
 
 import ApiClient from '../ApiClient';
+import CreateMultipleDomainMailboxesRequestMailboxesInner from './CreateMultipleDomainMailboxesRequestMailboxesInner';
 
 /**
- * The CreateApiKey model module.
- * @module model/CreateApiKey
+ * The CreateMultipleDomainMailboxesRequest model module.
+ * @module model/CreateMultipleDomainMailboxesRequest
  * @version 1.0.0
  */
-class CreateApiKey {
+class CreateMultipleDomainMailboxesRequest {
     /**
-     * Constructs a new <code>CreateApiKey</code>.
-     * @alias module:model/CreateApiKey
-     * @param name {String} Имя, установленное для токена.
+     * Constructs a new <code>CreateMultipleDomainMailboxesRequest</code>.
+     * @alias module:model/CreateMultipleDomainMailboxesRequest
+     * @param mailboxes {Array.<module:model/CreateMultipleDomainMailboxesRequestMailboxesInner>} Массив объектов с данными почтовых ящиков
      */
-    constructor(name) { 
+    constructor(mailboxes) { 
         
-        CreateApiKey.initialize(this, name);
+        CreateMultipleDomainMailboxesRequest.initialize(this, mailboxes);
     }
 
     /**
@@ -34,63 +35,49 @@ class CreateApiKey {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name) { 
-        obj['name'] = name;
+    static initialize(obj, mailboxes) { 
+        obj['mailboxes'] = mailboxes;
     }
 
     /**
-     * Constructs a <code>CreateApiKey</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>CreateMultipleDomainMailboxesRequest</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/CreateApiKey} obj Optional instance to populate.
-     * @return {module:model/CreateApiKey} The populated <code>CreateApiKey</code> instance.
+     * @param {module:model/CreateMultipleDomainMailboxesRequest} obj Optional instance to populate.
+     * @return {module:model/CreateMultipleDomainMailboxesRequest} The populated <code>CreateMultipleDomainMailboxesRequest</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new CreateApiKey();
+            obj = obj || new CreateMultipleDomainMailboxesRequest();
 
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('expire')) {
-                obj['expire'] = ApiClient.convertToType(data['expire'], 'Date');
-            }
-            if (data.hasOwnProperty('is_able_to_delete')) {
-                obj['is_able_to_delete'] = ApiClient.convertToType(data['is_able_to_delete'], 'Boolean');
-            }
-            if (data.hasOwnProperty('roles')) {
-                obj['roles'] = ApiClient.convertToType(data['roles'], ['String']);
-            }
-            if (data.hasOwnProperty('projects')) {
-                obj['projects'] = ApiClient.convertToType(data['projects'], ['Number']);
+            if (data.hasOwnProperty('mailboxes')) {
+                obj['mailboxes'] = ApiClient.convertToType(data['mailboxes'], [CreateMultipleDomainMailboxesRequestMailboxesInner]);
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>CreateApiKey</code>.
+     * Validates the JSON data with respect to <code>CreateMultipleDomainMailboxesRequest</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateApiKey</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateMultipleDomainMailboxesRequest</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of CreateApiKey.RequiredProperties) {
+        for (const property of CreateMultipleDomainMailboxesRequest.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
-            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
-        }
-        // ensure the json data is an array
-        if (!Array.isArray(data['roles'])) {
-            throw new Error("Expected the field `roles` to be an array in the JSON data but got " + data['roles']);
-        }
-        // ensure the json data is an array
-        if (!Array.isArray(data['projects'])) {
-            throw new Error("Expected the field `projects` to be an array in the JSON data but got " + data['projects']);
+        if (data['mailboxes']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['mailboxes'])) {
+                throw new Error("Expected the field `mailboxes` to be an array in the JSON data but got " + data['mailboxes']);
+            }
+            // validate the optional field `mailboxes` (array)
+            for (const item of data['mailboxes']) {
+                CreateMultipleDomainMailboxesRequestMailboxesInner.validateJSON(item);
+            };
         }
 
         return true;
@@ -99,243 +86,18 @@ class CreateApiKey {
 
 }
 
-CreateApiKey.RequiredProperties = ["name"];
+CreateMultipleDomainMailboxesRequest.RequiredProperties = ["mailboxes"];
 
 /**
- * Имя, установленное для токена.
- * @member {String} name
+ * Массив объектов с данными почтовых ящиков
+ * @member {Array.<module:model/CreateMultipleDomainMailboxesRequestMailboxesInner>} mailboxes
  */
-CreateApiKey.prototype['name'] = undefined;
-
-/**
- * Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда истекает токен.
- * @member {Date} expire
- */
-CreateApiKey.prototype['expire'] = undefined;
-
-/**
- * Это логическое значение, которое показывает, можно ли удалять управляемые сервисы при помощи данного токена без подтверждения через Телеграм, когда это подтверждение включено.
- * @member {Boolean} is_able_to_delete
- */
-CreateApiKey.prototype['is_able_to_delete'] = undefined;
-
-/**
- * Роли, которые могут быть назначены токену.
- * @member {Array.<module:model/CreateApiKey.RolesEnum>} roles
- */
-CreateApiKey.prototype['roles'] = undefined;
-
-/**
- * Список идентификаторов проектов, к которым привязан токен. Если передан null - доступ к проектам не ограничен.
- * @member {Array.<Number>} projects
- */
-CreateApiKey.prototype['projects'] = undefined;
+CreateMultipleDomainMailboxesRequest.prototype['mailboxes'] = undefined;
 
 
 
 
 
-/**
- * Allowed values for the <code>roles</code> property.
- * @enum {String}
- * @readonly
- */
-CreateApiKey['RolesEnum'] = {
 
-    /**
-     * value: "servers:read"
-     * @const
-     */
-    "servers:read": "servers:read",
-
-    /**
-     * value: "servers:write"
-     * @const
-     */
-    "servers:write": "servers:write",
-
-    /**
-     * value: "databases:read"
-     * @const
-     */
-    "databases:read": "databases:read",
-
-    /**
-     * value: "databases:write"
-     * @const
-     */
-    "databases:write": "databases:write",
-
-    /**
-     * value: "balancers:read"
-     * @const
-     */
-    "balancers:read": "balancers:read",
-
-    /**
-     * value: "balancers:write"
-     * @const
-     */
-    "balancers:write": "balancers:write",
-
-    /**
-     * value: "storages:read"
-     * @const
-     */
-    "storages:read": "storages:read",
-
-    /**
-     * value: "storages:write"
-     * @const
-     */
-    "storages:write": "storages:write",
-
-    /**
-     * value: "dedicated:read"
-     * @const
-     */
-    "dedicated:read": "dedicated:read",
-
-    /**
-     * value: "dedicated:write"
-     * @const
-     */
-    "dedicated:write": "dedicated:write",
-
-    /**
-     * value: "clusters:read"
-     * @const
-     */
-    "clusters:read": "clusters:read",
-
-    /**
-     * value: "clusters:write"
-     * @const
-     */
-    "clusters:write": "clusters:write",
-
-    /**
-     * value: "vpc:read"
-     * @const
-     */
-    "vpc:read": "vpc:read",
-
-    /**
-     * value: "vpc:write"
-     * @const
-     */
-    "vpc:write": "vpc:write",
-
-    /**
-     * value: "floating-ips:read"
-     * @const
-     */
-    "floating-ips:read": "floating-ips:read",
-
-    /**
-     * value: "floating-ips:write"
-     * @const
-     */
-    "floating-ips:write": "floating-ips:write",
-
-    /**
-     * value: "domains:read"
-     * @const
-     */
-    "domains:read": "domains:read",
-
-    /**
-     * value: "domains:write"
-     * @const
-     */
-    "domains:write": "domains:write",
-
-    /**
-     * value: "administrators:write"
-     * @const
-     */
-    "administrators:write": "administrators:write",
-
-    /**
-     * value: "firewall:read"
-     * @const
-     */
-    "firewall:read": "firewall:read",
-
-    /**
-     * value: "firewall:read"
-     * @const
-     */
-    "firewall:read": "firewall:read",
-
-    /**
-     * value: "finances:write"
-     * @const
-     */
-    "finances:write": "finances:write",
-
-    /**
-     * value: "support:read"
-     * @const
-     */
-    "support:read": "support:read",
-
-    /**
-     * value: "support:write"
-     * @const
-     */
-    "support:write": "support:write",
-
-    /**
-     * value: "vpn:read"
-     * @const
-     */
-    "vpn:read": "vpn:read",
-
-    /**
-     * value: "vpn:write"
-     * @const
-     */
-    "vpn:write": "vpn:write",
-
-    /**
-     * value: "mail:read"
-     * @const
-     */
-    "mail:read": "mail:read",
-
-    /**
-     * value: "mail:write"
-     * @const
-     */
-    "mail:write": "mail:write",
-
-    /**
-     * value: "apps:read"
-     * @const
-     */
-    "apps:read": "apps:read",
-
-    /**
-     * value: "apps:write"
-     * @const
-     */
-    "apps:write": "apps:write",
-
-    /**
-     * value: "network-drives:read"
-     * @const
-     */
-    "network-drives:read": "network-drives:read",
-
-    /**
-     * value: "network-drives:write"
-     * @const
-     */
-    "network-drives:write": "network-drives:write"
-};
-
-
-
-export default CreateApiKey;
+export default CreateMultipleDomainMailboxesRequest;
 

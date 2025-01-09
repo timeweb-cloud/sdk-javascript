@@ -5,6 +5,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createDomainMailbox**](MailApi.md#createDomainMailbox) | **POST** /api/v1/mail/domains/{domain} | Создание почтового ящика
+[**createMultipleDomainMailboxes**](MailApi.md#createMultipleDomainMailboxes) | **POST** /api/v1/mail/domains/{domain}/batch | Множественное создание почтовых ящиков
 [**deleteMailbox**](MailApi.md#deleteMailbox) | **DELETE** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Удаление почтового ящика
 [**getDomainMailInfo**](MailApi.md#getDomainMailInfo) | **GET** /api/v1/mail/domains/{domain}/info | Получение почтовой информации о домене
 [**getDomainMailboxes**](MailApi.md#getDomainMailboxes) | **GET** /api/v1/mail/domains/{domain} | Получение списка почтовых ящиков домена
@@ -57,6 +58,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateDomainMailbox201Response**](CreateDomainMailbox201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## createMultipleDomainMailboxes
+
+> CreateMultipleDomainMailboxes201Response createMultipleDomainMailboxes(domain, createMultipleDomainMailboxesRequest)
+
+Множественное создание почтовых ящиков
+
+Чтобы создать почтовый ящики, отправьте POST-запрос на &#x60;/api/v1/mail/domains/{domain}/batch&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.MailApi();
+let domain = somedomain.ru; // String | Полное имя домена
+let createMultipleDomainMailboxesRequest = new TimewebCloudApi.CreateMultipleDomainMailboxesRequest(); // CreateMultipleDomainMailboxesRequest | 
+apiInstance.createMultipleDomainMailboxes(domain, createMultipleDomainMailboxesRequest, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **domain** | **String**| Полное имя домена | 
+ **createMultipleDomainMailboxesRequest** | [**CreateMultipleDomainMailboxesRequest**](CreateMultipleDomainMailboxesRequest.md)|  | 
+
+### Return type
+
+[**CreateMultipleDomainMailboxes201Response**](CreateMultipleDomainMailboxes201Response.md)
 
 ### Authorization
 

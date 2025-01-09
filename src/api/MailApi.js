@@ -15,11 +15,15 @@
 import ApiClient from "../ApiClient";
 import CreateDomainMailbox201Response from '../model/CreateDomainMailbox201Response';
 import CreateDomainMailboxRequest from '../model/CreateDomainMailboxRequest';
+import CreateMultipleDomainMailboxes201Response from '../model/CreateMultipleDomainMailboxes201Response';
+import CreateMultipleDomainMailboxesRequest from '../model/CreateMultipleDomainMailboxesRequest';
 import GetDomainMailInfo200Response from '../model/GetDomainMailInfo200Response';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
+import GetFinances403Response from '../model/GetFinances403Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
+import GetImage404Response from '../model/GetImage404Response';
 import GetMailQuota200Response from '../model/GetMailQuota200Response';
 import GetMailboxes200Response from '../model/GetMailboxes200Response';
 import UpdateDomainMailInfoRequest from '../model/UpdateDomainMailInfoRequest';
@@ -88,6 +92,54 @@ export default class MailApi {
       let returnType = CreateDomainMailbox201Response;
       return this.apiClient.callApi(
         '/api/v1/mail/domains/{domain}', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the createMultipleDomainMailboxes operation.
+     * @callback module:api/MailApi~createMultipleDomainMailboxesCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateMultipleDomainMailboxes201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Множественное создание почтовых ящиков
+     * Чтобы создать почтовый ящики, отправьте POST-запрос на `/api/v1/mail/domains/{domain}/batch`.
+     * @param {String} domain Полное имя домена
+     * @param {module:model/CreateMultipleDomainMailboxesRequest} createMultipleDomainMailboxesRequest 
+     * @param {module:api/MailApi~createMultipleDomainMailboxesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateMultipleDomainMailboxes201Response}
+     */
+    createMultipleDomainMailboxes(domain, createMultipleDomainMailboxesRequest, callback) {
+      let postBody = createMultipleDomainMailboxesRequest;
+      // verify the required parameter 'domain' is set
+      if (domain === undefined || domain === null) {
+        throw new Error("Missing the required parameter 'domain' when calling createMultipleDomainMailboxes");
+      }
+      // verify the required parameter 'createMultipleDomainMailboxesRequest' is set
+      if (createMultipleDomainMailboxesRequest === undefined || createMultipleDomainMailboxesRequest === null) {
+        throw new Error("Missing the required parameter 'createMultipleDomainMailboxesRequest' when calling createMultipleDomainMailboxes");
+      }
+
+      let pathParams = {
+        'domain': domain
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateMultipleDomainMailboxes201Response;
+      return this.apiClient.callApi(
+        '/api/v1/mail/domains/{domain}/batch', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

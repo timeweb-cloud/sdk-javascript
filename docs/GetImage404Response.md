@@ -1,4 +1,4 @@
-# TimewebCloudApi.GetFinances404Response
+# TimewebCloudApi.GetImage404Response
 
 ## Properties
 

@@ -431,6 +431,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.KubernetesApi* | [**updateCluster**](docs/KubernetesApi.md#updateCluster) | **PATCH** /api/v1/k8s/clusters/{cluster_id} | Обновление информации о кластере
 *TimewebCloudApi.LocationsApi* | [**getLocations**](docs/LocationsApi.md#getLocations) | **GET** /api/v2/locations | Получение списка локаций
 *TimewebCloudApi.MailApi* | [**createDomainMailbox**](docs/MailApi.md#createDomainMailbox) | **POST** /api/v1/mail/domains/{domain} | Создание почтового ящика
+*TimewebCloudApi.MailApi* | [**createMultipleDomainMailboxes**](docs/MailApi.md#createMultipleDomainMailboxes) | **POST** /api/v1/mail/domains/{domain}/batch | Множественное создание почтовых ящиков
 *TimewebCloudApi.MailApi* | [**deleteMailbox**](docs/MailApi.md#deleteMailbox) | **DELETE** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Удаление почтового ящика
 *TimewebCloudApi.MailApi* | [**getDomainMailInfo**](docs/MailApi.md#getDomainMailInfo) | **GET** /api/v1/mail/domains/{domain}/info | Получение почтовой информации о домене
 *TimewebCloudApi.MailApi* | [**getDomainMailboxes**](docs/MailApi.md#getDomainMailboxes) | **GET** /api/v1/mail/domains/{domain} | Получение списка почтовых ящиков домена
@@ -644,6 +645,9 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateInstance](docs/CreateInstance.md)
  - [TimewebCloudApi.CreateKey201Response](docs/CreateKey201Response.md)
  - [TimewebCloudApi.CreateKeyRequest](docs/CreateKeyRequest.md)
+ - [TimewebCloudApi.CreateMultipleDomainMailboxes201Response](docs/CreateMultipleDomainMailboxes201Response.md)
+ - [TimewebCloudApi.CreateMultipleDomainMailboxesRequest](docs/CreateMultipleDomainMailboxesRequest.md)
+ - [TimewebCloudApi.CreateMultipleDomainMailboxesRequestMailboxesInner](docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md)
  - [TimewebCloudApi.CreateNetworkDrive](docs/CreateNetworkDrive.md)
  - [TimewebCloudApi.CreateNetworkDrive201Response](docs/CreateNetworkDrive201Response.md)
  - [TimewebCloudApi.CreateProject](docs/CreateProject.md)
@@ -769,10 +773,10 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetFinances400Response](docs/GetFinances400Response.md)
  - [TimewebCloudApi.GetFinances401Response](docs/GetFinances401Response.md)
  - [TimewebCloudApi.GetFinances403Response](docs/GetFinances403Response.md)
- - [TimewebCloudApi.GetFinances404Response](docs/GetFinances404Response.md)
  - [TimewebCloudApi.GetFinances429Response](docs/GetFinances429Response.md)
  - [TimewebCloudApi.GetFinances500Response](docs/GetFinances500Response.md)
  - [TimewebCloudApi.GetFloatingIps200Response](docs/GetFloatingIps200Response.md)
+ - [TimewebCloudApi.GetImage404Response](docs/GetImage404Response.md)
  - [TimewebCloudApi.GetKey200Response](docs/GetKey200Response.md)
  - [TimewebCloudApi.GetKeys200Response](docs/GetKeys200Response.md)
  - [TimewebCloudApi.GetLocations200Response](docs/GetLocations200Response.md)

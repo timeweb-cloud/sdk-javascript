@@ -26,9 +26,9 @@ import GetAllProjectResources200Response from '../model/GetAllProjectResources20
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances403Response from '../model/GetFinances403Response';
-import GetFinances404Response from '../model/GetFinances404Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
+import GetImage404Response from '../model/GetImage404Response';
 import GetProjectBalancers200Response from '../model/GetProjectBalancers200Response';
 import GetProjectClusters200Response from '../model/GetProjectClusters200Response';
 import GetProjectDatabases200Response from '../model/GetProjectDatabases200Response';

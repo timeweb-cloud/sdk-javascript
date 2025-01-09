@@ -37,9 +37,9 @@ import GetDatabasesPresets200Response from '../model/GetDatabasesPresets200Respo
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances403Response from '../model/GetFinances403Response';
-import GetFinances404Response from '../model/GetFinances404Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
+import GetImage404Response from '../model/GetImage404Response';
 import UpdateAdmin from '../model/UpdateAdmin';
 import UpdateCluster from '../model/UpdateCluster';
 import UpdateDb from '../model/UpdateDb';

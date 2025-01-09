@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.GetFinances404Response();
+    instance = new TimewebCloudApi.CreateMultipleDomainMailboxesRequestMailboxesInner();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,34 +47,34 @@
       object[property] = value;
   }
 
-  describe('GetFinances404Response', function() {
-    it('should create an instance of GetFinances404Response', function() {
-      // uncomment below and update the code to test GetFinances404Response
-      //var instance = new TimewebCloudApi.GetFinances404Response();
-      //expect(instance).to.be.a(TimewebCloudApi.GetFinances404Response);
+  describe('CreateMultipleDomainMailboxesRequestMailboxesInner', function() {
+    it('should create an instance of CreateMultipleDomainMailboxesRequestMailboxesInner', function() {
+      // uncomment below and update the code to test CreateMultipleDomainMailboxesRequestMailboxesInner
+      //var instance = new TimewebCloudApi.CreateMultipleDomainMailboxesRequestMailboxesInner();
+      //expect(instance).to.be.a(TimewebCloudApi.CreateMultipleDomainMailboxesRequestMailboxesInner);
     });
 
-    it('should have the property statusCode (base name: "status_code")', function() {
-      // uncomment below and update the code to test the property statusCode
-      //var instance = new TimewebCloudApi.GetFinances404Response();
+    it('should have the property login (base name: "login")', function() {
+      // uncomment below and update the code to test the property login
+      //var instance = new TimewebCloudApi.CreateMultipleDomainMailboxesRequestMailboxesInner();
       //expect(instance).to.be();
     });
 
-    it('should have the property message (base name: "message")', function() {
-      // uncomment below and update the code to test the property message
-      //var instance = new TimewebCloudApi.GetFinances404Response();
+    it('should have the property password (base name: "password")', function() {
+      // uncomment below and update the code to test the property password
+      //var instance = new TimewebCloudApi.CreateMultipleDomainMailboxesRequestMailboxesInner();
       //expect(instance).to.be();
     });
 
-    it('should have the property errorCode (base name: "error_code")', function() {
-      // uncomment below and update the code to test the property errorCode
-      //var instance = new TimewebCloudApi.GetFinances404Response();
+    it('should have the property ownerFullName (base name: "owner_full_name")', function() {
+      // uncomment below and update the code to test the property ownerFullName
+      //var instance = new TimewebCloudApi.CreateMultipleDomainMailboxesRequestMailboxesInner();
       //expect(instance).to.be();
     });
 
-    it('should have the property responseId (base name: "response_id")', function() {
-      // uncomment below and update the code to test the property responseId
-      //var instance = new TimewebCloudApi.GetFinances404Response();
+    it('should have the property comment (base name: "comment")', function() {
+      // uncomment below and update the code to test the property comment
+      //var instance = new TimewebCloudApi.CreateMultipleDomainMailboxesRequestMailboxesInner();
       //expect(instance).to.be();
     });
 

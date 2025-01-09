@@ -58,6 +58,16 @@
         done();
       });
     });
+    describe('createMultipleDomainMailboxes', function() {
+      it('should call createMultipleDomainMailboxes successfully', function(done) {
+        //uncomment below and update the code to test createMultipleDomainMailboxes
+        //instance.createMultipleDomainMailboxes(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('deleteMailbox', function() {
       it('should call deleteMailbox successfully', function(done) {
         //uncomment below and update the code to test deleteMailbox

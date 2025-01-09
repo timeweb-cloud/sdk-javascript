@@ -32,9 +32,9 @@ import GetDeploySettings200Response from '../model/GetDeploySettings200Response'
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances403Response from '../model/GetFinances403Response';
-import GetFinances404Response from '../model/GetFinances404Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
+import GetImage404Response from '../model/GetImage404Response';
 import GetProviders200Response from '../model/GetProviders200Response';
 import GetRepositories200Response from '../model/GetRepositories200Response';
 import GetServerStatistics200Response from '../model/GetServerStatistics200Response';

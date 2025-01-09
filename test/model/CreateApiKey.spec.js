@@ -72,6 +72,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property roles (base name: "roles")', function() {
+      // uncomment below and update the code to test the property roles
+      //var instance = new TimewebCloudApi.CreateApiKey();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property projects (base name: "projects")', function() {
+      // uncomment below and update the code to test the property projects
+      //var instance = new TimewebCloudApi.CreateApiKey();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

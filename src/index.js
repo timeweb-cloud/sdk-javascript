@@ -108,6 +108,9 @@ import CreateFolderInStorageRequest from './model/CreateFolderInStorageRequest';
 import CreateInstance from './model/CreateInstance';
 import CreateKey201Response from './model/CreateKey201Response';
 import CreateKeyRequest from './model/CreateKeyRequest';
+import CreateMultipleDomainMailboxes201Response from './model/CreateMultipleDomainMailboxes201Response';
+import CreateMultipleDomainMailboxesRequest from './model/CreateMultipleDomainMailboxesRequest';
+import CreateMultipleDomainMailboxesRequestMailboxesInner from './model/CreateMultipleDomainMailboxesRequestMailboxesInner';
 import CreateNetworkDrive from './model/CreateNetworkDrive';
 import CreateNetworkDrive201Response from './model/CreateNetworkDrive201Response';
 import CreateProject from './model/CreateProject';
@@ -233,10 +236,10 @@ import GetFinances200Response from './model/GetFinances200Response';
 import GetFinances400Response from './model/GetFinances400Response';
 import GetFinances401Response from './model/GetFinances401Response';
 import GetFinances403Response from './model/GetFinances403Response';
-import GetFinances404Response from './model/GetFinances404Response';
 import GetFinances429Response from './model/GetFinances429Response';
 import GetFinances500Response from './model/GetFinances500Response';
 import GetFloatingIps200Response from './model/GetFloatingIps200Response';
+import GetImage404Response from './model/GetImage404Response';
 import GetKey200Response from './model/GetKey200Response';
 import GetKeys200Response from './model/GetKeys200Response';
 import GetLocations200Response from './model/GetLocations200Response';
@@ -1058,6 +1061,24 @@ export {
     CreateKeyRequest,
 
     /**
+     * The CreateMultipleDomainMailboxes201Response model constructor.
+     * @property {module:model/CreateMultipleDomainMailboxes201Response}
+     */
+    CreateMultipleDomainMailboxes201Response,
+
+    /**
+     * The CreateMultipleDomainMailboxesRequest model constructor.
+     * @property {module:model/CreateMultipleDomainMailboxesRequest}
+     */
+    CreateMultipleDomainMailboxesRequest,
+
+    /**
+     * The CreateMultipleDomainMailboxesRequestMailboxesInner model constructor.
+     * @property {module:model/CreateMultipleDomainMailboxesRequestMailboxesInner}
+     */
+    CreateMultipleDomainMailboxesRequestMailboxesInner,
+
+    /**
      * The CreateNetworkDrive model constructor.
      * @property {module:model/CreateNetworkDrive}
      */
@@ -1808,12 +1829,6 @@ export {
     GetFinances403Response,
 
     /**
-     * The GetFinances404Response model constructor.
-     * @property {module:model/GetFinances404Response}
-     */
-    GetFinances404Response,
-
-    /**
      * The GetFinances429Response model constructor.
      * @property {module:model/GetFinances429Response}
      */
@@ -1830,6 +1845,12 @@ export {
      * @property {module:model/GetFloatingIps200Response}
      */
     GetFloatingIps200Response,
+
+    /**
+     * The GetImage404Response model constructor.
+     * @property {module:model/GetImage404Response}
+     */
+    GetImage404Response,
 
     /**
      * The GetKey200Response model constructor.

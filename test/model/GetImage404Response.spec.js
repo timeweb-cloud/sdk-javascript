@@ -11,125 +11,73 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', process.cwd()+'/src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.TimewebCloudApi);
+  }
+}(this, function(expect, TimewebCloudApi) {
+  'use strict';
 
-/**
- * The GetFinances404Response model module.
- * @module model/GetFinances404Response
- * @version 1.0.0
- */
-class GetFinances404Response {
-    /**
-     * Constructs a new <code>GetFinances404Response</code>.
-     * @alias module:model/GetFinances404Response
-     * @param statusCode {Number} Короткий идентификатор, соответствующий возвращаемому коду состояния HTTP.
-     * @param errorCode {String} Краткое описание ошибки HTTP на основе статуса.
-     * @param responseId {String} Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-     */
-    constructor(statusCode, errorCode, responseId) { 
-        
-        GetFinances404Response.initialize(this, statusCode, errorCode, responseId);
-    }
+  var instance;
 
-    /**
-     * Initializes the fields of this object.
-     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
-     * Only for internal use.
-     */
-    static initialize(obj, statusCode, errorCode, responseId) { 
-        obj['status_code'] = statusCode;
-        obj['error_code'] = errorCode;
-        obj['response_id'] = responseId;
-    }
+  beforeEach(function() {
+    instance = new TimewebCloudApi.GetImage404Response();
+  });
 
-    /**
-     * Constructs a <code>GetFinances404Response</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GetFinances404Response} obj Optional instance to populate.
-     * @return {module:model/GetFinances404Response} The populated <code>GetFinances404Response</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new GetFinances404Response();
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
-            if (data.hasOwnProperty('status_code')) {
-                obj['status_code'] = ApiClient.convertToType(data['status_code'], 'Number');
-            }
-            if (data.hasOwnProperty('message')) {
-                obj['message'] = ApiClient.convertToType(data['message'], 'String');
-            }
-            if (data.hasOwnProperty('error_code')) {
-                obj['error_code'] = ApiClient.convertToType(data['error_code'], 'String');
-            }
-            if (data.hasOwnProperty('response_id')) {
-                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
-            }
-        }
-        return obj;
-    }
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-    /**
-     * Validates the JSON data with respect to <code>GetFinances404Response</code>.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetFinances404Response</code>.
-     */
-    static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of GetFinances404Response.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
-        // ensure the json data is a string
-        if (data['message'] && !(typeof data['message'] === 'string' || data['message'] instanceof String)) {
-            throw new Error("Expected the field `message` to be a primitive type in the JSON string but got " + data['message']);
-        }
-        // ensure the json data is a string
-        if (data['error_code'] && !(typeof data['error_code'] === 'string' || data['error_code'] instanceof String)) {
-            throw new Error("Expected the field `error_code` to be a primitive type in the JSON string but got " + data['error_code']);
-        }
-        // ensure the json data is a string
-        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
-            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
-        }
+  describe('GetImage404Response', function() {
+    it('should create an instance of GetImage404Response', function() {
+      // uncomment below and update the code to test GetImage404Response
+      //var instance = new TimewebCloudApi.GetImage404Response();
+      //expect(instance).to.be.a(TimewebCloudApi.GetImage404Response);
+    });
 
-        return true;
-    }
+    it('should have the property statusCode (base name: "status_code")', function() {
+      // uncomment below and update the code to test the property statusCode
+      //var instance = new TimewebCloudApi.GetImage404Response();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property message (base name: "message")', function() {
+      // uncomment below and update the code to test the property message
+      //var instance = new TimewebCloudApi.GetImage404Response();
+      //expect(instance).to.be();
+    });
 
-}
+    it('should have the property errorCode (base name: "error_code")', function() {
+      // uncomment below and update the code to test the property errorCode
+      //var instance = new TimewebCloudApi.GetImage404Response();
+      //expect(instance).to.be();
+    });
 
-GetFinances404Response.RequiredProperties = ["status_code", "error_code", "response_id"];
+    it('should have the property responseId (base name: "response_id")', function() {
+      // uncomment below and update the code to test the property responseId
+      //var instance = new TimewebCloudApi.GetImage404Response();
+      //expect(instance).to.be();
+    });
 
-/**
- * Короткий идентификатор, соответствующий возвращаемому коду состояния HTTP.
- * @member {Number} status_code
- */
-GetFinances404Response.prototype['status_code'] = undefined;
+  });
 
-/**
- * Сообщение, предоставляющее дополнительную информацию об ошибке, в том числе сведения, помогающие устранить ее, когда это возможно.
- * @member {String} message
- */
-GetFinances404Response.prototype['message'] = undefined;
-
-/**
- * Краткое описание ошибки HTTP на основе статуса.
- * @member {String} error_code
- */
-GetFinances404Response.prototype['error_code'] = undefined;
-
-/**
- * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
- * @member {String} response_id
- */
-GetFinances404Response.prototype['response_id'] = undefined;
-
-
-
-
-
-
-export default GetFinances404Response;
-
+}));

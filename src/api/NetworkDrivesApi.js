@@ -19,9 +19,9 @@ import CreateNetworkDrive201Response from '../model/CreateNetworkDrive201Respons
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances403Response from '../model/GetFinances403Response';
-import GetFinances404Response from '../model/GetFinances404Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
+import GetImage404Response from '../model/GetImage404Response';
 import GetNetworkDrives200Response from '../model/GetNetworkDrives200Response';
 import GetNetworkDrivesAvailableResources200Response from '../model/GetNetworkDrivesAvailableResources200Response';
 import GetNetworkDrivesPresets200Response from '../model/GetNetworkDrivesPresets200Response';
