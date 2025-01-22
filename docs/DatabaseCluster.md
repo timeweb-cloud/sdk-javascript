@@ -59,6 +59,20 @@ Name | Type | Description | Notes
 
 * `no_paid` (value: `"no_paid"`)
 
+* `lan_transfer` (value: `"lan_transfer"`)
+
+* `error` (value: `"error"`)
+
+* `blocked` (value: `"blocked"`)
+
+* `backup_recovery` (value: `"backup_recovery"`)
+
+* `rebooting` (value: `"rebooting"`)
+
+* `turning_off` (value: `"turning_off"`)
+
+* `turning_on` (value: `"turning_on"`)
+
 
 
 

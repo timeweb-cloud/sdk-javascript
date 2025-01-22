@@ -348,7 +348,49 @@ DatabaseCluster['StatusEnum'] = {
      * value: "no_paid"
      * @const
      */
-    "no_paid": "no_paid"
+    "no_paid": "no_paid",
+
+    /**
+     * value: "lan_transfer"
+     * @const
+     */
+    "lan_transfer": "lan_transfer",
+
+    /**
+     * value: "error"
+     * @const
+     */
+    "error": "error",
+
+    /**
+     * value: "blocked"
+     * @const
+     */
+    "blocked": "blocked",
+
+    /**
+     * value: "backup_recovery"
+     * @const
+     */
+    "backup_recovery": "backup_recovery",
+
+    /**
+     * value: "rebooting"
+     * @const
+     */
+    "rebooting": "rebooting",
+
+    /**
+     * value: "turning_off"
+     * @const
+     */
+    "turning_off": "turning_off",
+
+    /**
+     * value: "turning_on"
+     * @const
+     */
+    "turning_on": "turning_on"
 };
 
 
