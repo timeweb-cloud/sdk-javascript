@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **type** | **String** | Тип DNS-записи. | 
 **id** | **Number** | ID DNS-записи. | [optional] 
 **data** | [**DnsRecordData**](DnsRecordData.md) |  | 
+**ttl** | **Number** | Время жизни DNS-записи. | [optional] 
 
 
 

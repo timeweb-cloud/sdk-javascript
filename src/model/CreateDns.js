@@ -63,6 +63,9 @@ class CreateDns {
             if (data.hasOwnProperty('value')) {
                 obj['value'] = ApiClient.convertToType(data['value'], 'String');
             }
+            if (data.hasOwnProperty('ttl')) {
+                obj['ttl'] = ApiClient.convertToType(data['ttl'], 'Number');
+            }
         }
         return obj;
     }
@@ -123,6 +126,12 @@ CreateDns.prototype['type'] = undefined;
  * @member {String} value
  */
 CreateDns.prototype['value'] = undefined;
+
+/**
+ * Время жизни DNS-записи.
+ * @member {Number} ttl
+ */
+CreateDns.prototype['ttl'] = undefined;
 
 
 

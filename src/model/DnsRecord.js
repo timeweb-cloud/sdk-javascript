@@ -62,6 +62,9 @@ class DnsRecord {
             if (data.hasOwnProperty('data')) {
                 obj['data'] = DnsRecordData.constructFromObject(data['data']);
             }
+            if (data.hasOwnProperty('ttl')) {
+                obj['ttl'] = ApiClient.convertToType(data['ttl'], 'Number');
+            }
         }
         return obj;
     }
@@ -111,6 +114,12 @@ DnsRecord.prototype['id'] = undefined;
  * @member {module:model/DnsRecordData} data
  */
 DnsRecord.prototype['data'] = undefined;
+
+/**
+ * Время жизни DNS-записи.
+ * @member {Number} ttl
+ */
+DnsRecord.prototype['ttl'] = undefined;
 
 
 
