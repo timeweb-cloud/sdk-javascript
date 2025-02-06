@@ -55,8 +55,6 @@ Name | Type | Description | Notes
 
 * `firewall:read` (value: `"firewall:read"`)
 
-* `firewall:read` (value: `"firewall:read"`)
-
 * `finances:write` (value: `"finances:write"`)
 
 * `support:read` (value: `"support:read"`)

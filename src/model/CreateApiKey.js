@@ -263,12 +263,6 @@ CreateApiKey['RolesEnum'] = {
     "firewall:read": "firewall:read",
 
     /**
-     * value: "firewall:read"
-     * @const
-     */
-    "firewall:read": "firewall:read",
-
-    /**
      * value: "finances:write"
      * @const
      */
