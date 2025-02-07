@@ -326,7 +326,7 @@ export default class NetworkDrivesApi {
       let accepts = ['application/json'];
       let returnType = null;
       return this.apiClient.callApi(
-        '/api/v1/network-drives/{network_drive_id}/bind', 'POST',
+        '/api/v1/network-drives/{network_drive_id}/mount', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -368,7 +368,7 @@ export default class NetworkDrivesApi {
       let accepts = ['application/json'];
       let returnType = null;
       return this.apiClient.callApi(
-        '/api/v1/network-drives/{network_drive_id}/unbind', 'POST',
+        '/api/v1/network-drives/{network_drive_id}/unmount', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
