@@ -32,10 +32,11 @@ class Vpc {
      * @param availabilityZone {module:model/AvailabilityZone} 
      * @param publicIp {String} Публичный IP-адрес сети.
      * @param type {module:model/Vpc.TypeEnum} Тип сети.
+     * @param busyAddress {Array.<String>} Занятые адреса в сети
      */
-    constructor(id, name, subnetV4, location, createdAt, description, availabilityZone, publicIp, type) { 
+    constructor(id, name, subnetV4, location, createdAt, description, availabilityZone, publicIp, type, busyAddress) { 
         
-        Vpc.initialize(this, id, name, subnetV4, location, createdAt, description, availabilityZone, publicIp, type);
+        Vpc.initialize(this, id, name, subnetV4, location, createdAt, description, availabilityZone, publicIp, type, busyAddress);
     }
 
     /**
@@ -43,7 +44,7 @@ class Vpc {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, subnetV4, location, createdAt, description, availabilityZone, publicIp, type) { 
+    static initialize(obj, id, name, subnetV4, location, createdAt, description, availabilityZone, publicIp, type, busyAddress) { 
         obj['id'] = id;
         obj['name'] = name;
         obj['subnet_v4'] = subnetV4;
@@ -53,6 +54,7 @@ class Vpc {
         obj['availability_zone'] = availabilityZone;
         obj['public_ip'] = publicIp;
         obj['type'] = type;
+        obj['busy_address'] = busyAddress;
     }
 
     /**
@@ -92,6 +94,9 @@ class Vpc {
             }
             if (data.hasOwnProperty('type')) {
                 obj['type'] = ApiClient.convertToType(data['type'], 'String');
+            }
+            if (data.hasOwnProperty('busy_address')) {
+                obj['busy_address'] = ApiClient.convertToType(data['busy_address'], ['String']);
             }
         }
         return obj;
@@ -137,6 +142,10 @@ class Vpc {
         if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
             throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
         }
+        // ensure the json data is an array
+        if (!Array.isArray(data['busy_address'])) {
+            throw new Error("Expected the field `busy_address` to be an array in the JSON data but got " + data['busy_address']);
+        }
 
         return true;
     }
@@ -144,7 +153,7 @@ class Vpc {
 
 }
 
-Vpc.RequiredProperties = ["id", "name", "subnet_v4", "location", "created_at", "description", "availability_zone", "public_ip", "type"];
+Vpc.RequiredProperties = ["id", "name", "subnet_v4", "location", "created_at", "description", "availability_zone", "public_ip", "type", "busy_address"];
 
 /**
  * ID сети.
@@ -198,6 +207,12 @@ Vpc.prototype['public_ip'] = undefined;
  * @member {module:model/Vpc.TypeEnum} type
  */
 Vpc.prototype['type'] = undefined;
+
+/**
+ * Занятые адреса в сети
+ * @member {Array.<String>} busy_address
+ */
+Vpc.prototype['busy_address'] = undefined;
 
 
 

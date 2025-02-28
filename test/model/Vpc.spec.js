@@ -108,6 +108,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property busyAddress (base name: "busy_address")', function() {
+      // uncomment below and update the code to test the property busyAddress
+      //var instance = new TimewebCloudApi.Vpc();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

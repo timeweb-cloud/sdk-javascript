@@ -66,6 +66,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property localIp (base name: "local_ip")', function() {
+      // uncomment below and update the code to test the property localIp
+      //var instance = new TimewebCloudApi.Network();
+      //expect(instance).to.be();
+    });
+
     it('should have the property ip (base name: "ip")', function() {
       // uncomment below and update the code to test the property ip
       //var instance = new TimewebCloudApi.Network();

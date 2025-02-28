@@ -25,13 +25,11 @@ class CreateServer {
     /**
      * Constructs a new <code>CreateServer</code>.
      * @alias module:model/CreateServer
-     * @param isDdosGuard {Boolean} Защита от DDoS. Серверу выдается защищенный IP-адрес с защитой уровня L3 / L4. Для включения защиты уровня L7 необходимо создать тикет в техническую поддержку.
-     * @param bandwidth {Number} Пропускная способность тарифа. Доступные значения от 100 до 1000 с шагом 100.
      * @param name {String} Имя облачного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
      */
-    constructor(isDdosGuard, bandwidth, name) { 
+    constructor(name) { 
         
-        CreateServer.initialize(this, isDdosGuard, bandwidth, name);
+        CreateServer.initialize(this, name);
     }
 
     /**
@@ -39,9 +37,7 @@ class CreateServer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, isDdosGuard, bandwidth, name) { 
-        obj['is_ddos_guard'] = isDdosGuard;
-        obj['bandwidth'] = bandwidth;
+    static initialize(obj, name) { 
         obj['name'] = name;
     }
 
@@ -156,7 +152,7 @@ class CreateServer {
 
 }
 
-CreateServer.RequiredProperties = ["is_ddos_guard", "bandwidth", "name"];
+CreateServer.RequiredProperties = ["name"];
 
 /**
  * @member {module:model/CreateServerConfiguration} configuration

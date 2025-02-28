@@ -55,6 +55,9 @@ class Network {
             if (data.hasOwnProperty('floating_ip')) {
                 obj['floating_ip'] = ApiClient.convertToType(data['floating_ip'], 'String');
             }
+            if (data.hasOwnProperty('local_ip')) {
+                obj['local_ip'] = ApiClient.convertToType(data['local_ip'], 'String');
+            }
             if (data.hasOwnProperty('ip')) {
                 obj['ip'] = ApiClient.convertToType(data['ip'], 'String');
             }
@@ -83,6 +86,10 @@ class Network {
             throw new Error("Expected the field `floating_ip` to be a primitive type in the JSON string but got " + data['floating_ip']);
         }
         // ensure the json data is a string
+        if (data['local_ip'] && !(typeof data['local_ip'] === 'string' || data['local_ip'] instanceof String)) {
+            throw new Error("Expected the field `local_ip` to be a primitive type in the JSON string but got " + data['local_ip']);
+        }
+        // ensure the json data is a string
         if (data['ip'] && !(typeof data['ip'] === 'string' || data['ip'] instanceof String)) {
             throw new Error("Expected the field `ip` to be a primitive type in the JSON string but got " + data['ip']);
         }
@@ -106,6 +113,12 @@ Network.prototype['id'] = undefined;
  * @member {String} floating_ip
  */
 Network.prototype['floating_ip'] = undefined;
+
+/**
+ * IP-адрес в сети.
+ * @member {String} local_ip
+ */
+Network.prototype['local_ip'] = undefined;
 
 /**
  * IP-адрес в сети.
