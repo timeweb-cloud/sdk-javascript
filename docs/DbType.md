@@ -5,7 +5,7 @@
 
 * `mysql` (value: `"mysql"`)
 
-* `mysql5` (value: `"mysql5"`)
+* `mysql8_4` (value: `"mysql8_4"`)
 
 * `postgres14` (value: `"postgres14"`)
 
@@ -34,5 +34,9 @@
 * `rabbitmq` (value: `"rabbitmq"`)
 
 * `clickhouse` (value: `"clickhouse"`)
+
+* `clickhouse24` (value: `"clickhouse24"`)
+
+* `clickhouse25` (value: `"clickhouse25"`)
 
 

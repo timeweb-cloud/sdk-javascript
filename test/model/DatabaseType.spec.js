@@ -78,6 +78,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isDeprecated (base name: "is_deprecated")', function() {
+      // uncomment below and update the code to test the property isDeprecated
+      //var instance = new TimewebCloudApi.DatabaseType();
+      //expect(instance).to.be();
+    });
+
     it('should have the property requirements (base name: "requirements")', function() {
       // uncomment below and update the code to test the property requirements
       //var instance = new TimewebCloudApi.DatabaseType();

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **type** | [**DbType**](DbType.md) |  | 
 **admin** | [**CreateClusterAdmin**](CreateClusterAdmin.md) |  | [optional] 
 **instance** | [**CreateClusterInstance**](CreateClusterInstance.md) |  | [optional] 
-**hashType** | **String** | Тип хеширования базы данных (mysql5 | mysql | postgres). | [optional] 
+**hashType** | **String** | Тип хеширования базы данных (mysql | postgres). | [optional] 
 **presetId** | **Number** | ID тарифа. | 
 **configParameters** | [**ConfigParameters**](ConfigParameters.md) |  | [optional] 
 **network** | [**Network**](Network.md) |  | [optional] 

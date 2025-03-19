@@ -28,10 +28,11 @@ class DatabaseType {
      * @param version {String} Версия кластера базы данных.
      * @param type {String} Тип кластера базы данных. Передается при создании кластера в поле `type`
      * @param isAvailableReplication {Boolean} Поддерживает ли база данных репликацию.
+     * @param isDeprecated {Boolean} Устарела ли версия базы.
      */
-    constructor(name, version, type, isAvailableReplication) { 
+    constructor(name, version, type, isAvailableReplication, isDeprecated) { 
         
-        DatabaseType.initialize(this, name, version, type, isAvailableReplication);
+        DatabaseType.initialize(this, name, version, type, isAvailableReplication, isDeprecated);
     }
 
     /**
@@ -39,11 +40,12 @@ class DatabaseType {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, version, type, isAvailableReplication) { 
+    static initialize(obj, name, version, type, isAvailableReplication, isDeprecated) { 
         obj['name'] = name;
         obj['version'] = version;
         obj['type'] = type;
         obj['is_available_replication'] = isAvailableReplication;
+        obj['is_deprecated'] = isDeprecated;
     }
 
     /**
@@ -68,6 +70,9 @@ class DatabaseType {
             }
             if (data.hasOwnProperty('is_available_replication')) {
                 obj['is_available_replication'] = ApiClient.convertToType(data['is_available_replication'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_deprecated')) {
+                obj['is_deprecated'] = ApiClient.convertToType(data['is_deprecated'], 'Boolean');
             }
             if (data.hasOwnProperty('requirements')) {
                 obj['requirements'] = DatabaseTypeRequirements.constructFromObject(data['requirements']);
@@ -111,7 +116,7 @@ class DatabaseType {
 
 }
 
-DatabaseType.RequiredProperties = ["name", "version", "type", "is_available_replication"];
+DatabaseType.RequiredProperties = ["name", "version", "type", "is_available_replication", "is_deprecated"];
 
 /**
  * Название кластера базы данных.
@@ -136,6 +141,12 @@ DatabaseType.prototype['type'] = undefined;
  * @member {Boolean} is_available_replication
  */
 DatabaseType.prototype['is_available_replication'] = undefined;
+
+/**
+ * Устарела ли версия базы.
+ * @member {Boolean} is_deprecated
+ */
+DatabaseType.prototype['is_deprecated'] = undefined;
 
 /**
  * @member {module:model/DatabaseTypeRequirements} requirements

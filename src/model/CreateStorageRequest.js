@@ -56,6 +56,9 @@ class CreateStorageRequest {
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
+            if (data.hasOwnProperty('description')) {
+                obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
             if (data.hasOwnProperty('type')) {
                 obj['type'] = ApiClient.convertToType(data['type'], 'String');
             }
@@ -83,6 +86,10 @@ class CreateStorageRequest {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // ensure the json data is a string
         if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
             throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
         }
@@ -100,6 +107,12 @@ CreateStorageRequest.RequiredProperties = ["name", "type", "preset_id"];
  * @member {String} name
  */
 CreateStorageRequest.prototype['name'] = undefined;
+
+/**
+ * Комментарий к хранилищу.
+ * @member {String} description
+ */
+CreateStorageRequest.prototype['description'] = undefined;
 
 /**
  * Тип хранилища.

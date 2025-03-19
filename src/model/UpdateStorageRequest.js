@@ -53,6 +53,9 @@ class UpdateStorageRequest {
             if (data.hasOwnProperty('bucket_type')) {
                 obj['bucket_type'] = ApiClient.convertToType(data['bucket_type'], 'String');
             }
+            if (data.hasOwnProperty('description')) {
+                obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
         }
         return obj;
     }
@@ -66,6 +69,10 @@ class UpdateStorageRequest {
         // ensure the json data is a string
         if (data['bucket_type'] && !(typeof data['bucket_type'] === 'string' || data['bucket_type'] instanceof String)) {
             throw new Error("Expected the field `bucket_type` to be a primitive type in the JSON string but got " + data['bucket_type']);
+        }
+        // ensure the json data is a string
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
 
         return true;
@@ -87,6 +94,12 @@ UpdateStorageRequest.prototype['preset_id'] = undefined;
  * @member {module:model/UpdateStorageRequest.BucketTypeEnum} bucket_type
  */
 UpdateStorageRequest.prototype['bucket_type'] = undefined;
+
+/**
+ * Комментарий к хранилищу.
+ * @member {String} description
+ */
+UpdateStorageRequest.prototype['description'] = undefined;
 
 
 

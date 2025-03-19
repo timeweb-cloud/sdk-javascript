@@ -172,7 +172,7 @@ CreateCluster.prototype['admin'] = undefined;
 CreateCluster.prototype['instance'] = undefined;
 
 /**
- * Тип хеширования базы данных (mysql5 | mysql | postgres).
+ * Тип хеширования базы данных (mysql | postgres).
  * @member {module:model/CreateCluster.HashTypeEnum} hash_type
  */
 CreateCluster.prototype['hash_type'] = undefined;

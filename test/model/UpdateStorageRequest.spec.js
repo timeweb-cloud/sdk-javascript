@@ -66,6 +66,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property description (base name: "description")', function() {
+      // uncomment below and update the code to test the property description
+      //var instance = new TimewebCloudApi.UpdateStorageRequest();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

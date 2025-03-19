@@ -27,10 +27,10 @@ export default class DbType {
 
     
         /**
-         * value: "mysql5"
+         * value: "mysql8_4"
          * @const
          */
-        "mysql5" = "mysql5";
+        "mysql8_4" = "mysql8_4";
 
     
         /**
@@ -129,6 +129,20 @@ export default class DbType {
          * @const
          */
         "clickhouse" = "clickhouse";
+
+    
+        /**
+         * value: "clickhouse24"
+         * @const
+         */
+        "clickhouse24" = "clickhouse24";
+
+    
+        /**
+         * value: "clickhouse25"
+         * @const
+         */
+        "clickhouse25" = "clickhouse25";
 
     
 

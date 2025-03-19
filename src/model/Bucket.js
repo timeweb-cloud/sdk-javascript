@@ -77,6 +77,9 @@ class Bucket {
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
+            if (data.hasOwnProperty('description')) {
+                obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
             if (data.hasOwnProperty('disk_stats')) {
                 obj['disk_stats'] = BucketDiskStats.constructFromObject(data['disk_stats']);
             }
@@ -123,6 +126,10 @@ class Bucket {
         // ensure the json data is a string
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
+        // ensure the json data is a string
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
         // validate the optional field `disk_stats`
         if (data['disk_stats']) { // data not null
@@ -172,6 +179,12 @@ Bucket.prototype['id'] = undefined;
  * @member {String} name
  */
 Bucket.prototype['name'] = undefined;
+
+/**
+ * Комментарий к хранилищу.
+ * @member {String} description
+ */
+Bucket.prototype['description'] = undefined;
 
 /**
  * @member {module:model/BucketDiskStats} disk_stats

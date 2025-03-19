@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **presetId** | **Number** | ID тарифа. | [optional] 
 **bucketType** | **String** | Тип хранилища. | [optional] 
+**description** | **String** | Комментарий к хранилищу. | [optional] 
 
 
 
