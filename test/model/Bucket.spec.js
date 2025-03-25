@@ -90,6 +90,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property configuratorId (base name: "configurator_id")', function() {
+      // uncomment below and update the code to test the property configuratorId
+      //var instance = new TimewebCloudApi.Bucket();
+      //expect(instance).to.be();
+    });
+
     it('should have the property status (base name: "status")', function() {
       // uncomment below and update the code to test the property status
       //var instance = new TimewebCloudApi.Bucket();
@@ -122,6 +128,18 @@
 
     it('should have the property secretKey (base name: "secret_key")', function() {
       // uncomment below and update the code to test the property secretKey
+      //var instance = new TimewebCloudApi.Bucket();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property movedInQuarantineAt (base name: "moved_in_quarantine_at")', function() {
+      // uncomment below and update the code to test the property movedInQuarantineAt
+      //var instance = new TimewebCloudApi.Bucket();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storageClass (base name: "storage_class")', function() {
+      // uncomment below and update the code to test the property storageClass
       //var instance = new TimewebCloudApi.Bucket();
       //expect(instance).to.be();
     });

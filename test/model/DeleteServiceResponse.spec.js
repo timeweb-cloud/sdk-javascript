@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isMovedInQuarantine (base name: "is_moved_in_quarantine")', function() {
+      // uncomment below and update the code to test the property isMovedInQuarantine
+      //var instance = new TimewebCloudApi.DeleteServiceResponse();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

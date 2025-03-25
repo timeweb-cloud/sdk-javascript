@@ -10,12 +10,15 @@ Name | Type | Description | Notes
 **diskStats** | [**BucketDiskStats**](BucketDiskStats.md) |  | 
 **type** | **String** | Тип хранилища. | 
 **presetId** | **Number** | ID тарифа хранилища. | 
+**configuratorId** | **Number** | ID конфигуратора хранилища. | 
 **status** | **String** | Статус хранилища. | 
 **objectAmount** | **Number** | Количество файлов в хранилище. | 
 **location** | **String** | Регион хранилища. | 
 **hostname** | **String** | Адрес хранилища для подключения. | 
 **accessKey** | **String** | Ключ доступа от хранилища. | 
 **secretKey** | **String** | Секретный ключ доступа от хранилища. | 
+**movedInQuarantineAt** | **Date** | Дата перемещения в карантин. | 
+**storageClass** | **String** | Класс хранилища. | 
 
 
 
@@ -38,6 +41,17 @@ Name | Type | Description | Notes
 * `created` (value: `"created"`)
 
 * `transfer` (value: `"transfer"`)
+
+
+
+
+
+## Enum: StorageClassEnum
+
+
+* `cold` (value: `"cold"`)
+
+* `hot` (value: `"hot"`)
 
 
 

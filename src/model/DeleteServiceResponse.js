@@ -22,11 +22,10 @@ class DeleteServiceResponse {
     /**
      * Constructs a new <code>DeleteServiceResponse</code>.
      * @alias module:model/DeleteServiceResponse
-     * @param hash {String} Хеш, который совместно с кодом авторизации надо будет отправить для удаления.
      */
-    constructor(hash) { 
+    constructor() { 
         
-        DeleteServiceResponse.initialize(this, hash);
+        DeleteServiceResponse.initialize(this);
     }
 
     /**
@@ -34,8 +33,7 @@ class DeleteServiceResponse {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, hash) { 
-        obj['hash'] = hash;
+    static initialize(obj) { 
     }
 
     /**
@@ -52,6 +50,9 @@ class DeleteServiceResponse {
             if (data.hasOwnProperty('hash')) {
                 obj['hash'] = ApiClient.convertToType(data['hash'], 'String');
             }
+            if (data.hasOwnProperty('is_moved_in_quarantine')) {
+                obj['is_moved_in_quarantine'] = ApiClient.convertToType(data['is_moved_in_quarantine'], 'Boolean');
+            }
         }
         return obj;
     }
@@ -62,12 +63,6 @@ class DeleteServiceResponse {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DeleteServiceResponse</code>.
      */
     static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of DeleteServiceResponse.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
         // ensure the json data is a string
         if (data['hash'] && !(typeof data['hash'] === 'string' || data['hash'] instanceof String)) {
             throw new Error("Expected the field `hash` to be a primitive type in the JSON string but got " + data['hash']);
@@ -79,13 +74,19 @@ class DeleteServiceResponse {
 
 }
 
-DeleteServiceResponse.RequiredProperties = ["hash"];
+
 
 /**
  * Хеш, который совместно с кодом авторизации надо будет отправить для удаления.
  * @member {String} hash
  */
 DeleteServiceResponse.prototype['hash'] = undefined;
+
+/**
+ * Флаг, указывающий на то, что сервис был перемещен в карантин или был удален немедленно.
+ * @member {Boolean} is_moved_in_quarantine
+ */
+DeleteServiceResponse.prototype['is_moved_in_quarantine'] = undefined;
 
 
 

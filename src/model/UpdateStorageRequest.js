@@ -50,6 +50,9 @@ class UpdateStorageRequest {
             if (data.hasOwnProperty('preset_id')) {
                 obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
             }
+            if (data.hasOwnProperty('configurator_id')) {
+                obj['configurator_id'] = ApiClient.convertToType(data['configurator_id'], 'Number');
+            }
             if (data.hasOwnProperty('bucket_type')) {
                 obj['bucket_type'] = ApiClient.convertToType(data['bucket_type'], 'String');
             }
@@ -88,6 +91,12 @@ class UpdateStorageRequest {
  * @member {Number} preset_id
  */
 UpdateStorageRequest.prototype['preset_id'] = undefined;
+
+/**
+ * ID конфигуратора хранилища.
+ * @member {Number} configurator_id
+ */
+UpdateStorageRequest.prototype['configurator_id'] = undefined;
 
 /**
  * Тип хранилища.

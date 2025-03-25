@@ -29,16 +29,19 @@ class Bucket {
      * @param diskStats {module:model/BucketDiskStats} 
      * @param type {module:model/Bucket.TypeEnum} Тип хранилища.
      * @param presetId {Number} ID тарифа хранилища.
+     * @param configuratorId {Number} ID конфигуратора хранилища.
      * @param status {module:model/Bucket.StatusEnum} Статус хранилища.
      * @param objectAmount {Number} Количество файлов в хранилище.
      * @param location {String} Регион хранилища.
      * @param hostname {String} Адрес хранилища для подключения.
      * @param accessKey {String} Ключ доступа от хранилища.
      * @param secretKey {String} Секретный ключ доступа от хранилища.
+     * @param movedInQuarantineAt {Date} Дата перемещения в карантин.
+     * @param storageClass {module:model/Bucket.StorageClassEnum} Класс хранилища.
      */
-    constructor(id, name, diskStats, type, presetId, status, objectAmount, location, hostname, accessKey, secretKey) { 
+    constructor(id, name, diskStats, type, presetId, configuratorId, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass) { 
         
-        Bucket.initialize(this, id, name, diskStats, type, presetId, status, objectAmount, location, hostname, accessKey, secretKey);
+        Bucket.initialize(this, id, name, diskStats, type, presetId, configuratorId, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass);
     }
 
     /**
@@ -46,18 +49,21 @@ class Bucket {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, diskStats, type, presetId, status, objectAmount, location, hostname, accessKey, secretKey) { 
+    static initialize(obj, id, name, diskStats, type, presetId, configuratorId, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass) { 
         obj['id'] = id;
         obj['name'] = name;
         obj['disk_stats'] = diskStats;
         obj['type'] = type;
         obj['preset_id'] = presetId;
+        obj['configurator_id'] = configuratorId;
         obj['status'] = status;
         obj['object_amount'] = objectAmount;
         obj['location'] = location;
         obj['hostname'] = hostname;
         obj['access_key'] = accessKey;
         obj['secret_key'] = secretKey;
+        obj['moved_in_quarantine_at'] = movedInQuarantineAt;
+        obj['storage_class'] = storageClass;
     }
 
     /**
@@ -89,6 +95,9 @@ class Bucket {
             if (data.hasOwnProperty('preset_id')) {
                 obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
             }
+            if (data.hasOwnProperty('configurator_id')) {
+                obj['configurator_id'] = ApiClient.convertToType(data['configurator_id'], 'Number');
+            }
             if (data.hasOwnProperty('status')) {
                 obj['status'] = ApiClient.convertToType(data['status'], 'String');
             }
@@ -106,6 +115,12 @@ class Bucket {
             }
             if (data.hasOwnProperty('secret_key')) {
                 obj['secret_key'] = ApiClient.convertToType(data['secret_key'], 'String');
+            }
+            if (data.hasOwnProperty('moved_in_quarantine_at')) {
+                obj['moved_in_quarantine_at'] = ApiClient.convertToType(data['moved_in_quarantine_at'], 'Date');
+            }
+            if (data.hasOwnProperty('storage_class')) {
+                obj['storage_class'] = ApiClient.convertToType(data['storage_class'], 'String');
             }
         }
         return obj;
@@ -159,6 +174,10 @@ class Bucket {
         if (data['secret_key'] && !(typeof data['secret_key'] === 'string' || data['secret_key'] instanceof String)) {
             throw new Error("Expected the field `secret_key` to be a primitive type in the JSON string but got " + data['secret_key']);
         }
+        // ensure the json data is a string
+        if (data['storage_class'] && !(typeof data['storage_class'] === 'string' || data['storage_class'] instanceof String)) {
+            throw new Error("Expected the field `storage_class` to be a primitive type in the JSON string but got " + data['storage_class']);
+        }
 
         return true;
     }
@@ -166,7 +185,7 @@ class Bucket {
 
 }
 
-Bucket.RequiredProperties = ["id", "name", "disk_stats", "type", "preset_id", "status", "object_amount", "location", "hostname", "access_key", "secret_key"];
+Bucket.RequiredProperties = ["id", "name", "disk_stats", "type", "preset_id", "configurator_id", "status", "object_amount", "location", "hostname", "access_key", "secret_key", "moved_in_quarantine_at", "storage_class"];
 
 /**
  * ID для каждого экземпляра хранилища. Автоматически генерируется при создании.
@@ -204,6 +223,12 @@ Bucket.prototype['type'] = undefined;
 Bucket.prototype['preset_id'] = undefined;
 
 /**
+ * ID конфигуратора хранилища.
+ * @member {Number} configurator_id
+ */
+Bucket.prototype['configurator_id'] = undefined;
+
+/**
  * Статус хранилища.
  * @member {module:model/Bucket.StatusEnum} status
  */
@@ -238,6 +263,18 @@ Bucket.prototype['access_key'] = undefined;
  * @member {String} secret_key
  */
 Bucket.prototype['secret_key'] = undefined;
+
+/**
+ * Дата перемещения в карантин.
+ * @member {Date} moved_in_quarantine_at
+ */
+Bucket.prototype['moved_in_quarantine_at'] = undefined;
+
+/**
+ * Класс хранилища.
+ * @member {module:model/Bucket.StorageClassEnum} storage_class
+ */
+Bucket.prototype['storage_class'] = undefined;
 
 
 
@@ -288,6 +325,27 @@ Bucket['StatusEnum'] = {
      * @const
      */
     "transfer": "transfer"
+};
+
+
+/**
+ * Allowed values for the <code>storage_class</code> property.
+ * @enum {String}
+ * @readonly
+ */
+Bucket['StorageClassEnum'] = {
+
+    /**
+     * value: "cold"
+     * @const
+     */
+    "cold": "cold",
+
+    /**
+     * value: "hot"
+     * @const
+     */
+    "hot": "hot"
 };
 
 

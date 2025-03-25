@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property configuratorId (base name: "configurator_id")', function() {
+      // uncomment below and update the code to test the property configuratorId
+      //var instance = new TimewebCloudApi.UpdateStorageRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property bucketType (base name: "bucket_type")', function() {
       // uncomment below and update the code to test the property bucketType
       //var instance = new TimewebCloudApi.UpdateStorageRequest();
