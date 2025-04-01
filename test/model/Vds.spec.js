@@ -180,6 +180,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property avatarLink (base name: "avatar_link")', function() {
+      // uncomment below and update the code to test the property avatarLink
+      //var instance = new TimewebCloudApi.Vds();
+      //expect(instance).to.be();
+    });
+
     it('should have the property vncPass (base name: "vnc_pass")', function() {
       // uncomment below and update the code to test the property vncPass
       //var instance = new TimewebCloudApi.Vds();

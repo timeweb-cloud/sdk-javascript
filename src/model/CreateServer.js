@@ -202,7 +202,7 @@ CreateServer.prototype['bandwidth'] = undefined;
 CreateServer.prototype['name'] = undefined;
 
 /**
- * ID аватара сервера. Описание методов работы с аватарами появится позднее.
+ * ID аватара сервера.
  * @member {String} avatar_id
  */
 CreateServer.prototype['avatar_id'] = undefined;

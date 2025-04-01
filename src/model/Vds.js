@@ -49,7 +49,8 @@ class Vds {
      * @param cpuFrequency {String} Частота ядер процессора сервера.
      * @param ram {Number} Размер (в Мб) ОЗУ сервера.
      * @param disks {Array.<module:model/VdsDisksInner>} Список дисков сервера.
-     * @param avatarId {String} ID аватара сервера. Описание методов работы с аватарами появится позднее.
+     * @param avatarId {String} ID аватара сервера.
+     * @param avatarLink {String} Ссылка на аватар сервера.
      * @param vncPass {String} Пароль от VNC.
      * @param rootPass {String} Пароль root сервера или пароль Администратора для серверов Windows.
      * @param image {module:model/VdsImage} 
@@ -58,9 +59,9 @@ class Vds {
      * @param isQemuAgent {Boolean} Это логическое значение, которое показывает, включен ли QEMU-agent на сервере.
      * @param availabilityZone {module:model/AvailabilityZone} 
      */
-    constructor(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, isMasterSsh, isDedicatedCpu, gpu, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, isQemuAgent, availabilityZone) { 
+    constructor(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, isMasterSsh, isDedicatedCpu, gpu, cpu, cpuFrequency, ram, disks, avatarId, avatarLink, vncPass, rootPass, image, networks, cloudInit, isQemuAgent, availabilityZone) { 
         
-        Vds.initialize(this, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, isMasterSsh, isDedicatedCpu, gpu, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, isQemuAgent, availabilityZone);
+        Vds.initialize(this, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, isMasterSsh, isDedicatedCpu, gpu, cpu, cpuFrequency, ram, disks, avatarId, avatarLink, vncPass, rootPass, image, networks, cloudInit, isQemuAgent, availabilityZone);
     }
 
     /**
@@ -68,7 +69,7 @@ class Vds {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, isMasterSsh, isDedicatedCpu, gpu, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, isQemuAgent, availabilityZone) { 
+    static initialize(obj, id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, isMasterSsh, isDedicatedCpu, gpu, cpu, cpuFrequency, ram, disks, avatarId, avatarLink, vncPass, rootPass, image, networks, cloudInit, isQemuAgent, availabilityZone) { 
         obj['id'] = id;
         obj['name'] = name;
         obj['comment'] = comment;
@@ -90,6 +91,7 @@ class Vds {
         obj['ram'] = ram;
         obj['disks'] = disks;
         obj['avatar_id'] = avatarId;
+        obj['avatar_link'] = avatarLink;
         obj['vnc_pass'] = vncPass;
         obj['root_pass'] = rootPass;
         obj['image'] = image;
@@ -172,6 +174,9 @@ class Vds {
             }
             if (data.hasOwnProperty('avatar_id')) {
                 obj['avatar_id'] = ApiClient.convertToType(data['avatar_id'], 'String');
+            }
+            if (data.hasOwnProperty('avatar_link')) {
+                obj['avatar_link'] = ApiClient.convertToType(data['avatar_link'], 'String');
             }
             if (data.hasOwnProperty('vnc_pass')) {
                 obj['vnc_pass'] = ApiClient.convertToType(data['vnc_pass'], 'String');
@@ -261,6 +266,10 @@ class Vds {
             throw new Error("Expected the field `avatar_id` to be a primitive type in the JSON string but got " + data['avatar_id']);
         }
         // ensure the json data is a string
+        if (data['avatar_link'] && !(typeof data['avatar_link'] === 'string' || data['avatar_link'] instanceof String)) {
+            throw new Error("Expected the field `avatar_link` to be a primitive type in the JSON string but got " + data['avatar_link']);
+        }
+        // ensure the json data is a string
         if (data['vnc_pass'] && !(typeof data['vnc_pass'] === 'string' || data['vnc_pass'] instanceof String)) {
             throw new Error("Expected the field `vnc_pass` to be a primitive type in the JSON string but got " + data['vnc_pass']);
         }
@@ -293,7 +302,7 @@ class Vds {
 
 }
 
-Vds.RequiredProperties = ["id", "name", "comment", "created_at", "os", "software", "preset_id", "location", "configurator_id", "boot_mode", "status", "start_at", "is_ddos_guard", "is_master_ssh", "is_dedicated_cpu", "gpu", "cpu", "cpu_frequency", "ram", "disks", "avatar_id", "vnc_pass", "root_pass", "image", "networks", "cloud_init", "is_qemu_agent", "availability_zone"];
+Vds.RequiredProperties = ["id", "name", "comment", "created_at", "os", "software", "preset_id", "location", "configurator_id", "boot_mode", "status", "start_at", "is_ddos_guard", "is_master_ssh", "is_dedicated_cpu", "gpu", "cpu", "cpu_frequency", "ram", "disks", "avatar_id", "avatar_link", "vnc_pass", "root_pass", "image", "networks", "cloud_init", "is_qemu_agent", "availability_zone"];
 
 /**
  * ID для каждого экземпляра сервера. Автоматически генерируется при создании.
@@ -414,10 +423,16 @@ Vds.prototype['ram'] = undefined;
 Vds.prototype['disks'] = undefined;
 
 /**
- * ID аватара сервера. Описание методов работы с аватарами появится позднее.
+ * ID аватара сервера.
  * @member {String} avatar_id
  */
 Vds.prototype['avatar_id'] = undefined;
+
+/**
+ * Ссылка на аватар сервера.
+ * @member {String} avatar_link
+ */
+Vds.prototype['avatar_link'] = undefined;
 
 /**
  * Пароль от VNC.
