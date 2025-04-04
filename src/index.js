@@ -271,6 +271,7 @@ import GetServerStatistics200ResponseCpuInner from './model/GetServerStatistics2
 import GetServerStatistics200ResponseDiskInner from './model/GetServerStatistics200ResponseDiskInner';
 import GetServerStatistics200ResponseNetworkTrafficInner from './model/GetServerStatistics200ResponseNetworkTrafficInner';
 import GetServerStatistics200ResponseRamInner from './model/GetServerStatistics200ResponseRamInner';
+import GetServerStatisticsNew200Response from './model/GetServerStatisticsNew200Response';
 import GetServers200Response from './model/GetServers200Response';
 import GetServersPresets200Response from './model/GetServersPresets200Response';
 import GetSoftware200Response from './model/GetSoftware200Response';
@@ -368,6 +369,9 @@ import ServersOsRequirements from './model/ServersOsRequirements';
 import ServersPreset from './model/ServersPreset';
 import ServersSoftware from './model/ServersSoftware';
 import ServersSoftwareRequirements from './model/ServersSoftwareRequirements';
+import ServersStatistics from './model/ServersStatistics';
+import ServersStatisticsListInner from './model/ServersStatisticsListInner';
+import ServersStatisticsMeta from './model/ServersStatisticsMeta';
 import SetLabels from './model/SetLabels';
 import SettingCondition from './model/SettingCondition';
 import SpamFilterIsDisabled from './model/SpamFilterIsDisabled';
@@ -2043,6 +2047,12 @@ export {
     GetServerStatistics200ResponseRamInner,
 
     /**
+     * The GetServerStatisticsNew200Response model constructor.
+     * @property {module:model/GetServerStatisticsNew200Response}
+     */
+    GetServerStatisticsNew200Response,
+
+    /**
      * The GetServers200Response model constructor.
      * @property {module:model/GetServers200Response}
      */
@@ -2623,6 +2633,24 @@ export {
      * @property {module:model/ServersSoftwareRequirements}
      */
     ServersSoftwareRequirements,
+
+    /**
+     * The ServersStatistics model constructor.
+     * @property {module:model/ServersStatistics}
+     */
+    ServersStatistics,
+
+    /**
+     * The ServersStatisticsListInner model constructor.
+     * @property {module:model/ServersStatisticsListInner}
+     */
+    ServersStatisticsListInner,
+
+    /**
+     * The ServersStatisticsMeta model constructor.
+     * @property {module:model/ServersStatisticsMeta}
+     */
+    ServersStatisticsMeta,
 
     /**
      * The SetLabels model constructor.

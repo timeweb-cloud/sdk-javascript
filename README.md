@@ -521,6 +521,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.ServersApi* | [**getServerIPs**](docs/ServersApi.md#getServerIPs) | **GET** /api/v1/servers/{server_id}/ips | Получение списка IP-адресов сервера
 *TimewebCloudApi.ServersApi* | [**getServerLogs**](docs/ServersApi.md#getServerLogs) | **GET** /api/v1/servers/{server_id}/logs | Получение списка логов сервера
 *TimewebCloudApi.ServersApi* | [**getServerStatistics**](docs/ServersApi.md#getServerStatistics) | **GET** /api/v1/servers/{server_id}/statistics | Получение статистики сервера
+*TimewebCloudApi.ServersApi* | [**getServerStatisticsNew**](docs/ServersApi.md#getServerStatisticsNew) | **GET** /api/v1/servers/{server_id}/statistics/{time_from}/{period}/{keys} | Получение статистики сервера
 *TimewebCloudApi.ServersApi* | [**getServers**](docs/ServersApi.md#getServers) | **GET** /api/v1/servers | Получение списка серверов
 *TimewebCloudApi.ServersApi* | [**getServersPresets**](docs/ServersApi.md#getServersPresets) | **GET** /api/v1/presets/servers | Получение списка тарифов серверов
 *TimewebCloudApi.ServersApi* | [**getSoftware**](docs/ServersApi.md#getSoftware) | **GET** /api/v1/software/servers | Получение списка ПО из маркетплейса
@@ -808,6 +809,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetServerStatistics200ResponseDiskInner](docs/GetServerStatistics200ResponseDiskInner.md)
  - [TimewebCloudApi.GetServerStatistics200ResponseNetworkTrafficInner](docs/GetServerStatistics200ResponseNetworkTrafficInner.md)
  - [TimewebCloudApi.GetServerStatistics200ResponseRamInner](docs/GetServerStatistics200ResponseRamInner.md)
+ - [TimewebCloudApi.GetServerStatisticsNew200Response](docs/GetServerStatisticsNew200Response.md)
  - [TimewebCloudApi.GetServers200Response](docs/GetServers200Response.md)
  - [TimewebCloudApi.GetServersPresets200Response](docs/GetServersPresets200Response.md)
  - [TimewebCloudApi.GetSoftware200Response](docs/GetSoftware200Response.md)
@@ -905,6 +907,9 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ServersPreset](docs/ServersPreset.md)
  - [TimewebCloudApi.ServersSoftware](docs/ServersSoftware.md)
  - [TimewebCloudApi.ServersSoftwareRequirements](docs/ServersSoftwareRequirements.md)
+ - [TimewebCloudApi.ServersStatistics](docs/ServersStatistics.md)
+ - [TimewebCloudApi.ServersStatisticsListInner](docs/ServersStatisticsListInner.md)
+ - [TimewebCloudApi.ServersStatisticsMeta](docs/ServersStatisticsMeta.md)
  - [TimewebCloudApi.SetLabels](docs/SetLabels.md)
  - [TimewebCloudApi.SettingCondition](docs/SettingCondition.md)
  - [TimewebCloudApi.SpamFilterIsDisabled](docs/SpamFilterIsDisabled.md)

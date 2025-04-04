@@ -270,6 +270,7 @@ docs/GetServerStatistics200ResponseCpuInner.md
 docs/GetServerStatistics200ResponseDiskInner.md
 docs/GetServerStatistics200ResponseNetworkTrafficInner.md
 docs/GetServerStatistics200ResponseRamInner.md
+docs/GetServerStatisticsNew200Response.md
 docs/GetServers200Response.md
 docs/GetServersPresets200Response.md
 docs/GetSoftware200Response.md
@@ -376,6 +377,9 @@ docs/ServersOsRequirements.md
 docs/ServersPreset.md
 docs/ServersSoftware.md
 docs/ServersSoftwareRequirements.md
+docs/ServersStatistics.md
+docs/ServersStatisticsListInner.md
+docs/ServersStatisticsMeta.md
 docs/SetLabels.md
 docs/SettingCondition.md
 docs/SpamFilterIsDisabled.md
@@ -726,6 +730,7 @@ src/model/GetServerStatistics200ResponseCpuInner.js
 src/model/GetServerStatistics200ResponseDiskInner.js
 src/model/GetServerStatistics200ResponseNetworkTrafficInner.js
 src/model/GetServerStatistics200ResponseRamInner.js
+src/model/GetServerStatisticsNew200Response.js
 src/model/GetServers200Response.js
 src/model/GetServersPresets200Response.js
 src/model/GetSoftware200Response.js
@@ -823,6 +828,9 @@ src/model/ServersOsRequirements.js
 src/model/ServersPreset.js
 src/model/ServersSoftware.js
 src/model/ServersSoftwareRequirements.js
+src/model/ServersStatistics.js
+src/model/ServersStatisticsListInner.js
+src/model/ServersStatisticsMeta.js
 src/model/SetLabels.js
 src/model/SettingCondition.js
 src/model/SpamFilterIsDisabled.js
@@ -1167,6 +1175,7 @@ test/model/GetServerStatistics200ResponseCpuInner.spec.js
 test/model/GetServerStatistics200ResponseDiskInner.spec.js
 test/model/GetServerStatistics200ResponseNetworkTrafficInner.spec.js
 test/model/GetServerStatistics200ResponseRamInner.spec.js
+test/model/GetServerStatisticsNew200Response.spec.js
 test/model/GetServers200Response.spec.js
 test/model/GetServersPresets200Response.spec.js
 test/model/GetSoftware200Response.spec.js
@@ -1264,6 +1273,9 @@ test/model/ServersOsRequirements.spec.js
 test/model/ServersPreset.spec.js
 test/model/ServersSoftware.spec.js
 test/model/ServersSoftwareRequirements.spec.js
+test/model/ServersStatistics.spec.js
+test/model/ServersStatisticsListInner.spec.js
+test/model/ServersStatisticsMeta.spec.js
 test/model/SetLabels.spec.js
 test/model/SettingCondition.spec.js
 test/model/SpamFilterIsDisabled.spec.js

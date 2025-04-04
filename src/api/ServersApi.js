@@ -40,6 +40,7 @@ import GetServerDisks200Response from '../model/GetServerDisks200Response';
 import GetServerIPs200Response from '../model/GetServerIPs200Response';
 import GetServerLogs200Response from '../model/GetServerLogs200Response';
 import GetServerStatistics200Response from '../model/GetServerStatistics200Response';
+import GetServerStatisticsNew200Response from '../model/GetServerStatisticsNew200Response';
 import GetServers200Response from '../model/GetServers200Response';
 import GetServersPresets200Response from '../model/GetServersPresets200Response';
 import GetSoftware200Response from '../model/GetSoftware200Response';
@@ -1006,6 +1007,67 @@ export default class ServersApi {
       let returnType = GetServerStatistics200Response;
       return this.apiClient.callApi(
         '/api/v1/servers/{server_id}/statistics', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getServerStatisticsNew operation.
+     * @callback module:api/ServersApi~getServerStatisticsNewCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetServerStatisticsNew200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение статистики сервера
+     * Чтобы получить статистику сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/{time_from}/{period}/{keys}`.
+     * @param {Number} serverId ID облачного сервера.
+     * @param {String} timeFrom Дата начала сбора статистики.
+     * @param {String} period Количество часов за период которых нужна статистика.
+     * @param {module:model/String} keys Ключи выбираемых видов статистики.
+     * @param {module:api/ServersApi~getServerStatisticsNewCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetServerStatisticsNew200Response}
+     */
+    getServerStatisticsNew(serverId, timeFrom, period, keys, callback) {
+      let postBody = null;
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling getServerStatisticsNew");
+      }
+      // verify the required parameter 'timeFrom' is set
+      if (timeFrom === undefined || timeFrom === null) {
+        throw new Error("Missing the required parameter 'timeFrom' when calling getServerStatisticsNew");
+      }
+      // verify the required parameter 'period' is set
+      if (period === undefined || period === null) {
+        throw new Error("Missing the required parameter 'period' when calling getServerStatisticsNew");
+      }
+      // verify the required parameter 'keys' is set
+      if (keys === undefined || keys === null) {
+        throw new Error("Missing the required parameter 'keys' when calling getServerStatisticsNew");
+      }
+
+      let pathParams = {
+        'server_id': serverId,
+        'time_from': timeFrom,
+        'period': period,
+        'keys': keys
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetServerStatisticsNew200Response;
+      return this.apiClient.callApi(
+        '/api/v1/servers/{server_id}/statistics/{time_from}/{period}/{keys}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

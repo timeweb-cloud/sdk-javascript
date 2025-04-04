@@ -24,6 +24,7 @@ Method | HTTP request | Description
 [**getServerIPs**](ServersApi.md#getServerIPs) | **GET** /api/v1/servers/{server_id}/ips | Получение списка IP-адресов сервера
 [**getServerLogs**](ServersApi.md#getServerLogs) | **GET** /api/v1/servers/{server_id}/logs | Получение списка логов сервера
 [**getServerStatistics**](ServersApi.md#getServerStatistics) | **GET** /api/v1/servers/{server_id}/statistics | Получение статистики сервера
+[**getServerStatisticsNew**](ServersApi.md#getServerStatisticsNew) | **GET** /api/v1/servers/{server_id}/statistics/{time_from}/{period}/{keys} | Получение статистики сервера
 [**getServers**](ServersApi.md#getServers) | **GET** /api/v1/servers | Получение списка серверов
 [**getServersPresets**](ServersApi.md#getServersPresets) | **GET** /api/v1/presets/servers | Получение списка тарифов серверов
 [**getSoftware**](ServersApi.md#getSoftware) | **GET** /api/v1/software/servers | Получение списка ПО из маркетплейса
@@ -1054,6 +1055,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetServerStatistics200Response**](GetServerStatistics200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getServerStatisticsNew
+
+> GetServerStatisticsNew200Response getServerStatisticsNew(serverId, timeFrom, period, keys)
+
+Получение статистики сервера
+
+Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/{time_from}/{period}/{keys}&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.ServersApi();
+let serverId = 1051; // Number | ID облачного сервера.
+let timeFrom = Wed Apr 02 2025 13:27:02 GMT+0300 (Москва, стандартное время); // String | Дата начала сбора статистики.
+let period = 24; // String | Количество часов за период которых нужна статистика.
+let keys = system.cpu.util;network.request;network.response; // String | Ключи выбираемых видов статистики.
+apiInstance.getServerStatisticsNew(serverId, timeFrom, period, keys, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **serverId** | **Number**| ID облачного сервера. | 
+ **timeFrom** | **String**| Дата начала сбора статистики. | 
+ **period** | **String**| Количество часов за период которых нужна статистика. | 
+ **keys** | **String**| Ключи выбираемых видов статистики. | 
+
+### Return type
+
+[**GetServerStatisticsNew200Response**](GetServerStatisticsNew200Response.md)
 
 ### Authorization
 
