@@ -662,6 +662,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateServerDiskBackup201Response](docs/CreateServerDiskBackup201Response.md)
  - [TimewebCloudApi.CreateServerDiskBackupRequest](docs/CreateServerDiskBackupRequest.md)
  - [TimewebCloudApi.CreateServerDiskRequest](docs/CreateServerDiskRequest.md)
+ - [TimewebCloudApi.CreateServerNetwork](docs/CreateServerNetwork.md)
  - [TimewebCloudApi.CreateStorage201Response](docs/CreateStorage201Response.md)
  - [TimewebCloudApi.CreateStorageRequest](docs/CreateStorageRequest.md)
  - [TimewebCloudApi.CreateToken201Response](docs/CreateToken201Response.md)

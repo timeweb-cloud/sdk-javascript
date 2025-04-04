@@ -118,6 +118,7 @@ docs/CreateServerDisk201Response.md
 docs/CreateServerDiskBackup201Response.md
 docs/CreateServerDiskBackupRequest.md
 docs/CreateServerDiskRequest.md
+docs/CreateServerNetwork.md
 docs/CreateStorage201Response.md
 docs/CreateStorageRequest.md
 docs/CreateToken201Response.md
@@ -583,6 +584,7 @@ src/model/CreateServerDisk201Response.js
 src/model/CreateServerDiskBackup201Response.js
 src/model/CreateServerDiskBackupRequest.js
 src/model/CreateServerDiskRequest.js
+src/model/CreateServerNetwork.js
 src/model/CreateStorage201Response.js
 src/model/CreateStorageRequest.js
 src/model/CreateToken201Response.js
@@ -1028,6 +1030,7 @@ test/model/CreateServerDisk201Response.spec.js
 test/model/CreateServerDiskBackup201Response.spec.js
 test/model/CreateServerDiskBackupRequest.spec.js
 test/model/CreateServerDiskRequest.spec.js
+test/model/CreateServerNetwork.spec.js
 test/model/CreateStorage201Response.spec.js
 test/model/CreateStorageRequest.spec.js
 test/model/CreateToken201Response.spec.js

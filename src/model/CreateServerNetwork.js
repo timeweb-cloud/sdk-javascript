@@ -12,24 +12,21 @@
  */
 
 import ApiClient from '../ApiClient';
-import AvailabilityZone from './AvailabilityZone';
-import CreateServerConfiguration from './CreateServerConfiguration';
-import CreateServerNetwork from './CreateServerNetwork';
 
 /**
- * The CreateServer model module.
- * @module model/CreateServer
+ * The CreateServerNetwork model module.
+ * @module model/CreateServerNetwork
  * @version 1.0.0
  */
-class CreateServer {
+class CreateServerNetwork {
     /**
-     * Constructs a new <code>CreateServer</code>.
-     * @alias module:model/CreateServer
-     * @param name {String} Имя облачного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
+     * Constructs a new <code>CreateServerNetwork</code>.
+     * Параметры конфигурации приватной сети сервера
+     * @alias module:model/CreateServerNetwork
      */
-    constructor(name) { 
+    constructor() { 
         
-        CreateServer.initialize(this, name);
+        CreateServerNetwork.initialize(this);
     }
 
     /**
@@ -37,113 +34,64 @@ class CreateServer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name) { 
-        obj['name'] = name;
+    static initialize(obj) { 
     }
 
     /**
-     * Constructs a <code>CreateServer</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>CreateServerNetwork</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/CreateServer} obj Optional instance to populate.
-     * @return {module:model/CreateServer} The populated <code>CreateServer</code> instance.
+     * @param {module:model/CreateServerNetwork} obj Optional instance to populate.
+     * @return {module:model/CreateServerNetwork} The populated <code>CreateServerNetwork</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new CreateServer();
+            obj = obj || new CreateServerNetwork();
 
-            if (data.hasOwnProperty('configuration')) {
-                obj['configuration'] = CreateServerConfiguration.constructFromObject(data['configuration']);
+            if (data.hasOwnProperty('id')) {
+                obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
-            if (data.hasOwnProperty('is_ddos_guard')) {
-                obj['is_ddos_guard'] = ApiClient.convertToType(data['is_ddos_guard'], 'Boolean');
+            if (data.hasOwnProperty('floating_ip')) {
+                obj['floating_ip'] = ApiClient.convertToType(data['floating_ip'], 'String');
             }
-            if (data.hasOwnProperty('os_id')) {
-                obj['os_id'] = ApiClient.convertToType(data['os_id'], 'Number');
+            if (data.hasOwnProperty('local_ip')) {
+                obj['local_ip'] = ApiClient.convertToType(data['local_ip'], 'String');
             }
-            if (data.hasOwnProperty('image_id')) {
-                obj['image_id'] = ApiClient.convertToType(data['image_id'], 'String');
+            if (data.hasOwnProperty('ip')) {
+                obj['ip'] = ApiClient.convertToType(data['ip'], 'String');
             }
-            if (data.hasOwnProperty('software_id')) {
-                obj['software_id'] = ApiClient.convertToType(data['software_id'], 'Number');
-            }
-            if (data.hasOwnProperty('preset_id')) {
-                obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
-            }
-            if (data.hasOwnProperty('bandwidth')) {
-                obj['bandwidth'] = ApiClient.convertToType(data['bandwidth'], 'Number');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('avatar_id')) {
-                obj['avatar_id'] = ApiClient.convertToType(data['avatar_id'], 'String');
-            }
-            if (data.hasOwnProperty('comment')) {
-                obj['comment'] = ApiClient.convertToType(data['comment'], 'String');
-            }
-            if (data.hasOwnProperty('ssh_keys_ids')) {
-                obj['ssh_keys_ids'] = ApiClient.convertToType(data['ssh_keys_ids'], ['Number']);
-            }
-            if (data.hasOwnProperty('is_local_network')) {
-                obj['is_local_network'] = ApiClient.convertToType(data['is_local_network'], 'Boolean');
-            }
-            if (data.hasOwnProperty('network')) {
-                obj['network'] = CreateServerNetwork.constructFromObject(data['network']);
-            }
-            if (data.hasOwnProperty('cloud_init')) {
-                obj['cloud_init'] = ApiClient.convertToType(data['cloud_init'], 'String');
-            }
-            if (data.hasOwnProperty('availability_zone')) {
-                obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
+            if (data.hasOwnProperty('network_drive_ids')) {
+                obj['network_drive_ids'] = ApiClient.convertToType(data['network_drive_ids'], ['String']);
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>CreateServer</code>.
+     * Validates the JSON data with respect to <code>CreateServerNetwork</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateServer</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateServerNetwork</code>.
      */
     static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of CreateServer.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
-        // validate the optional field `configuration`
-        if (data['configuration']) { // data not null
-          CreateServerConfiguration.validateJSON(data['configuration']);
+        // ensure the json data is a string
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
         // ensure the json data is a string
-        if (data['image_id'] && !(typeof data['image_id'] === 'string' || data['image_id'] instanceof String)) {
-            throw new Error("Expected the field `image_id` to be a primitive type in the JSON string but got " + data['image_id']);
+        if (data['floating_ip'] && !(typeof data['floating_ip'] === 'string' || data['floating_ip'] instanceof String)) {
+            throw new Error("Expected the field `floating_ip` to be a primitive type in the JSON string but got " + data['floating_ip']);
         }
         // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
-            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        if (data['local_ip'] && !(typeof data['local_ip'] === 'string' || data['local_ip'] instanceof String)) {
+            throw new Error("Expected the field `local_ip` to be a primitive type in the JSON string but got " + data['local_ip']);
         }
         // ensure the json data is a string
-        if (data['avatar_id'] && !(typeof data['avatar_id'] === 'string' || data['avatar_id'] instanceof String)) {
-            throw new Error("Expected the field `avatar_id` to be a primitive type in the JSON string but got " + data['avatar_id']);
-        }
-        // ensure the json data is a string
-        if (data['comment'] && !(typeof data['comment'] === 'string' || data['comment'] instanceof String)) {
-            throw new Error("Expected the field `comment` to be a primitive type in the JSON string but got " + data['comment']);
+        if (data['ip'] && !(typeof data['ip'] === 'string' || data['ip'] instanceof String)) {
+            throw new Error("Expected the field `ip` to be a primitive type in the JSON string but got " + data['ip']);
         }
         // ensure the json data is an array
-        if (!Array.isArray(data['ssh_keys_ids'])) {
-            throw new Error("Expected the field `ssh_keys_ids` to be an array in the JSON data but got " + data['ssh_keys_ids']);
-        }
-        // validate the optional field `network`
-        if (data['network']) { // data not null
-          CreateServerNetwork.validateJSON(data['network']);
-        }
-        // ensure the json data is a string
-        if (data['cloud_init'] && !(typeof data['cloud_init'] === 'string' || data['cloud_init'] instanceof String)) {
-            throw new Error("Expected the field `cloud_init` to be a primitive type in the JSON string but got " + data['cloud_init']);
+        if (!Array.isArray(data['network_drive_ids'])) {
+            throw new Error("Expected the field `network_drive_ids` to be an array in the JSON data but got " + data['network_drive_ids']);
         }
 
         return true;
@@ -152,99 +100,42 @@ class CreateServer {
 
 }
 
-CreateServer.RequiredProperties = ["name"];
+
 
 /**
- * @member {module:model/CreateServerConfiguration} configuration
+ * ID сети
+ * @member {String} id
  */
-CreateServer.prototype['configuration'] = undefined;
+CreateServerNetwork.prototype['id'] = undefined;
 
 /**
- * Защита от DDoS. Серверу выдается защищенный IP-адрес с защитой уровня L3 / L4. Для включения защиты уровня L7 необходимо создать тикет в техническую поддержку.
- * @member {Boolean} is_ddos_guard
+ * Публичный IP
+ * @member {String} floating_ip
  */
-CreateServer.prototype['is_ddos_guard'] = undefined;
+CreateServerNetwork.prototype['floating_ip'] = undefined;
 
 /**
- * ID операционной системы, которая будет установлена на облачный сервер. Нельзя передавать вместе с `image_id`.
- * @member {Number} os_id
+ * Приватный IP
+ * @member {String} local_ip
  */
-CreateServer.prototype['os_id'] = undefined;
+CreateServerNetwork.prototype['local_ip'] = undefined;
 
 /**
- * ID образа, который будет установлен на облачный сервер. Нельзя передавать вместе с `os_id`.
- * @member {String} image_id
+ * Приватный IP
+ * @member {String} ip
  */
-CreateServer.prototype['image_id'] = undefined;
+CreateServerNetwork.prototype['ip'] = undefined;
 
 /**
- * ID программного обеспечения сервера.
- * @member {Number} software_id
+ * Массив ID сетевых дисков
+ * @member {Array.<String>} network_drive_ids
  */
-CreateServer.prototype['software_id'] = undefined;
-
-/**
- * ID тарифа сервера. Нельзя передавать вместе с ключом `configurator`.
- * @member {Number} preset_id
- */
-CreateServer.prototype['preset_id'] = undefined;
-
-/**
- * Пропускная способность тарифа. Доступные значения от 100 до 1000 с шагом 100.
- * @member {Number} bandwidth
- */
-CreateServer.prototype['bandwidth'] = undefined;
-
-/**
- * Имя облачного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
- * @member {String} name
- */
-CreateServer.prototype['name'] = undefined;
-
-/**
- * ID аватара сервера.
- * @member {String} avatar_id
- */
-CreateServer.prototype['avatar_id'] = undefined;
-
-/**
- * Комментарий к облачному серверу. Максимальная длина — 255 символов.
- * @member {String} comment
- */
-CreateServer.prototype['comment'] = undefined;
-
-/**
- * Список SSH-ключей.
- * @member {Array.<Number>} ssh_keys_ids
- */
-CreateServer.prototype['ssh_keys_ids'] = undefined;
-
-/**
- * Локальная сеть.
- * @member {Boolean} is_local_network
- */
-CreateServer.prototype['is_local_network'] = undefined;
-
-/**
- * @member {module:model/CreateServerNetwork} network
- */
-CreateServer.prototype['network'] = undefined;
-
-/**
- * Cloud-init скрипт
- * @member {String} cloud_init
- */
-CreateServer.prototype['cloud_init'] = undefined;
-
-/**
- * @member {module:model/AvailabilityZone} availability_zone
- */
-CreateServer.prototype['availability_zone'] = undefined;
+CreateServerNetwork.prototype['network_drive_ids'] = undefined;
 
 
 
 
 
 
-export default CreateServer;
+export default CreateServerNetwork;
 

@@ -124,6 +124,7 @@ import CreateServerDisk201Response from './model/CreateServerDisk201Response';
 import CreateServerDiskBackup201Response from './model/CreateServerDiskBackup201Response';
 import CreateServerDiskBackupRequest from './model/CreateServerDiskBackupRequest';
 import CreateServerDiskRequest from './model/CreateServerDiskRequest';
+import CreateServerNetwork from './model/CreateServerNetwork';
 import CreateStorage201Response from './model/CreateStorage201Response';
 import CreateStorageRequest from './model/CreateStorageRequest';
 import CreateToken201Response from './model/CreateToken201Response';
@@ -1163,6 +1164,12 @@ export {
      * @property {module:model/CreateServerDiskRequest}
      */
     CreateServerDiskRequest,
+
+    /**
+     * The CreateServerNetwork model constructor.
+     * @property {module:model/CreateServerNetwork}
+     */
+    CreateServerNetwork,
 
     /**
      * The CreateStorage201Response model constructor.
