@@ -1022,7 +1022,7 @@ export default class ServersApi {
 
     /**
      * Получение статистики сервера
-     * Чтобы получить статистику сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/{time_from}/{period}/{keys}`.
+     * Чтобы получить статистику сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/statistics/{time_from}/{period}/{keys}`.
      * @param {Number} serverId ID облачного сервера.
      * @param {String} timeFrom Дата начала сбора статистики.
      * @param {String} period Количество часов за период которых нужна статистика.
