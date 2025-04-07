@@ -17,6 +17,11 @@ Name | Type | Description | Notes
 **port** | **Number** | Порт балансировщика. | 
 **proto** | **String** | Протокол. | 
 **rise** | **Number** | Порог количества успешных ответов. | 
+**maxconn** | **Number** | Максимальное количество соединений. | 
+**connectTimeout** | **Number** | Таймаут подключения. | 
+**clientTimeout** | **Number** | Таймаут клиента. | 
+**serverTimeout** | **Number** | Таймаут сервера. | 
+**httprequestTimeout** | **Number** | Таймаут HTTP запроса. | 
 **presetId** | **Number** | ID тарифа. | 
 **isSsl** | **Boolean** | Это логическое значение, которое показывает, требуется ли перенаправление на SSL. | 
 **status** | **String** | Статус балансировщика. | 

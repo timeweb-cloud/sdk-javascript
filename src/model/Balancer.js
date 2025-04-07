@@ -38,6 +38,11 @@ class Balancer {
      * @param port {Number} Порт балансировщика.
      * @param proto {module:model/Balancer.ProtoEnum} Протокол.
      * @param rise {Number} Порог количества успешных ответов.
+     * @param maxconn {Number} Максимальное количество соединений.
+     * @param connectTimeout {Number} Таймаут подключения.
+     * @param clientTimeout {Number} Таймаут клиента.
+     * @param serverTimeout {Number} Таймаут сервера.
+     * @param httprequestTimeout {Number} Таймаут HTTP запроса.
      * @param presetId {Number} ID тарифа.
      * @param isSsl {Boolean} Это логическое значение, которое показывает, требуется ли перенаправление на SSL.
      * @param status {module:model/Balancer.StatusEnum} Статус балансировщика.
@@ -49,9 +54,9 @@ class Balancer {
      * @param location {module:model/Balancer.LocationEnum} Географическое расположение балансировщика
      * @param availabilityZone {module:model/AvailabilityZone} 
      */
-    constructor(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone) { 
+    constructor(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone) { 
         
-        Balancer.initialize(this, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone);
+        Balancer.initialize(this, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone);
     }
 
     /**
@@ -59,7 +64,7 @@ class Balancer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone) { 
+    static initialize(obj, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone) { 
         obj['id'] = id;
         obj['algo'] = algo;
         obj['created_at'] = createdAt;
@@ -73,6 +78,11 @@ class Balancer {
         obj['port'] = port;
         obj['proto'] = proto;
         obj['rise'] = rise;
+        obj['maxconn'] = maxconn;
+        obj['connect_timeout'] = connectTimeout;
+        obj['client_timeout'] = clientTimeout;
+        obj['server_timeout'] = serverTimeout;
+        obj['httprequest_timeout'] = httprequestTimeout;
         obj['preset_id'] = presetId;
         obj['is_ssl'] = isSsl;
         obj['status'] = status;
@@ -134,6 +144,21 @@ class Balancer {
             }
             if (data.hasOwnProperty('rise')) {
                 obj['rise'] = ApiClient.convertToType(data['rise'], 'Number');
+            }
+            if (data.hasOwnProperty('maxconn')) {
+                obj['maxconn'] = ApiClient.convertToType(data['maxconn'], 'Number');
+            }
+            if (data.hasOwnProperty('connect_timeout')) {
+                obj['connect_timeout'] = ApiClient.convertToType(data['connect_timeout'], 'Number');
+            }
+            if (data.hasOwnProperty('client_timeout')) {
+                obj['client_timeout'] = ApiClient.convertToType(data['client_timeout'], 'Number');
+            }
+            if (data.hasOwnProperty('server_timeout')) {
+                obj['server_timeout'] = ApiClient.convertToType(data['server_timeout'], 'Number');
+            }
+            if (data.hasOwnProperty('httprequest_timeout')) {
+                obj['httprequest_timeout'] = ApiClient.convertToType(data['httprequest_timeout'], 'Number');
             }
             if (data.hasOwnProperty('preset_id')) {
                 obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
@@ -234,7 +259,7 @@ class Balancer {
 
 }
 
-Balancer.RequiredProperties = ["id", "algo", "created_at", "fall", "inter", "ip", "local_ip", "is_keepalive", "name", "path", "port", "proto", "rise", "preset_id", "is_ssl", "status", "is_sticky", "timeout", "is_use_proxy", "rules", "ips", "location", "availability_zone"];
+Balancer.RequiredProperties = ["id", "algo", "created_at", "fall", "inter", "ip", "local_ip", "is_keepalive", "name", "path", "port", "proto", "rise", "maxconn", "connect_timeout", "client_timeout", "server_timeout", "httprequest_timeout", "preset_id", "is_ssl", "status", "is_sticky", "timeout", "is_use_proxy", "rules", "ips", "location", "availability_zone"];
 
 /**
  * ID для каждого экземпляра балансировщика. Автоматически генерируется при создании.
@@ -313,6 +338,36 @@ Balancer.prototype['proto'] = undefined;
  * @member {Number} rise
  */
 Balancer.prototype['rise'] = undefined;
+
+/**
+ * Максимальное количество соединений.
+ * @member {Number} maxconn
+ */
+Balancer.prototype['maxconn'] = undefined;
+
+/**
+ * Таймаут подключения.
+ * @member {Number} connect_timeout
+ */
+Balancer.prototype['connect_timeout'] = undefined;
+
+/**
+ * Таймаут клиента.
+ * @member {Number} client_timeout
+ */
+Balancer.prototype['client_timeout'] = undefined;
+
+/**
+ * Таймаут сервера.
+ * @member {Number} server_timeout
+ */
+Balancer.prototype['server_timeout'] = undefined;
+
+/**
+ * Таймаут HTTP запроса.
+ * @member {Number} httprequest_timeout
+ */
+Balancer.prototype['httprequest_timeout'] = undefined;
 
 /**
  * ID тарифа.

@@ -116,6 +116,21 @@ class CreateBalancer {
             if (data.hasOwnProperty('rise')) {
                 obj['rise'] = ApiClient.convertToType(data['rise'], 'Number');
             }
+            if (data.hasOwnProperty('maxconn')) {
+                obj['maxconn'] = ApiClient.convertToType(data['maxconn'], 'Number');
+            }
+            if (data.hasOwnProperty('connect_timeout')) {
+                obj['connect_timeout'] = ApiClient.convertToType(data['connect_timeout'], 'Number');
+            }
+            if (data.hasOwnProperty('client_timeout')) {
+                obj['client_timeout'] = ApiClient.convertToType(data['client_timeout'], 'Number');
+            }
+            if (data.hasOwnProperty('server_timeout')) {
+                obj['server_timeout'] = ApiClient.convertToType(data['server_timeout'], 'Number');
+            }
+            if (data.hasOwnProperty('httprequest_timeout')) {
+                obj['httprequest_timeout'] = ApiClient.convertToType(data['httprequest_timeout'], 'Number');
+            }
             if (data.hasOwnProperty('preset_id')) {
                 obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
             }
@@ -247,6 +262,36 @@ CreateBalancer.prototype['fall'] = undefined;
  * @member {Number} rise
  */
 CreateBalancer.prototype['rise'] = undefined;
+
+/**
+ * Максимальное количество соединений.
+ * @member {Number} maxconn
+ */
+CreateBalancer.prototype['maxconn'] = undefined;
+
+/**
+ * Таймаут подключения.
+ * @member {Number} connect_timeout
+ */
+CreateBalancer.prototype['connect_timeout'] = undefined;
+
+/**
+ * Таймаут клиента.
+ * @member {Number} client_timeout
+ */
+CreateBalancer.prototype['client_timeout'] = undefined;
+
+/**
+ * Таймаут сервера.
+ * @member {Number} server_timeout
+ */
+CreateBalancer.prototype['server_timeout'] = undefined;
+
+/**
+ * Таймаут HTTP запроса.
+ * @member {Number} httprequest_timeout
+ */
+CreateBalancer.prototype['httprequest_timeout'] = undefined;
 
 /**
  * ID тарифа.

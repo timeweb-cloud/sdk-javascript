@@ -132,6 +132,36 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property maxconn (base name: "maxconn")', function() {
+      // uncomment below and update the code to test the property maxconn
+      //var instance = new TimewebCloudApi.Balancer();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property connectTimeout (base name: "connect_timeout")', function() {
+      // uncomment below and update the code to test the property connectTimeout
+      //var instance = new TimewebCloudApi.Balancer();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property clientTimeout (base name: "client_timeout")', function() {
+      // uncomment below and update the code to test the property clientTimeout
+      //var instance = new TimewebCloudApi.Balancer();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property serverTimeout (base name: "server_timeout")', function() {
+      // uncomment below and update the code to test the property serverTimeout
+      //var instance = new TimewebCloudApi.Balancer();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property httprequestTimeout (base name: "httprequest_timeout")', function() {
+      // uncomment below and update the code to test the property httprequestTimeout
+      //var instance = new TimewebCloudApi.Balancer();
+      //expect(instance).to.be();
+    });
+
     it('should have the property presetId (base name: "preset_id")', function() {
       // uncomment below and update the code to test the property presetId
       //var instance = new TimewebCloudApi.Balancer();

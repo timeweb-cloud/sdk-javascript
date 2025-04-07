@@ -17,6 +17,11 @@ Name | Type | Description | Notes
 **timeout** | **Number** | Таймаут ответа балансировщика. | 
 **fall** | **Number** | Порог количества ошибок. | 
 **rise** | **Number** | Порог количества успешных ответов. | 
+**maxconn** | **Number** | Максимальное количество соединений. | [optional] 
+**connectTimeout** | **Number** | Таймаут подключения. | [optional] 
+**clientTimeout** | **Number** | Таймаут клиента. | [optional] 
+**serverTimeout** | **Number** | Таймаут сервера. | [optional] 
+**httprequestTimeout** | **Number** | Таймаут HTTP запроса. | [optional] 
 **presetId** | **Number** | ID тарифа. | 
 **network** | [**Network**](Network.md) |  | [optional] 
 **availabilityZone** | [**AvailabilityZone**](AvailabilityZone.md) |  | [optional] 
