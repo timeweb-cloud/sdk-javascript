@@ -96,6 +96,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property avatarLink (base name: "avatar_link")', function() {
+      // uncomment below and update the code to test the property avatarLink
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
     it('should have the property port (base name: "port")', function() {
       // uncomment below and update the code to test the property port
       //var instance = new TimewebCloudApi.DatabaseCluster();

@@ -96,6 +96,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property avatarLink (base name: "avatar_link")', function() {
+      // uncomment below and update the code to test the property avatarLink
+      //var instance = new TimewebCloudApi.Bucket();
+      //expect(instance).to.be();
+    });
+
     it('should have the property status (base name: "status")', function() {
       // uncomment below and update the code to test the property status
       //var instance = new TimewebCloudApi.Bucket();

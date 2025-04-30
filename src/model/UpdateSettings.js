@@ -15,18 +15,18 @@ import ApiClient from '../ApiClient';
 import Frameworks from './Frameworks';
 
 /**
- * The UpdeteSettings model module.
- * @module model/UpdeteSettings
+ * The UpdateSettings model module.
+ * @module model/UpdateSettings
  * @version 1.0.0
  */
-class UpdeteSettings {
+class UpdateSettings {
     /**
-     * Constructs a new <code>UpdeteSettings</code>.
-     * @alias module:model/UpdeteSettings
+     * Constructs a new <code>UpdateSettings</code>.
+     * @alias module:model/UpdateSettings
      */
     constructor() { 
         
-        UpdeteSettings.initialize(this);
+        UpdateSettings.initialize(this);
     }
 
     /**
@@ -38,15 +38,15 @@ class UpdeteSettings {
     }
 
     /**
-     * Constructs a <code>UpdeteSettings</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>UpdateSettings</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/UpdeteSettings} obj Optional instance to populate.
-     * @return {module:model/UpdeteSettings} The populated <code>UpdeteSettings</code> instance.
+     * @param {module:model/UpdateSettings} obj Optional instance to populate.
+     * @return {module:model/UpdateSettings} The populated <code>UpdateSettings</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new UpdeteSettings();
+            obj = obj || new UpdateSettings();
 
             if (data.hasOwnProperty('is_auto_deploy')) {
                 obj['is_auto_deploy'] = ApiClient.convertToType(data['is_auto_deploy'], 'Boolean');
@@ -89,9 +89,9 @@ class UpdeteSettings {
     }
 
     /**
-     * Validates the JSON data with respect to <code>UpdeteSettings</code>.
+     * Validates the JSON data with respect to <code>UpdateSettings</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdeteSettings</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateSettings</code>.
      */
     static validateJSON(data) {
         // ensure the json data is a string
@@ -139,77 +139,77 @@ class UpdeteSettings {
  * Автоматический деплой.
  * @member {Boolean} is_auto_deploy
  */
-UpdeteSettings.prototype['is_auto_deploy'] = undefined;
+UpdateSettings.prototype['is_auto_deploy'] = undefined;
 
 /**
  * Команда сборки приложения.
  * @member {String} build_cmd
  */
-UpdeteSettings.prototype['build_cmd'] = undefined;
+UpdateSettings.prototype['build_cmd'] = undefined;
 
 /**
  * Переменные окружения приложения. Объект с ключами и значениями типа string.
  * @member {Object} envs
  */
-UpdeteSettings.prototype['envs'] = undefined;
+UpdateSettings.prototype['envs'] = undefined;
 
 /**
  * Название ветки репозитория из которой необходимо собрать приложение.
  * @member {String} branch_name
  */
-UpdeteSettings.prototype['branch_name'] = undefined;
+UpdateSettings.prototype['branch_name'] = undefined;
 
 /**
  * Хэш коммита.
  * @member {String} commit_sha
  */
-UpdeteSettings.prototype['commit_sha'] = undefined;
+UpdateSettings.prototype['commit_sha'] = undefined;
 
 /**
  * Версия окружения.
  * @member {String} env_version
  */
-UpdeteSettings.prototype['env_version'] = undefined;
+UpdateSettings.prototype['env_version'] = undefined;
 
 /**
  * Путь к директории с индексным файлом. Используется для приложений `type: frontend`. Не используется для приложений `type: backend`. Значение всегда должно начинаться с `/`.
  * @member {String} index_dir
  */
-UpdeteSettings.prototype['index_dir'] = undefined;
+UpdateSettings.prototype['index_dir'] = undefined;
 
 /**
  * Команда для запуска приложения. Используется для приложений `type: backend`. Не используется для приложений `type: frontend`.
  * @member {String} run_cmd
  */
-UpdeteSettings.prototype['run_cmd'] = undefined;
+UpdateSettings.prototype['run_cmd'] = undefined;
 
 /**
  * @member {module:model/Frameworks} framework
  */
-UpdeteSettings.prototype['framework'] = undefined;
+UpdateSettings.prototype['framework'] = undefined;
 
 /**
  * Имя приложения.
  * @member {String} name
  */
-UpdeteSettings.prototype['name'] = undefined;
+UpdateSettings.prototype['name'] = undefined;
 
 /**
  * Комментарий к приложению.
  * @member {String} comment
  */
-UpdeteSettings.prototype['comment'] = undefined;
+UpdateSettings.prototype['comment'] = undefined;
 
 /**
  * ID тарифа.
  * @member {Number} preset_id
  */
-UpdeteSettings.prototype['preset_id'] = undefined;
+UpdateSettings.prototype['preset_id'] = undefined;
 
 
 
 
 
 
-export default UpdeteSettings;
+export default UpdateSettings;
 

@@ -31,6 +31,7 @@ class Domain {
      * @param expiration {String} Дата окончания срока регистрации домена, для доменов без срока окончания регистрации будет приходить 0000-00-00.
      * @param fqdn {String} Полное имя домена.
      * @param id {Number} ID домена.
+     * @param avatarLink {String} Ссылка на аватар домена.
      * @param isAutoprolongEnabled {Boolean} Это логическое значение, которое показывает, включено ли автопродление домена.
      * @param isPremium {Boolean} Это логическое значение, которое показывает, является ли домен премиальным.
      * @param isProlongAllowed {Boolean} Это логическое значение, которое показывает, можно ли сейчас продлить домен.
@@ -45,9 +46,9 @@ class Domain {
      * @param subdomains {Array.<module:model/Subdomain>} Список поддоменов.
      * @param tldId {Number} ID доменной зоны.
      */
-    constructor(allowedBuyPeriods, daysLeft, domainStatus, expiration, fqdn, id, isAutoprolongEnabled, isPremium, isProlongAllowed, isTechnical, isWhoisPrivacyEnabled, linkedIp, paidTill, personId, premiumProlongCost, provider, requestStatus, subdomains, tldId) { 
+    constructor(allowedBuyPeriods, daysLeft, domainStatus, expiration, fqdn, id, avatarLink, isAutoprolongEnabled, isPremium, isProlongAllowed, isTechnical, isWhoisPrivacyEnabled, linkedIp, paidTill, personId, premiumProlongCost, provider, requestStatus, subdomains, tldId) { 
         
-        Domain.initialize(this, allowedBuyPeriods, daysLeft, domainStatus, expiration, fqdn, id, isAutoprolongEnabled, isPremium, isProlongAllowed, isTechnical, isWhoisPrivacyEnabled, linkedIp, paidTill, personId, premiumProlongCost, provider, requestStatus, subdomains, tldId);
+        Domain.initialize(this, allowedBuyPeriods, daysLeft, domainStatus, expiration, fqdn, id, avatarLink, isAutoprolongEnabled, isPremium, isProlongAllowed, isTechnical, isWhoisPrivacyEnabled, linkedIp, paidTill, personId, premiumProlongCost, provider, requestStatus, subdomains, tldId);
     }
 
     /**
@@ -55,13 +56,14 @@ class Domain {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, allowedBuyPeriods, daysLeft, domainStatus, expiration, fqdn, id, isAutoprolongEnabled, isPremium, isProlongAllowed, isTechnical, isWhoisPrivacyEnabled, linkedIp, paidTill, personId, premiumProlongCost, provider, requestStatus, subdomains, tldId) { 
+    static initialize(obj, allowedBuyPeriods, daysLeft, domainStatus, expiration, fqdn, id, avatarLink, isAutoprolongEnabled, isPremium, isProlongAllowed, isTechnical, isWhoisPrivacyEnabled, linkedIp, paidTill, personId, premiumProlongCost, provider, requestStatus, subdomains, tldId) { 
         obj['allowed_buy_periods'] = allowedBuyPeriods;
         obj['days_left'] = daysLeft;
         obj['domain_status'] = domainStatus;
         obj['expiration'] = expiration;
         obj['fqdn'] = fqdn;
         obj['id'] = id;
+        obj['avatar_link'] = avatarLink;
         obj['is_autoprolong_enabled'] = isAutoprolongEnabled;
         obj['is_premium'] = isPremium;
         obj['is_prolong_allowed'] = isProlongAllowed;
@@ -105,6 +107,9 @@ class Domain {
             }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+            }
+            if (data.hasOwnProperty('avatar_link')) {
+                obj['avatar_link'] = ApiClient.convertToType(data['avatar_link'], 'String');
             }
             if (data.hasOwnProperty('is_autoprolong_enabled')) {
                 obj['is_autoprolong_enabled'] = ApiClient.convertToType(data['is_autoprolong_enabled'], 'Boolean');
@@ -184,6 +189,10 @@ class Domain {
             throw new Error("Expected the field `fqdn` to be a primitive type in the JSON string but got " + data['fqdn']);
         }
         // ensure the json data is a string
+        if (data['avatar_link'] && !(typeof data['avatar_link'] === 'string' || data['avatar_link'] instanceof String)) {
+            throw new Error("Expected the field `avatar_link` to be a primitive type in the JSON string but got " + data['avatar_link']);
+        }
+        // ensure the json data is a string
         if (data['linked_ip'] && !(typeof data['linked_ip'] === 'string' || data['linked_ip'] instanceof String)) {
             throw new Error("Expected the field `linked_ip` to be a primitive type in the JSON string but got " + data['linked_ip']);
         }
@@ -216,7 +225,7 @@ class Domain {
 
 }
 
-Domain.RequiredProperties = ["allowed_buy_periods", "days_left", "domain_status", "expiration", "fqdn", "id", "is_autoprolong_enabled", "is_premium", "is_prolong_allowed", "is_technical", "is_whois_privacy_enabled", "linked_ip", "paid_till", "person_id", "premium_prolong_cost", "provider", "request_status", "subdomains", "tld_id"];
+Domain.RequiredProperties = ["allowed_buy_periods", "days_left", "domain_status", "expiration", "fqdn", "id", "avatar_link", "is_autoprolong_enabled", "is_premium", "is_prolong_allowed", "is_technical", "is_whois_privacy_enabled", "linked_ip", "paid_till", "person_id", "premium_prolong_cost", "provider", "request_status", "subdomains", "tld_id"];
 
 /**
  * Допустимые периоды продления домена.
@@ -253,6 +262,12 @@ Domain.prototype['fqdn'] = undefined;
  * @member {Number} id
  */
 Domain.prototype['id'] = undefined;
+
+/**
+ * Ссылка на аватар домена.
+ * @member {String} avatar_link
+ */
+Domain.prototype['avatar_link'] = undefined;
 
 /**
  * Это логическое значение, которое показывает, включено ли автопродление домена.

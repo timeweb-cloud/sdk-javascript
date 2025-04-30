@@ -981,7 +981,7 @@ Name | Type | Description  | Notes
 
 ## updateAppSettings
 
-> UpdateAppSettings200Response updateAppSettings(appId, updeteSettings)
+> UpdateAppSettings200Response updateAppSettings(appId, updateSettings)
 
 Изменение настроек приложения
 
@@ -998,8 +998,8 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.AppsApi();
 let appId = "appId_example"; // String | 
-let updeteSettings = new TimewebCloudApi.UpdeteSettings(); // UpdeteSettings | 
-apiInstance.updateAppSettings(appId, updeteSettings, (error, data, response) => {
+let updateSettings = new TimewebCloudApi.UpdateSettings(); // UpdateSettings | 
+apiInstance.updateAppSettings(appId, updateSettings, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -1014,7 +1014,7 @@ apiInstance.updateAppSettings(appId, updeteSettings, (error, data, response) => 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**|  | 
- **updeteSettings** | [**UpdeteSettings**](UpdeteSettings.md)|  | 
+ **updateSettings** | [**UpdateSettings**](UpdateSettings.md)|  | 
 
 ### Return type
 

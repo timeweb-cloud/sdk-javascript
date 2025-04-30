@@ -34,6 +34,7 @@ class DatabaseCluster {
      * @param networks {Array.<module:model/DatabaseClusterNetworksInner>} Список сетей кластера базы данных.
      * @param type {module:model/DbType} 
      * @param hashType {module:model/DatabaseCluster.HashTypeEnum} Тип хеширования кластера базы данных (mysql5 | mysql | postgres).
+     * @param avatarLink {String} Ссылка на аватар для базы данных.
      * @param port {Number} Порт
      * @param status {module:model/DatabaseCluster.StatusEnum} Текущий статус кластера базы данных.
      * @param presetId {Number} ID тарифа.
@@ -41,9 +42,9 @@ class DatabaseCluster {
      * @param configParameters {module:model/ConfigParameters} 
      * @param isEnabledPublicNetwork {Boolean} Доступность публичного IP-адреса
      */
-    constructor(id, createdAt, location, name, networks, type, hashType, port, status, presetId, diskStats, configParameters, isEnabledPublicNetwork) { 
+    constructor(id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, diskStats, configParameters, isEnabledPublicNetwork) { 
         
-        DatabaseCluster.initialize(this, id, createdAt, location, name, networks, type, hashType, port, status, presetId, diskStats, configParameters, isEnabledPublicNetwork);
+        DatabaseCluster.initialize(this, id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, diskStats, configParameters, isEnabledPublicNetwork);
     }
 
     /**
@@ -51,7 +52,7 @@ class DatabaseCluster {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, createdAt, location, name, networks, type, hashType, port, status, presetId, diskStats, configParameters, isEnabledPublicNetwork) { 
+    static initialize(obj, id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, diskStats, configParameters, isEnabledPublicNetwork) { 
         obj['id'] = id;
         obj['created_at'] = createdAt;
         obj['location'] = location;
@@ -59,6 +60,7 @@ class DatabaseCluster {
         obj['networks'] = networks;
         obj['type'] = type;
         obj['hash_type'] = hashType;
+        obj['avatar_link'] = avatarLink;
         obj['port'] = port;
         obj['status'] = status;
         obj['preset_id'] = presetId;
@@ -98,6 +100,9 @@ class DatabaseCluster {
             }
             if (data.hasOwnProperty('hash_type')) {
                 obj['hash_type'] = ApiClient.convertToType(data['hash_type'], 'String');
+            }
+            if (data.hasOwnProperty('avatar_link')) {
+                obj['avatar_link'] = ApiClient.convertToType(data['avatar_link'], 'String');
             }
             if (data.hasOwnProperty('port')) {
                 obj['port'] = ApiClient.convertToType(data['port'], 'Number');
@@ -160,6 +165,10 @@ class DatabaseCluster {
             throw new Error("Expected the field `hash_type` to be a primitive type in the JSON string but got " + data['hash_type']);
         }
         // ensure the json data is a string
+        if (data['avatar_link'] && !(typeof data['avatar_link'] === 'string' || data['avatar_link'] instanceof String)) {
+            throw new Error("Expected the field `avatar_link` to be a primitive type in the JSON string but got " + data['avatar_link']);
+        }
+        // ensure the json data is a string
         if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
             throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
         }
@@ -178,7 +187,7 @@ class DatabaseCluster {
 
 }
 
-DatabaseCluster.RequiredProperties = ["id", "created_at", "location", "name", "networks", "type", "hash_type", "port", "status", "preset_id", "disk_stats", "config_parameters", "is_enabled_public_network"];
+DatabaseCluster.RequiredProperties = ["id", "created_at", "location", "name", "networks", "type", "hash_type", "avatar_link", "port", "status", "preset_id", "disk_stats", "config_parameters", "is_enabled_public_network"];
 
 /**
  * ID для каждого экземпляра базы данных. Автоматически генерируется при создании.
@@ -220,6 +229,12 @@ DatabaseCluster.prototype['type'] = undefined;
  * @member {module:model/DatabaseCluster.HashTypeEnum} hash_type
  */
 DatabaseCluster.prototype['hash_type'] = undefined;
+
+/**
+ * Ссылка на аватар для базы данных.
+ * @member {String} avatar_link
+ */
+DatabaseCluster.prototype['avatar_link'] = undefined;
 
 /**
  * Порт

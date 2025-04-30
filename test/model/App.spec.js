@@ -168,6 +168,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property avatarLink (base name: "avatar_link")', function() {
+      // uncomment below and update the code to test the property avatarLink
+      //var instance = new TimewebCloudApi.App();
+      //expect(instance).to.be();
+    });
+
     it('should have the property runCmd (base name: "run_cmd")', function() {
       // uncomment below and update the code to test the property runCmd
       //var instance = new TimewebCloudApi.App();

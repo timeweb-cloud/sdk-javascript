@@ -418,12 +418,12 @@ import UpdateServerDiskRequest from './model/UpdateServerDiskRequest';
 import UpdateServerIPRequest from './model/UpdateServerIPRequest';
 import UpdateServerNATRequest from './model/UpdateServerNATRequest';
 import UpdateServerOSBootModeRequest from './model/UpdateServerOSBootModeRequest';
+import UpdateSettings from './model/UpdateSettings';
 import UpdateStorageRequest from './model/UpdateStorageRequest';
 import UpdateStorageUser200Response from './model/UpdateStorageUser200Response';
 import UpdateStorageUserRequest from './model/UpdateStorageUserRequest';
 import UpdateToken200Response from './model/UpdateToken200Response';
 import UpdateVpc from './model/UpdateVpc';
-import UpdeteSettings from './model/UpdeteSettings';
 import UploadSuccessful from './model/UploadSuccessful';
 import UploadSuccessfulResponse from './model/UploadSuccessfulResponse';
 import UrlStatus from './model/UrlStatus';
@@ -2930,6 +2930,12 @@ export {
     UpdateServerOSBootModeRequest,
 
     /**
+     * The UpdateSettings model constructor.
+     * @property {module:model/UpdateSettings}
+     */
+    UpdateSettings,
+
+    /**
      * The UpdateStorageRequest model constructor.
      * @property {module:model/UpdateStorageRequest}
      */
@@ -2958,12 +2964,6 @@ export {
      * @property {module:model/UpdateVpc}
      */
     UpdateVpc,
-
-    /**
-     * The UpdeteSettings model constructor.
-     * @property {module:model/UpdeteSettings}
-     */
-    UpdeteSettings,
 
     /**
      * The UploadSuccessful model constructor.

@@ -192,6 +192,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property avatarLink (base name: "avatar_link")', function() {
+      // uncomment below and update the code to test the property avatarLink
+      //var instance = new TimewebCloudApi.Balancer();
+      //expect(instance).to.be();
+    });
+
     it('should have the property isUseProxy (base name: "is_use_proxy")', function() {
       // uncomment below and update the code to test the property isUseProxy
       //var instance = new TimewebCloudApi.Balancer();

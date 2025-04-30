@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **description** | **String** | Описание | 
 **k8sVersion** | **String** | Версия Kubernetes | 
 **networkDriver** | **String** | Используемый сетевой драйвер | 
+**avatarLink** | **String** | Ссылка на аватар кластера. | 
 **ingress** | **Boolean** | Логическое значение, показывающее, включен ли Ingress | 
 **presetId** | **Number** | ID тарифа мастер-ноды | 
 **cpu** | **Number** | Общее количество ядер | [optional] [default to 0]

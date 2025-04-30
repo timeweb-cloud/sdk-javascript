@@ -1,4 +1,4 @@
-# TimewebCloudApi.UpdeteSettings
+# TimewebCloudApi.UpdateSettings
 
 ## Properties
 

@@ -29,12 +29,13 @@ class ClusterOut {
      * @param description {String} Описание
      * @param k8sVersion {String} Версия Kubernetes
      * @param networkDriver {module:model/ClusterOut.NetworkDriverEnum} Используемый сетевой драйвер
+     * @param avatarLink {String} Ссылка на аватар кластера.
      * @param ingress {Boolean} Логическое значение, показывающее, включен ли Ingress
      * @param presetId {Number} ID тарифа мастер-ноды
      */
-    constructor(id, name, createdAt, status, description, k8sVersion, networkDriver, ingress, presetId) { 
+    constructor(id, name, createdAt, status, description, k8sVersion, networkDriver, avatarLink, ingress, presetId) { 
         
-        ClusterOut.initialize(this, id, name, createdAt, status, description, k8sVersion, networkDriver, ingress, presetId);
+        ClusterOut.initialize(this, id, name, createdAt, status, description, k8sVersion, networkDriver, avatarLink, ingress, presetId);
     }
 
     /**
@@ -42,7 +43,7 @@ class ClusterOut {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, createdAt, status, description, k8sVersion, networkDriver, ingress, presetId) { 
+    static initialize(obj, id, name, createdAt, status, description, k8sVersion, networkDriver, avatarLink, ingress, presetId) { 
         obj['id'] = id;
         obj['name'] = name;
         obj['created_at'] = createdAt;
@@ -50,6 +51,7 @@ class ClusterOut {
         obj['description'] = description;
         obj['k8s_version'] = k8sVersion;
         obj['network_driver'] = networkDriver;
+        obj['avatar_link'] = avatarLink;
         obj['ingress'] = ingress;
         obj['preset_id'] = presetId;
     }
@@ -85,6 +87,9 @@ class ClusterOut {
             }
             if (data.hasOwnProperty('network_driver')) {
                 obj['network_driver'] = ApiClient.convertToType(data['network_driver'], 'String');
+            }
+            if (data.hasOwnProperty('avatar_link')) {
+                obj['avatar_link'] = ApiClient.convertToType(data['avatar_link'], 'String');
             }
             if (data.hasOwnProperty('ingress')) {
                 obj['ingress'] = ApiClient.convertToType(data['ingress'], 'Boolean');
@@ -144,6 +149,10 @@ class ClusterOut {
             throw new Error("Expected the field `network_driver` to be a primitive type in the JSON string but got " + data['network_driver']);
         }
         // ensure the json data is a string
+        if (data['avatar_link'] && !(typeof data['avatar_link'] === 'string' || data['avatar_link'] instanceof String)) {
+            throw new Error("Expected the field `avatar_link` to be a primitive type in the JSON string but got " + data['avatar_link']);
+        }
+        // ensure the json data is a string
         if (data['availability_zone'] && !(typeof data['availability_zone'] === 'string' || data['availability_zone'] instanceof String)) {
             throw new Error("Expected the field `availability_zone` to be a primitive type in the JSON string but got " + data['availability_zone']);
         }
@@ -154,7 +163,7 @@ class ClusterOut {
 
 }
 
-ClusterOut.RequiredProperties = ["id", "name", "created_at", "status", "description", "k8s_version", "network_driver", "ingress", "preset_id"];
+ClusterOut.RequiredProperties = ["id", "name", "created_at", "status", "description", "k8s_version", "network_driver", "avatar_link", "ingress", "preset_id"];
 
 /**
  * ID кластера
@@ -197,6 +206,12 @@ ClusterOut.prototype['k8s_version'] = undefined;
  * @member {module:model/ClusterOut.NetworkDriverEnum} network_driver
  */
 ClusterOut.prototype['network_driver'] = undefined;
+
+/**
+ * Ссылка на аватар кластера.
+ * @member {String} avatar_link
+ */
+ClusterOut.prototype['avatar_link'] = undefined;
 
 /**
  * Логическое значение, показывающее, включен ли Ingress

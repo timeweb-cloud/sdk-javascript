@@ -48,15 +48,16 @@ class Balancer {
      * @param status {module:model/Balancer.StatusEnum} Статус балансировщика.
      * @param isSticky {Boolean} Это логическое значение, которое показывает, сохраняется ли сессия.
      * @param timeout {Number} Таймаут ответа балансировщика.
+     * @param avatarLink {String} Ссылка на аватар балансировщика.
      * @param isUseProxy {Boolean} Это логическое значение, которое показывает, выступает ли балансировщик в качестве прокси.
      * @param rules {Array.<module:model/Rule>} 
      * @param ips {Array.<String>} Список IP-адресов, привязанных к балансировщику
      * @param location {module:model/Balancer.LocationEnum} Географическое расположение балансировщика
      * @param availabilityZone {module:model/AvailabilityZone} 
      */
-    constructor(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone) { 
+    constructor(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, avatarLink, isUseProxy, rules, ips, location, availabilityZone) { 
         
-        Balancer.initialize(this, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone);
+        Balancer.initialize(this, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, avatarLink, isUseProxy, rules, ips, location, availabilityZone);
     }
 
     /**
@@ -64,7 +65,7 @@ class Balancer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone) { 
+    static initialize(obj, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, avatarLink, isUseProxy, rules, ips, location, availabilityZone) { 
         obj['id'] = id;
         obj['algo'] = algo;
         obj['created_at'] = createdAt;
@@ -88,6 +89,7 @@ class Balancer {
         obj['status'] = status;
         obj['is_sticky'] = isSticky;
         obj['timeout'] = timeout;
+        obj['avatar_link'] = avatarLink;
         obj['is_use_proxy'] = isUseProxy;
         obj['rules'] = rules;
         obj['ips'] = ips;
@@ -175,6 +177,9 @@ class Balancer {
             if (data.hasOwnProperty('timeout')) {
                 obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
             }
+            if (data.hasOwnProperty('avatar_link')) {
+                obj['avatar_link'] = ApiClient.convertToType(data['avatar_link'], 'String');
+            }
             if (data.hasOwnProperty('is_use_proxy')) {
                 obj['is_use_proxy'] = ApiClient.convertToType(data['is_use_proxy'], 'Boolean');
             }
@@ -234,6 +239,10 @@ class Balancer {
         if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
             throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
         }
+        // ensure the json data is a string
+        if (data['avatar_link'] && !(typeof data['avatar_link'] === 'string' || data['avatar_link'] instanceof String)) {
+            throw new Error("Expected the field `avatar_link` to be a primitive type in the JSON string but got " + data['avatar_link']);
+        }
         if (data['rules']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['rules'])) {
@@ -259,7 +268,7 @@ class Balancer {
 
 }
 
-Balancer.RequiredProperties = ["id", "algo", "created_at", "fall", "inter", "ip", "local_ip", "is_keepalive", "name", "path", "port", "proto", "rise", "maxconn", "connect_timeout", "client_timeout", "server_timeout", "httprequest_timeout", "preset_id", "is_ssl", "status", "is_sticky", "timeout", "is_use_proxy", "rules", "ips", "location", "availability_zone"];
+Balancer.RequiredProperties = ["id", "algo", "created_at", "fall", "inter", "ip", "local_ip", "is_keepalive", "name", "path", "port", "proto", "rise", "maxconn", "connect_timeout", "client_timeout", "server_timeout", "httprequest_timeout", "preset_id", "is_ssl", "status", "is_sticky", "timeout", "avatar_link", "is_use_proxy", "rules", "ips", "location", "availability_zone"];
 
 /**
  * ID для каждого экземпляра балансировщика. Автоматически генерируется при создании.
@@ -398,6 +407,12 @@ Balancer.prototype['is_sticky'] = undefined;
  * @member {Number} timeout
  */
 Balancer.prototype['timeout'] = undefined;
+
+/**
+ * Ссылка на аватар балансировщика.
+ * @member {String} avatar_link
+ */
+Balancer.prototype['avatar_link'] = undefined;
 
 /**
  * Это логическое значение, которое показывает, выступает ли балансировщик в качестве прокси.

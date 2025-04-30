@@ -96,6 +96,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property avatarLink (base name: "avatar_link")', function() {
+      // uncomment below and update the code to test the property avatarLink
+      //var instance = new TimewebCloudApi.ClusterOut();
+      //expect(instance).to.be();
+    });
+
     it('should have the property ingress (base name: "ingress")', function() {
       // uncomment below and update the code to test the property ingress
       //var instance = new TimewebCloudApi.ClusterOut();

@@ -48,6 +48,7 @@ class App {
      * @param presetId {Number} ID тарифа.
      * @param indexDir {String} Путь к директории с индексным файлом. Определен для приложений `type: frontend`. Для приложений `type: backend` всегда null.
      * @param buildCmd {String} Команда сборки приложения.
+     * @param avatarLink {String} Ссылка на аватар приложения.
      * @param runCmd {String} Команда для запуска приложения. Определена для приложений `type: backend`. Для приложений `type: frontend` всегда null.
      * @param configuration {module:model/AppConfiguration} 
      * @param diskStatus {module:model/AppDiskStatus} 
@@ -55,9 +56,9 @@ class App {
      * @param language {String} Язык программирования приложения.
      * @param startTime {Date} Время запуска приложения.
      */
-    constructor(id, type, name, status, provider, ip, domains, framework, location, repository, envVersion, envs, branchName, isAutoDeploy, commitSha, comment, presetId, indexDir, buildCmd, runCmd, configuration, diskStatus, isQemuAgent, language, startTime) { 
+    constructor(id, type, name, status, provider, ip, domains, framework, location, repository, envVersion, envs, branchName, isAutoDeploy, commitSha, comment, presetId, indexDir, buildCmd, avatarLink, runCmd, configuration, diskStatus, isQemuAgent, language, startTime) { 
         
-        App.initialize(this, id, type, name, status, provider, ip, domains, framework, location, repository, envVersion, envs, branchName, isAutoDeploy, commitSha, comment, presetId, indexDir, buildCmd, runCmd, configuration, diskStatus, isQemuAgent, language, startTime);
+        App.initialize(this, id, type, name, status, provider, ip, domains, framework, location, repository, envVersion, envs, branchName, isAutoDeploy, commitSha, comment, presetId, indexDir, buildCmd, avatarLink, runCmd, configuration, diskStatus, isQemuAgent, language, startTime);
     }
 
     /**
@@ -65,7 +66,7 @@ class App {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, type, name, status, provider, ip, domains, framework, location, repository, envVersion, envs, branchName, isAutoDeploy, commitSha, comment, presetId, indexDir, buildCmd, runCmd, configuration, diskStatus, isQemuAgent, language, startTime) { 
+    static initialize(obj, id, type, name, status, provider, ip, domains, framework, location, repository, envVersion, envs, branchName, isAutoDeploy, commitSha, comment, presetId, indexDir, buildCmd, avatarLink, runCmd, configuration, diskStatus, isQemuAgent, language, startTime) { 
         obj['id'] = id;
         obj['type'] = type;
         obj['name'] = name;
@@ -85,6 +86,7 @@ class App {
         obj['preset_id'] = presetId;
         obj['index_dir'] = indexDir;
         obj['build_cmd'] = buildCmd;
+        obj['avatar_link'] = avatarLink;
         obj['run_cmd'] = runCmd;
         obj['configuration'] = configuration;
         obj['disk_status'] = diskStatus;
@@ -160,6 +162,9 @@ class App {
             }
             if (data.hasOwnProperty('build_cmd')) {
                 obj['build_cmd'] = ApiClient.convertToType(data['build_cmd'], 'String');
+            }
+            if (data.hasOwnProperty('avatar_link')) {
+                obj['avatar_link'] = ApiClient.convertToType(data['avatar_link'], 'String');
             }
             if (data.hasOwnProperty('run_cmd')) {
                 obj['run_cmd'] = ApiClient.convertToType(data['run_cmd'], 'String');
@@ -258,6 +263,10 @@ class App {
             throw new Error("Expected the field `build_cmd` to be a primitive type in the JSON string but got " + data['build_cmd']);
         }
         // ensure the json data is a string
+        if (data['avatar_link'] && !(typeof data['avatar_link'] === 'string' || data['avatar_link'] instanceof String)) {
+            throw new Error("Expected the field `avatar_link` to be a primitive type in the JSON string but got " + data['avatar_link']);
+        }
+        // ensure the json data is a string
         if (data['run_cmd'] && !(typeof data['run_cmd'] === 'string' || data['run_cmd'] instanceof String)) {
             throw new Error("Expected the field `run_cmd` to be a primitive type in the JSON string but got " + data['run_cmd']);
         }
@@ -280,7 +289,7 @@ class App {
 
 }
 
-App.RequiredProperties = ["id", "type", "name", "status", "provider", "ip", "domains", "framework", "location", "repository", "env_version", "envs", "branch_name", "is_auto_deploy", "commit_sha", "comment", "preset_id", "index_dir", "build_cmd", "run_cmd", "configuration", "disk_status", "is_qemu_agent", "language", "start_time"];
+App.RequiredProperties = ["id", "type", "name", "status", "provider", "ip", "domains", "framework", "location", "repository", "env_version", "envs", "branch_name", "is_auto_deploy", "commit_sha", "comment", "preset_id", "index_dir", "build_cmd", "avatar_link", "run_cmd", "configuration", "disk_status", "is_qemu_agent", "language", "start_time"];
 
 /**
  * ID для каждого экземпляра приложения. Автоматически генерируется при создании.
@@ -391,6 +400,12 @@ App.prototype['index_dir'] = undefined;
  * @member {String} build_cmd
  */
 App.prototype['build_cmd'] = undefined;
+
+/**
+ * Ссылка на аватар приложения.
+ * @member {String} avatar_link
+ */
+App.prototype['avatar_link'] = undefined;
 
 /**
  * Команда для запуска приложения. Определена для приложений `type: backend`. Для приложений `type: frontend` всегда null.

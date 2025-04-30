@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.UpdeteSettings();
+    instance = new TimewebCloudApi.UpdateSettings();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,82 +47,82 @@
       object[property] = value;
   }
 
-  describe('UpdeteSettings', function() {
-    it('should create an instance of UpdeteSettings', function() {
-      // uncomment below and update the code to test UpdeteSettings
-      //var instance = new TimewebCloudApi.UpdeteSettings();
-      //expect(instance).to.be.a(TimewebCloudApi.UpdeteSettings);
+  describe('UpdateSettings', function() {
+    it('should create an instance of UpdateSettings', function() {
+      // uncomment below and update the code to test UpdateSettings
+      //var instance = new TimewebCloudApi.UpdateSettings();
+      //expect(instance).to.be.a(TimewebCloudApi.UpdateSettings);
     });
 
     it('should have the property isAutoDeploy (base name: "is_auto_deploy")', function() {
       // uncomment below and update the code to test the property isAutoDeploy
-      //var instance = new TimewebCloudApi.UpdeteSettings();
+      //var instance = new TimewebCloudApi.UpdateSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property buildCmd (base name: "build_cmd")', function() {
       // uncomment below and update the code to test the property buildCmd
-      //var instance = new TimewebCloudApi.UpdeteSettings();
+      //var instance = new TimewebCloudApi.UpdateSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property envs (base name: "envs")', function() {
       // uncomment below and update the code to test the property envs
-      //var instance = new TimewebCloudApi.UpdeteSettings();
+      //var instance = new TimewebCloudApi.UpdateSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property branchName (base name: "branch_name")', function() {
       // uncomment below and update the code to test the property branchName
-      //var instance = new TimewebCloudApi.UpdeteSettings();
+      //var instance = new TimewebCloudApi.UpdateSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property commitSha (base name: "commit_sha")', function() {
       // uncomment below and update the code to test the property commitSha
-      //var instance = new TimewebCloudApi.UpdeteSettings();
+      //var instance = new TimewebCloudApi.UpdateSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property envVersion (base name: "env_version")', function() {
       // uncomment below and update the code to test the property envVersion
-      //var instance = new TimewebCloudApi.UpdeteSettings();
+      //var instance = new TimewebCloudApi.UpdateSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property indexDir (base name: "index_dir")', function() {
       // uncomment below and update the code to test the property indexDir
-      //var instance = new TimewebCloudApi.UpdeteSettings();
+      //var instance = new TimewebCloudApi.UpdateSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property runCmd (base name: "run_cmd")', function() {
       // uncomment below and update the code to test the property runCmd
-      //var instance = new TimewebCloudApi.UpdeteSettings();
+      //var instance = new TimewebCloudApi.UpdateSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property framework (base name: "framework")', function() {
       // uncomment below and update the code to test the property framework
-      //var instance = new TimewebCloudApi.UpdeteSettings();
+      //var instance = new TimewebCloudApi.UpdateSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new TimewebCloudApi.UpdeteSettings();
+      //var instance = new TimewebCloudApi.UpdateSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property comment (base name: "comment")', function() {
       // uncomment below and update the code to test the property comment
-      //var instance = new TimewebCloudApi.UpdeteSettings();
+      //var instance = new TimewebCloudApi.UpdateSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property presetId (base name: "preset_id")', function() {
       // uncomment below and update the code to test the property presetId
-      //var instance = new TimewebCloudApi.UpdeteSettings();
+      //var instance = new TimewebCloudApi.UpdateSettings();
       //expect(instance).to.be();
     });
 

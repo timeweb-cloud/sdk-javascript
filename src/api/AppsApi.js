@@ -39,7 +39,7 @@ import GetProviders200Response from '../model/GetProviders200Response';
 import GetRepositories200Response from '../model/GetRepositories200Response';
 import GetServerStatistics200Response from '../model/GetServerStatistics200Response';
 import UpdateAppSettings200Response from '../model/UpdateAppSettings200Response';
-import UpdeteSettings from '../model/UpdeteSettings';
+import UpdateSettings from '../model/UpdateSettings';
 
 /**
 * Apps service.
@@ -936,19 +936,19 @@ export default class AppsApi {
      * Изменение настроек приложения
      * Чтобы изменить настройки приложения отправьте PATCH-запрос в `/api/v1/apps/{app_id}`, задав необходимые атрибуты.
      * @param {String} appId 
-     * @param {module:model/UpdeteSettings} updeteSettings 
+     * @param {module:model/UpdateSettings} updateSettings 
      * @param {module:api/AppsApi~updateAppSettingsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/UpdateAppSettings200Response}
      */
-    updateAppSettings(appId, updeteSettings, callback) {
-      let postBody = updeteSettings;
+    updateAppSettings(appId, updateSettings, callback) {
+      let postBody = updateSettings;
       // verify the required parameter 'appId' is set
       if (appId === undefined || appId === null) {
         throw new Error("Missing the required parameter 'appId' when calling updateAppSettings");
       }
-      // verify the required parameter 'updeteSettings' is set
-      if (updeteSettings === undefined || updeteSettings === null) {
-        throw new Error("Missing the required parameter 'updeteSettings' when calling updateAppSettings");
+      // verify the required parameter 'updateSettings' is set
+      if (updateSettings === undefined || updateSettings === null) {
+        throw new Error("Missing the required parameter 'updateSettings' when calling updateAppSettings");
       }
 
       let pathParams = {

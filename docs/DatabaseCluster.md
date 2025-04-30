@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **networks** | [**[DatabaseClusterNetworksInner]**](DatabaseClusterNetworksInner.md) | Список сетей кластера базы данных. | 
 **type** | [**DbType**](DbType.md) |  | 
 **hashType** | **String** | Тип хеширования кластера базы данных (mysql5 | mysql | postgres). | 
+**avatarLink** | **String** | Ссылка на аватар для базы данных. | 
 **port** | **Number** | Порт | 
 **status** | **String** | Текущий статус кластера базы данных. | 
 **presetId** | **Number** | ID тарифа. | 

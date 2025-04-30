@@ -90,6 +90,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property avatarLink (base name: "avatar_link")', function() {
+      // uncomment below and update the code to test the property avatarLink
+      //var instance = new TimewebCloudApi.Domain();
+      //expect(instance).to.be();
+    });
+
     it('should have the property isAutoprolongEnabled (base name: "is_autoprolong_enabled")', function() {
       // uncomment below and update the code to test the property isAutoprolongEnabled
       //var instance = new TimewebCloudApi.Domain();
