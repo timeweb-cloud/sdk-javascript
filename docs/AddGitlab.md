@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Enum: ProviderTypeEnum
 
 
-* `Gitlab` (value: `"Gitlab"`)
+* `gitlab` (value: `"gitlab"`)
 
 
 

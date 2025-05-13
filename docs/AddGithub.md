@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Enum: ProviderTypeEnum
 
 
-* `Github` (value: `"Github"`)
+* `github` (value: `"github"`)
 
 
 

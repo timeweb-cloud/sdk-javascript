@@ -472,8 +472,8 @@ export default class AppsApi {
      * Получение статистики приложения
      * Чтобы получить статистику сервера, отправьте GET-запрос на `/api/v1/apps/{app_id}/statistics`. Метод поддерживает только приложения `type: backend`.
      * @param {String} appId 
-     * @param {String} dateFrom Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-25%202023-05-25T14%3A35%3A38`
-     * @param {String} dateTo Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-26%202023-05-25T14%3A35%3A38`
+     * @param {String} dateFrom Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-25T14%3A35%3A38`
+     * @param {String} dateTo Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-25T14%3A35%3A38`
      * @param {module:api/AppsApi~getAppStatisticsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetServerStatistics200Response}
      */

@@ -115,10 +115,10 @@ AddGitlab.prototype['provider_token'] = undefined;
 AddGitlab['ProviderTypeEnum'] = {
 
     /**
-     * value: "Gitlab"
+     * value: "gitlab"
      * @const
      */
-    "Gitlab": "Gitlab"
+    "gitlab": "gitlab"
 };
 
 

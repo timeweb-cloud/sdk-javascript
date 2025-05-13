@@ -115,10 +115,10 @@ AddGithub.prototype['provider_token'] = undefined;
 AddGithub['ProviderTypeEnum'] = {
 
     /**
-     * value: "Github"
+     * value: "github"
      * @const
      */
-    "Github": "Github"
+    "github": "github"
 };
 
 

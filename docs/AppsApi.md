@@ -498,8 +498,8 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.AppsApi();
 let appId = "appId_example"; // String | 
-let dateFrom = "dateFrom_example"; // String | Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-25%202023-05-25T14%3A35%3A38`
-let dateTo = "dateTo_example"; // String | Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-26%202023-05-25T14%3A35%3A38`
+let dateFrom = "dateFrom_example"; // String | Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-25T14%3A35%3A38`
+let dateTo = "dateTo_example"; // String | Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-25T14%3A35%3A38`
 apiInstance.getAppStatistics(appId, dateFrom, dateTo, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -515,8 +515,8 @@ apiInstance.getAppStatistics(appId, dateFrom, dateTo, (error, data, response) =>
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**|  | 
- **dateFrom** | **String**| Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25%202023-05-25T14%3A35%3A38&#x60; | 
- **dateTo** | **String**| Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-26%202023-05-25T14%3A35%3A38&#x60; | 
+ **dateFrom** | **String**| Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25T14%3A35%3A38&#x60; | 
+ **dateTo** | **String**| Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25T14%3A35%3A38&#x60; | 
 
 ### Return type
 

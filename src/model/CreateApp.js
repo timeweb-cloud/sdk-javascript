@@ -115,6 +115,12 @@ class CreateApp {
             if (data.hasOwnProperty('run_cmd')) {
                 obj['run_cmd'] = ApiClient.convertToType(data['run_cmd'], 'String');
             }
+            if (data.hasOwnProperty('system_dependencies')) {
+                obj['system_dependencies'] = ApiClient.convertToType(data['system_dependencies'], ['String']);
+            }
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            }
         }
         return obj;
     }
@@ -174,6 +180,10 @@ class CreateApp {
         // ensure the json data is a string
         if (data['run_cmd'] && !(typeof data['run_cmd'] === 'string' || data['run_cmd'] instanceof String)) {
             throw new Error("Expected the field `run_cmd` to be a primitive type in the JSON string but got " + data['run_cmd']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['system_dependencies'])) {
+            throw new Error("Expected the field `system_dependencies` to be an array in the JSON data but got " + data['system_dependencies']);
         }
 
         return true;
@@ -272,6 +282,18 @@ CreateApp.prototype['index_dir'] = undefined;
  * @member {String} run_cmd
  */
 CreateApp.prototype['run_cmd'] = undefined;
+
+/**
+ * Системные зависимости.
+ * @member {Array.<String>} system_dependencies
+ */
+CreateApp.prototype['system_dependencies'] = undefined;
+
+/**
+ * ID проекта.
+ * @member {Number} project_id
+ */
+CreateApp.prototype['project_id'] = undefined;
 
 
 
