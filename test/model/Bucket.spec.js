@@ -150,6 +150,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property projectId (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property projectId
+      //var instance = new TimewebCloudApi.Bucket();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property rateId (base name: "rate_id")', function() {
+      // uncomment below and update the code to test the property rateId
+      //var instance = new TimewebCloudApi.Bucket();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property websiteConfig (base name: "website_config")', function() {
+      // uncomment below and update the code to test the property websiteConfig
+      //var instance = new TimewebCloudApi.Bucket();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

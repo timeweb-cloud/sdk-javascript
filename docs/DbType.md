@@ -15,28 +15,26 @@
 
 * `postgres17` (value: `"postgres17"`)
 
-* `redis` (value: `"redis"`)
-
 * `redis7` (value: `"redis7"`)
 
-* `mongodb4` (value: `"mongodb4"`)
-
-* `mongodb` (value: `"mongodb"`)
-
-* `mongodb6` (value: `"mongodb6"`)
+* `redis8_1` (value: `"redis8_1"`)
 
 * `mongodb7` (value: `"mongodb7"`)
 
+* `mongodb8_0` (value: `"mongodb8_0"`)
+
 * `opensearch` (value: `"opensearch"`)
 
-* `kafka` (value: `"kafka"`)
-
-* `rabbitmq` (value: `"rabbitmq"`)
+* `opensearch2_19` (value: `"opensearch2_19"`)
 
 * `clickhouse` (value: `"clickhouse"`)
 
 * `clickhouse24` (value: `"clickhouse24"`)
 
 * `clickhouse25` (value: `"clickhouse25"`)
+
+* `kafka` (value: `"kafka"`)
+
+* `rabbitmq4_0` (value: `"rabbitmq4_0"`)
 
 

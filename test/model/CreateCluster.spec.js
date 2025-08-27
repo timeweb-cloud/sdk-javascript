@@ -90,8 +90,26 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property configuratorId (base name: "configurator_id")', function() {
+      // uncomment below and update the code to test the property configuratorId
+      //var instance = new TimewebCloudApi.CreateCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property projectId (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property projectId
+      //var instance = new TimewebCloudApi.CreateCluster();
+      //expect(instance).to.be();
+    });
+
     it('should have the property configParameters (base name: "config_parameters")', function() {
       // uncomment below and update the code to test the property configParameters
+      //var instance = new TimewebCloudApi.CreateCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property replication (base name: "replication")', function() {
+      // uncomment below and update the code to test the property replication
       //var instance = new TimewebCloudApi.CreateCluster();
       //expect(instance).to.be();
     });

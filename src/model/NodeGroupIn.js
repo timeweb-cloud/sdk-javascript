@@ -77,6 +77,9 @@ class NodeGroupIn {
             if (data.hasOwnProperty('max-size')) {
                 obj['max-size'] = ApiClient.convertToType(data['max-size'], 'Number');
             }
+            if (data.hasOwnProperty('is_autohealing')) {
+                obj['is_autohealing'] = ApiClient.convertToType(data['is_autohealing'], 'Boolean');
+            }
         }
         return obj;
     }
@@ -166,6 +169,12 @@ NodeGroupIn.prototype['min-size'] = undefined;
  * @member {Number} max-size
  */
 NodeGroupIn.prototype['max-size'] = undefined;
+
+/**
+ * Автоматическое восстановление работоспособности вышедших из строя узлов
+ * @member {Boolean} is_autohealing
+ */
+NodeGroupIn.prototype['is_autohealing'] = undefined;
 
 
 

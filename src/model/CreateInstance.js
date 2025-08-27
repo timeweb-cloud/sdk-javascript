@@ -95,7 +95,7 @@ CreateInstance.RequiredProperties = ["name"];
 CreateInstance.prototype['name'] = undefined;
 
 /**
- * Описанеие инстанса базы данных
+ * Описание инстанса базы данных
  * @member {String} description
  */
 CreateInstance.prototype['description'] = undefined;

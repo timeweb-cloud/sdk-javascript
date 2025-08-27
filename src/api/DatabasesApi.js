@@ -348,7 +348,7 @@ export default class DatabasesApi {
      * Удаление бэкапа базы данных
      * Чтобы удалить бэкап базы данных, отправьте запрос DELETE в `api/v1/dbs/{db_id}/backups/{backup_id}`. 
      * @param {Number} dbId ID базы данных
-     * @param {Number} backupId ID резевной копии
+     * @param {Number} backupId ID резервной копии
      * @param {module:api/DatabasesApi~deleteDatabaseBackupCallback} callback The callback function, accepting three arguments: error, data, response
      */
     deleteDatabaseBackup(dbId, backupId, callback) {
@@ -627,7 +627,7 @@ export default class DatabasesApi {
      * Получение бэкапа базы данных
      * Чтобы получить бэкап базы данных, отправьте запрос GET в `api/v1/dbs/{db_id}/backups/{backup_id}`. 
      * @param {Number} dbId ID базы данных
-     * @param {Number} backupId ID резевной копии
+     * @param {Number} backupId ID резервной копии
      * @param {module:api/DatabasesApi~getDatabaseBackupCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateDatabaseBackup201Response}
      */
@@ -1149,7 +1149,7 @@ export default class DatabasesApi {
      * Восстановление базы данных из бэкапа
      * Чтобы восстановить базу данных из бэкапа, отправьте запрос PUT в `api/v1/dbs/{db_id}/backups/{backup_id}`. 
      * @param {Number} dbId ID базы данных
-     * @param {Number} backupId ID резевной копии
+     * @param {Number} backupId ID резервной копии
      * @param {module:api/DatabasesApi~restoreDatabaseFromBackupCallback} callback The callback function, accepting three arguments: error, data, response
      */
     restoreDatabaseFromBackup(dbId, backupId, callback) {

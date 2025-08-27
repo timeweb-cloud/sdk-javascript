@@ -11,10 +11,15 @@ Name | Type | Description | Notes
 **networkDriver** | **String** | Тип используемого сетевого драйвера в кластере | 
 **isIngress** | **Boolean** | Логическое значение, которое показывает, использовать ли Ingress в кластере | [optional] 
 **isK8sDashboard** | **Boolean** | Логическое значение, которое показывает, использовать ли Kubernetes Dashboard в кластере | [optional] 
-**presetId** | **Number** | ID тарифа мастер-ноды | 
+**presetId** | **Number** | ID тарифа мастер-ноды. Нельзя передавать вместе с &#x60;configuration&#x60; | [optional] 
+**configuration** | [**ClusterInConfiguration**](ClusterInConfiguration.md) |  | [optional] 
+**masterNodesCount** | **Number** | Количество мастер нод | [optional] 
 **workerGroups** | [**[NodeGroupIn]**](NodeGroupIn.md) | Группы воркеров в кластере | [optional] 
 **networkId** | **String** | ID приватной сети | [optional] 
 **projectId** | **Number** | ID проекта | [optional] 
+**maintenanceSlot** | [**ClusterInMaintenanceSlot**](ClusterInMaintenanceSlot.md) |  | [optional] 
+**oidcProvider** | [**ClusterInOidcProvider**](ClusterInOidcProvider.md) |  | [optional] 
+**clusterNetworkCidr** | [**ClusterInClusterNetworkCidr**](ClusterInClusterNetworkCidr.md) |  | [optional] 
 
 
 
@@ -26,6 +31,8 @@ Name | Type | Description | Notes
 * `msk-1` (value: `"msk-1"`)
 
 * `ams-1` (value: `"ams-1"`)
+
+* `fra-1` (value: `"fra-1"`)
 
 
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Number** | ID для каждого экземпляра балансировщика. Автоматически генерируется при создании. | 
+**accountId** | **String** | ID пользователя. | [optional] 
 **algo** | **String** | Алгоритм переключений балансировщика. | 
 **createdAt** | **Date** | Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был создан балансировщик. | 
 **fall** | **Number** | Порог количества ошибок. | 
@@ -33,6 +34,8 @@ Name | Type | Description | Notes
 **ips** | **[String]** | Список IP-адресов, привязанных к балансировщику | 
 **location** | **String** | Географическое расположение балансировщика | 
 **availabilityZone** | [**AvailabilityZone**](AvailabilityZone.md) |  | 
+**projectId** | **Number** | ID проекта | 
+**networks** | [**[BalancerNetworksInner]**](BalancerNetworksInner.md) | Список сетей сервера. | 
 
 
 

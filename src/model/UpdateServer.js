@@ -151,7 +151,7 @@ UpdateServer.prototype['preset_id'] = undefined;
 UpdateServer.prototype['bandwidth'] = undefined;
 
 /**
- * Имя облачного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
+ * Имя облачного сервера. Максимальная длина — 255 символов.
  * @member {String} name
  */
 UpdateServer.prototype['name'] = undefined;

@@ -62,13 +62,6 @@ export default class DbType {
 
     
         /**
-         * value: "redis"
-         * @const
-         */
-        "redis" = "redis";
-
-    
-        /**
          * value: "redis7"
          * @const
          */
@@ -76,24 +69,10 @@ export default class DbType {
 
     
         /**
-         * value: "mongodb4"
+         * value: "redis8_1"
          * @const
          */
-        "mongodb4" = "mongodb4";
-
-    
-        /**
-         * value: "mongodb"
-         * @const
-         */
-        "mongodb" = "mongodb";
-
-    
-        /**
-         * value: "mongodb6"
-         * @const
-         */
-        "mongodb6" = "mongodb6";
+        "redis8_1" = "redis8_1";
 
     
         /**
@@ -104,6 +83,13 @@ export default class DbType {
 
     
         /**
+         * value: "mongodb8_0"
+         * @const
+         */
+        "mongodb8_0" = "mongodb8_0";
+
+    
+        /**
          * value: "opensearch"
          * @const
          */
@@ -111,17 +97,10 @@ export default class DbType {
 
     
         /**
-         * value: "kafka"
+         * value: "opensearch2_19"
          * @const
          */
-        "kafka" = "kafka";
-
-    
-        /**
-         * value: "rabbitmq"
-         * @const
-         */
-        "rabbitmq" = "rabbitmq";
+        "opensearch2_19" = "opensearch2_19";
 
     
         /**
@@ -143,6 +122,20 @@ export default class DbType {
          * @const
          */
         "clickhouse25" = "clickhouse25";
+
+    
+        /**
+         * value: "kafka"
+         * @const
+         */
+        "kafka" = "kafka";
+
+    
+        /**
+         * value: "rabbitmq4_0"
+         * @const
+         */
+        "rabbitmq4_0" = "rabbitmq4_0";
 
     
 

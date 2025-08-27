@@ -25,10 +25,12 @@ class DedicatedServerPresetDisk {
      * @alias module:model/DedicatedServerPresetDisk
      * @param description {String} Описание характеристик диска выделенного сервера.
      * @param count {Number} Количество дисков выделенного сервера.
+     * @param totalSize {Number} Общий размер дисков выделенного сервера.
+     * @param type {String} Тип дисков выделенного сервера.
      */
-    constructor(description, count) { 
+    constructor(description, count, totalSize, type) { 
         
-        DedicatedServerPresetDisk.initialize(this, description, count);
+        DedicatedServerPresetDisk.initialize(this, description, count, totalSize, type);
     }
 
     /**
@@ -36,9 +38,11 @@ class DedicatedServerPresetDisk {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, description, count) { 
+    static initialize(obj, description, count, totalSize, type) { 
         obj['description'] = description;
         obj['count'] = count;
+        obj['total_size'] = totalSize;
+        obj['type'] = type;
     }
 
     /**
@@ -57,6 +61,12 @@ class DedicatedServerPresetDisk {
             }
             if (data.hasOwnProperty('count')) {
                 obj['count'] = ApiClient.convertToType(data['count'], 'Number');
+            }
+            if (data.hasOwnProperty('total_size')) {
+                obj['total_size'] = ApiClient.convertToType(data['total_size'], 'Number');
+            }
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = ApiClient.convertToType(data['type'], 'String');
             }
         }
         return obj;
@@ -78,6 +88,10 @@ class DedicatedServerPresetDisk {
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
+        // ensure the json data is a string
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
+        }
 
         return true;
     }
@@ -85,7 +99,7 @@ class DedicatedServerPresetDisk {
 
 }
 
-DedicatedServerPresetDisk.RequiredProperties = ["description", "count"];
+DedicatedServerPresetDisk.RequiredProperties = ["description", "count", "total_size", "type"];
 
 /**
  * Описание характеристик диска выделенного сервера.
@@ -98,6 +112,18 @@ DedicatedServerPresetDisk.prototype['description'] = undefined;
  * @member {Number} count
  */
 DedicatedServerPresetDisk.prototype['count'] = undefined;
+
+/**
+ * Общий размер дисков выделенного сервера.
+ * @member {Number} total_size
+ */
+DedicatedServerPresetDisk.prototype['total_size'] = undefined;
+
+/**
+ * Тип дисков выделенного сервера.
+ * @member {String} type
+ */
+DedicatedServerPresetDisk.prototype['type'] = undefined;
 
 
 

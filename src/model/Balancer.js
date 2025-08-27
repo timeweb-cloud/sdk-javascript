@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import AvailabilityZone from './AvailabilityZone';
+import BalancerNetworksInner from './BalancerNetworksInner';
 import Rule from './Rule';
 
 /**
@@ -54,10 +55,12 @@ class Balancer {
      * @param ips {Array.<String>} Список IP-адресов, привязанных к балансировщику
      * @param location {module:model/Balancer.LocationEnum} Географическое расположение балансировщика
      * @param availabilityZone {module:model/AvailabilityZone} 
+     * @param projectId {Number} ID проекта
+     * @param networks {Array.<module:model/BalancerNetworksInner>} Список сетей сервера.
      */
-    constructor(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, avatarLink, isUseProxy, rules, ips, location, availabilityZone) { 
+    constructor(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, avatarLink, isUseProxy, rules, ips, location, availabilityZone, projectId, networks) { 
         
-        Balancer.initialize(this, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, avatarLink, isUseProxy, rules, ips, location, availabilityZone);
+        Balancer.initialize(this, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, avatarLink, isUseProxy, rules, ips, location, availabilityZone, projectId, networks);
     }
 
     /**
@@ -65,7 +68,7 @@ class Balancer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, avatarLink, isUseProxy, rules, ips, location, availabilityZone) { 
+    static initialize(obj, id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, avatarLink, isUseProxy, rules, ips, location, availabilityZone, projectId, networks) { 
         obj['id'] = id;
         obj['algo'] = algo;
         obj['created_at'] = createdAt;
@@ -95,6 +98,8 @@ class Balancer {
         obj['ips'] = ips;
         obj['location'] = location;
         obj['availability_zone'] = availabilityZone;
+        obj['project_id'] = projectId;
+        obj['networks'] = networks;
     }
 
     /**
@@ -110,6 +115,9 @@ class Balancer {
 
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+            }
+            if (data.hasOwnProperty('account_id')) {
+                obj['account_id'] = ApiClient.convertToType(data['account_id'], 'String');
             }
             if (data.hasOwnProperty('algo')) {
                 obj['algo'] = ApiClient.convertToType(data['algo'], 'String');
@@ -195,6 +203,12 @@ class Balancer {
             if (data.hasOwnProperty('availability_zone')) {
                 obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
             }
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            }
+            if (data.hasOwnProperty('networks')) {
+                obj['networks'] = ApiClient.convertToType(data['networks'], [BalancerNetworksInner]);
+            }
         }
         return obj;
     }
@@ -210,6 +224,10 @@ class Balancer {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
+        }
+        // ensure the json data is a string
+        if (data['account_id'] && !(typeof data['account_id'] === 'string' || data['account_id'] instanceof String)) {
+            throw new Error("Expected the field `account_id` to be a primitive type in the JSON string but got " + data['account_id']);
         }
         // ensure the json data is a string
         if (data['algo'] && !(typeof data['algo'] === 'string' || data['algo'] instanceof String)) {
@@ -261,6 +279,16 @@ class Balancer {
         if (data['location'] && !(typeof data['location'] === 'string' || data['location'] instanceof String)) {
             throw new Error("Expected the field `location` to be a primitive type in the JSON string but got " + data['location']);
         }
+        if (data['networks']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['networks'])) {
+                throw new Error("Expected the field `networks` to be an array in the JSON data but got " + data['networks']);
+            }
+            // validate the optional field `networks` (array)
+            for (const item of data['networks']) {
+                BalancerNetworksInner.validateJSON(item);
+            };
+        }
 
         return true;
     }
@@ -268,13 +296,19 @@ class Balancer {
 
 }
 
-Balancer.RequiredProperties = ["id", "algo", "created_at", "fall", "inter", "ip", "local_ip", "is_keepalive", "name", "path", "port", "proto", "rise", "maxconn", "connect_timeout", "client_timeout", "server_timeout", "httprequest_timeout", "preset_id", "is_ssl", "status", "is_sticky", "timeout", "avatar_link", "is_use_proxy", "rules", "ips", "location", "availability_zone"];
+Balancer.RequiredProperties = ["id", "algo", "created_at", "fall", "inter", "ip", "local_ip", "is_keepalive", "name", "path", "port", "proto", "rise", "maxconn", "connect_timeout", "client_timeout", "server_timeout", "httprequest_timeout", "preset_id", "is_ssl", "status", "is_sticky", "timeout", "avatar_link", "is_use_proxy", "rules", "ips", "location", "availability_zone", "project_id", "networks"];
 
 /**
  * ID для каждого экземпляра балансировщика. Автоматически генерируется при создании.
  * @member {Number} id
  */
 Balancer.prototype['id'] = undefined;
+
+/**
+ * ID пользователя.
+ * @member {String} account_id
+ */
+Balancer.prototype['account_id'] = undefined;
 
 /**
  * Алгоритм переключений балансировщика.
@@ -441,6 +475,18 @@ Balancer.prototype['location'] = undefined;
  * @member {module:model/AvailabilityZone} availability_zone
  */
 Balancer.prototype['availability_zone'] = undefined;
+
+/**
+ * ID проекта
+ * @member {Number} project_id
+ */
+Balancer.prototype['project_id'] = undefined;
+
+/**
+ * Список сетей сервера.
+ * @member {Array.<module:model/BalancerNetworksInner>} networks
+ */
+Balancer.prototype['networks'] = undefined;
 
 
 

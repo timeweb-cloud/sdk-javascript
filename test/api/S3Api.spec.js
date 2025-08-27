@@ -68,26 +68,6 @@
         done();
       });
     });
-    describe('copyStorageFile', function() {
-      it('should call copyStorageFile successfully', function(done) {
-        //uncomment below and update the code to test copyStorageFile
-        //instance.copyStorageFile(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createFolderInStorage', function() {
-      it('should call createFolderInStorage successfully', function(done) {
-        //uncomment below and update the code to test createFolderInStorage
-        //instance.createFolderInStorage(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('createStorage', function() {
       it('should call createStorage successfully', function(done) {
         //uncomment below and update the code to test createStorage
@@ -108,30 +88,10 @@
         done();
       });
     });
-    describe('deleteStorageFile', function() {
-      it('should call deleteStorageFile successfully', function(done) {
-        //uncomment below and update the code to test deleteStorageFile
-        //instance.deleteStorageFile(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('deleteStorageSubdomains', function() {
       it('should call deleteStorageSubdomains successfully', function(done) {
         //uncomment below and update the code to test deleteStorageSubdomains
         //instance.deleteStorageSubdomains(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getStorageFilesList', function() {
-      it('should call getStorageFilesList successfully', function(done) {
-        //uncomment below and update the code to test getStorageFilesList
-        //instance.getStorageFilesList(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -188,16 +148,6 @@
         done();
       });
     });
-    describe('renameStorageFile', function() {
-      it('should call renameStorageFile successfully', function(done) {
-        //uncomment below and update the code to test renameStorageFile
-        //instance.renameStorageFile(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('transferStorage', function() {
       it('should call transferStorage successfully', function(done) {
         //uncomment below and update the code to test transferStorage
@@ -222,16 +172,6 @@
       it('should call updateStorageUser successfully', function(done) {
         //uncomment below and update the code to test updateStorageUser
         //instance.updateStorageUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('uploadFileToStorage', function() {
-      it('should call uploadFileToStorage successfully', function(done) {
-        //uncomment below and update the code to test uploadFileToStorage
-        //instance.uploadFileToStorage(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

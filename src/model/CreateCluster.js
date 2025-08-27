@@ -17,6 +17,7 @@ import ConfigParameters from './ConfigParameters';
 import CreateClusterAdmin from './CreateClusterAdmin';
 import CreateClusterInstance from './CreateClusterInstance';
 import CreateDbAutoBackups from './CreateDbAutoBackups';
+import DbReplication from './DbReplication';
 import DbType from './DbType';
 import Network from './Network';
 
@@ -31,11 +32,10 @@ class CreateCluster {
      * @alias module:model/CreateCluster
      * @param name {String} Название кластера базы данных.
      * @param type {module:model/DbType} 
-     * @param presetId {Number} ID тарифа.
      */
-    constructor(name, type, presetId) { 
+    constructor(name, type) { 
         
-        CreateCluster.initialize(this, name, type, presetId);
+        CreateCluster.initialize(this, name, type);
     }
 
     /**
@@ -43,10 +43,9 @@ class CreateCluster {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, type, presetId) { 
+    static initialize(obj, name, type) { 
         obj['name'] = name;
         obj['type'] = type;
-        obj['preset_id'] = presetId;
     }
 
     /**
@@ -78,8 +77,17 @@ class CreateCluster {
             if (data.hasOwnProperty('preset_id')) {
                 obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
             }
+            if (data.hasOwnProperty('configurator_id')) {
+                obj['configurator_id'] = ApiClient.convertToType(data['configurator_id'], 'Number');
+            }
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            }
             if (data.hasOwnProperty('config_parameters')) {
                 obj['config_parameters'] = ConfigParameters.constructFromObject(data['config_parameters']);
+            }
+            if (data.hasOwnProperty('replication')) {
+                obj['replication'] = DbReplication.constructFromObject(data['replication']);
             }
             if (data.hasOwnProperty('network')) {
                 obj['network'] = Network.constructFromObject(data['network']);
@@ -129,6 +137,10 @@ class CreateCluster {
         if (data['config_parameters']) { // data not null
           ConfigParameters.validateJSON(data['config_parameters']);
         }
+        // validate the optional field `replication`
+        if (data['replication']) { // data not null
+          DbReplication.validateJSON(data['replication']);
+        }
         // validate the optional field `network`
         if (data['network']) { // data not null
           Network.validateJSON(data['network']);
@@ -148,7 +160,7 @@ class CreateCluster {
 
 }
 
-CreateCluster.RequiredProperties = ["name", "type", "preset_id"];
+CreateCluster.RequiredProperties = ["name", "type"];
 
 /**
  * Название кластера базы данных.
@@ -178,15 +190,32 @@ CreateCluster.prototype['instance'] = undefined;
 CreateCluster.prototype['hash_type'] = undefined;
 
 /**
- * ID тарифа.
+ * ID тарифа. Нельзя передавать вместе с `configurator_id`
  * @member {Number} preset_id
  */
 CreateCluster.prototype['preset_id'] = undefined;
 
 /**
+ * ID конфигуратора. Нельзя передавать вместе с `preset_id`
+ * @member {Number} configurator_id
+ */
+CreateCluster.prototype['configurator_id'] = undefined;
+
+/**
+ * ID проекта.
+ * @member {Number} project_id
+ */
+CreateCluster.prototype['project_id'] = undefined;
+
+/**
  * @member {module:model/ConfigParameters} config_parameters
  */
 CreateCluster.prototype['config_parameters'] = undefined;
+
+/**
+ * @member {module:model/DbReplication} replication
+ */
+CreateCluster.prototype['replication'] = undefined;
 
 /**
  * @member {module:model/Network} network

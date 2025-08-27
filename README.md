@@ -321,6 +321,13 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.BalancersApi* | [**getBalancersPresets**](docs/BalancersApi.md#getBalancersPresets) | **GET** /api/v1/presets/balancers | Получение списка тарифов для балансировщика
 *TimewebCloudApi.BalancersApi* | [**updateBalancer**](docs/BalancersApi.md#updateBalancer) | **PATCH** /api/v1/balancers/{balancer_id} | Обновление балансировщика
 *TimewebCloudApi.BalancersApi* | [**updateBalancerRule**](docs/BalancersApi.md#updateBalancerRule) | **PATCH** /api/v1/balancers/{balancer_id}/rules/{rule_id} | Обновление правила для балансировщика
+*TimewebCloudApi.ContainerRegistryApi* | [**createRegistry**](docs/ContainerRegistryApi.md#createRegistry) | **POST** /api/v1/container-registry | Создание реестра
+*TimewebCloudApi.ContainerRegistryApi* | [**deleteRegistry**](docs/ContainerRegistryApi.md#deleteRegistry) | **DELETE** /api/v1/container-registry/{registry_id} | Удаление реестра
+*TimewebCloudApi.ContainerRegistryApi* | [**getRegistries**](docs/ContainerRegistryApi.md#getRegistries) | **GET** /api/v1/container-registry | Получение списка реестров контейнеров
+*TimewebCloudApi.ContainerRegistryApi* | [**getRegistry**](docs/ContainerRegistryApi.md#getRegistry) | **GET** /api/v1/container-registry/{registry_id} | Получение информации о реестре
+*TimewebCloudApi.ContainerRegistryApi* | [**getRegistryPresets**](docs/ContainerRegistryApi.md#getRegistryPresets) | **GET** /api/v1/container-registry/presets | Получение списка тарифов
+*TimewebCloudApi.ContainerRegistryApi* | [**getRegistryRepositories**](docs/ContainerRegistryApi.md#getRegistryRepositories) | **GET** /api/v1/container-registry/{registry_id}/repositories | Получение списка репозиториев
+*TimewebCloudApi.ContainerRegistryApi* | [**updateRegistry**](docs/ContainerRegistryApi.md#updateRegistry) | **PATCH** /api/v1/container-registry/{registry_id} | Обновление информации о реестре
 *TimewebCloudApi.DatabasesApi* | [**createDatabase**](docs/DatabasesApi.md#createDatabase) | **POST** /api/v1/dbs | Создание базы данных
 *TimewebCloudApi.DatabasesApi* | [**createDatabaseBackup**](docs/DatabasesApi.md#createDatabaseBackup) | **POST** /api/v1/dbs/{db_id}/backups | Создание бэкапа базы данных
 *TimewebCloudApi.DatabasesApi* | [**createDatabaseCluster**](docs/DatabasesApi.md#createDatabaseCluster) | **POST** /api/v1/databases | Создание кластера базы данных
@@ -477,23 +484,17 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.ProjectsApi* | [**updateProject**](docs/ProjectsApi.md#updateProject) | **PUT** /api/v1/projects/{project_id} | Изменение проекта
 *TimewebCloudApi.S3Api* | [**addStorageSubdomainCertificate**](docs/S3Api.md#addStorageSubdomainCertificate) | **POST** /api/v1/storages/certificates/generate | Добавление сертификата для поддомена хранилища
 *TimewebCloudApi.S3Api* | [**addStorageSubdomains**](docs/S3Api.md#addStorageSubdomains) | **POST** /api/v1/storages/buckets/{bucket_id}/subdomains | Добавление поддоменов для хранилища
-*TimewebCloudApi.S3Api* | [**copyStorageFile**](docs/S3Api.md#copyStorageFile) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/copy | Копирование файла/директории в хранилище
-*TimewebCloudApi.S3Api* | [**createFolderInStorage**](docs/S3Api.md#createFolderInStorage) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/mkdir | Создание директории в хранилище
 *TimewebCloudApi.S3Api* | [**createStorage**](docs/S3Api.md#createStorage) | **POST** /api/v1/storages/buckets | Создание хранилища
 *TimewebCloudApi.S3Api* | [**deleteStorage**](docs/S3Api.md#deleteStorage) | **DELETE** /api/v1/storages/buckets/{bucket_id} | Удаление хранилища на аккаунте
-*TimewebCloudApi.S3Api* | [**deleteStorageFile**](docs/S3Api.md#deleteStorageFile) | **DELETE** /api/v1/storages/buckets/{bucket_id}/object-manager/remove | Удаление файла/директории в хранилище
 *TimewebCloudApi.S3Api* | [**deleteStorageSubdomains**](docs/S3Api.md#deleteStorageSubdomains) | **DELETE** /api/v1/storages/buckets/{bucket_id}/subdomains | Удаление поддоменов хранилища
-*TimewebCloudApi.S3Api* | [**getStorageFilesList**](docs/S3Api.md#getStorageFilesList) | **GET** /api/v1/storages/buckets/{bucket_id}/object-manager/list | Получение списка файлов в хранилище по префиксу
 *TimewebCloudApi.S3Api* | [**getStorageSubdomains**](docs/S3Api.md#getStorageSubdomains) | **GET** /api/v1/storages/buckets/{bucket_id}/subdomains | Получение списка поддоменов хранилища
 *TimewebCloudApi.S3Api* | [**getStorageTransferStatus**](docs/S3Api.md#getStorageTransferStatus) | **GET** /api/v1/storages/buckets/{bucket_id}/transfer-status | Получение статуса переноса хранилища от стороннего S3 в Timeweb Cloud
 *TimewebCloudApi.S3Api* | [**getStorageUsers**](docs/S3Api.md#getStorageUsers) | **GET** /api/v1/storages/users | Получение списка пользователей хранилищ аккаунта
 *TimewebCloudApi.S3Api* | [**getStorages**](docs/S3Api.md#getStorages) | **GET** /api/v1/storages/buckets | Получение списка хранилищ аккаунта
 *TimewebCloudApi.S3Api* | [**getStoragesPresets**](docs/S3Api.md#getStoragesPresets) | **GET** /api/v1/presets/storages | Получение списка тарифов для хранилищ
-*TimewebCloudApi.S3Api* | [**renameStorageFile**](docs/S3Api.md#renameStorageFile) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/rename | Переименование файла/директории в хранилище
 *TimewebCloudApi.S3Api* | [**transferStorage**](docs/S3Api.md#transferStorage) | **POST** /api/v1/storages/transfer | Перенос хранилища от стороннего провайдера S3 в Timeweb Cloud
 *TimewebCloudApi.S3Api* | [**updateStorage**](docs/S3Api.md#updateStorage) | **PATCH** /api/v1/storages/buckets/{bucket_id} | Изменение хранилища на аккаунте
 *TimewebCloudApi.S3Api* | [**updateStorageUser**](docs/S3Api.md#updateStorageUser) | **PATCH** /api/v1/storages/users/{user_id} | Изменение пароля пользователя-администратора хранилища
-*TimewebCloudApi.S3Api* | [**uploadFileToStorage**](docs/S3Api.md#uploadFileToStorage) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/upload | Загрузка файлов в хранилище
 *TimewebCloudApi.SSHApi* | [**addKeyToServer**](docs/SSHApi.md#addKeyToServer) | **POST** /api/v1/servers/{server_id}/ssh-keys | Добавление SSH-ключей на сервер
 *TimewebCloudApi.SSHApi* | [**createKey**](docs/SSHApi.md#createKey) | **POST** /api/v1/ssh-keys | Создание SSH-ключа
 *TimewebCloudApi.SSHApi* | [**deleteKey**](docs/SSHApi.md#deleteKey) | **DELETE** /api/v1/ssh-keys/{ssh_key_id} | Удаление SSH-ключа по ID
@@ -596,6 +597,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.AvailableFrameworksFrontendFrameworksInner](docs/AvailableFrameworksFrontendFrameworksInner.md)
  - [TimewebCloudApi.Backup](docs/Backup.md)
  - [TimewebCloudApi.Balancer](docs/Balancer.md)
+ - [TimewebCloudApi.BalancerNetworksInner](docs/BalancerNetworksInner.md)
+ - [TimewebCloudApi.BalancerNetworksInnerIpsInner](docs/BalancerNetworksInnerIpsInner.md)
  - [TimewebCloudApi.BaseError](docs/BaseError.md)
  - [TimewebCloudApi.BindFloatingIp](docs/BindFloatingIp.md)
  - [TimewebCloudApi.Bonus](docs/Bonus.md)
@@ -603,9 +606,15 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Bucket](docs/Bucket.md)
  - [TimewebCloudApi.BucketDiskStats](docs/BucketDiskStats.md)
  - [TimewebCloudApi.BucketUser](docs/BucketUser.md)
+ - [TimewebCloudApi.BucketWebsiteConfig](docs/BucketWebsiteConfig.md)
+ - [TimewebCloudApi.BucketWebsiteConfigErrorPagesInner](docs/BucketWebsiteConfigErrorPagesInner.md)
  - [TimewebCloudApi.CheckDomain200Response](docs/CheckDomain200Response.md)
  - [TimewebCloudApi.ClusterEdit](docs/ClusterEdit.md)
  - [TimewebCloudApi.ClusterIn](docs/ClusterIn.md)
+ - [TimewebCloudApi.ClusterInClusterNetworkCidr](docs/ClusterInClusterNetworkCidr.md)
+ - [TimewebCloudApi.ClusterInConfiguration](docs/ClusterInConfiguration.md)
+ - [TimewebCloudApi.ClusterInMaintenanceSlot](docs/ClusterInMaintenanceSlot.md)
+ - [TimewebCloudApi.ClusterInOidcProvider](docs/ClusterInOidcProvider.md)
  - [TimewebCloudApi.ClusterOut](docs/ClusterOut.md)
  - [TimewebCloudApi.ClusterResponse](docs/ClusterResponse.md)
  - [TimewebCloudApi.Clusterk8s](docs/Clusterk8s.md)
@@ -613,7 +622,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Commit](docs/Commit.md)
  - [TimewebCloudApi.ComponentsSchemasBaseError](docs/ComponentsSchemasBaseError.md)
  - [TimewebCloudApi.ConfigParameters](docs/ConfigParameters.md)
- - [TimewebCloudApi.CopyStorageFileRequest](docs/CopyStorageFileRequest.md)
+ - [TimewebCloudApi.ContainerRegistryPresetsInner](docs/ContainerRegistryPresetsInner.md)
+ - [TimewebCloudApi.ContainerRegistryRepositoriesInner](docs/ContainerRegistryRepositoriesInner.md)
  - [TimewebCloudApi.CreateAdmin](docs/CreateAdmin.md)
  - [TimewebCloudApi.CreateApiKey](docs/CreateApiKey.md)
  - [TimewebCloudApi.CreateApp](docs/CreateApp.md)
@@ -643,7 +653,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateDomainRequest201Response](docs/CreateDomainRequest201Response.md)
  - [TimewebCloudApi.CreateFloatingIp](docs/CreateFloatingIp.md)
  - [TimewebCloudApi.CreateFloatingIp201Response](docs/CreateFloatingIp201Response.md)
- - [TimewebCloudApi.CreateFolderInStorageRequest](docs/CreateFolderInStorageRequest.md)
  - [TimewebCloudApi.CreateInstance](docs/CreateInstance.md)
  - [TimewebCloudApi.CreateKey201Response](docs/CreateKey201Response.md)
  - [TimewebCloudApi.CreateKeyRequest](docs/CreateKeyRequest.md)
@@ -665,6 +674,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateServerNetwork](docs/CreateServerNetwork.md)
  - [TimewebCloudApi.CreateStorage201Response](docs/CreateStorage201Response.md)
  - [TimewebCloudApi.CreateStorageRequest](docs/CreateStorageRequest.md)
+ - [TimewebCloudApi.CreateStorageRequestConfigurator](docs/CreateStorageRequestConfigurator.md)
  - [TimewebCloudApi.CreateToken201Response](docs/CreateToken201Response.md)
  - [TimewebCloudApi.CreateVPC201Response](docs/CreateVPC201Response.md)
  - [TimewebCloudApi.CreateVpc](docs/CreateVpc.md)
@@ -672,7 +682,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DatabaseAdmin](docs/DatabaseAdmin.md)
  - [TimewebCloudApi.DatabaseAdminInstancesInner](docs/DatabaseAdminInstancesInner.md)
  - [TimewebCloudApi.DatabaseCluster](docs/DatabaseCluster.md)
- - [TimewebCloudApi.DatabaseClusterDiskStats](docs/DatabaseClusterDiskStats.md)
+ - [TimewebCloudApi.DatabaseClusterDisk](docs/DatabaseClusterDisk.md)
  - [TimewebCloudApi.DatabaseClusterNetworksInner](docs/DatabaseClusterNetworksInner.md)
  - [TimewebCloudApi.DatabaseClusterNetworksInnerIpsInner](docs/DatabaseClusterNetworksInnerIpsInner.md)
  - [TimewebCloudApi.DatabaseInstance](docs/DatabaseInstance.md)
@@ -680,6 +690,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DatabaseTypeRequirements](docs/DatabaseTypeRequirements.md)
  - [TimewebCloudApi.Db](docs/Db.md)
  - [TimewebCloudApi.DbDiskStats](docs/DbDiskStats.md)
+ - [TimewebCloudApi.DbReplication](docs/DbReplication.md)
  - [TimewebCloudApi.DbType](docs/DbType.md)
  - [TimewebCloudApi.DedicatedServer](docs/DedicatedServer.md)
  - [TimewebCloudApi.DedicatedServerAdditionalService](docs/DedicatedServerAdditionalService.md)
@@ -699,7 +710,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DeleteServerIPRequest](docs/DeleteServerIPRequest.md)
  - [TimewebCloudApi.DeleteServiceResponse](docs/DeleteServiceResponse.md)
  - [TimewebCloudApi.DeleteStorage200Response](docs/DeleteStorage200Response.md)
- - [TimewebCloudApi.DeleteStorageFileRequest](docs/DeleteStorageFileRequest.md)
  - [TimewebCloudApi.Deploy](docs/Deploy.md)
  - [TimewebCloudApi.DeploySettingsInner](docs/DeploySettingsInner.md)
  - [TimewebCloudApi.DeployStatus](docs/DeployStatus.md)
@@ -814,7 +824,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetServers200Response](docs/GetServers200Response.md)
  - [TimewebCloudApi.GetServersPresets200Response](docs/GetServersPresets200Response.md)
  - [TimewebCloudApi.GetSoftware200Response](docs/GetSoftware200Response.md)
- - [TimewebCloudApi.GetStorageFilesList200Response](docs/GetStorageFilesList200Response.md)
  - [TimewebCloudApi.GetStorageSubdomains200Response](docs/GetStorageSubdomains200Response.md)
  - [TimewebCloudApi.GetStorageTransferStatus200Response](docs/GetStorageTransferStatus200Response.md)
  - [TimewebCloudApi.GetStorageUsers200Response](docs/GetStorageUsers200Response.md)
@@ -836,6 +845,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ImageUrlAuth](docs/ImageUrlAuth.md)
  - [TimewebCloudApi.ImageUrlIn](docs/ImageUrlIn.md)
  - [TimewebCloudApi.ImagesOutResponse](docs/ImagesOutResponse.md)
+ - [TimewebCloudApi.IncreaseNodes](docs/IncreaseNodes.md)
  - [TimewebCloudApi.Invoice](docs/Invoice.md)
  - [TimewebCloudApi.K8SVersionsResponse](docs/K8SVersionsResponse.md)
  - [TimewebCloudApi.Location](docs/Location.md)
@@ -847,6 +857,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.MailboxSpamFilter](docs/MailboxSpamFilter.md)
  - [TimewebCloudApi.MasterPresetOutApi](docs/MasterPresetOutApi.md)
  - [TimewebCloudApi.Meta](docs/Meta.md)
+ - [TimewebCloudApi.Meta1](docs/Meta1.md)
  - [TimewebCloudApi.MountNetworkDrive](docs/MountNetworkDrive.md)
  - [TimewebCloudApi.Network](docs/Network.md)
  - [TimewebCloudApi.NetworkDrive](docs/NetworkDrive.md)
@@ -856,7 +867,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.NetworkDrivePresetWrite](docs/NetworkDrivePresetWrite.md)
  - [TimewebCloudApi.NetworkDriveServiceListInner](docs/NetworkDriveServiceListInner.md)
  - [TimewebCloudApi.NetworkDriversResponse](docs/NetworkDriversResponse.md)
- - [TimewebCloudApi.NodeCount](docs/NodeCount.md)
  - [TimewebCloudApi.NodeGroupIn](docs/NodeGroupIn.md)
  - [TimewebCloudApi.NodeGroupInConfiguration](docs/NodeGroupInConfiguration.md)
  - [TimewebCloudApi.NodeGroupOut](docs/NodeGroupOut.md)
@@ -881,10 +891,18 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Provider](docs/Provider.md)
  - [TimewebCloudApi.Providers](docs/Providers.md)
  - [TimewebCloudApi.Quota](docs/Quota.md)
+ - [TimewebCloudApi.ReduceNodes](docs/ReduceNodes.md)
  - [TimewebCloudApi.RefreshApiKey](docs/RefreshApiKey.md)
+ - [TimewebCloudApi.RegistriesResponse](docs/RegistriesResponse.md)
+ - [TimewebCloudApi.RegistryEdit](docs/RegistryEdit.md)
+ - [TimewebCloudApi.RegistryIn](docs/RegistryIn.md)
+ - [TimewebCloudApi.RegistryInConfiguration](docs/RegistryInConfiguration.md)
+ - [TimewebCloudApi.RegistryOut](docs/RegistryOut.md)
+ - [TimewebCloudApi.RegistryOutDiskStats](docs/RegistryOutDiskStats.md)
+ - [TimewebCloudApi.RegistryResponse](docs/RegistryResponse.md)
  - [TimewebCloudApi.RemoveCountries](docs/RemoveCountries.md)
  - [TimewebCloudApi.RemoveIps](docs/RemoveIps.md)
- - [TimewebCloudApi.RenameStorageFileRequest](docs/RenameStorageFileRequest.md)
+ - [TimewebCloudApi.RepositoriesResponse](docs/RepositoriesResponse.md)
  - [TimewebCloudApi.Repository](docs/Repository.md)
  - [TimewebCloudApi.Resource](docs/Resource.md)
  - [TimewebCloudApi.ResourceTransfer](docs/ResourceTransfer.md)
@@ -892,11 +910,10 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Resources](docs/Resources.md)
  - [TimewebCloudApi.ResourcesResponse](docs/ResourcesResponse.md)
  - [TimewebCloudApi.Rule](docs/Rule.md)
- - [TimewebCloudApi.S3Object](docs/S3Object.md)
- - [TimewebCloudApi.S3ObjectOwner](docs/S3ObjectOwner.md)
  - [TimewebCloudApi.S3Subdomain](docs/S3Subdomain.md)
  - [TimewebCloudApi.SchemasBaseError](docs/SchemasBaseError.md)
  - [TimewebCloudApi.SchemasMeta](docs/SchemasMeta.md)
+ - [TimewebCloudApi.SchemasPresetsResponse](docs/SchemasPresetsResponse.md)
  - [TimewebCloudApi.ServerBackup](docs/ServerBackup.md)
  - [TimewebCloudApi.ServerDisk](docs/ServerDisk.md)
  - [TimewebCloudApi.ServerIp](docs/ServerIp.md)
@@ -920,6 +937,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Status](docs/Status.md)
  - [TimewebCloudApi.StatusCompanyInfo](docs/StatusCompanyInfo.md)
  - [TimewebCloudApi.Subdomain](docs/Subdomain.md)
+ - [TimewebCloudApi.Tags](docs/Tags.md)
  - [TimewebCloudApi.TopLevelDomain](docs/TopLevelDomain.md)
  - [TimewebCloudApi.TopLevelDomainAllowedBuyPeriodsInner](docs/TopLevelDomainAllowedBuyPeriodsInner.md)
  - [TimewebCloudApi.TransferStatus](docs/TransferStatus.md)
@@ -958,6 +976,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateServerOSBootModeRequest](docs/UpdateServerOSBootModeRequest.md)
  - [TimewebCloudApi.UpdateSettings](docs/UpdateSettings.md)
  - [TimewebCloudApi.UpdateStorageRequest](docs/UpdateStorageRequest.md)
+ - [TimewebCloudApi.UpdateStorageRequestConfigurator](docs/UpdateStorageRequestConfigurator.md)
  - [TimewebCloudApi.UpdateStorageUser200Response](docs/UpdateStorageUser200Response.md)
  - [TimewebCloudApi.UpdateStorageUserRequest](docs/UpdateStorageUserRequest.md)
  - [TimewebCloudApi.UpdateToken200Response](docs/UpdateToken200Response.md)

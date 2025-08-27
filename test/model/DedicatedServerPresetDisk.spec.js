@@ -66,6 +66,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property totalSize (base name: "total_size")', function() {
+      // uncomment below and update the code to test the property totalSize
+      //var instance = new TimewebCloudApi.DedicatedServerPresetDisk();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instance = new TimewebCloudApi.DedicatedServerPresetDisk();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

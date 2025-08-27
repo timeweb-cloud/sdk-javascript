@@ -78,6 +78,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property configurator (base name: "configurator")', function() {
+      // uncomment below and update the code to test the property configurator
+      //var instance = new TimewebCloudApi.CreateStorageRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property projectId (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property projectId
+      //var instance = new TimewebCloudApi.CreateStorageRequest();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -204,6 +204,30 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property avatarLink (base name: "avatar_link")', function() {
+      // uncomment below and update the code to test the property avatarLink
+      //var instance = new TimewebCloudApi.DedicatedServer();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isPreInstalled (base name: "is_pre_installed")', function() {
+      // uncomment below and update the code to test the property isPreInstalled
+      //var instance = new TimewebCloudApi.DedicatedServer();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property presetId (base name: "preset_id")', function() {
+      // uncomment below and update the code to test the property presetId
+      //var instance = new TimewebCloudApi.DedicatedServer();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property projectId (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property projectId
+      //var instance = new TimewebCloudApi.DedicatedServer();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

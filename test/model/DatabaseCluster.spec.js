@@ -120,8 +120,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property diskStats (base name: "disk_stats")', function() {
-      // uncomment below and update the code to test the property diskStats
+    it('should have the property disk (base name: "disk")', function() {
+      // uncomment below and update the code to test the property disk
       //var instance = new TimewebCloudApi.DatabaseCluster();
       //expect(instance).to.be();
     });

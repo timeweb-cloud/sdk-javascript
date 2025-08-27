@@ -416,10 +416,10 @@ Db['StatusEnum'] = {
     "starting": "starting",
 
     /**
-     * value: "stoped"
+     * value: "stopped"
      * @const
      */
-    "stoped": "stoped",
+    "stopped": "stopped",
 
     /**
      * value: "no_paid"

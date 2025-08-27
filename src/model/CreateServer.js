@@ -25,7 +25,7 @@ class CreateServer {
     /**
      * Constructs a new <code>CreateServer</code>.
      * @alias module:model/CreateServer
-     * @param name {String} Имя облачного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
+     * @param name {String} Имя облачного сервера. Максимальная длина — 255 символов.
      */
     constructor(name) { 
         
@@ -96,6 +96,9 @@ class CreateServer {
             }
             if (data.hasOwnProperty('availability_zone')) {
                 obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
+            }
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
             }
         }
         return obj;
@@ -196,7 +199,7 @@ CreateServer.prototype['preset_id'] = undefined;
 CreateServer.prototype['bandwidth'] = undefined;
 
 /**
- * Имя облачного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
+ * Имя облачного сервера. Максимальная длина — 255 символов.
  * @member {String} name
  */
 CreateServer.prototype['name'] = undefined;
@@ -240,6 +243,12 @@ CreateServer.prototype['cloud_init'] = undefined;
  * @member {module:model/AvailabilityZone} availability_zone
  */
 CreateServer.prototype['availability_zone'] = undefined;
+
+/**
+ * ID проекта.
+ * @member {Number} project_id
+ */
+CreateServer.prototype['project_id'] = undefined;
 
 
 

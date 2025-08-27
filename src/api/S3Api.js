@@ -16,13 +16,9 @@ import ApiClient from "../ApiClient";
 import AddStorageSubdomainCertificateRequest from '../model/AddStorageSubdomainCertificateRequest';
 import AddStorageSubdomains200Response from '../model/AddStorageSubdomains200Response';
 import AddStorageSubdomainsRequest from '../model/AddStorageSubdomainsRequest';
-import CopyStorageFileRequest from '../model/CopyStorageFileRequest';
-import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
-import CreateFolderInStorageRequest from '../model/CreateFolderInStorageRequest';
 import CreateStorage201Response from '../model/CreateStorage201Response';
 import CreateStorageRequest from '../model/CreateStorageRequest';
 import DeleteStorage200Response from '../model/DeleteStorage200Response';
-import DeleteStorageFileRequest from '../model/DeleteStorageFileRequest';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances403Response from '../model/GetFinances403Response';
@@ -30,12 +26,10 @@ import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetImage404Response from '../model/GetImage404Response';
 import GetProjectStorages200Response from '../model/GetProjectStorages200Response';
-import GetStorageFilesList200Response from '../model/GetStorageFilesList200Response';
 import GetStorageSubdomains200Response from '../model/GetStorageSubdomains200Response';
 import GetStorageTransferStatus200Response from '../model/GetStorageTransferStatus200Response';
 import GetStorageUsers200Response from '../model/GetStorageUsers200Response';
 import GetStoragesPresets200Response from '../model/GetStoragesPresets200Response';
-import RenameStorageFileRequest from '../model/RenameStorageFileRequest';
 import TransferStorageRequest from '../model/TransferStorageRequest';
 import UpdateStorageRequest from '../model/UpdateStorageRequest';
 import UpdateStorageUser200Response from '../model/UpdateStorageUser200Response';
@@ -150,100 +144,6 @@ export default class S3Api {
     }
 
     /**
-     * Callback function to receive the result of the copyStorageFile operation.
-     * @callback module:api/S3Api~copyStorageFileCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Копирование файла/директории в хранилище
-     * Чтобы скопировать файла или директорию с вложениями, отправьте POST-запрос на `/api/v1/storages/buckets/{bucket_id}/object-manager/copy`.
-     * @param {Number} bucketId ID хранилища.
-     * @param {module:model/CopyStorageFileRequest} copyStorageFileRequest 
-     * @param {module:api/S3Api~copyStorageFileCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    copyStorageFile(bucketId, copyStorageFileRequest, callback) {
-      let postBody = copyStorageFileRequest;
-      // verify the required parameter 'bucketId' is set
-      if (bucketId === undefined || bucketId === null) {
-        throw new Error("Missing the required parameter 'bucketId' when calling copyStorageFile");
-      }
-      // verify the required parameter 'copyStorageFileRequest' is set
-      if (copyStorageFileRequest === undefined || copyStorageFileRequest === null) {
-        throw new Error("Missing the required parameter 'copyStorageFileRequest' when calling copyStorageFile");
-      }
-
-      let pathParams = {
-        'bucket_id': bucketId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/v1/storages/buckets/{bucket_id}/object-manager/copy', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the createFolderInStorage operation.
-     * @callback module:api/S3Api~createFolderInStorageCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Создание директории в хранилище
-     * Чтобы создать директорию в хранилище, отправьте POST-запрос на `/api/v1/storages/buckets/{bucket_id}/object-manager/mkdir`.
-     * @param {Number} bucketId ID хранилища.
-     * @param {module:model/CreateFolderInStorageRequest} createFolderInStorageRequest 
-     * @param {module:api/S3Api~createFolderInStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    createFolderInStorage(bucketId, createFolderInStorageRequest, callback) {
-      let postBody = createFolderInStorageRequest;
-      // verify the required parameter 'bucketId' is set
-      if (bucketId === undefined || bucketId === null) {
-        throw new Error("Missing the required parameter 'bucketId' when calling createFolderInStorage");
-      }
-      // verify the required parameter 'createFolderInStorageRequest' is set
-      if (createFolderInStorageRequest === undefined || createFolderInStorageRequest === null) {
-        throw new Error("Missing the required parameter 'createFolderInStorageRequest' when calling createFolderInStorage");
-      }
-
-      let pathParams = {
-        'bucket_id': bucketId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/v1/storages/buckets/{bucket_id}/object-manager/mkdir', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the createStorage operation.
      * @callback module:api/S3Api~createStorageCallback
      * @param {String} error Error message, if any.
@@ -335,57 +235,6 @@ export default class S3Api {
     }
 
     /**
-     * Callback function to receive the result of the deleteStorageFile operation.
-     * @callback module:api/S3Api~deleteStorageFileCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Удаление файла/директории в хранилище
-     * Чтобы удалить файл или директорию с вложениями, отправьте DELETE-запрос на `/api/v1/storages/buckets/{bucket_id}/object-manager/remove`.
-     * @param {Number} bucketId ID хранилища.
-     * @param {module:model/DeleteStorageFileRequest} deleteStorageFileRequest 
-     * @param {Object} opts Optional parameters
-     * @param {Boolean} [isMultipart] Это логическое значение, которое используется для обозначения multipart-загрузки.
-     * @param {module:api/S3Api~deleteStorageFileCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    deleteStorageFile(bucketId, deleteStorageFileRequest, opts, callback) {
-      opts = opts || {};
-      let postBody = deleteStorageFileRequest;
-      // verify the required parameter 'bucketId' is set
-      if (bucketId === undefined || bucketId === null) {
-        throw new Error("Missing the required parameter 'bucketId' when calling deleteStorageFile");
-      }
-      // verify the required parameter 'deleteStorageFileRequest' is set
-      if (deleteStorageFileRequest === undefined || deleteStorageFileRequest === null) {
-        throw new Error("Missing the required parameter 'deleteStorageFileRequest' when calling deleteStorageFile");
-      }
-
-      let pathParams = {
-        'bucket_id': bucketId
-      };
-      let queryParams = {
-        'is_multipart': opts['isMultipart']
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/v1/storages/buckets/{bucket_id}/object-manager/remove', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the deleteStorageSubdomains operation.
      * @callback module:api/S3Api~deleteStorageSubdomainsCallback
      * @param {String} error Error message, if any.
@@ -428,55 +277,6 @@ export default class S3Api {
       let returnType = AddStorageSubdomains200Response;
       return this.apiClient.callApi(
         '/api/v1/storages/buckets/{bucket_id}/subdomains', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getStorageFilesList operation.
-     * @callback module:api/S3Api~getStorageFilesListCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/GetStorageFilesList200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение списка файлов в хранилище по префиксу
-     * Чтобы получить список файлов в хранилище по префиксу, отправьте GET-запрос на `/api/v1/storages/buckets/{bucket_id}/object-manager/list`.
-     * @param {Number} bucketId ID хранилища.
-     * @param {Object} opts Optional parameters
-     * @param {String} [prefix] Префикс для поиска файла.
-     * @param {Boolean} [isMultipart] Это логическое значение, которое используется для обозначения multipart-загрузки.
-     * @param {module:api/S3Api~getStorageFilesListCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetStorageFilesList200Response}
-     */
-    getStorageFilesList(bucketId, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'bucketId' is set
-      if (bucketId === undefined || bucketId === null) {
-        throw new Error("Missing the required parameter 'bucketId' when calling getStorageFilesList");
-      }
-
-      let pathParams = {
-        'bucket_id': bucketId
-      };
-      let queryParams = {
-        'prefix': opts['prefix'],
-        'is_multipart': opts['isMultipart']
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetStorageFilesList200Response;
-      return this.apiClient.callApi(
-        '/api/v1/storages/buckets/{bucket_id}/object-manager/list', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -680,53 +480,6 @@ export default class S3Api {
     }
 
     /**
-     * Callback function to receive the result of the renameStorageFile operation.
-     * @callback module:api/S3Api~renameStorageFileCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Переименование файла/директории в хранилище
-     * Чтобы переименовать файл/директорию в хранилище, отправьте POST-запрос на `/api/v1/storages/buckets/{bucket_id}/object-manager/rename`.
-     * @param {Number} bucketId ID хранилища.
-     * @param {module:model/RenameStorageFileRequest} renameStorageFileRequest 
-     * @param {module:api/S3Api~renameStorageFileCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    renameStorageFile(bucketId, renameStorageFileRequest, callback) {
-      let postBody = renameStorageFileRequest;
-      // verify the required parameter 'bucketId' is set
-      if (bucketId === undefined || bucketId === null) {
-        throw new Error("Missing the required parameter 'bucketId' when calling renameStorageFile");
-      }
-      // verify the required parameter 'renameStorageFileRequest' is set
-      if (renameStorageFileRequest === undefined || renameStorageFileRequest === null) {
-        throw new Error("Missing the required parameter 'renameStorageFileRequest' when calling renameStorageFile");
-      }
-
-      let pathParams = {
-        'bucket_id': bucketId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/v1/storages/buckets/{bucket_id}/object-manager/rename', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the transferStorage operation.
      * @callback module:api/S3Api~transferStorageCallback
      * @param {String} error Error message, if any.
@@ -858,58 +611,6 @@ export default class S3Api {
       let returnType = UpdateStorageUser200Response;
       return this.apiClient.callApi(
         '/api/v1/storages/users/{user_id}', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the uploadFileToStorage operation.
-     * @callback module:api/S3Api~uploadFileToStorageCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Загрузка файлов в хранилище
-     * Чтобы загрузить файлы в хранилище, отправьте POST-запрос на `/api/v1/storages/buckets/{bucket_id}/object-manager/upload`.
-     * @param {Number} bucketId ID хранилища.
-     * @param {Array.<File>} files 
-     * @param {Object} opts Optional parameters
-     * @param {String} [path] Путь до директории в хранилище
-     * @param {module:api/S3Api~uploadFileToStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    uploadFileToStorage(bucketId, files, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'bucketId' is set
-      if (bucketId === undefined || bucketId === null) {
-        throw new Error("Missing the required parameter 'bucketId' when calling uploadFileToStorage");
-      }
-      // verify the required parameter 'files' is set
-      if (files === undefined || files === null) {
-        throw new Error("Missing the required parameter 'files' when calling uploadFileToStorage");
-      }
-
-      let pathParams = {
-        'bucket_id': bucketId
-      };
-      let queryParams = {
-        'path': opts['path']
-      };
-      let headerParams = {
-      };
-      let formParams = {
-        'files': this.apiClient.buildCollectionParam(files, 'passthrough')
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['multipart/form-data'];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/v1/storages/buckets/{bucket_id}/object-manager/upload', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

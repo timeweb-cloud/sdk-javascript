@@ -826,7 +826,7 @@ This endpoint does not need any parameter.
 
 ## increaseCountOfNodesInGroup
 
-> NodesResponse increaseCountOfNodesInGroup(clusterId, groupId, nodeCount)
+> NodesResponse increaseCountOfNodesInGroup(clusterId, groupId, increaseNodes)
 
 Увеличение количества нод в группе на указанное количество
 
@@ -844,8 +844,8 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new TimewebCloudApi.KubernetesApi();
 let clusterId = 56; // Number | ID кластера
 let groupId = 56; // Number | ID группы
-let nodeCount = new TimewebCloudApi.NodeCount(); // NodeCount | 
-apiInstance.increaseCountOfNodesInGroup(clusterId, groupId, nodeCount, (error, data, response) => {
+let increaseNodes = new TimewebCloudApi.IncreaseNodes(); // IncreaseNodes | 
+apiInstance.increaseCountOfNodesInGroup(clusterId, groupId, increaseNodes, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -861,7 +861,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **clusterId** | **Number**| ID кластера | 
  **groupId** | **Number**| ID группы | 
- **nodeCount** | [**NodeCount**](NodeCount.md)|  | 
+ **increaseNodes** | [**IncreaseNodes**](IncreaseNodes.md)|  | 
 
 ### Return type
 
@@ -879,7 +879,7 @@ Name | Type | Description  | Notes
 
 ## reduceCountOfNodesInGroup
 
-> reduceCountOfNodesInGroup(clusterId, groupId, nodeCount)
+> reduceCountOfNodesInGroup(clusterId, groupId, reduceNodes)
 
 Уменьшение количества нод в группе на указанное количество
 
@@ -897,8 +897,8 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new TimewebCloudApi.KubernetesApi();
 let clusterId = 56; // Number | ID кластера
 let groupId = 56; // Number | ID группы
-let nodeCount = new TimewebCloudApi.NodeCount(); // NodeCount | 
-apiInstance.reduceCountOfNodesInGroup(clusterId, groupId, nodeCount, (error, data, response) => {
+let reduceNodes = new TimewebCloudApi.ReduceNodes(); // ReduceNodes | 
+apiInstance.reduceCountOfNodesInGroup(clusterId, groupId, reduceNodes, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -914,7 +914,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **clusterId** | **Number**| ID кластера | 
  **groupId** | **Number**| ID группы | 
- **nodeCount** | [**NodeCount**](NodeCount.md)|  | 
+ **reduceNodes** | [**ReduceNodes**](ReduceNodes.md)|  | 
 
 ### Return type
 

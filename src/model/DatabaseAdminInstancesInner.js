@@ -239,7 +239,25 @@ DatabaseAdminInstancesInner['PrivilegesEnum'] = {
      * value: "TRANSACTION"
      * @const
      */
-    "TRANSACTION": "TRANSACTION"
+    "TRANSACTION": "TRANSACTION",
+
+    /**
+     * value: "SLOW_LOG"
+     * @const
+     */
+    "SLOW_LOG": "SLOW_LOG",
+
+    /**
+     * value: "TRIGGER"
+     * @const
+     */
+    "TRIGGER": "TRIGGER",
+
+    /**
+     * value: "CREATE_TEMPORARY_TABLES"
+     * @const
+     */
+    "CREATE_TEMPORARY_TABLES": "CREATE_TEMPORARY_TABLES"
 };
 
 

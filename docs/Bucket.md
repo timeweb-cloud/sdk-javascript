@@ -20,6 +20,9 @@ Name | Type | Description | Notes
 **secretKey** | **String** | Секретный ключ доступа от хранилища. | 
 **movedInQuarantineAt** | **Date** | Дата перемещения в карантин. | 
 **storageClass** | **String** | Класс хранилища. | 
+**projectId** | **Number** | ID проекта. | 
+**rateId** | **Number** | ID тарифа. | 
+**websiteConfig** | [**BucketWebsiteConfig**](BucketWebsiteConfig.md) |  | 
 
 
 

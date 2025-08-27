@@ -48,10 +48,14 @@ class DedicatedServer {
      * @param location {module:model/DedicatedServer.LocationEnum} Локация сервера.
      * @param autoinstallReady {Number} Количество готовых к автоматической выдаче серверов. Если значение равно 0, сервер будет установлен через инженеров.
      * @param password {String} Пароль root сервера или пароль Администратора для серверов Windows.
+     * @param avatarLink {String} Ссылка на аватар сервера.
+     * @param isPreInstalled {Boolean} Это логическое значение, которое показывает, готов ли выделенный сервер к моментальной выдаче.
+     * @param presetId {Number} ID тарифа сервера.
+     * @param projectId {Number} ID проекта
      */
-    constructor(id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady, password) { 
+    constructor(id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady, password, avatarLink, isPreInstalled, presetId, projectId) { 
         
-        DedicatedServer.initialize(this, id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady, password);
+        DedicatedServer.initialize(this, id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady, password, avatarLink, isPreInstalled, presetId, projectId);
     }
 
     /**
@@ -59,7 +63,7 @@ class DedicatedServer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady, password) { 
+    static initialize(obj, id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady, password, avatarLink, isPreInstalled, presetId, projectId) { 
         obj['id'] = id;
         obj['cpu_description'] = cpuDescription;
         obj['hdd_description'] = hddDescription;
@@ -85,6 +89,10 @@ class DedicatedServer {
         obj['location'] = location;
         obj['autoinstall_ready'] = autoinstallReady;
         obj['password'] = password;
+        obj['avatar_link'] = avatarLink;
+        obj['is_pre_installed'] = isPreInstalled;
+        obj['preset_id'] = presetId;
+        obj['project_id'] = projectId;
     }
 
     /**
@@ -173,6 +181,18 @@ class DedicatedServer {
             if (data.hasOwnProperty('password')) {
                 obj['password'] = ApiClient.convertToType(data['password'], 'String');
             }
+            if (data.hasOwnProperty('avatar_link')) {
+                obj['avatar_link'] = ApiClient.convertToType(data['avatar_link'], 'String');
+            }
+            if (data.hasOwnProperty('is_pre_installed')) {
+                obj['is_pre_installed'] = ApiClient.convertToType(data['is_pre_installed'], 'Boolean');
+            }
+            if (data.hasOwnProperty('preset_id')) {
+                obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
+            }
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            }
         }
         return obj;
     }
@@ -253,6 +273,10 @@ class DedicatedServer {
         if (data['password'] && !(typeof data['password'] === 'string' || data['password'] instanceof String)) {
             throw new Error("Expected the field `password` to be a primitive type in the JSON string but got " + data['password']);
         }
+        // ensure the json data is a string
+        if (data['avatar_link'] && !(typeof data['avatar_link'] === 'string' || data['avatar_link'] instanceof String)) {
+            throw new Error("Expected the field `avatar_link` to be a primitive type in the JSON string but got " + data['avatar_link']);
+        }
 
         return true;
     }
@@ -260,7 +284,7 @@ class DedicatedServer {
 
 }
 
-DedicatedServer.RequiredProperties = ["id", "cpu_description", "hdd_description", "ram_description", "created_at", "ip", "ipmi_ip", "ipmi_login", "ipmi_password", "ipv6", "node_id", "name", "comment", "vnc_pass", "status", "os_id", "cp_id", "bandwidth_id", "network_drive_id", "additional_ip_addr_id", "plan_id", "price", "location", "autoinstall_ready", "password"];
+DedicatedServer.RequiredProperties = ["id", "cpu_description", "hdd_description", "ram_description", "created_at", "ip", "ipmi_ip", "ipmi_login", "ipmi_password", "ipv6", "node_id", "name", "comment", "vnc_pass", "status", "os_id", "cp_id", "bandwidth_id", "network_drive_id", "additional_ip_addr_id", "plan_id", "price", "location", "autoinstall_ready", "password", "avatar_link", "is_pre_installed", "preset_id", "project_id"];
 
 /**
  * ID для каждого экземпляра выделенного сервера. Автоматически генерируется при создании.
@@ -411,6 +435,30 @@ DedicatedServer.prototype['autoinstall_ready'] = undefined;
  * @member {String} password
  */
 DedicatedServer.prototype['password'] = undefined;
+
+/**
+ * Ссылка на аватар сервера.
+ * @member {String} avatar_link
+ */
+DedicatedServer.prototype['avatar_link'] = undefined;
+
+/**
+ * Это логическое значение, которое показывает, готов ли выделенный сервер к моментальной выдаче.
+ * @member {Boolean} is_pre_installed
+ */
+DedicatedServer.prototype['is_pre_installed'] = undefined;
+
+/**
+ * ID тарифа сервера.
+ * @member {Number} preset_id
+ */
+DedicatedServer.prototype['preset_id'] = undefined;
+
+/**
+ * ID проекта
+ * @member {Number} project_id
+ */
+DedicatedServer.prototype['project_id'] = undefined;
 
 
 

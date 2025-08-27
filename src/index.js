@@ -58,6 +58,8 @@ import AvailableFrameworksBackendFrameworksInner from './model/AvailableFramewor
 import AvailableFrameworksFrontendFrameworksInner from './model/AvailableFrameworksFrontendFrameworksInner';
 import Backup from './model/Backup';
 import Balancer from './model/Balancer';
+import BalancerNetworksInner from './model/BalancerNetworksInner';
+import BalancerNetworksInnerIpsInner from './model/BalancerNetworksInnerIpsInner';
 import BaseError from './model/BaseError';
 import BindFloatingIp from './model/BindFloatingIp';
 import Bonus from './model/Bonus';
@@ -65,9 +67,15 @@ import Branch from './model/Branch';
 import Bucket from './model/Bucket';
 import BucketDiskStats from './model/BucketDiskStats';
 import BucketUser from './model/BucketUser';
+import BucketWebsiteConfig from './model/BucketWebsiteConfig';
+import BucketWebsiteConfigErrorPagesInner from './model/BucketWebsiteConfigErrorPagesInner';
 import CheckDomain200Response from './model/CheckDomain200Response';
 import ClusterEdit from './model/ClusterEdit';
 import ClusterIn from './model/ClusterIn';
+import ClusterInClusterNetworkCidr from './model/ClusterInClusterNetworkCidr';
+import ClusterInConfiguration from './model/ClusterInConfiguration';
+import ClusterInMaintenanceSlot from './model/ClusterInMaintenanceSlot';
+import ClusterInOidcProvider from './model/ClusterInOidcProvider';
 import ClusterOut from './model/ClusterOut';
 import ClusterResponse from './model/ClusterResponse';
 import Clusterk8s from './model/Clusterk8s';
@@ -75,7 +83,8 @@ import ClustersResponse from './model/ClustersResponse';
 import Commit from './model/Commit';
 import ComponentsSchemasBaseError from './model/ComponentsSchemasBaseError';
 import ConfigParameters from './model/ConfigParameters';
-import CopyStorageFileRequest from './model/CopyStorageFileRequest';
+import ContainerRegistryPresetsInner from './model/ContainerRegistryPresetsInner';
+import ContainerRegistryRepositoriesInner from './model/ContainerRegistryRepositoriesInner';
 import CreateAdmin from './model/CreateAdmin';
 import CreateApiKey from './model/CreateApiKey';
 import CreateApp from './model/CreateApp';
@@ -105,7 +114,6 @@ import CreateDomainMailboxRequest from './model/CreateDomainMailboxRequest';
 import CreateDomainRequest201Response from './model/CreateDomainRequest201Response';
 import CreateFloatingIp from './model/CreateFloatingIp';
 import CreateFloatingIp201Response from './model/CreateFloatingIp201Response';
-import CreateFolderInStorageRequest from './model/CreateFolderInStorageRequest';
 import CreateInstance from './model/CreateInstance';
 import CreateKey201Response from './model/CreateKey201Response';
 import CreateKeyRequest from './model/CreateKeyRequest';
@@ -127,6 +135,7 @@ import CreateServerDiskRequest from './model/CreateServerDiskRequest';
 import CreateServerNetwork from './model/CreateServerNetwork';
 import CreateStorage201Response from './model/CreateStorage201Response';
 import CreateStorageRequest from './model/CreateStorageRequest';
+import CreateStorageRequestConfigurator from './model/CreateStorageRequestConfigurator';
 import CreateToken201Response from './model/CreateToken201Response';
 import CreateVPC201Response from './model/CreateVPC201Response';
 import CreateVpc from './model/CreateVpc';
@@ -134,7 +143,7 @@ import CreatedApiKey from './model/CreatedApiKey';
 import DatabaseAdmin from './model/DatabaseAdmin';
 import DatabaseAdminInstancesInner from './model/DatabaseAdminInstancesInner';
 import DatabaseCluster from './model/DatabaseCluster';
-import DatabaseClusterDiskStats from './model/DatabaseClusterDiskStats';
+import DatabaseClusterDisk from './model/DatabaseClusterDisk';
 import DatabaseClusterNetworksInner from './model/DatabaseClusterNetworksInner';
 import DatabaseClusterNetworksInnerIpsInner from './model/DatabaseClusterNetworksInnerIpsInner';
 import DatabaseInstance from './model/DatabaseInstance';
@@ -142,6 +151,7 @@ import DatabaseType from './model/DatabaseType';
 import DatabaseTypeRequirements from './model/DatabaseTypeRequirements';
 import Db from './model/Db';
 import DbDiskStats from './model/DbDiskStats';
+import DbReplication from './model/DbReplication';
 import DbType from './model/DbType';
 import DedicatedServer from './model/DedicatedServer';
 import DedicatedServerAdditionalService from './model/DedicatedServerAdditionalService';
@@ -161,7 +171,6 @@ import DeleteServer200Response from './model/DeleteServer200Response';
 import DeleteServerIPRequest from './model/DeleteServerIPRequest';
 import DeleteServiceResponse from './model/DeleteServiceResponse';
 import DeleteStorage200Response from './model/DeleteStorage200Response';
-import DeleteStorageFileRequest from './model/DeleteStorageFileRequest';
 import Deploy from './model/Deploy';
 import DeploySettingsInner from './model/DeploySettingsInner';
 import DeployStatus from './model/DeployStatus';
@@ -276,7 +285,6 @@ import GetServerStatisticsNew200Response from './model/GetServerStatisticsNew200
 import GetServers200Response from './model/GetServers200Response';
 import GetServersPresets200Response from './model/GetServersPresets200Response';
 import GetSoftware200Response from './model/GetSoftware200Response';
-import GetStorageFilesList200Response from './model/GetStorageFilesList200Response';
 import GetStorageSubdomains200Response from './model/GetStorageSubdomains200Response';
 import GetStorageTransferStatus200Response from './model/GetStorageTransferStatus200Response';
 import GetStorageUsers200Response from './model/GetStorageUsers200Response';
@@ -298,6 +306,7 @@ import ImageUpdateAPI from './model/ImageUpdateAPI';
 import ImageUrlAuth from './model/ImageUrlAuth';
 import ImageUrlIn from './model/ImageUrlIn';
 import ImagesOutResponse from './model/ImagesOutResponse';
+import IncreaseNodes from './model/IncreaseNodes';
 import Invoice from './model/Invoice';
 import K8SVersionsResponse from './model/K8SVersionsResponse';
 import Location from './model/Location';
@@ -309,6 +318,7 @@ import MailboxForwardingOutgoing from './model/MailboxForwardingOutgoing';
 import MailboxSpamFilter from './model/MailboxSpamFilter';
 import MasterPresetOutApi from './model/MasterPresetOutApi';
 import Meta from './model/Meta';
+import Meta1 from './model/Meta1';
 import MountNetworkDrive from './model/MountNetworkDrive';
 import Network from './model/Network';
 import NetworkDrive from './model/NetworkDrive';
@@ -318,7 +328,6 @@ import NetworkDrivePresetRead from './model/NetworkDrivePresetRead';
 import NetworkDrivePresetWrite from './model/NetworkDrivePresetWrite';
 import NetworkDriveServiceListInner from './model/NetworkDriveServiceListInner';
 import NetworkDriversResponse from './model/NetworkDriversResponse';
-import NodeCount from './model/NodeCount';
 import NodeGroupIn from './model/NodeGroupIn';
 import NodeGroupInConfiguration from './model/NodeGroupInConfiguration';
 import NodeGroupOut from './model/NodeGroupOut';
@@ -343,10 +352,18 @@ import ProjectResource from './model/ProjectResource';
 import Provider from './model/Provider';
 import Providers from './model/Providers';
 import Quota from './model/Quota';
+import ReduceNodes from './model/ReduceNodes';
 import RefreshApiKey from './model/RefreshApiKey';
+import RegistriesResponse from './model/RegistriesResponse';
+import RegistryEdit from './model/RegistryEdit';
+import RegistryIn from './model/RegistryIn';
+import RegistryInConfiguration from './model/RegistryInConfiguration';
+import RegistryOut from './model/RegistryOut';
+import RegistryOutDiskStats from './model/RegistryOutDiskStats';
+import RegistryResponse from './model/RegistryResponse';
 import RemoveCountries from './model/RemoveCountries';
 import RemoveIps from './model/RemoveIps';
-import RenameStorageFileRequest from './model/RenameStorageFileRequest';
+import RepositoriesResponse from './model/RepositoriesResponse';
 import Repository from './model/Repository';
 import Resource from './model/Resource';
 import ResourceTransfer from './model/ResourceTransfer';
@@ -354,11 +371,10 @@ import ResourceType from './model/ResourceType';
 import Resources from './model/Resources';
 import ResourcesResponse from './model/ResourcesResponse';
 import Rule from './model/Rule';
-import S3Object from './model/S3Object';
-import S3ObjectOwner from './model/S3ObjectOwner';
 import S3Subdomain from './model/S3Subdomain';
 import SchemasBaseError from './model/SchemasBaseError';
 import SchemasMeta from './model/SchemasMeta';
+import SchemasPresetsResponse from './model/SchemasPresetsResponse';
 import ServerBackup from './model/ServerBackup';
 import ServerDisk from './model/ServerDisk';
 import ServerIp from './model/ServerIp';
@@ -382,6 +398,7 @@ import SshKeyUsedByInner from './model/SshKeyUsedByInner';
 import Status from './model/Status';
 import StatusCompanyInfo from './model/StatusCompanyInfo';
 import Subdomain from './model/Subdomain';
+import Tags from './model/Tags';
 import TopLevelDomain from './model/TopLevelDomain';
 import TopLevelDomainAllowedBuyPeriodsInner from './model/TopLevelDomainAllowedBuyPeriodsInner';
 import TransferStatus from './model/TransferStatus';
@@ -420,6 +437,7 @@ import UpdateServerNATRequest from './model/UpdateServerNATRequest';
 import UpdateServerOSBootModeRequest from './model/UpdateServerOSBootModeRequest';
 import UpdateSettings from './model/UpdateSettings';
 import UpdateStorageRequest from './model/UpdateStorageRequest';
+import UpdateStorageRequestConfigurator from './model/UpdateStorageRequestConfigurator';
 import UpdateStorageUser200Response from './model/UpdateStorageUser200Response';
 import UpdateStorageUserRequest from './model/UpdateStorageUserRequest';
 import UpdateToken200Response from './model/UpdateToken200Response';
@@ -444,6 +462,7 @@ import APIKeysApi from './api/APIKeysApi';
 import AccountApi from './api/AccountApi';
 import AppsApi from './api/AppsApi';
 import BalancersApi from './api/BalancersApi';
+import ContainerRegistryApi from './api/ContainerRegistryApi';
 import DatabasesApi from './api/DatabasesApi';
 import DedicatedServersApi from './api/DedicatedServersApi';
 import DomainsApi from './api/DomainsApi';
@@ -770,6 +789,18 @@ export {
     Balancer,
 
     /**
+     * The BalancerNetworksInner model constructor.
+     * @property {module:model/BalancerNetworksInner}
+     */
+    BalancerNetworksInner,
+
+    /**
+     * The BalancerNetworksInnerIpsInner model constructor.
+     * @property {module:model/BalancerNetworksInnerIpsInner}
+     */
+    BalancerNetworksInnerIpsInner,
+
+    /**
      * The BaseError model constructor.
      * @property {module:model/BaseError}
      */
@@ -812,6 +843,18 @@ export {
     BucketUser,
 
     /**
+     * The BucketWebsiteConfig model constructor.
+     * @property {module:model/BucketWebsiteConfig}
+     */
+    BucketWebsiteConfig,
+
+    /**
+     * The BucketWebsiteConfigErrorPagesInner model constructor.
+     * @property {module:model/BucketWebsiteConfigErrorPagesInner}
+     */
+    BucketWebsiteConfigErrorPagesInner,
+
+    /**
      * The CheckDomain200Response model constructor.
      * @property {module:model/CheckDomain200Response}
      */
@@ -828,6 +871,30 @@ export {
      * @property {module:model/ClusterIn}
      */
     ClusterIn,
+
+    /**
+     * The ClusterInClusterNetworkCidr model constructor.
+     * @property {module:model/ClusterInClusterNetworkCidr}
+     */
+    ClusterInClusterNetworkCidr,
+
+    /**
+     * The ClusterInConfiguration model constructor.
+     * @property {module:model/ClusterInConfiguration}
+     */
+    ClusterInConfiguration,
+
+    /**
+     * The ClusterInMaintenanceSlot model constructor.
+     * @property {module:model/ClusterInMaintenanceSlot}
+     */
+    ClusterInMaintenanceSlot,
+
+    /**
+     * The ClusterInOidcProvider model constructor.
+     * @property {module:model/ClusterInOidcProvider}
+     */
+    ClusterInOidcProvider,
 
     /**
      * The ClusterOut model constructor.
@@ -872,10 +939,16 @@ export {
     ConfigParameters,
 
     /**
-     * The CopyStorageFileRequest model constructor.
-     * @property {module:model/CopyStorageFileRequest}
+     * The ContainerRegistryPresetsInner model constructor.
+     * @property {module:model/ContainerRegistryPresetsInner}
      */
-    CopyStorageFileRequest,
+    ContainerRegistryPresetsInner,
+
+    /**
+     * The ContainerRegistryRepositoriesInner model constructor.
+     * @property {module:model/ContainerRegistryRepositoriesInner}
+     */
+    ContainerRegistryRepositoriesInner,
 
     /**
      * The CreateAdmin model constructor.
@@ -1052,12 +1125,6 @@ export {
     CreateFloatingIp201Response,
 
     /**
-     * The CreateFolderInStorageRequest model constructor.
-     * @property {module:model/CreateFolderInStorageRequest}
-     */
-    CreateFolderInStorageRequest,
-
-    /**
      * The CreateInstance model constructor.
      * @property {module:model/CreateInstance}
      */
@@ -1184,6 +1251,12 @@ export {
     CreateStorageRequest,
 
     /**
+     * The CreateStorageRequestConfigurator model constructor.
+     * @property {module:model/CreateStorageRequestConfigurator}
+     */
+    CreateStorageRequestConfigurator,
+
+    /**
      * The CreateToken201Response model constructor.
      * @property {module:model/CreateToken201Response}
      */
@@ -1226,10 +1299,10 @@ export {
     DatabaseCluster,
 
     /**
-     * The DatabaseClusterDiskStats model constructor.
-     * @property {module:model/DatabaseClusterDiskStats}
+     * The DatabaseClusterDisk model constructor.
+     * @property {module:model/DatabaseClusterDisk}
      */
-    DatabaseClusterDiskStats,
+    DatabaseClusterDisk,
 
     /**
      * The DatabaseClusterNetworksInner model constructor.
@@ -1272,6 +1345,12 @@ export {
      * @property {module:model/DbDiskStats}
      */
     DbDiskStats,
+
+    /**
+     * The DbReplication model constructor.
+     * @property {module:model/DbReplication}
+     */
+    DbReplication,
 
     /**
      * The DbType model constructor.
@@ -1386,12 +1465,6 @@ export {
      * @property {module:model/DeleteStorage200Response}
      */
     DeleteStorage200Response,
-
-    /**
-     * The DeleteStorageFileRequest model constructor.
-     * @property {module:model/DeleteStorageFileRequest}
-     */
-    DeleteStorageFileRequest,
 
     /**
      * The Deploy model constructor.
@@ -2078,12 +2151,6 @@ export {
     GetSoftware200Response,
 
     /**
-     * The GetStorageFilesList200Response model constructor.
-     * @property {module:model/GetStorageFilesList200Response}
-     */
-    GetStorageFilesList200Response,
-
-    /**
      * The GetStorageSubdomains200Response model constructor.
      * @property {module:model/GetStorageSubdomains200Response}
      */
@@ -2210,6 +2277,12 @@ export {
     ImagesOutResponse,
 
     /**
+     * The IncreaseNodes model constructor.
+     * @property {module:model/IncreaseNodes}
+     */
+    IncreaseNodes,
+
+    /**
      * The Invoice model constructor.
      * @property {module:model/Invoice}
      */
@@ -2276,6 +2349,12 @@ export {
     Meta,
 
     /**
+     * The Meta1 model constructor.
+     * @property {module:model/Meta1}
+     */
+    Meta1,
+
+    /**
      * The MountNetworkDrive model constructor.
      * @property {module:model/MountNetworkDrive}
      */
@@ -2328,12 +2407,6 @@ export {
      * @property {module:model/NetworkDriversResponse}
      */
     NetworkDriversResponse,
-
-    /**
-     * The NodeCount model constructor.
-     * @property {module:model/NodeCount}
-     */
-    NodeCount,
 
     /**
      * The NodeGroupIn model constructor.
@@ -2480,10 +2553,58 @@ export {
     Quota,
 
     /**
+     * The ReduceNodes model constructor.
+     * @property {module:model/ReduceNodes}
+     */
+    ReduceNodes,
+
+    /**
      * The RefreshApiKey model constructor.
      * @property {module:model/RefreshApiKey}
      */
     RefreshApiKey,
+
+    /**
+     * The RegistriesResponse model constructor.
+     * @property {module:model/RegistriesResponse}
+     */
+    RegistriesResponse,
+
+    /**
+     * The RegistryEdit model constructor.
+     * @property {module:model/RegistryEdit}
+     */
+    RegistryEdit,
+
+    /**
+     * The RegistryIn model constructor.
+     * @property {module:model/RegistryIn}
+     */
+    RegistryIn,
+
+    /**
+     * The RegistryInConfiguration model constructor.
+     * @property {module:model/RegistryInConfiguration}
+     */
+    RegistryInConfiguration,
+
+    /**
+     * The RegistryOut model constructor.
+     * @property {module:model/RegistryOut}
+     */
+    RegistryOut,
+
+    /**
+     * The RegistryOutDiskStats model constructor.
+     * @property {module:model/RegistryOutDiskStats}
+     */
+    RegistryOutDiskStats,
+
+    /**
+     * The RegistryResponse model constructor.
+     * @property {module:model/RegistryResponse}
+     */
+    RegistryResponse,
 
     /**
      * The RemoveCountries model constructor.
@@ -2498,10 +2619,10 @@ export {
     RemoveIps,
 
     /**
-     * The RenameStorageFileRequest model constructor.
-     * @property {module:model/RenameStorageFileRequest}
+     * The RepositoriesResponse model constructor.
+     * @property {module:model/RepositoriesResponse}
      */
-    RenameStorageFileRequest,
+    RepositoriesResponse,
 
     /**
      * The Repository model constructor.
@@ -2546,18 +2667,6 @@ export {
     Rule,
 
     /**
-     * The S3Object model constructor.
-     * @property {module:model/S3Object}
-     */
-    S3Object,
-
-    /**
-     * The S3ObjectOwner model constructor.
-     * @property {module:model/S3ObjectOwner}
-     */
-    S3ObjectOwner,
-
-    /**
      * The S3Subdomain model constructor.
      * @property {module:model/S3Subdomain}
      */
@@ -2574,6 +2683,12 @@ export {
      * @property {module:model/SchemasMeta}
      */
     SchemasMeta,
+
+    /**
+     * The SchemasPresetsResponse model constructor.
+     * @property {module:model/SchemasPresetsResponse}
+     */
+    SchemasPresetsResponse,
 
     /**
      * The ServerBackup model constructor.
@@ -2712,6 +2827,12 @@ export {
      * @property {module:model/Subdomain}
      */
     Subdomain,
+
+    /**
+     * The Tags model constructor.
+     * @property {module:model/Tags}
+     */
+    Tags,
 
     /**
      * The TopLevelDomain model constructor.
@@ -2942,6 +3063,12 @@ export {
     UpdateStorageRequest,
 
     /**
+     * The UpdateStorageRequestConfigurator model constructor.
+     * @property {module:model/UpdateStorageRequestConfigurator}
+     */
+    UpdateStorageRequestConfigurator,
+
+    /**
      * The UpdateStorageUser200Response model constructor.
      * @property {module:model/UpdateStorageUser200Response}
      */
@@ -3084,6 +3211,12 @@ export {
     * @property {module:api/BalancersApi}
     */
     BalancersApi,
+
+    /**
+    * The ContainerRegistryApi service constructor.
+    * @property {module:api/ContainerRegistryApi}
+    */
+    ContainerRegistryApi,
 
     /**
     * The DatabasesApi service constructor.

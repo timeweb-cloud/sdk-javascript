@@ -46,6 +46,8 @@ Name | Type | Description | Notes
 
 * `ams-1` (value: `"ams-1"`)
 
+* `fra-1` (value: `"fra-1"`)
+
 
 
 

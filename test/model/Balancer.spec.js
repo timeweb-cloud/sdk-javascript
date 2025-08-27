@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property accountId (base name: "account_id")', function() {
+      // uncomment below and update the code to test the property accountId
+      //var instance = new TimewebCloudApi.Balancer();
+      //expect(instance).to.be();
+    });
+
     it('should have the property algo (base name: "algo")', function() {
       // uncomment below and update the code to test the property algo
       //var instance = new TimewebCloudApi.Balancer();
@@ -224,6 +230,18 @@
 
     it('should have the property availabilityZone (base name: "availability_zone")', function() {
       // uncomment below and update the code to test the property availabilityZone
+      //var instance = new TimewebCloudApi.Balancer();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property projectId (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property projectId
+      //var instance = new TimewebCloudApi.Balancer();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property networks (base name: "networks")', function() {
+      // uncomment below and update the code to test the property networks
       //var instance = new TimewebCloudApi.Balancer();
       //expect(instance).to.be();
     });

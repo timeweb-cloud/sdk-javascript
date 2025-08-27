@@ -51,6 +51,8 @@ docs/AvailableFrameworksBackendFrameworksInner.md
 docs/AvailableFrameworksFrontendFrameworksInner.md
 docs/Backup.md
 docs/Balancer.md
+docs/BalancerNetworksInner.md
+docs/BalancerNetworksInnerIpsInner.md
 docs/BalancersApi.md
 docs/BaseError.md
 docs/BindFloatingIp.md
@@ -59,9 +61,15 @@ docs/Branch.md
 docs/Bucket.md
 docs/BucketDiskStats.md
 docs/BucketUser.md
+docs/BucketWebsiteConfig.md
+docs/BucketWebsiteConfigErrorPagesInner.md
 docs/CheckDomain200Response.md
 docs/ClusterEdit.md
 docs/ClusterIn.md
+docs/ClusterInClusterNetworkCidr.md
+docs/ClusterInConfiguration.md
+docs/ClusterInMaintenanceSlot.md
+docs/ClusterInOidcProvider.md
 docs/ClusterOut.md
 docs/ClusterResponse.md
 docs/Clusterk8s.md
@@ -69,7 +77,9 @@ docs/ClustersResponse.md
 docs/Commit.md
 docs/ComponentsSchemasBaseError.md
 docs/ConfigParameters.md
-docs/CopyStorageFileRequest.md
+docs/ContainerRegistryApi.md
+docs/ContainerRegistryPresetsInner.md
+docs/ContainerRegistryRepositoriesInner.md
 docs/CreateAdmin.md
 docs/CreateApiKey.md
 docs/CreateApp.md
@@ -99,7 +109,6 @@ docs/CreateDomainMailboxRequest.md
 docs/CreateDomainRequest201Response.md
 docs/CreateFloatingIp.md
 docs/CreateFloatingIp201Response.md
-docs/CreateFolderInStorageRequest.md
 docs/CreateInstance.md
 docs/CreateKey201Response.md
 docs/CreateKeyRequest.md
@@ -121,6 +130,7 @@ docs/CreateServerDiskRequest.md
 docs/CreateServerNetwork.md
 docs/CreateStorage201Response.md
 docs/CreateStorageRequest.md
+docs/CreateStorageRequestConfigurator.md
 docs/CreateToken201Response.md
 docs/CreateVPC201Response.md
 docs/CreateVpc.md
@@ -128,7 +138,7 @@ docs/CreatedApiKey.md
 docs/DatabaseAdmin.md
 docs/DatabaseAdminInstancesInner.md
 docs/DatabaseCluster.md
-docs/DatabaseClusterDiskStats.md
+docs/DatabaseClusterDisk.md
 docs/DatabaseClusterNetworksInner.md
 docs/DatabaseClusterNetworksInnerIpsInner.md
 docs/DatabaseInstance.md
@@ -137,6 +147,7 @@ docs/DatabaseTypeRequirements.md
 docs/DatabasesApi.md
 docs/Db.md
 docs/DbDiskStats.md
+docs/DbReplication.md
 docs/DbType.md
 docs/DedicatedServer.md
 docs/DedicatedServerAdditionalService.md
@@ -157,7 +168,6 @@ docs/DeleteServer200Response.md
 docs/DeleteServerIPRequest.md
 docs/DeleteServiceResponse.md
 docs/DeleteStorage200Response.md
-docs/DeleteStorageFileRequest.md
 docs/Deploy.md
 docs/DeploySettingsInner.md
 docs/DeployStatus.md
@@ -275,7 +285,6 @@ docs/GetServerStatisticsNew200Response.md
 docs/GetServers200Response.md
 docs/GetServersPresets200Response.md
 docs/GetSoftware200Response.md
-docs/GetStorageFilesList200Response.md
 docs/GetStorageSubdomains200Response.md
 docs/GetStorageTransferStatus200Response.md
 docs/GetStorageUsers200Response.md
@@ -298,6 +307,7 @@ docs/ImageUrlAuth.md
 docs/ImageUrlIn.md
 docs/ImagesApi.md
 docs/ImagesOutResponse.md
+docs/IncreaseNodes.md
 docs/Invoice.md
 docs/K8SVersionsResponse.md
 docs/KubernetesApi.md
@@ -312,6 +322,7 @@ docs/MailboxForwardingOutgoing.md
 docs/MailboxSpamFilter.md
 docs/MasterPresetOutApi.md
 docs/Meta.md
+docs/Meta1.md
 docs/MountNetworkDrive.md
 docs/Network.md
 docs/NetworkDrive.md
@@ -322,7 +333,6 @@ docs/NetworkDrivePresetWrite.md
 docs/NetworkDriveServiceListInner.md
 docs/NetworkDriversResponse.md
 docs/NetworkDrivesApi.md
-docs/NodeCount.md
 docs/NodeGroupIn.md
 docs/NodeGroupInConfiguration.md
 docs/NodeGroupOut.md
@@ -348,10 +358,18 @@ docs/ProjectsApi.md
 docs/Provider.md
 docs/Providers.md
 docs/Quota.md
+docs/ReduceNodes.md
 docs/RefreshApiKey.md
+docs/RegistriesResponse.md
+docs/RegistryEdit.md
+docs/RegistryIn.md
+docs/RegistryInConfiguration.md
+docs/RegistryOut.md
+docs/RegistryOutDiskStats.md
+docs/RegistryResponse.md
 docs/RemoveCountries.md
 docs/RemoveIps.md
-docs/RenameStorageFileRequest.md
+docs/RepositoriesResponse.md
 docs/Repository.md
 docs/Resource.md
 docs/ResourceTransfer.md
@@ -360,12 +378,11 @@ docs/Resources.md
 docs/ResourcesResponse.md
 docs/Rule.md
 docs/S3Api.md
-docs/S3Object.md
-docs/S3ObjectOwner.md
 docs/S3Subdomain.md
 docs/SSHApi.md
 docs/SchemasBaseError.md
 docs/SchemasMeta.md
+docs/SchemasPresetsResponse.md
 docs/ServerBackup.md
 docs/ServerDisk.md
 docs/ServerIp.md
@@ -390,6 +407,7 @@ docs/SshKeyUsedByInner.md
 docs/Status.md
 docs/StatusCompanyInfo.md
 docs/Subdomain.md
+docs/Tags.md
 docs/TopLevelDomain.md
 docs/TopLevelDomainAllowedBuyPeriodsInner.md
 docs/TransferStatus.md
@@ -428,6 +446,7 @@ docs/UpdateServerNATRequest.md
 docs/UpdateServerOSBootModeRequest.md
 docs/UpdateSettings.md
 docs/UpdateStorageRequest.md
+docs/UpdateStorageRequestConfigurator.md
 docs/UpdateStorageUser200Response.md
 docs/UpdateStorageUserRequest.md
 docs/UpdateToken200Response.md
@@ -457,6 +476,7 @@ src/api/APIKeysApi.js
 src/api/AccountApi.js
 src/api/AppsApi.js
 src/api/BalancersApi.js
+src/api/ContainerRegistryApi.js
 src/api/DatabasesApi.js
 src/api/DedicatedServersApi.js
 src/api/DomainsApi.js
@@ -518,6 +538,8 @@ src/model/AvailableFrameworksBackendFrameworksInner.js
 src/model/AvailableFrameworksFrontendFrameworksInner.js
 src/model/Backup.js
 src/model/Balancer.js
+src/model/BalancerNetworksInner.js
+src/model/BalancerNetworksInnerIpsInner.js
 src/model/BaseError.js
 src/model/BindFloatingIp.js
 src/model/Bonus.js
@@ -525,9 +547,15 @@ src/model/Branch.js
 src/model/Bucket.js
 src/model/BucketDiskStats.js
 src/model/BucketUser.js
+src/model/BucketWebsiteConfig.js
+src/model/BucketWebsiteConfigErrorPagesInner.js
 src/model/CheckDomain200Response.js
 src/model/ClusterEdit.js
 src/model/ClusterIn.js
+src/model/ClusterInClusterNetworkCidr.js
+src/model/ClusterInConfiguration.js
+src/model/ClusterInMaintenanceSlot.js
+src/model/ClusterInOidcProvider.js
 src/model/ClusterOut.js
 src/model/ClusterResponse.js
 src/model/Clusterk8s.js
@@ -535,7 +563,8 @@ src/model/ClustersResponse.js
 src/model/Commit.js
 src/model/ComponentsSchemasBaseError.js
 src/model/ConfigParameters.js
-src/model/CopyStorageFileRequest.js
+src/model/ContainerRegistryPresetsInner.js
+src/model/ContainerRegistryRepositoriesInner.js
 src/model/CreateAdmin.js
 src/model/CreateApiKey.js
 src/model/CreateApp.js
@@ -565,7 +594,6 @@ src/model/CreateDomainMailboxRequest.js
 src/model/CreateDomainRequest201Response.js
 src/model/CreateFloatingIp.js
 src/model/CreateFloatingIp201Response.js
-src/model/CreateFolderInStorageRequest.js
 src/model/CreateInstance.js
 src/model/CreateKey201Response.js
 src/model/CreateKeyRequest.js
@@ -587,6 +615,7 @@ src/model/CreateServerDiskRequest.js
 src/model/CreateServerNetwork.js
 src/model/CreateStorage201Response.js
 src/model/CreateStorageRequest.js
+src/model/CreateStorageRequestConfigurator.js
 src/model/CreateToken201Response.js
 src/model/CreateVPC201Response.js
 src/model/CreateVpc.js
@@ -594,7 +623,7 @@ src/model/CreatedApiKey.js
 src/model/DatabaseAdmin.js
 src/model/DatabaseAdminInstancesInner.js
 src/model/DatabaseCluster.js
-src/model/DatabaseClusterDiskStats.js
+src/model/DatabaseClusterDisk.js
 src/model/DatabaseClusterNetworksInner.js
 src/model/DatabaseClusterNetworksInnerIpsInner.js
 src/model/DatabaseInstance.js
@@ -602,6 +631,7 @@ src/model/DatabaseType.js
 src/model/DatabaseTypeRequirements.js
 src/model/Db.js
 src/model/DbDiskStats.js
+src/model/DbReplication.js
 src/model/DbType.js
 src/model/DedicatedServer.js
 src/model/DedicatedServerAdditionalService.js
@@ -621,7 +651,6 @@ src/model/DeleteServer200Response.js
 src/model/DeleteServerIPRequest.js
 src/model/DeleteServiceResponse.js
 src/model/DeleteStorage200Response.js
-src/model/DeleteStorageFileRequest.js
 src/model/Deploy.js
 src/model/DeploySettingsInner.js
 src/model/DeployStatus.js
@@ -736,7 +765,6 @@ src/model/GetServerStatisticsNew200Response.js
 src/model/GetServers200Response.js
 src/model/GetServersPresets200Response.js
 src/model/GetSoftware200Response.js
-src/model/GetStorageFilesList200Response.js
 src/model/GetStorageSubdomains200Response.js
 src/model/GetStorageTransferStatus200Response.js
 src/model/GetStorageUsers200Response.js
@@ -758,6 +786,7 @@ src/model/ImageUpdateAPI.js
 src/model/ImageUrlAuth.js
 src/model/ImageUrlIn.js
 src/model/ImagesOutResponse.js
+src/model/IncreaseNodes.js
 src/model/Invoice.js
 src/model/K8SVersionsResponse.js
 src/model/Location.js
@@ -769,6 +798,7 @@ src/model/MailboxForwardingOutgoing.js
 src/model/MailboxSpamFilter.js
 src/model/MasterPresetOutApi.js
 src/model/Meta.js
+src/model/Meta1.js
 src/model/MountNetworkDrive.js
 src/model/Network.js
 src/model/NetworkDrive.js
@@ -778,7 +808,6 @@ src/model/NetworkDrivePresetRead.js
 src/model/NetworkDrivePresetWrite.js
 src/model/NetworkDriveServiceListInner.js
 src/model/NetworkDriversResponse.js
-src/model/NodeCount.js
 src/model/NodeGroupIn.js
 src/model/NodeGroupInConfiguration.js
 src/model/NodeGroupOut.js
@@ -803,10 +832,18 @@ src/model/ProjectResource.js
 src/model/Provider.js
 src/model/Providers.js
 src/model/Quota.js
+src/model/ReduceNodes.js
 src/model/RefreshApiKey.js
+src/model/RegistriesResponse.js
+src/model/RegistryEdit.js
+src/model/RegistryIn.js
+src/model/RegistryInConfiguration.js
+src/model/RegistryOut.js
+src/model/RegistryOutDiskStats.js
+src/model/RegistryResponse.js
 src/model/RemoveCountries.js
 src/model/RemoveIps.js
-src/model/RenameStorageFileRequest.js
+src/model/RepositoriesResponse.js
 src/model/Repository.js
 src/model/Resource.js
 src/model/ResourceTransfer.js
@@ -814,11 +851,10 @@ src/model/ResourceType.js
 src/model/Resources.js
 src/model/ResourcesResponse.js
 src/model/Rule.js
-src/model/S3Object.js
-src/model/S3ObjectOwner.js
 src/model/S3Subdomain.js
 src/model/SchemasBaseError.js
 src/model/SchemasMeta.js
+src/model/SchemasPresetsResponse.js
 src/model/ServerBackup.js
 src/model/ServerDisk.js
 src/model/ServerIp.js
@@ -842,6 +878,7 @@ src/model/SshKeyUsedByInner.js
 src/model/Status.js
 src/model/StatusCompanyInfo.js
 src/model/Subdomain.js
+src/model/Tags.js
 src/model/TopLevelDomain.js
 src/model/TopLevelDomainAllowedBuyPeriodsInner.js
 src/model/TransferStatus.js
@@ -880,6 +917,7 @@ src/model/UpdateServerNATRequest.js
 src/model/UpdateServerOSBootModeRequest.js
 src/model/UpdateSettings.js
 src/model/UpdateStorageRequest.js
+src/model/UpdateStorageRequestConfigurator.js
 src/model/UpdateStorageUser200Response.js
 src/model/UpdateStorageUserRequest.js
 src/model/UpdateToken200Response.js
@@ -904,6 +942,7 @@ test/api/APIKeysApi.spec.js
 test/api/AccountApi.spec.js
 test/api/AppsApi.spec.js
 test/api/BalancersApi.spec.js
+test/api/ContainerRegistryApi.spec.js
 test/api/DatabasesApi.spec.js
 test/api/DedicatedServersApi.spec.js
 test/api/DomainsApi.spec.js
@@ -964,6 +1003,8 @@ test/model/AvailableFrameworksBackendFrameworksInner.spec.js
 test/model/AvailableFrameworksFrontendFrameworksInner.spec.js
 test/model/Backup.spec.js
 test/model/Balancer.spec.js
+test/model/BalancerNetworksInner.spec.js
+test/model/BalancerNetworksInnerIpsInner.spec.js
 test/model/BaseError.spec.js
 test/model/BindFloatingIp.spec.js
 test/model/Bonus.spec.js
@@ -971,9 +1012,15 @@ test/model/Branch.spec.js
 test/model/Bucket.spec.js
 test/model/BucketDiskStats.spec.js
 test/model/BucketUser.spec.js
+test/model/BucketWebsiteConfig.spec.js
+test/model/BucketWebsiteConfigErrorPagesInner.spec.js
 test/model/CheckDomain200Response.spec.js
 test/model/ClusterEdit.spec.js
 test/model/ClusterIn.spec.js
+test/model/ClusterInClusterNetworkCidr.spec.js
+test/model/ClusterInConfiguration.spec.js
+test/model/ClusterInMaintenanceSlot.spec.js
+test/model/ClusterInOidcProvider.spec.js
 test/model/ClusterOut.spec.js
 test/model/ClusterResponse.spec.js
 test/model/Clusterk8s.spec.js
@@ -981,7 +1028,8 @@ test/model/ClustersResponse.spec.js
 test/model/Commit.spec.js
 test/model/ComponentsSchemasBaseError.spec.js
 test/model/ConfigParameters.spec.js
-test/model/CopyStorageFileRequest.spec.js
+test/model/ContainerRegistryPresetsInner.spec.js
+test/model/ContainerRegistryRepositoriesInner.spec.js
 test/model/CreateAdmin.spec.js
 test/model/CreateApiKey.spec.js
 test/model/CreateApp.spec.js
@@ -1011,7 +1059,6 @@ test/model/CreateDomainMailboxRequest.spec.js
 test/model/CreateDomainRequest201Response.spec.js
 test/model/CreateFloatingIp.spec.js
 test/model/CreateFloatingIp201Response.spec.js
-test/model/CreateFolderInStorageRequest.spec.js
 test/model/CreateInstance.spec.js
 test/model/CreateKey201Response.spec.js
 test/model/CreateKeyRequest.spec.js
@@ -1033,6 +1080,7 @@ test/model/CreateServerDiskRequest.spec.js
 test/model/CreateServerNetwork.spec.js
 test/model/CreateStorage201Response.spec.js
 test/model/CreateStorageRequest.spec.js
+test/model/CreateStorageRequestConfigurator.spec.js
 test/model/CreateToken201Response.spec.js
 test/model/CreateVPC201Response.spec.js
 test/model/CreateVpc.spec.js
@@ -1040,7 +1088,7 @@ test/model/CreatedApiKey.spec.js
 test/model/DatabaseAdmin.spec.js
 test/model/DatabaseAdminInstancesInner.spec.js
 test/model/DatabaseCluster.spec.js
-test/model/DatabaseClusterDiskStats.spec.js
+test/model/DatabaseClusterDisk.spec.js
 test/model/DatabaseClusterNetworksInner.spec.js
 test/model/DatabaseClusterNetworksInnerIpsInner.spec.js
 test/model/DatabaseInstance.spec.js
@@ -1048,6 +1096,7 @@ test/model/DatabaseType.spec.js
 test/model/DatabaseTypeRequirements.spec.js
 test/model/Db.spec.js
 test/model/DbDiskStats.spec.js
+test/model/DbReplication.spec.js
 test/model/DbType.spec.js
 test/model/DedicatedServer.spec.js
 test/model/DedicatedServerAdditionalService.spec.js
@@ -1067,7 +1116,6 @@ test/model/DeleteServer200Response.spec.js
 test/model/DeleteServerIPRequest.spec.js
 test/model/DeleteServiceResponse.spec.js
 test/model/DeleteStorage200Response.spec.js
-test/model/DeleteStorageFileRequest.spec.js
 test/model/Deploy.spec.js
 test/model/DeploySettingsInner.spec.js
 test/model/DeployStatus.spec.js
@@ -1182,7 +1230,6 @@ test/model/GetServerStatisticsNew200Response.spec.js
 test/model/GetServers200Response.spec.js
 test/model/GetServersPresets200Response.spec.js
 test/model/GetSoftware200Response.spec.js
-test/model/GetStorageFilesList200Response.spec.js
 test/model/GetStorageSubdomains200Response.spec.js
 test/model/GetStorageTransferStatus200Response.spec.js
 test/model/GetStorageUsers200Response.spec.js
@@ -1204,6 +1251,7 @@ test/model/ImageUpdateAPI.spec.js
 test/model/ImageUrlAuth.spec.js
 test/model/ImageUrlIn.spec.js
 test/model/ImagesOutResponse.spec.js
+test/model/IncreaseNodes.spec.js
 test/model/Invoice.spec.js
 test/model/K8SVersionsResponse.spec.js
 test/model/Location.spec.js
@@ -1215,6 +1263,7 @@ test/model/MailboxForwardingOutgoing.spec.js
 test/model/MailboxSpamFilter.spec.js
 test/model/MasterPresetOutApi.spec.js
 test/model/Meta.spec.js
+test/model/Meta1.spec.js
 test/model/MountNetworkDrive.spec.js
 test/model/Network.spec.js
 test/model/NetworkDrive.spec.js
@@ -1224,7 +1273,6 @@ test/model/NetworkDrivePresetRead.spec.js
 test/model/NetworkDrivePresetWrite.spec.js
 test/model/NetworkDriveServiceListInner.spec.js
 test/model/NetworkDriversResponse.spec.js
-test/model/NodeCount.spec.js
 test/model/NodeGroupIn.spec.js
 test/model/NodeGroupInConfiguration.spec.js
 test/model/NodeGroupOut.spec.js
@@ -1249,10 +1297,18 @@ test/model/ProjectResource.spec.js
 test/model/Provider.spec.js
 test/model/Providers.spec.js
 test/model/Quota.spec.js
+test/model/ReduceNodes.spec.js
 test/model/RefreshApiKey.spec.js
+test/model/RegistriesResponse.spec.js
+test/model/RegistryEdit.spec.js
+test/model/RegistryIn.spec.js
+test/model/RegistryInConfiguration.spec.js
+test/model/RegistryOut.spec.js
+test/model/RegistryOutDiskStats.spec.js
+test/model/RegistryResponse.spec.js
 test/model/RemoveCountries.spec.js
 test/model/RemoveIps.spec.js
-test/model/RenameStorageFileRequest.spec.js
+test/model/RepositoriesResponse.spec.js
 test/model/Repository.spec.js
 test/model/Resource.spec.js
 test/model/ResourceTransfer.spec.js
@@ -1260,11 +1316,10 @@ test/model/ResourceType.spec.js
 test/model/Resources.spec.js
 test/model/ResourcesResponse.spec.js
 test/model/Rule.spec.js
-test/model/S3Object.spec.js
-test/model/S3ObjectOwner.spec.js
 test/model/S3Subdomain.spec.js
 test/model/SchemasBaseError.spec.js
 test/model/SchemasMeta.spec.js
+test/model/SchemasPresetsResponse.spec.js
 test/model/ServerBackup.spec.js
 test/model/ServerDisk.spec.js
 test/model/ServerIp.spec.js
@@ -1288,6 +1343,7 @@ test/model/SshKeyUsedByInner.spec.js
 test/model/Status.spec.js
 test/model/StatusCompanyInfo.spec.js
 test/model/Subdomain.spec.js
+test/model/Tags.spec.js
 test/model/TopLevelDomain.spec.js
 test/model/TopLevelDomainAllowedBuyPeriodsInner.spec.js
 test/model/TransferStatus.spec.js
@@ -1326,6 +1382,7 @@ test/model/UpdateServerNATRequest.spec.js
 test/model/UpdateServerOSBootModeRequest.spec.js
 test/model/UpdateSettings.spec.js
 test/model/UpdateStorageRequest.spec.js
+test/model/UpdateStorageRequestConfigurator.spec.js
 test/model/UpdateStorageUser200Response.spec.js
 test/model/UpdateStorageUserRequest.spec.js
 test/model/UpdateToken200Response.spec.js

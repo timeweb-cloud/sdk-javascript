@@ -24,14 +24,15 @@ import GetFinances403Response from '../model/GetFinances403Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetImage404Response from '../model/GetImage404Response';
+import IncreaseNodes from '../model/IncreaseNodes';
 import K8SVersionsResponse from '../model/K8SVersionsResponse';
 import NetworkDriversResponse from '../model/NetworkDriversResponse';
-import NodeCount from '../model/NodeCount';
 import NodeGroupIn from '../model/NodeGroupIn';
 import NodeGroupResponse from '../model/NodeGroupResponse';
 import NodeGroupsResponse from '../model/NodeGroupsResponse';
 import NodesResponse from '../model/NodesResponse';
 import PresetsResponse from '../model/PresetsResponse';
+import ReduceNodes from '../model/ReduceNodes';
 import ResourcesResponse from '../model/ResourcesResponse';
 
 /**
@@ -774,12 +775,12 @@ export default class KubernetesApi {
      * Чтобы увеличить количество нод в группе на указанное значение, отправьте POST-запрос на `/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes`
      * @param {Number} clusterId ID кластера
      * @param {Number} groupId ID группы
-     * @param {module:model/NodeCount} nodeCount 
+     * @param {module:model/IncreaseNodes} increaseNodes 
      * @param {module:api/KubernetesApi~increaseCountOfNodesInGroupCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/NodesResponse}
      */
-    increaseCountOfNodesInGroup(clusterId, groupId, nodeCount, callback) {
-      let postBody = nodeCount;
+    increaseCountOfNodesInGroup(clusterId, groupId, increaseNodes, callback) {
+      let postBody = increaseNodes;
       // verify the required parameter 'clusterId' is set
       if (clusterId === undefined || clusterId === null) {
         throw new Error("Missing the required parameter 'clusterId' when calling increaseCountOfNodesInGroup");
@@ -788,9 +789,9 @@ export default class KubernetesApi {
       if (groupId === undefined || groupId === null) {
         throw new Error("Missing the required parameter 'groupId' when calling increaseCountOfNodesInGroup");
       }
-      // verify the required parameter 'nodeCount' is set
-      if (nodeCount === undefined || nodeCount === null) {
-        throw new Error("Missing the required parameter 'nodeCount' when calling increaseCountOfNodesInGroup");
+      // verify the required parameter 'increaseNodes' is set
+      if (increaseNodes === undefined || increaseNodes === null) {
+        throw new Error("Missing the required parameter 'increaseNodes' when calling increaseCountOfNodesInGroup");
       }
 
       let pathParams = {
@@ -828,11 +829,11 @@ export default class KubernetesApi {
      * Чтобы уменьшить количество нод в группе на указанное значение, отправьте DELETE-запрос в `/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes`.
      * @param {Number} clusterId ID кластера
      * @param {Number} groupId ID группы
-     * @param {module:model/NodeCount} nodeCount 
+     * @param {module:model/ReduceNodes} reduceNodes 
      * @param {module:api/KubernetesApi~reduceCountOfNodesInGroupCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    reduceCountOfNodesInGroup(clusterId, groupId, nodeCount, callback) {
-      let postBody = nodeCount;
+    reduceCountOfNodesInGroup(clusterId, groupId, reduceNodes, callback) {
+      let postBody = reduceNodes;
       // verify the required parameter 'clusterId' is set
       if (clusterId === undefined || clusterId === null) {
         throw new Error("Missing the required parameter 'clusterId' when calling reduceCountOfNodesInGroup");
@@ -841,9 +842,9 @@ export default class KubernetesApi {
       if (groupId === undefined || groupId === null) {
         throw new Error("Missing the required parameter 'groupId' when calling reduceCountOfNodesInGroup");
       }
-      // verify the required parameter 'nodeCount' is set
-      if (nodeCount === undefined || nodeCount === null) {
-        throw new Error("Missing the required parameter 'nodeCount' when calling reduceCountOfNodesInGroup");
+      // verify the required parameter 'reduceNodes' is set
+      if (reduceNodes === undefined || reduceNodes === null) {
+        throw new Error("Missing the required parameter 'reduceNodes' when calling reduceCountOfNodesInGroup");
       }
 
       let pathParams = {

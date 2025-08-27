@@ -102,6 +102,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isAutohealing (base name: "is_autohealing")', function() {
+      // uncomment below and update the code to test the property isAutohealing
+      //var instance = new TimewebCloudApi.NodeGroupIn();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

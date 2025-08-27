@@ -102,6 +102,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property configuration (base name: "configuration")', function() {
+      // uncomment below and update the code to test the property configuration
+      //var instance = new TimewebCloudApi.ClusterIn();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property masterNodesCount (base name: "master_nodes_count")', function() {
+      // uncomment below and update the code to test the property masterNodesCount
+      //var instance = new TimewebCloudApi.ClusterIn();
+      //expect(instance).to.be();
+    });
+
     it('should have the property workerGroups (base name: "worker_groups")', function() {
       // uncomment below and update the code to test the property workerGroups
       //var instance = new TimewebCloudApi.ClusterIn();
@@ -116,6 +128,24 @@
 
     it('should have the property projectId (base name: "project_id")', function() {
       // uncomment below and update the code to test the property projectId
+      //var instance = new TimewebCloudApi.ClusterIn();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maintenanceSlot (base name: "maintenance_slot")', function() {
+      // uncomment below and update the code to test the property maintenanceSlot
+      //var instance = new TimewebCloudApi.ClusterIn();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property oidcProvider (base name: "oidc_provider")', function() {
+      // uncomment below and update the code to test the property oidcProvider
+      //var instance = new TimewebCloudApi.ClusterIn();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property clusterNetworkCidr (base name: "cluster_network_cidr")', function() {
+      // uncomment below and update the code to test the property clusterNetworkCidr
       //var instance = new TimewebCloudApi.ClusterIn();
       //expect(instance).to.be();
     });

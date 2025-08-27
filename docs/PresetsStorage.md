@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **disk** | **Number** | Описание диска хранилища. | 
 **price** | **Number** | Стоимость тарифа хранилища. | 
 **location** | **String** | Географическое расположение тарифа. | 
+**tags** | **[String]** | Теги тарифа. | 
+**storageClass** | **String** | Класс хранилища. | 
 
 
 
@@ -18,9 +20,16 @@ Name | Type | Description | Notes
 
 * `ru-1` (value: `"ru-1"`)
 
-* `pl-1` (value: `"pl-1"`)
 
-* `kz-1` (value: `"kz-1"`)
+
+
+
+## Enum: StorageClassEnum
+
+
+* `cold` (value: `"cold"`)
+
+* `hot` (value: `"hot"`)
 
 
 

@@ -29,10 +29,12 @@ class PresetsStorage {
      * @param disk {Number} Описание диска хранилища.
      * @param price {Number} Стоимость тарифа хранилища.
      * @param location {module:model/PresetsStorage.LocationEnum} Географическое расположение тарифа.
+     * @param tags {Array.<String>} Теги тарифа.
+     * @param storageClass {module:model/PresetsStorage.StorageClassEnum} Класс хранилища.
      */
-    constructor(id, description, descriptionShort, disk, price, location) { 
+    constructor(id, description, descriptionShort, disk, price, location, tags, storageClass) { 
         
-        PresetsStorage.initialize(this, id, description, descriptionShort, disk, price, location);
+        PresetsStorage.initialize(this, id, description, descriptionShort, disk, price, location, tags, storageClass);
     }
 
     /**
@@ -40,13 +42,15 @@ class PresetsStorage {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, description, descriptionShort, disk, price, location) { 
+    static initialize(obj, id, description, descriptionShort, disk, price, location, tags, storageClass) { 
         obj['id'] = id;
         obj['description'] = description;
         obj['description_short'] = descriptionShort;
         obj['disk'] = disk;
         obj['price'] = price;
         obj['location'] = location;
+        obj['tags'] = tags;
+        obj['storage_class'] = storageClass;
     }
 
     /**
@@ -78,6 +82,12 @@ class PresetsStorage {
             if (data.hasOwnProperty('location')) {
                 obj['location'] = ApiClient.convertToType(data['location'], 'String');
             }
+            if (data.hasOwnProperty('tags')) {
+                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
+            }
+            if (data.hasOwnProperty('storage_class')) {
+                obj['storage_class'] = ApiClient.convertToType(data['storage_class'], 'String');
+            }
         }
         return obj;
     }
@@ -106,6 +116,14 @@ class PresetsStorage {
         if (data['location'] && !(typeof data['location'] === 'string' || data['location'] instanceof String)) {
             throw new Error("Expected the field `location` to be a primitive type in the JSON string but got " + data['location']);
         }
+        // ensure the json data is an array
+        if (!Array.isArray(data['tags'])) {
+            throw new Error("Expected the field `tags` to be an array in the JSON data but got " + data['tags']);
+        }
+        // ensure the json data is a string
+        if (data['storage_class'] && !(typeof data['storage_class'] === 'string' || data['storage_class'] instanceof String)) {
+            throw new Error("Expected the field `storage_class` to be a primitive type in the JSON string but got " + data['storage_class']);
+        }
 
         return true;
     }
@@ -113,7 +131,7 @@ class PresetsStorage {
 
 }
 
-PresetsStorage.RequiredProperties = ["id", "description", "description_short", "disk", "price", "location"];
+PresetsStorage.RequiredProperties = ["id", "description", "description_short", "disk", "price", "location", "tags", "storage_class"];
 
 /**
  * ID для каждого экземпляра тарифа хранилища.
@@ -151,6 +169,18 @@ PresetsStorage.prototype['price'] = undefined;
  */
 PresetsStorage.prototype['location'] = undefined;
 
+/**
+ * Теги тарифа.
+ * @member {Array.<String>} tags
+ */
+PresetsStorage.prototype['tags'] = undefined;
+
+/**
+ * Класс хранилища.
+ * @member {module:model/PresetsStorage.StorageClassEnum} storage_class
+ */
+PresetsStorage.prototype['storage_class'] = undefined;
+
 
 
 
@@ -166,19 +196,28 @@ PresetsStorage['LocationEnum'] = {
      * value: "ru-1"
      * @const
      */
-    "ru-1": "ru-1",
+    "ru-1": "ru-1"
+};
+
+
+/**
+ * Allowed values for the <code>storage_class</code> property.
+ * @enum {String}
+ * @readonly
+ */
+PresetsStorage['StorageClassEnum'] = {
 
     /**
-     * value: "pl-1"
+     * value: "cold"
      * @const
      */
-    "pl-1": "pl-1",
+    "cold": "cold",
 
     /**
-     * value: "kz-1"
+     * value: "hot"
      * @const
      */
-    "kz-1": "kz-1"
+    "hot": "hot"
 };
 
 

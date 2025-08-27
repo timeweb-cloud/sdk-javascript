@@ -13,7 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import ConfigParameters from './ConfigParameters';
-import DatabaseClusterDiskStats from './DatabaseClusterDiskStats';
+import DatabaseClusterDisk from './DatabaseClusterDisk';
 import DatabaseClusterNetworksInner from './DatabaseClusterNetworksInner';
 import DbType from './DbType';
 
@@ -38,13 +38,12 @@ class DatabaseCluster {
      * @param port {Number} Порт
      * @param status {module:model/DatabaseCluster.StatusEnum} Текущий статус кластера базы данных.
      * @param presetId {Number} ID тарифа.
-     * @param diskStats {module:model/DatabaseClusterDiskStats} 
      * @param configParameters {module:model/ConfigParameters} 
      * @param isEnabledPublicNetwork {Boolean} Доступность публичного IP-адреса
      */
-    constructor(id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, diskStats, configParameters, isEnabledPublicNetwork) { 
+    constructor(id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, configParameters, isEnabledPublicNetwork) { 
         
-        DatabaseCluster.initialize(this, id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, diskStats, configParameters, isEnabledPublicNetwork);
+        DatabaseCluster.initialize(this, id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, configParameters, isEnabledPublicNetwork);
     }
 
     /**
@@ -52,7 +51,7 @@ class DatabaseCluster {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, diskStats, configParameters, isEnabledPublicNetwork) { 
+    static initialize(obj, id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, configParameters, isEnabledPublicNetwork) { 
         obj['id'] = id;
         obj['created_at'] = createdAt;
         obj['location'] = location;
@@ -64,7 +63,6 @@ class DatabaseCluster {
         obj['port'] = port;
         obj['status'] = status;
         obj['preset_id'] = presetId;
-        obj['disk_stats'] = diskStats;
         obj['config_parameters'] = configParameters;
         obj['is_enabled_public_network'] = isEnabledPublicNetwork;
     }
@@ -113,8 +111,8 @@ class DatabaseCluster {
             if (data.hasOwnProperty('preset_id')) {
                 obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
             }
-            if (data.hasOwnProperty('disk_stats')) {
-                obj['disk_stats'] = DatabaseClusterDiskStats.constructFromObject(data['disk_stats']);
+            if (data.hasOwnProperty('disk')) {
+                obj['disk'] = DatabaseClusterDisk.constructFromObject(data['disk']);
             }
             if (data.hasOwnProperty('config_parameters')) {
                 obj['config_parameters'] = ConfigParameters.constructFromObject(data['config_parameters']);
@@ -172,9 +170,9 @@ class DatabaseCluster {
         if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
             throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
         }
-        // validate the optional field `disk_stats`
-        if (data['disk_stats']) { // data not null
-          DatabaseClusterDiskStats.validateJSON(data['disk_stats']);
+        // validate the optional field `disk`
+        if (data['disk']) { // data not null
+          DatabaseClusterDisk.validateJSON(data['disk']);
         }
         // validate the optional field `config_parameters`
         if (data['config_parameters']) { // data not null
@@ -187,7 +185,7 @@ class DatabaseCluster {
 
 }
 
-DatabaseCluster.RequiredProperties = ["id", "created_at", "location", "name", "networks", "type", "hash_type", "avatar_link", "port", "status", "preset_id", "disk_stats", "config_parameters", "is_enabled_public_network"];
+DatabaseCluster.RequiredProperties = ["id", "created_at", "location", "name", "networks", "type", "hash_type", "avatar_link", "port", "status", "preset_id", "config_parameters", "is_enabled_public_network"];
 
 /**
  * ID для каждого экземпляра базы данных. Автоматически генерируется при создании.
@@ -255,9 +253,9 @@ DatabaseCluster.prototype['status'] = undefined;
 DatabaseCluster.prototype['preset_id'] = undefined;
 
 /**
- * @member {module:model/DatabaseClusterDiskStats} disk_stats
+ * @member {module:model/DatabaseClusterDisk} disk
  */
-DatabaseCluster.prototype['disk_stats'] = undefined;
+DatabaseCluster.prototype['disk'] = undefined;
 
 /**
  * @member {module:model/ConfigParameters} config_parameters
@@ -288,22 +286,22 @@ DatabaseCluster['LocationEnum'] = {
     "ru-1": "ru-1",
 
     /**
-     * value: "ru-2"
+     * value: "ru-3"
      * @const
      */
-    "ru-2": "ru-2",
+    "ru-3": "ru-3",
 
     /**
-     * value: "pl-1"
+     * value: "nl-1"
      * @const
      */
-    "pl-1": "pl-1",
+    "nl-1": "nl-1",
 
     /**
-     * value: "kz-1"
+     * value: "de-1"
      * @const
      */
-    "kz-1": "kz-1"
+    "de-1": "de-1"
 };
 
 

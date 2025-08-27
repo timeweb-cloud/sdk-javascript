@@ -22,14 +22,13 @@ class CreateDedicatedServer {
     /**
      * Constructs a new <code>CreateDedicatedServer</code>.
      * @alias module:model/CreateDedicatedServer
-     * @param planId {Number} ID списка дополнительных услуг выделенного сервера.
      * @param presetId {Number} ID тарифа выделенного сервера.
      * @param paymentPeriod {module:model/CreateDedicatedServer.PaymentPeriodEnum} Период оплаты.
      * @param name {String} Удобочитаемое имя выделенного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
      */
-    constructor(planId, presetId, paymentPeriod, name) { 
+    constructor(presetId, paymentPeriod, name) { 
         
-        CreateDedicatedServer.initialize(this, planId, presetId, paymentPeriod, name);
+        CreateDedicatedServer.initialize(this, presetId, paymentPeriod, name);
     }
 
     /**
@@ -37,8 +36,7 @@ class CreateDedicatedServer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, planId, presetId, paymentPeriod, name) { 
-        obj['plan_id'] = planId;
+    static initialize(obj, presetId, paymentPeriod, name) { 
         obj['preset_id'] = presetId;
         obj['payment_period'] = paymentPeriod;
         obj['name'] = name;
@@ -120,7 +118,7 @@ class CreateDedicatedServer {
 
 }
 
-CreateDedicatedServer.RequiredProperties = ["plan_id", "preset_id", "payment_period", "name"];
+CreateDedicatedServer.RequiredProperties = ["preset_id", "payment_period", "name"];
 
 /**
  * ID списка дополнительных услуг выделенного сервера.

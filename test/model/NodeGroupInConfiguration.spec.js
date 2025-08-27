@@ -78,6 +78,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property gpu (base name: "gpu")', function() {
+      // uncomment below and update the code to test the property gpu
+      //var instance = new TimewebCloudApi.NodeGroupInConfiguration();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

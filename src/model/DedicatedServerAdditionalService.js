@@ -28,7 +28,7 @@ class DedicatedServerAdditionalService {
      * @param period {module:model/DedicatedServerAdditionalService.PeriodEnum} Период оплаты.
      * @param description {String} Описание дополнительной услуги выделенного сервера.
      * @param shortDescription {String} Краткое описание дополнительной услуги выделенного сервера.
-     * @param name {String} Уникально имя дополнительной услуги выделенного сервера.
+     * @param name {String} Уникальное имя дополнительной услуги выделенного сервера.
      */
     constructor(id, price, period, description, shortDescription, name) { 
         
@@ -150,7 +150,7 @@ DedicatedServerAdditionalService.prototype['description'] = undefined;
 DedicatedServerAdditionalService.prototype['short_description'] = undefined;
 
 /**
- * Уникально имя дополнительной услуги выделенного сервера.
+ * Уникальное имя дополнительной услуги выделенного сервера.
  * @member {String} name
  */
 DedicatedServerAdditionalService.prototype['name'] = undefined;

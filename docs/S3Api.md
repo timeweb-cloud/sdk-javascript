@@ -6,23 +6,17 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addStorageSubdomainCertificate**](S3Api.md#addStorageSubdomainCertificate) | **POST** /api/v1/storages/certificates/generate | Добавление сертификата для поддомена хранилища
 [**addStorageSubdomains**](S3Api.md#addStorageSubdomains) | **POST** /api/v1/storages/buckets/{bucket_id}/subdomains | Добавление поддоменов для хранилища
-[**copyStorageFile**](S3Api.md#copyStorageFile) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/copy | Копирование файла/директории в хранилище
-[**createFolderInStorage**](S3Api.md#createFolderInStorage) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/mkdir | Создание директории в хранилище
 [**createStorage**](S3Api.md#createStorage) | **POST** /api/v1/storages/buckets | Создание хранилища
 [**deleteStorage**](S3Api.md#deleteStorage) | **DELETE** /api/v1/storages/buckets/{bucket_id} | Удаление хранилища на аккаунте
-[**deleteStorageFile**](S3Api.md#deleteStorageFile) | **DELETE** /api/v1/storages/buckets/{bucket_id}/object-manager/remove | Удаление файла/директории в хранилище
 [**deleteStorageSubdomains**](S3Api.md#deleteStorageSubdomains) | **DELETE** /api/v1/storages/buckets/{bucket_id}/subdomains | Удаление поддоменов хранилища
-[**getStorageFilesList**](S3Api.md#getStorageFilesList) | **GET** /api/v1/storages/buckets/{bucket_id}/object-manager/list | Получение списка файлов в хранилище по префиксу
 [**getStorageSubdomains**](S3Api.md#getStorageSubdomains) | **GET** /api/v1/storages/buckets/{bucket_id}/subdomains | Получение списка поддоменов хранилища
 [**getStorageTransferStatus**](S3Api.md#getStorageTransferStatus) | **GET** /api/v1/storages/buckets/{bucket_id}/transfer-status | Получение статуса переноса хранилища от стороннего S3 в Timeweb Cloud
 [**getStorageUsers**](S3Api.md#getStorageUsers) | **GET** /api/v1/storages/users | Получение списка пользователей хранилищ аккаунта
 [**getStorages**](S3Api.md#getStorages) | **GET** /api/v1/storages/buckets | Получение списка хранилищ аккаунта
 [**getStoragesPresets**](S3Api.md#getStoragesPresets) | **GET** /api/v1/presets/storages | Получение списка тарифов для хранилищ
-[**renameStorageFile**](S3Api.md#renameStorageFile) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/rename | Переименование файла/директории в хранилище
 [**transferStorage**](S3Api.md#transferStorage) | **POST** /api/v1/storages/transfer | Перенос хранилища от стороннего провайдера S3 в Timeweb Cloud
 [**updateStorage**](S3Api.md#updateStorage) | **PATCH** /api/v1/storages/buckets/{bucket_id} | Изменение хранилища на аккаунте
 [**updateStorageUser**](S3Api.md#updateStorageUser) | **PATCH** /api/v1/storages/users/{user_id} | Изменение пароля пользователя-администратора хранилища
-[**uploadFileToStorage**](S3Api.md#uploadFileToStorage) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/upload | Загрузка файлов в хранилище
 
 
 
@@ -115,108 +109,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AddStorageSubdomains200Response**](AddStorageSubdomains200Response.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## copyStorageFile
-
-> copyStorageFile(bucketId, copyStorageFileRequest)
-
-Копирование файла/директории в хранилище
-
-Чтобы скопировать файла или директорию с вложениями, отправьте POST-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/copy&#x60;.
-
-### Example
-
-```javascript
-import TimewebCloudApi from 'timeweb_cloud_api';
-let defaultClient = TimewebCloudApi.ApiClient.instance;
-// Configure Bearer (JWT) access token for authorization: Bearer
-let Bearer = defaultClient.authentications['Bearer'];
-Bearer.accessToken = "YOUR ACCESS TOKEN"
-
-let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | ID хранилища.
-let copyStorageFileRequest = new TimewebCloudApi.CopyStorageFileRequest(); // CopyStorageFileRequest | 
-apiInstance.copyStorageFile(bucketId, copyStorageFileRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| ID хранилища. | 
- **copyStorageFileRequest** | [**CopyStorageFileRequest**](CopyStorageFileRequest.md)|  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## createFolderInStorage
-
-> createFolderInStorage(bucketId, createFolderInStorageRequest)
-
-Создание директории в хранилище
-
-Чтобы создать директорию в хранилище, отправьте POST-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/mkdir&#x60;.
-
-### Example
-
-```javascript
-import TimewebCloudApi from 'timeweb_cloud_api';
-let defaultClient = TimewebCloudApi.ApiClient.instance;
-// Configure Bearer (JWT) access token for authorization: Bearer
-let Bearer = defaultClient.authentications['Bearer'];
-Bearer.accessToken = "YOUR ACCESS TOKEN"
-
-let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | ID хранилища.
-let createFolderInStorageRequest = new TimewebCloudApi.CreateFolderInStorageRequest(); // CreateFolderInStorageRequest | 
-apiInstance.createFolderInStorage(bucketId, createFolderInStorageRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| ID хранилища. | 
- **createFolderInStorageRequest** | [**CreateFolderInStorageRequest**](CreateFolderInStorageRequest.md)|  | 
-
-### Return type
-
-null (empty response body)
 
 ### Authorization
 
@@ -332,61 +224,6 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## deleteStorageFile
-
-> deleteStorageFile(bucketId, deleteStorageFileRequest, opts)
-
-Удаление файла/директории в хранилище
-
-Чтобы удалить файл или директорию с вложениями, отправьте DELETE-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/remove&#x60;.
-
-### Example
-
-```javascript
-import TimewebCloudApi from 'timeweb_cloud_api';
-let defaultClient = TimewebCloudApi.ApiClient.instance;
-// Configure Bearer (JWT) access token for authorization: Bearer
-let Bearer = defaultClient.authentications['Bearer'];
-Bearer.accessToken = "YOUR ACCESS TOKEN"
-
-let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | ID хранилища.
-let deleteStorageFileRequest = new TimewebCloudApi.DeleteStorageFileRequest(); // DeleteStorageFileRequest | 
-let opts = {
-  'isMultipart': true // Boolean | Это логическое значение, которое используется для обозначения multipart-загрузки.
-};
-apiInstance.deleteStorageFile(bucketId, deleteStorageFileRequest, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| ID хранилища. | 
- **deleteStorageFileRequest** | [**DeleteStorageFileRequest**](DeleteStorageFileRequest.md)|  | 
- **isMultipart** | **Boolean**| Это логическое значение, которое используется для обозначения multipart-загрузки. | [optional] 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## deleteStorageSubdomains
 
 > AddStorageSubdomains200Response deleteStorageSubdomains(bucketId, addStorageSubdomainsRequest)
@@ -435,61 +272,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## getStorageFilesList
-
-> GetStorageFilesList200Response getStorageFilesList(bucketId, opts)
-
-Получение списка файлов в хранилище по префиксу
-
-Чтобы получить список файлов в хранилище по префиксу, отправьте GET-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/list&#x60;.
-
-### Example
-
-```javascript
-import TimewebCloudApi from 'timeweb_cloud_api';
-let defaultClient = TimewebCloudApi.ApiClient.instance;
-// Configure Bearer (JWT) access token for authorization: Bearer
-let Bearer = defaultClient.authentications['Bearer'];
-Bearer.accessToken = "YOUR ACCESS TOKEN"
-
-let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | ID хранилища.
-let opts = {
-  'prefix': example, // String | Префикс для поиска файла.
-  'isMultipart': true // Boolean | Это логическое значение, которое используется для обозначения multipart-загрузки.
-};
-apiInstance.getStorageFilesList(bucketId, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| ID хранилища. | 
- **prefix** | **String**| Префикс для поиска файла. | [optional] 
- **isMultipart** | **Boolean**| Это логическое значение, которое используется для обозначения multipart-загрузки. | [optional] 
-
-### Return type
-
-[**GetStorageFilesList200Response**](GetStorageFilesList200Response.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -726,57 +508,6 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
-## renameStorageFile
-
-> renameStorageFile(bucketId, renameStorageFileRequest)
-
-Переименование файла/директории в хранилище
-
-Чтобы переименовать файл/директорию в хранилище, отправьте POST-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/rename&#x60;.
-
-### Example
-
-```javascript
-import TimewebCloudApi from 'timeweb_cloud_api';
-let defaultClient = TimewebCloudApi.ApiClient.instance;
-// Configure Bearer (JWT) access token for authorization: Bearer
-let Bearer = defaultClient.authentications['Bearer'];
-Bearer.accessToken = "YOUR ACCESS TOKEN"
-
-let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | ID хранилища.
-let renameStorageFileRequest = new TimewebCloudApi.RenameStorageFileRequest(); // RenameStorageFileRequest | 
-apiInstance.renameStorageFile(bucketId, renameStorageFileRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| ID хранилища. | 
- **renameStorageFileRequest** | [**RenameStorageFileRequest**](RenameStorageFileRequest.md)|  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## transferStorage
 
 > transferStorage(transferStorageRequest)
@@ -925,60 +656,5 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## uploadFileToStorage
-
-> uploadFileToStorage(bucketId, files, opts)
-
-Загрузка файлов в хранилище
-
-Чтобы загрузить файлы в хранилище, отправьте POST-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/upload&#x60;.
-
-### Example
-
-```javascript
-import TimewebCloudApi from 'timeweb_cloud_api';
-let defaultClient = TimewebCloudApi.ApiClient.instance;
-// Configure Bearer (JWT) access token for authorization: Bearer
-let Bearer = defaultClient.authentications['Bearer'];
-Bearer.accessToken = "YOUR ACCESS TOKEN"
-
-let apiInstance = new TimewebCloudApi.S3Api();
-let bucketId = 1051; // Number | ID хранилища.
-let files = ["null"]; // [File] | 
-let opts = {
-  'path': test1/tes2 // String | Путь до директории в хранилище
-};
-apiInstance.uploadFileToStorage(bucketId, files, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bucketId** | **Number**| ID хранилища. | 
- **files** | **[File]**|  | 
- **path** | **String**| Путь до директории в хранилище | [optional] 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 

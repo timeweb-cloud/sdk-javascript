@@ -90,6 +90,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property tags (base name: "tags")', function() {
+      // uncomment below and update the code to test the property tags
+      //var instance = new TimewebCloudApi.PresetsStorage();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storageClass (base name: "storage_class")', function() {
+      // uncomment below and update the code to test the property storageClass
+      //var instance = new TimewebCloudApi.PresetsStorage();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

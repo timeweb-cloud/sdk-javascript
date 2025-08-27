@@ -72,6 +72,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property vendor (base name: "vendor")', function() {
+      // uncomment below and update the code to test the property vendor
+      //var instance = new TimewebCloudApi.DedicatedServerPresetCpu();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

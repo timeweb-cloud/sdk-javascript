@@ -12,6 +12,10 @@
  */
 
 import ApiClient from '../ApiClient';
+import ClusterInClusterNetworkCidr from './ClusterInClusterNetworkCidr';
+import ClusterInConfiguration from './ClusterInConfiguration';
+import ClusterInMaintenanceSlot from './ClusterInMaintenanceSlot';
+import ClusterInOidcProvider from './ClusterInOidcProvider';
 import NodeGroupIn from './NodeGroupIn';
 
 /**
@@ -26,11 +30,10 @@ class ClusterIn {
      * @param name {String} Название кластера
      * @param k8sVersion {String} Версия Kubernetes
      * @param networkDriver {module:model/ClusterIn.NetworkDriverEnum} Тип используемого сетевого драйвера в кластере
-     * @param presetId {Number} ID тарифа мастер-ноды
      */
-    constructor(name, k8sVersion, networkDriver, presetId) { 
+    constructor(name, k8sVersion, networkDriver) { 
         
-        ClusterIn.initialize(this, name, k8sVersion, networkDriver, presetId);
+        ClusterIn.initialize(this, name, k8sVersion, networkDriver);
     }
 
     /**
@@ -38,11 +41,10 @@ class ClusterIn {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, k8sVersion, networkDriver, presetId) { 
+    static initialize(obj, name, k8sVersion, networkDriver) { 
         obj['name'] = name;
         obj['k8s_version'] = k8sVersion;
         obj['network_driver'] = networkDriver;
-        obj['preset_id'] = presetId;
     }
 
     /**
@@ -80,6 +82,12 @@ class ClusterIn {
             if (data.hasOwnProperty('preset_id')) {
                 obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
             }
+            if (data.hasOwnProperty('configuration')) {
+                obj['configuration'] = ClusterInConfiguration.constructFromObject(data['configuration']);
+            }
+            if (data.hasOwnProperty('master_nodes_count')) {
+                obj['master_nodes_count'] = ApiClient.convertToType(data['master_nodes_count'], 'Number');
+            }
             if (data.hasOwnProperty('worker_groups')) {
                 obj['worker_groups'] = ApiClient.convertToType(data['worker_groups'], [NodeGroupIn]);
             }
@@ -88,6 +96,15 @@ class ClusterIn {
             }
             if (data.hasOwnProperty('project_id')) {
                 obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            }
+            if (data.hasOwnProperty('maintenance_slot')) {
+                obj['maintenance_slot'] = ClusterInMaintenanceSlot.constructFromObject(data['maintenance_slot']);
+            }
+            if (data.hasOwnProperty('oidc_provider')) {
+                obj['oidc_provider'] = ClusterInOidcProvider.constructFromObject(data['oidc_provider']);
+            }
+            if (data.hasOwnProperty('cluster_network_cidr')) {
+                obj['cluster_network_cidr'] = ClusterInClusterNetworkCidr.constructFromObject(data['cluster_network_cidr']);
             }
         }
         return obj;
@@ -125,6 +142,10 @@ class ClusterIn {
         if (data['network_driver'] && !(typeof data['network_driver'] === 'string' || data['network_driver'] instanceof String)) {
             throw new Error("Expected the field `network_driver` to be a primitive type in the JSON string but got " + data['network_driver']);
         }
+        // validate the optional field `configuration`
+        if (data['configuration']) { // data not null
+          ClusterInConfiguration.validateJSON(data['configuration']);
+        }
         if (data['worker_groups']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['worker_groups'])) {
@@ -139,6 +160,18 @@ class ClusterIn {
         if (data['network_id'] && !(typeof data['network_id'] === 'string' || data['network_id'] instanceof String)) {
             throw new Error("Expected the field `network_id` to be a primitive type in the JSON string but got " + data['network_id']);
         }
+        // validate the optional field `maintenance_slot`
+        if (data['maintenance_slot']) { // data not null
+          ClusterInMaintenanceSlot.validateJSON(data['maintenance_slot']);
+        }
+        // validate the optional field `oidc_provider`
+        if (data['oidc_provider']) { // data not null
+          ClusterInOidcProvider.validateJSON(data['oidc_provider']);
+        }
+        // validate the optional field `cluster_network_cidr`
+        if (data['cluster_network_cidr']) { // data not null
+          ClusterInClusterNetworkCidr.validateJSON(data['cluster_network_cidr']);
+        }
 
         return true;
     }
@@ -146,7 +179,7 @@ class ClusterIn {
 
 }
 
-ClusterIn.RequiredProperties = ["name", "k8s_version", "network_driver", "preset_id"];
+ClusterIn.RequiredProperties = ["name", "k8s_version", "network_driver"];
 
 /**
  * Название кластера
@@ -191,10 +224,21 @@ ClusterIn.prototype['is_ingress'] = undefined;
 ClusterIn.prototype['is_k8s_dashboard'] = undefined;
 
 /**
- * ID тарифа мастер-ноды
+ * ID тарифа мастер-ноды. Нельзя передавать вместе с `configuration`
  * @member {Number} preset_id
  */
 ClusterIn.prototype['preset_id'] = undefined;
+
+/**
+ * @member {module:model/ClusterInConfiguration} configuration
+ */
+ClusterIn.prototype['configuration'] = undefined;
+
+/**
+ * Количество мастер нод
+ * @member {Number} master_nodes_count
+ */
+ClusterIn.prototype['master_nodes_count'] = undefined;
 
 /**
  * Группы воркеров в кластере
@@ -213,6 +257,21 @@ ClusterIn.prototype['network_id'] = undefined;
  * @member {Number} project_id
  */
 ClusterIn.prototype['project_id'] = undefined;
+
+/**
+ * @member {module:model/ClusterInMaintenanceSlot} maintenance_slot
+ */
+ClusterIn.prototype['maintenance_slot'] = undefined;
+
+/**
+ * @member {module:model/ClusterInOidcProvider} oidc_provider
+ */
+ClusterIn.prototype['oidc_provider'] = undefined;
+
+/**
+ * @member {module:model/ClusterInClusterNetworkCidr} cluster_network_cidr
+ */
+ClusterIn.prototype['cluster_network_cidr'] = undefined;
 
 
 
@@ -241,7 +300,13 @@ ClusterIn['AvailabilityZoneEnum'] = {
      * value: "ams-1"
      * @const
      */
-    "ams-1": "ams-1"
+    "ams-1": "ams-1",
+
+    /**
+     * value: "fra-1"
+     * @const
+     */
+    "fra-1": "fra-1"
 };
 
 

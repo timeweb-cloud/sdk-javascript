@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **password** | **String** | Пароль пользователя базы данных | [optional] 
 **privileges** | **[String]** | Список привилегий пользователя базы данных | [optional] 
 **description** | **String** | Описание пользователя базы данных | [optional] 
-**instanceId** | **Number** | ID инстанса базы данных для приминения привилегий. В данных момент поле доступно только для кластеров MySQL. Если поле не передано, то привилегии будут применены ко всем инстансам | [optional] 
+**instanceId** | **Number** | ID инстанса базы данных для применения привилегий. В данных момент поле доступно только для кластеров MySQL. Если поле не передано, то привилегии будут применены ко всем инстансам | [optional] 
 
 
 
@@ -57,6 +57,12 @@ Name | Type | Description | Notes
 * `CREATE_ROUTINE` (value: `"CREATE_ROUTINE"`)
 
 * `TRANSACTION` (value: `"TRANSACTION"`)
+
+* `SLOW_LOG` (value: `"SLOW_LOG"`)
+
+* `TRIGGER` (value: `"TRIGGER"`)
+
+* `CREATE_TEMPORARY_TABLES` (value: `"CREATE_TEMPORARY_TABLES"`)
 
 
 

@@ -61,7 +61,7 @@ Name | Type | Description | Notes
 
 * `starting` (value: `"starting"`)
 
-* `stoped` (value: `"stoped"`)
+* `stopped` (value: `"stopped"`)
 
 * `no_paid` (value: `"no_paid"`)
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **isPreInstalled** | **Boolean** | Это логическое значение, которое показывает, готов ли выделенный сервер к моментальной выдаче. | 
 **cpu** | [**DedicatedServerPresetCpu**](DedicatedServerPresetCpu.md) |  | 
 **disk** | [**DedicatedServerPresetDisk**](DedicatedServerPresetDisk.md) |  | 
-**price** | **Number** | Стоимость тарифа выделенного сервера | [optional] 
+**price** | **Number** | Стоимость тарифа выделенного сервера | 
 **memory** | [**DedicatedServerPresetMemory**](DedicatedServerPresetMemory.md) |  | 
 **location** | **String** | Локация. | 
 

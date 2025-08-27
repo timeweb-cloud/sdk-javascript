@@ -360,7 +360,7 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DatabasesApi();
 let dbId = 56; // Number | ID базы данных
-let backupId = 56; // Number | ID резевной копии
+let backupId = 56; // Number | ID резервной копии
 apiInstance.deleteDatabaseBackup(dbId, backupId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -376,7 +376,7 @@ apiInstance.deleteDatabaseBackup(dbId, backupId, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dbId** | **Number**| ID базы данных | 
- **backupId** | **Number**| ID резевной копии | 
+ **backupId** | **Number**| ID резервной копии | 
 
 ### Return type
 
@@ -666,7 +666,7 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DatabasesApi();
 let dbId = 56; // Number | ID базы данных
-let backupId = 56; // Number | ID резевной копии
+let backupId = 56; // Number | ID резервной копии
 apiInstance.getDatabaseBackup(dbId, backupId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -682,7 +682,7 @@ apiInstance.getDatabaseBackup(dbId, backupId, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dbId** | **Number**| ID базы данных | 
- **backupId** | **Number**| ID резевной копии | 
+ **backupId** | **Number**| ID резервной копии | 
 
 ### Return type
 
@@ -1262,7 +1262,7 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DatabasesApi();
 let dbId = 56; // Number | ID базы данных
-let backupId = 56; // Number | ID резевной копии
+let backupId = 56; // Number | ID резервной копии
 apiInstance.restoreDatabaseFromBackup(dbId, backupId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -1278,7 +1278,7 @@ apiInstance.restoreDatabaseFromBackup(dbId, backupId, (error, data, response) =>
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dbId** | **Number**| ID базы данных | 
- **backupId** | **Number**| ID резевной копии | 
+ **backupId** | **Number**| ID резервной копии | 
 
 ### Return type
 

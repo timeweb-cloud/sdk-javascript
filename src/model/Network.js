@@ -21,6 +21,7 @@ import ApiClient from '../ApiClient';
 class Network {
     /**
      * Constructs a new <code>Network</code>.
+     * Сеть
      * @alias module:model/Network
      * @param id {String} ID сети.
      */

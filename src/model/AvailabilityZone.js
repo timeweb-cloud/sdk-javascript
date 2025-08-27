@@ -48,6 +48,13 @@ export default class AvailabilityZone {
 
     
         /**
+         * value: "msk-1"
+         * @const
+         */
+        "msk-1" = "msk-1";
+
+    
+        /**
          * value: "nsk-1"
          * @const
          */
@@ -62,17 +69,17 @@ export default class AvailabilityZone {
 
     
         /**
-         * value: "gdn-1"
-         * @const
-         */
-        "gdn-1" = "gdn-1";
-
-    
-        /**
          * value: "ala-1"
          * @const
          */
         "ala-1" = "ala-1";
+
+    
+        /**
+         * value: "fra-1"
+         * @const
+         */
+        "fra-1" = "fra-1";
 
     
 

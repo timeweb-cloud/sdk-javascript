@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CreateStorageRequestConfigurator from './CreateStorageRequestConfigurator';
 
 /**
  * The CreateStorageRequest model module.
@@ -24,11 +25,10 @@ class CreateStorageRequest {
      * @alias module:model/CreateStorageRequest
      * @param name {String} Название хранилища.
      * @param type {module:model/CreateStorageRequest.TypeEnum} Тип хранилища.
-     * @param presetId {Number} ID тарифа.
      */
-    constructor(name, type, presetId) { 
+    constructor(name, type) { 
         
-        CreateStorageRequest.initialize(this, name, type, presetId);
+        CreateStorageRequest.initialize(this, name, type);
     }
 
     /**
@@ -36,10 +36,9 @@ class CreateStorageRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, type, presetId) { 
+    static initialize(obj, name, type) { 
         obj['name'] = name;
         obj['type'] = type;
-        obj['preset_id'] = presetId;
     }
 
     /**
@@ -64,6 +63,12 @@ class CreateStorageRequest {
             }
             if (data.hasOwnProperty('preset_id')) {
                 obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
+            }
+            if (data.hasOwnProperty('configurator')) {
+                obj['configurator'] = CreateStorageRequestConfigurator.constructFromObject(data['configurator']);
+            }
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
             }
         }
         return obj;
@@ -93,6 +98,10 @@ class CreateStorageRequest {
         if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
             throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
         }
+        // validate the optional field `configurator`
+        if (data['configurator']) { // data not null
+          CreateStorageRequestConfigurator.validateJSON(data['configurator']);
+        }
 
         return true;
     }
@@ -100,7 +109,7 @@ class CreateStorageRequest {
 
 }
 
-CreateStorageRequest.RequiredProperties = ["name", "type", "preset_id"];
+CreateStorageRequest.RequiredProperties = ["name", "type"];
 
 /**
  * Название хранилища.
@@ -121,10 +130,21 @@ CreateStorageRequest.prototype['description'] = undefined;
 CreateStorageRequest.prototype['type'] = undefined;
 
 /**
- * ID тарифа.
+ * ID тарифа. Нельзя передавать вместе с `configurator`.
  * @member {Number} preset_id
  */
 CreateStorageRequest.prototype['preset_id'] = undefined;
+
+/**
+ * @member {module:model/CreateStorageRequestConfigurator} configurator
+ */
+CreateStorageRequest.prototype['configurator'] = undefined;
+
+/**
+ * ID проекта.
+ * @member {Number} project_id
+ */
+CreateStorageRequest.prototype['project_id'] = undefined;
 
 
 

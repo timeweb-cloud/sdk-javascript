@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **presetId** | **Number** | ID тарифа. | [optional] 
-**configuratorId** | **Number** | ID конфигуратора хранилища. | [optional] 
+**configurator** | [**UpdateStorageRequestConfigurator**](UpdateStorageRequestConfigurator.md) |  | [optional] 
 **bucketType** | **String** | Тип хранилища. | [optional] 
 **description** | **String** | Комментарий к хранилищу. | [optional] 
 

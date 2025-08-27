@@ -318,7 +318,13 @@ ClusterOut['AvailabilityZoneEnum'] = {
      * value: "ams-1"
      * @const
      */
-    "ams-1": "ams-1"
+    "ams-1": "ams-1",
+
+    /**
+     * value: "fra-1"
+     * @const
+     */
+    "fra-1": "fra-1"
 };
 
 

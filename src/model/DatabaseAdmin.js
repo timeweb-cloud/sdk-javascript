@@ -28,7 +28,7 @@ class DatabaseAdmin {
      * @param createdAt {String} Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда была создана база данных.
      * @param login {String} Имя пользователя базы данных
      * @param password {String} Пароль пользователя базы данных
-     * @param description {String} Описанеие пользователя базы данных
+     * @param description {String} Описание пользователя базы данных
      * @param host {String} Хост пользователя
      * @param instances {Array.<module:model/DatabaseAdminInstancesInner>} 
      */
@@ -164,7 +164,7 @@ DatabaseAdmin.prototype['login'] = undefined;
 DatabaseAdmin.prototype['password'] = undefined;
 
 /**
- * Описанеие пользователя базы данных
+ * Описание пользователя базы данных
  * @member {String} description
  */
 DatabaseAdmin.prototype['description'] = undefined;

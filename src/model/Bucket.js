@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import BucketDiskStats from './BucketDiskStats';
+import BucketWebsiteConfig from './BucketWebsiteConfig';
 
 /**
  * The Bucket model module.
@@ -39,10 +40,13 @@ class Bucket {
      * @param secretKey {String} Секретный ключ доступа от хранилища.
      * @param movedInQuarantineAt {Date} Дата перемещения в карантин.
      * @param storageClass {module:model/Bucket.StorageClassEnum} Класс хранилища.
+     * @param projectId {Number} ID проекта.
+     * @param rateId {Number} ID тарифа.
+     * @param websiteConfig {module:model/BucketWebsiteConfig} 
      */
-    constructor(id, name, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass) { 
+    constructor(id, name, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass, projectId, rateId, websiteConfig) { 
         
-        Bucket.initialize(this, id, name, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass);
+        Bucket.initialize(this, id, name, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass, projectId, rateId, websiteConfig);
     }
 
     /**
@@ -50,7 +54,7 @@ class Bucket {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass) { 
+    static initialize(obj, id, name, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass, projectId, rateId, websiteConfig) { 
         obj['id'] = id;
         obj['name'] = name;
         obj['disk_stats'] = diskStats;
@@ -66,6 +70,9 @@ class Bucket {
         obj['secret_key'] = secretKey;
         obj['moved_in_quarantine_at'] = movedInQuarantineAt;
         obj['storage_class'] = storageClass;
+        obj['project_id'] = projectId;
+        obj['rate_id'] = rateId;
+        obj['website_config'] = websiteConfig;
     }
 
     /**
@@ -127,6 +134,15 @@ class Bucket {
             if (data.hasOwnProperty('storage_class')) {
                 obj['storage_class'] = ApiClient.convertToType(data['storage_class'], 'String');
             }
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            }
+            if (data.hasOwnProperty('rate_id')) {
+                obj['rate_id'] = ApiClient.convertToType(data['rate_id'], 'Number');
+            }
+            if (data.hasOwnProperty('website_config')) {
+                obj['website_config'] = BucketWebsiteConfig.constructFromObject(data['website_config']);
+            }
         }
         return obj;
     }
@@ -187,6 +203,10 @@ class Bucket {
         if (data['storage_class'] && !(typeof data['storage_class'] === 'string' || data['storage_class'] instanceof String)) {
             throw new Error("Expected the field `storage_class` to be a primitive type in the JSON string but got " + data['storage_class']);
         }
+        // validate the optional field `website_config`
+        if (data['website_config']) { // data not null
+          BucketWebsiteConfig.validateJSON(data['website_config']);
+        }
 
         return true;
     }
@@ -194,7 +214,7 @@ class Bucket {
 
 }
 
-Bucket.RequiredProperties = ["id", "name", "disk_stats", "type", "preset_id", "configurator_id", "avatar_link", "status", "object_amount", "location", "hostname", "access_key", "secret_key", "moved_in_quarantine_at", "storage_class"];
+Bucket.RequiredProperties = ["id", "name", "disk_stats", "type", "preset_id", "configurator_id", "avatar_link", "status", "object_amount", "location", "hostname", "access_key", "secret_key", "moved_in_quarantine_at", "storage_class", "project_id", "rate_id", "website_config"];
 
 /**
  * ID для каждого экземпляра хранилища. Автоматически генерируется при создании.
@@ -290,6 +310,23 @@ Bucket.prototype['moved_in_quarantine_at'] = undefined;
  * @member {module:model/Bucket.StorageClassEnum} storage_class
  */
 Bucket.prototype['storage_class'] = undefined;
+
+/**
+ * ID проекта.
+ * @member {Number} project_id
+ */
+Bucket.prototype['project_id'] = undefined;
+
+/**
+ * ID тарифа.
+ * @member {Number} rate_id
+ */
+Bucket.prototype['rate_id'] = undefined;
+
+/**
+ * @member {module:model/BucketWebsiteConfig} website_config
+ */
+Bucket.prototype['website_config'] = undefined;
 
 
 

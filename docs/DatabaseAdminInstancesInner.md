@@ -56,6 +56,12 @@ Name | Type | Description | Notes
 
 * `TRANSACTION` (value: `"TRANSACTION"`)
 
+* `SLOW_LOG` (value: `"SLOW_LOG"`)
+
+* `TRIGGER` (value: `"TRIGGER"`)
+
+* `CREATE_TEMPORARY_TABLES` (value: `"CREATE_TEMPORARY_TABLES"`)
+
 
 
 

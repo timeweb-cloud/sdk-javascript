@@ -109,7 +109,7 @@ UpdateAdmin.prototype['privileges'] = undefined;
 UpdateAdmin.prototype['description'] = undefined;
 
 /**
- * ID инстанса базы данных для приминения привилегий. В данных момент поле доступно только для кластеров MySQL. Если поле не передано, то привилегии будут применены ко всем инстансам
+ * ID инстанса базы данных для применения привилегий. В данных момент поле доступно только для кластеров MySQL. Если поле не передано, то привилегии будут применены ко всем инстансам
  * @member {Number} instance_id
  */
 UpdateAdmin.prototype['instance_id'] = undefined;
@@ -255,7 +255,25 @@ UpdateAdmin['PrivilegesEnum'] = {
      * value: "TRANSACTION"
      * @const
      */
-    "TRANSACTION": "TRANSACTION"
+    "TRANSACTION": "TRANSACTION",
+
+    /**
+     * value: "SLOW_LOG"
+     * @const
+     */
+    "SLOW_LOG": "SLOW_LOG",
+
+    /**
+     * value: "TRIGGER"
+     * @const
+     */
+    "TRIGGER": "TRIGGER",
+
+    /**
+     * value: "CREATE_TEMPORARY_TABLES"
+     * @const
+     */
+    "CREATE_TEMPORARY_TABLES": "CREATE_TEMPORARY_TABLES"
 };
 
 

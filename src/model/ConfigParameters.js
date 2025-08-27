@@ -21,6 +21,7 @@ import ApiClient from '../ApiClient';
 class ConfigParameters {
     /**
      * Constructs a new <code>ConfigParameters</code>.
+     * Параметры базы данных
      * @alias module:model/ConfigParameters
      */
     constructor() { 

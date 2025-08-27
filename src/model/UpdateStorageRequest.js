@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import UpdateStorageRequestConfigurator from './UpdateStorageRequestConfigurator';
 
 /**
  * The UpdateStorageRequest model module.
@@ -50,8 +51,8 @@ class UpdateStorageRequest {
             if (data.hasOwnProperty('preset_id')) {
                 obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
             }
-            if (data.hasOwnProperty('configurator_id')) {
-                obj['configurator_id'] = ApiClient.convertToType(data['configurator_id'], 'Number');
+            if (data.hasOwnProperty('configurator')) {
+                obj['configurator'] = UpdateStorageRequestConfigurator.constructFromObject(data['configurator']);
             }
             if (data.hasOwnProperty('bucket_type')) {
                 obj['bucket_type'] = ApiClient.convertToType(data['bucket_type'], 'String');
@@ -69,6 +70,10 @@ class UpdateStorageRequest {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateStorageRequest</code>.
      */
     static validateJSON(data) {
+        // validate the optional field `configurator`
+        if (data['configurator']) { // data not null
+          UpdateStorageRequestConfigurator.validateJSON(data['configurator']);
+        }
         // ensure the json data is a string
         if (data['bucket_type'] && !(typeof data['bucket_type'] === 'string' || data['bucket_type'] instanceof String)) {
             throw new Error("Expected the field `bucket_type` to be a primitive type in the JSON string but got " + data['bucket_type']);
@@ -93,10 +98,9 @@ class UpdateStorageRequest {
 UpdateStorageRequest.prototype['preset_id'] = undefined;
 
 /**
- * ID конфигуратора хранилища.
- * @member {Number} configurator_id
+ * @member {module:model/UpdateStorageRequestConfigurator} configurator
  */
-UpdateStorageRequest.prototype['configurator_id'] = undefined;
+UpdateStorageRequest.prototype['configurator'] = undefined;
 
 /**
  * Тип хранилища.

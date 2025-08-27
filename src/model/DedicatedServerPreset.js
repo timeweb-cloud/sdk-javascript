@@ -32,12 +32,13 @@ class DedicatedServerPreset {
      * @param isPreInstalled {Boolean} Это логическое значение, которое показывает, готов ли выделенный сервер к моментальной выдаче.
      * @param cpu {module:model/DedicatedServerPresetCpu} 
      * @param disk {module:model/DedicatedServerPresetDisk} 
+     * @param price {Number} Стоимость тарифа выделенного сервера
      * @param memory {module:model/DedicatedServerPresetMemory} 
      * @param location {module:model/DedicatedServerPreset.LocationEnum} Локация.
      */
-    constructor(id, description, isIpmiEnabled, isPreInstalled, cpu, disk, memory, location) { 
+    constructor(id, description, isIpmiEnabled, isPreInstalled, cpu, disk, price, memory, location) { 
         
-        DedicatedServerPreset.initialize(this, id, description, isIpmiEnabled, isPreInstalled, cpu, disk, memory, location);
+        DedicatedServerPreset.initialize(this, id, description, isIpmiEnabled, isPreInstalled, cpu, disk, price, memory, location);
     }
 
     /**
@@ -45,13 +46,14 @@ class DedicatedServerPreset {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, description, isIpmiEnabled, isPreInstalled, cpu, disk, memory, location) { 
+    static initialize(obj, id, description, isIpmiEnabled, isPreInstalled, cpu, disk, price, memory, location) { 
         obj['id'] = id;
         obj['description'] = description;
         obj['is_ipmi_enabled'] = isIpmiEnabled;
         obj['is_pre_installed'] = isPreInstalled;
         obj['cpu'] = cpu;
         obj['disk'] = disk;
+        obj['price'] = price;
         obj['memory'] = memory;
         obj['location'] = location;
     }
@@ -137,7 +139,7 @@ class DedicatedServerPreset {
 
 }
 
-DedicatedServerPreset.RequiredProperties = ["id", "description", "is_ipmi_enabled", "is_pre_installed", "cpu", "disk", "memory", "location"];
+DedicatedServerPreset.RequiredProperties = ["id", "description", "is_ipmi_enabled", "is_pre_installed", "cpu", "disk", "price", "memory", "location"];
 
 /**
  * ID тарифа выделенного сервера.

@@ -26,10 +26,11 @@ class DedicatedServerPresetCpu {
      * @param description {String} Описание характеристик процессора выделенного сервера.
      * @param descriptionShort {String} Краткое описание характеристик процессора выделенного сервера.
      * @param count {Number} Количество ядер процессора выделенного сервера.
+     * @param vendor {String} Производитель процессора выделенного сервера.
      */
-    constructor(description, descriptionShort, count) { 
+    constructor(description, descriptionShort, count, vendor) { 
         
-        DedicatedServerPresetCpu.initialize(this, description, descriptionShort, count);
+        DedicatedServerPresetCpu.initialize(this, description, descriptionShort, count, vendor);
     }
 
     /**
@@ -37,10 +38,11 @@ class DedicatedServerPresetCpu {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, description, descriptionShort, count) { 
+    static initialize(obj, description, descriptionShort, count, vendor) { 
         obj['description'] = description;
         obj['description_short'] = descriptionShort;
         obj['count'] = count;
+        obj['vendor'] = vendor;
     }
 
     /**
@@ -62,6 +64,9 @@ class DedicatedServerPresetCpu {
             }
             if (data.hasOwnProperty('count')) {
                 obj['count'] = ApiClient.convertToType(data['count'], 'Number');
+            }
+            if (data.hasOwnProperty('vendor')) {
+                obj['vendor'] = ApiClient.convertToType(data['vendor'], 'String');
             }
         }
         return obj;
@@ -87,6 +92,10 @@ class DedicatedServerPresetCpu {
         if (data['description_short'] && !(typeof data['description_short'] === 'string' || data['description_short'] instanceof String)) {
             throw new Error("Expected the field `description_short` to be a primitive type in the JSON string but got " + data['description_short']);
         }
+        // ensure the json data is a string
+        if (data['vendor'] && !(typeof data['vendor'] === 'string' || data['vendor'] instanceof String)) {
+            throw new Error("Expected the field `vendor` to be a primitive type in the JSON string but got " + data['vendor']);
+        }
 
         return true;
     }
@@ -94,7 +103,7 @@ class DedicatedServerPresetCpu {
 
 }
 
-DedicatedServerPresetCpu.RequiredProperties = ["description", "description_short", "count"];
+DedicatedServerPresetCpu.RequiredProperties = ["description", "description_short", "count", "vendor"];
 
 /**
  * Описание характеристик процессора выделенного сервера.
@@ -113,6 +122,12 @@ DedicatedServerPresetCpu.prototype['description_short'] = undefined;
  * @member {Number} count
  */
 DedicatedServerPresetCpu.prototype['count'] = undefined;
+
+/**
+ * Производитель процессора выделенного сервера.
+ * @member {String} vendor
+ */
+DedicatedServerPresetCpu.prototype['vendor'] = undefined;
 
 
 

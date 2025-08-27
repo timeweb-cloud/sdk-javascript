@@ -24,7 +24,7 @@ class CreateBalancer {
     /**
      * Constructs a new <code>CreateBalancer</code>.
      * @alias module:model/CreateBalancer
-     * @param name {String} Удобочитаемое имя, установленное для балансировщика.
+     * @param name {String} Удобочитаемое имя, установленное для балансировщика. Должно быть уникальным в рамках аккаунта
      * @param algo {module:model/CreateBalancer.AlgoEnum} Алгоритм переключений балансировщика.
      * @param isSticky {Boolean} Это логическое значение, которое показывает, сохраняется ли сессия.
      * @param isUseProxy {Boolean} Это логическое значение, которое показывает, выступает ли балансировщик в качестве прокси.
@@ -140,6 +140,9 @@ class CreateBalancer {
             if (data.hasOwnProperty('availability_zone')) {
                 obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
             }
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            }
         }
         return obj;
     }
@@ -186,7 +189,7 @@ class CreateBalancer {
 CreateBalancer.RequiredProperties = ["name", "algo", "is_sticky", "is_use_proxy", "is_ssl", "is_keepalive", "proto", "port", "path", "inter", "timeout", "fall", "rise", "preset_id"];
 
 /**
- * Удобочитаемое имя, установленное для балансировщика.
+ * Удобочитаемое имя, установленное для балансировщика. Должно быть уникальным в рамках аккаунта
  * @member {String} name
  */
 CreateBalancer.prototype['name'] = undefined;
@@ -308,6 +311,12 @@ CreateBalancer.prototype['network'] = undefined;
  * @member {module:model/AvailabilityZone} availability_zone
  */
 CreateBalancer.prototype['availability_zone'] = undefined;
+
+/**
+ * ID проекта
+ * @member {Number} project_id
+ */
+CreateBalancer.prototype['project_id'] = undefined;
 
 
 

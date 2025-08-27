@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **port** | **Number** | Порт | 
 **status** | **String** | Текущий статус кластера базы данных. | 
 **presetId** | **Number** | ID тарифа. | 
-**diskStats** | [**DatabaseClusterDiskStats**](DatabaseClusterDiskStats.md) |  | 
+**disk** | [**DatabaseClusterDisk**](DatabaseClusterDisk.md) |  | [optional] 
 **configParameters** | [**ConfigParameters**](ConfigParameters.md) |  | 
 **isEnabledPublicNetwork** | **Boolean** | Доступность публичного IP-адреса | 
 
@@ -26,11 +26,11 @@ Name | Type | Description | Notes
 
 * `ru-1` (value: `"ru-1"`)
 
-* `ru-2` (value: `"ru-2"`)
+* `ru-3` (value: `"ru-3"`)
 
-* `pl-1` (value: `"pl-1"`)
+* `nl-1` (value: `"nl-1"`)
 
-* `kz-1` (value: `"kz-1"`)
+* `de-1` (value: `"de-1"`)
 
 
 
