@@ -16,6 +16,7 @@ import ApiClient from "../ApiClient";
 import ClusterEdit from '../model/ClusterEdit';
 import ClusterIn from '../model/ClusterIn';
 import ClusterResponse from '../model/ClusterResponse';
+import ClusterVersionEdit from '../model/ClusterVersionEdit';
 import ClustersResponse from '../model/ClustersResponse';
 import DeleteCluster200Response from '../model/DeleteCluster200Response';
 import GetFinances400Response from '../model/GetFinances400Response';
@@ -912,6 +913,53 @@ export default class KubernetesApi {
       let returnType = ClusterResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/clusters/{cluster_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updateClusterVersion operation.
+     * @callback module:api/KubernetesApi~updateClusterVersionCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Обновление версии кластера
+     * Чтобы обновить версию кластера, отправьте PATCH-запрос в `/api/v1/k8s/clusters/{cluster_id}/versions/update`
+     * @param {Number} clusterId ID кластера
+     * @param {module:model/ClusterVersionEdit} clusterVersionEdit 
+     * @param {module:api/KubernetesApi~updateClusterVersionCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    updateClusterVersion(clusterId, clusterVersionEdit, callback) {
+      let postBody = clusterVersionEdit;
+      // verify the required parameter 'clusterId' is set
+      if (clusterId === undefined || clusterId === null) {
+        throw new Error("Missing the required parameter 'clusterId' when calling updateClusterVersion");
+      }
+      // verify the required parameter 'clusterVersionEdit' is set
+      if (clusterVersionEdit === undefined || clusterVersionEdit === null) {
+        throw new Error("Missing the required parameter 'clusterVersionEdit' when calling updateClusterVersion");
+      }
+
+      let pathParams = {
+        'cluster_id': clusterId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/k8s/clusters/{cluster_id}/versions/update', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

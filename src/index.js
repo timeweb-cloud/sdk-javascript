@@ -78,6 +78,7 @@ import ClusterInMaintenanceSlot from './model/ClusterInMaintenanceSlot';
 import ClusterInOidcProvider from './model/ClusterInOidcProvider';
 import ClusterOut from './model/ClusterOut';
 import ClusterResponse from './model/ClusterResponse';
+import ClusterVersionEdit from './model/ClusterVersionEdit';
 import Clusterk8s from './model/Clusterk8s';
 import ClustersResponse from './model/ClustersResponse';
 import Commit from './model/Commit';
@@ -907,6 +908,12 @@ export {
      * @property {module:model/ClusterResponse}
      */
     ClusterResponse,
+
+    /**
+     * The ClusterVersionEdit model constructor.
+     * @property {module:model/ClusterVersionEdit}
+     */
+    ClusterVersionEdit,
 
     /**
      * The Clusterk8s model constructor.

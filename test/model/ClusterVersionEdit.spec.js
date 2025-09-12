@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.KubernetesApi();
+    instance = new TimewebCloudApi.ClusterVersionEdit();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,207 +47,19 @@
       object[property] = value;
   }
 
-  describe('KubernetesApi', function() {
-    describe('createCluster', function() {
-      it('should call createCluster successfully', function(done) {
-        //uncomment below and update the code to test createCluster
-        //instance.createCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('ClusterVersionEdit', function() {
+    it('should create an instance of ClusterVersionEdit', function() {
+      // uncomment below and update the code to test ClusterVersionEdit
+      //var instance = new TimewebCloudApi.ClusterVersionEdit();
+      //expect(instance).to.be.a(TimewebCloudApi.ClusterVersionEdit);
     });
-    describe('createClusterNodeGroup', function() {
-      it('should call createClusterNodeGroup successfully', function(done) {
-        //uncomment below and update the code to test createClusterNodeGroup
-        //instance.createClusterNodeGroup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property k8sVersion (base name: "k8s_version")', function() {
+      // uncomment below and update the code to test the property k8sVersion
+      //var instance = new TimewebCloudApi.ClusterVersionEdit();
+      //expect(instance).to.be();
     });
-    describe('deleteCluster', function() {
-      it('should call deleteCluster successfully', function(done) {
-        //uncomment below and update the code to test deleteCluster
-        //instance.deleteCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteClusterNode', function() {
-      it('should call deleteClusterNode successfully', function(done) {
-        //uncomment below and update the code to test deleteClusterNode
-        //instance.deleteClusterNode(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteClusterNodeGroup', function() {
-      it('should call deleteClusterNodeGroup successfully', function(done) {
-        //uncomment below and update the code to test deleteClusterNodeGroup
-        //instance.deleteClusterNodeGroup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getCluster', function() {
-      it('should call getCluster successfully', function(done) {
-        //uncomment below and update the code to test getCluster
-        //instance.getCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusterKubeconfig', function() {
-      it('should call getClusterKubeconfig successfully', function(done) {
-        //uncomment below and update the code to test getClusterKubeconfig
-        //instance.getClusterKubeconfig(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusterNodeGroup', function() {
-      it('should call getClusterNodeGroup successfully', function(done) {
-        //uncomment below and update the code to test getClusterNodeGroup
-        //instance.getClusterNodeGroup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusterNodeGroups', function() {
-      it('should call getClusterNodeGroups successfully', function(done) {
-        //uncomment below and update the code to test getClusterNodeGroups
-        //instance.getClusterNodeGroups(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusterNodes', function() {
-      it('should call getClusterNodes successfully', function(done) {
-        //uncomment below and update the code to test getClusterNodes
-        //instance.getClusterNodes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusterNodesFromGroup', function() {
-      it('should call getClusterNodesFromGroup successfully', function(done) {
-        //uncomment below and update the code to test getClusterNodesFromGroup
-        //instance.getClusterNodesFromGroup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusterResources', function() {
-      it('should call getClusterResources successfully', function(done) {
-        //uncomment below and update the code to test getClusterResources
-        //instance.getClusterResources(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusters', function() {
-      it('should call getClusters successfully', function(done) {
-        //uncomment below and update the code to test getClusters
-        //instance.getClusters(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getK8SNetworkDrivers', function() {
-      it('should call getK8SNetworkDrivers successfully', function(done) {
-        //uncomment below and update the code to test getK8SNetworkDrivers
-        //instance.getK8SNetworkDrivers(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getK8SVersions', function() {
-      it('should call getK8SVersions successfully', function(done) {
-        //uncomment below and update the code to test getK8SVersions
-        //instance.getK8SVersions(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getKubernetesPresets', function() {
-      it('should call getKubernetesPresets successfully', function(done) {
-        //uncomment below and update the code to test getKubernetesPresets
-        //instance.getKubernetesPresets(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('increaseCountOfNodesInGroup', function() {
-      it('should call increaseCountOfNodesInGroup successfully', function(done) {
-        //uncomment below and update the code to test increaseCountOfNodesInGroup
-        //instance.increaseCountOfNodesInGroup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('reduceCountOfNodesInGroup', function() {
-      it('should call reduceCountOfNodesInGroup successfully', function(done) {
-        //uncomment below and update the code to test reduceCountOfNodesInGroup
-        //instance.reduceCountOfNodesInGroup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateCluster', function() {
-      it('should call updateCluster successfully', function(done) {
-        //uncomment below and update the code to test updateCluster
-        //instance.updateCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateClusterVersion', function() {
-      it('should call updateClusterVersion successfully', function(done) {
-        //uncomment below and update the code to test updateClusterVersion
-        //instance.updateClusterVersion(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
+
   });
 
 }));

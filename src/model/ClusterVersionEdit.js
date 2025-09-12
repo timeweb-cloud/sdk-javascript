@@ -11,243 +11,78 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
 
-  var instance;
+/**
+ * The ClusterVersionEdit model module.
+ * @module model/ClusterVersionEdit
+ * @version 1.0.0
+ */
+class ClusterVersionEdit {
+    /**
+     * Constructs a new <code>ClusterVersionEdit</code>.
+     * @alias module:model/ClusterVersionEdit
+     */
+    constructor() { 
+        
+        ClusterVersionEdit.initialize(this);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.KubernetesApi();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj) { 
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>ClusterVersionEdit</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/ClusterVersionEdit} obj Optional instance to populate.
+     * @return {module:model/ClusterVersionEdit} The populated <code>ClusterVersionEdit</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new ClusterVersionEdit();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('k8s_version')) {
+                obj['k8s_version'] = ApiClient.convertToType(data['k8s_version'], 'String');
+            }
+        }
+        return obj;
+    }
 
-  describe('KubernetesApi', function() {
-    describe('createCluster', function() {
-      it('should call createCluster successfully', function(done) {
-        //uncomment below and update the code to test createCluster
-        //instance.createCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createClusterNodeGroup', function() {
-      it('should call createClusterNodeGroup successfully', function(done) {
-        //uncomment below and update the code to test createClusterNodeGroup
-        //instance.createClusterNodeGroup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteCluster', function() {
-      it('should call deleteCluster successfully', function(done) {
-        //uncomment below and update the code to test deleteCluster
-        //instance.deleteCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteClusterNode', function() {
-      it('should call deleteClusterNode successfully', function(done) {
-        //uncomment below and update the code to test deleteClusterNode
-        //instance.deleteClusterNode(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteClusterNodeGroup', function() {
-      it('should call deleteClusterNodeGroup successfully', function(done) {
-        //uncomment below and update the code to test deleteClusterNodeGroup
-        //instance.deleteClusterNodeGroup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getCluster', function() {
-      it('should call getCluster successfully', function(done) {
-        //uncomment below and update the code to test getCluster
-        //instance.getCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusterKubeconfig', function() {
-      it('should call getClusterKubeconfig successfully', function(done) {
-        //uncomment below and update the code to test getClusterKubeconfig
-        //instance.getClusterKubeconfig(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusterNodeGroup', function() {
-      it('should call getClusterNodeGroup successfully', function(done) {
-        //uncomment below and update the code to test getClusterNodeGroup
-        //instance.getClusterNodeGroup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusterNodeGroups', function() {
-      it('should call getClusterNodeGroups successfully', function(done) {
-        //uncomment below and update the code to test getClusterNodeGroups
-        //instance.getClusterNodeGroups(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusterNodes', function() {
-      it('should call getClusterNodes successfully', function(done) {
-        //uncomment below and update the code to test getClusterNodes
-        //instance.getClusterNodes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusterNodesFromGroup', function() {
-      it('should call getClusterNodesFromGroup successfully', function(done) {
-        //uncomment below and update the code to test getClusterNodesFromGroup
-        //instance.getClusterNodesFromGroup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusterResources', function() {
-      it('should call getClusterResources successfully', function(done) {
-        //uncomment below and update the code to test getClusterResources
-        //instance.getClusterResources(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusters', function() {
-      it('should call getClusters successfully', function(done) {
-        //uncomment below and update the code to test getClusters
-        //instance.getClusters(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getK8SNetworkDrivers', function() {
-      it('should call getK8SNetworkDrivers successfully', function(done) {
-        //uncomment below and update the code to test getK8SNetworkDrivers
-        //instance.getK8SNetworkDrivers(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getK8SVersions', function() {
-      it('should call getK8SVersions successfully', function(done) {
-        //uncomment below and update the code to test getK8SVersions
-        //instance.getK8SVersions(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getKubernetesPresets', function() {
-      it('should call getKubernetesPresets successfully', function(done) {
-        //uncomment below and update the code to test getKubernetesPresets
-        //instance.getKubernetesPresets(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('increaseCountOfNodesInGroup', function() {
-      it('should call increaseCountOfNodesInGroup successfully', function(done) {
-        //uncomment below and update the code to test increaseCountOfNodesInGroup
-        //instance.increaseCountOfNodesInGroup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('reduceCountOfNodesInGroup', function() {
-      it('should call reduceCountOfNodesInGroup successfully', function(done) {
-        //uncomment below and update the code to test reduceCountOfNodesInGroup
-        //instance.reduceCountOfNodesInGroup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateCluster', function() {
-      it('should call updateCluster successfully', function(done) {
-        //uncomment below and update the code to test updateCluster
-        //instance.updateCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateClusterVersion', function() {
-      it('should call updateClusterVersion successfully', function(done) {
-        //uncomment below and update the code to test updateClusterVersion
-        //instance.updateClusterVersion(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-  });
+    /**
+     * Validates the JSON data with respect to <code>ClusterVersionEdit</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ClusterVersionEdit</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['k8s_version'] && !(typeof data['k8s_version'] === 'string' || data['k8s_version'] instanceof String)) {
+            throw new Error("Expected the field `k8s_version` to be a primitive type in the JSON string but got " + data['k8s_version']);
+        }
 
-}));
+        return true;
+    }
+
+
+}
+
+
+
+/**
+ * Новая версия кластера
+ * @member {String} k8s_version
+ */
+ClusterVersionEdit.prototype['k8s_version'] = undefined;
+
+
+
+
+
+
+export default ClusterVersionEdit;
+

@@ -436,6 +436,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.KubernetesApi* | [**increaseCountOfNodesInGroup**](docs/KubernetesApi.md#increaseCountOfNodesInGroup) | **POST** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Увеличение количества нод в группе на указанное количество
 *TimewebCloudApi.KubernetesApi* | [**reduceCountOfNodesInGroup**](docs/KubernetesApi.md#reduceCountOfNodesInGroup) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Уменьшение количества нод в группе на указанное количество
 *TimewebCloudApi.KubernetesApi* | [**updateCluster**](docs/KubernetesApi.md#updateCluster) | **PATCH** /api/v1/k8s/clusters/{cluster_id} | Обновление информации о кластере
+*TimewebCloudApi.KubernetesApi* | [**updateClusterVersion**](docs/KubernetesApi.md#updateClusterVersion) | **PATCH** /api/v1/k8s/clusters/{cluster_id}/versions/update | Обновление версии кластера
 *TimewebCloudApi.LocationsApi* | [**getLocations**](docs/LocationsApi.md#getLocations) | **GET** /api/v2/locations | Получение списка локаций
 *TimewebCloudApi.MailApi* | [**createDomainMailbox**](docs/MailApi.md#createDomainMailbox) | **POST** /api/v1/mail/domains/{domain} | Создание почтового ящика
 *TimewebCloudApi.MailApi* | [**createMultipleDomainMailboxes**](docs/MailApi.md#createMultipleDomainMailboxes) | **POST** /api/v1/mail/domains/{domain}/batch | Множественное создание почтовых ящиков
@@ -617,6 +618,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ClusterInOidcProvider](docs/ClusterInOidcProvider.md)
  - [TimewebCloudApi.ClusterOut](docs/ClusterOut.md)
  - [TimewebCloudApi.ClusterResponse](docs/ClusterResponse.md)
+ - [TimewebCloudApi.ClusterVersionEdit](docs/ClusterVersionEdit.md)
  - [TimewebCloudApi.Clusterk8s](docs/Clusterk8s.md)
  - [TimewebCloudApi.ClustersResponse](docs/ClustersResponse.md)
  - [TimewebCloudApi.Commit](docs/Commit.md)

@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**increaseCountOfNodesInGroup**](KubernetesApi.md#increaseCountOfNodesInGroup) | **POST** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Увеличение количества нод в группе на указанное количество
 [**reduceCountOfNodesInGroup**](KubernetesApi.md#reduceCountOfNodesInGroup) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Уменьшение количества нод в группе на указанное количество
 [**updateCluster**](KubernetesApi.md#updateCluster) | **PATCH** /api/v1/k8s/clusters/{cluster_id} | Обновление информации о кластере
+[**updateClusterVersion**](KubernetesApi.md#updateClusterVersion) | **PATCH** /api/v1/k8s/clusters/{cluster_id}/versions/update | Обновление версии кластера
 
 
 
@@ -970,6 +971,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClusterResponse**](ClusterResponse.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updateClusterVersion
+
+> updateClusterVersion(clusterId, clusterVersionEdit)
+
+Обновление версии кластера
+
+Чтобы обновить версию кластера, отправьте PATCH-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/versions/update&#x60;
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.KubernetesApi();
+let clusterId = 56; // Number | ID кластера
+let clusterVersionEdit = new TimewebCloudApi.ClusterVersionEdit(); // ClusterVersionEdit | 
+apiInstance.updateClusterVersion(clusterId, clusterVersionEdit, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clusterId** | **Number**| ID кластера | 
+ **clusterVersionEdit** | [**ClusterVersionEdit**](ClusterVersionEdit.md)|  | 
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 
