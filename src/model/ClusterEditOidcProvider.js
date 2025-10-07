@@ -12,21 +12,24 @@
  */
 
 import ApiClient from '../ApiClient';
-import ClusterEditOidcProvider from './ClusterEditOidcProvider';
 
 /**
- * The ClusterEdit model module.
- * @module model/ClusterEdit
+ * The ClusterEditOidcProvider model module.
+ * @module model/ClusterEditOidcProvider
  * @version 1.0.0
  */
-class ClusterEdit {
+class ClusterEditOidcProvider {
     /**
-     * Constructs a new <code>ClusterEdit</code>.
-     * @alias module:model/ClusterEdit
+     * Constructs a new <code>ClusterEditOidcProvider</code>.
+     * OIDC-провайдер
+     * @alias module:model/ClusterEditOidcProvider
+     * @param name {String} Название создаваемого подключения. Используется только для идентификации и не влияет на остальные параметры
+     * @param issuerUrl {String} Адрес OIDC-провайдера, используемый для аутентификации пользователей, запрашивающих доступ к кластеру
+     * @param clientId {String} Идентификатор сервиса, выданный OIDC-провайдером, от имени которого осуществляется запрос к ресурсам
      */
-    constructor() { 
+    constructor(name, issuerUrl, clientId) { 
         
-        ClusterEdit.initialize(this);
+        ClusterEditOidcProvider.initialize(this, name, issuerUrl, clientId);
     }
 
     /**
@@ -34,50 +37,73 @@ class ClusterEdit {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, name, issuerUrl, clientId) { 
+        obj['name'] = name;
+        obj['issuer_url'] = issuerUrl;
+        obj['client_id'] = clientId;
     }
 
     /**
-     * Constructs a <code>ClusterEdit</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>ClusterEditOidcProvider</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/ClusterEdit} obj Optional instance to populate.
-     * @return {module:model/ClusterEdit} The populated <code>ClusterEdit</code> instance.
+     * @param {module:model/ClusterEditOidcProvider} obj Optional instance to populate.
+     * @return {module:model/ClusterEditOidcProvider} The populated <code>ClusterEditOidcProvider</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new ClusterEdit();
+            obj = obj || new ClusterEditOidcProvider();
 
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
-            if (data.hasOwnProperty('description')) {
-                obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            if (data.hasOwnProperty('issuer_url')) {
+                obj['issuer_url'] = ApiClient.convertToType(data['issuer_url'], 'String');
             }
-            if (data.hasOwnProperty('oidc_provider')) {
-                obj['oidc_provider'] = ClusterEditOidcProvider.constructFromObject(data['oidc_provider']);
+            if (data.hasOwnProperty('client_id')) {
+                obj['client_id'] = ApiClient.convertToType(data['client_id'], 'String');
+            }
+            if (data.hasOwnProperty('username_claim')) {
+                obj['username_claim'] = ApiClient.convertToType(data['username_claim'], 'String');
+            }
+            if (data.hasOwnProperty('groups_claim')) {
+                obj['groups_claim'] = ApiClient.convertToType(data['groups_claim'], 'String');
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>ClusterEdit</code>.
+     * Validates the JSON data with respect to <code>ClusterEditOidcProvider</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ClusterEdit</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ClusterEditOidcProvider</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ClusterEditOidcProvider.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
-        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
-            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        if (data['issuer_url'] && !(typeof data['issuer_url'] === 'string' || data['issuer_url'] instanceof String)) {
+            throw new Error("Expected the field `issuer_url` to be a primitive type in the JSON string but got " + data['issuer_url']);
         }
-        // validate the optional field `oidc_provider`
-        if (data['oidc_provider']) { // data not null
-          ClusterEditOidcProvider.validateJSON(data['oidc_provider']);
+        // ensure the json data is a string
+        if (data['client_id'] && !(typeof data['client_id'] === 'string' || data['client_id'] instanceof String)) {
+            throw new Error("Expected the field `client_id` to be a primitive type in the JSON string but got " + data['client_id']);
+        }
+        // ensure the json data is a string
+        if (data['username_claim'] && !(typeof data['username_claim'] === 'string' || data['username_claim'] instanceof String)) {
+            throw new Error("Expected the field `username_claim` to be a primitive type in the JSON string but got " + data['username_claim']);
+        }
+        // ensure the json data is a string
+        if (data['groups_claim'] && !(typeof data['groups_claim'] === 'string' || data['groups_claim'] instanceof String)) {
+            throw new Error("Expected the field `groups_claim` to be a primitive type in the JSON string but got " + data['groups_claim']);
         }
 
         return true;
@@ -86,29 +112,42 @@ class ClusterEdit {
 
 }
 
-
+ClusterEditOidcProvider.RequiredProperties = ["name", "issuer_url", "client_id"];
 
 /**
- * Новое название кластера
+ * Название создаваемого подключения. Используется только для идентификации и не влияет на остальные параметры
  * @member {String} name
  */
-ClusterEdit.prototype['name'] = undefined;
+ClusterEditOidcProvider.prototype['name'] = undefined;
 
 /**
- * Новое описание кластера
- * @member {String} description
+ * Адрес OIDC-провайдера, используемый для аутентификации пользователей, запрашивающих доступ к кластеру
+ * @member {String} issuer_url
  */
-ClusterEdit.prototype['description'] = undefined;
+ClusterEditOidcProvider.prototype['issuer_url'] = undefined;
 
 /**
- * @member {module:model/ClusterEditOidcProvider} oidc_provider
+ * Идентификатор сервиса, выданный OIDC-провайдером, от имени которого осуществляется запрос к ресурсам
+ * @member {String} client_id
  */
-ClusterEdit.prototype['oidc_provider'] = undefined;
+ClusterEditOidcProvider.prototype['client_id'] = undefined;
+
+/**
+ * Поле в JSON Web Token (JWT), используемое для идентификации пользователя
+ * @member {String} username_claim
+ */
+ClusterEditOidcProvider.prototype['username_claim'] = undefined;
+
+/**
+ * Поле в JSON Web Token (JWT), содержащее названии группы, к которой принадлежит пользователь
+ * @member {String} groups_claim
+ */
+ClusterEditOidcProvider.prototype['groups_claim'] = undefined;
 
 
 
 
 
 
-export default ClusterEdit;
+export default ClusterEditOidcProvider;
 

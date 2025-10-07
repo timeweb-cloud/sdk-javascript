@@ -65,6 +65,7 @@ docs/BucketWebsiteConfig.md
 docs/BucketWebsiteConfigErrorPagesInner.md
 docs/CheckDomain200Response.md
 docs/ClusterEdit.md
+docs/ClusterEditOidcProvider.md
 docs/ClusterIn.md
 docs/ClusterInClusterNetworkCidr.md
 docs/ClusterInConfiguration.md
@@ -552,6 +553,7 @@ src/model/BucketWebsiteConfig.js
 src/model/BucketWebsiteConfigErrorPagesInner.js
 src/model/CheckDomain200Response.js
 src/model/ClusterEdit.js
+src/model/ClusterEditOidcProvider.js
 src/model/ClusterIn.js
 src/model/ClusterInClusterNetworkCidr.js
 src/model/ClusterInConfiguration.js
@@ -1018,6 +1020,7 @@ test/model/BucketWebsiteConfig.spec.js
 test/model/BucketWebsiteConfigErrorPagesInner.spec.js
 test/model/CheckDomain200Response.spec.js
 test/model/ClusterEdit.spec.js
+test/model/ClusterEditOidcProvider.spec.js
 test/model/ClusterIn.spec.js
 test/model/ClusterInClusterNetworkCidr.spec.js
 test/model/ClusterInConfiguration.spec.js

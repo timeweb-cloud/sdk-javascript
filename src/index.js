@@ -71,6 +71,7 @@ import BucketWebsiteConfig from './model/BucketWebsiteConfig';
 import BucketWebsiteConfigErrorPagesInner from './model/BucketWebsiteConfigErrorPagesInner';
 import CheckDomain200Response from './model/CheckDomain200Response';
 import ClusterEdit from './model/ClusterEdit';
+import ClusterEditOidcProvider from './model/ClusterEditOidcProvider';
 import ClusterIn from './model/ClusterIn';
 import ClusterInClusterNetworkCidr from './model/ClusterInClusterNetworkCidr';
 import ClusterInConfiguration from './model/ClusterInConfiguration';
@@ -866,6 +867,12 @@ export {
      * @property {module:model/ClusterEdit}
      */
     ClusterEdit,
+
+    /**
+     * The ClusterEditOidcProvider model constructor.
+     * @property {module:model/ClusterEditOidcProvider}
+     */
+    ClusterEditOidcProvider,
 
     /**
      * The ClusterIn model constructor.

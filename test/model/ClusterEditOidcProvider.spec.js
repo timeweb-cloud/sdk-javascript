@@ -11,104 +11,79 @@
  *
  */
 
-import ApiClient from '../ApiClient';
-import ClusterEditOidcProvider from './ClusterEditOidcProvider';
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', process.cwd()+'/src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.TimewebCloudApi);
+  }
+}(this, function(expect, TimewebCloudApi) {
+  'use strict';
 
-/**
- * The ClusterEdit model module.
- * @module model/ClusterEdit
- * @version 1.0.0
- */
-class ClusterEdit {
-    /**
-     * Constructs a new <code>ClusterEdit</code>.
-     * @alias module:model/ClusterEdit
-     */
-    constructor() { 
-        
-        ClusterEdit.initialize(this);
-    }
+  var instance;
 
-    /**
-     * Initializes the fields of this object.
-     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
-     * Only for internal use.
-     */
-    static initialize(obj) { 
-    }
+  beforeEach(function() {
+    instance = new TimewebCloudApi.ClusterEditOidcProvider();
+  });
 
-    /**
-     * Constructs a <code>ClusterEdit</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/ClusterEdit} obj Optional instance to populate.
-     * @return {module:model/ClusterEdit} The populated <code>ClusterEdit</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new ClusterEdit();
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('description')) {
-                obj['description'] = ApiClient.convertToType(data['description'], 'String');
-            }
-            if (data.hasOwnProperty('oidc_provider')) {
-                obj['oidc_provider'] = ClusterEditOidcProvider.constructFromObject(data['oidc_provider']);
-            }
-        }
-        return obj;
-    }
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-    /**
-     * Validates the JSON data with respect to <code>ClusterEdit</code>.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ClusterEdit</code>.
-     */
-    static validateJSON(data) {
-        // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
-            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
-        }
-        // ensure the json data is a string
-        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
-            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
-        }
-        // validate the optional field `oidc_provider`
-        if (data['oidc_provider']) { // data not null
-          ClusterEditOidcProvider.validateJSON(data['oidc_provider']);
-        }
+  describe('ClusterEditOidcProvider', function() {
+    it('should create an instance of ClusterEditOidcProvider', function() {
+      // uncomment below and update the code to test ClusterEditOidcProvider
+      //var instance = new TimewebCloudApi.ClusterEditOidcProvider();
+      //expect(instance).to.be.a(TimewebCloudApi.ClusterEditOidcProvider);
+    });
 
-        return true;
-    }
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instance = new TimewebCloudApi.ClusterEditOidcProvider();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property issuerUrl (base name: "issuer_url")', function() {
+      // uncomment below and update the code to test the property issuerUrl
+      //var instance = new TimewebCloudApi.ClusterEditOidcProvider();
+      //expect(instance).to.be();
+    });
 
-}
+    it('should have the property clientId (base name: "client_id")', function() {
+      // uncomment below and update the code to test the property clientId
+      //var instance = new TimewebCloudApi.ClusterEditOidcProvider();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property usernameClaim (base name: "username_claim")', function() {
+      // uncomment below and update the code to test the property usernameClaim
+      //var instance = new TimewebCloudApi.ClusterEditOidcProvider();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property groupsClaim (base name: "groups_claim")', function() {
+      // uncomment below and update the code to test the property groupsClaim
+      //var instance = new TimewebCloudApi.ClusterEditOidcProvider();
+      //expect(instance).to.be();
+    });
 
-/**
- * Новое название кластера
- * @member {String} name
- */
-ClusterEdit.prototype['name'] = undefined;
+  });
 
-/**
- * Новое описание кластера
- * @member {String} description
- */
-ClusterEdit.prototype['description'] = undefined;
-
-/**
- * @member {module:model/ClusterEditOidcProvider} oidc_provider
- */
-ClusterEdit.prototype['oidc_provider'] = undefined;
-
-
-
-
-
-
-export default ClusterEdit;
-
+}));

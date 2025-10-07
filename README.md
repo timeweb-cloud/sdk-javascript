@@ -611,6 +611,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.BucketWebsiteConfigErrorPagesInner](docs/BucketWebsiteConfigErrorPagesInner.md)
  - [TimewebCloudApi.CheckDomain200Response](docs/CheckDomain200Response.md)
  - [TimewebCloudApi.ClusterEdit](docs/ClusterEdit.md)
+ - [TimewebCloudApi.ClusterEditOidcProvider](docs/ClusterEditOidcProvider.md)
  - [TimewebCloudApi.ClusterIn](docs/ClusterIn.md)
  - [TimewebCloudApi.ClusterInClusterNetworkCidr](docs/ClusterInClusterNetworkCidr.md)
  - [TimewebCloudApi.ClusterInConfiguration](docs/ClusterInConfiguration.md)

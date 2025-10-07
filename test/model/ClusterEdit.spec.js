@@ -54,8 +54,20 @@
       //expect(instance).to.be.a(TimewebCloudApi.ClusterEdit);
     });
 
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instance = new TimewebCloudApi.ClusterEdit();
+      //expect(instance).to.be();
+    });
+
     it('should have the property description (base name: "description")', function() {
       // uncomment below and update the code to test the property description
+      //var instance = new TimewebCloudApi.ClusterEdit();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property oidcProvider (base name: "oidc_provider")', function() {
+      // uncomment below and update the code to test the property oidcProvider
       //var instance = new TimewebCloudApi.ClusterEdit();
       //expect(instance).to.be();
     });
