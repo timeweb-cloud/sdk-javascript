@@ -11,340 +11,61 @@
  *
  */
 
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', process.cwd()+'/src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.TimewebCloudApi);
+  }
+}(this, function(expect, TimewebCloudApi) {
+  'use strict';
 
-import ApiClient from "../ApiClient";
-import BindFloatingIp from '../model/BindFloatingIp';
-import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
-import CreateFloatingIp from '../model/CreateFloatingIp';
-import CreateFloatingIp201Response from '../model/CreateFloatingIp201Response';
-import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
-import GetFinances400Response from '../model/GetFinances400Response';
-import GetFinances401Response from '../model/GetFinances401Response';
-import GetFinances429Response from '../model/GetFinances429Response';
-import GetFinances500Response from '../model/GetFinances500Response';
-import GetFloatingIps200Response from '../model/GetFloatingIps200Response';
-import GetImage404Response from '../model/GetImage404Response';
-import UpdateFloatingIp from '../model/UpdateFloatingIp';
+  var instance;
 
-/**
-* FloatingIP service.
-* @module api/FloatingIPApi
-* @version 1.0.0
-*/
-export default class FloatingIPApi {
+  beforeEach(function() {
+    instance = new TimewebCloudApi.GetLinkCardPayment200Response();
+  });
 
-    /**
-    * Constructs a new FloatingIPApi. 
-    * @alias module:api/FloatingIPApi
-    * @class
-    * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:ApiClient#instance} if unspecified.
-    */
-    constructor(apiClient) {
-        this.apiClient = apiClient || ApiClient.instance;
-    }
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-    /**
-     * Callback function to receive the result of the bindFloatingIp operation.
-     * @callback module:api/FloatingIPApi~bindFloatingIpCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
+  describe('GetLinkCardPayment200Response', function() {
+    it('should create an instance of GetLinkCardPayment200Response', function() {
+      // uncomment below and update the code to test GetLinkCardPayment200Response
+      //var instance = new TimewebCloudApi.GetLinkCardPayment200Response();
+      //expect(instance).to.be.a(TimewebCloudApi.GetLinkCardPayment200Response);
+    });
 
-    /**
-     * Привязать IP к сервису
-     * Чтобы привязать IP к сервису, отправьте POST-запрос на `/api/v1/floating-ips/{floating_ip_id}/bind`.
-     * @param {String} floatingIpId ID плавающего IP
-     * @param {module:model/BindFloatingIp} bindFloatingIp 
-     * @param {module:api/FloatingIPApi~bindFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    bindFloatingIp(floatingIpId, bindFloatingIp, callback) {
-      let postBody = bindFloatingIp;
-      // verify the required parameter 'floatingIpId' is set
-      if (floatingIpId === undefined || floatingIpId === null) {
-        throw new Error("Missing the required parameter 'floatingIpId' when calling bindFloatingIp");
-      }
-      // verify the required parameter 'bindFloatingIp' is set
-      if (bindFloatingIp === undefined || bindFloatingIp === null) {
-        throw new Error("Missing the required parameter 'bindFloatingIp' when calling bindFloatingIp");
-      }
+    it('should have the property confirmationUrl (base name: "confirmation_url")', function() {
+      // uncomment below and update the code to test the property confirmationUrl
+      //var instance = new TimewebCloudApi.GetLinkCardPayment200Response();
+      //expect(instance).to.be();
+    });
 
-      let pathParams = {
-        'floating_ip_id': floatingIpId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
+    it('should have the property responseId (base name: "response_id")', function() {
+      // uncomment below and update the code to test the property responseId
+      //var instance = new TimewebCloudApi.GetLinkCardPayment200Response();
+      //expect(instance).to.be();
+    });
 
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/v1/floating-ips/{floating_ip_id}/bind', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
+  });
 
-    /**
-     * Callback function to receive the result of the createFloatingIp operation.
-     * @callback module:api/FloatingIPApi~createFloatingIpCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateFloatingIp201Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Создание плавающего IP
-     * Чтобы создать создать плавающий IP, отправьте POST-запрос в `/api/v1/floating-ips`, задав необходимые атрибуты.
-     * @param {module:model/CreateFloatingIp} createFloatingIp 
-     * @param {module:api/FloatingIPApi~createFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateFloatingIp201Response}
-     */
-    createFloatingIp(createFloatingIp, callback) {
-      let postBody = createFloatingIp;
-      // verify the required parameter 'createFloatingIp' is set
-      if (createFloatingIp === undefined || createFloatingIp === null) {
-        throw new Error("Missing the required parameter 'createFloatingIp' when calling createFloatingIp");
-      }
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = CreateFloatingIp201Response;
-      return this.apiClient.callApi(
-        '/api/v1/floating-ips', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the deleteFloatingIP operation.
-     * @callback module:api/FloatingIPApi~deleteFloatingIPCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Удаление плавающего IP по ID
-     * Чтобы удалить плавающий IP, отправьте DELETE-запрос на `/api/v1/floating-ips/{floating_ip_id}`
-     * @param {String} floatingIpId ID плавающего IP
-     * @param {module:api/FloatingIPApi~deleteFloatingIPCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    deleteFloatingIP(floatingIpId, callback) {
-      let postBody = null;
-      // verify the required parameter 'floatingIpId' is set
-      if (floatingIpId === undefined || floatingIpId === null) {
-        throw new Error("Missing the required parameter 'floatingIpId' when calling deleteFloatingIP");
-      }
-
-      let pathParams = {
-        'floating_ip_id': floatingIpId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/v1/floating-ips/{floating_ip_id}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getFloatingIp operation.
-     * @callback module:api/FloatingIPApi~getFloatingIpCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateFloatingIp201Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение плавающего IP
-     * Чтобы отобразить информацию об отдельном плавающем IP, отправьте запрос GET на `api/v1/floating-ips/{floating_ip_id}`.
-     * @param {String} floatingIpId ID плавающего IP
-     * @param {module:api/FloatingIPApi~getFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateFloatingIp201Response}
-     */
-    getFloatingIp(floatingIpId, callback) {
-      let postBody = null;
-      // verify the required parameter 'floatingIpId' is set
-      if (floatingIpId === undefined || floatingIpId === null) {
-        throw new Error("Missing the required parameter 'floatingIpId' when calling getFloatingIp");
-      }
-
-      let pathParams = {
-        'floating_ip_id': floatingIpId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = CreateFloatingIp201Response;
-      return this.apiClient.callApi(
-        '/api/v1/floating-ips/{floating_ip_id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getFloatingIps operation.
-     * @callback module:api/FloatingIPApi~getFloatingIpsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/GetFloatingIps200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение списка плавающих IP
-     * Чтобы получить список плавающих IP, отправьте GET-запрос на `/api/v1/floating-ips`.
-     * @param {module:api/FloatingIPApi~getFloatingIpsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetFloatingIps200Response}
-     */
-    getFloatingIps(callback) {
-      let postBody = null;
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetFloatingIps200Response;
-      return this.apiClient.callApi(
-        '/api/v1/floating-ips', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the unbindFloatingIp operation.
-     * @callback module:api/FloatingIPApi~unbindFloatingIpCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Отвязать IP от сервиса
-     * Чтобы отвязать IP от сервиса, отправьте POST-запрос на `/api/v1/floating-ips/{floating_ip_id}/unbind`.
-     * @param {String} floatingIpId ID плавающего IP
-     * @param {module:api/FloatingIPApi~unbindFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    unbindFloatingIp(floatingIpId, callback) {
-      let postBody = null;
-      // verify the required parameter 'floatingIpId' is set
-      if (floatingIpId === undefined || floatingIpId === null) {
-        throw new Error("Missing the required parameter 'floatingIpId' when calling unbindFloatingIp");
-      }
-
-      let pathParams = {
-        'floating_ip_id': floatingIpId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/v1/floating-ips/{floating_ip_id}/unbind', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the updateFloatingIP operation.
-     * @callback module:api/FloatingIPApi~updateFloatingIPCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateFloatingIp201Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Изменение плавающего IP по ID
-     * Чтобы изменить плавающий IP, отправьте PATCH-запрос на `/api/v1/floating-ips/{floating_ip_id}`
-     * @param {String} floatingIpId ID плавающего IP
-     * @param {module:model/UpdateFloatingIp} updateFloatingIp 
-     * @param {module:api/FloatingIPApi~updateFloatingIPCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateFloatingIp201Response}
-     */
-    updateFloatingIP(floatingIpId, updateFloatingIp, callback) {
-      let postBody = updateFloatingIp;
-      // verify the required parameter 'floatingIpId' is set
-      if (floatingIpId === undefined || floatingIpId === null) {
-        throw new Error("Missing the required parameter 'floatingIpId' when calling updateFloatingIP");
-      }
-      // verify the required parameter 'updateFloatingIp' is set
-      if (updateFloatingIp === undefined || updateFloatingIp === null) {
-        throw new Error("Missing the required parameter 'updateFloatingIp' when calling updateFloatingIP");
-      }
-
-      let pathParams = {
-        'floating_ip_id': floatingIpId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = CreateFloatingIp201Response;
-      return this.apiClient.callApi(
-        '/api/v1/floating-ips/{floating_ip_id}', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-
-}
+}));

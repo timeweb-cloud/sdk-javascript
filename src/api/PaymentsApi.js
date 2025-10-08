@@ -13,29 +13,25 @@
 
 
 import ApiClient from "../ApiClient";
-import CreateDedicatedServer from '../model/CreateDedicatedServer';
-import CreateDedicatedServer201Response from '../model/CreateDedicatedServer201Response';
-import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
-import GetDedicatedServerPresetAdditionalServices200Response from '../model/GetDedicatedServerPresetAdditionalServices200Response';
-import GetDedicatedServers200Response from '../model/GetDedicatedServers200Response';
-import GetDedicatedServersPresets200Response from '../model/GetDedicatedServersPresets200Response';
+import CreatePayment from '../model/CreatePayment';
+import GetFinances200Response from '../model/GetFinances200Response';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
-import GetImage404Response from '../model/GetImage404Response';
-import UpdateDedicatedServerRequest from '../model/UpdateDedicatedServerRequest';
+import GetLinkCardPayment200Response from '../model/GetLinkCardPayment200Response';
+import GetServicePrices200Response from '../model/GetServicePrices200Response';
 
 /**
-* DedicatedServers service.
-* @module api/DedicatedServersApi
+* Payments service.
+* @module api/PaymentsApi
 * @version 1.0.0
 */
-export default class DedicatedServersApi {
+export default class PaymentsApi {
 
     /**
-    * Constructs a new DedicatedServersApi. 
-    * @alias module:api/DedicatedServersApi
+    * Constructs a new PaymentsApi. 
+    * @alias module:api/PaymentsApi
     * @class
     * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:ApiClient#instance} if unspecified.
@@ -46,25 +42,62 @@ export default class DedicatedServersApi {
 
 
     /**
-     * Callback function to receive the result of the createDedicatedServer operation.
-     * @callback module:api/DedicatedServersApi~createDedicatedServerCallback
+     * Callback function to receive the result of the getFinances operation.
+     * @callback module:api/PaymentsApi~getFinancesCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateDedicatedServer201Response} data The data returned by the service call.
+     * @param {module:model/GetFinances200Response} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Создание выделенного сервера
-     * Чтобы создать выделенный сервер, отправьте POST-запрос в `api/v1/dedicated-servers`, задав необходимые атрибуты.  Выделенный сервер будет создан с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданном выделенном сервере.
-     * @param {module:model/CreateDedicatedServer} createDedicatedServer 
-     * @param {module:api/DedicatedServersApi~createDedicatedServerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateDedicatedServer201Response}
+     * Получение платежной информации
+     * Чтобы получить платежную информацию, отправьте GET-запрос на `/api/v1/account/finances`.
+     * @param {module:api/PaymentsApi~getFinancesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetFinances200Response}
      */
-    createDedicatedServer(createDedicatedServer, callback) {
-      let postBody = createDedicatedServer;
-      // verify the required parameter 'createDedicatedServer' is set
-      if (createDedicatedServer === undefined || createDedicatedServer === null) {
-        throw new Error("Missing the required parameter 'createDedicatedServer' when calling createDedicatedServer");
+    getFinances(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetFinances200Response;
+      return this.apiClient.callApi(
+        '/api/v1/account/finances', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getLinkCardPayment operation.
+     * @callback module:api/PaymentsApi~getLinkCardPaymentCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetLinkCardPayment200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение ссылки на оплату
+     * Чтобы получить ссылку на оплату, отправьте POST-запрос на `/api/v1/account/payment-link`.
+     * @param {module:model/CreatePayment} createPayment 
+     * @param {module:api/PaymentsApi~getLinkCardPaymentCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetLinkCardPayment200Response}
+     */
+    getLinkCardPayment(createPayment, callback) {
+      let postBody = createPayment;
+      // verify the required parameter 'createPayment' is set
+      if (createPayment === undefined || createPayment === null) {
+        throw new Error("Missing the required parameter 'createPayment' when calling getLinkCardPayment");
       }
 
       let pathParams = {
@@ -79,157 +112,29 @@ export default class DedicatedServersApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = CreateDedicatedServer201Response;
+      let returnType = GetLinkCardPayment200Response;
       return this.apiClient.callApi(
-        '/api/v1/dedicated-servers', 'POST',
+        '/api/v1/account/payment-link', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the deleteDedicatedServer operation.
-     * @callback module:api/DedicatedServersApi~deleteDedicatedServerCallback
+     * Callback function to receive the result of the getServicePrices operation.
+     * @callback module:api/PaymentsApi~getServicePricesCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/GetServicePrices200Response} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Удаление выделенного сервера
-     * Чтобы удалить выделенный сервер, отправьте запрос DELETE в `api/v1/dedicated-servers/{dedicated_id}`. 
-     * @param {Number} dedicatedId ID выделенного сервера.
-     * @param {module:api/DedicatedServersApi~deleteDedicatedServerCallback} callback The callback function, accepting three arguments: error, data, response
+     * Получение стоимости сервисов
+     * Чтобы получить информацию о стоимости всех активных сервисов аккаунта, отправьте GET-запрос на `/api/v1/account/services/cost`.
+     * @param {module:api/PaymentsApi~getServicePricesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetServicePrices200Response}
      */
-    deleteDedicatedServer(dedicatedId, callback) {
-      let postBody = null;
-      // verify the required parameter 'dedicatedId' is set
-      if (dedicatedId === undefined || dedicatedId === null) {
-        throw new Error("Missing the required parameter 'dedicatedId' when calling deleteDedicatedServer");
-      }
-
-      let pathParams = {
-        'dedicated_id': dedicatedId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/v1/dedicated-servers/{dedicated_id}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getDedicatedServer operation.
-     * @callback module:api/DedicatedServersApi~getDedicatedServerCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateDedicatedServer201Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение выделенного сервера
-     * Чтобы отобразить информацию об отдельном выделенном сервере, отправьте запрос GET на `api/v1/dedicated-servers/{dedicated_id}`. 
-     * @param {Number} dedicatedId ID выделенного сервера.
-     * @param {module:api/DedicatedServersApi~getDedicatedServerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateDedicatedServer201Response}
-     */
-    getDedicatedServer(dedicatedId, callback) {
-      let postBody = null;
-      // verify the required parameter 'dedicatedId' is set
-      if (dedicatedId === undefined || dedicatedId === null) {
-        throw new Error("Missing the required parameter 'dedicatedId' when calling getDedicatedServer");
-      }
-
-      let pathParams = {
-        'dedicated_id': dedicatedId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = CreateDedicatedServer201Response;
-      return this.apiClient.callApi(
-        '/api/v1/dedicated-servers/{dedicated_id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getDedicatedServerPresetAdditionalServices operation.
-     * @callback module:api/DedicatedServersApi~getDedicatedServerPresetAdditionalServicesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/GetDedicatedServerPresetAdditionalServices200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение дополнительных услуг для выделенного сервера
-     * Чтобы получить список всех дополнительных услуг для выделенных серверов, отправьте GET-запрос на `/api/v1/presets/dedicated-servers/{preset_id}/additional-services`.
-     * @param {Number} presetId ID тарифа выделенного сервера.
-     * @param {module:api/DedicatedServersApi~getDedicatedServerPresetAdditionalServicesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetDedicatedServerPresetAdditionalServices200Response}
-     */
-    getDedicatedServerPresetAdditionalServices(presetId, callback) {
-      let postBody = null;
-      // verify the required parameter 'presetId' is set
-      if (presetId === undefined || presetId === null) {
-        throw new Error("Missing the required parameter 'presetId' when calling getDedicatedServerPresetAdditionalServices");
-      }
-
-      let pathParams = {
-        'preset_id': presetId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetDedicatedServerPresetAdditionalServices200Response;
-      return this.apiClient.callApi(
-        '/api/v1/presets/dedicated-servers/{preset_id}/additional-services', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getDedicatedServers operation.
-     * @callback module:api/DedicatedServersApi~getDedicatedServersCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/GetDedicatedServers200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение списка выделенных серверов
-     * Чтобы получить список всех выделенных серверов на вашем аккаунте, отправьте GET-запрос на `/api/v1/dedicated-servers`.   Тело ответа будет представлять собой объект JSON с ключом `dedicated_servers`.
-     * @param {module:api/DedicatedServersApi~getDedicatedServersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetDedicatedServers200Response}
-     */
-    getDedicatedServers(callback) {
+    getServicePrices(callback) {
       let postBody = null;
 
       let pathParams = {
@@ -244,96 +149,9 @@ export default class DedicatedServersApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetDedicatedServers200Response;
+      let returnType = GetServicePrices200Response;
       return this.apiClient.callApi(
-        '/api/v1/dedicated-servers', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getDedicatedServersPresets operation.
-     * @callback module:api/DedicatedServersApi~getDedicatedServersPresetsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/GetDedicatedServersPresets200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение списка тарифов для выделенного сервера
-     * Чтобы получить список всех тарифов выделенных серверов, отправьте GET-запрос на `/api/v1/presets/dedicated-servers`.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/String} [location] Получение тарифов определенной локации.
-     * @param {module:api/DedicatedServersApi~getDedicatedServersPresetsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetDedicatedServersPresets200Response}
-     */
-    getDedicatedServersPresets(opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-
-      let pathParams = {
-      };
-      let queryParams = {
-        'location': opts['location']
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetDedicatedServersPresets200Response;
-      return this.apiClient.callApi(
-        '/api/v1/presets/dedicated-servers', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the updateDedicatedServer operation.
-     * @callback module:api/DedicatedServersApi~updateDedicatedServerCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateDedicatedServer201Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Обновление выделенного сервера
-     * Чтобы обновить только определенные атрибуты выделенного сервера, отправьте запрос PATCH в `api/v1/dedicated-servers/{dedicated_id}`. 
-     * @param {Number} dedicatedId ID выделенного сервера.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/UpdateDedicatedServerRequest} [updateDedicatedServerRequest] 
-     * @param {module:api/DedicatedServersApi~updateDedicatedServerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateDedicatedServer201Response}
-     */
-    updateDedicatedServer(dedicatedId, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['updateDedicatedServerRequest'];
-      // verify the required parameter 'dedicatedId' is set
-      if (dedicatedId === undefined || dedicatedId === null) {
-        throw new Error("Missing the required parameter 'dedicatedId' when calling updateDedicatedServer");
-      }
-
-      let pathParams = {
-        'dedicated_id': dedicatedId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = CreateDedicatedServer201Response;
-      return this.apiClient.callApi(
-        '/api/v1/dedicated-servers/{dedicated_id}', 'PATCH',
+        '/api/v1/account/services/cost', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

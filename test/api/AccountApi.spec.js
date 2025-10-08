@@ -118,16 +118,6 @@
         done();
       });
     });
-    describe('getFinances', function() {
-      it('should call getFinances successfully', function(done) {
-        //uncomment below and update the code to test getFinances
-        //instance.getFinances(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getNotificationSettings', function() {
       it('should call getNotificationSettings successfully', function(done) {
         //uncomment below and update the code to test getNotificationSettings

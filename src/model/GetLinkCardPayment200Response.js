@@ -14,21 +14,20 @@
 import ApiClient from '../ApiClient';
 
 /**
- * The GetFinances403Response model module.
- * @module model/GetFinances403Response
+ * The GetLinkCardPayment200Response model module.
+ * @module model/GetLinkCardPayment200Response
  * @version 1.0.0
  */
-class GetFinances403Response {
+class GetLinkCardPayment200Response {
     /**
-     * Constructs a new <code>GetFinances403Response</code>.
-     * @alias module:model/GetFinances403Response
-     * @param statusCode {Number} Короткий идентификатор, соответствующий возвращаемому коду состояния HTTP.
-     * @param errorCode {String} Краткое описание ошибки HTTP на основе статуса.
+     * Constructs a new <code>GetLinkCardPayment200Response</code>.
+     * @alias module:model/GetLinkCardPayment200Response
+     * @param confirmationUrl {String} URL для подтверждения оплаты
      * @param responseId {String} ID запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-    constructor(statusCode, errorCode, responseId) { 
+    constructor(confirmationUrl, responseId) { 
         
-        GetFinances403Response.initialize(this, statusCode, errorCode, responseId);
+        GetLinkCardPayment200Response.initialize(this, confirmationUrl, responseId);
     }
 
     /**
@@ -36,31 +35,24 @@ class GetFinances403Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, statusCode, errorCode, responseId) { 
-        obj['status_code'] = statusCode;
-        obj['error_code'] = errorCode;
+    static initialize(obj, confirmationUrl, responseId) { 
+        obj['confirmation_url'] = confirmationUrl;
         obj['response_id'] = responseId;
     }
 
     /**
-     * Constructs a <code>GetFinances403Response</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>GetLinkCardPayment200Response</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GetFinances403Response} obj Optional instance to populate.
-     * @return {module:model/GetFinances403Response} The populated <code>GetFinances403Response</code> instance.
+     * @param {module:model/GetLinkCardPayment200Response} obj Optional instance to populate.
+     * @return {module:model/GetLinkCardPayment200Response} The populated <code>GetLinkCardPayment200Response</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new GetFinances403Response();
+            obj = obj || new GetLinkCardPayment200Response();
 
-            if (data.hasOwnProperty('status_code')) {
-                obj['status_code'] = ApiClient.convertToType(data['status_code'], 'Number');
-            }
-            if (data.hasOwnProperty('message')) {
-                obj['message'] = ApiClient.convertToType(data['message'], 'String');
-            }
-            if (data.hasOwnProperty('error_code')) {
-                obj['error_code'] = ApiClient.convertToType(data['error_code'], 'String');
+            if (data.hasOwnProperty('confirmation_url')) {
+                obj['confirmation_url'] = ApiClient.convertToType(data['confirmation_url'], 'String');
             }
             if (data.hasOwnProperty('response_id')) {
                 obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
@@ -70,24 +62,20 @@ class GetFinances403Response {
     }
 
     /**
-     * Validates the JSON data with respect to <code>GetFinances403Response</code>.
+     * Validates the JSON data with respect to <code>GetLinkCardPayment200Response</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetFinances403Response</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetLinkCardPayment200Response</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of GetFinances403Response.RequiredProperties) {
+        for (const property of GetLinkCardPayment200Response.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
-        if (data['message'] && !(typeof data['message'] === 'string' || data['message'] instanceof String)) {
-            throw new Error("Expected the field `message` to be a primitive type in the JSON string but got " + data['message']);
-        }
-        // ensure the json data is a string
-        if (data['error_code'] && !(typeof data['error_code'] === 'string' || data['error_code'] instanceof String)) {
-            throw new Error("Expected the field `error_code` to be a primitive type in the JSON string but got " + data['error_code']);
+        if (data['confirmation_url'] && !(typeof data['confirmation_url'] === 'string' || data['confirmation_url'] instanceof String)) {
+            throw new Error("Expected the field `confirmation_url` to be a primitive type in the JSON string but got " + data['confirmation_url']);
         }
         // ensure the json data is a string
         if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
@@ -100,36 +88,24 @@ class GetFinances403Response {
 
 }
 
-GetFinances403Response.RequiredProperties = ["status_code", "error_code", "response_id"];
+GetLinkCardPayment200Response.RequiredProperties = ["confirmation_url", "response_id"];
 
 /**
- * Короткий идентификатор, соответствующий возвращаемому коду состояния HTTP.
- * @member {Number} status_code
+ * URL для подтверждения оплаты
+ * @member {String} confirmation_url
  */
-GetFinances403Response.prototype['status_code'] = undefined;
-
-/**
- * Сообщение, предоставляющее дополнительную информацию об ошибке, в том числе сведения, помогающие устранить ее, когда это возможно.
- * @member {String} message
- */
-GetFinances403Response.prototype['message'] = undefined;
-
-/**
- * Краткое описание ошибки HTTP на основе статуса.
- * @member {String} error_code
- */
-GetFinances403Response.prototype['error_code'] = undefined;
+GetLinkCardPayment200Response.prototype['confirmation_url'] = undefined;
 
 /**
  * ID запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
  * @member {String} response_id
  */
-GetFinances403Response.prototype['response_id'] = undefined;
+GetLinkCardPayment200Response.prototype['response_id'] = undefined;
 
 
 
 
 
 
-export default GetFinances403Response;
+export default GetLinkCardPayment200Response;
 

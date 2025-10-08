@@ -119,6 +119,7 @@ docs/CreateMultipleDomainMailboxesRequest.md
 docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md
 docs/CreateNetworkDrive.md
 docs/CreateNetworkDrive201Response.md
+docs/CreatePayment.md
 docs/CreateProject.md
 docs/CreateProject201Response.md
 docs/CreateRule.md
@@ -212,6 +213,7 @@ docs/ForwardingOutgoingIsEnabled.md
 docs/Frameworks.md
 docs/Free.md
 docs/GetAccountStatus200Response.md
+docs/GetAccountStatus403Response.md
 docs/GetAllProjectResources200Response.md
 docs/GetAppDeploys200Response.md
 docs/GetAppLogs200Response.md
@@ -248,13 +250,13 @@ docs/GetDomains200Response.md
 docs/GetFinances200Response.md
 docs/GetFinances400Response.md
 docs/GetFinances401Response.md
-docs/GetFinances403Response.md
 docs/GetFinances429Response.md
 docs/GetFinances500Response.md
 docs/GetFloatingIps200Response.md
 docs/GetImage404Response.md
 docs/GetKey200Response.md
 docs/GetKeys200Response.md
+docs/GetLinkCardPayment200Response.md
 docs/GetLocations200Response.md
 docs/GetMailQuota200Response.md
 docs/GetMailboxes200Response.md
@@ -286,6 +288,8 @@ docs/GetServerStatistics200ResponseRamInner.md
 docs/GetServerStatisticsNew200Response.md
 docs/GetServers200Response.md
 docs/GetServersPresets200Response.md
+docs/GetServicePrices200Response.md
+docs/GetServicePrices200ResponseMeta.md
 docs/GetSoftware200Response.md
 docs/GetStorageSubdomains200Response.md
 docs/GetStorageTransferStatus200Response.md
@@ -310,6 +314,7 @@ docs/ImageUrlIn.md
 docs/ImagesApi.md
 docs/ImagesOutResponse.md
 docs/IncreaseNodes.md
+docs/InfoServicePrice.md
 docs/Invoice.md
 docs/K8SVersionsResponse.md
 docs/KubernetesApi.md
@@ -347,6 +352,8 @@ docs/NotificationSettingChannel.md
 docs/NotificationSettingChannels.md
 docs/NotificationSettingType.md
 docs/OS.md
+docs/PaymentType.md
+docs/PaymentsApi.md
 docs/PerformActionOnBackupRequest.md
 docs/PerformActionOnServerRequest.md
 docs/Policy.md
@@ -400,6 +407,12 @@ docs/ServersSoftwareRequirements.md
 docs/ServersStatistics.md
 docs/ServersStatisticsListInner.md
 docs/ServersStatisticsMeta.md
+docs/ServiceCostType.md
+docs/ServicePrice.md
+docs/ServicePriceConfiguration.md
+docs/ServicePriceType.md
+docs/ServiceServicePrice.md
+docs/ServiceServicePriceNodeGroupsInner.md
 docs/SetLabels.md
 docs/SettingCondition.md
 docs/SpamFilterIsDisabled.md
@@ -489,6 +502,7 @@ src/api/KubernetesApi.js
 src/api/LocationsApi.js
 src/api/MailApi.js
 src/api/NetworkDrivesApi.js
+src/api/PaymentsApi.js
 src/api/ProjectsApi.js
 src/api/S3Api.js
 src/api/SSHApi.js
@@ -606,6 +620,7 @@ src/model/CreateMultipleDomainMailboxesRequest.js
 src/model/CreateMultipleDomainMailboxesRequestMailboxesInner.js
 src/model/CreateNetworkDrive.js
 src/model/CreateNetworkDrive201Response.js
+src/model/CreatePayment.js
 src/model/CreateProject.js
 src/model/CreateProject201Response.js
 src/model/CreateRule.js
@@ -694,6 +709,7 @@ src/model/ForwardingOutgoingIsEnabled.js
 src/model/Frameworks.js
 src/model/Free.js
 src/model/GetAccountStatus200Response.js
+src/model/GetAccountStatus403Response.js
 src/model/GetAllProjectResources200Response.js
 src/model/GetAppDeploys200Response.js
 src/model/GetAppLogs200Response.js
@@ -730,13 +746,13 @@ src/model/GetDomains200Response.js
 src/model/GetFinances200Response.js
 src/model/GetFinances400Response.js
 src/model/GetFinances401Response.js
-src/model/GetFinances403Response.js
 src/model/GetFinances429Response.js
 src/model/GetFinances500Response.js
 src/model/GetFloatingIps200Response.js
 src/model/GetImage404Response.js
 src/model/GetKey200Response.js
 src/model/GetKeys200Response.js
+src/model/GetLinkCardPayment200Response.js
 src/model/GetLocations200Response.js
 src/model/GetMailQuota200Response.js
 src/model/GetMailboxes200Response.js
@@ -768,6 +784,8 @@ src/model/GetServerStatistics200ResponseRamInner.js
 src/model/GetServerStatisticsNew200Response.js
 src/model/GetServers200Response.js
 src/model/GetServersPresets200Response.js
+src/model/GetServicePrices200Response.js
+src/model/GetServicePrices200ResponseMeta.js
 src/model/GetSoftware200Response.js
 src/model/GetStorageSubdomains200Response.js
 src/model/GetStorageTransferStatus200Response.js
@@ -791,6 +809,7 @@ src/model/ImageUrlAuth.js
 src/model/ImageUrlIn.js
 src/model/ImagesOutResponse.js
 src/model/IncreaseNodes.js
+src/model/InfoServicePrice.js
 src/model/Invoice.js
 src/model/K8SVersionsResponse.js
 src/model/Location.js
@@ -824,6 +843,7 @@ src/model/NotificationSettingChannel.js
 src/model/NotificationSettingChannels.js
 src/model/NotificationSettingType.js
 src/model/OS.js
+src/model/PaymentType.js
 src/model/PerformActionOnBackupRequest.js
 src/model/PerformActionOnServerRequest.js
 src/model/Policy.js
@@ -873,6 +893,12 @@ src/model/ServersSoftwareRequirements.js
 src/model/ServersStatistics.js
 src/model/ServersStatisticsListInner.js
 src/model/ServersStatisticsMeta.js
+src/model/ServiceCostType.js
+src/model/ServicePrice.js
+src/model/ServicePriceConfiguration.js
+src/model/ServicePriceType.js
+src/model/ServiceServicePrice.js
+src/model/ServiceServicePriceNodeGroupsInner.js
 src/model/SetLabels.js
 src/model/SettingCondition.js
 src/model/SpamFilterIsDisabled.js
@@ -957,6 +983,7 @@ test/api/KubernetesApi.spec.js
 test/api/LocationsApi.spec.js
 test/api/MailApi.spec.js
 test/api/NetworkDrivesApi.spec.js
+test/api/PaymentsApi.spec.js
 test/api/ProjectsApi.spec.js
 test/api/S3Api.spec.js
 test/api/SSHApi.spec.js
@@ -1073,6 +1100,7 @@ test/model/CreateMultipleDomainMailboxesRequest.spec.js
 test/model/CreateMultipleDomainMailboxesRequestMailboxesInner.spec.js
 test/model/CreateNetworkDrive.spec.js
 test/model/CreateNetworkDrive201Response.spec.js
+test/model/CreatePayment.spec.js
 test/model/CreateProject.spec.js
 test/model/CreateProject201Response.spec.js
 test/model/CreateRule.spec.js
@@ -1161,6 +1189,7 @@ test/model/ForwardingOutgoingIsEnabled.spec.js
 test/model/Frameworks.spec.js
 test/model/Free.spec.js
 test/model/GetAccountStatus200Response.spec.js
+test/model/GetAccountStatus403Response.spec.js
 test/model/GetAllProjectResources200Response.spec.js
 test/model/GetAppDeploys200Response.spec.js
 test/model/GetAppLogs200Response.spec.js
@@ -1197,13 +1226,13 @@ test/model/GetDomains200Response.spec.js
 test/model/GetFinances200Response.spec.js
 test/model/GetFinances400Response.spec.js
 test/model/GetFinances401Response.spec.js
-test/model/GetFinances403Response.spec.js
 test/model/GetFinances429Response.spec.js
 test/model/GetFinances500Response.spec.js
 test/model/GetFloatingIps200Response.spec.js
 test/model/GetImage404Response.spec.js
 test/model/GetKey200Response.spec.js
 test/model/GetKeys200Response.spec.js
+test/model/GetLinkCardPayment200Response.spec.js
 test/model/GetLocations200Response.spec.js
 test/model/GetMailQuota200Response.spec.js
 test/model/GetMailboxes200Response.spec.js
@@ -1235,6 +1264,8 @@ test/model/GetServerStatistics200ResponseRamInner.spec.js
 test/model/GetServerStatisticsNew200Response.spec.js
 test/model/GetServers200Response.spec.js
 test/model/GetServersPresets200Response.spec.js
+test/model/GetServicePrices200Response.spec.js
+test/model/GetServicePrices200ResponseMeta.spec.js
 test/model/GetSoftware200Response.spec.js
 test/model/GetStorageSubdomains200Response.spec.js
 test/model/GetStorageTransferStatus200Response.spec.js
@@ -1258,6 +1289,7 @@ test/model/ImageUrlAuth.spec.js
 test/model/ImageUrlIn.spec.js
 test/model/ImagesOutResponse.spec.js
 test/model/IncreaseNodes.spec.js
+test/model/InfoServicePrice.spec.js
 test/model/Invoice.spec.js
 test/model/K8SVersionsResponse.spec.js
 test/model/Location.spec.js
@@ -1291,6 +1323,7 @@ test/model/NotificationSettingChannel.spec.js
 test/model/NotificationSettingChannels.spec.js
 test/model/NotificationSettingType.spec.js
 test/model/OS.spec.js
+test/model/PaymentType.spec.js
 test/model/PerformActionOnBackupRequest.spec.js
 test/model/PerformActionOnServerRequest.spec.js
 test/model/Policy.spec.js
@@ -1340,6 +1373,12 @@ test/model/ServersSoftwareRequirements.spec.js
 test/model/ServersStatistics.spec.js
 test/model/ServersStatisticsListInner.spec.js
 test/model/ServersStatisticsMeta.spec.js
+test/model/ServiceCostType.spec.js
+test/model/ServicePrice.spec.js
+test/model/ServicePriceConfiguration.spec.js
+test/model/ServicePriceType.spec.js
+test/model/ServiceServicePrice.spec.js
+test/model/ServiceServicePriceNodeGroupsInner.spec.js
 test/model/SetLabels.spec.js
 test/model/SettingCondition.spec.js
 test/model/SpamFilterIsDisabled.spec.js

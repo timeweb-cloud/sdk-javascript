@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**getAccountStatus**](AccountApi.md#getAccountStatus) | **GET** /api/v1/account/status | Получение статуса аккаунта
 [**getAuthAccessSettings**](AccountApi.md#getAuthAccessSettings) | **GET** /api/v1/auth/access | Получить информацию о ограничениях авторизации пользователя
 [**getCountries**](AccountApi.md#getCountries) | **GET** /api/v1/auth/access/countries | Получение списка стран
-[**getFinances**](AccountApi.md#getFinances) | **GET** /api/v1/account/finances | Получение платежной информации
 [**getNotificationSettings**](AccountApi.md#getNotificationSettings) | **GET** /api/v1/account/notification-settings | Получение настроек уведомлений аккаунта
 [**updateAuthRestrictionsByCountries**](AccountApi.md#updateAuthRestrictionsByCountries) | **POST** /api/v1/auth/access/countries/enabled | Включение/отключение ограничений по стране
 [**updateAuthRestrictionsByIP**](AccountApi.md#updateAuthRestrictionsByIP) | **POST** /api/v1/auth/access/ips/enabled | Включение/отключение ограничений по IP-адресу
@@ -339,51 +338,6 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**GetCountries200Response**](GetCountries200Response.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## getFinances
-
-> GetFinances200Response getFinances()
-
-Получение платежной информации
-
-Чтобы получить платежную информацию, отправьте GET-запрос на &#x60;/api/v1/account/finances&#x60;.
-
-### Example
-
-```javascript
-import TimewebCloudApi from 'timeweb_cloud_api';
-let defaultClient = TimewebCloudApi.ApiClient.instance;
-// Configure Bearer (JWT) access token for authorization: Bearer
-let Bearer = defaultClient.authentications['Bearer'];
-Bearer.accessToken = "YOUR ACCESS TOKEN"
-
-let apiInstance = new TimewebCloudApi.AccountApi();
-apiInstance.getFinances((error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**GetFinances200Response**](GetFinances200Response.md)
 
 ### Authorization
 

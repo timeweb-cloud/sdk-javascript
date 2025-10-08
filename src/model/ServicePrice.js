@@ -11,73 +11,169 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
+import InfoServicePrice from './InfoServicePrice';
+import ServicePriceConfiguration from './ServicePriceConfiguration';
+import ServicePriceType from './ServicePriceType';
+import ServiceServicePrice from './ServiceServicePrice';
 
-  var instance;
+/**
+ * The ServicePrice model module.
+ * @module model/ServicePrice
+ * @version 1.0.0
+ */
+class ServicePrice {
+    /**
+     * Constructs a new <code>ServicePrice</code>.
+     * Информация о стоимости сервиса
+     * @alias module:model/ServicePrice
+     * @param cost {Number} Стоимость сервиса
+     * @param totalCost {Number} Общая стоимость сервиса с учетом всех дополнительных услуг
+     * @param type {module:model/ServicePriceType} 
+     */
+    constructor(cost, totalCost, type) { 
+        
+        ServicePrice.initialize(this, cost, totalCost, type);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.GetFinances403Response();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, cost, totalCost, type) { 
+        obj['cost'] = cost;
+        obj['total_cost'] = totalCost;
+        obj['type'] = type;
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>ServicePrice</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/ServicePrice} obj Optional instance to populate.
+     * @return {module:model/ServicePrice} The populated <code>ServicePrice</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new ServicePrice();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('cost')) {
+                obj['cost'] = ApiClient.convertToType(data['cost'], 'Number');
+            }
+            if (data.hasOwnProperty('total_cost')) {
+                obj['total_cost'] = ApiClient.convertToType(data['total_cost'], 'Number');
+            }
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = ServicePriceType.constructFromObject(data['type']);
+            }
+            if (data.hasOwnProperty('service_id')) {
+                obj['service_id'] = ApiClient.convertToType(data['service_id'], 'Number');
+            }
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            }
+            if (data.hasOwnProperty('services')) {
+                obj['services'] = ApiClient.convertToType(data['services'], [ServiceServicePrice]);
+            }
+            if (data.hasOwnProperty('info')) {
+                obj['info'] = InfoServicePrice.constructFromObject(data['info']);
+            }
+            if (data.hasOwnProperty('configuration')) {
+                obj['configuration'] = ServicePriceConfiguration.constructFromObject(data['configuration']);
+            }
+        }
+        return obj;
+    }
 
-  describe('GetFinances403Response', function() {
-    it('should create an instance of GetFinances403Response', function() {
-      // uncomment below and update the code to test GetFinances403Response
-      //var instance = new TimewebCloudApi.GetFinances403Response();
-      //expect(instance).to.be.a(TimewebCloudApi.GetFinances403Response);
-    });
+    /**
+     * Validates the JSON data with respect to <code>ServicePrice</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ServicePrice</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ServicePrice.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        if (data['services']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['services'])) {
+                throw new Error("Expected the field `services` to be an array in the JSON data but got " + data['services']);
+            }
+            // validate the optional field `services` (array)
+            for (const item of data['services']) {
+                ServiceServicePrice.validateJSON(item);
+            };
+        }
+        // validate the optional field `info`
+        if (data['info']) { // data not null
+          InfoServicePrice.validateJSON(data['info']);
+        }
+        // validate the optional field `configuration`
+        if (data['configuration']) { // data not null
+          ServicePriceConfiguration.validateJSON(data['configuration']);
+        }
 
-    it('should have the property statusCode (base name: "status_code")', function() {
-      // uncomment below and update the code to test the property statusCode
-      //var instance = new TimewebCloudApi.GetFinances403Response();
-      //expect(instance).to.be();
-    });
+        return true;
+    }
 
-    it('should have the property message (base name: "message")', function() {
-      // uncomment below and update the code to test the property message
-      //var instance = new TimewebCloudApi.GetFinances403Response();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property errorCode (base name: "error_code")', function() {
-      // uncomment below and update the code to test the property errorCode
-      //var instance = new TimewebCloudApi.GetFinances403Response();
-      //expect(instance).to.be();
-    });
+}
 
-    it('should have the property responseId (base name: "response_id")', function() {
-      // uncomment below and update the code to test the property responseId
-      //var instance = new TimewebCloudApi.GetFinances403Response();
-      //expect(instance).to.be();
-    });
+ServicePrice.RequiredProperties = ["cost", "total_cost", "type"];
 
-  });
+/**
+ * Стоимость сервиса
+ * @member {Number} cost
+ */
+ServicePrice.prototype['cost'] = undefined;
 
-}));
+/**
+ * Общая стоимость сервиса с учетом всех дополнительных услуг
+ * @member {Number} total_cost
+ */
+ServicePrice.prototype['total_cost'] = undefined;
+
+/**
+ * @member {module:model/ServicePriceType} type
+ */
+ServicePrice.prototype['type'] = undefined;
+
+/**
+ * Идентификатор сервиса
+ * @member {Number} service_id
+ */
+ServicePrice.prototype['service_id'] = undefined;
+
+/**
+ * Идентификатор проекта
+ * @member {Number} project_id
+ */
+ServicePrice.prototype['project_id'] = undefined;
+
+/**
+ * Список вложенных сервисов
+ * @member {Array.<module:model/ServiceServicePrice>} services
+ */
+ServicePrice.prototype['services'] = undefined;
+
+/**
+ * @member {module:model/InfoServicePrice} info
+ */
+ServicePrice.prototype['info'] = undefined;
+
+/**
+ * @member {module:model/ServicePriceConfiguration} configuration
+ */
+ServicePrice.prototype['configuration'] = undefined;
+
+
+
+
+
+
+export default ServicePrice;
+

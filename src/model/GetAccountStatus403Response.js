@@ -11,340 +11,125 @@
  *
  */
 
-
-import ApiClient from "../ApiClient";
-import BindFloatingIp from '../model/BindFloatingIp';
-import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
-import CreateFloatingIp from '../model/CreateFloatingIp';
-import CreateFloatingIp201Response from '../model/CreateFloatingIp201Response';
-import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
-import GetFinances400Response from '../model/GetFinances400Response';
-import GetFinances401Response from '../model/GetFinances401Response';
-import GetFinances429Response from '../model/GetFinances429Response';
-import GetFinances500Response from '../model/GetFinances500Response';
-import GetFloatingIps200Response from '../model/GetFloatingIps200Response';
-import GetImage404Response from '../model/GetImage404Response';
-import UpdateFloatingIp from '../model/UpdateFloatingIp';
+import ApiClient from '../ApiClient';
 
 /**
-* FloatingIP service.
-* @module api/FloatingIPApi
-* @version 1.0.0
-*/
-export default class FloatingIPApi {
-
+ * The GetAccountStatus403Response model module.
+ * @module model/GetAccountStatus403Response
+ * @version 1.0.0
+ */
+class GetAccountStatus403Response {
     /**
-    * Constructs a new FloatingIPApi. 
-    * @alias module:api/FloatingIPApi
-    * @class
-    * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:ApiClient#instance} if unspecified.
-    */
-    constructor(apiClient) {
-        this.apiClient = apiClient || ApiClient.instance;
-    }
-
-
-    /**
-     * Callback function to receive the result of the bindFloatingIp operation.
-     * @callback module:api/FloatingIPApi~bindFloatingIpCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Constructs a new <code>GetAccountStatus403Response</code>.
+     * @alias module:model/GetAccountStatus403Response
+     * @param statusCode {Number} Короткий идентификатор, соответствующий возвращаемому коду состояния HTTP.
+     * @param errorCode {String} Краткое описание ошибки HTTP на основе статуса.
+     * @param responseId {String} ID запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
      */
-
-    /**
-     * Привязать IP к сервису
-     * Чтобы привязать IP к сервису, отправьте POST-запрос на `/api/v1/floating-ips/{floating_ip_id}/bind`.
-     * @param {String} floatingIpId ID плавающего IP
-     * @param {module:model/BindFloatingIp} bindFloatingIp 
-     * @param {module:api/FloatingIPApi~bindFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    bindFloatingIp(floatingIpId, bindFloatingIp, callback) {
-      let postBody = bindFloatingIp;
-      // verify the required parameter 'floatingIpId' is set
-      if (floatingIpId === undefined || floatingIpId === null) {
-        throw new Error("Missing the required parameter 'floatingIpId' when calling bindFloatingIp");
-      }
-      // verify the required parameter 'bindFloatingIp' is set
-      if (bindFloatingIp === undefined || bindFloatingIp === null) {
-        throw new Error("Missing the required parameter 'bindFloatingIp' when calling bindFloatingIp");
-      }
-
-      let pathParams = {
-        'floating_ip_id': floatingIpId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/v1/floating-ips/{floating_ip_id}/bind', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
+    constructor(statusCode, errorCode, responseId) { 
+        
+        GetAccountStatus403Response.initialize(this, statusCode, errorCode, responseId);
     }
 
     /**
-     * Callback function to receive the result of the createFloatingIp operation.
-     * @callback module:api/FloatingIPApi~createFloatingIpCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateFloatingIp201Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
      */
-
-    /**
-     * Создание плавающего IP
-     * Чтобы создать создать плавающий IP, отправьте POST-запрос в `/api/v1/floating-ips`, задав необходимые атрибуты.
-     * @param {module:model/CreateFloatingIp} createFloatingIp 
-     * @param {module:api/FloatingIPApi~createFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateFloatingIp201Response}
-     */
-    createFloatingIp(createFloatingIp, callback) {
-      let postBody = createFloatingIp;
-      // verify the required parameter 'createFloatingIp' is set
-      if (createFloatingIp === undefined || createFloatingIp === null) {
-        throw new Error("Missing the required parameter 'createFloatingIp' when calling createFloatingIp");
-      }
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = CreateFloatingIp201Response;
-      return this.apiClient.callApi(
-        '/api/v1/floating-ips', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
+    static initialize(obj, statusCode, errorCode, responseId) { 
+        obj['status_code'] = statusCode;
+        obj['error_code'] = errorCode;
+        obj['response_id'] = responseId;
     }
 
     /**
-     * Callback function to receive the result of the deleteFloatingIP operation.
-     * @callback module:api/FloatingIPApi~deleteFloatingIPCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Constructs a <code>GetAccountStatus403Response</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/GetAccountStatus403Response} obj Optional instance to populate.
+     * @return {module:model/GetAccountStatus403Response} The populated <code>GetAccountStatus403Response</code> instance.
      */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new GetAccountStatus403Response();
 
-    /**
-     * Удаление плавающего IP по ID
-     * Чтобы удалить плавающий IP, отправьте DELETE-запрос на `/api/v1/floating-ips/{floating_ip_id}`
-     * @param {String} floatingIpId ID плавающего IP
-     * @param {module:api/FloatingIPApi~deleteFloatingIPCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    deleteFloatingIP(floatingIpId, callback) {
-      let postBody = null;
-      // verify the required parameter 'floatingIpId' is set
-      if (floatingIpId === undefined || floatingIpId === null) {
-        throw new Error("Missing the required parameter 'floatingIpId' when calling deleteFloatingIP");
-      }
-
-      let pathParams = {
-        'floating_ip_id': floatingIpId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/v1/floating-ips/{floating_ip_id}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
+            if (data.hasOwnProperty('status_code')) {
+                obj['status_code'] = ApiClient.convertToType(data['status_code'], 'Number');
+            }
+            if (data.hasOwnProperty('message')) {
+                obj['message'] = ApiClient.convertToType(data['message'], 'String');
+            }
+            if (data.hasOwnProperty('error_code')) {
+                obj['error_code'] = ApiClient.convertToType(data['error_code'], 'String');
+            }
+            if (data.hasOwnProperty('response_id')) {
+                obj['response_id'] = ApiClient.convertToType(data['response_id'], 'String');
+            }
+        }
+        return obj;
     }
 
     /**
-     * Callback function to receive the result of the getFloatingIp operation.
-     * @callback module:api/FloatingIPApi~getFloatingIpCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateFloatingIp201Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Validates the JSON data with respect to <code>GetAccountStatus403Response</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetAccountStatus403Response</code>.
      */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of GetAccountStatus403Response.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['message'] && !(typeof data['message'] === 'string' || data['message'] instanceof String)) {
+            throw new Error("Expected the field `message` to be a primitive type in the JSON string but got " + data['message']);
+        }
+        // ensure the json data is a string
+        if (data['error_code'] && !(typeof data['error_code'] === 'string' || data['error_code'] instanceof String)) {
+            throw new Error("Expected the field `error_code` to be a primitive type in the JSON string but got " + data['error_code']);
+        }
+        // ensure the json data is a string
+        if (data['response_id'] && !(typeof data['response_id'] === 'string' || data['response_id'] instanceof String)) {
+            throw new Error("Expected the field `response_id` to be a primitive type in the JSON string but got " + data['response_id']);
+        }
 
-    /**
-     * Получение плавающего IP
-     * Чтобы отобразить информацию об отдельном плавающем IP, отправьте запрос GET на `api/v1/floating-ips/{floating_ip_id}`.
-     * @param {String} floatingIpId ID плавающего IP
-     * @param {module:api/FloatingIPApi~getFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateFloatingIp201Response}
-     */
-    getFloatingIp(floatingIpId, callback) {
-      let postBody = null;
-      // verify the required parameter 'floatingIpId' is set
-      if (floatingIpId === undefined || floatingIpId === null) {
-        throw new Error("Missing the required parameter 'floatingIpId' when calling getFloatingIp");
-      }
-
-      let pathParams = {
-        'floating_ip_id': floatingIpId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = CreateFloatingIp201Response;
-      return this.apiClient.callApi(
-        '/api/v1/floating-ips/{floating_ip_id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getFloatingIps operation.
-     * @callback module:api/FloatingIPApi~getFloatingIpsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/GetFloatingIps200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение списка плавающих IP
-     * Чтобы получить список плавающих IP, отправьте GET-запрос на `/api/v1/floating-ips`.
-     * @param {module:api/FloatingIPApi~getFloatingIpsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetFloatingIps200Response}
-     */
-    getFloatingIps(callback) {
-      let postBody = null;
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetFloatingIps200Response;
-      return this.apiClient.callApi(
-        '/api/v1/floating-ips', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the unbindFloatingIp operation.
-     * @callback module:api/FloatingIPApi~unbindFloatingIpCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Отвязать IP от сервиса
-     * Чтобы отвязать IP от сервиса, отправьте POST-запрос на `/api/v1/floating-ips/{floating_ip_id}/unbind`.
-     * @param {String} floatingIpId ID плавающего IP
-     * @param {module:api/FloatingIPApi~unbindFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    unbindFloatingIp(floatingIpId, callback) {
-      let postBody = null;
-      // verify the required parameter 'floatingIpId' is set
-      if (floatingIpId === undefined || floatingIpId === null) {
-        throw new Error("Missing the required parameter 'floatingIpId' when calling unbindFloatingIp");
-      }
-
-      let pathParams = {
-        'floating_ip_id': floatingIpId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/v1/floating-ips/{floating_ip_id}/unbind', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the updateFloatingIP operation.
-     * @callback module:api/FloatingIPApi~updateFloatingIPCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateFloatingIp201Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Изменение плавающего IP по ID
-     * Чтобы изменить плавающий IP, отправьте PATCH-запрос на `/api/v1/floating-ips/{floating_ip_id}`
-     * @param {String} floatingIpId ID плавающего IP
-     * @param {module:model/UpdateFloatingIp} updateFloatingIp 
-     * @param {module:api/FloatingIPApi~updateFloatingIPCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateFloatingIp201Response}
-     */
-    updateFloatingIP(floatingIpId, updateFloatingIp, callback) {
-      let postBody = updateFloatingIp;
-      // verify the required parameter 'floatingIpId' is set
-      if (floatingIpId === undefined || floatingIpId === null) {
-        throw new Error("Missing the required parameter 'floatingIpId' when calling updateFloatingIP");
-      }
-      // verify the required parameter 'updateFloatingIp' is set
-      if (updateFloatingIp === undefined || updateFloatingIp === null) {
-        throw new Error("Missing the required parameter 'updateFloatingIp' when calling updateFloatingIP");
-      }
-
-      let pathParams = {
-        'floating_ip_id': floatingIpId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = CreateFloatingIp201Response;
-      return this.apiClient.callApi(
-        '/api/v1/floating-ips/{floating_ip_id}', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
+        return true;
     }
 
 
 }
+
+GetAccountStatus403Response.RequiredProperties = ["status_code", "error_code", "response_id"];
+
+/**
+ * Короткий идентификатор, соответствующий возвращаемому коду состояния HTTP.
+ * @member {Number} status_code
+ */
+GetAccountStatus403Response.prototype['status_code'] = undefined;
+
+/**
+ * Сообщение, предоставляющее дополнительную информацию об ошибке, в том числе сведения, помогающие устранить ее, когда это возможно.
+ * @member {String} message
+ */
+GetAccountStatus403Response.prototype['message'] = undefined;
+
+/**
+ * Краткое описание ошибки HTTP на основе статуса.
+ * @member {String} error_code
+ */
+GetAccountStatus403Response.prototype['error_code'] = undefined;
+
+/**
+ * ID запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
+ * @member {String} response_id
+ */
+GetAccountStatus403Response.prototype['response_id'] = undefined;
+
+
+
+
+
+
+export default GetAccountStatus403Response;
+

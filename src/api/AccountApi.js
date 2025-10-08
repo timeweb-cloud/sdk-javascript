@@ -22,12 +22,11 @@ import DeleteCountriesFromAllowedListRequest from '../model/DeleteCountriesFromA
 import DeleteIPsFromAllowedList200Response from '../model/DeleteIPsFromAllowedList200Response';
 import DeleteIPsFromAllowedListRequest from '../model/DeleteIPsFromAllowedListRequest';
 import GetAccountStatus200Response from '../model/GetAccountStatus200Response';
+import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
 import GetAuthAccessSettings200Response from '../model/GetAuthAccessSettings200Response';
 import GetCountries200Response from '../model/GetCountries200Response';
-import GetFinances200Response from '../model/GetFinances200Response';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
-import GetFinances403Response from '../model/GetFinances403Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetNotificationSettings200Response from '../model/GetNotificationSettings200Response';
@@ -327,43 +326,6 @@ export default class AccountApi {
       let returnType = GetCountries200Response;
       return this.apiClient.callApi(
         '/api/v1/auth/access/countries', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getFinances operation.
-     * @callback module:api/AccountApi~getFinancesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/GetFinances200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение платежной информации
-     * Чтобы получить платежную информацию, отправьте GET-запрос на `/api/v1/account/finances`.
-     * @param {module:api/AccountApi~getFinancesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetFinances200Response}
-     */
-    getFinances(callback) {
-      let postBody = null;
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetFinances200Response;
-      return this.apiClient.callApi(
-        '/api/v1/account/finances', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

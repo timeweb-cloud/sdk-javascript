@@ -1,4 +1,4 @@
-# TimewebCloudApi.GetFinances403Response
+# TimewebCloudApi.GetAccountStatus403Response
 
 ## Properties
 

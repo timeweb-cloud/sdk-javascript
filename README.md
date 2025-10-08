@@ -282,7 +282,6 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.AccountApi* | [**getAccountStatus**](docs/AccountApi.md#getAccountStatus) | **GET** /api/v1/account/status | Получение статуса аккаунта
 *TimewebCloudApi.AccountApi* | [**getAuthAccessSettings**](docs/AccountApi.md#getAuthAccessSettings) | **GET** /api/v1/auth/access | Получить информацию о ограничениях авторизации пользователя
 *TimewebCloudApi.AccountApi* | [**getCountries**](docs/AccountApi.md#getCountries) | **GET** /api/v1/auth/access/countries | Получение списка стран
-*TimewebCloudApi.AccountApi* | [**getFinances**](docs/AccountApi.md#getFinances) | **GET** /api/v1/account/finances | Получение платежной информации
 *TimewebCloudApi.AccountApi* | [**getNotificationSettings**](docs/AccountApi.md#getNotificationSettings) | **GET** /api/v1/account/notification-settings | Получение настроек уведомлений аккаунта
 *TimewebCloudApi.AccountApi* | [**updateAuthRestrictionsByCountries**](docs/AccountApi.md#updateAuthRestrictionsByCountries) | **POST** /api/v1/auth/access/countries/enabled | Включение/отключение ограничений по стране
 *TimewebCloudApi.AccountApi* | [**updateAuthRestrictionsByIP**](docs/AccountApi.md#updateAuthRestrictionsByIP) | **POST** /api/v1/auth/access/ips/enabled | Включение/отключение ограничений по IP-адресу
@@ -458,6 +457,9 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.NetworkDrivesApi* | [**mountNetworkDrive**](docs/NetworkDrivesApi.md#mountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/mount | Подключить сетевой диск к сервису
 *TimewebCloudApi.NetworkDrivesApi* | [**unmountNetworkDrive**](docs/NetworkDrivesApi.md#unmountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/unmount | Отключить сетевой диск от сервиса
 *TimewebCloudApi.NetworkDrivesApi* | [**updateNetworkDrive**](docs/NetworkDrivesApi.md#updateNetworkDrive) | **PATCH** /api/v1/network-drives/{network_drive_id} | Изменение сетевого диска по ID
+*TimewebCloudApi.PaymentsApi* | [**getFinances**](docs/PaymentsApi.md#getFinances) | **GET** /api/v1/account/finances | Получение платежной информации
+*TimewebCloudApi.PaymentsApi* | [**getLinkCardPayment**](docs/PaymentsApi.md#getLinkCardPayment) | **POST** /api/v1/account/payment-link | Получение ссылки на оплату
+*TimewebCloudApi.PaymentsApi* | [**getServicePrices**](docs/PaymentsApi.md#getServicePrices) | **GET** /api/v1/account/services/cost | Получение стоимости сервисов
 *TimewebCloudApi.ProjectsApi* | [**addBalancerToProject**](docs/ProjectsApi.md#addBalancerToProject) | **POST** /api/v1/projects/{project_id}/resources/balancers | Добавление балансировщика в проект
 *TimewebCloudApi.ProjectsApi* | [**addClusterToProject**](docs/ProjectsApi.md#addClusterToProject) | **POST** /api/v1/projects/{project_id}/resources/clusters | Добавление кластера в проект
 *TimewebCloudApi.ProjectsApi* | [**addDatabaseToProject**](docs/ProjectsApi.md#addDatabaseToProject) | **POST** /api/v1/projects/{project_id}/resources/databases | Добавление базы данных в проект
@@ -664,6 +666,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateMultipleDomainMailboxesRequestMailboxesInner](docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md)
  - [TimewebCloudApi.CreateNetworkDrive](docs/CreateNetworkDrive.md)
  - [TimewebCloudApi.CreateNetworkDrive201Response](docs/CreateNetworkDrive201Response.md)
+ - [TimewebCloudApi.CreatePayment](docs/CreatePayment.md)
  - [TimewebCloudApi.CreateProject](docs/CreateProject.md)
  - [TimewebCloudApi.CreateProject201Response](docs/CreateProject201Response.md)
  - [TimewebCloudApi.CreateRule](docs/CreateRule.md)
@@ -752,6 +755,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Frameworks](docs/Frameworks.md)
  - [TimewebCloudApi.Free](docs/Free.md)
  - [TimewebCloudApi.GetAccountStatus200Response](docs/GetAccountStatus200Response.md)
+ - [TimewebCloudApi.GetAccountStatus403Response](docs/GetAccountStatus403Response.md)
  - [TimewebCloudApi.GetAllProjectResources200Response](docs/GetAllProjectResources200Response.md)
  - [TimewebCloudApi.GetAppDeploys200Response](docs/GetAppDeploys200Response.md)
  - [TimewebCloudApi.GetAppLogs200Response](docs/GetAppLogs200Response.md)
@@ -788,13 +792,13 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetFinances200Response](docs/GetFinances200Response.md)
  - [TimewebCloudApi.GetFinances400Response](docs/GetFinances400Response.md)
  - [TimewebCloudApi.GetFinances401Response](docs/GetFinances401Response.md)
- - [TimewebCloudApi.GetFinances403Response](docs/GetFinances403Response.md)
  - [TimewebCloudApi.GetFinances429Response](docs/GetFinances429Response.md)
  - [TimewebCloudApi.GetFinances500Response](docs/GetFinances500Response.md)
  - [TimewebCloudApi.GetFloatingIps200Response](docs/GetFloatingIps200Response.md)
  - [TimewebCloudApi.GetImage404Response](docs/GetImage404Response.md)
  - [TimewebCloudApi.GetKey200Response](docs/GetKey200Response.md)
  - [TimewebCloudApi.GetKeys200Response](docs/GetKeys200Response.md)
+ - [TimewebCloudApi.GetLinkCardPayment200Response](docs/GetLinkCardPayment200Response.md)
  - [TimewebCloudApi.GetLocations200Response](docs/GetLocations200Response.md)
  - [TimewebCloudApi.GetMailQuota200Response](docs/GetMailQuota200Response.md)
  - [TimewebCloudApi.GetMailboxes200Response](docs/GetMailboxes200Response.md)
@@ -826,6 +830,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetServerStatisticsNew200Response](docs/GetServerStatisticsNew200Response.md)
  - [TimewebCloudApi.GetServers200Response](docs/GetServers200Response.md)
  - [TimewebCloudApi.GetServersPresets200Response](docs/GetServersPresets200Response.md)
+ - [TimewebCloudApi.GetServicePrices200Response](docs/GetServicePrices200Response.md)
+ - [TimewebCloudApi.GetServicePrices200ResponseMeta](docs/GetServicePrices200ResponseMeta.md)
  - [TimewebCloudApi.GetSoftware200Response](docs/GetSoftware200Response.md)
  - [TimewebCloudApi.GetStorageSubdomains200Response](docs/GetStorageSubdomains200Response.md)
  - [TimewebCloudApi.GetStorageTransferStatus200Response](docs/GetStorageTransferStatus200Response.md)
@@ -849,6 +855,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ImageUrlIn](docs/ImageUrlIn.md)
  - [TimewebCloudApi.ImagesOutResponse](docs/ImagesOutResponse.md)
  - [TimewebCloudApi.IncreaseNodes](docs/IncreaseNodes.md)
+ - [TimewebCloudApi.InfoServicePrice](docs/InfoServicePrice.md)
  - [TimewebCloudApi.Invoice](docs/Invoice.md)
  - [TimewebCloudApi.K8SVersionsResponse](docs/K8SVersionsResponse.md)
  - [TimewebCloudApi.Location](docs/Location.md)
@@ -882,6 +889,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.NotificationSettingChannels](docs/NotificationSettingChannels.md)
  - [TimewebCloudApi.NotificationSettingType](docs/NotificationSettingType.md)
  - [TimewebCloudApi.OS](docs/OS.md)
+ - [TimewebCloudApi.PaymentType](docs/PaymentType.md)
  - [TimewebCloudApi.PerformActionOnBackupRequest](docs/PerformActionOnBackupRequest.md)
  - [TimewebCloudApi.PerformActionOnServerRequest](docs/PerformActionOnServerRequest.md)
  - [TimewebCloudApi.Policy](docs/Policy.md)
@@ -931,6 +939,12 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ServersStatistics](docs/ServersStatistics.md)
  - [TimewebCloudApi.ServersStatisticsListInner](docs/ServersStatisticsListInner.md)
  - [TimewebCloudApi.ServersStatisticsMeta](docs/ServersStatisticsMeta.md)
+ - [TimewebCloudApi.ServiceCostType](docs/ServiceCostType.md)
+ - [TimewebCloudApi.ServicePrice](docs/ServicePrice.md)
+ - [TimewebCloudApi.ServicePriceConfiguration](docs/ServicePriceConfiguration.md)
+ - [TimewebCloudApi.ServicePriceType](docs/ServicePriceType.md)
+ - [TimewebCloudApi.ServiceServicePrice](docs/ServiceServicePrice.md)
+ - [TimewebCloudApi.ServiceServicePriceNodeGroupsInner](docs/ServiceServicePriceNodeGroupsInner.md)
  - [TimewebCloudApi.SetLabels](docs/SetLabels.md)
  - [TimewebCloudApi.SettingCondition](docs/SettingCondition.md)
  - [TimewebCloudApi.SpamFilterIsDisabled](docs/SpamFilterIsDisabled.md)
