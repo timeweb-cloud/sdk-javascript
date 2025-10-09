@@ -458,7 +458,6 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.NetworkDrivesApi* | [**unmountNetworkDrive**](docs/NetworkDrivesApi.md#unmountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/unmount | Отключить сетевой диск от сервиса
 *TimewebCloudApi.NetworkDrivesApi* | [**updateNetworkDrive**](docs/NetworkDrivesApi.md#updateNetworkDrive) | **PATCH** /api/v1/network-drives/{network_drive_id} | Изменение сетевого диска по ID
 *TimewebCloudApi.PaymentsApi* | [**getFinances**](docs/PaymentsApi.md#getFinances) | **GET** /api/v1/account/finances | Получение платежной информации
-*TimewebCloudApi.PaymentsApi* | [**getLinkCardPayment**](docs/PaymentsApi.md#getLinkCardPayment) | **POST** /api/v1/account/payment-link | Получение ссылки на оплату
 *TimewebCloudApi.PaymentsApi* | [**getServicePrices**](docs/PaymentsApi.md#getServicePrices) | **GET** /api/v1/account/services/cost | Получение стоимости сервисов
 *TimewebCloudApi.ProjectsApi* | [**addBalancerToProject**](docs/ProjectsApi.md#addBalancerToProject) | **POST** /api/v1/projects/{project_id}/resources/balancers | Добавление балансировщика в проект
 *TimewebCloudApi.ProjectsApi* | [**addClusterToProject**](docs/ProjectsApi.md#addClusterToProject) | **POST** /api/v1/projects/{project_id}/resources/clusters | Добавление кластера в проект
@@ -666,7 +665,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateMultipleDomainMailboxesRequestMailboxesInner](docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md)
  - [TimewebCloudApi.CreateNetworkDrive](docs/CreateNetworkDrive.md)
  - [TimewebCloudApi.CreateNetworkDrive201Response](docs/CreateNetworkDrive201Response.md)
- - [TimewebCloudApi.CreatePayment](docs/CreatePayment.md)
  - [TimewebCloudApi.CreateProject](docs/CreateProject.md)
  - [TimewebCloudApi.CreateProject201Response](docs/CreateProject201Response.md)
  - [TimewebCloudApi.CreateRule](docs/CreateRule.md)
@@ -798,7 +796,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetImage404Response](docs/GetImage404Response.md)
  - [TimewebCloudApi.GetKey200Response](docs/GetKey200Response.md)
  - [TimewebCloudApi.GetKeys200Response](docs/GetKeys200Response.md)
- - [TimewebCloudApi.GetLinkCardPayment200Response](docs/GetLinkCardPayment200Response.md)
  - [TimewebCloudApi.GetLocations200Response](docs/GetLocations200Response.md)
  - [TimewebCloudApi.GetMailQuota200Response](docs/GetMailQuota200Response.md)
  - [TimewebCloudApi.GetMailboxes200Response](docs/GetMailboxes200Response.md)
@@ -889,7 +886,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.NotificationSettingChannels](docs/NotificationSettingChannels.md)
  - [TimewebCloudApi.NotificationSettingType](docs/NotificationSettingType.md)
  - [TimewebCloudApi.OS](docs/OS.md)
- - [TimewebCloudApi.PaymentType](docs/PaymentType.md)
  - [TimewebCloudApi.PerformActionOnBackupRequest](docs/PerformActionOnBackupRequest.md)
  - [TimewebCloudApi.PerformActionOnServerRequest](docs/PerformActionOnServerRequest.md)
  - [TimewebCloudApi.Policy](docs/Policy.md)

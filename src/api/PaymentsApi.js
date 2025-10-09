@@ -13,13 +13,11 @@
 
 
 import ApiClient from "../ApiClient";
-import CreatePayment from '../model/CreatePayment';
 import GetFinances200Response from '../model/GetFinances200Response';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
-import GetLinkCardPayment200Response from '../model/GetLinkCardPayment200Response';
 import GetServicePrices200Response from '../model/GetServicePrices200Response';
 
 /**
@@ -73,48 +71,6 @@ export default class PaymentsApi {
       let returnType = GetFinances200Response;
       return this.apiClient.callApi(
         '/api/v1/account/finances', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getLinkCardPayment operation.
-     * @callback module:api/PaymentsApi~getLinkCardPaymentCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/GetLinkCardPayment200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение ссылки на оплату
-     * Чтобы получить ссылку на оплату, отправьте POST-запрос на `/api/v1/account/payment-link`.
-     * @param {module:model/CreatePayment} createPayment 
-     * @param {module:api/PaymentsApi~getLinkCardPaymentCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetLinkCardPayment200Response}
-     */
-    getLinkCardPayment(createPayment, callback) {
-      let postBody = createPayment;
-      // verify the required parameter 'createPayment' is set
-      if (createPayment === undefined || createPayment === null) {
-        throw new Error("Missing the required parameter 'createPayment' when calling getLinkCardPayment");
-      }
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = GetLinkCardPayment200Response;
-      return this.apiClient.callApi(
-        '/api/v1/account/payment-link', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

@@ -58,16 +58,6 @@
         done();
       });
     });
-    describe('getLinkCardPayment', function() {
-      it('should call getLinkCardPayment successfully', function(done) {
-        //uncomment below and update the code to test getLinkCardPayment
-        //instance.getLinkCardPayment(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getServicePrices', function() {
       it('should call getServicePrices successfully', function(done) {
         //uncomment below and update the code to test getServicePrices

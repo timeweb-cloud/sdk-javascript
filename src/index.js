@@ -124,7 +124,6 @@ import CreateMultipleDomainMailboxesRequest from './model/CreateMultipleDomainMa
 import CreateMultipleDomainMailboxesRequestMailboxesInner from './model/CreateMultipleDomainMailboxesRequestMailboxesInner';
 import CreateNetworkDrive from './model/CreateNetworkDrive';
 import CreateNetworkDrive201Response from './model/CreateNetworkDrive201Response';
-import CreatePayment from './model/CreatePayment';
 import CreateProject from './model/CreateProject';
 import CreateProject201Response from './model/CreateProject201Response';
 import CreateRule from './model/CreateRule';
@@ -256,7 +255,6 @@ import GetFloatingIps200Response from './model/GetFloatingIps200Response';
 import GetImage404Response from './model/GetImage404Response';
 import GetKey200Response from './model/GetKey200Response';
 import GetKeys200Response from './model/GetKeys200Response';
-import GetLinkCardPayment200Response from './model/GetLinkCardPayment200Response';
 import GetLocations200Response from './model/GetLocations200Response';
 import GetMailQuota200Response from './model/GetMailQuota200Response';
 import GetMailboxes200Response from './model/GetMailboxes200Response';
@@ -347,7 +345,6 @@ import NotificationSettingChannel from './model/NotificationSettingChannel';
 import NotificationSettingChannels from './model/NotificationSettingChannels';
 import NotificationSettingType from './model/NotificationSettingType';
 import OS from './model/OS';
-import PaymentType from './model/PaymentType';
 import PerformActionOnBackupRequest from './model/PerformActionOnBackupRequest';
 import PerformActionOnServerRequest from './model/PerformActionOnServerRequest';
 import Policy from './model/Policy';
@@ -1200,12 +1197,6 @@ export {
     CreateNetworkDrive201Response,
 
     /**
-     * The CreatePayment model constructor.
-     * @property {module:model/CreatePayment}
-     */
-    CreatePayment,
-
-    /**
      * The CreateProject model constructor.
      * @property {module:model/CreateProject}
      */
@@ -1992,12 +1983,6 @@ export {
     GetKeys200Response,
 
     /**
-     * The GetLinkCardPayment200Response model constructor.
-     * @property {module:model/GetLinkCardPayment200Response}
-     */
-    GetLinkCardPayment200Response,
-
-    /**
      * The GetLocations200Response model constructor.
      * @property {module:model/GetLocations200Response}
      */
@@ -2536,12 +2521,6 @@ export {
      * @property {module:model/OS}
      */
     OS,
-
-    /**
-     * The PaymentType model constructor.
-     * @property {module:model/PaymentType}
-     */
-    PaymentType,
 
     /**
      * The PerformActionOnBackupRequest model constructor.

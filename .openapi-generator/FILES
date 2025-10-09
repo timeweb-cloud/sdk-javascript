@@ -119,7 +119,6 @@ docs/CreateMultipleDomainMailboxesRequest.md
 docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md
 docs/CreateNetworkDrive.md
 docs/CreateNetworkDrive201Response.md
-docs/CreatePayment.md
 docs/CreateProject.md
 docs/CreateProject201Response.md
 docs/CreateRule.md
@@ -256,7 +255,6 @@ docs/GetFloatingIps200Response.md
 docs/GetImage404Response.md
 docs/GetKey200Response.md
 docs/GetKeys200Response.md
-docs/GetLinkCardPayment200Response.md
 docs/GetLocations200Response.md
 docs/GetMailQuota200Response.md
 docs/GetMailboxes200Response.md
@@ -352,7 +350,6 @@ docs/NotificationSettingChannel.md
 docs/NotificationSettingChannels.md
 docs/NotificationSettingType.md
 docs/OS.md
-docs/PaymentType.md
 docs/PaymentsApi.md
 docs/PerformActionOnBackupRequest.md
 docs/PerformActionOnServerRequest.md
@@ -620,7 +617,6 @@ src/model/CreateMultipleDomainMailboxesRequest.js
 src/model/CreateMultipleDomainMailboxesRequestMailboxesInner.js
 src/model/CreateNetworkDrive.js
 src/model/CreateNetworkDrive201Response.js
-src/model/CreatePayment.js
 src/model/CreateProject.js
 src/model/CreateProject201Response.js
 src/model/CreateRule.js
@@ -752,7 +748,6 @@ src/model/GetFloatingIps200Response.js
 src/model/GetImage404Response.js
 src/model/GetKey200Response.js
 src/model/GetKeys200Response.js
-src/model/GetLinkCardPayment200Response.js
 src/model/GetLocations200Response.js
 src/model/GetMailQuota200Response.js
 src/model/GetMailboxes200Response.js
@@ -843,7 +838,6 @@ src/model/NotificationSettingChannel.js
 src/model/NotificationSettingChannels.js
 src/model/NotificationSettingType.js
 src/model/OS.js
-src/model/PaymentType.js
 src/model/PerformActionOnBackupRequest.js
 src/model/PerformActionOnServerRequest.js
 src/model/Policy.js
@@ -1100,7 +1094,6 @@ test/model/CreateMultipleDomainMailboxesRequest.spec.js
 test/model/CreateMultipleDomainMailboxesRequestMailboxesInner.spec.js
 test/model/CreateNetworkDrive.spec.js
 test/model/CreateNetworkDrive201Response.spec.js
-test/model/CreatePayment.spec.js
 test/model/CreateProject.spec.js
 test/model/CreateProject201Response.spec.js
 test/model/CreateRule.spec.js
@@ -1232,7 +1225,6 @@ test/model/GetFloatingIps200Response.spec.js
 test/model/GetImage404Response.spec.js
 test/model/GetKey200Response.spec.js
 test/model/GetKeys200Response.spec.js
-test/model/GetLinkCardPayment200Response.spec.js
 test/model/GetLocations200Response.spec.js
 test/model/GetMailQuota200Response.spec.js
 test/model/GetMailboxes200Response.spec.js
@@ -1323,7 +1315,6 @@ test/model/NotificationSettingChannel.spec.js
 test/model/NotificationSettingChannels.spec.js
 test/model/NotificationSettingType.spec.js
 test/model/OS.spec.js
-test/model/PaymentType.spec.js
 test/model/PerformActionOnBackupRequest.spec.js
 test/model/PerformActionOnServerRequest.spec.js
 test/model/Policy.spec.js
