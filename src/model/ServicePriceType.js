@@ -69,13 +69,6 @@ export default class ServicePriceType {
 
     
         /**
-         * value: "vpn"
-         * @const
-         */
-        "vpn" = "vpn";
-
-    
-        /**
          * value: "mail"
          * @const
          */
