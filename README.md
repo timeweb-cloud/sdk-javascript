@@ -634,6 +634,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateApp201Response](docs/CreateApp201Response.md)
  - [TimewebCloudApi.CreateBalancer](docs/CreateBalancer.md)
  - [TimewebCloudApi.CreateBalancer200Response](docs/CreateBalancer200Response.md)
+ - [TimewebCloudApi.CreateBalancerCertificates](docs/CreateBalancerCertificates.md)
  - [TimewebCloudApi.CreateBalancerRule200Response](docs/CreateBalancerRule200Response.md)
  - [TimewebCloudApi.CreateCluster](docs/CreateCluster.md)
  - [TimewebCloudApi.CreateClusterAdmin](docs/CreateClusterAdmin.md)

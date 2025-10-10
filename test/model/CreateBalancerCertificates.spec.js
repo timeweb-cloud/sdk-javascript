@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.CreateBalancer();
+    instance = new TimewebCloudApi.CreateBalancerCertificates();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,148 +47,34 @@
       object[property] = value;
   }
 
-  describe('CreateBalancer', function() {
-    it('should create an instance of CreateBalancer', function() {
-      // uncomment below and update the code to test CreateBalancer
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be.a(TimewebCloudApi.CreateBalancer);
+  describe('CreateBalancerCertificates', function() {
+    it('should create an instance of CreateBalancerCertificates', function() {
+      // uncomment below and update the code to test CreateBalancerCertificates
+      //var instance = new TimewebCloudApi.CreateBalancerCertificates();
+      //expect(instance).to.be.a(TimewebCloudApi.CreateBalancerCertificates);
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new TimewebCloudApi.CreateBalancer();
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instance = new TimewebCloudApi.CreateBalancerCertificates();
       //expect(instance).to.be();
     });
 
-    it('should have the property algo (base name: "algo")', function() {
-      // uncomment below and update the code to test the property algo
-      //var instance = new TimewebCloudApi.CreateBalancer();
+    it('should have the property fqdn (base name: "fqdn")', function() {
+      // uncomment below and update the code to test the property fqdn
+      //var instance = new TimewebCloudApi.CreateBalancerCertificates();
       //expect(instance).to.be();
     });
 
-    it('should have the property isSticky (base name: "is_sticky")', function() {
-      // uncomment below and update the code to test the property isSticky
-      //var instance = new TimewebCloudApi.CreateBalancer();
+    it('should have the property certData (base name: "cert_data")', function() {
+      // uncomment below and update the code to test the property certData
+      //var instance = new TimewebCloudApi.CreateBalancerCertificates();
       //expect(instance).to.be();
     });
 
-    it('should have the property isUseProxy (base name: "is_use_proxy")', function() {
-      // uncomment below and update the code to test the property isUseProxy
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property isSsl (base name: "is_ssl")', function() {
-      // uncomment below and update the code to test the property isSsl
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property isKeepalive (base name: "is_keepalive")', function() {
-      // uncomment below and update the code to test the property isKeepalive
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property proto (base name: "proto")', function() {
-      // uncomment below and update the code to test the property proto
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property port (base name: "port")', function() {
-      // uncomment below and update the code to test the property port
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property path (base name: "path")', function() {
-      // uncomment below and update the code to test the property path
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property inter (base name: "inter")', function() {
-      // uncomment below and update the code to test the property inter
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property timeout (base name: "timeout")', function() {
-      // uncomment below and update the code to test the property timeout
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property fall (base name: "fall")', function() {
-      // uncomment below and update the code to test the property fall
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property rise (base name: "rise")', function() {
-      // uncomment below and update the code to test the property rise
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property maxconn (base name: "maxconn")', function() {
-      // uncomment below and update the code to test the property maxconn
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property connectTimeout (base name: "connect_timeout")', function() {
-      // uncomment below and update the code to test the property connectTimeout
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property clientTimeout (base name: "client_timeout")', function() {
-      // uncomment below and update the code to test the property clientTimeout
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property serverTimeout (base name: "server_timeout")', function() {
-      // uncomment below and update the code to test the property serverTimeout
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property httprequestTimeout (base name: "httprequest_timeout")', function() {
-      // uncomment below and update the code to test the property httprequestTimeout
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property presetId (base name: "preset_id")', function() {
-      // uncomment below and update the code to test the property presetId
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property network (base name: "network")', function() {
-      // uncomment below and update the code to test the property network
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property availabilityZone (base name: "availability_zone")', function() {
-      // uncomment below and update the code to test the property availabilityZone
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property projectId (base name: "project_id")', function() {
-      // uncomment below and update the code to test the property projectId
-      //var instance = new TimewebCloudApi.CreateBalancer();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property certificates (base name: "certificates")', function() {
-      // uncomment below and update the code to test the property certificates
-      //var instance = new TimewebCloudApi.CreateBalancer();
+    it('should have the property keyData (base name: "key_data")', function() {
+      // uncomment below and update the code to test the property keyData
+      //var instance = new TimewebCloudApi.CreateBalancerCertificates();
       //expect(instance).to.be();
     });
 

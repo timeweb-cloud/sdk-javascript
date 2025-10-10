@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CreateBalancerCertificates from './CreateBalancerCertificates';
 
 /**
  * The UpdateBalancer model module.
@@ -101,6 +102,12 @@ class UpdateBalancer {
             if (data.hasOwnProperty('httprequest_timeout')) {
                 obj['httprequest_timeout'] = ApiClient.convertToType(data['httprequest_timeout'], 'Number');
             }
+            if (data.hasOwnProperty('comment')) {
+                obj['comment'] = ApiClient.convertToType(data['comment'], 'String');
+            }
+            if (data.hasOwnProperty('certificates')) {
+                obj['certificates'] = CreateBalancerCertificates.constructFromObject(data['certificates']);
+            }
         }
         return obj;
     }
@@ -126,6 +133,14 @@ class UpdateBalancer {
         // ensure the json data is a string
         if (data['path'] && !(typeof data['path'] === 'string' || data['path'] instanceof String)) {
             throw new Error("Expected the field `path` to be a primitive type in the JSON string but got " + data['path']);
+        }
+        // ensure the json data is a string
+        if (data['comment'] && !(typeof data['comment'] === 'string' || data['comment'] instanceof String)) {
+            throw new Error("Expected the field `comment` to be a primitive type in the JSON string but got " + data['comment']);
+        }
+        // validate the optional field `certificates`
+        if (data['certificates']) { // data not null
+          CreateBalancerCertificates.validateJSON(data['certificates']);
         }
 
         return true;
@@ -243,6 +258,17 @@ UpdateBalancer.prototype['server_timeout'] = undefined;
  * @member {Number} httprequest_timeout
  */
 UpdateBalancer.prototype['httprequest_timeout'] = undefined;
+
+/**
+ * Комментарий к балансировщику.
+ * @member {String} comment
+ */
+UpdateBalancer.prototype['comment'] = undefined;
+
+/**
+ * @member {module:model/CreateBalancerCertificates} certificates
+ */
+UpdateBalancer.prototype['certificates'] = undefined;
 
 
 

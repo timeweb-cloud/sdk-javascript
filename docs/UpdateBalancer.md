@@ -22,6 +22,8 @@ Name | Type | Description | Notes
 **clientTimeout** | **Number** | Таймаут клиента. | [optional] 
 **serverTimeout** | **Number** | Таймаут сервера. | [optional] 
 **httprequestTimeout** | **Number** | Таймаут HTTP запроса. | [optional] 
+**comment** | **String** | Комментарий к балансировщику. | [optional] 
+**certificates** | [**CreateBalancerCertificates**](CreateBalancerCertificates.md) |  | [optional] 
 
 
 

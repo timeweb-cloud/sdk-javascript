@@ -93,6 +93,7 @@ import CreateApp from './model/CreateApp';
 import CreateApp201Response from './model/CreateApp201Response';
 import CreateBalancer from './model/CreateBalancer';
 import CreateBalancer200Response from './model/CreateBalancer200Response';
+import CreateBalancerCertificates from './model/CreateBalancerCertificates';
 import CreateBalancerRule200Response from './model/CreateBalancerRule200Response';
 import CreateCluster from './model/CreateCluster';
 import CreateClusterAdmin from './model/CreateClusterAdmin';
@@ -1009,6 +1010,12 @@ export {
      * @property {module:model/CreateBalancer200Response}
      */
     CreateBalancer200Response,
+
+    /**
+     * The CreateBalancerCertificates model constructor.
+     * @property {module:model/CreateBalancerCertificates}
+     */
+    CreateBalancerCertificates,
 
     /**
      * The CreateBalancerRule200Response model constructor.

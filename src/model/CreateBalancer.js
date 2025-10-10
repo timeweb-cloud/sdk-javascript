@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import AvailabilityZone from './AvailabilityZone';
+import CreateBalancerCertificates from './CreateBalancerCertificates';
 import Network from './Network';
 
 /**
@@ -143,6 +144,9 @@ class CreateBalancer {
             if (data.hasOwnProperty('project_id')) {
                 obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
             }
+            if (data.hasOwnProperty('certificates')) {
+                obj['certificates'] = CreateBalancerCertificates.constructFromObject(data['certificates']);
+            }
         }
         return obj;
     }
@@ -178,6 +182,10 @@ class CreateBalancer {
         // validate the optional field `network`
         if (data['network']) { // data not null
           Network.validateJSON(data['network']);
+        }
+        // validate the optional field `certificates`
+        if (data['certificates']) { // data not null
+          CreateBalancerCertificates.validateJSON(data['certificates']);
         }
 
         return true;
@@ -317,6 +325,11 @@ CreateBalancer.prototype['availability_zone'] = undefined;
  * @member {Number} project_id
  */
 CreateBalancer.prototype['project_id'] = undefined;
+
+/**
+ * @member {module:model/CreateBalancerCertificates} certificates
+ */
+CreateBalancer.prototype['certificates'] = undefined;
 
 
 

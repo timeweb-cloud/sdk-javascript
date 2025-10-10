@@ -88,6 +88,7 @@ docs/CreateApp.md
 docs/CreateApp201Response.md
 docs/CreateBalancer.md
 docs/CreateBalancer200Response.md
+docs/CreateBalancerCertificates.md
 docs/CreateBalancerRule200Response.md
 docs/CreateCluster.md
 docs/CreateClusterAdmin.md
@@ -586,6 +587,7 @@ src/model/CreateApp.js
 src/model/CreateApp201Response.js
 src/model/CreateBalancer.js
 src/model/CreateBalancer200Response.js
+src/model/CreateBalancerCertificates.js
 src/model/CreateBalancerRule200Response.js
 src/model/CreateCluster.js
 src/model/CreateClusterAdmin.js
@@ -1063,6 +1065,7 @@ test/model/CreateApp.spec.js
 test/model/CreateApp201Response.spec.js
 test/model/CreateBalancer.spec.js
 test/model/CreateBalancer200Response.spec.js
+test/model/CreateBalancerCertificates.spec.js
 test/model/CreateBalancerRule200Response.spec.js
 test/model/CreateCluster.spec.js
 test/model/CreateClusterAdmin.spec.js

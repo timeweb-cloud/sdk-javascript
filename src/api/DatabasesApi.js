@@ -118,10 +118,13 @@ export default class DatabasesApi {
      * Создание бэкапа базы данных
      * Чтобы создать бэкап базы данных, отправьте запрос POST в `api/v1/dbs/{db_id}/backups`. 
      * @param {Number} dbId ID базы данных
+     * @param {Object} opts Optional parameters
+     * @param {String} [comment] Описание бэкапа
      * @param {module:api/DatabasesApi~createDatabaseBackupCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateDatabaseBackup201Response}
      */
-    createDatabaseBackup(dbId, callback) {
+    createDatabaseBackup(dbId, opts, callback) {
+      opts = opts || {};
       let postBody = null;
       // verify the required parameter 'dbId' is set
       if (dbId === undefined || dbId === null) {
@@ -132,6 +135,7 @@ export default class DatabasesApi {
         'db_id': dbId
       };
       let queryParams = {
+        'comment': opts['comment']
       };
       let headerParams = {
       };

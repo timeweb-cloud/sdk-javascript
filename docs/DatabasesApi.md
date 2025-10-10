@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 ## createDatabaseBackup
 
-> CreateDatabaseBackup201Response createDatabaseBackup(dbId)
+> CreateDatabaseBackup201Response createDatabaseBackup(dbId, opts)
 
 Создание бэкапа базы данных
 
@@ -105,7 +105,10 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DatabasesApi();
 let dbId = 56; // Number | ID базы данных
-apiInstance.createDatabaseBackup(dbId, (error, data, response) => {
+let opts = {
+  'comment': "comment_example" // String | Описание бэкапа
+};
+apiInstance.createDatabaseBackup(dbId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -120,6 +123,7 @@ apiInstance.createDatabaseBackup(dbId, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dbId** | **Number**| ID базы данных | 
+ **comment** | **String**| Описание бэкапа | [optional] 
 
 ### Return type
 
