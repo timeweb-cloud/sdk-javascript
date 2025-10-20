@@ -26,7 +26,7 @@ class Knowledgebase {
      * @alias module:model/Knowledgebase
      * @param id {Number} Уникальный идентификатор базы знаний
      * @param name {String} Название базы знаний
-     * @param dbaasId {Number} ID базы данных (opensearch или qdrant)
+     * @param dbaasId {Number} ID базы данных opensearch
      * @param status {module:model/Knowledgebase.StatusEnum} Статус базы знаний
      * @param totalTokens {Number} Всего токенов выделено
      * @param usedTokens {Number} Использовано токенов
@@ -185,7 +185,7 @@ Knowledgebase.prototype['name'] = undefined;
 Knowledgebase.prototype['description'] = undefined;
 
 /**
- * ID базы данных (opensearch или qdrant)
+ * ID базы данных opensearch
  * @member {Number} dbaas_id
  */
 Knowledgebase.prototype['dbaas_id'] = undefined;
