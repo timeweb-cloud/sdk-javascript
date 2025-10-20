@@ -251,16 +251,19 @@ var defaultClient = TimewebCloudApi.ApiClient.instance;
 var Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
-var api = new TimewebCloudApi.APIKeysApi()
-var createApiKey = new TimewebCloudApi.CreateApiKey(); // {CreateApiKey} 
+var api = new TimewebCloudApi.AIAgentsApi()
+var id = 1; // {Number} ID агента
+var opts = {
+  'addTokenPackage': new TimewebCloudApi.AddTokenPackage() // {AddTokenPackage} 
+};
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
-api.createToken(createApiKey, callback);
+api.addAdditionalTokenPackage(id, opts, callback);
 
 ```
 
@@ -270,6 +273,13 @@ All URIs are relative to *https://api.timeweb.cloud*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*TimewebCloudApi.AIAgentsApi* | [**addAdditionalTokenPackage**](docs/AIAgentsApi.md#addAdditionalTokenPackage) | **POST** /api/v1/cloud-ai/agents/{id}/add-additional-token-package | Добавление дополнительного пакета токенов
+*TimewebCloudApi.AIAgentsApi* | [**createAgent**](docs/AIAgentsApi.md#createAgent) | **POST** /api/v1/cloud-ai/agents | Создание AI агента
+*TimewebCloudApi.AIAgentsApi* | [**deleteAgent**](docs/AIAgentsApi.md#deleteAgent) | **DELETE** /api/v1/cloud-ai/agents/{id} | Удаление AI агента
+*TimewebCloudApi.AIAgentsApi* | [**getAgent**](docs/AIAgentsApi.md#getAgent) | **GET** /api/v1/cloud-ai/agents/{id} | Получение AI агента
+*TimewebCloudApi.AIAgentsApi* | [**getAgentStatistics**](docs/AIAgentsApi.md#getAgentStatistics) | **GET** /api/v1/cloud-ai/agents/{id}/statistic | Получение статистики использования токенов агента
+*TimewebCloudApi.AIAgentsApi* | [**getAgents**](docs/AIAgentsApi.md#getAgents) | **GET** /api/v1/cloud-ai/agents | Получение списка AI агентов
+*TimewebCloudApi.AIAgentsApi* | [**updateAgent**](docs/AIAgentsApi.md#updateAgent) | **PATCH** /api/v1/cloud-ai/agents/{id} | Обновление AI агента
 *TimewebCloudApi.APIKeysApi* | [**createToken**](docs/APIKeysApi.md#createToken) | **POST** /api/v1/auth/api-keys | Создание токена
 *TimewebCloudApi.APIKeysApi* | [**deleteToken**](docs/APIKeysApi.md#deleteToken) | **DELETE** /api/v1/auth/api-keys/{token_id} | Удалить токен
 *TimewebCloudApi.APIKeysApi* | [**getTokens**](docs/APIKeysApi.md#getTokens) | **GET** /api/v1/auth/api-keys | Получение списка выпущенных токенов
@@ -416,6 +426,19 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.ImagesApi* | [**getImages**](docs/ImagesApi.md#getImages) | **GET** /api/v1/images | Получение списка образов
 *TimewebCloudApi.ImagesApi* | [**updateImage**](docs/ImagesApi.md#updateImage) | **PATCH** /api/v1/images/{image_id} | Обновление информации о образе
 *TimewebCloudApi.ImagesApi* | [**uploadImage**](docs/ImagesApi.md#uploadImage) | **POST** /api/v1/images/{image_id} | Загрузка образа
+*TimewebCloudApi.KnowledgeBasesApi* | [**addAdditionalTokenPackageToKnowledgebase**](docs/KnowledgeBasesApi.md#addAdditionalTokenPackageToKnowledgebase) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package | Добавление дополнительного пакета токенов
+*TimewebCloudApi.KnowledgeBasesApi* | [**createKnowledgebase**](docs/KnowledgeBasesApi.md#createKnowledgebase) | **POST** /api/v1/cloud-ai/knowledge-bases | Создание базы знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**deleteDocument**](docs/KnowledgeBasesApi.md#deleteDocument) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id} | Удаление документа из базы знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**deleteKnowledgebase**](docs/KnowledgeBasesApi.md#deleteKnowledgebase) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id} | Удаление базы знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**downloadDocument**](docs/KnowledgeBasesApi.md#downloadDocument) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download | Скачивание документа из базы знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebase**](docs/KnowledgeBasesApi.md#getKnowledgebase) | **GET** /api/v1/cloud-ai/knowledge-bases/{id} | Получение базы знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebaseStatistics**](docs/KnowledgeBasesApi.md#getKnowledgebaseStatistics) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/statistic | Получение статистики использования токенов базы знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebases**](docs/KnowledgeBasesApi.md#getKnowledgebases) | **GET** /api/v1/cloud-ai/knowledge-bases | Получение списка баз знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**linkKnowledgebaseToAgent**](docs/KnowledgeBasesApi.md#linkKnowledgebaseToAgent) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Привязка базы знаний к агенту
+*TimewebCloudApi.KnowledgeBasesApi* | [**reindexDocument**](docs/KnowledgeBasesApi.md#reindexDocument) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex | Переиндексация документа
+*TimewebCloudApi.KnowledgeBasesApi* | [**unlinkKnowledgebaseFromAgent**](docs/KnowledgeBasesApi.md#unlinkKnowledgebaseFromAgent) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Отвязка базы знаний от агента
+*TimewebCloudApi.KnowledgeBasesApi* | [**updateKnowledgebase**](docs/KnowledgeBasesApi.md#updateKnowledgebase) | **PATCH** /api/v1/cloud-ai/knowledge-bases/{id} | Обновление базы знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**uploadFilesToKnowledgebase**](docs/KnowledgeBasesApi.md#uploadFilesToKnowledgebase) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/upload | Загрузка файлов в базу знаний
 *TimewebCloudApi.KubernetesApi* | [**createCluster**](docs/KubernetesApi.md#createCluster) | **POST** /api/v1/k8s/clusters | Создание кластера
 *TimewebCloudApi.KubernetesApi* | [**createClusterNodeGroup**](docs/KubernetesApi.md#createClusterNodeGroup) | **POST** /api/v1/k8s/clusters/{cluster_id}/groups | Создание группы нод
 *TimewebCloudApi.KubernetesApi* | [**deleteCluster**](docs/KubernetesApi.md#deleteCluster) | **DELETE** /api/v1/k8s/clusters/{cluster_id} | Удаление кластера
@@ -580,7 +603,12 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.AddStorageSubdomainsRequest](docs/AddStorageSubdomainsRequest.md)
  - [TimewebCloudApi.AddStorageToProjectRequest](docs/AddStorageToProjectRequest.md)
  - [TimewebCloudApi.AddSubdomain201Response](docs/AddSubdomain201Response.md)
+ - [TimewebCloudApi.AddTokenPackage](docs/AddTokenPackage.md)
  - [TimewebCloudApi.AddedSubdomain](docs/AddedSubdomain.md)
+ - [TimewebCloudApi.Agent](docs/Agent.md)
+ - [TimewebCloudApi.AgentModelSettings](docs/AgentModelSettings.md)
+ - [TimewebCloudApi.AgentSettings](docs/AgentSettings.md)
+ - [TimewebCloudApi.AgentSettingsWidget](docs/AgentSettingsWidget.md)
  - [TimewebCloudApi.ApiKey](docs/ApiKey.md)
  - [TimewebCloudApi.App](docs/App.md)
  - [TimewebCloudApi.AppConfiguration](docs/AppConfiguration.md)
@@ -629,6 +657,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ContainerRegistryPresetsInner](docs/ContainerRegistryPresetsInner.md)
  - [TimewebCloudApi.ContainerRegistryRepositoriesInner](docs/ContainerRegistryRepositoriesInner.md)
  - [TimewebCloudApi.CreateAdmin](docs/CreateAdmin.md)
+ - [TimewebCloudApi.CreateAgent](docs/CreateAgent.md)
+ - [TimewebCloudApi.CreateAgent201Response](docs/CreateAgent201Response.md)
  - [TimewebCloudApi.CreateApiKey](docs/CreateApiKey.md)
  - [TimewebCloudApi.CreateApp](docs/CreateApp.md)
  - [TimewebCloudApi.CreateApp201Response](docs/CreateApp201Response.md)
@@ -661,6 +691,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateInstance](docs/CreateInstance.md)
  - [TimewebCloudApi.CreateKey201Response](docs/CreateKey201Response.md)
  - [TimewebCloudApi.CreateKeyRequest](docs/CreateKeyRequest.md)
+ - [TimewebCloudApi.CreateKnowledgebase](docs/CreateKnowledgebase.md)
+ - [TimewebCloudApi.CreateKnowledgebase201Response](docs/CreateKnowledgebase201Response.md)
  - [TimewebCloudApi.CreateMultipleDomainMailboxes201Response](docs/CreateMultipleDomainMailboxes201Response.md)
  - [TimewebCloudApi.CreateMultipleDomainMailboxesRequest](docs/CreateMultipleDomainMailboxesRequest.md)
  - [TimewebCloudApi.CreateMultipleDomainMailboxesRequestMailboxesInner](docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md)
@@ -720,6 +752,9 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DeployStatus](docs/DeployStatus.md)
  - [TimewebCloudApi.DnsRecord](docs/DnsRecord.md)
  - [TimewebCloudApi.DnsRecordData](docs/DnsRecordData.md)
+ - [TimewebCloudApi.Document](docs/Document.md)
+ - [TimewebCloudApi.DocumentStatusInfo](docs/DocumentStatusInfo.md)
+ - [TimewebCloudApi.DocumentStatusInfoDetails](docs/DocumentStatusInfoDetails.md)
  - [TimewebCloudApi.Domain](docs/Domain.md)
  - [TimewebCloudApi.DomainAllowedBuyPeriodsInner](docs/DomainAllowedBuyPeriodsInner.md)
  - [TimewebCloudApi.DomainInfo](docs/DomainInfo.md)
@@ -755,6 +790,10 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Free](docs/Free.md)
  - [TimewebCloudApi.GetAccountStatus200Response](docs/GetAccountStatus200Response.md)
  - [TimewebCloudApi.GetAccountStatus403Response](docs/GetAccountStatus403Response.md)
+ - [TimewebCloudApi.GetAgentStatistics200Response](docs/GetAgentStatistics200Response.md)
+ - [TimewebCloudApi.GetAgentStatistics200ResponseMeta](docs/GetAgentStatistics200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgents200Response](docs/GetAgents200Response.md)
+ - [TimewebCloudApi.GetAgents200ResponseMeta](docs/GetAgents200ResponseMeta.md)
  - [TimewebCloudApi.GetAllProjectResources200Response](docs/GetAllProjectResources200Response.md)
  - [TimewebCloudApi.GetAppDeploys200Response](docs/GetAppDeploys200Response.md)
  - [TimewebCloudApi.GetAppLogs200Response](docs/GetAppLogs200Response.md)
@@ -797,6 +836,9 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetImage404Response](docs/GetImage404Response.md)
  - [TimewebCloudApi.GetKey200Response](docs/GetKey200Response.md)
  - [TimewebCloudApi.GetKeys200Response](docs/GetKeys200Response.md)
+ - [TimewebCloudApi.GetKnowledgebaseStatistics200Response](docs/GetKnowledgebaseStatistics200Response.md)
+ - [TimewebCloudApi.GetKnowledgebases200Response](docs/GetKnowledgebases200Response.md)
+ - [TimewebCloudApi.GetKnowledgebases200ResponseMeta](docs/GetKnowledgebases200ResponseMeta.md)
  - [TimewebCloudApi.GetLocations200Response](docs/GetLocations200Response.md)
  - [TimewebCloudApi.GetMailQuota200Response](docs/GetMailQuota200Response.md)
  - [TimewebCloudApi.GetMailboxes200Response](docs/GetMailboxes200Response.md)
@@ -856,6 +898,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.InfoServicePrice](docs/InfoServicePrice.md)
  - [TimewebCloudApi.Invoice](docs/Invoice.md)
  - [TimewebCloudApi.K8SVersionsResponse](docs/K8SVersionsResponse.md)
+ - [TimewebCloudApi.Knowledgebase](docs/Knowledgebase.md)
  - [TimewebCloudApi.Location](docs/Location.md)
  - [TimewebCloudApi.LocationDto](docs/LocationDto.md)
  - [TimewebCloudApi.Mailbox](docs/Mailbox.md)
@@ -952,6 +995,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.StatusCompanyInfo](docs/StatusCompanyInfo.md)
  - [TimewebCloudApi.Subdomain](docs/Subdomain.md)
  - [TimewebCloudApi.Tags](docs/Tags.md)
+ - [TimewebCloudApi.TokenStatistic](docs/TokenStatistic.md)
  - [TimewebCloudApi.TopLevelDomain](docs/TopLevelDomain.md)
  - [TimewebCloudApi.TopLevelDomainAllowedBuyPeriodsInner](docs/TopLevelDomainAllowedBuyPeriodsInner.md)
  - [TimewebCloudApi.TransferStatus](docs/TransferStatus.md)
@@ -959,6 +1003,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.TransferStorageRequest](docs/TransferStorageRequest.md)
  - [TimewebCloudApi.URLType](docs/URLType.md)
  - [TimewebCloudApi.UpdateAdmin](docs/UpdateAdmin.md)
+ - [TimewebCloudApi.UpdateAgent](docs/UpdateAgent.md)
+ - [TimewebCloudApi.UpdateAgentSettings](docs/UpdateAgentSettings.md)
  - [TimewebCloudApi.UpdateAppSettings200Response](docs/UpdateAppSettings200Response.md)
  - [TimewebCloudApi.UpdateAuthRestrictionsByCountriesRequest](docs/UpdateAuthRestrictionsByCountriesRequest.md)
  - [TimewebCloudApi.UpdateBalancer](docs/UpdateBalancer.md)
@@ -973,6 +1019,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateFloatingIp](docs/UpdateFloatingIp.md)
  - [TimewebCloudApi.UpdateInstance](docs/UpdateInstance.md)
  - [TimewebCloudApi.UpdateKeyRequest](docs/UpdateKeyRequest.md)
+ - [TimewebCloudApi.UpdateKnowledgebase](docs/UpdateKnowledgebase.md)
  - [TimewebCloudApi.UpdateMailQuotaRequest](docs/UpdateMailQuotaRequest.md)
  - [TimewebCloudApi.UpdateMailbox](docs/UpdateMailbox.md)
  - [TimewebCloudApi.UpdateNetworkDrive](docs/UpdateNetworkDrive.md)
@@ -995,6 +1042,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateStorageUserRequest](docs/UpdateStorageUserRequest.md)
  - [TimewebCloudApi.UpdateToken200Response](docs/UpdateToken200Response.md)
  - [TimewebCloudApi.UpdateVpc](docs/UpdateVpc.md)
+ - [TimewebCloudApi.UploadFilesToKnowledgebase200Response](docs/UploadFilesToKnowledgebase200Response.md)
  - [TimewebCloudApi.UploadSuccessful](docs/UploadSuccessful.md)
  - [TimewebCloudApi.UploadSuccessfulResponse](docs/UploadSuccessfulResponse.md)
  - [TimewebCloudApi.UrlStatus](docs/UrlStatus.md)

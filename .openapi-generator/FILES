@@ -3,6 +3,7 @@
 .openapi-generator-ignore
 .travis.yml
 README.md
+docs/AIAgentsApi.md
 docs/APIKeysApi.md
 docs/AccountApi.md
 docs/AddBalancerToProject200Response.md
@@ -31,7 +32,12 @@ docs/AddStorageSubdomains200Response.md
 docs/AddStorageSubdomainsRequest.md
 docs/AddStorageToProjectRequest.md
 docs/AddSubdomain201Response.md
+docs/AddTokenPackage.md
 docs/AddedSubdomain.md
+docs/Agent.md
+docs/AgentModelSettings.md
+docs/AgentSettings.md
+docs/AgentSettingsWidget.md
 docs/ApiKey.md
 docs/App.md
 docs/AppConfiguration.md
@@ -83,6 +89,8 @@ docs/ContainerRegistryApi.md
 docs/ContainerRegistryPresetsInner.md
 docs/ContainerRegistryRepositoriesInner.md
 docs/CreateAdmin.md
+docs/CreateAgent.md
+docs/CreateAgent201Response.md
 docs/CreateApiKey.md
 docs/CreateApp.md
 docs/CreateApp201Response.md
@@ -115,6 +123,8 @@ docs/CreateFloatingIp201Response.md
 docs/CreateInstance.md
 docs/CreateKey201Response.md
 docs/CreateKeyRequest.md
+docs/CreateKnowledgebase.md
+docs/CreateKnowledgebase201Response.md
 docs/CreateMultipleDomainMailboxes201Response.md
 docs/CreateMultipleDomainMailboxesRequest.md
 docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md
@@ -176,6 +186,9 @@ docs/DeploySettingsInner.md
 docs/DeployStatus.md
 docs/DnsRecord.md
 docs/DnsRecordData.md
+docs/Document.md
+docs/DocumentStatusInfo.md
+docs/DocumentStatusInfoDetails.md
 docs/Domain.md
 docs/DomainAllowedBuyPeriodsInner.md
 docs/DomainInfo.md
@@ -214,6 +227,10 @@ docs/Frameworks.md
 docs/Free.md
 docs/GetAccountStatus200Response.md
 docs/GetAccountStatus403Response.md
+docs/GetAgentStatistics200Response.md
+docs/GetAgentStatistics200ResponseMeta.md
+docs/GetAgents200Response.md
+docs/GetAgents200ResponseMeta.md
 docs/GetAllProjectResources200Response.md
 docs/GetAppDeploys200Response.md
 docs/GetAppLogs200Response.md
@@ -256,6 +273,9 @@ docs/GetFloatingIps200Response.md
 docs/GetImage404Response.md
 docs/GetKey200Response.md
 docs/GetKeys200Response.md
+docs/GetKnowledgebaseStatistics200Response.md
+docs/GetKnowledgebases200Response.md
+docs/GetKnowledgebases200ResponseMeta.md
 docs/GetLocations200Response.md
 docs/GetMailQuota200Response.md
 docs/GetMailboxes200Response.md
@@ -316,6 +336,8 @@ docs/IncreaseNodes.md
 docs/InfoServicePrice.md
 docs/Invoice.md
 docs/K8SVersionsResponse.md
+docs/KnowledgeBasesApi.md
+docs/Knowledgebase.md
 docs/KubernetesApi.md
 docs/Location.md
 docs/LocationDto.md
@@ -421,6 +443,7 @@ docs/Status.md
 docs/StatusCompanyInfo.md
 docs/Subdomain.md
 docs/Tags.md
+docs/TokenStatistic.md
 docs/TopLevelDomain.md
 docs/TopLevelDomainAllowedBuyPeriodsInner.md
 docs/TransferStatus.md
@@ -428,6 +451,8 @@ docs/TransferStatusErrorsInner.md
 docs/TransferStorageRequest.md
 docs/URLType.md
 docs/UpdateAdmin.md
+docs/UpdateAgent.md
+docs/UpdateAgentSettings.md
 docs/UpdateAppSettings200Response.md
 docs/UpdateAuthRestrictionsByCountriesRequest.md
 docs/UpdateBalancer.md
@@ -442,6 +467,7 @@ docs/UpdateDomainNameServersNameServersInner.md
 docs/UpdateFloatingIp.md
 docs/UpdateInstance.md
 docs/UpdateKeyRequest.md
+docs/UpdateKnowledgebase.md
 docs/UpdateMailQuotaRequest.md
 docs/UpdateMailbox.md
 docs/UpdateNetworkDrive.md
@@ -464,6 +490,7 @@ docs/UpdateStorageUser200Response.md
 docs/UpdateStorageUserRequest.md
 docs/UpdateToken200Response.md
 docs/UpdateVpc.md
+docs/UploadFilesToKnowledgebase200Response.md
 docs/UploadSuccessful.md
 docs/UploadSuccessfulResponse.md
 docs/UrlStatus.md
@@ -485,6 +512,7 @@ git_push.sh
 mocha.opts
 package.json
 src/ApiClient.js
+src/api/AIAgentsApi.js
 src/api/APIKeysApi.js
 src/api/AccountApi.js
 src/api/AppsApi.js
@@ -496,6 +524,7 @@ src/api/DomainsApi.js
 src/api/FirewallApi.js
 src/api/FloatingIPApi.js
 src/api/ImagesApi.js
+src/api/KnowledgeBasesApi.js
 src/api/KubernetesApi.js
 src/api/LocationsApi.js
 src/api/MailApi.js
@@ -533,7 +562,12 @@ src/model/AddStorageSubdomains200Response.js
 src/model/AddStorageSubdomainsRequest.js
 src/model/AddStorageToProjectRequest.js
 src/model/AddSubdomain201Response.js
+src/model/AddTokenPackage.js
 src/model/AddedSubdomain.js
+src/model/Agent.js
+src/model/AgentModelSettings.js
+src/model/AgentSettings.js
+src/model/AgentSettingsWidget.js
 src/model/ApiKey.js
 src/model/App.js
 src/model/AppConfiguration.js
@@ -582,6 +616,8 @@ src/model/ConfigParameters.js
 src/model/ContainerRegistryPresetsInner.js
 src/model/ContainerRegistryRepositoriesInner.js
 src/model/CreateAdmin.js
+src/model/CreateAgent.js
+src/model/CreateAgent201Response.js
 src/model/CreateApiKey.js
 src/model/CreateApp.js
 src/model/CreateApp201Response.js
@@ -614,6 +650,8 @@ src/model/CreateFloatingIp201Response.js
 src/model/CreateInstance.js
 src/model/CreateKey201Response.js
 src/model/CreateKeyRequest.js
+src/model/CreateKnowledgebase.js
+src/model/CreateKnowledgebase201Response.js
 src/model/CreateMultipleDomainMailboxes201Response.js
 src/model/CreateMultipleDomainMailboxesRequest.js
 src/model/CreateMultipleDomainMailboxesRequestMailboxesInner.js
@@ -673,6 +711,9 @@ src/model/DeploySettingsInner.js
 src/model/DeployStatus.js
 src/model/DnsRecord.js
 src/model/DnsRecordData.js
+src/model/Document.js
+src/model/DocumentStatusInfo.js
+src/model/DocumentStatusInfoDetails.js
 src/model/Domain.js
 src/model/DomainAllowedBuyPeriodsInner.js
 src/model/DomainInfo.js
@@ -708,6 +749,10 @@ src/model/Frameworks.js
 src/model/Free.js
 src/model/GetAccountStatus200Response.js
 src/model/GetAccountStatus403Response.js
+src/model/GetAgentStatistics200Response.js
+src/model/GetAgentStatistics200ResponseMeta.js
+src/model/GetAgents200Response.js
+src/model/GetAgents200ResponseMeta.js
 src/model/GetAllProjectResources200Response.js
 src/model/GetAppDeploys200Response.js
 src/model/GetAppLogs200Response.js
@@ -750,6 +795,9 @@ src/model/GetFloatingIps200Response.js
 src/model/GetImage404Response.js
 src/model/GetKey200Response.js
 src/model/GetKeys200Response.js
+src/model/GetKnowledgebaseStatistics200Response.js
+src/model/GetKnowledgebases200Response.js
+src/model/GetKnowledgebases200ResponseMeta.js
 src/model/GetLocations200Response.js
 src/model/GetMailQuota200Response.js
 src/model/GetMailboxes200Response.js
@@ -809,6 +857,7 @@ src/model/IncreaseNodes.js
 src/model/InfoServicePrice.js
 src/model/Invoice.js
 src/model/K8SVersionsResponse.js
+src/model/Knowledgebase.js
 src/model/Location.js
 src/model/LocationDto.js
 src/model/Mailbox.js
@@ -905,6 +954,7 @@ src/model/Status.js
 src/model/StatusCompanyInfo.js
 src/model/Subdomain.js
 src/model/Tags.js
+src/model/TokenStatistic.js
 src/model/TopLevelDomain.js
 src/model/TopLevelDomainAllowedBuyPeriodsInner.js
 src/model/TransferStatus.js
@@ -912,6 +962,8 @@ src/model/TransferStatusErrorsInner.js
 src/model/TransferStorageRequest.js
 src/model/URLType.js
 src/model/UpdateAdmin.js
+src/model/UpdateAgent.js
+src/model/UpdateAgentSettings.js
 src/model/UpdateAppSettings200Response.js
 src/model/UpdateAuthRestrictionsByCountriesRequest.js
 src/model/UpdateBalancer.js
@@ -926,6 +978,7 @@ src/model/UpdateDomainNameServersNameServersInner.js
 src/model/UpdateFloatingIp.js
 src/model/UpdateInstance.js
 src/model/UpdateKeyRequest.js
+src/model/UpdateKnowledgebase.js
 src/model/UpdateMailQuotaRequest.js
 src/model/UpdateMailbox.js
 src/model/UpdateNetworkDrive.js
@@ -948,6 +1001,7 @@ src/model/UpdateStorageUser200Response.js
 src/model/UpdateStorageUserRequest.js
 src/model/UpdateToken200Response.js
 src/model/UpdateVpc.js
+src/model/UploadFilesToKnowledgebase200Response.js
 src/model/UploadSuccessful.js
 src/model/UploadSuccessfulResponse.js
 src/model/UrlStatus.js
@@ -964,6 +1018,7 @@ src/model/VpcPort.js
 src/model/VpcPortService.js
 src/model/VpcService.js
 src/model/WorkerPresetOutApi.js
+test/api/AIAgentsApi.spec.js
 test/api/APIKeysApi.spec.js
 test/api/AccountApi.spec.js
 test/api/AppsApi.spec.js
@@ -975,6 +1030,7 @@ test/api/DomainsApi.spec.js
 test/api/FirewallApi.spec.js
 test/api/FloatingIPApi.spec.js
 test/api/ImagesApi.spec.js
+test/api/KnowledgeBasesApi.spec.js
 test/api/KubernetesApi.spec.js
 test/api/LocationsApi.spec.js
 test/api/MailApi.spec.js
@@ -1011,7 +1067,12 @@ test/model/AddStorageSubdomains200Response.spec.js
 test/model/AddStorageSubdomainsRequest.spec.js
 test/model/AddStorageToProjectRequest.spec.js
 test/model/AddSubdomain201Response.spec.js
+test/model/AddTokenPackage.spec.js
 test/model/AddedSubdomain.spec.js
+test/model/Agent.spec.js
+test/model/AgentModelSettings.spec.js
+test/model/AgentSettings.spec.js
+test/model/AgentSettingsWidget.spec.js
 test/model/ApiKey.spec.js
 test/model/App.spec.js
 test/model/AppConfiguration.spec.js
@@ -1060,6 +1121,8 @@ test/model/ConfigParameters.spec.js
 test/model/ContainerRegistryPresetsInner.spec.js
 test/model/ContainerRegistryRepositoriesInner.spec.js
 test/model/CreateAdmin.spec.js
+test/model/CreateAgent.spec.js
+test/model/CreateAgent201Response.spec.js
 test/model/CreateApiKey.spec.js
 test/model/CreateApp.spec.js
 test/model/CreateApp201Response.spec.js
@@ -1092,6 +1155,8 @@ test/model/CreateFloatingIp201Response.spec.js
 test/model/CreateInstance.spec.js
 test/model/CreateKey201Response.spec.js
 test/model/CreateKeyRequest.spec.js
+test/model/CreateKnowledgebase.spec.js
+test/model/CreateKnowledgebase201Response.spec.js
 test/model/CreateMultipleDomainMailboxes201Response.spec.js
 test/model/CreateMultipleDomainMailboxesRequest.spec.js
 test/model/CreateMultipleDomainMailboxesRequestMailboxesInner.spec.js
@@ -1151,6 +1216,9 @@ test/model/DeploySettingsInner.spec.js
 test/model/DeployStatus.spec.js
 test/model/DnsRecord.spec.js
 test/model/DnsRecordData.spec.js
+test/model/Document.spec.js
+test/model/DocumentStatusInfo.spec.js
+test/model/DocumentStatusInfoDetails.spec.js
 test/model/Domain.spec.js
 test/model/DomainAllowedBuyPeriodsInner.spec.js
 test/model/DomainInfo.spec.js
@@ -1186,6 +1254,10 @@ test/model/Frameworks.spec.js
 test/model/Free.spec.js
 test/model/GetAccountStatus200Response.spec.js
 test/model/GetAccountStatus403Response.spec.js
+test/model/GetAgentStatistics200Response.spec.js
+test/model/GetAgentStatistics200ResponseMeta.spec.js
+test/model/GetAgents200Response.spec.js
+test/model/GetAgents200ResponseMeta.spec.js
 test/model/GetAllProjectResources200Response.spec.js
 test/model/GetAppDeploys200Response.spec.js
 test/model/GetAppLogs200Response.spec.js
@@ -1228,6 +1300,9 @@ test/model/GetFloatingIps200Response.spec.js
 test/model/GetImage404Response.spec.js
 test/model/GetKey200Response.spec.js
 test/model/GetKeys200Response.spec.js
+test/model/GetKnowledgebaseStatistics200Response.spec.js
+test/model/GetKnowledgebases200Response.spec.js
+test/model/GetKnowledgebases200ResponseMeta.spec.js
 test/model/GetLocations200Response.spec.js
 test/model/GetMailQuota200Response.spec.js
 test/model/GetMailboxes200Response.spec.js
@@ -1287,6 +1362,7 @@ test/model/IncreaseNodes.spec.js
 test/model/InfoServicePrice.spec.js
 test/model/Invoice.spec.js
 test/model/K8SVersionsResponse.spec.js
+test/model/Knowledgebase.spec.js
 test/model/Location.spec.js
 test/model/LocationDto.spec.js
 test/model/Mailbox.spec.js
@@ -1383,6 +1459,7 @@ test/model/Status.spec.js
 test/model/StatusCompanyInfo.spec.js
 test/model/Subdomain.spec.js
 test/model/Tags.spec.js
+test/model/TokenStatistic.spec.js
 test/model/TopLevelDomain.spec.js
 test/model/TopLevelDomainAllowedBuyPeriodsInner.spec.js
 test/model/TransferStatus.spec.js
@@ -1390,6 +1467,8 @@ test/model/TransferStatusErrorsInner.spec.js
 test/model/TransferStorageRequest.spec.js
 test/model/URLType.spec.js
 test/model/UpdateAdmin.spec.js
+test/model/UpdateAgent.spec.js
+test/model/UpdateAgentSettings.spec.js
 test/model/UpdateAppSettings200Response.spec.js
 test/model/UpdateAuthRestrictionsByCountriesRequest.spec.js
 test/model/UpdateBalancer.spec.js
@@ -1404,6 +1483,7 @@ test/model/UpdateDomainNameServersNameServersInner.spec.js
 test/model/UpdateFloatingIp.spec.js
 test/model/UpdateInstance.spec.js
 test/model/UpdateKeyRequest.spec.js
+test/model/UpdateKnowledgebase.spec.js
 test/model/UpdateMailQuotaRequest.spec.js
 test/model/UpdateMailbox.spec.js
 test/model/UpdateNetworkDrive.spec.js
@@ -1426,6 +1506,7 @@ test/model/UpdateStorageUser200Response.spec.js
 test/model/UpdateStorageUserRequest.spec.js
 test/model/UpdateToken200Response.spec.js
 test/model/UpdateVpc.spec.js
+test/model/UploadFilesToKnowledgebase200Response.spec.js
 test/model/UploadSuccessful.spec.js
 test/model/UploadSuccessfulResponse.spec.js
 test/model/UrlStatus.spec.js

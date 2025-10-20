@@ -39,7 +39,12 @@ import AddStorageSubdomains200Response from './model/AddStorageSubdomains200Resp
 import AddStorageSubdomainsRequest from './model/AddStorageSubdomainsRequest';
 import AddStorageToProjectRequest from './model/AddStorageToProjectRequest';
 import AddSubdomain201Response from './model/AddSubdomain201Response';
+import AddTokenPackage from './model/AddTokenPackage';
 import AddedSubdomain from './model/AddedSubdomain';
+import Agent from './model/Agent';
+import AgentModelSettings from './model/AgentModelSettings';
+import AgentSettings from './model/AgentSettings';
+import AgentSettingsWidget from './model/AgentSettingsWidget';
 import ApiKey from './model/ApiKey';
 import App from './model/App';
 import AppConfiguration from './model/AppConfiguration';
@@ -88,6 +93,8 @@ import ConfigParameters from './model/ConfigParameters';
 import ContainerRegistryPresetsInner from './model/ContainerRegistryPresetsInner';
 import ContainerRegistryRepositoriesInner from './model/ContainerRegistryRepositoriesInner';
 import CreateAdmin from './model/CreateAdmin';
+import CreateAgent from './model/CreateAgent';
+import CreateAgent201Response from './model/CreateAgent201Response';
 import CreateApiKey from './model/CreateApiKey';
 import CreateApp from './model/CreateApp';
 import CreateApp201Response from './model/CreateApp201Response';
@@ -120,6 +127,8 @@ import CreateFloatingIp201Response from './model/CreateFloatingIp201Response';
 import CreateInstance from './model/CreateInstance';
 import CreateKey201Response from './model/CreateKey201Response';
 import CreateKeyRequest from './model/CreateKeyRequest';
+import CreateKnowledgebase from './model/CreateKnowledgebase';
+import CreateKnowledgebase201Response from './model/CreateKnowledgebase201Response';
 import CreateMultipleDomainMailboxes201Response from './model/CreateMultipleDomainMailboxes201Response';
 import CreateMultipleDomainMailboxesRequest from './model/CreateMultipleDomainMailboxesRequest';
 import CreateMultipleDomainMailboxesRequestMailboxesInner from './model/CreateMultipleDomainMailboxesRequestMailboxesInner';
@@ -179,6 +188,9 @@ import DeploySettingsInner from './model/DeploySettingsInner';
 import DeployStatus from './model/DeployStatus';
 import DnsRecord from './model/DnsRecord';
 import DnsRecordData from './model/DnsRecordData';
+import Document from './model/Document';
+import DocumentStatusInfo from './model/DocumentStatusInfo';
+import DocumentStatusInfoDetails from './model/DocumentStatusInfoDetails';
 import Domain from './model/Domain';
 import DomainAllowedBuyPeriodsInner from './model/DomainAllowedBuyPeriodsInner';
 import DomainInfo from './model/DomainInfo';
@@ -214,6 +226,10 @@ import Frameworks from './model/Frameworks';
 import Free from './model/Free';
 import GetAccountStatus200Response from './model/GetAccountStatus200Response';
 import GetAccountStatus403Response from './model/GetAccountStatus403Response';
+import GetAgentStatistics200Response from './model/GetAgentStatistics200Response';
+import GetAgentStatistics200ResponseMeta from './model/GetAgentStatistics200ResponseMeta';
+import GetAgents200Response from './model/GetAgents200Response';
+import GetAgents200ResponseMeta from './model/GetAgents200ResponseMeta';
 import GetAllProjectResources200Response from './model/GetAllProjectResources200Response';
 import GetAppDeploys200Response from './model/GetAppDeploys200Response';
 import GetAppLogs200Response from './model/GetAppLogs200Response';
@@ -256,6 +272,9 @@ import GetFloatingIps200Response from './model/GetFloatingIps200Response';
 import GetImage404Response from './model/GetImage404Response';
 import GetKey200Response from './model/GetKey200Response';
 import GetKeys200Response from './model/GetKeys200Response';
+import GetKnowledgebaseStatistics200Response from './model/GetKnowledgebaseStatistics200Response';
+import GetKnowledgebases200Response from './model/GetKnowledgebases200Response';
+import GetKnowledgebases200ResponseMeta from './model/GetKnowledgebases200ResponseMeta';
 import GetLocations200Response from './model/GetLocations200Response';
 import GetMailQuota200Response from './model/GetMailQuota200Response';
 import GetMailboxes200Response from './model/GetMailboxes200Response';
@@ -315,6 +334,7 @@ import IncreaseNodes from './model/IncreaseNodes';
 import InfoServicePrice from './model/InfoServicePrice';
 import Invoice from './model/Invoice';
 import K8SVersionsResponse from './model/K8SVersionsResponse';
+import Knowledgebase from './model/Knowledgebase';
 import Location from './model/Location';
 import LocationDto from './model/LocationDto';
 import Mailbox from './model/Mailbox';
@@ -411,6 +431,7 @@ import Status from './model/Status';
 import StatusCompanyInfo from './model/StatusCompanyInfo';
 import Subdomain from './model/Subdomain';
 import Tags from './model/Tags';
+import TokenStatistic from './model/TokenStatistic';
 import TopLevelDomain from './model/TopLevelDomain';
 import TopLevelDomainAllowedBuyPeriodsInner from './model/TopLevelDomainAllowedBuyPeriodsInner';
 import TransferStatus from './model/TransferStatus';
@@ -418,6 +439,8 @@ import TransferStatusErrorsInner from './model/TransferStatusErrorsInner';
 import TransferStorageRequest from './model/TransferStorageRequest';
 import URLType from './model/URLType';
 import UpdateAdmin from './model/UpdateAdmin';
+import UpdateAgent from './model/UpdateAgent';
+import UpdateAgentSettings from './model/UpdateAgentSettings';
 import UpdateAppSettings200Response from './model/UpdateAppSettings200Response';
 import UpdateAuthRestrictionsByCountriesRequest from './model/UpdateAuthRestrictionsByCountriesRequest';
 import UpdateBalancer from './model/UpdateBalancer';
@@ -432,6 +455,7 @@ import UpdateDomainNameServersNameServersInner from './model/UpdateDomainNameSer
 import UpdateFloatingIp from './model/UpdateFloatingIp';
 import UpdateInstance from './model/UpdateInstance';
 import UpdateKeyRequest from './model/UpdateKeyRequest';
+import UpdateKnowledgebase from './model/UpdateKnowledgebase';
 import UpdateMailQuotaRequest from './model/UpdateMailQuotaRequest';
 import UpdateMailbox from './model/UpdateMailbox';
 import UpdateNetworkDrive from './model/UpdateNetworkDrive';
@@ -454,6 +478,7 @@ import UpdateStorageUser200Response from './model/UpdateStorageUser200Response';
 import UpdateStorageUserRequest from './model/UpdateStorageUserRequest';
 import UpdateToken200Response from './model/UpdateToken200Response';
 import UpdateVpc from './model/UpdateVpc';
+import UploadFilesToKnowledgebase200Response from './model/UploadFilesToKnowledgebase200Response';
 import UploadSuccessful from './model/UploadSuccessful';
 import UploadSuccessfulResponse from './model/UploadSuccessfulResponse';
 import UrlStatus from './model/UrlStatus';
@@ -470,6 +495,7 @@ import VpcPort from './model/VpcPort';
 import VpcPortService from './model/VpcPortService';
 import VpcService from './model/VpcService';
 import WorkerPresetOutApi from './model/WorkerPresetOutApi';
+import AIAgentsApi from './api/AIAgentsApi';
 import APIKeysApi from './api/APIKeysApi';
 import AccountApi from './api/AccountApi';
 import AppsApi from './api/AppsApi';
@@ -481,6 +507,7 @@ import DomainsApi from './api/DomainsApi';
 import FirewallApi from './api/FirewallApi';
 import FloatingIPApi from './api/FloatingIPApi';
 import ImagesApi from './api/ImagesApi';
+import KnowledgeBasesApi from './api/KnowledgeBasesApi';
 import KubernetesApi from './api/KubernetesApi';
 import LocationsApi from './api/LocationsApi';
 import MailApi from './api/MailApi';
@@ -688,10 +715,40 @@ export {
     AddSubdomain201Response,
 
     /**
+     * The AddTokenPackage model constructor.
+     * @property {module:model/AddTokenPackage}
+     */
+    AddTokenPackage,
+
+    /**
      * The AddedSubdomain model constructor.
      * @property {module:model/AddedSubdomain}
      */
     AddedSubdomain,
+
+    /**
+     * The Agent model constructor.
+     * @property {module:model/Agent}
+     */
+    Agent,
+
+    /**
+     * The AgentModelSettings model constructor.
+     * @property {module:model/AgentModelSettings}
+     */
+    AgentModelSettings,
+
+    /**
+     * The AgentSettings model constructor.
+     * @property {module:model/AgentSettings}
+     */
+    AgentSettings,
+
+    /**
+     * The AgentSettingsWidget model constructor.
+     * @property {module:model/AgentSettingsWidget}
+     */
+    AgentSettingsWidget,
 
     /**
      * The ApiKey model constructor.
@@ -982,6 +1039,18 @@ export {
     CreateAdmin,
 
     /**
+     * The CreateAgent model constructor.
+     * @property {module:model/CreateAgent}
+     */
+    CreateAgent,
+
+    /**
+     * The CreateAgent201Response model constructor.
+     * @property {module:model/CreateAgent201Response}
+     */
+    CreateAgent201Response,
+
+    /**
      * The CreateApiKey model constructor.
      * @property {module:model/CreateApiKey}
      */
@@ -1172,6 +1241,18 @@ export {
      * @property {module:model/CreateKeyRequest}
      */
     CreateKeyRequest,
+
+    /**
+     * The CreateKnowledgebase model constructor.
+     * @property {module:model/CreateKnowledgebase}
+     */
+    CreateKnowledgebase,
+
+    /**
+     * The CreateKnowledgebase201Response model constructor.
+     * @property {module:model/CreateKnowledgebase201Response}
+     */
+    CreateKnowledgebase201Response,
 
     /**
      * The CreateMultipleDomainMailboxes201Response model constructor.
@@ -1528,6 +1609,24 @@ export {
     DnsRecordData,
 
     /**
+     * The Document model constructor.
+     * @property {module:model/Document}
+     */
+    Document,
+
+    /**
+     * The DocumentStatusInfo model constructor.
+     * @property {module:model/DocumentStatusInfo}
+     */
+    DocumentStatusInfo,
+
+    /**
+     * The DocumentStatusInfoDetails model constructor.
+     * @property {module:model/DocumentStatusInfoDetails}
+     */
+    DocumentStatusInfoDetails,
+
+    /**
      * The Domain model constructor.
      * @property {module:model/Domain}
      */
@@ -1736,6 +1835,30 @@ export {
      * @property {module:model/GetAccountStatus403Response}
      */
     GetAccountStatus403Response,
+
+    /**
+     * The GetAgentStatistics200Response model constructor.
+     * @property {module:model/GetAgentStatistics200Response}
+     */
+    GetAgentStatistics200Response,
+
+    /**
+     * The GetAgentStatistics200ResponseMeta model constructor.
+     * @property {module:model/GetAgentStatistics200ResponseMeta}
+     */
+    GetAgentStatistics200ResponseMeta,
+
+    /**
+     * The GetAgents200Response model constructor.
+     * @property {module:model/GetAgents200Response}
+     */
+    GetAgents200Response,
+
+    /**
+     * The GetAgents200ResponseMeta model constructor.
+     * @property {module:model/GetAgents200ResponseMeta}
+     */
+    GetAgents200ResponseMeta,
 
     /**
      * The GetAllProjectResources200Response model constructor.
@@ -1988,6 +2111,24 @@ export {
      * @property {module:model/GetKeys200Response}
      */
     GetKeys200Response,
+
+    /**
+     * The GetKnowledgebaseStatistics200Response model constructor.
+     * @property {module:model/GetKnowledgebaseStatistics200Response}
+     */
+    GetKnowledgebaseStatistics200Response,
+
+    /**
+     * The GetKnowledgebases200Response model constructor.
+     * @property {module:model/GetKnowledgebases200Response}
+     */
+    GetKnowledgebases200Response,
+
+    /**
+     * The GetKnowledgebases200ResponseMeta model constructor.
+     * @property {module:model/GetKnowledgebases200ResponseMeta}
+     */
+    GetKnowledgebases200ResponseMeta,
 
     /**
      * The GetLocations200Response model constructor.
@@ -2342,6 +2483,12 @@ export {
      * @property {module:model/K8SVersionsResponse}
      */
     K8SVersionsResponse,
+
+    /**
+     * The Knowledgebase model constructor.
+     * @property {module:model/Knowledgebase}
+     */
+    Knowledgebase,
 
     /**
      * The Location model constructor.
@@ -2920,6 +3067,12 @@ export {
     Tags,
 
     /**
+     * The TokenStatistic model constructor.
+     * @property {module:model/TokenStatistic}
+     */
+    TokenStatistic,
+
+    /**
      * The TopLevelDomain model constructor.
      * @property {module:model/TopLevelDomain}
      */
@@ -2960,6 +3113,18 @@ export {
      * @property {module:model/UpdateAdmin}
      */
     UpdateAdmin,
+
+    /**
+     * The UpdateAgent model constructor.
+     * @property {module:model/UpdateAgent}
+     */
+    UpdateAgent,
+
+    /**
+     * The UpdateAgentSettings model constructor.
+     * @property {module:model/UpdateAgentSettings}
+     */
+    UpdateAgentSettings,
 
     /**
      * The UpdateAppSettings200Response model constructor.
@@ -3044,6 +3209,12 @@ export {
      * @property {module:model/UpdateKeyRequest}
      */
     UpdateKeyRequest,
+
+    /**
+     * The UpdateKnowledgebase model constructor.
+     * @property {module:model/UpdateKnowledgebase}
+     */
+    UpdateKnowledgebase,
 
     /**
      * The UpdateMailQuotaRequest model constructor.
@@ -3178,6 +3349,12 @@ export {
     UpdateVpc,
 
     /**
+     * The UploadFilesToKnowledgebase200Response model constructor.
+     * @property {module:model/UploadFilesToKnowledgebase200Response}
+     */
+    UploadFilesToKnowledgebase200Response,
+
+    /**
      * The UploadSuccessful model constructor.
      * @property {module:model/UploadSuccessful}
      */
@@ -3274,6 +3451,12 @@ export {
     WorkerPresetOutApi,
 
     /**
+    * The AIAgentsApi service constructor.
+    * @property {module:api/AIAgentsApi}
+    */
+    AIAgentsApi,
+
+    /**
     * The APIKeysApi service constructor.
     * @property {module:api/APIKeysApi}
     */
@@ -3338,6 +3521,12 @@ export {
     * @property {module:api/ImagesApi}
     */
     ImagesApi,
+
+    /**
+    * The KnowledgeBasesApi service constructor.
+    * @property {module:api/KnowledgeBasesApi}
+    */
+    KnowledgeBasesApi,
 
     /**
     * The KubernetesApi service constructor.
