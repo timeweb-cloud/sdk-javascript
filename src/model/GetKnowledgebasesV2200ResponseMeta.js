@@ -12,24 +12,21 @@
  */
 
 import ApiClient from '../ApiClient';
-import GetKnowledgebasesV2200ResponseMeta from './GetKnowledgebasesV2200ResponseMeta';
-import Knowledgebase from './Knowledgebase';
 
 /**
- * The GetKnowledgebases200Response model module.
- * @module model/GetKnowledgebases200Response
+ * The GetKnowledgebasesV2200ResponseMeta model module.
+ * @module model/GetKnowledgebasesV2200ResponseMeta
  * @version 1.0.0
  */
-class GetKnowledgebases200Response {
+class GetKnowledgebasesV2200ResponseMeta {
     /**
-     * Constructs a new <code>GetKnowledgebases200Response</code>.
-     * @alias module:model/GetKnowledgebases200Response
-     * @param knowledgebases {Array.<module:model/Knowledgebase>} 
-     * @param meta {module:model/GetKnowledgebasesV2200ResponseMeta} 
+     * Constructs a new <code>GetKnowledgebasesV2200ResponseMeta</code>.
+     * @alias module:model/GetKnowledgebasesV2200ResponseMeta
+     * @param total {Number} Общее количество баз знаний
      */
-    constructor(knowledgebases, meta) { 
+    constructor(total) { 
         
-        GetKnowledgebases200Response.initialize(this, knowledgebases, meta);
+        GetKnowledgebasesV2200ResponseMeta.initialize(this, total);
     }
 
     /**
@@ -37,57 +34,39 @@ class GetKnowledgebases200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, knowledgebases, meta) { 
-        obj['knowledgebases'] = knowledgebases;
-        obj['meta'] = meta;
+    static initialize(obj, total) { 
+        obj['total'] = total;
     }
 
     /**
-     * Constructs a <code>GetKnowledgebases200Response</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>GetKnowledgebasesV2200ResponseMeta</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GetKnowledgebases200Response} obj Optional instance to populate.
-     * @return {module:model/GetKnowledgebases200Response} The populated <code>GetKnowledgebases200Response</code> instance.
+     * @param {module:model/GetKnowledgebasesV2200ResponseMeta} obj Optional instance to populate.
+     * @return {module:model/GetKnowledgebasesV2200ResponseMeta} The populated <code>GetKnowledgebasesV2200ResponseMeta</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new GetKnowledgebases200Response();
+            obj = obj || new GetKnowledgebasesV2200ResponseMeta();
 
-            if (data.hasOwnProperty('knowledgebases')) {
-                obj['knowledgebases'] = ApiClient.convertToType(data['knowledgebases'], [Knowledgebase]);
-            }
-            if (data.hasOwnProperty('meta')) {
-                obj['meta'] = GetKnowledgebasesV2200ResponseMeta.constructFromObject(data['meta']);
+            if (data.hasOwnProperty('total')) {
+                obj['total'] = ApiClient.convertToType(data['total'], 'Number');
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>GetKnowledgebases200Response</code>.
+     * Validates the JSON data with respect to <code>GetKnowledgebasesV2200ResponseMeta</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetKnowledgebases200Response</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetKnowledgebasesV2200ResponseMeta</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of GetKnowledgebases200Response.RequiredProperties) {
+        for (const property of GetKnowledgebasesV2200ResponseMeta.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
-        }
-        if (data['knowledgebases']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['knowledgebases'])) {
-                throw new Error("Expected the field `knowledgebases` to be an array in the JSON data but got " + data['knowledgebases']);
-            }
-            // validate the optional field `knowledgebases` (array)
-            for (const item of data['knowledgebases']) {
-                Knowledgebase.validateJSON(item);
-            };
-        }
-        // validate the optional field `meta`
-        if (data['meta']) { // data not null
-          GetKnowledgebasesV2200ResponseMeta.validateJSON(data['meta']);
         }
 
         return true;
@@ -96,22 +75,18 @@ class GetKnowledgebases200Response {
 
 }
 
-GetKnowledgebases200Response.RequiredProperties = ["knowledgebases", "meta"];
+GetKnowledgebasesV2200ResponseMeta.RequiredProperties = ["total"];
 
 /**
- * @member {Array.<module:model/Knowledgebase>} knowledgebases
+ * Общее количество баз знаний
+ * @member {Number} total
  */
-GetKnowledgebases200Response.prototype['knowledgebases'] = undefined;
-
-/**
- * @member {module:model/GetKnowledgebasesV2200ResponseMeta} meta
- */
-GetKnowledgebases200Response.prototype['meta'] = undefined;
+GetKnowledgebasesV2200ResponseMeta.prototype['total'] = undefined;
 
 
 
 
 
 
-export default GetKnowledgebases200Response;
+export default GetKnowledgebasesV2200ResponseMeta;
 

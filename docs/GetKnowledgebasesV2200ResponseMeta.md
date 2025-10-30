@@ -1,4 +1,4 @@
-# TimewebCloudApi.GetKnowledgebases200ResponseMeta
+# TimewebCloudApi.GetKnowledgebasesV2200ResponseMeta
 
 ## Properties
 

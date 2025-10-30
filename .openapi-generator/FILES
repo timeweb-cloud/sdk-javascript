@@ -273,9 +273,12 @@ docs/GetFloatingIps200Response.md
 docs/GetImage404Response.md
 docs/GetKey200Response.md
 docs/GetKeys200Response.md
+docs/GetKnowledgebaseDocumentsV2200Response.md
+docs/GetKnowledgebaseDocumentsV2200ResponseMeta.md
 docs/GetKnowledgebaseStatistics200Response.md
 docs/GetKnowledgebases200Response.md
-docs/GetKnowledgebases200ResponseMeta.md
+docs/GetKnowledgebasesV2200Response.md
+docs/GetKnowledgebasesV2200ResponseMeta.md
 docs/GetLocations200Response.md
 docs/GetMailQuota200Response.md
 docs/GetMailboxes200Response.md
@@ -338,6 +341,7 @@ docs/Invoice.md
 docs/K8SVersionsResponse.md
 docs/KnowledgeBasesApi.md
 docs/Knowledgebase.md
+docs/KnowledgebaseV2.md
 docs/KubernetesApi.md
 docs/Location.md
 docs/LocationDto.md
@@ -795,9 +799,12 @@ src/model/GetFloatingIps200Response.js
 src/model/GetImage404Response.js
 src/model/GetKey200Response.js
 src/model/GetKeys200Response.js
+src/model/GetKnowledgebaseDocumentsV2200Response.js
+src/model/GetKnowledgebaseDocumentsV2200ResponseMeta.js
 src/model/GetKnowledgebaseStatistics200Response.js
 src/model/GetKnowledgebases200Response.js
-src/model/GetKnowledgebases200ResponseMeta.js
+src/model/GetKnowledgebasesV2200Response.js
+src/model/GetKnowledgebasesV2200ResponseMeta.js
 src/model/GetLocations200Response.js
 src/model/GetMailQuota200Response.js
 src/model/GetMailboxes200Response.js
@@ -858,6 +865,7 @@ src/model/InfoServicePrice.js
 src/model/Invoice.js
 src/model/K8SVersionsResponse.js
 src/model/Knowledgebase.js
+src/model/KnowledgebaseV2.js
 src/model/Location.js
 src/model/LocationDto.js
 src/model/Mailbox.js
@@ -1300,9 +1308,12 @@ test/model/GetFloatingIps200Response.spec.js
 test/model/GetImage404Response.spec.js
 test/model/GetKey200Response.spec.js
 test/model/GetKeys200Response.spec.js
+test/model/GetKnowledgebaseDocumentsV2200Response.spec.js
+test/model/GetKnowledgebaseDocumentsV2200ResponseMeta.spec.js
 test/model/GetKnowledgebaseStatistics200Response.spec.js
 test/model/GetKnowledgebases200Response.spec.js
-test/model/GetKnowledgebases200ResponseMeta.spec.js
+test/model/GetKnowledgebasesV2200Response.spec.js
+test/model/GetKnowledgebasesV2200ResponseMeta.spec.js
 test/model/GetLocations200Response.spec.js
 test/model/GetMailQuota200Response.spec.js
 test/model/GetMailboxes200Response.spec.js
@@ -1363,6 +1374,7 @@ test/model/InfoServicePrice.spec.js
 test/model/Invoice.spec.js
 test/model/K8SVersionsResponse.spec.js
 test/model/Knowledgebase.spec.js
+test/model/KnowledgebaseV2.spec.js
 test/model/Location.spec.js
 test/model/LocationDto.spec.js
 test/model/Mailbox.spec.js

@@ -13,23 +13,23 @@
 
 import ApiClient from '../ApiClient';
 import GetKnowledgebasesV2200ResponseMeta from './GetKnowledgebasesV2200ResponseMeta';
-import Knowledgebase from './Knowledgebase';
+import KnowledgebaseV2 from './KnowledgebaseV2';
 
 /**
- * The GetKnowledgebases200Response model module.
- * @module model/GetKnowledgebases200Response
+ * The GetKnowledgebasesV2200Response model module.
+ * @module model/GetKnowledgebasesV2200Response
  * @version 1.0.0
  */
-class GetKnowledgebases200Response {
+class GetKnowledgebasesV2200Response {
     /**
-     * Constructs a new <code>GetKnowledgebases200Response</code>.
-     * @alias module:model/GetKnowledgebases200Response
-     * @param knowledgebases {Array.<module:model/Knowledgebase>} 
+     * Constructs a new <code>GetKnowledgebasesV2200Response</code>.
+     * @alias module:model/GetKnowledgebasesV2200Response
+     * @param knowledgebases {Array.<module:model/KnowledgebaseV2>} 
      * @param meta {module:model/GetKnowledgebasesV2200ResponseMeta} 
      */
     constructor(knowledgebases, meta) { 
         
-        GetKnowledgebases200Response.initialize(this, knowledgebases, meta);
+        GetKnowledgebasesV2200Response.initialize(this, knowledgebases, meta);
     }
 
     /**
@@ -43,18 +43,18 @@ class GetKnowledgebases200Response {
     }
 
     /**
-     * Constructs a <code>GetKnowledgebases200Response</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>GetKnowledgebasesV2200Response</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GetKnowledgebases200Response} obj Optional instance to populate.
-     * @return {module:model/GetKnowledgebases200Response} The populated <code>GetKnowledgebases200Response</code> instance.
+     * @param {module:model/GetKnowledgebasesV2200Response} obj Optional instance to populate.
+     * @return {module:model/GetKnowledgebasesV2200Response} The populated <code>GetKnowledgebasesV2200Response</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new GetKnowledgebases200Response();
+            obj = obj || new GetKnowledgebasesV2200Response();
 
             if (data.hasOwnProperty('knowledgebases')) {
-                obj['knowledgebases'] = ApiClient.convertToType(data['knowledgebases'], [Knowledgebase]);
+                obj['knowledgebases'] = ApiClient.convertToType(data['knowledgebases'], [KnowledgebaseV2]);
             }
             if (data.hasOwnProperty('meta')) {
                 obj['meta'] = GetKnowledgebasesV2200ResponseMeta.constructFromObject(data['meta']);
@@ -64,13 +64,13 @@ class GetKnowledgebases200Response {
     }
 
     /**
-     * Validates the JSON data with respect to <code>GetKnowledgebases200Response</code>.
+     * Validates the JSON data with respect to <code>GetKnowledgebasesV2200Response</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetKnowledgebases200Response</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetKnowledgebasesV2200Response</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of GetKnowledgebases200Response.RequiredProperties) {
+        for (const property of GetKnowledgebasesV2200Response.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
@@ -82,7 +82,7 @@ class GetKnowledgebases200Response {
             }
             // validate the optional field `knowledgebases` (array)
             for (const item of data['knowledgebases']) {
-                Knowledgebase.validateJSON(item);
+                KnowledgebaseV2.validateJSON(item);
             };
         }
         // validate the optional field `meta`
@@ -96,22 +96,22 @@ class GetKnowledgebases200Response {
 
 }
 
-GetKnowledgebases200Response.RequiredProperties = ["knowledgebases", "meta"];
+GetKnowledgebasesV2200Response.RequiredProperties = ["knowledgebases", "meta"];
 
 /**
- * @member {Array.<module:model/Knowledgebase>} knowledgebases
+ * @member {Array.<module:model/KnowledgebaseV2>} knowledgebases
  */
-GetKnowledgebases200Response.prototype['knowledgebases'] = undefined;
+GetKnowledgebasesV2200Response.prototype['knowledgebases'] = undefined;
 
 /**
  * @member {module:model/GetKnowledgebasesV2200ResponseMeta} meta
  */
-GetKnowledgebases200Response.prototype['meta'] = undefined;
+GetKnowledgebasesV2200Response.prototype['meta'] = undefined;
 
 
 
 
 
 
-export default GetKnowledgebases200Response;
+export default GetKnowledgebasesV2200Response;
 

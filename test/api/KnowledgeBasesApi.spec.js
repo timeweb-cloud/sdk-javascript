@@ -108,6 +108,16 @@
         done();
       });
     });
+    describe('getKnowledgebaseDocumentsV2', function() {
+      it('should call getKnowledgebaseDocumentsV2 successfully', function(done) {
+        //uncomment below and update the code to test getKnowledgebaseDocumentsV2
+        //instance.getKnowledgebaseDocumentsV2(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getKnowledgebaseStatistics', function() {
       it('should call getKnowledgebaseStatistics successfully', function(done) {
         //uncomment below and update the code to test getKnowledgebaseStatistics
@@ -122,6 +132,16 @@
       it('should call getKnowledgebases successfully', function(done) {
         //uncomment below and update the code to test getKnowledgebases
         //instance.getKnowledgebases(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getKnowledgebasesV2', function() {
+      it('should call getKnowledgebasesV2 successfully', function(done) {
+        //uncomment below and update the code to test getKnowledgebasesV2
+        //instance.getKnowledgebasesV2(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

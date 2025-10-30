@@ -10,8 +10,10 @@ Method | HTTP request | Description
 [**deleteKnowledgebase**](KnowledgeBasesApi.md#deleteKnowledgebase) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id} | Удаление базы знаний
 [**downloadDocument**](KnowledgeBasesApi.md#downloadDocument) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download | Скачивание документа из базы знаний
 [**getKnowledgebase**](KnowledgeBasesApi.md#getKnowledgebase) | **GET** /api/v1/cloud-ai/knowledge-bases/{id} | Получение базы знаний
+[**getKnowledgebaseDocumentsV2**](KnowledgeBasesApi.md#getKnowledgebaseDocumentsV2) | **GET** /api/v2/cloud-ai/knowledge-bases/{id}/documents | Получение списка документов базы знаний
 [**getKnowledgebaseStatistics**](KnowledgeBasesApi.md#getKnowledgebaseStatistics) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/statistic | Получение статистики использования токенов базы знаний
 [**getKnowledgebases**](KnowledgeBasesApi.md#getKnowledgebases) | **GET** /api/v1/cloud-ai/knowledge-bases | Получение списка баз знаний
+[**getKnowledgebasesV2**](KnowledgeBasesApi.md#getKnowledgebasesV2) | **GET** /api/v2/cloud-ai/knowledge-bases | Получение списка баз знаний (v2)
 [**linkKnowledgebaseToAgent**](KnowledgeBasesApi.md#linkKnowledgebaseToAgent) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Привязка базы знаний к агенту
 [**reindexDocument**](KnowledgeBasesApi.md#reindexDocument) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex | Переиндексация документа
 [**unlinkKnowledgebaseFromAgent**](KnowledgeBasesApi.md#unlinkKnowledgebaseFromAgent) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Отвязка базы знаний от агента
@@ -322,6 +324,65 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## getKnowledgebaseDocumentsV2
+
+> GetKnowledgebaseDocumentsV2200Response getKnowledgebaseDocumentsV2(id, opts)
+
+Получение списка документов базы знаний
+
+Чтобы получить список документов базы знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
+let id = 1; // Number | ID базы знаний
+let opts = {
+  'limit': 20, // Number | Количество документов на странице (по умолчанию: 10, максимум: 100)
+  'offset': 0, // Number | Количество документов для пропуска (по умолчанию: 0)
+  'sortBy': indexing_timestamp, // String | Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа)
+  'sortOrder': DESC // String | Порядок сортировки (по умолчанию: DESC)
+};
+apiInstance.getKnowledgebaseDocumentsV2(id, opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**| ID базы знаний | 
+ **limit** | **Number**| Количество документов на странице (по умолчанию: 10, максимум: 100) | [optional] [default to 10]
+ **offset** | **Number**| Количество документов для пропуска (по умолчанию: 0) | [optional] [default to 0]
+ **sortBy** | **String**| Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа) | [optional] [default to &#39;indexing_timestamp&#39;]
+ **sortOrder** | **String**| Порядок сортировки (по умолчанию: DESC) | [optional] [default to &#39;DESC&#39;]
+
+### Return type
+
+[**GetKnowledgebaseDocumentsV2200Response**](GetKnowledgebaseDocumentsV2200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## getKnowledgebaseStatistics
 
 > GetKnowledgebaseStatistics200Response getKnowledgebaseStatistics(id, opts)
@@ -413,6 +474,51 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**GetKnowledgebases200Response**](GetKnowledgebases200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getKnowledgebasesV2
+
+> GetKnowledgebasesV2200Response getKnowledgebasesV2()
+
+Получение списка баз знаний (v2)
+
+Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Версия API v2 возвращает оптимизированный ответ с количеством документов вместо полного списка документов.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
+apiInstance.getKnowledgebasesV2((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetKnowledgebasesV2200Response**](GetKnowledgebasesV2200Response.md)
 
 ### Authorization
 

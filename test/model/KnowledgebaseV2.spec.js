@@ -11,107 +11,133 @@
  *
  */
 
-import ApiClient from '../ApiClient';
-import GetKnowledgebasesV2200ResponseMeta from './GetKnowledgebasesV2200ResponseMeta';
-import Knowledgebase from './Knowledgebase';
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', process.cwd()+'/src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.TimewebCloudApi);
+  }
+}(this, function(expect, TimewebCloudApi) {
+  'use strict';
 
-/**
- * The GetKnowledgebases200Response model module.
- * @module model/GetKnowledgebases200Response
- * @version 1.0.0
- */
-class GetKnowledgebases200Response {
-    /**
-     * Constructs a new <code>GetKnowledgebases200Response</code>.
-     * @alias module:model/GetKnowledgebases200Response
-     * @param knowledgebases {Array.<module:model/Knowledgebase>} 
-     * @param meta {module:model/GetKnowledgebasesV2200ResponseMeta} 
-     */
-    constructor(knowledgebases, meta) { 
-        
-        GetKnowledgebases200Response.initialize(this, knowledgebases, meta);
-    }
+  var instance;
 
-    /**
-     * Initializes the fields of this object.
-     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
-     * Only for internal use.
-     */
-    static initialize(obj, knowledgebases, meta) { 
-        obj['knowledgebases'] = knowledgebases;
-        obj['meta'] = meta;
-    }
+  beforeEach(function() {
+    instance = new TimewebCloudApi.KnowledgebaseV2();
+  });
 
-    /**
-     * Constructs a <code>GetKnowledgebases200Response</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GetKnowledgebases200Response} obj Optional instance to populate.
-     * @return {module:model/GetKnowledgebases200Response} The populated <code>GetKnowledgebases200Response</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new GetKnowledgebases200Response();
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
-            if (data.hasOwnProperty('knowledgebases')) {
-                obj['knowledgebases'] = ApiClient.convertToType(data['knowledgebases'], [Knowledgebase]);
-            }
-            if (data.hasOwnProperty('meta')) {
-                obj['meta'] = GetKnowledgebasesV2200ResponseMeta.constructFromObject(data['meta']);
-            }
-        }
-        return obj;
-    }
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-    /**
-     * Validates the JSON data with respect to <code>GetKnowledgebases200Response</code>.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetKnowledgebases200Response</code>.
-     */
-    static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of GetKnowledgebases200Response.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
-        if (data['knowledgebases']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['knowledgebases'])) {
-                throw new Error("Expected the field `knowledgebases` to be an array in the JSON data but got " + data['knowledgebases']);
-            }
-            // validate the optional field `knowledgebases` (array)
-            for (const item of data['knowledgebases']) {
-                Knowledgebase.validateJSON(item);
-            };
-        }
-        // validate the optional field `meta`
-        if (data['meta']) { // data not null
-          GetKnowledgebasesV2200ResponseMeta.validateJSON(data['meta']);
-        }
+  describe('KnowledgebaseV2', function() {
+    it('should create an instance of KnowledgebaseV2', function() {
+      // uncomment below and update the code to test KnowledgebaseV2
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be.a(TimewebCloudApi.KnowledgebaseV2);
+    });
 
-        return true;
-    }
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
 
-}
+    it('should have the property description (base name: "description")', function() {
+      // uncomment below and update the code to test the property description
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
 
-GetKnowledgebases200Response.RequiredProperties = ["knowledgebases", "meta"];
+    it('should have the property dbaasId (base name: "dbaas_id")', function() {
+      // uncomment below and update the code to test the property dbaasId
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
 
-/**
- * @member {Array.<module:model/Knowledgebase>} knowledgebases
- */
-GetKnowledgebases200Response.prototype['knowledgebases'] = undefined;
+    it('should have the property status (base name: "status")', function() {
+      // uncomment below and update the code to test the property status
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
 
-/**
- * @member {module:model/GetKnowledgebasesV2200ResponseMeta} meta
- */
-GetKnowledgebases200Response.prototype['meta'] = undefined;
+    it('should have the property lastSync (base name: "last_sync")', function() {
+      // uncomment below and update the code to test the property lastSync
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property totalTokens (base name: "total_tokens")', function() {
+      // uncomment below and update the code to test the property totalTokens
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property usedTokens (base name: "used_tokens")', function() {
+      // uncomment below and update the code to test the property usedTokens
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property remainingTokens (base name: "remaining_tokens")', function() {
+      // uncomment below and update the code to test the property remainingTokens
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property tokenPackageId (base name: "token_package_id")', function() {
+      // uncomment below and update the code to test the property tokenPackageId
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property subscriptionRenewalDate (base name: "subscription_renewal_date")', function() {
+      // uncomment below and update the code to test the property subscriptionRenewalDate
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
 
-export default GetKnowledgebases200Response;
+    it('should have the property documentsCount (base name: "documents_count")', function() {
+      // uncomment below and update the code to test the property documentsCount
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property agentsIds (base name: "agents_ids")', function() {
+      // uncomment below and update the code to test the property agentsIds
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property createdAt (base name: "created_at")', function() {
+      // uncomment below and update the code to test the property createdAt
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
+
+  });
+
+}));

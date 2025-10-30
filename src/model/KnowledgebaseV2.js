@@ -12,24 +12,33 @@
  */
 
 import ApiClient from '../ApiClient';
-import GetKnowledgebasesV2200ResponseMeta from './GetKnowledgebasesV2200ResponseMeta';
-import Knowledgebase from './Knowledgebase';
 
 /**
- * The GetKnowledgebases200Response model module.
- * @module model/GetKnowledgebases200Response
+ * The KnowledgebaseV2 model module.
+ * @module model/KnowledgebaseV2
  * @version 1.0.0
  */
-class GetKnowledgebases200Response {
+class KnowledgebaseV2 {
     /**
-     * Constructs a new <code>GetKnowledgebases200Response</code>.
-     * @alias module:model/GetKnowledgebases200Response
-     * @param knowledgebases {Array.<module:model/Knowledgebase>} 
-     * @param meta {module:model/GetKnowledgebasesV2200ResponseMeta} 
+     * Constructs a new <code>KnowledgebaseV2</code>.
+     * База знаний (версия API v2)
+     * @alias module:model/KnowledgebaseV2
+     * @param id {Number} Уникальный идентификатор базы знаний
+     * @param name {String} Название базы знаний
+     * @param dbaasId {Number} ID базы данных opensearch
+     * @param status {module:model/KnowledgebaseV2.StatusEnum} Статус базы знаний
+     * @param totalTokens {Number} Всего токенов выделено
+     * @param usedTokens {Number} Использовано токенов
+     * @param remainingTokens {Number} Осталось токенов
+     * @param tokenPackageId {Number} ID пакета токенов
+     * @param subscriptionRenewalDate {Date} Дата обновления подписки
+     * @param documentsCount {Number} Общее количество документов в базе знаний
+     * @param agentsIds {Array.<Number>} ID агентов, связанных с базой знаний
+     * @param createdAt {Date} Дата создания базы знаний
      */
-    constructor(knowledgebases, meta) { 
+    constructor(id, name, dbaasId, status, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, documentsCount, agentsIds, createdAt) { 
         
-        GetKnowledgebases200Response.initialize(this, knowledgebases, meta);
+        KnowledgebaseV2.initialize(this, id, name, dbaasId, status, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, documentsCount, agentsIds, createdAt);
     }
 
     /**
@@ -37,57 +46,105 @@ class GetKnowledgebases200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, knowledgebases, meta) { 
-        obj['knowledgebases'] = knowledgebases;
-        obj['meta'] = meta;
+    static initialize(obj, id, name, dbaasId, status, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, documentsCount, agentsIds, createdAt) { 
+        obj['id'] = id;
+        obj['name'] = name;
+        obj['dbaas_id'] = dbaasId;
+        obj['status'] = status;
+        obj['total_tokens'] = totalTokens;
+        obj['used_tokens'] = usedTokens;
+        obj['remaining_tokens'] = remainingTokens;
+        obj['token_package_id'] = tokenPackageId;
+        obj['subscription_renewal_date'] = subscriptionRenewalDate;
+        obj['documents_count'] = documentsCount;
+        obj['agents_ids'] = agentsIds;
+        obj['created_at'] = createdAt;
     }
 
     /**
-     * Constructs a <code>GetKnowledgebases200Response</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>KnowledgebaseV2</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GetKnowledgebases200Response} obj Optional instance to populate.
-     * @return {module:model/GetKnowledgebases200Response} The populated <code>GetKnowledgebases200Response</code> instance.
+     * @param {module:model/KnowledgebaseV2} obj Optional instance to populate.
+     * @return {module:model/KnowledgebaseV2} The populated <code>KnowledgebaseV2</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new GetKnowledgebases200Response();
+            obj = obj || new KnowledgebaseV2();
 
-            if (data.hasOwnProperty('knowledgebases')) {
-                obj['knowledgebases'] = ApiClient.convertToType(data['knowledgebases'], [Knowledgebase]);
+            if (data.hasOwnProperty('id')) {
+                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
             }
-            if (data.hasOwnProperty('meta')) {
-                obj['meta'] = GetKnowledgebasesV2200ResponseMeta.constructFromObject(data['meta']);
+            if (data.hasOwnProperty('name')) {
+                obj['name'] = ApiClient.convertToType(data['name'], 'String');
+            }
+            if (data.hasOwnProperty('description')) {
+                obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
+            if (data.hasOwnProperty('dbaas_id')) {
+                obj['dbaas_id'] = ApiClient.convertToType(data['dbaas_id'], 'Number');
+            }
+            if (data.hasOwnProperty('status')) {
+                obj['status'] = ApiClient.convertToType(data['status'], 'String');
+            }
+            if (data.hasOwnProperty('last_sync')) {
+                obj['last_sync'] = ApiClient.convertToType(data['last_sync'], 'Date');
+            }
+            if (data.hasOwnProperty('total_tokens')) {
+                obj['total_tokens'] = ApiClient.convertToType(data['total_tokens'], 'Number');
+            }
+            if (data.hasOwnProperty('used_tokens')) {
+                obj['used_tokens'] = ApiClient.convertToType(data['used_tokens'], 'Number');
+            }
+            if (data.hasOwnProperty('remaining_tokens')) {
+                obj['remaining_tokens'] = ApiClient.convertToType(data['remaining_tokens'], 'Number');
+            }
+            if (data.hasOwnProperty('token_package_id')) {
+                obj['token_package_id'] = ApiClient.convertToType(data['token_package_id'], 'Number');
+            }
+            if (data.hasOwnProperty('subscription_renewal_date')) {
+                obj['subscription_renewal_date'] = ApiClient.convertToType(data['subscription_renewal_date'], 'Date');
+            }
+            if (data.hasOwnProperty('documents_count')) {
+                obj['documents_count'] = ApiClient.convertToType(data['documents_count'], 'Number');
+            }
+            if (data.hasOwnProperty('agents_ids')) {
+                obj['agents_ids'] = ApiClient.convertToType(data['agents_ids'], ['Number']);
+            }
+            if (data.hasOwnProperty('created_at')) {
+                obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>GetKnowledgebases200Response</code>.
+     * Validates the JSON data with respect to <code>KnowledgebaseV2</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetKnowledgebases200Response</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>KnowledgebaseV2</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of GetKnowledgebases200Response.RequiredProperties) {
+        for (const property of KnowledgebaseV2.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        if (data['knowledgebases']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['knowledgebases'])) {
-                throw new Error("Expected the field `knowledgebases` to be an array in the JSON data but got " + data['knowledgebases']);
-            }
-            // validate the optional field `knowledgebases` (array)
-            for (const item of data['knowledgebases']) {
-                Knowledgebase.validateJSON(item);
-            };
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
-        // validate the optional field `meta`
-        if (data['meta']) { // data not null
-          GetKnowledgebasesV2200ResponseMeta.validateJSON(data['meta']);
+        // ensure the json data is a string
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // ensure the json data is a string
+        if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
+            throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['agents_ids'])) {
+            throw new Error("Expected the field `agents_ids` to be an array in the JSON data but got " + data['agents_ids']);
         }
 
         return true;
@@ -96,22 +153,129 @@ class GetKnowledgebases200Response {
 
 }
 
-GetKnowledgebases200Response.RequiredProperties = ["knowledgebases", "meta"];
+KnowledgebaseV2.RequiredProperties = ["id", "name", "dbaas_id", "status", "total_tokens", "used_tokens", "remaining_tokens", "token_package_id", "subscription_renewal_date", "documents_count", "agents_ids", "created_at"];
 
 /**
- * @member {Array.<module:model/Knowledgebase>} knowledgebases
+ * Уникальный идентификатор базы знаний
+ * @member {Number} id
  */
-GetKnowledgebases200Response.prototype['knowledgebases'] = undefined;
+KnowledgebaseV2.prototype['id'] = undefined;
 
 /**
- * @member {module:model/GetKnowledgebasesV2200ResponseMeta} meta
+ * Название базы знаний
+ * @member {String} name
  */
-GetKnowledgebases200Response.prototype['meta'] = undefined;
+KnowledgebaseV2.prototype['name'] = undefined;
+
+/**
+ * Описание базы знаний
+ * @member {String} description
+ */
+KnowledgebaseV2.prototype['description'] = undefined;
+
+/**
+ * ID базы данных opensearch
+ * @member {Number} dbaas_id
+ */
+KnowledgebaseV2.prototype['dbaas_id'] = undefined;
+
+/**
+ * Статус базы знаний
+ * @member {module:model/KnowledgebaseV2.StatusEnum} status
+ */
+KnowledgebaseV2.prototype['status'] = undefined;
+
+/**
+ * Дата последней синхронизации
+ * @member {Date} last_sync
+ */
+KnowledgebaseV2.prototype['last_sync'] = undefined;
+
+/**
+ * Всего токенов выделено
+ * @member {Number} total_tokens
+ */
+KnowledgebaseV2.prototype['total_tokens'] = undefined;
+
+/**
+ * Использовано токенов
+ * @member {Number} used_tokens
+ */
+KnowledgebaseV2.prototype['used_tokens'] = undefined;
+
+/**
+ * Осталось токенов
+ * @member {Number} remaining_tokens
+ */
+KnowledgebaseV2.prototype['remaining_tokens'] = undefined;
+
+/**
+ * ID пакета токенов
+ * @member {Number} token_package_id
+ */
+KnowledgebaseV2.prototype['token_package_id'] = undefined;
+
+/**
+ * Дата обновления подписки
+ * @member {Date} subscription_renewal_date
+ */
+KnowledgebaseV2.prototype['subscription_renewal_date'] = undefined;
+
+/**
+ * Общее количество документов в базе знаний
+ * @member {Number} documents_count
+ */
+KnowledgebaseV2.prototype['documents_count'] = undefined;
+
+/**
+ * ID агентов, связанных с базой знаний
+ * @member {Array.<Number>} agents_ids
+ */
+KnowledgebaseV2.prototype['agents_ids'] = undefined;
+
+/**
+ * Дата создания базы знаний
+ * @member {Date} created_at
+ */
+KnowledgebaseV2.prototype['created_at'] = undefined;
 
 
 
 
 
+/**
+ * Allowed values for the <code>status</code> property.
+ * @enum {String}
+ * @readonly
+ */
+KnowledgebaseV2['StatusEnum'] = {
 
-export default GetKnowledgebases200Response;
+    /**
+     * value: "active"
+     * @const
+     */
+    "active": "active",
+
+    /**
+     * value: "blocked"
+     * @const
+     */
+    "blocked": "blocked",
+
+    /**
+     * value: "creating"
+     * @const
+     */
+    "creating": "creating",
+
+    /**
+     * value: "deleted"
+     * @const
+     */
+    "deleted": "deleted"
+};
+
+
+
+export default KnowledgebaseV2;
 

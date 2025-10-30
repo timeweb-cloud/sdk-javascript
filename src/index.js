@@ -272,9 +272,12 @@ import GetFloatingIps200Response from './model/GetFloatingIps200Response';
 import GetImage404Response from './model/GetImage404Response';
 import GetKey200Response from './model/GetKey200Response';
 import GetKeys200Response from './model/GetKeys200Response';
+import GetKnowledgebaseDocumentsV2200Response from './model/GetKnowledgebaseDocumentsV2200Response';
+import GetKnowledgebaseDocumentsV2200ResponseMeta from './model/GetKnowledgebaseDocumentsV2200ResponseMeta';
 import GetKnowledgebaseStatistics200Response from './model/GetKnowledgebaseStatistics200Response';
 import GetKnowledgebases200Response from './model/GetKnowledgebases200Response';
-import GetKnowledgebases200ResponseMeta from './model/GetKnowledgebases200ResponseMeta';
+import GetKnowledgebasesV2200Response from './model/GetKnowledgebasesV2200Response';
+import GetKnowledgebasesV2200ResponseMeta from './model/GetKnowledgebasesV2200ResponseMeta';
 import GetLocations200Response from './model/GetLocations200Response';
 import GetMailQuota200Response from './model/GetMailQuota200Response';
 import GetMailboxes200Response from './model/GetMailboxes200Response';
@@ -335,6 +338,7 @@ import InfoServicePrice from './model/InfoServicePrice';
 import Invoice from './model/Invoice';
 import K8SVersionsResponse from './model/K8SVersionsResponse';
 import Knowledgebase from './model/Knowledgebase';
+import KnowledgebaseV2 from './model/KnowledgebaseV2';
 import Location from './model/Location';
 import LocationDto from './model/LocationDto';
 import Mailbox from './model/Mailbox';
@@ -2113,6 +2117,18 @@ export {
     GetKeys200Response,
 
     /**
+     * The GetKnowledgebaseDocumentsV2200Response model constructor.
+     * @property {module:model/GetKnowledgebaseDocumentsV2200Response}
+     */
+    GetKnowledgebaseDocumentsV2200Response,
+
+    /**
+     * The GetKnowledgebaseDocumentsV2200ResponseMeta model constructor.
+     * @property {module:model/GetKnowledgebaseDocumentsV2200ResponseMeta}
+     */
+    GetKnowledgebaseDocumentsV2200ResponseMeta,
+
+    /**
      * The GetKnowledgebaseStatistics200Response model constructor.
      * @property {module:model/GetKnowledgebaseStatistics200Response}
      */
@@ -2125,10 +2141,16 @@ export {
     GetKnowledgebases200Response,
 
     /**
-     * The GetKnowledgebases200ResponseMeta model constructor.
-     * @property {module:model/GetKnowledgebases200ResponseMeta}
+     * The GetKnowledgebasesV2200Response model constructor.
+     * @property {module:model/GetKnowledgebasesV2200Response}
      */
-    GetKnowledgebases200ResponseMeta,
+    GetKnowledgebasesV2200Response,
+
+    /**
+     * The GetKnowledgebasesV2200ResponseMeta model constructor.
+     * @property {module:model/GetKnowledgebasesV2200ResponseMeta}
+     */
+    GetKnowledgebasesV2200ResponseMeta,
 
     /**
      * The GetLocations200Response model constructor.
@@ -2489,6 +2511,12 @@ export {
      * @property {module:model/Knowledgebase}
      */
     Knowledgebase,
+
+    /**
+     * The KnowledgebaseV2 model constructor.
+     * @property {module:model/KnowledgebaseV2}
+     */
+    KnowledgebaseV2,
 
     /**
      * The Location model constructor.

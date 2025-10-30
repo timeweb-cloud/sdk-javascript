@@ -11,55 +11,108 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
+import Document from './Document';
+import GetKnowledgebaseDocumentsV2200ResponseMeta from './GetKnowledgebaseDocumentsV2200ResponseMeta';
 
-  var instance;
+/**
+ * The GetKnowledgebaseDocumentsV2200Response model module.
+ * @module model/GetKnowledgebaseDocumentsV2200Response
+ * @version 1.0.0
+ */
+class GetKnowledgebaseDocumentsV2200Response {
+    /**
+     * Constructs a new <code>GetKnowledgebaseDocumentsV2200Response</code>.
+     * @alias module:model/GetKnowledgebaseDocumentsV2200Response
+     * @param knowledgebaseDocuments {Array.<module:model/Document>} Список документов
+     * @param meta {module:model/GetKnowledgebaseDocumentsV2200ResponseMeta} 
+     */
+    constructor(knowledgebaseDocuments, meta) { 
+        
+        GetKnowledgebaseDocumentsV2200Response.initialize(this, knowledgebaseDocuments, meta);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.GetKnowledgebases200ResponseMeta();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, knowledgebaseDocuments, meta) { 
+        obj['knowledgebase_documents'] = knowledgebaseDocuments;
+        obj['meta'] = meta;
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>GetKnowledgebaseDocumentsV2200Response</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/GetKnowledgebaseDocumentsV2200Response} obj Optional instance to populate.
+     * @return {module:model/GetKnowledgebaseDocumentsV2200Response} The populated <code>GetKnowledgebaseDocumentsV2200Response</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new GetKnowledgebaseDocumentsV2200Response();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('knowledgebase_documents')) {
+                obj['knowledgebase_documents'] = ApiClient.convertToType(data['knowledgebase_documents'], [Document]);
+            }
+            if (data.hasOwnProperty('meta')) {
+                obj['meta'] = GetKnowledgebaseDocumentsV2200ResponseMeta.constructFromObject(data['meta']);
+            }
+        }
+        return obj;
+    }
 
-  describe('GetKnowledgebases200ResponseMeta', function() {
-    it('should create an instance of GetKnowledgebases200ResponseMeta', function() {
-      // uncomment below and update the code to test GetKnowledgebases200ResponseMeta
-      //var instance = new TimewebCloudApi.GetKnowledgebases200ResponseMeta();
-      //expect(instance).to.be.a(TimewebCloudApi.GetKnowledgebases200ResponseMeta);
-    });
+    /**
+     * Validates the JSON data with respect to <code>GetKnowledgebaseDocumentsV2200Response</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetKnowledgebaseDocumentsV2200Response</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of GetKnowledgebaseDocumentsV2200Response.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        if (data['knowledgebase_documents']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['knowledgebase_documents'])) {
+                throw new Error("Expected the field `knowledgebase_documents` to be an array in the JSON data but got " + data['knowledgebase_documents']);
+            }
+            // validate the optional field `knowledgebase_documents` (array)
+            for (const item of data['knowledgebase_documents']) {
+                Document.validateJSON(item);
+            };
+        }
+        // validate the optional field `meta`
+        if (data['meta']) { // data not null
+          GetKnowledgebaseDocumentsV2200ResponseMeta.validateJSON(data['meta']);
+        }
 
-    it('should have the property total (base name: "total")', function() {
-      // uncomment below and update the code to test the property total
-      //var instance = new TimewebCloudApi.GetKnowledgebases200ResponseMeta();
-      //expect(instance).to.be();
-    });
+        return true;
+    }
 
-  });
 
-}));
+}
+
+GetKnowledgebaseDocumentsV2200Response.RequiredProperties = ["knowledgebase_documents", "meta"];
+
+/**
+ * Список документов
+ * @member {Array.<module:model/Document>} knowledgebase_documents
+ */
+GetKnowledgebaseDocumentsV2200Response.prototype['knowledgebase_documents'] = undefined;
+
+/**
+ * @member {module:model/GetKnowledgebaseDocumentsV2200ResponseMeta} meta
+ */
+GetKnowledgebaseDocumentsV2200Response.prototype['meta'] = undefined;
+
+
+
+
+
+
+export default GetKnowledgebaseDocumentsV2200Response;
+

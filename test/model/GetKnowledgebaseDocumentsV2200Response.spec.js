@@ -11,107 +11,61 @@
  *
  */
 
-import ApiClient from '../ApiClient';
-import GetKnowledgebasesV2200ResponseMeta from './GetKnowledgebasesV2200ResponseMeta';
-import Knowledgebase from './Knowledgebase';
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', process.cwd()+'/src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.TimewebCloudApi);
+  }
+}(this, function(expect, TimewebCloudApi) {
+  'use strict';
 
-/**
- * The GetKnowledgebases200Response model module.
- * @module model/GetKnowledgebases200Response
- * @version 1.0.0
- */
-class GetKnowledgebases200Response {
-    /**
-     * Constructs a new <code>GetKnowledgebases200Response</code>.
-     * @alias module:model/GetKnowledgebases200Response
-     * @param knowledgebases {Array.<module:model/Knowledgebase>} 
-     * @param meta {module:model/GetKnowledgebasesV2200ResponseMeta} 
-     */
-    constructor(knowledgebases, meta) { 
-        
-        GetKnowledgebases200Response.initialize(this, knowledgebases, meta);
-    }
+  var instance;
 
-    /**
-     * Initializes the fields of this object.
-     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
-     * Only for internal use.
-     */
-    static initialize(obj, knowledgebases, meta) { 
-        obj['knowledgebases'] = knowledgebases;
-        obj['meta'] = meta;
-    }
+  beforeEach(function() {
+    instance = new TimewebCloudApi.GetKnowledgebaseDocumentsV2200Response();
+  });
 
-    /**
-     * Constructs a <code>GetKnowledgebases200Response</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GetKnowledgebases200Response} obj Optional instance to populate.
-     * @return {module:model/GetKnowledgebases200Response} The populated <code>GetKnowledgebases200Response</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new GetKnowledgebases200Response();
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
-            if (data.hasOwnProperty('knowledgebases')) {
-                obj['knowledgebases'] = ApiClient.convertToType(data['knowledgebases'], [Knowledgebase]);
-            }
-            if (data.hasOwnProperty('meta')) {
-                obj['meta'] = GetKnowledgebasesV2200ResponseMeta.constructFromObject(data['meta']);
-            }
-        }
-        return obj;
-    }
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-    /**
-     * Validates the JSON data with respect to <code>GetKnowledgebases200Response</code>.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetKnowledgebases200Response</code>.
-     */
-    static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of GetKnowledgebases200Response.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
-        if (data['knowledgebases']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['knowledgebases'])) {
-                throw new Error("Expected the field `knowledgebases` to be an array in the JSON data but got " + data['knowledgebases']);
-            }
-            // validate the optional field `knowledgebases` (array)
-            for (const item of data['knowledgebases']) {
-                Knowledgebase.validateJSON(item);
-            };
-        }
-        // validate the optional field `meta`
-        if (data['meta']) { // data not null
-          GetKnowledgebasesV2200ResponseMeta.validateJSON(data['meta']);
-        }
+  describe('GetKnowledgebaseDocumentsV2200Response', function() {
+    it('should create an instance of GetKnowledgebaseDocumentsV2200Response', function() {
+      // uncomment below and update the code to test GetKnowledgebaseDocumentsV2200Response
+      //var instance = new TimewebCloudApi.GetKnowledgebaseDocumentsV2200Response();
+      //expect(instance).to.be.a(TimewebCloudApi.GetKnowledgebaseDocumentsV2200Response);
+    });
 
-        return true;
-    }
+    it('should have the property knowledgebaseDocuments (base name: "knowledgebase_documents")', function() {
+      // uncomment below and update the code to test the property knowledgebaseDocuments
+      //var instance = new TimewebCloudApi.GetKnowledgebaseDocumentsV2200Response();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property meta (base name: "meta")', function() {
+      // uncomment below and update the code to test the property meta
+      //var instance = new TimewebCloudApi.GetKnowledgebaseDocumentsV2200Response();
+      //expect(instance).to.be();
+    });
 
-}
+  });
 
-GetKnowledgebases200Response.RequiredProperties = ["knowledgebases", "meta"];
-
-/**
- * @member {Array.<module:model/Knowledgebase>} knowledgebases
- */
-GetKnowledgebases200Response.prototype['knowledgebases'] = undefined;
-
-/**
- * @member {module:model/GetKnowledgebasesV2200ResponseMeta} meta
- */
-GetKnowledgebases200Response.prototype['meta'] = undefined;
-
-
-
-
-
-
-export default GetKnowledgebases200Response;
-
+}));

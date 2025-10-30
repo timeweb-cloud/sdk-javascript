@@ -22,8 +22,10 @@ import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetImage404Response from '../model/GetImage404Response';
+import GetKnowledgebaseDocumentsV2200Response from '../model/GetKnowledgebaseDocumentsV2200Response';
 import GetKnowledgebaseStatistics200Response from '../model/GetKnowledgebaseStatistics200Response';
 import GetKnowledgebases200Response from '../model/GetKnowledgebases200Response';
+import GetKnowledgebasesV2200Response from '../model/GetKnowledgebasesV2200Response';
 import UpdateKnowledgebase from '../model/UpdateKnowledgebase';
 import UploadFilesToKnowledgebase200Response from '../model/UploadFilesToKnowledgebase200Response';
 
@@ -316,6 +318,59 @@ export default class KnowledgeBasesApi {
     }
 
     /**
+     * Callback function to receive the result of the getKnowledgebaseDocumentsV2 operation.
+     * @callback module:api/KnowledgeBasesApi~getKnowledgebaseDocumentsV2Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetKnowledgebaseDocumentsV2200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка документов базы знаний
+     * Чтобы получить список документов базы знаний, отправьте GET-запрос на `/api/v2/cloud-ai/knowledge-bases/{id}/documents`.  Тело ответа будет представлять собой объект JSON с ключами `knowledgebase_documents` и `meta`.
+     * @param {Number} id ID базы знаний
+     * @param {Object} opts Optional parameters
+     * @param {Number} [limit = 10)] Количество документов на странице (по умолчанию: 10, максимум: 100)
+     * @param {Number} [offset = 0)] Количество документов для пропуска (по умолчанию: 0)
+     * @param {module:model/String} [sortBy = 'indexing_timestamp')] Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа)
+     * @param {module:model/String} [sortOrder = 'DESC')] Порядок сортировки (по умолчанию: DESC)
+     * @param {module:api/KnowledgeBasesApi~getKnowledgebaseDocumentsV2Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetKnowledgebaseDocumentsV2200Response}
+     */
+    getKnowledgebaseDocumentsV2(id, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getKnowledgebaseDocumentsV2");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+        'limit': opts['limit'],
+        'offset': opts['offset'],
+        'sort_by': opts['sortBy'],
+        'sort_order': opts['sortOrder']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetKnowledgebaseDocumentsV2200Response;
+      return this.apiClient.callApi(
+        '/api/v2/cloud-ai/knowledge-bases/{id}/documents', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getKnowledgebaseStatistics operation.
      * @callback module:api/KnowledgeBasesApi~getKnowledgebaseStatisticsCallback
      * @param {String} error Error message, if any.
@@ -398,6 +453,43 @@ export default class KnowledgeBasesApi {
       let returnType = GetKnowledgebases200Response;
       return this.apiClient.callApi(
         '/api/v1/cloud-ai/knowledge-bases', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getKnowledgebasesV2 operation.
+     * @callback module:api/KnowledgeBasesApi~getKnowledgebasesV2Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetKnowledgebasesV2200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка баз знаний (v2)
+     * Чтобы получить список баз знаний, отправьте GET-запрос на `/api/v2/cloud-ai/knowledge-bases`.  Версия API v2 возвращает оптимизированный ответ с количеством документов вместо полного списка документов.  Тело ответа будет представлять собой объект JSON с ключом `knowledgebases`.
+     * @param {module:api/KnowledgeBasesApi~getKnowledgebasesV2Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetKnowledgebasesV2200Response}
+     */
+    getKnowledgebasesV2(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetKnowledgebasesV2200Response;
+      return this.apiClient.callApi(
+        '/api/v2/cloud-ai/knowledge-bases', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

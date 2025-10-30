@@ -432,8 +432,10 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.KnowledgeBasesApi* | [**deleteKnowledgebase**](docs/KnowledgeBasesApi.md#deleteKnowledgebase) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id} | Удаление базы знаний
 *TimewebCloudApi.KnowledgeBasesApi* | [**downloadDocument**](docs/KnowledgeBasesApi.md#downloadDocument) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download | Скачивание документа из базы знаний
 *TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebase**](docs/KnowledgeBasesApi.md#getKnowledgebase) | **GET** /api/v1/cloud-ai/knowledge-bases/{id} | Получение базы знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebaseDocumentsV2**](docs/KnowledgeBasesApi.md#getKnowledgebaseDocumentsV2) | **GET** /api/v2/cloud-ai/knowledge-bases/{id}/documents | Получение списка документов базы знаний
 *TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebaseStatistics**](docs/KnowledgeBasesApi.md#getKnowledgebaseStatistics) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/statistic | Получение статистики использования токенов базы знаний
 *TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebases**](docs/KnowledgeBasesApi.md#getKnowledgebases) | **GET** /api/v1/cloud-ai/knowledge-bases | Получение списка баз знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebasesV2**](docs/KnowledgeBasesApi.md#getKnowledgebasesV2) | **GET** /api/v2/cloud-ai/knowledge-bases | Получение списка баз знаний (v2)
 *TimewebCloudApi.KnowledgeBasesApi* | [**linkKnowledgebaseToAgent**](docs/KnowledgeBasesApi.md#linkKnowledgebaseToAgent) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Привязка базы знаний к агенту
 *TimewebCloudApi.KnowledgeBasesApi* | [**reindexDocument**](docs/KnowledgeBasesApi.md#reindexDocument) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex | Переиндексация документа
 *TimewebCloudApi.KnowledgeBasesApi* | [**unlinkKnowledgebaseFromAgent**](docs/KnowledgeBasesApi.md#unlinkKnowledgebaseFromAgent) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Отвязка базы знаний от агента
@@ -836,9 +838,12 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetImage404Response](docs/GetImage404Response.md)
  - [TimewebCloudApi.GetKey200Response](docs/GetKey200Response.md)
  - [TimewebCloudApi.GetKeys200Response](docs/GetKeys200Response.md)
+ - [TimewebCloudApi.GetKnowledgebaseDocumentsV2200Response](docs/GetKnowledgebaseDocumentsV2200Response.md)
+ - [TimewebCloudApi.GetKnowledgebaseDocumentsV2200ResponseMeta](docs/GetKnowledgebaseDocumentsV2200ResponseMeta.md)
  - [TimewebCloudApi.GetKnowledgebaseStatistics200Response](docs/GetKnowledgebaseStatistics200Response.md)
  - [TimewebCloudApi.GetKnowledgebases200Response](docs/GetKnowledgebases200Response.md)
- - [TimewebCloudApi.GetKnowledgebases200ResponseMeta](docs/GetKnowledgebases200ResponseMeta.md)
+ - [TimewebCloudApi.GetKnowledgebasesV2200Response](docs/GetKnowledgebasesV2200Response.md)
+ - [TimewebCloudApi.GetKnowledgebasesV2200ResponseMeta](docs/GetKnowledgebasesV2200ResponseMeta.md)
  - [TimewebCloudApi.GetLocations200Response](docs/GetLocations200Response.md)
  - [TimewebCloudApi.GetMailQuota200Response](docs/GetMailQuota200Response.md)
  - [TimewebCloudApi.GetMailboxes200Response](docs/GetMailboxes200Response.md)
@@ -899,6 +904,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Invoice](docs/Invoice.md)
  - [TimewebCloudApi.K8SVersionsResponse](docs/K8SVersionsResponse.md)
  - [TimewebCloudApi.Knowledgebase](docs/Knowledgebase.md)
+ - [TimewebCloudApi.KnowledgebaseV2](docs/KnowledgebaseV2.md)
  - [TimewebCloudApi.Location](docs/Location.md)
  - [TimewebCloudApi.LocationDto](docs/LocationDto.md)
  - [TimewebCloudApi.Mailbox](docs/Mailbox.md)
