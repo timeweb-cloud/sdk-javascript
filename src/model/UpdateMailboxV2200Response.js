@@ -11,143 +11,86 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
+import MailboxResponse from './MailboxResponse';
 
-  var instance;
+/**
+ * The UpdateMailboxV2200Response model module.
+ * @module model/UpdateMailboxV2200Response
+ * @version 1.0.0
+ */
+class UpdateMailboxV2200Response {
+    /**
+     * Constructs a new <code>UpdateMailboxV2200Response</code>.
+     * @alias module:model/UpdateMailboxV2200Response
+     * @param mailbox {module:model/MailboxResponse} 
+     */
+    constructor(mailbox) { 
+        
+        UpdateMailboxV2200Response.initialize(this, mailbox);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.MailApi();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, mailbox) { 
+        obj['mailbox'] = mailbox;
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>UpdateMailboxV2200Response</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/UpdateMailboxV2200Response} obj Optional instance to populate.
+     * @return {module:model/UpdateMailboxV2200Response} The populated <code>UpdateMailboxV2200Response</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new UpdateMailboxV2200Response();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('mailbox')) {
+                obj['mailbox'] = MailboxResponse.constructFromObject(data['mailbox']);
+            }
+        }
+        return obj;
+    }
 
-  describe('MailApi', function() {
-    describe('createDomainMailbox', function() {
-      it('should call createDomainMailbox successfully', function(done) {
-        //uncomment below and update the code to test createDomainMailbox
-        //instance.createDomainMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createMultipleDomainMailboxes', function() {
-      it('should call createMultipleDomainMailboxes successfully', function(done) {
-        //uncomment below and update the code to test createMultipleDomainMailboxes
-        //instance.createMultipleDomainMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteMailbox', function() {
-      it('should call deleteMailbox successfully', function(done) {
-        //uncomment below and update the code to test deleteMailbox
-        //instance.deleteMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainMailInfo', function() {
-      it('should call getDomainMailInfo successfully', function(done) {
-        //uncomment below and update the code to test getDomainMailInfo
-        //instance.getDomainMailInfo(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainMailboxes', function() {
-      it('should call getDomainMailboxes successfully', function(done) {
-        //uncomment below and update the code to test getDomainMailboxes
-        //instance.getDomainMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getMailbox', function() {
-      it('should call getMailbox successfully', function(done) {
-        //uncomment below and update the code to test getMailbox
-        //instance.getMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getMailboxes', function() {
-      it('should call getMailboxes successfully', function(done) {
-        //uncomment below and update the code to test getMailboxes
-        //instance.getMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDomainMailInfo', function() {
-      it('should call updateDomainMailInfo successfully', function(done) {
-        //uncomment below and update the code to test updateDomainMailInfo
-        //instance.updateDomainMailInfo(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateMailbox', function() {
-      it('should call updateMailbox successfully', function(done) {
-        //uncomment below and update the code to test updateMailbox
-        //instance.updateMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateMailboxV2', function() {
-      it('should call updateMailboxV2 successfully', function(done) {
-        //uncomment below and update the code to test updateMailboxV2
-        //instance.updateMailboxV2(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-  });
+    /**
+     * Validates the JSON data with respect to <code>UpdateMailboxV2200Response</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateMailboxV2200Response</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of UpdateMailboxV2200Response.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // validate the optional field `mailbox`
+        if (data['mailbox']) { // data not null
+          MailboxResponse.validateJSON(data['mailbox']);
+        }
 
-}));
+        return true;
+    }
+
+
+}
+
+UpdateMailboxV2200Response.RequiredProperties = ["mailbox"];
+
+/**
+ * @member {module:model/MailboxResponse} mailbox
+ */
+UpdateMailboxV2200Response.prototype['mailbox'] = undefined;
+
+
+
+
+
+
+export default UpdateMailboxV2200Response;
+

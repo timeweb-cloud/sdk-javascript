@@ -13,6 +13,7 @@
 
 
 import ApiClient from "../ApiClient";
+import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
 import CreateDomainMailbox201Response from '../model/CreateDomainMailbox201Response';
 import CreateDomainMailboxRequest from '../model/CreateDomainMailboxRequest';
 import CreateMultipleDomainMailboxes201Response from '../model/CreateMultipleDomainMailboxes201Response';
@@ -24,11 +25,11 @@ import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetImage404Response from '../model/GetImage404Response';
-import GetMailQuota200Response from '../model/GetMailQuota200Response';
 import GetMailboxes200Response from '../model/GetMailboxes200Response';
 import UpdateDomainMailInfoRequest from '../model/UpdateDomainMailInfoRequest';
-import UpdateMailQuotaRequest from '../model/UpdateMailQuotaRequest';
 import UpdateMailbox from '../model/UpdateMailbox';
+import UpdateMailboxV2 from '../model/UpdateMailboxV2';
+import UpdateMailboxV2200Response from '../model/UpdateMailboxV2200Response';
 
 /**
 * Mail service.
@@ -288,43 +289,6 @@ export default class MailApi {
     }
 
     /**
-     * Callback function to receive the result of the getMailQuota operation.
-     * @callback module:api/MailApi~getMailQuotaCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/GetMailQuota200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение квоты почты аккаунта
-     * Чтобы получить квоту почты аккаунта, отправьте GET-запрос на `/api/v1/mail/quota`.
-     * @param {module:api/MailApi~getMailQuotaCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetMailQuota200Response}
-     */
-    getMailQuota(callback) {
-      let postBody = null;
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetMailQuota200Response;
-      return this.apiClient.callApi(
-        '/api/v1/mail/quota', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the getMailbox operation.
      * @callback module:api/MailApi~getMailboxCallback
      * @param {String} error Error message, if any.
@@ -467,48 +431,6 @@ export default class MailApi {
     }
 
     /**
-     * Callback function to receive the result of the updateMailQuota operation.
-     * @callback module:api/MailApi~updateMailQuotaCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/GetMailQuota200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Изменение квоты почты аккаунта
-     * Чтобы получить инфомацию по квоте почты аккаунта, отправьте GET-запрос на `/api/v1/mail/quota`.
-     * @param {module:model/UpdateMailQuotaRequest} updateMailQuotaRequest 
-     * @param {module:api/MailApi~updateMailQuotaCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetMailQuota200Response}
-     */
-    updateMailQuota(updateMailQuotaRequest, callback) {
-      let postBody = updateMailQuotaRequest;
-      // verify the required parameter 'updateMailQuotaRequest' is set
-      if (updateMailQuotaRequest === undefined || updateMailQuotaRequest === null) {
-        throw new Error("Missing the required parameter 'updateMailQuotaRequest' when calling updateMailQuota");
-      }
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = GetMailQuota200Response;
-      return this.apiClient.callApi(
-        '/api/v1/mail/quota', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the updateMailbox operation.
      * @callback module:api/MailApi~updateMailboxCallback
      * @param {String} error Error message, if any.
@@ -557,6 +479,60 @@ export default class MailApi {
       let returnType = CreateDomainMailbox201Response;
       return this.apiClient.callApi(
         '/api/v1/mail/domains/{domain}/mailboxes/{mailbox}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updateMailboxV2 operation.
+     * @callback module:api/MailApi~updateMailboxV2Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/UpdateMailboxV2200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Изменение почтового ящика
+     * Чтобы изменить почтовый ящик, отправьте PATCH-запрос на `/api/v2/mail/domains/{domain}/mailboxes/{mailbox}`.
+     * @param {String} domain Полное имя домена
+     * @param {String} mailbox Название почтового ящика
+     * @param {module:model/UpdateMailboxV2} updateMailboxV2 
+     * @param {module:api/MailApi~updateMailboxV2Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/UpdateMailboxV2200Response}
+     */
+    updateMailboxV2(domain, mailbox, updateMailboxV2, callback) {
+      let postBody = updateMailboxV2;
+      // verify the required parameter 'domain' is set
+      if (domain === undefined || domain === null) {
+        throw new Error("Missing the required parameter 'domain' when calling updateMailboxV2");
+      }
+      // verify the required parameter 'mailbox' is set
+      if (mailbox === undefined || mailbox === null) {
+        throw new Error("Missing the required parameter 'mailbox' when calling updateMailboxV2");
+      }
+      // verify the required parameter 'updateMailboxV2' is set
+      if (updateMailboxV2 === undefined || updateMailboxV2 === null) {
+        throw new Error("Missing the required parameter 'updateMailboxV2' when calling updateMailboxV2");
+      }
+
+      let pathParams = {
+        'domain': domain,
+        'mailbox': mailbox
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = UpdateMailboxV2200Response;
+      return this.apiClient.callApi(
+        '/api/v2/mail/domains/{domain}/mailboxes/{mailbox}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

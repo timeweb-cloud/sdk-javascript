@@ -57,6 +57,8 @@ import AppsPresetsFrontendPresetsInner from './model/AppsPresetsFrontendPresetsI
 import AutoBackup from './model/AutoBackup';
 import AutoReplyIsDisabled from './model/AutoReplyIsDisabled';
 import AutoReplyIsEnabled from './model/AutoReplyIsEnabled';
+import AutoreplyIsDisabled from './model/AutoreplyIsDisabled';
+import AutoreplyIsEnabled from './model/AutoreplyIsEnabled';
 import AvailabilityZone from './model/AvailabilityZone';
 import AvailableFrameworks from './model/AvailableFrameworks';
 import AvailableFrameworksBackendFrameworksInner from './model/AvailableFrameworksBackendFrameworksInner';
@@ -218,6 +220,8 @@ import FirewallRuleOutResponse from './model/FirewallRuleOutResponse';
 import FirewallRuleProtocol from './model/FirewallRuleProtocol';
 import FirewallRulesOutResponse from './model/FirewallRulesOutResponse';
 import FloatingIp from './model/FloatingIp';
+import ForwardIsDisabled from './model/ForwardIsDisabled';
+import ForwardIsEnabled from './model/ForwardIsEnabled';
 import ForwardingIncomingIsDisabled from './model/ForwardingIncomingIsDisabled';
 import ForwardingIncomingIsEnabled from './model/ForwardingIncomingIsEnabled';
 import ForwardingOutgoingIsDisabled from './model/ForwardingOutgoingIsDisabled';
@@ -279,7 +283,6 @@ import GetKnowledgebases200Response from './model/GetKnowledgebases200Response';
 import GetKnowledgebasesV2200Response from './model/GetKnowledgebasesV2200Response';
 import GetKnowledgebasesV2200ResponseMeta from './model/GetKnowledgebasesV2200ResponseMeta';
 import GetLocations200Response from './model/GetLocations200Response';
-import GetMailQuota200Response from './model/GetMailQuota200Response';
 import GetMailboxes200Response from './model/GetMailboxes200Response';
 import GetNetworkDrives200Response from './model/GetNetworkDrives200Response';
 import GetNetworkDrivesAvailableResources200Response from './model/GetNetworkDrivesAvailableResources200Response';
@@ -345,6 +348,7 @@ import Mailbox from './model/Mailbox';
 import MailboxAutoReply from './model/MailboxAutoReply';
 import MailboxForwardingIncoming from './model/MailboxForwardingIncoming';
 import MailboxForwardingOutgoing from './model/MailboxForwardingOutgoing';
+import MailboxResponse from './model/MailboxResponse';
 import MailboxSpamFilter from './model/MailboxSpamFilter';
 import MasterPresetOutApi from './model/MasterPresetOutApi';
 import Meta from './model/Meta';
@@ -370,6 +374,8 @@ import NotificationSettingChannel from './model/NotificationSettingChannel';
 import NotificationSettingChannels from './model/NotificationSettingChannels';
 import NotificationSettingType from './model/NotificationSettingType';
 import OS from './model/OS';
+import OutgoingIsDisabled from './model/OutgoingIsDisabled';
+import OutgoingIsEnabled from './model/OutgoingIsEnabled';
 import PerformActionOnBackupRequest from './model/PerformActionOnBackupRequest';
 import PerformActionOnServerRequest from './model/PerformActionOnServerRequest';
 import Policy from './model/Policy';
@@ -381,7 +387,6 @@ import Project from './model/Project';
 import ProjectResource from './model/ProjectResource';
 import Provider from './model/Provider';
 import Providers from './model/Providers';
-import Quota from './model/Quota';
 import ReduceNodes from './model/ReduceNodes';
 import RefreshApiKey from './model/RefreshApiKey';
 import RegistriesResponse from './model/RegistriesResponse';
@@ -429,6 +434,8 @@ import SetLabels from './model/SetLabels';
 import SettingCondition from './model/SettingCondition';
 import SpamFilterIsDisabled from './model/SpamFilterIsDisabled';
 import SpamFilterIsEnabled from './model/SpamFilterIsEnabled';
+import SpamProtectionIsDisabled from './model/SpamProtectionIsDisabled';
+import SpamProtectionIsEnabled from './model/SpamProtectionIsEnabled';
 import SshKey from './model/SshKey';
 import SshKeyUsedByInner from './model/SshKeyUsedByInner';
 import Status from './model/Status';
@@ -460,8 +467,9 @@ import UpdateFloatingIp from './model/UpdateFloatingIp';
 import UpdateInstance from './model/UpdateInstance';
 import UpdateKeyRequest from './model/UpdateKeyRequest';
 import UpdateKnowledgebase from './model/UpdateKnowledgebase';
-import UpdateMailQuotaRequest from './model/UpdateMailQuotaRequest';
 import UpdateMailbox from './model/UpdateMailbox';
+import UpdateMailboxV2 from './model/UpdateMailboxV2';
+import UpdateMailboxV2200Response from './model/UpdateMailboxV2200Response';
 import UpdateNetworkDrive from './model/UpdateNetworkDrive';
 import UpdateNotificationSettingsRequest from './model/UpdateNotificationSettingsRequest';
 import UpdateNotificationSettingsRequestSettingsInner from './model/UpdateNotificationSettingsRequestSettingsInner';
@@ -825,6 +833,18 @@ export {
      * @property {module:model/AutoReplyIsEnabled}
      */
     AutoReplyIsEnabled,
+
+    /**
+     * The AutoreplyIsDisabled model constructor.
+     * @property {module:model/AutoreplyIsDisabled}
+     */
+    AutoreplyIsDisabled,
+
+    /**
+     * The AutoreplyIsEnabled model constructor.
+     * @property {module:model/AutoreplyIsEnabled}
+     */
+    AutoreplyIsEnabled,
 
     /**
      * The AvailabilityZone model constructor.
@@ -1793,6 +1813,18 @@ export {
     FloatingIp,
 
     /**
+     * The ForwardIsDisabled model constructor.
+     * @property {module:model/ForwardIsDisabled}
+     */
+    ForwardIsDisabled,
+
+    /**
+     * The ForwardIsEnabled model constructor.
+     * @property {module:model/ForwardIsEnabled}
+     */
+    ForwardIsEnabled,
+
+    /**
      * The ForwardingIncomingIsDisabled model constructor.
      * @property {module:model/ForwardingIncomingIsDisabled}
      */
@@ -2157,12 +2189,6 @@ export {
      * @property {module:model/GetLocations200Response}
      */
     GetLocations200Response,
-
-    /**
-     * The GetMailQuota200Response model constructor.
-     * @property {module:model/GetMailQuota200Response}
-     */
-    GetMailQuota200Response,
 
     /**
      * The GetMailboxes200Response model constructor.
@@ -2555,6 +2581,12 @@ export {
     MailboxForwardingOutgoing,
 
     /**
+     * The MailboxResponse model constructor.
+     * @property {module:model/MailboxResponse}
+     */
+    MailboxResponse,
+
+    /**
      * The MailboxSpamFilter model constructor.
      * @property {module:model/MailboxSpamFilter}
      */
@@ -2705,6 +2737,18 @@ export {
     OS,
 
     /**
+     * The OutgoingIsDisabled model constructor.
+     * @property {module:model/OutgoingIsDisabled}
+     */
+    OutgoingIsDisabled,
+
+    /**
+     * The OutgoingIsEnabled model constructor.
+     * @property {module:model/OutgoingIsEnabled}
+     */
+    OutgoingIsEnabled,
+
+    /**
      * The PerformActionOnBackupRequest model constructor.
      * @property {module:model/PerformActionOnBackupRequest}
      */
@@ -2769,12 +2813,6 @@ export {
      * @property {module:model/Providers}
      */
     Providers,
-
-    /**
-     * The Quota model constructor.
-     * @property {module:model/Quota}
-     */
-    Quota,
 
     /**
      * The ReduceNodes model constructor.
@@ -3059,6 +3097,18 @@ export {
     SpamFilterIsEnabled,
 
     /**
+     * The SpamProtectionIsDisabled model constructor.
+     * @property {module:model/SpamProtectionIsDisabled}
+     */
+    SpamProtectionIsDisabled,
+
+    /**
+     * The SpamProtectionIsEnabled model constructor.
+     * @property {module:model/SpamProtectionIsEnabled}
+     */
+    SpamProtectionIsEnabled,
+
+    /**
      * The SshKey model constructor.
      * @property {module:model/SshKey}
      */
@@ -3245,16 +3295,22 @@ export {
     UpdateKnowledgebase,
 
     /**
-     * The UpdateMailQuotaRequest model constructor.
-     * @property {module:model/UpdateMailQuotaRequest}
-     */
-    UpdateMailQuotaRequest,
-
-    /**
      * The UpdateMailbox model constructor.
      * @property {module:model/UpdateMailbox}
      */
     UpdateMailbox,
+
+    /**
+     * The UpdateMailboxV2 model constructor.
+     * @property {module:model/UpdateMailboxV2}
+     */
+    UpdateMailboxV2,
+
+    /**
+     * The UpdateMailboxV2200Response model constructor.
+     * @property {module:model/UpdateMailboxV2200Response}
+     */
+    UpdateMailboxV2200Response,
 
     /**
      * The UpdateNetworkDrive model constructor.

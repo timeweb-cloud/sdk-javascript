@@ -14,21 +14,19 @@
 import ApiClient from '../ApiClient';
 
 /**
- * The Quota model module.
- * @module model/Quota
+ * The ForwardIsDisabled model module.
+ * @module model/ForwardIsDisabled
  * @version 1.0.0
  */
-class Quota {
+class ForwardIsDisabled {
     /**
-     * Constructs a new <code>Quota</code>.
-     * Почтовая квота
-     * @alias module:model/Quota
-     * @param total {Number} Общее количество места на почте (в Мб).
-     * @param used {Number} Занятое место на почте (в Мб).
+     * Constructs a new <code>ForwardIsDisabled</code>.
+     * @alias module:model/ForwardIsDisabled
+     * @param isEnabled {Boolean} Включена ли пересылка входящих писем
      */
-    constructor(total, used) { 
+    constructor(isEnabled) { 
         
-        Quota.initialize(this, total, used);
+        ForwardIsDisabled.initialize(this, isEnabled);
     }
 
     /**
@@ -36,40 +34,36 @@ class Quota {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, total, used) { 
-        obj['total'] = total;
-        obj['used'] = used;
+    static initialize(obj, isEnabled) { 
+        obj['is_enabled'] = isEnabled;
     }
 
     /**
-     * Constructs a <code>Quota</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>ForwardIsDisabled</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/Quota} obj Optional instance to populate.
-     * @return {module:model/Quota} The populated <code>Quota</code> instance.
+     * @param {module:model/ForwardIsDisabled} obj Optional instance to populate.
+     * @return {module:model/ForwardIsDisabled} The populated <code>ForwardIsDisabled</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new Quota();
+            obj = obj || new ForwardIsDisabled();
 
-            if (data.hasOwnProperty('total')) {
-                obj['total'] = ApiClient.convertToType(data['total'], 'Number');
-            }
-            if (data.hasOwnProperty('used')) {
-                obj['used'] = ApiClient.convertToType(data['used'], 'Number');
+            if (data.hasOwnProperty('is_enabled')) {
+                obj['is_enabled'] = ApiClient.convertToType(data['is_enabled'], 'Boolean');
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>Quota</code>.
+     * Validates the JSON data with respect to <code>ForwardIsDisabled</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Quota</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ForwardIsDisabled</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of Quota.RequiredProperties) {
+        for (const property of ForwardIsDisabled.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
@@ -81,24 +75,18 @@ class Quota {
 
 }
 
-Quota.RequiredProperties = ["total", "used"];
+ForwardIsDisabled.RequiredProperties = ["is_enabled"];
 
 /**
- * Общее количество места на почте (в Мб).
- * @member {Number} total
+ * Включена ли пересылка входящих писем
+ * @member {Boolean} is_enabled
  */
-Quota.prototype['total'] = undefined;
-
-/**
- * Занятое место на почте (в Мб).
- * @member {Number} used
- */
-Quota.prototype['used'] = undefined;
+ForwardIsDisabled.prototype['is_enabled'] = undefined;
 
 
 
 
 
 
-export default Quota;
+export default ForwardIsDisabled;
 

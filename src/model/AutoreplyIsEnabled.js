@@ -11,55 +11,108 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
 
-  var instance;
+/**
+ * The AutoreplyIsEnabled model module.
+ * @module model/AutoreplyIsEnabled
+ * @version 1.0.0
+ */
+class AutoreplyIsEnabled {
+    /**
+     * Constructs a new <code>AutoreplyIsEnabled</code>.
+     * @alias module:model/AutoreplyIsEnabled
+     * @param isEnabled {Boolean} Включен ли автоответчик на входящие письма
+     */
+    constructor(isEnabled) { 
+        
+        AutoreplyIsEnabled.initialize(this, isEnabled);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.GetMailQuota200Response();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, isEnabled) { 
+        obj['is_enabled'] = isEnabled;
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>AutoreplyIsEnabled</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/AutoreplyIsEnabled} obj Optional instance to populate.
+     * @return {module:model/AutoreplyIsEnabled} The populated <code>AutoreplyIsEnabled</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new AutoreplyIsEnabled();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('is_enabled')) {
+                obj['is_enabled'] = ApiClient.convertToType(data['is_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('autoreply_message')) {
+                obj['autoreply_message'] = ApiClient.convertToType(data['autoreply_message'], 'String');
+            }
+            if (data.hasOwnProperty('autoreply_subject')) {
+                obj['autoreply_subject'] = ApiClient.convertToType(data['autoreply_subject'], 'String');
+            }
+        }
+        return obj;
+    }
 
-  describe('GetMailQuota200Response', function() {
-    it('should create an instance of GetMailQuota200Response', function() {
-      // uncomment below and update the code to test GetMailQuota200Response
-      //var instance = new TimewebCloudApi.GetMailQuota200Response();
-      //expect(instance).to.be.a(TimewebCloudApi.GetMailQuota200Response);
-    });
+    /**
+     * Validates the JSON data with respect to <code>AutoreplyIsEnabled</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>AutoreplyIsEnabled</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of AutoreplyIsEnabled.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['autoreply_message'] && !(typeof data['autoreply_message'] === 'string' || data['autoreply_message'] instanceof String)) {
+            throw new Error("Expected the field `autoreply_message` to be a primitive type in the JSON string but got " + data['autoreply_message']);
+        }
+        // ensure the json data is a string
+        if (data['autoreply_subject'] && !(typeof data['autoreply_subject'] === 'string' || data['autoreply_subject'] instanceof String)) {
+            throw new Error("Expected the field `autoreply_subject` to be a primitive type in the JSON string but got " + data['autoreply_subject']);
+        }
 
-    it('should have the property quota (base name: "quota")', function() {
-      // uncomment below and update the code to test the property quota
-      //var instance = new TimewebCloudApi.GetMailQuota200Response();
-      //expect(instance).to.be();
-    });
+        return true;
+    }
 
-  });
 
-}));
+}
+
+AutoreplyIsEnabled.RequiredProperties = ["is_enabled"];
+
+/**
+ * Включен ли автоответчик на входящие письма
+ * @member {Boolean} is_enabled
+ */
+AutoreplyIsEnabled.prototype['is_enabled'] = undefined;
+
+/**
+ * Сообщение автоответчика на входящие письма. \\  Если передан параметр `is_enabled`: `false`, то значение передавать нельзя
+ * @member {String} autoreply_message
+ */
+AutoreplyIsEnabled.prototype['autoreply_message'] = undefined;
+
+/**
+ * Тема сообщения автоответчика на входящие письма. \\  Если передан параметр `is_enabled`: `false`, то значение передавать нельзя
+ * @member {String} autoreply_subject
+ */
+AutoreplyIsEnabled.prototype['autoreply_subject'] = undefined;
+
+
+
+
+
+
+export default AutoreplyIsEnabled;
+

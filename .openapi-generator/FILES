@@ -51,6 +51,8 @@ docs/AppsPresetsFrontendPresetsInner.md
 docs/AutoBackup.md
 docs/AutoReplyIsDisabled.md
 docs/AutoReplyIsEnabled.md
+docs/AutoreplyIsDisabled.md
+docs/AutoreplyIsEnabled.md
 docs/AvailabilityZone.md
 docs/AvailableFrameworks.md
 docs/AvailableFrameworksBackendFrameworksInner.md
@@ -219,6 +221,8 @@ docs/FirewallRuleProtocol.md
 docs/FirewallRulesOutResponse.md
 docs/FloatingIPApi.md
 docs/FloatingIp.md
+docs/ForwardIsDisabled.md
+docs/ForwardIsEnabled.md
 docs/ForwardingIncomingIsDisabled.md
 docs/ForwardingIncomingIsEnabled.md
 docs/ForwardingOutgoingIsDisabled.md
@@ -280,7 +284,6 @@ docs/GetKnowledgebases200Response.md
 docs/GetKnowledgebasesV2200Response.md
 docs/GetKnowledgebasesV2200ResponseMeta.md
 docs/GetLocations200Response.md
-docs/GetMailQuota200Response.md
 docs/GetMailboxes200Response.md
 docs/GetNetworkDrives200Response.md
 docs/GetNetworkDrivesAvailableResources200Response.md
@@ -351,6 +354,7 @@ docs/Mailbox.md
 docs/MailboxAutoReply.md
 docs/MailboxForwardingIncoming.md
 docs/MailboxForwardingOutgoing.md
+docs/MailboxResponse.md
 docs/MailboxSpamFilter.md
 docs/MasterPresetOutApi.md
 docs/Meta.md
@@ -377,6 +381,8 @@ docs/NotificationSettingChannel.md
 docs/NotificationSettingChannels.md
 docs/NotificationSettingType.md
 docs/OS.md
+docs/OutgoingIsDisabled.md
+docs/OutgoingIsEnabled.md
 docs/PaymentsApi.md
 docs/PerformActionOnBackupRequest.md
 docs/PerformActionOnServerRequest.md
@@ -390,7 +396,6 @@ docs/ProjectResource.md
 docs/ProjectsApi.md
 docs/Provider.md
 docs/Providers.md
-docs/Quota.md
 docs/ReduceNodes.md
 docs/RefreshApiKey.md
 docs/RegistriesResponse.md
@@ -441,6 +446,8 @@ docs/SetLabels.md
 docs/SettingCondition.md
 docs/SpamFilterIsDisabled.md
 docs/SpamFilterIsEnabled.md
+docs/SpamProtectionIsDisabled.md
+docs/SpamProtectionIsEnabled.md
 docs/SshKey.md
 docs/SshKeyUsedByInner.md
 docs/Status.md
@@ -472,8 +479,9 @@ docs/UpdateFloatingIp.md
 docs/UpdateInstance.md
 docs/UpdateKeyRequest.md
 docs/UpdateKnowledgebase.md
-docs/UpdateMailQuotaRequest.md
 docs/UpdateMailbox.md
+docs/UpdateMailboxV2.md
+docs/UpdateMailboxV2200Response.md
 docs/UpdateNetworkDrive.md
 docs/UpdateNotificationSettingsRequest.md
 docs/UpdateNotificationSettingsRequestSettingsInner.md
@@ -584,6 +592,8 @@ src/model/AppsPresetsFrontendPresetsInner.js
 src/model/AutoBackup.js
 src/model/AutoReplyIsDisabled.js
 src/model/AutoReplyIsEnabled.js
+src/model/AutoreplyIsDisabled.js
+src/model/AutoreplyIsEnabled.js
 src/model/AvailabilityZone.js
 src/model/AvailableFrameworks.js
 src/model/AvailableFrameworksBackendFrameworksInner.js
@@ -745,6 +755,8 @@ src/model/FirewallRuleOutResponse.js
 src/model/FirewallRuleProtocol.js
 src/model/FirewallRulesOutResponse.js
 src/model/FloatingIp.js
+src/model/ForwardIsDisabled.js
+src/model/ForwardIsEnabled.js
 src/model/ForwardingIncomingIsDisabled.js
 src/model/ForwardingIncomingIsEnabled.js
 src/model/ForwardingOutgoingIsDisabled.js
@@ -806,7 +818,6 @@ src/model/GetKnowledgebases200Response.js
 src/model/GetKnowledgebasesV2200Response.js
 src/model/GetKnowledgebasesV2200ResponseMeta.js
 src/model/GetLocations200Response.js
-src/model/GetMailQuota200Response.js
 src/model/GetMailboxes200Response.js
 src/model/GetNetworkDrives200Response.js
 src/model/GetNetworkDrivesAvailableResources200Response.js
@@ -872,6 +883,7 @@ src/model/Mailbox.js
 src/model/MailboxAutoReply.js
 src/model/MailboxForwardingIncoming.js
 src/model/MailboxForwardingOutgoing.js
+src/model/MailboxResponse.js
 src/model/MailboxSpamFilter.js
 src/model/MasterPresetOutApi.js
 src/model/Meta.js
@@ -897,6 +909,8 @@ src/model/NotificationSettingChannel.js
 src/model/NotificationSettingChannels.js
 src/model/NotificationSettingType.js
 src/model/OS.js
+src/model/OutgoingIsDisabled.js
+src/model/OutgoingIsEnabled.js
 src/model/PerformActionOnBackupRequest.js
 src/model/PerformActionOnServerRequest.js
 src/model/Policy.js
@@ -908,7 +922,6 @@ src/model/Project.js
 src/model/ProjectResource.js
 src/model/Provider.js
 src/model/Providers.js
-src/model/Quota.js
 src/model/ReduceNodes.js
 src/model/RefreshApiKey.js
 src/model/RegistriesResponse.js
@@ -956,6 +969,8 @@ src/model/SetLabels.js
 src/model/SettingCondition.js
 src/model/SpamFilterIsDisabled.js
 src/model/SpamFilterIsEnabled.js
+src/model/SpamProtectionIsDisabled.js
+src/model/SpamProtectionIsEnabled.js
 src/model/SshKey.js
 src/model/SshKeyUsedByInner.js
 src/model/Status.js
@@ -987,8 +1002,9 @@ src/model/UpdateFloatingIp.js
 src/model/UpdateInstance.js
 src/model/UpdateKeyRequest.js
 src/model/UpdateKnowledgebase.js
-src/model/UpdateMailQuotaRequest.js
 src/model/UpdateMailbox.js
+src/model/UpdateMailboxV2.js
+src/model/UpdateMailboxV2200Response.js
 src/model/UpdateNetworkDrive.js
 src/model/UpdateNotificationSettingsRequest.js
 src/model/UpdateNotificationSettingsRequestSettingsInner.js
@@ -1093,6 +1109,8 @@ test/model/AppsPresetsFrontendPresetsInner.spec.js
 test/model/AutoBackup.spec.js
 test/model/AutoReplyIsDisabled.spec.js
 test/model/AutoReplyIsEnabled.spec.js
+test/model/AutoreplyIsDisabled.spec.js
+test/model/AutoreplyIsEnabled.spec.js
 test/model/AvailabilityZone.spec.js
 test/model/AvailableFrameworks.spec.js
 test/model/AvailableFrameworksBackendFrameworksInner.spec.js
@@ -1254,6 +1272,8 @@ test/model/FirewallRuleOutResponse.spec.js
 test/model/FirewallRuleProtocol.spec.js
 test/model/FirewallRulesOutResponse.spec.js
 test/model/FloatingIp.spec.js
+test/model/ForwardIsDisabled.spec.js
+test/model/ForwardIsEnabled.spec.js
 test/model/ForwardingIncomingIsDisabled.spec.js
 test/model/ForwardingIncomingIsEnabled.spec.js
 test/model/ForwardingOutgoingIsDisabled.spec.js
@@ -1315,7 +1335,6 @@ test/model/GetKnowledgebases200Response.spec.js
 test/model/GetKnowledgebasesV2200Response.spec.js
 test/model/GetKnowledgebasesV2200ResponseMeta.spec.js
 test/model/GetLocations200Response.spec.js
-test/model/GetMailQuota200Response.spec.js
 test/model/GetMailboxes200Response.spec.js
 test/model/GetNetworkDrives200Response.spec.js
 test/model/GetNetworkDrivesAvailableResources200Response.spec.js
@@ -1381,6 +1400,7 @@ test/model/Mailbox.spec.js
 test/model/MailboxAutoReply.spec.js
 test/model/MailboxForwardingIncoming.spec.js
 test/model/MailboxForwardingOutgoing.spec.js
+test/model/MailboxResponse.spec.js
 test/model/MailboxSpamFilter.spec.js
 test/model/MasterPresetOutApi.spec.js
 test/model/Meta.spec.js
@@ -1406,6 +1426,8 @@ test/model/NotificationSettingChannel.spec.js
 test/model/NotificationSettingChannels.spec.js
 test/model/NotificationSettingType.spec.js
 test/model/OS.spec.js
+test/model/OutgoingIsDisabled.spec.js
+test/model/OutgoingIsEnabled.spec.js
 test/model/PerformActionOnBackupRequest.spec.js
 test/model/PerformActionOnServerRequest.spec.js
 test/model/Policy.spec.js
@@ -1417,7 +1439,6 @@ test/model/Project.spec.js
 test/model/ProjectResource.spec.js
 test/model/Provider.spec.js
 test/model/Providers.spec.js
-test/model/Quota.spec.js
 test/model/ReduceNodes.spec.js
 test/model/RefreshApiKey.spec.js
 test/model/RegistriesResponse.spec.js
@@ -1465,6 +1486,8 @@ test/model/SetLabels.spec.js
 test/model/SettingCondition.spec.js
 test/model/SpamFilterIsDisabled.spec.js
 test/model/SpamFilterIsEnabled.spec.js
+test/model/SpamProtectionIsDisabled.spec.js
+test/model/SpamProtectionIsEnabled.spec.js
 test/model/SshKey.spec.js
 test/model/SshKeyUsedByInner.spec.js
 test/model/Status.spec.js
@@ -1496,8 +1519,9 @@ test/model/UpdateFloatingIp.spec.js
 test/model/UpdateInstance.spec.js
 test/model/UpdateKeyRequest.spec.js
 test/model/UpdateKnowledgebase.spec.js
-test/model/UpdateMailQuotaRequest.spec.js
 test/model/UpdateMailbox.spec.js
+test/model/UpdateMailboxV2.spec.js
+test/model/UpdateMailboxV2200Response.spec.js
 test/model/UpdateNetworkDrive.spec.js
 test/model/UpdateNotificationSettingsRequest.spec.js
 test/model/UpdateNotificationSettingsRequestSettingsInner.spec.js

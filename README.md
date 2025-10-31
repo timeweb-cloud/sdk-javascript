@@ -467,12 +467,11 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.MailApi* | [**deleteMailbox**](docs/MailApi.md#deleteMailbox) | **DELETE** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Удаление почтового ящика
 *TimewebCloudApi.MailApi* | [**getDomainMailInfo**](docs/MailApi.md#getDomainMailInfo) | **GET** /api/v1/mail/domains/{domain}/info | Получение почтовой информации о домене
 *TimewebCloudApi.MailApi* | [**getDomainMailboxes**](docs/MailApi.md#getDomainMailboxes) | **GET** /api/v1/mail/domains/{domain} | Получение списка почтовых ящиков домена
-*TimewebCloudApi.MailApi* | [**getMailQuota**](docs/MailApi.md#getMailQuota) | **GET** /api/v1/mail/quota | Получение квоты почты аккаунта
 *TimewebCloudApi.MailApi* | [**getMailbox**](docs/MailApi.md#getMailbox) | **GET** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Получение почтового ящика
 *TimewebCloudApi.MailApi* | [**getMailboxes**](docs/MailApi.md#getMailboxes) | **GET** /api/v1/mail | Получение списка почтовых ящиков аккаунта
 *TimewebCloudApi.MailApi* | [**updateDomainMailInfo**](docs/MailApi.md#updateDomainMailInfo) | **PATCH** /api/v1/mail/domains/{domain}/info | Изменение почтовой информации о домене
-*TimewebCloudApi.MailApi* | [**updateMailQuota**](docs/MailApi.md#updateMailQuota) | **PATCH** /api/v1/mail/quota | Изменение квоты почты аккаунта
 *TimewebCloudApi.MailApi* | [**updateMailbox**](docs/MailApi.md#updateMailbox) | **PATCH** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Изменение почтового ящика
+*TimewebCloudApi.MailApi* | [**updateMailboxV2**](docs/MailApi.md#updateMailboxV2) | **PATCH** /api/v2/mail/domains/{domain}/mailboxes/{mailbox} | Изменение почтового ящика
 *TimewebCloudApi.NetworkDrivesApi* | [**createNetworkDrive**](docs/NetworkDrivesApi.md#createNetworkDrive) | **POST** /api/v1/network-drives | Создание сетевого диска
 *TimewebCloudApi.NetworkDrivesApi* | [**deleteNetworkDrive**](docs/NetworkDrivesApi.md#deleteNetworkDrive) | **DELETE** /api/v1/network-drives/{network_drive_id} | Удаление сетевого диска по идентификатору
 *TimewebCloudApi.NetworkDrivesApi* | [**getNetworkDrive**](docs/NetworkDrivesApi.md#getNetworkDrive) | **GET** /api/v1/network-drives/{network_drive_id} | Получение сетевого диска
@@ -623,6 +622,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.AutoBackup](docs/AutoBackup.md)
  - [TimewebCloudApi.AutoReplyIsDisabled](docs/AutoReplyIsDisabled.md)
  - [TimewebCloudApi.AutoReplyIsEnabled](docs/AutoReplyIsEnabled.md)
+ - [TimewebCloudApi.AutoreplyIsDisabled](docs/AutoreplyIsDisabled.md)
+ - [TimewebCloudApi.AutoreplyIsEnabled](docs/AutoreplyIsEnabled.md)
  - [TimewebCloudApi.AvailabilityZone](docs/AvailabilityZone.md)
  - [TimewebCloudApi.AvailableFrameworks](docs/AvailableFrameworks.md)
  - [TimewebCloudApi.AvailableFrameworksBackendFrameworksInner](docs/AvailableFrameworksBackendFrameworksInner.md)
@@ -784,6 +785,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.FirewallRuleProtocol](docs/FirewallRuleProtocol.md)
  - [TimewebCloudApi.FirewallRulesOutResponse](docs/FirewallRulesOutResponse.md)
  - [TimewebCloudApi.FloatingIp](docs/FloatingIp.md)
+ - [TimewebCloudApi.ForwardIsDisabled](docs/ForwardIsDisabled.md)
+ - [TimewebCloudApi.ForwardIsEnabled](docs/ForwardIsEnabled.md)
  - [TimewebCloudApi.ForwardingIncomingIsDisabled](docs/ForwardingIncomingIsDisabled.md)
  - [TimewebCloudApi.ForwardingIncomingIsEnabled](docs/ForwardingIncomingIsEnabled.md)
  - [TimewebCloudApi.ForwardingOutgoingIsDisabled](docs/ForwardingOutgoingIsDisabled.md)
@@ -845,7 +848,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetKnowledgebasesV2200Response](docs/GetKnowledgebasesV2200Response.md)
  - [TimewebCloudApi.GetKnowledgebasesV2200ResponseMeta](docs/GetKnowledgebasesV2200ResponseMeta.md)
  - [TimewebCloudApi.GetLocations200Response](docs/GetLocations200Response.md)
- - [TimewebCloudApi.GetMailQuota200Response](docs/GetMailQuota200Response.md)
  - [TimewebCloudApi.GetMailboxes200Response](docs/GetMailboxes200Response.md)
  - [TimewebCloudApi.GetNetworkDrives200Response](docs/GetNetworkDrives200Response.md)
  - [TimewebCloudApi.GetNetworkDrivesAvailableResources200Response](docs/GetNetworkDrivesAvailableResources200Response.md)
@@ -911,6 +913,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.MailboxAutoReply](docs/MailboxAutoReply.md)
  - [TimewebCloudApi.MailboxForwardingIncoming](docs/MailboxForwardingIncoming.md)
  - [TimewebCloudApi.MailboxForwardingOutgoing](docs/MailboxForwardingOutgoing.md)
+ - [TimewebCloudApi.MailboxResponse](docs/MailboxResponse.md)
  - [TimewebCloudApi.MailboxSpamFilter](docs/MailboxSpamFilter.md)
  - [TimewebCloudApi.MasterPresetOutApi](docs/MasterPresetOutApi.md)
  - [TimewebCloudApi.Meta](docs/Meta.md)
@@ -936,6 +939,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.NotificationSettingChannels](docs/NotificationSettingChannels.md)
  - [TimewebCloudApi.NotificationSettingType](docs/NotificationSettingType.md)
  - [TimewebCloudApi.OS](docs/OS.md)
+ - [TimewebCloudApi.OutgoingIsDisabled](docs/OutgoingIsDisabled.md)
+ - [TimewebCloudApi.OutgoingIsEnabled](docs/OutgoingIsEnabled.md)
  - [TimewebCloudApi.PerformActionOnBackupRequest](docs/PerformActionOnBackupRequest.md)
  - [TimewebCloudApi.PerformActionOnServerRequest](docs/PerformActionOnServerRequest.md)
  - [TimewebCloudApi.Policy](docs/Policy.md)
@@ -947,7 +952,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ProjectResource](docs/ProjectResource.md)
  - [TimewebCloudApi.Provider](docs/Provider.md)
  - [TimewebCloudApi.Providers](docs/Providers.md)
- - [TimewebCloudApi.Quota](docs/Quota.md)
  - [TimewebCloudApi.ReduceNodes](docs/ReduceNodes.md)
  - [TimewebCloudApi.RefreshApiKey](docs/RefreshApiKey.md)
  - [TimewebCloudApi.RegistriesResponse](docs/RegistriesResponse.md)
@@ -995,6 +999,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.SettingCondition](docs/SettingCondition.md)
  - [TimewebCloudApi.SpamFilterIsDisabled](docs/SpamFilterIsDisabled.md)
  - [TimewebCloudApi.SpamFilterIsEnabled](docs/SpamFilterIsEnabled.md)
+ - [TimewebCloudApi.SpamProtectionIsDisabled](docs/SpamProtectionIsDisabled.md)
+ - [TimewebCloudApi.SpamProtectionIsEnabled](docs/SpamProtectionIsEnabled.md)
  - [TimewebCloudApi.SshKey](docs/SshKey.md)
  - [TimewebCloudApi.SshKeyUsedByInner](docs/SshKeyUsedByInner.md)
  - [TimewebCloudApi.Status](docs/Status.md)
@@ -1026,8 +1032,9 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateInstance](docs/UpdateInstance.md)
  - [TimewebCloudApi.UpdateKeyRequest](docs/UpdateKeyRequest.md)
  - [TimewebCloudApi.UpdateKnowledgebase](docs/UpdateKnowledgebase.md)
- - [TimewebCloudApi.UpdateMailQuotaRequest](docs/UpdateMailQuotaRequest.md)
  - [TimewebCloudApi.UpdateMailbox](docs/UpdateMailbox.md)
+ - [TimewebCloudApi.UpdateMailboxV2](docs/UpdateMailboxV2.md)
+ - [TimewebCloudApi.UpdateMailboxV2200Response](docs/UpdateMailboxV2200Response.md)
  - [TimewebCloudApi.UpdateNetworkDrive](docs/UpdateNetworkDrive.md)
  - [TimewebCloudApi.UpdateNotificationSettingsRequest](docs/UpdateNotificationSettingsRequest.md)
  - [TimewebCloudApi.UpdateNotificationSettingsRequestSettingsInner](docs/UpdateNotificationSettingsRequestSettingsInner.md)

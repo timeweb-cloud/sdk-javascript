@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.Quota();
+    instance = new TimewebCloudApi.OutgoingIsEnabled();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,22 +47,22 @@
       object[property] = value;
   }
 
-  describe('Quota', function() {
-    it('should create an instance of Quota', function() {
-      // uncomment below and update the code to test Quota
-      //var instance = new TimewebCloudApi.Quota();
-      //expect(instance).to.be.a(TimewebCloudApi.Quota);
+  describe('OutgoingIsEnabled', function() {
+    it('should create an instance of OutgoingIsEnabled', function() {
+      // uncomment below and update the code to test OutgoingIsEnabled
+      //var instance = new TimewebCloudApi.OutgoingIsEnabled();
+      //expect(instance).to.be.a(TimewebCloudApi.OutgoingIsEnabled);
     });
 
-    it('should have the property total (base name: "total")', function() {
-      // uncomment below and update the code to test the property total
-      //var instance = new TimewebCloudApi.Quota();
+    it('should have the property isEnabled (base name: "is_enabled")', function() {
+      // uncomment below and update the code to test the property isEnabled
+      //var instance = new TimewebCloudApi.OutgoingIsEnabled();
       //expect(instance).to.be();
     });
 
-    it('should have the property used (base name: "used")', function() {
-      // uncomment below and update the code to test the property used
-      //var instance = new TimewebCloudApi.Quota();
+    it('should have the property outgoingEmail (base name: "outgoing_email")', function() {
+      // uncomment below and update the code to test the property outgoingEmail
+      //var instance = new TimewebCloudApi.OutgoingIsEnabled();
       //expect(instance).to.be();
     });
 

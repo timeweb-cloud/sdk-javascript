@@ -9,12 +9,11 @@ Method | HTTP request | Description
 [**deleteMailbox**](MailApi.md#deleteMailbox) | **DELETE** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Удаление почтового ящика
 [**getDomainMailInfo**](MailApi.md#getDomainMailInfo) | **GET** /api/v1/mail/domains/{domain}/info | Получение почтовой информации о домене
 [**getDomainMailboxes**](MailApi.md#getDomainMailboxes) | **GET** /api/v1/mail/domains/{domain} | Получение списка почтовых ящиков домена
-[**getMailQuota**](MailApi.md#getMailQuota) | **GET** /api/v1/mail/quota | Получение квоты почты аккаунта
 [**getMailbox**](MailApi.md#getMailbox) | **GET** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Получение почтового ящика
 [**getMailboxes**](MailApi.md#getMailboxes) | **GET** /api/v1/mail | Получение списка почтовых ящиков аккаунта
 [**updateDomainMailInfo**](MailApi.md#updateDomainMailInfo) | **PATCH** /api/v1/mail/domains/{domain}/info | Изменение почтовой информации о домене
-[**updateMailQuota**](MailApi.md#updateMailQuota) | **PATCH** /api/v1/mail/quota | Изменение квоты почты аккаунта
 [**updateMailbox**](MailApi.md#updateMailbox) | **PATCH** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Изменение почтового ящика
+[**updateMailboxV2**](MailApi.md#updateMailboxV2) | **PATCH** /api/v2/mail/domains/{domain}/mailboxes/{mailbox} | Изменение почтового ящика
 
 
 
@@ -277,51 +276,6 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## getMailQuota
-
-> GetMailQuota200Response getMailQuota()
-
-Получение квоты почты аккаунта
-
-Чтобы получить квоту почты аккаунта, отправьте GET-запрос на &#x60;/api/v1/mail/quota&#x60;.
-
-### Example
-
-```javascript
-import TimewebCloudApi from 'timeweb_cloud_api';
-let defaultClient = TimewebCloudApi.ApiClient.instance;
-// Configure Bearer (JWT) access token for authorization: Bearer
-let Bearer = defaultClient.authentications['Bearer'];
-Bearer.accessToken = "YOUR ACCESS TOKEN"
-
-let apiInstance = new TimewebCloudApi.MailApi();
-apiInstance.getMailQuota((error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**GetMailQuota200Response**](GetMailQuota200Response.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## getMailbox
 
 > CreateDomainMailbox201Response getMailbox(domain, mailbox)
@@ -479,55 +433,6 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## updateMailQuota
-
-> GetMailQuota200Response updateMailQuota(updateMailQuotaRequest)
-
-Изменение квоты почты аккаунта
-
-Чтобы получить инфомацию по квоте почты аккаунта, отправьте GET-запрос на &#x60;/api/v1/mail/quota&#x60;.
-
-### Example
-
-```javascript
-import TimewebCloudApi from 'timeweb_cloud_api';
-let defaultClient = TimewebCloudApi.ApiClient.instance;
-// Configure Bearer (JWT) access token for authorization: Bearer
-let Bearer = defaultClient.authentications['Bearer'];
-Bearer.accessToken = "YOUR ACCESS TOKEN"
-
-let apiInstance = new TimewebCloudApi.MailApi();
-let updateMailQuotaRequest = new TimewebCloudApi.UpdateMailQuotaRequest(); // UpdateMailQuotaRequest | 
-apiInstance.updateMailQuota(updateMailQuotaRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **updateMailQuotaRequest** | [**UpdateMailQuotaRequest**](UpdateMailQuotaRequest.md)|  | 
-
-### Return type
-
-[**GetMailQuota200Response**](GetMailQuota200Response.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## updateMailbox
 
 > CreateDomainMailbox201Response updateMailbox(domain, mailbox, updateMailbox)
@@ -570,6 +475,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateDomainMailbox201Response**](CreateDomainMailbox201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updateMailboxV2
+
+> UpdateMailboxV2200Response updateMailboxV2(domain, mailbox, updateMailboxV2)
+
+Изменение почтового ящика
+
+Чтобы изменить почтовый ящик, отправьте PATCH-запрос на &#x60;/api/v2/mail/domains/{domain}/mailboxes/{mailbox}&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.MailApi();
+let domain = somedomain.ru; // String | Полное имя домена
+let mailbox = mailbox; // String | Название почтового ящика
+let updateMailboxV2 = new TimewebCloudApi.UpdateMailboxV2(); // UpdateMailboxV2 | 
+apiInstance.updateMailboxV2(domain, mailbox, updateMailboxV2, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **domain** | **String**| Полное имя домена | 
+ **mailbox** | **String**| Название почтового ящика | 
+ **updateMailboxV2** | [**UpdateMailboxV2**](UpdateMailboxV2.md)|  | 
+
+### Return type
+
+[**UpdateMailboxV2200Response**](UpdateMailboxV2200Response.md)
 
 ### Authorization
 

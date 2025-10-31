@@ -11,143 +11,106 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
 
-  var instance;
+/**
+ * The ForwardIsEnabled model module.
+ * @module model/ForwardIsEnabled
+ * @version 1.0.0
+ */
+class ForwardIsEnabled {
+    /**
+     * Constructs a new <code>ForwardIsEnabled</code>.
+     * @alias module:model/ForwardIsEnabled
+     * @param isEnabled {Boolean} Включена ли пересылка входящих писем
+     * @param forwardList {Array.<String>} Список адресов для пересылки. \\  Если передан параметр `is_enabled`: `false`, то значение передавать нельзя
+     */
+    constructor(isEnabled, forwardList) { 
+        
+        ForwardIsEnabled.initialize(this, isEnabled, forwardList);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.MailApi();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, isEnabled, forwardList) { 
+        obj['is_enabled'] = isEnabled;
+        obj['forward_list'] = forwardList;
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>ForwardIsEnabled</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/ForwardIsEnabled} obj Optional instance to populate.
+     * @return {module:model/ForwardIsEnabled} The populated <code>ForwardIsEnabled</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new ForwardIsEnabled();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('is_enabled')) {
+                obj['is_enabled'] = ApiClient.convertToType(data['is_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('forward_list')) {
+                obj['forward_list'] = ApiClient.convertToType(data['forward_list'], ['String']);
+            }
+            if (data.hasOwnProperty('is_leave_messages')) {
+                obj['is_leave_messages'] = ApiClient.convertToType(data['is_leave_messages'], 'Boolean');
+            }
+        }
+        return obj;
+    }
 
-  describe('MailApi', function() {
-    describe('createDomainMailbox', function() {
-      it('should call createDomainMailbox successfully', function(done) {
-        //uncomment below and update the code to test createDomainMailbox
-        //instance.createDomainMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createMultipleDomainMailboxes', function() {
-      it('should call createMultipleDomainMailboxes successfully', function(done) {
-        //uncomment below and update the code to test createMultipleDomainMailboxes
-        //instance.createMultipleDomainMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteMailbox', function() {
-      it('should call deleteMailbox successfully', function(done) {
-        //uncomment below and update the code to test deleteMailbox
-        //instance.deleteMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainMailInfo', function() {
-      it('should call getDomainMailInfo successfully', function(done) {
-        //uncomment below and update the code to test getDomainMailInfo
-        //instance.getDomainMailInfo(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainMailboxes', function() {
-      it('should call getDomainMailboxes successfully', function(done) {
-        //uncomment below and update the code to test getDomainMailboxes
-        //instance.getDomainMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getMailbox', function() {
-      it('should call getMailbox successfully', function(done) {
-        //uncomment below and update the code to test getMailbox
-        //instance.getMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getMailboxes', function() {
-      it('should call getMailboxes successfully', function(done) {
-        //uncomment below and update the code to test getMailboxes
-        //instance.getMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDomainMailInfo', function() {
-      it('should call updateDomainMailInfo successfully', function(done) {
-        //uncomment below and update the code to test updateDomainMailInfo
-        //instance.updateDomainMailInfo(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateMailbox', function() {
-      it('should call updateMailbox successfully', function(done) {
-        //uncomment below and update the code to test updateMailbox
-        //instance.updateMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateMailboxV2', function() {
-      it('should call updateMailboxV2 successfully', function(done) {
-        //uncomment below and update the code to test updateMailboxV2
-        //instance.updateMailboxV2(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-  });
+    /**
+     * Validates the JSON data with respect to <code>ForwardIsEnabled</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ForwardIsEnabled</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ForwardIsEnabled.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['forward_list'])) {
+            throw new Error("Expected the field `forward_list` to be an array in the JSON data but got " + data['forward_list']);
+        }
 
-}));
+        return true;
+    }
+
+
+}
+
+ForwardIsEnabled.RequiredProperties = ["is_enabled", "forward_list"];
+
+/**
+ * Включена ли пересылка входящих писем
+ * @member {Boolean} is_enabled
+ */
+ForwardIsEnabled.prototype['is_enabled'] = undefined;
+
+/**
+ * Список адресов для пересылки. \\  Если передан параметр `is_enabled`: `false`, то значение передавать нельзя
+ * @member {Array.<String>} forward_list
+ */
+ForwardIsEnabled.prototype['forward_list'] = undefined;
+
+/**
+ * Оставлять ли копии входящих писем в почтовом ящике (не удалять). \\  Если передан параметр `is_enabled`: `false`, то значение передавать нельзя
+ * @member {Boolean} is_leave_messages
+ */
+ForwardIsEnabled.prototype['is_leave_messages'] = undefined;
+
+
+
+
+
+
+export default ForwardIsEnabled;
+

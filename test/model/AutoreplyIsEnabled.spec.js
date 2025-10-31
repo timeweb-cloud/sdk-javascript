@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.UpdateMailQuotaRequest();
+    instance = new TimewebCloudApi.AutoreplyIsEnabled();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,16 +47,28 @@
       object[property] = value;
   }
 
-  describe('UpdateMailQuotaRequest', function() {
-    it('should create an instance of UpdateMailQuotaRequest', function() {
-      // uncomment below and update the code to test UpdateMailQuotaRequest
-      //var instance = new TimewebCloudApi.UpdateMailQuotaRequest();
-      //expect(instance).to.be.a(TimewebCloudApi.UpdateMailQuotaRequest);
+  describe('AutoreplyIsEnabled', function() {
+    it('should create an instance of AutoreplyIsEnabled', function() {
+      // uncomment below and update the code to test AutoreplyIsEnabled
+      //var instance = new TimewebCloudApi.AutoreplyIsEnabled();
+      //expect(instance).to.be.a(TimewebCloudApi.AutoreplyIsEnabled);
     });
 
-    it('should have the property total (base name: "total")', function() {
-      // uncomment below and update the code to test the property total
-      //var instance = new TimewebCloudApi.UpdateMailQuotaRequest();
+    it('should have the property isEnabled (base name: "is_enabled")', function() {
+      // uncomment below and update the code to test the property isEnabled
+      //var instance = new TimewebCloudApi.AutoreplyIsEnabled();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property autoreplyMessage (base name: "autoreply_message")', function() {
+      // uncomment below and update the code to test the property autoreplyMessage
+      //var instance = new TimewebCloudApi.AutoreplyIsEnabled();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property autoreplySubject (base name: "autoreply_subject")', function() {
+      // uncomment below and update the code to test the property autoreplySubject
+      //var instance = new TimewebCloudApi.AutoreplyIsEnabled();
       //expect(instance).to.be();
     });
 

@@ -11,143 +11,157 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
+import AutoreplyIsEnabled from './AutoreplyIsEnabled';
+import ForwardIsEnabled from './ForwardIsEnabled';
+import OutgoingIsEnabled from './OutgoingIsEnabled';
+import SpamProtectionIsEnabled from './SpamProtectionIsEnabled';
 
-  var instance;
+/**
+ * The UpdateMailboxV2 model module.
+ * @module model/UpdateMailboxV2
+ * @version 1.0.0
+ */
+class UpdateMailboxV2 {
+    /**
+     * Constructs a new <code>UpdateMailboxV2</code>.
+     * Обновление почтового ящика
+     * @alias module:model/UpdateMailboxV2
+     */
+    constructor() { 
+        
+        UpdateMailboxV2.initialize(this);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.MailApi();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj) { 
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>UpdateMailboxV2</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/UpdateMailboxV2} obj Optional instance to populate.
+     * @return {module:model/UpdateMailboxV2} The populated <code>UpdateMailboxV2</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new UpdateMailboxV2();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('password')) {
+                obj['password'] = ApiClient.convertToType(data['password'], 'String');
+            }
+            if (data.hasOwnProperty('comment')) {
+                obj['comment'] = ApiClient.convertToType(data['comment'], 'String');
+            }
+            if (data.hasOwnProperty('owner_full_name')) {
+                obj['owner_full_name'] = ApiClient.convertToType(data['owner_full_name'], 'String');
+            }
+            if (data.hasOwnProperty('spam_protection_settings')) {
+                obj['spam_protection_settings'] = SpamProtectionIsEnabled.constructFromObject(data['spam_protection_settings']);
+            }
+            if (data.hasOwnProperty('forward_settings')) {
+                obj['forward_settings'] = ForwardIsEnabled.constructFromObject(data['forward_settings']);
+            }
+            if (data.hasOwnProperty('autoreply_settings')) {
+                obj['autoreply_settings'] = AutoreplyIsEnabled.constructFromObject(data['autoreply_settings']);
+            }
+            if (data.hasOwnProperty('outgoing_settings')) {
+                obj['outgoing_settings'] = OutgoingIsEnabled.constructFromObject(data['outgoing_settings']);
+            }
+        }
+        return obj;
+    }
 
-  describe('MailApi', function() {
-    describe('createDomainMailbox', function() {
-      it('should call createDomainMailbox successfully', function(done) {
-        //uncomment below and update the code to test createDomainMailbox
-        //instance.createDomainMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createMultipleDomainMailboxes', function() {
-      it('should call createMultipleDomainMailboxes successfully', function(done) {
-        //uncomment below and update the code to test createMultipleDomainMailboxes
-        //instance.createMultipleDomainMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteMailbox', function() {
-      it('should call deleteMailbox successfully', function(done) {
-        //uncomment below and update the code to test deleteMailbox
-        //instance.deleteMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainMailInfo', function() {
-      it('should call getDomainMailInfo successfully', function(done) {
-        //uncomment below and update the code to test getDomainMailInfo
-        //instance.getDomainMailInfo(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainMailboxes', function() {
-      it('should call getDomainMailboxes successfully', function(done) {
-        //uncomment below and update the code to test getDomainMailboxes
-        //instance.getDomainMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getMailbox', function() {
-      it('should call getMailbox successfully', function(done) {
-        //uncomment below and update the code to test getMailbox
-        //instance.getMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getMailboxes', function() {
-      it('should call getMailboxes successfully', function(done) {
-        //uncomment below and update the code to test getMailboxes
-        //instance.getMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDomainMailInfo', function() {
-      it('should call updateDomainMailInfo successfully', function(done) {
-        //uncomment below and update the code to test updateDomainMailInfo
-        //instance.updateDomainMailInfo(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateMailbox', function() {
-      it('should call updateMailbox successfully', function(done) {
-        //uncomment below and update the code to test updateMailbox
-        //instance.updateMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateMailboxV2', function() {
-      it('should call updateMailboxV2 successfully', function(done) {
-        //uncomment below and update the code to test updateMailboxV2
-        //instance.updateMailboxV2(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-  });
+    /**
+     * Validates the JSON data with respect to <code>UpdateMailboxV2</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateMailboxV2</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['password'] && !(typeof data['password'] === 'string' || data['password'] instanceof String)) {
+            throw new Error("Expected the field `password` to be a primitive type in the JSON string but got " + data['password']);
+        }
+        // ensure the json data is a string
+        if (data['comment'] && !(typeof data['comment'] === 'string' || data['comment'] instanceof String)) {
+            throw new Error("Expected the field `comment` to be a primitive type in the JSON string but got " + data['comment']);
+        }
+        // ensure the json data is a string
+        if (data['owner_full_name'] && !(typeof data['owner_full_name'] === 'string' || data['owner_full_name'] instanceof String)) {
+            throw new Error("Expected the field `owner_full_name` to be a primitive type in the JSON string but got " + data['owner_full_name']);
+        }
+        // validate the optional field `spam_protection_settings`
+        if (data['spam_protection_settings']) { // data not null
+          SpamProtectionIsEnabled.validateJSON(data['spam_protection_settings']);
+        }
+        // validate the optional field `forward_settings`
+        if (data['forward_settings']) { // data not null
+          ForwardIsEnabled.validateJSON(data['forward_settings']);
+        }
+        // validate the optional field `autoreply_settings`
+        if (data['autoreply_settings']) { // data not null
+          AutoreplyIsEnabled.validateJSON(data['autoreply_settings']);
+        }
+        // validate the optional field `outgoing_settings`
+        if (data['outgoing_settings']) { // data not null
+          OutgoingIsEnabled.validateJSON(data['outgoing_settings']);
+        }
 
-}));
+        return true;
+    }
+
+
+}
+
+
+
+/**
+ * Пароль почтового ящика
+ * @member {String} password
+ */
+UpdateMailboxV2.prototype['password'] = undefined;
+
+/**
+ * Комментарий к почтовому ящику
+ * @member {String} comment
+ */
+UpdateMailboxV2.prototype['comment'] = undefined;
+
+/**
+ * ФИО владельца почтового ящика
+ * @member {String} owner_full_name
+ */
+UpdateMailboxV2.prototype['owner_full_name'] = undefined;
+
+/**
+ * @member {module:model/SpamProtectionIsEnabled} spam_protection_settings
+ */
+UpdateMailboxV2.prototype['spam_protection_settings'] = undefined;
+
+/**
+ * @member {module:model/ForwardIsEnabled} forward_settings
+ */
+UpdateMailboxV2.prototype['forward_settings'] = undefined;
+
+/**
+ * @member {module:model/AutoreplyIsEnabled} autoreply_settings
+ */
+UpdateMailboxV2.prototype['autoreply_settings'] = undefined;
+
+/**
+ * @member {module:model/OutgoingIsEnabled} outgoing_settings
+ */
+UpdateMailboxV2.prototype['outgoing_settings'] = undefined;
+
+
+
+
+
+
+export default UpdateMailboxV2;
+

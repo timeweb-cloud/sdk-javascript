@@ -11,86 +11,55 @@
  *
  */
 
-import ApiClient from '../ApiClient';
-import Quota from './Quota';
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', process.cwd()+'/src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.TimewebCloudApi);
+  }
+}(this, function(expect, TimewebCloudApi) {
+  'use strict';
 
-/**
- * The GetMailQuota200Response model module.
- * @module model/GetMailQuota200Response
- * @version 1.0.0
- */
-class GetMailQuota200Response {
-    /**
-     * Constructs a new <code>GetMailQuota200Response</code>.
-     * @alias module:model/GetMailQuota200Response
-     * @param quota {module:model/Quota} 
-     */
-    constructor(quota) { 
-        
-        GetMailQuota200Response.initialize(this, quota);
-    }
+  var instance;
 
-    /**
-     * Initializes the fields of this object.
-     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
-     * Only for internal use.
-     */
-    static initialize(obj, quota) { 
-        obj['quota'] = quota;
-    }
+  beforeEach(function() {
+    instance = new TimewebCloudApi.OutgoingIsDisabled();
+  });
 
-    /**
-     * Constructs a <code>GetMailQuota200Response</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GetMailQuota200Response} obj Optional instance to populate.
-     * @return {module:model/GetMailQuota200Response} The populated <code>GetMailQuota200Response</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new GetMailQuota200Response();
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
-            if (data.hasOwnProperty('quota')) {
-                obj['quota'] = Quota.constructFromObject(data['quota']);
-            }
-        }
-        return obj;
-    }
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-    /**
-     * Validates the JSON data with respect to <code>GetMailQuota200Response</code>.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetMailQuota200Response</code>.
-     */
-    static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of GetMailQuota200Response.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
-        // validate the optional field `quota`
-        if (data['quota']) { // data not null
-          Quota.validateJSON(data['quota']);
-        }
+  describe('OutgoingIsDisabled', function() {
+    it('should create an instance of OutgoingIsDisabled', function() {
+      // uncomment below and update the code to test OutgoingIsDisabled
+      //var instance = new TimewebCloudApi.OutgoingIsDisabled();
+      //expect(instance).to.be.a(TimewebCloudApi.OutgoingIsDisabled);
+    });
 
-        return true;
-    }
+    it('should have the property isEnabled (base name: "is_enabled")', function() {
+      // uncomment below and update the code to test the property isEnabled
+      //var instance = new TimewebCloudApi.OutgoingIsDisabled();
+      //expect(instance).to.be();
+    });
 
+  });
 
-}
-
-GetMailQuota200Response.RequiredProperties = ["quota"];
-
-/**
- * @member {module:model/Quota} quota
- */
-GetMailQuota200Response.prototype['quota'] = undefined;
-
-
-
-
-
-
-export default GetMailQuota200Response;
-
+}));

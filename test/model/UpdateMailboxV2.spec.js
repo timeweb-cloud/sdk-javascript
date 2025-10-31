@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.MailApi();
+    instance = new TimewebCloudApi.UpdateMailboxV2();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,107 +47,55 @@
       object[property] = value;
   }
 
-  describe('MailApi', function() {
-    describe('createDomainMailbox', function() {
-      it('should call createDomainMailbox successfully', function(done) {
-        //uncomment below and update the code to test createDomainMailbox
-        //instance.createDomainMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('UpdateMailboxV2', function() {
+    it('should create an instance of UpdateMailboxV2', function() {
+      // uncomment below and update the code to test UpdateMailboxV2
+      //var instance = new TimewebCloudApi.UpdateMailboxV2();
+      //expect(instance).to.be.a(TimewebCloudApi.UpdateMailboxV2);
     });
-    describe('createMultipleDomainMailboxes', function() {
-      it('should call createMultipleDomainMailboxes successfully', function(done) {
-        //uncomment below and update the code to test createMultipleDomainMailboxes
-        //instance.createMultipleDomainMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property password (base name: "password")', function() {
+      // uncomment below and update the code to test the property password
+      //var instance = new TimewebCloudApi.UpdateMailboxV2();
+      //expect(instance).to.be();
     });
-    describe('deleteMailbox', function() {
-      it('should call deleteMailbox successfully', function(done) {
-        //uncomment below and update the code to test deleteMailbox
-        //instance.deleteMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property comment (base name: "comment")', function() {
+      // uncomment below and update the code to test the property comment
+      //var instance = new TimewebCloudApi.UpdateMailboxV2();
+      //expect(instance).to.be();
     });
-    describe('getDomainMailInfo', function() {
-      it('should call getDomainMailInfo successfully', function(done) {
-        //uncomment below and update the code to test getDomainMailInfo
-        //instance.getDomainMailInfo(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property ownerFullName (base name: "owner_full_name")', function() {
+      // uncomment below and update the code to test the property ownerFullName
+      //var instance = new TimewebCloudApi.UpdateMailboxV2();
+      //expect(instance).to.be();
     });
-    describe('getDomainMailboxes', function() {
-      it('should call getDomainMailboxes successfully', function(done) {
-        //uncomment below and update the code to test getDomainMailboxes
-        //instance.getDomainMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property spamProtectionSettings (base name: "spam_protection_settings")', function() {
+      // uncomment below and update the code to test the property spamProtectionSettings
+      //var instance = new TimewebCloudApi.UpdateMailboxV2();
+      //expect(instance).to.be();
     });
-    describe('getMailbox', function() {
-      it('should call getMailbox successfully', function(done) {
-        //uncomment below and update the code to test getMailbox
-        //instance.getMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property forwardSettings (base name: "forward_settings")', function() {
+      // uncomment below and update the code to test the property forwardSettings
+      //var instance = new TimewebCloudApi.UpdateMailboxV2();
+      //expect(instance).to.be();
     });
-    describe('getMailboxes', function() {
-      it('should call getMailboxes successfully', function(done) {
-        //uncomment below and update the code to test getMailboxes
-        //instance.getMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property autoreplySettings (base name: "autoreply_settings")', function() {
+      // uncomment below and update the code to test the property autoreplySettings
+      //var instance = new TimewebCloudApi.UpdateMailboxV2();
+      //expect(instance).to.be();
     });
-    describe('updateDomainMailInfo', function() {
-      it('should call updateDomainMailInfo successfully', function(done) {
-        //uncomment below and update the code to test updateDomainMailInfo
-        //instance.updateDomainMailInfo(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property outgoingSettings (base name: "outgoing_settings")', function() {
+      // uncomment below and update the code to test the property outgoingSettings
+      //var instance = new TimewebCloudApi.UpdateMailboxV2();
+      //expect(instance).to.be();
     });
-    describe('updateMailbox', function() {
-      it('should call updateMailbox successfully', function(done) {
-        //uncomment below and update the code to test updateMailbox
-        //instance.updateMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateMailboxV2', function() {
-      it('should call updateMailboxV2 successfully', function(done) {
-        //uncomment below and update the code to test updateMailboxV2
-        //instance.updateMailboxV2(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
+
   });
 
 }));

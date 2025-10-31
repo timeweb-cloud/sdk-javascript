@@ -11,82 +11,55 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', process.cwd()+'/src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.TimewebCloudApi);
+  }
+}(this, function(expect, TimewebCloudApi) {
+  'use strict';
 
-/**
- * The UpdateMailQuotaRequest model module.
- * @module model/UpdateMailQuotaRequest
- * @version 1.0.0
- */
-class UpdateMailQuotaRequest {
-    /**
-     * Constructs a new <code>UpdateMailQuotaRequest</code>.
-     * @alias module:model/UpdateMailQuotaRequest
-     * @param total {Number} Общее количество места на почте (в Мб).
-     */
-    constructor(total) { 
-        
-        UpdateMailQuotaRequest.initialize(this, total);
-    }
+  var instance;
 
-    /**
-     * Initializes the fields of this object.
-     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
-     * Only for internal use.
-     */
-    static initialize(obj, total) { 
-        obj['total'] = total;
-    }
+  beforeEach(function() {
+    instance = new TimewebCloudApi.ForwardIsDisabled();
+  });
 
-    /**
-     * Constructs a <code>UpdateMailQuotaRequest</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/UpdateMailQuotaRequest} obj Optional instance to populate.
-     * @return {module:model/UpdateMailQuotaRequest} The populated <code>UpdateMailQuotaRequest</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new UpdateMailQuotaRequest();
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
-            if (data.hasOwnProperty('total')) {
-                obj['total'] = ApiClient.convertToType(data['total'], 'Number');
-            }
-        }
-        return obj;
-    }
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-    /**
-     * Validates the JSON data with respect to <code>UpdateMailQuotaRequest</code>.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateMailQuotaRequest</code>.
-     */
-    static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of UpdateMailQuotaRequest.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
+  describe('ForwardIsDisabled', function() {
+    it('should create an instance of ForwardIsDisabled', function() {
+      // uncomment below and update the code to test ForwardIsDisabled
+      //var instance = new TimewebCloudApi.ForwardIsDisabled();
+      //expect(instance).to.be.a(TimewebCloudApi.ForwardIsDisabled);
+    });
 
-        return true;
-    }
+    it('should have the property isEnabled (base name: "is_enabled")', function() {
+      // uncomment below and update the code to test the property isEnabled
+      //var instance = new TimewebCloudApi.ForwardIsDisabled();
+      //expect(instance).to.be();
+    });
 
+  });
 
-}
-
-UpdateMailQuotaRequest.RequiredProperties = ["total"];
-
-/**
- * Общее количество места на почте (в Мб).
- * @member {Number} total
- */
-UpdateMailQuotaRequest.prototype['total'] = undefined;
-
-
-
-
-
-
-export default UpdateMailQuotaRequest;
-
+}));

@@ -11,143 +11,129 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
 
-  var instance;
+/**
+ * The SpamProtectionIsEnabled model module.
+ * @module model/SpamProtectionIsEnabled
+ * @version 1.0.0
+ */
+class SpamProtectionIsEnabled {
+    /**
+     * Constructs a new <code>SpamProtectionIsEnabled</code>.
+     * @alias module:model/SpamProtectionIsEnabled
+     * @param isEnabled {Boolean} Включен ли спам-фильтр
+     */
+    constructor(isEnabled) { 
+        
+        SpamProtectionIsEnabled.initialize(this, isEnabled);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.MailApi();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, isEnabled) { 
+        obj['is_enabled'] = isEnabled;
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>SpamProtectionIsEnabled</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/SpamProtectionIsEnabled} obj Optional instance to populate.
+     * @return {module:model/SpamProtectionIsEnabled} The populated <code>SpamProtectionIsEnabled</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new SpamProtectionIsEnabled();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('is_enabled')) {
+                obj['is_enabled'] = ApiClient.convertToType(data['is_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('filter_action')) {
+                obj['filter_action'] = ApiClient.convertToType(data['filter_action'], 'String');
+            }
+            if (data.hasOwnProperty('white_list')) {
+                obj['white_list'] = ApiClient.convertToType(data['white_list'], ['String']);
+            }
+        }
+        return obj;
+    }
 
-  describe('MailApi', function() {
-    describe('createDomainMailbox', function() {
-      it('should call createDomainMailbox successfully', function(done) {
-        //uncomment below and update the code to test createDomainMailbox
-        //instance.createDomainMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createMultipleDomainMailboxes', function() {
-      it('should call createMultipleDomainMailboxes successfully', function(done) {
-        //uncomment below and update the code to test createMultipleDomainMailboxes
-        //instance.createMultipleDomainMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteMailbox', function() {
-      it('should call deleteMailbox successfully', function(done) {
-        //uncomment below and update the code to test deleteMailbox
-        //instance.deleteMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainMailInfo', function() {
-      it('should call getDomainMailInfo successfully', function(done) {
-        //uncomment below and update the code to test getDomainMailInfo
-        //instance.getDomainMailInfo(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainMailboxes', function() {
-      it('should call getDomainMailboxes successfully', function(done) {
-        //uncomment below and update the code to test getDomainMailboxes
-        //instance.getDomainMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getMailbox', function() {
-      it('should call getMailbox successfully', function(done) {
-        //uncomment below and update the code to test getMailbox
-        //instance.getMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getMailboxes', function() {
-      it('should call getMailboxes successfully', function(done) {
-        //uncomment below and update the code to test getMailboxes
-        //instance.getMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDomainMailInfo', function() {
-      it('should call updateDomainMailInfo successfully', function(done) {
-        //uncomment below and update the code to test updateDomainMailInfo
-        //instance.updateDomainMailInfo(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateMailbox', function() {
-      it('should call updateMailbox successfully', function(done) {
-        //uncomment below and update the code to test updateMailbox
-        //instance.updateMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateMailboxV2', function() {
-      it('should call updateMailboxV2 successfully', function(done) {
-        //uncomment below and update the code to test updateMailboxV2
-        //instance.updateMailboxV2(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-  });
+    /**
+     * Validates the JSON data with respect to <code>SpamProtectionIsEnabled</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SpamProtectionIsEnabled</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of SpamProtectionIsEnabled.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['filter_action'] && !(typeof data['filter_action'] === 'string' || data['filter_action'] instanceof String)) {
+            throw new Error("Expected the field `filter_action` to be a primitive type in the JSON string but got " + data['filter_action']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['white_list'])) {
+            throw new Error("Expected the field `white_list` to be an array in the JSON data but got " + data['white_list']);
+        }
 
-}));
+        return true;
+    }
+
+
+}
+
+SpamProtectionIsEnabled.RequiredProperties = ["is_enabled"];
+
+/**
+ * Включен ли спам-фильтр
+ * @member {Boolean} is_enabled
+ */
+SpamProtectionIsEnabled.prototype['is_enabled'] = undefined;
+
+/**
+ * Что делать с письмами, которые попадают в спам. \\  Параметры: \\  `directory` - переместить в папку спам; \\  `label` - пометить письмо; \\  Если передан параметр `is_enabled`: `false`, то значение передавать нельзя
+ * @member {module:model/SpamProtectionIsEnabled.FilterActionEnum} filter_action
+ */
+SpamProtectionIsEnabled.prototype['filter_action'] = undefined;
+
+/**
+ * Белый список адресов от которых письма не будут попадать в спам. \\  Если передан параметр `is_enabled`: `false`, то значение передавать нельзя
+ * @member {Array.<String>} white_list
+ */
+SpamProtectionIsEnabled.prototype['white_list'] = undefined;
+
+
+
+
+
+/**
+ * Allowed values for the <code>filter_action</code> property.
+ * @enum {String}
+ * @readonly
+ */
+SpamProtectionIsEnabled['FilterActionEnum'] = {
+
+    /**
+     * value: "directory"
+     * @const
+     */
+    "directory": "directory",
+
+    /**
+     * value: "label"
+     * @const
+     */
+    "label": "label"
+};
+
+
+
+export default SpamProtectionIsEnabled;
+

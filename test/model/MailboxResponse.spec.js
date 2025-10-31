@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.MailApi();
+    instance = new TimewebCloudApi.MailboxResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,107 +47,127 @@
       object[property] = value;
   }
 
-  describe('MailApi', function() {
-    describe('createDomainMailbox', function() {
-      it('should call createDomainMailbox successfully', function(done) {
-        //uncomment below and update the code to test createDomainMailbox
-        //instance.createDomainMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('MailboxResponse', function() {
+    it('should create an instance of MailboxResponse', function() {
+      // uncomment below and update the code to test MailboxResponse
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be.a(TimewebCloudApi.MailboxResponse);
     });
-    describe('createMultipleDomainMailboxes', function() {
-      it('should call createMultipleDomainMailboxes successfully', function(done) {
-        //uncomment below and update the code to test createMultipleDomainMailboxes
-        //instance.createMultipleDomainMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property idnName (base name: "idn_name")', function() {
+      // uncomment below and update the code to test the property idnName
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
     });
-    describe('deleteMailbox', function() {
-      it('should call deleteMailbox successfully', function(done) {
-        //uncomment below and update the code to test deleteMailbox
-        //instance.deleteMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property autoreplyMessage (base name: "autoreply_message")', function() {
+      // uncomment below and update the code to test the property autoreplyMessage
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
     });
-    describe('getDomainMailInfo', function() {
-      it('should call getDomainMailInfo successfully', function(done) {
-        //uncomment below and update the code to test getDomainMailInfo
-        //instance.getDomainMailInfo(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property autoreplyStatus (base name: "autoreply_status")', function() {
+      // uncomment below and update the code to test the property autoreplyStatus
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
     });
-    describe('getDomainMailboxes', function() {
-      it('should call getDomainMailboxes successfully', function(done) {
-        //uncomment below and update the code to test getDomainMailboxes
-        //instance.getDomainMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property autoreplySubject (base name: "autoreply_subject")', function() {
+      // uncomment below and update the code to test the property autoreplySubject
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
     });
-    describe('getMailbox', function() {
-      it('should call getMailbox successfully', function(done) {
-        //uncomment below and update the code to test getMailbox
-        //instance.getMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property comment (base name: "comment")', function() {
+      // uncomment below and update the code to test the property comment
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
     });
-    describe('getMailboxes', function() {
-      it('should call getMailboxes successfully', function(done) {
-        //uncomment below and update the code to test getMailboxes
-        //instance.getMailboxes(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property filterAction (base name: "filter_action")', function() {
+      // uncomment below and update the code to test the property filterAction
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
     });
-    describe('updateDomainMailInfo', function() {
-      it('should call updateDomainMailInfo successfully', function(done) {
-        //uncomment below and update the code to test updateDomainMailInfo
-        //instance.updateDomainMailInfo(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property filterStatus (base name: "filter_status")', function() {
+      // uncomment below and update the code to test the property filterStatus
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
     });
-    describe('updateMailbox', function() {
-      it('should call updateMailbox successfully', function(done) {
-        //uncomment below and update the code to test updateMailbox
-        //instance.updateMailbox(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property forwardList (base name: "forward_list")', function() {
+      // uncomment below and update the code to test the property forwardList
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
     });
-    describe('updateMailboxV2', function() {
-      it('should call updateMailboxV2 successfully', function(done) {
-        //uncomment below and update the code to test updateMailboxV2
-        //instance.updateMailboxV2(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property forwardStatus (base name: "forward_status")', function() {
+      // uncomment below and update the code to test the property forwardStatus
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
     });
+
+    it('should have the property outgoingControl (base name: "outgoing_control")', function() {
+      // uncomment below and update the code to test the property outgoingControl
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property outgoingEmail (base name: "outgoing_email")', function() {
+      // uncomment below and update the code to test the property outgoingEmail
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property password (base name: "password")', function() {
+      // uncomment below and update the code to test the property password
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property whiteList (base name: "white_list")', function() {
+      // uncomment below and update the code to test the property whiteList
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property webmail (base name: "webmail")', function() {
+      // uncomment below and update the code to test the property webmail
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property dovecot (base name: "dovecot")', function() {
+      // uncomment below and update the code to test the property dovecot
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fqdn (base name: "fqdn")', function() {
+      // uncomment below and update the code to test the property fqdn
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property leaveMessages (base name: "leave_messages")', function() {
+      // uncomment below and update the code to test the property leaveMessages
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property mailbox (base name: "mailbox")', function() {
+      // uncomment below and update the code to test the property mailbox
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property ownerFullName (base name: "owner_full_name")', function() {
+      // uncomment below and update the code to test the property ownerFullName
+      //var instance = new TimewebCloudApi.MailboxResponse();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));
