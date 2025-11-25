@@ -102,7 +102,7 @@ ForwardIsEnabled.prototype['is_enabled'] = undefined;
 ForwardIsEnabled.prototype['forward_list'] = undefined;
 
 /**
- * Оставлять ли копии входящих писем в почтовом ящике (не удалять). \\  Если передан параметр `is_enabled`: `false`, то значение передавать нельзя
+ * Оставлять ли копии входящих писем в почтовом ящике (не удалять). \\  При `is_leave_messages`: `true`— копии входящих писем не сохраняются и будут удаляться. \\  При `is_leave_messages`: `false` — копии входящих писем сохраняются. \\ \\  Если передан параметр `is_enabled`: `false`, то значение передавать нельзя
  * @member {Boolean} is_leave_messages
  */
 ForwardIsEnabled.prototype['is_leave_messages'] = undefined;
