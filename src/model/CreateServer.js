@@ -100,6 +100,9 @@ class CreateServer {
             if (data.hasOwnProperty('project_id')) {
                 obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
             }
+            if (data.hasOwnProperty('hostname')) {
+                obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
+            }
         }
         return obj;
     }
@@ -147,6 +150,10 @@ class CreateServer {
         // ensure the json data is a string
         if (data['cloud_init'] && !(typeof data['cloud_init'] === 'string' || data['cloud_init'] instanceof String)) {
             throw new Error("Expected the field `cloud_init` to be a primitive type in the JSON string but got " + data['cloud_init']);
+        }
+        // ensure the json data is a string
+        if (data['hostname'] && !(typeof data['hostname'] === 'string' || data['hostname'] instanceof String)) {
+            throw new Error("Expected the field `hostname` to be a primitive type in the JSON string but got " + data['hostname']);
         }
 
         return true;
@@ -249,6 +256,12 @@ CreateServer.prototype['availability_zone'] = undefined;
  * @member {Number} project_id
  */
 CreateServer.prototype['project_id'] = undefined;
+
+/**
+ * Сетевое имя сервера
+ * @member {String} hostname
+ */
+CreateServer.prototype['hostname'] = undefined;
 
 
 
