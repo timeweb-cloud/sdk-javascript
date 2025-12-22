@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **uploadUrl** | **String** | Ссылка для загрузки образа. | [optional] 
 **location** | [**Location**](Location.md) |  | 
 **os** | [**OS**](OS.md) |  | 
+**hostname** | **String** | Сетевое имя сервера | [optional] 
 
 

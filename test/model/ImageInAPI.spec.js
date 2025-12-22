@@ -90,6 +90,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property hostname (base name: "hostname")', function() {
+      // uncomment below and update the code to test the property hostname
+      //var instance = new TimewebCloudApi.ImageInAPI();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

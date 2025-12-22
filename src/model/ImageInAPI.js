@@ -71,6 +71,9 @@ class ImageInAPI {
             if (data.hasOwnProperty('os')) {
                 obj['os'] = OS.constructFromObject(data['os']);
             }
+            if (data.hasOwnProperty('hostname')) {
+                obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
+            }
         }
         return obj;
     }
@@ -98,6 +101,10 @@ class ImageInAPI {
         // ensure the json data is a string
         if (data['upload_url'] && !(typeof data['upload_url'] === 'string' || data['upload_url'] instanceof String)) {
             throw new Error("Expected the field `upload_url` to be a primitive type in the JSON string but got " + data['upload_url']);
+        }
+        // ensure the json data is a string
+        if (data['hostname'] && !(typeof data['hostname'] === 'string' || data['hostname'] instanceof String)) {
+            throw new Error("Expected the field `hostname` to be a primitive type in the JSON string but got " + data['hostname']);
         }
 
         return true;
@@ -141,6 +148,12 @@ ImageInAPI.prototype['location'] = undefined;
  * @member {module:model/OS} os
  */
 ImageInAPI.prototype['os'] = undefined;
+
+/**
+ * Сетевое имя сервера
+ * @member {String} hostname
+ */
+ImageInAPI.prototype['hostname'] = undefined;
 
 
 
