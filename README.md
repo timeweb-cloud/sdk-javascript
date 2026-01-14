@@ -280,6 +280,9 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.AIAgentsApi* | [**getAgentStatistics**](docs/AIAgentsApi.md#getAgentStatistics) | **GET** /api/v1/cloud-ai/agents/{id}/statistic | Получение статистики использования токенов агента
 *TimewebCloudApi.AIAgentsApi* | [**getAgents**](docs/AIAgentsApi.md#getAgents) | **GET** /api/v1/cloud-ai/agents | Получение списка AI агентов
 *TimewebCloudApi.AIAgentsApi* | [**updateAgent**](docs/AIAgentsApi.md#updateAgent) | **PATCH** /api/v1/cloud-ai/agents/{id} | Обновление AI агента
+*TimewebCloudApi.AIModelsApi* | [**getAgentsTokenPackages**](docs/AIModelsApi.md#getAgentsTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/agents | Получение списка пакетов токенов для агентов
+*TimewebCloudApi.AIModelsApi* | [**getKnowledgebasesTokenPackages**](docs/AIModelsApi.md#getKnowledgebasesTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/knowledge-bases | Получение списка пакетов токенов для баз знаний
+*TimewebCloudApi.AIModelsApi* | [**getModels**](docs/AIModelsApi.md#getModels) | **GET** /api/v1/cloud-ai/models | Получение списка моделей
 *TimewebCloudApi.APIKeysApi* | [**createToken**](docs/APIKeysApi.md#createToken) | **POST** /api/v1/auth/api-keys | Создание токена
 *TimewebCloudApi.APIKeysApi* | [**deleteToken**](docs/APIKeysApi.md#deleteToken) | **DELETE** /api/v1/auth/api-keys/{token_id} | Удалить токен
 *TimewebCloudApi.APIKeysApi* | [**getTokens**](docs/APIKeysApi.md#getTokens) | **GET** /api/v1/auth/api-keys | Получение списка выпущенных токенов
@@ -799,6 +802,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetAgentStatistics200ResponseMeta](docs/GetAgentStatistics200ResponseMeta.md)
  - [TimewebCloudApi.GetAgents200Response](docs/GetAgents200Response.md)
  - [TimewebCloudApi.GetAgents200ResponseMeta](docs/GetAgents200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentsTokenPackages200Response](docs/GetAgentsTokenPackages200Response.md)
+ - [TimewebCloudApi.GetAgentsTokenPackages200ResponseMeta](docs/GetAgentsTokenPackages200ResponseMeta.md)
  - [TimewebCloudApi.GetAllProjectResources200Response](docs/GetAllProjectResources200Response.md)
  - [TimewebCloudApi.GetAppDeploys200Response](docs/GetAppDeploys200Response.md)
  - [TimewebCloudApi.GetAppLogs200Response](docs/GetAppLogs200Response.md)
@@ -849,6 +854,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetKnowledgebasesV2200ResponseMeta](docs/GetKnowledgebasesV2200ResponseMeta.md)
  - [TimewebCloudApi.GetLocations200Response](docs/GetLocations200Response.md)
  - [TimewebCloudApi.GetMailboxes200Response](docs/GetMailboxes200Response.md)
+ - [TimewebCloudApi.GetModels200Response](docs/GetModels200Response.md)
+ - [TimewebCloudApi.GetModels200ResponseMeta](docs/GetModels200ResponseMeta.md)
  - [TimewebCloudApi.GetNetworkDrives200Response](docs/GetNetworkDrives200Response.md)
  - [TimewebCloudApi.GetNetworkDrivesAvailableResources200Response](docs/GetNetworkDrivesAvailableResources200Response.md)
  - [TimewebCloudApi.GetNetworkDrivesPresets200Response](docs/GetNetworkDrivesPresets200Response.md)
@@ -918,6 +925,11 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.MasterPresetOutApi](docs/MasterPresetOutApi.md)
  - [TimewebCloudApi.Meta](docs/Meta.md)
  - [TimewebCloudApi.Meta1](docs/Meta1.md)
+ - [TimewebCloudApi.Model](docs/Model.md)
+ - [TimewebCloudApi.ModelParamsInfo](docs/ModelParamsInfo.md)
+ - [TimewebCloudApi.ModelParamsInfoMaxTokens](docs/ModelParamsInfoMaxTokens.md)
+ - [TimewebCloudApi.ModelParamsInfoReasoningEffort](docs/ModelParamsInfoReasoningEffort.md)
+ - [TimewebCloudApi.ModelParamsInfoTemperature](docs/ModelParamsInfoTemperature.md)
  - [TimewebCloudApi.MountNetworkDrive](docs/MountNetworkDrive.md)
  - [TimewebCloudApi.Network](docs/Network.md)
  - [TimewebCloudApi.NetworkDrive](docs/NetworkDrive.md)
@@ -1007,6 +1019,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.StatusCompanyInfo](docs/StatusCompanyInfo.md)
  - [TimewebCloudApi.Subdomain](docs/Subdomain.md)
  - [TimewebCloudApi.Tags](docs/Tags.md)
+ - [TimewebCloudApi.TokenPackage](docs/TokenPackage.md)
  - [TimewebCloudApi.TokenStatistic](docs/TokenStatistic.md)
  - [TimewebCloudApi.TopLevelDomain](docs/TopLevelDomain.md)
  - [TimewebCloudApi.TopLevelDomainAllowedBuyPeriodsInner](docs/TopLevelDomainAllowedBuyPeriodsInner.md)

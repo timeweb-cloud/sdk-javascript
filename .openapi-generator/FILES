@@ -4,6 +4,7 @@
 .travis.yml
 README.md
 docs/AIAgentsApi.md
+docs/AIModelsApi.md
 docs/APIKeysApi.md
 docs/AccountApi.md
 docs/AddBalancerToProject200Response.md
@@ -235,6 +236,8 @@ docs/GetAgentStatistics200Response.md
 docs/GetAgentStatistics200ResponseMeta.md
 docs/GetAgents200Response.md
 docs/GetAgents200ResponseMeta.md
+docs/GetAgentsTokenPackages200Response.md
+docs/GetAgentsTokenPackages200ResponseMeta.md
 docs/GetAllProjectResources200Response.md
 docs/GetAppDeploys200Response.md
 docs/GetAppLogs200Response.md
@@ -285,6 +288,8 @@ docs/GetKnowledgebasesV2200Response.md
 docs/GetKnowledgebasesV2200ResponseMeta.md
 docs/GetLocations200Response.md
 docs/GetMailboxes200Response.md
+docs/GetModels200Response.md
+docs/GetModels200ResponseMeta.md
 docs/GetNetworkDrives200Response.md
 docs/GetNetworkDrivesAvailableResources200Response.md
 docs/GetNetworkDrivesPresets200Response.md
@@ -359,6 +364,11 @@ docs/MailboxSpamFilter.md
 docs/MasterPresetOutApi.md
 docs/Meta.md
 docs/Meta1.md
+docs/Model.md
+docs/ModelParamsInfo.md
+docs/ModelParamsInfoMaxTokens.md
+docs/ModelParamsInfoReasoningEffort.md
+docs/ModelParamsInfoTemperature.md
 docs/MountNetworkDrive.md
 docs/Network.md
 docs/NetworkDrive.md
@@ -454,6 +464,7 @@ docs/Status.md
 docs/StatusCompanyInfo.md
 docs/Subdomain.md
 docs/Tags.md
+docs/TokenPackage.md
 docs/TokenStatistic.md
 docs/TopLevelDomain.md
 docs/TopLevelDomainAllowedBuyPeriodsInner.md
@@ -525,6 +536,7 @@ mocha.opts
 package.json
 src/ApiClient.js
 src/api/AIAgentsApi.js
+src/api/AIModelsApi.js
 src/api/APIKeysApi.js
 src/api/AccountApi.js
 src/api/AppsApi.js
@@ -769,6 +781,8 @@ src/model/GetAgentStatistics200Response.js
 src/model/GetAgentStatistics200ResponseMeta.js
 src/model/GetAgents200Response.js
 src/model/GetAgents200ResponseMeta.js
+src/model/GetAgentsTokenPackages200Response.js
+src/model/GetAgentsTokenPackages200ResponseMeta.js
 src/model/GetAllProjectResources200Response.js
 src/model/GetAppDeploys200Response.js
 src/model/GetAppLogs200Response.js
@@ -819,6 +833,8 @@ src/model/GetKnowledgebasesV2200Response.js
 src/model/GetKnowledgebasesV2200ResponseMeta.js
 src/model/GetLocations200Response.js
 src/model/GetMailboxes200Response.js
+src/model/GetModels200Response.js
+src/model/GetModels200ResponseMeta.js
 src/model/GetNetworkDrives200Response.js
 src/model/GetNetworkDrivesAvailableResources200Response.js
 src/model/GetNetworkDrivesPresets200Response.js
@@ -888,6 +904,11 @@ src/model/MailboxSpamFilter.js
 src/model/MasterPresetOutApi.js
 src/model/Meta.js
 src/model/Meta1.js
+src/model/Model.js
+src/model/ModelParamsInfo.js
+src/model/ModelParamsInfoMaxTokens.js
+src/model/ModelParamsInfoReasoningEffort.js
+src/model/ModelParamsInfoTemperature.js
 src/model/MountNetworkDrive.js
 src/model/Network.js
 src/model/NetworkDrive.js
@@ -977,6 +998,7 @@ src/model/Status.js
 src/model/StatusCompanyInfo.js
 src/model/Subdomain.js
 src/model/Tags.js
+src/model/TokenPackage.js
 src/model/TokenStatistic.js
 src/model/TopLevelDomain.js
 src/model/TopLevelDomainAllowedBuyPeriodsInner.js
@@ -1043,6 +1065,7 @@ src/model/VpcPortService.js
 src/model/VpcService.js
 src/model/WorkerPresetOutApi.js
 test/api/AIAgentsApi.spec.js
+test/api/AIModelsApi.spec.js
 test/api/APIKeysApi.spec.js
 test/api/AccountApi.spec.js
 test/api/AppsApi.spec.js
@@ -1286,6 +1309,8 @@ test/model/GetAgentStatistics200Response.spec.js
 test/model/GetAgentStatistics200ResponseMeta.spec.js
 test/model/GetAgents200Response.spec.js
 test/model/GetAgents200ResponseMeta.spec.js
+test/model/GetAgentsTokenPackages200Response.spec.js
+test/model/GetAgentsTokenPackages200ResponseMeta.spec.js
 test/model/GetAllProjectResources200Response.spec.js
 test/model/GetAppDeploys200Response.spec.js
 test/model/GetAppLogs200Response.spec.js
@@ -1336,6 +1361,8 @@ test/model/GetKnowledgebasesV2200Response.spec.js
 test/model/GetKnowledgebasesV2200ResponseMeta.spec.js
 test/model/GetLocations200Response.spec.js
 test/model/GetMailboxes200Response.spec.js
+test/model/GetModels200Response.spec.js
+test/model/GetModels200ResponseMeta.spec.js
 test/model/GetNetworkDrives200Response.spec.js
 test/model/GetNetworkDrivesAvailableResources200Response.spec.js
 test/model/GetNetworkDrivesPresets200Response.spec.js
@@ -1405,6 +1432,11 @@ test/model/MailboxSpamFilter.spec.js
 test/model/MasterPresetOutApi.spec.js
 test/model/Meta.spec.js
 test/model/Meta1.spec.js
+test/model/Model.spec.js
+test/model/ModelParamsInfo.spec.js
+test/model/ModelParamsInfoMaxTokens.spec.js
+test/model/ModelParamsInfoReasoningEffort.spec.js
+test/model/ModelParamsInfoTemperature.spec.js
 test/model/MountNetworkDrive.spec.js
 test/model/Network.spec.js
 test/model/NetworkDrive.spec.js
@@ -1494,6 +1526,7 @@ test/model/Status.spec.js
 test/model/StatusCompanyInfo.spec.js
 test/model/Subdomain.spec.js
 test/model/Tags.spec.js
+test/model/TokenPackage.spec.js
 test/model/TokenStatistic.spec.js
 test/model/TopLevelDomain.spec.js
 test/model/TopLevelDomainAllowedBuyPeriodsInner.spec.js

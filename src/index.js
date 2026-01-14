@@ -234,6 +234,8 @@ import GetAgentStatistics200Response from './model/GetAgentStatistics200Response
 import GetAgentStatistics200ResponseMeta from './model/GetAgentStatistics200ResponseMeta';
 import GetAgents200Response from './model/GetAgents200Response';
 import GetAgents200ResponseMeta from './model/GetAgents200ResponseMeta';
+import GetAgentsTokenPackages200Response from './model/GetAgentsTokenPackages200Response';
+import GetAgentsTokenPackages200ResponseMeta from './model/GetAgentsTokenPackages200ResponseMeta';
 import GetAllProjectResources200Response from './model/GetAllProjectResources200Response';
 import GetAppDeploys200Response from './model/GetAppDeploys200Response';
 import GetAppLogs200Response from './model/GetAppLogs200Response';
@@ -284,6 +286,8 @@ import GetKnowledgebasesV2200Response from './model/GetKnowledgebasesV2200Respon
 import GetKnowledgebasesV2200ResponseMeta from './model/GetKnowledgebasesV2200ResponseMeta';
 import GetLocations200Response from './model/GetLocations200Response';
 import GetMailboxes200Response from './model/GetMailboxes200Response';
+import GetModels200Response from './model/GetModels200Response';
+import GetModels200ResponseMeta from './model/GetModels200ResponseMeta';
 import GetNetworkDrives200Response from './model/GetNetworkDrives200Response';
 import GetNetworkDrivesAvailableResources200Response from './model/GetNetworkDrivesAvailableResources200Response';
 import GetNetworkDrivesPresets200Response from './model/GetNetworkDrivesPresets200Response';
@@ -353,6 +357,11 @@ import MailboxSpamFilter from './model/MailboxSpamFilter';
 import MasterPresetOutApi from './model/MasterPresetOutApi';
 import Meta from './model/Meta';
 import Meta1 from './model/Meta1';
+import Model from './model/Model';
+import ModelParamsInfo from './model/ModelParamsInfo';
+import ModelParamsInfoMaxTokens from './model/ModelParamsInfoMaxTokens';
+import ModelParamsInfoReasoningEffort from './model/ModelParamsInfoReasoningEffort';
+import ModelParamsInfoTemperature from './model/ModelParamsInfoTemperature';
 import MountNetworkDrive from './model/MountNetworkDrive';
 import Network from './model/Network';
 import NetworkDrive from './model/NetworkDrive';
@@ -442,6 +451,7 @@ import Status from './model/Status';
 import StatusCompanyInfo from './model/StatusCompanyInfo';
 import Subdomain from './model/Subdomain';
 import Tags from './model/Tags';
+import TokenPackage from './model/TokenPackage';
 import TokenStatistic from './model/TokenStatistic';
 import TopLevelDomain from './model/TopLevelDomain';
 import TopLevelDomainAllowedBuyPeriodsInner from './model/TopLevelDomainAllowedBuyPeriodsInner';
@@ -508,6 +518,7 @@ import VpcPortService from './model/VpcPortService';
 import VpcService from './model/VpcService';
 import WorkerPresetOutApi from './model/WorkerPresetOutApi';
 import AIAgentsApi from './api/AIAgentsApi';
+import AIModelsApi from './api/AIModelsApi';
 import APIKeysApi from './api/APIKeysApi';
 import AccountApi from './api/AccountApi';
 import AppsApi from './api/AppsApi';
@@ -1897,6 +1908,18 @@ export {
     GetAgents200ResponseMeta,
 
     /**
+     * The GetAgentsTokenPackages200Response model constructor.
+     * @property {module:model/GetAgentsTokenPackages200Response}
+     */
+    GetAgentsTokenPackages200Response,
+
+    /**
+     * The GetAgentsTokenPackages200ResponseMeta model constructor.
+     * @property {module:model/GetAgentsTokenPackages200ResponseMeta}
+     */
+    GetAgentsTokenPackages200ResponseMeta,
+
+    /**
      * The GetAllProjectResources200Response model constructor.
      * @property {module:model/GetAllProjectResources200Response}
      */
@@ -2195,6 +2218,18 @@ export {
      * @property {module:model/GetMailboxes200Response}
      */
     GetMailboxes200Response,
+
+    /**
+     * The GetModels200Response model constructor.
+     * @property {module:model/GetModels200Response}
+     */
+    GetModels200Response,
+
+    /**
+     * The GetModels200ResponseMeta model constructor.
+     * @property {module:model/GetModels200ResponseMeta}
+     */
+    GetModels200ResponseMeta,
 
     /**
      * The GetNetworkDrives200Response model constructor.
@@ -2609,6 +2644,36 @@ export {
      * @property {module:model/Meta1}
      */
     Meta1,
+
+    /**
+     * The Model model constructor.
+     * @property {module:model/Model}
+     */
+    Model,
+
+    /**
+     * The ModelParamsInfo model constructor.
+     * @property {module:model/ModelParamsInfo}
+     */
+    ModelParamsInfo,
+
+    /**
+     * The ModelParamsInfoMaxTokens model constructor.
+     * @property {module:model/ModelParamsInfoMaxTokens}
+     */
+    ModelParamsInfoMaxTokens,
+
+    /**
+     * The ModelParamsInfoReasoningEffort model constructor.
+     * @property {module:model/ModelParamsInfoReasoningEffort}
+     */
+    ModelParamsInfoReasoningEffort,
+
+    /**
+     * The ModelParamsInfoTemperature model constructor.
+     * @property {module:model/ModelParamsInfoTemperature}
+     */
+    ModelParamsInfoTemperature,
 
     /**
      * The MountNetworkDrive model constructor.
@@ -3145,6 +3210,12 @@ export {
     Tags,
 
     /**
+     * The TokenPackage model constructor.
+     * @property {module:model/TokenPackage}
+     */
+    TokenPackage,
+
+    /**
      * The TokenStatistic model constructor.
      * @property {module:model/TokenStatistic}
      */
@@ -3539,6 +3610,12 @@ export {
     * @property {module:api/AIAgentsApi}
     */
     AIAgentsApi,
+
+    /**
+    * The AIModelsApi service constructor.
+    * @property {module:api/AIModelsApi}
+    */
+    AIModelsApi,
 
     /**
     * The APIKeysApi service constructor.
