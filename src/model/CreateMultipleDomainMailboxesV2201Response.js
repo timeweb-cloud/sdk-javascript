@@ -12,20 +12,22 @@
  */
 
 import ApiClient from '../ApiClient';
+import MailboxesBatchV2 from './MailboxesBatchV2';
 
 /**
- * The MailboxResponse model module.
- * @module model/MailboxResponse
+ * The CreateMultipleDomainMailboxesV2201Response model module.
+ * @module model/CreateMultipleDomainMailboxesV2201Response
  * @version 1.0.0
  */
-class MailboxResponse {
+class CreateMultipleDomainMailboxesV2201Response {
     /**
-     * Constructs a new <code>MailboxResponse</code>.
-     * @alias module:model/MailboxResponse
+     * Constructs a new <code>CreateMultipleDomainMailboxesV2201Response</code>.
+     * @alias module:model/CreateMultipleDomainMailboxesV2201Response
+     * @param mailboxesBatch {module:model/MailboxesBatchV2} 
      */
-    constructor() { 
+    constructor(mailboxesBatch) { 
         
-        MailboxResponse.initialize(this);
+        CreateMultipleDomainMailboxesV2201Response.initialize(this, mailboxesBatch);
     }
 
     /**
@@ -33,134 +35,43 @@ class MailboxResponse {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, mailboxesBatch) { 
+        obj['mailboxes_batch'] = mailboxesBatch;
     }
 
     /**
-     * Constructs a <code>MailboxResponse</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>CreateMultipleDomainMailboxesV2201Response</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/MailboxResponse} obj Optional instance to populate.
-     * @return {module:model/MailboxResponse} The populated <code>MailboxResponse</code> instance.
+     * @param {module:model/CreateMultipleDomainMailboxesV2201Response} obj Optional instance to populate.
+     * @return {module:model/CreateMultipleDomainMailboxesV2201Response} The populated <code>CreateMultipleDomainMailboxesV2201Response</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new MailboxResponse();
+            obj = obj || new CreateMultipleDomainMailboxesV2201Response();
 
-            if (data.hasOwnProperty('idn_name')) {
-                obj['idn_name'] = ApiClient.convertToType(data['idn_name'], 'String');
-            }
-            if (data.hasOwnProperty('autoreply_message')) {
-                obj['autoreply_message'] = ApiClient.convertToType(data['autoreply_message'], 'String');
-            }
-            if (data.hasOwnProperty('autoreply_status')) {
-                obj['autoreply_status'] = ApiClient.convertToType(data['autoreply_status'], 'Boolean');
-            }
-            if (data.hasOwnProperty('autoreply_subject')) {
-                obj['autoreply_subject'] = ApiClient.convertToType(data['autoreply_subject'], 'String');
-            }
-            if (data.hasOwnProperty('comment')) {
-                obj['comment'] = ApiClient.convertToType(data['comment'], 'String');
-            }
-            if (data.hasOwnProperty('filter_action')) {
-                obj['filter_action'] = ApiClient.convertToType(data['filter_action'], 'String');
-            }
-            if (data.hasOwnProperty('filter_status')) {
-                obj['filter_status'] = ApiClient.convertToType(data['filter_status'], 'Boolean');
-            }
-            if (data.hasOwnProperty('forward_list')) {
-                obj['forward_list'] = ApiClient.convertToType(data['forward_list'], ['String']);
-            }
-            if (data.hasOwnProperty('forward_status')) {
-                obj['forward_status'] = ApiClient.convertToType(data['forward_status'], 'Boolean');
-            }
-            if (data.hasOwnProperty('outgoing_control')) {
-                obj['outgoing_control'] = ApiClient.convertToType(data['outgoing_control'], 'Boolean');
-            }
-            if (data.hasOwnProperty('outgoing_email')) {
-                obj['outgoing_email'] = ApiClient.convertToType(data['outgoing_email'], 'String');
-            }
-            if (data.hasOwnProperty('password')) {
-                obj['password'] = ApiClient.convertToType(data['password'], 'String');
-            }
-            if (data.hasOwnProperty('white_list')) {
-                obj['white_list'] = ApiClient.convertToType(data['white_list'], ['String']);
-            }
-            if (data.hasOwnProperty('webmail')) {
-                obj['webmail'] = ApiClient.convertToType(data['webmail'], 'Boolean');
-            }
-            if (data.hasOwnProperty('dovecot')) {
-                obj['dovecot'] = ApiClient.convertToType(data['dovecot'], 'Boolean');
-            }
-            if (data.hasOwnProperty('fqdn')) {
-                obj['fqdn'] = ApiClient.convertToType(data['fqdn'], 'String');
-            }
-            if (data.hasOwnProperty('leave_messages')) {
-                obj['leave_messages'] = ApiClient.convertToType(data['leave_messages'], 'Boolean');
-            }
-            if (data.hasOwnProperty('mailbox')) {
-                obj['mailbox'] = ApiClient.convertToType(data['mailbox'], 'String');
-            }
-            if (data.hasOwnProperty('owner_full_name')) {
-                obj['owner_full_name'] = ApiClient.convertToType(data['owner_full_name'], 'String');
+            if (data.hasOwnProperty('mailboxes_batch')) {
+                obj['mailboxes_batch'] = MailboxesBatchV2.constructFromObject(data['mailboxes_batch']);
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>MailboxResponse</code>.
+     * Validates the JSON data with respect to <code>CreateMultipleDomainMailboxesV2201Response</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>MailboxResponse</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateMultipleDomainMailboxesV2201Response</code>.
      */
     static validateJSON(data) {
-        // ensure the json data is a string
-        if (data['idn_name'] && !(typeof data['idn_name'] === 'string' || data['idn_name'] instanceof String)) {
-            throw new Error("Expected the field `idn_name` to be a primitive type in the JSON string but got " + data['idn_name']);
+        // check to make sure all required properties are present in the JSON string
+        for (const property of CreateMultipleDomainMailboxesV2201Response.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
         }
-        // ensure the json data is a string
-        if (data['autoreply_message'] && !(typeof data['autoreply_message'] === 'string' || data['autoreply_message'] instanceof String)) {
-            throw new Error("Expected the field `autoreply_message` to be a primitive type in the JSON string but got " + data['autoreply_message']);
-        }
-        // ensure the json data is a string
-        if (data['autoreply_subject'] && !(typeof data['autoreply_subject'] === 'string' || data['autoreply_subject'] instanceof String)) {
-            throw new Error("Expected the field `autoreply_subject` to be a primitive type in the JSON string but got " + data['autoreply_subject']);
-        }
-        // ensure the json data is a string
-        if (data['comment'] && !(typeof data['comment'] === 'string' || data['comment'] instanceof String)) {
-            throw new Error("Expected the field `comment` to be a primitive type in the JSON string but got " + data['comment']);
-        }
-        // ensure the json data is a string
-        if (data['filter_action'] && !(typeof data['filter_action'] === 'string' || data['filter_action'] instanceof String)) {
-            throw new Error("Expected the field `filter_action` to be a primitive type in the JSON string but got " + data['filter_action']);
-        }
-        // ensure the json data is an array
-        if (!Array.isArray(data['forward_list'])) {
-            throw new Error("Expected the field `forward_list` to be an array in the JSON data but got " + data['forward_list']);
-        }
-        // ensure the json data is a string
-        if (data['outgoing_email'] && !(typeof data['outgoing_email'] === 'string' || data['outgoing_email'] instanceof String)) {
-            throw new Error("Expected the field `outgoing_email` to be a primitive type in the JSON string but got " + data['outgoing_email']);
-        }
-        // ensure the json data is a string
-        if (data['password'] && !(typeof data['password'] === 'string' || data['password'] instanceof String)) {
-            throw new Error("Expected the field `password` to be a primitive type in the JSON string but got " + data['password']);
-        }
-        // ensure the json data is an array
-        if (!Array.isArray(data['white_list'])) {
-            throw new Error("Expected the field `white_list` to be an array in the JSON data but got " + data['white_list']);
-        }
-        // ensure the json data is a string
-        if (data['fqdn'] && !(typeof data['fqdn'] === 'string' || data['fqdn'] instanceof String)) {
-            throw new Error("Expected the field `fqdn` to be a primitive type in the JSON string but got " + data['fqdn']);
-        }
-        // ensure the json data is a string
-        if (data['mailbox'] && !(typeof data['mailbox'] === 'string' || data['mailbox'] instanceof String)) {
-            throw new Error("Expected the field `mailbox` to be a primitive type in the JSON string but got " + data['mailbox']);
-        }
-        // ensure the json data is a string
-        if (data['owner_full_name'] && !(typeof data['owner_full_name'] === 'string' || data['owner_full_name'] instanceof String)) {
-            throw new Error("Expected the field `owner_full_name` to be a primitive type in the JSON string but got " + data['owner_full_name']);
+        // validate the optional field `mailboxes_batch`
+        if (data['mailboxes_batch']) { // data not null
+          MailboxesBatchV2.validateJSON(data['mailboxes_batch']);
         }
 
         return true;
@@ -169,147 +80,17 @@ class MailboxResponse {
 
 }
 
-
-
-/**
- * IDN имя домена
- * @member {String} idn_name
- */
-MailboxResponse.prototype['idn_name'] = undefined;
+CreateMultipleDomainMailboxesV2201Response.RequiredProperties = ["mailboxes_batch"];
 
 /**
- * Сообщение автоответчика
- * @member {String} autoreply_message
+ * @member {module:model/MailboxesBatchV2} mailboxes_batch
  */
-MailboxResponse.prototype['autoreply_message'] = undefined;
-
-/**
- * Статус автоответчика
- * @member {Boolean} autoreply_status
- */
-MailboxResponse.prototype['autoreply_status'] = undefined;
-
-/**
- * Тема автоответчика
- * @member {String} autoreply_subject
- */
-MailboxResponse.prototype['autoreply_subject'] = undefined;
-
-/**
- * Комментарий
- * @member {String} comment
- */
-MailboxResponse.prototype['comment'] = undefined;
-
-/**
- * Действие фильтра спама
- * @member {module:model/MailboxResponse.FilterActionEnum} filter_action
- */
-MailboxResponse.prototype['filter_action'] = undefined;
-
-/**
- * Статус фильтра спама
- * @member {Boolean} filter_status
- */
-MailboxResponse.prototype['filter_status'] = undefined;
-
-/**
- * Список адресов для пересылки
- * @member {Array.<String>} forward_list
- */
-MailboxResponse.prototype['forward_list'] = undefined;
-
-/**
- * Статус пересылки
- * @member {Boolean} forward_status
- */
-MailboxResponse.prototype['forward_status'] = undefined;
-
-/**
- * Контроль исходящей почты
- * @member {Boolean} outgoing_control
- */
-MailboxResponse.prototype['outgoing_control'] = undefined;
-
-/**
- * Email для исходящих писем
- * @member {String} outgoing_email
- */
-MailboxResponse.prototype['outgoing_email'] = undefined;
-
-/**
- * Пароль (пустая строка в ответе)
- * @member {String} password
- */
-MailboxResponse.prototype['password'] = undefined;
-
-/**
- * Белый список адресов
- * @member {Array.<String>} white_list
- */
-MailboxResponse.prototype['white_list'] = undefined;
-
-/**
- * Доступ к веб-почте
- * @member {Boolean} webmail
- */
-MailboxResponse.prototype['webmail'] = undefined;
-
-/**
- * Использование Dovecot
- * @member {Boolean} dovecot
- */
-MailboxResponse.prototype['dovecot'] = undefined;
-
-/**
- * Полное доменное имя
- * @member {String} fqdn
- */
-MailboxResponse.prototype['fqdn'] = undefined;
-
-/**
- * Оставлять копии писем при пересылке
- * @member {Boolean} leave_messages
- */
-MailboxResponse.prototype['leave_messages'] = undefined;
-
-/**
- * Имя почтового ящика
- * @member {String} mailbox
- */
-MailboxResponse.prototype['mailbox'] = undefined;
-
-/**
- * ФИО владельца
- * @member {String} owner_full_name
- */
-MailboxResponse.prototype['owner_full_name'] = undefined;
+CreateMultipleDomainMailboxesV2201Response.prototype['mailboxes_batch'] = undefined;
 
 
 
 
 
-/**
- * Allowed values for the <code>filter_action</code> property.
- * @enum {String}
- * @readonly
- */
-MailboxResponse['FilterActionEnum'] = {
 
-    /**
-     * value: "directory"
-     * @const
-     */
-    "directory": "directory",
-
-    /**
-     * value: "label"
-     * @const
-     */
-    "label": "label"
-};
-
-
-
-export default MailboxResponse;
+export default CreateMultipleDomainMailboxesV2201Response;
 

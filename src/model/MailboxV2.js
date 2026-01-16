@@ -14,18 +14,39 @@
 import ApiClient from '../ApiClient';
 
 /**
- * The MailboxResponse model module.
- * @module model/MailboxResponse
+ * The MailboxV2 model module.
+ * @module model/MailboxV2
  * @version 1.0.0
  */
-class MailboxResponse {
+class MailboxV2 {
     /**
-     * Constructs a new <code>MailboxResponse</code>.
-     * @alias module:model/MailboxResponse
+     * Constructs a new <code>MailboxV2</code>.
+     * Почтовый ящик (API v2)
+     * @alias module:model/MailboxV2
+     * @param idnName {String} IDN домен почтового ящика
+     * @param autoreplyMessage {String} Сообщение автоответчика на входящие письма
+     * @param autoreplyStatus {Boolean} Включен ли автоответчик на входящие письма
+     * @param autoreplySubject {String} Тема сообщения автоответчика на входящие письма
+     * @param comment {String} Комментарий к почтовому ящику
+     * @param filterAction {module:model/MailboxV2.FilterActionEnum} Что делать с письмами, которые попадают в спам
+     * @param filterStatus {Boolean} Включен ли спам-фильтр
+     * @param forwardList {Array.<String>} Список адресов для пересылки входящих писем
+     * @param forwardStatus {Boolean} Включена ли пересылка входящих писем
+     * @param outgoingControl {Boolean} Включена ли пересылка исходящих писем
+     * @param outgoingEmail {String} Адрес для пересылки исходящих писем
+     * @param password {String} Пароль почтового ящика (всегда возвращается пустой строкой)
+     * @param spambox {String} Адрес для пересылки спама при выбранном действии forward
+     * @param whiteList {Array.<String>} Белый список адресов от которых письма не будут попадать в спам
+     * @param webmail {Boolean} Доступен ли Webmail
+     * @param dovecot {Boolean} Есть ли доступ через dovecot
+     * @param fqdn {String} Домен почты
+     * @param leaveMessages {Boolean} Оставлять ли сообщения на сервере при пересылке
+     * @param mailbox {String} Название почтового ящика
+     * @param ownerFullName {String} ФИО владельца почтового ящика
      */
-    constructor() { 
+    constructor(idnName, autoreplyMessage, autoreplyStatus, autoreplySubject, comment, filterAction, filterStatus, forwardList, forwardStatus, outgoingControl, outgoingEmail, password, spambox, whiteList, webmail, dovecot, fqdn, leaveMessages, mailbox, ownerFullName) { 
         
-        MailboxResponse.initialize(this);
+        MailboxV2.initialize(this, idnName, autoreplyMessage, autoreplyStatus, autoreplySubject, comment, filterAction, filterStatus, forwardList, forwardStatus, outgoingControl, outgoingEmail, password, spambox, whiteList, webmail, dovecot, fqdn, leaveMessages, mailbox, ownerFullName);
     }
 
     /**
@@ -33,19 +54,39 @@ class MailboxResponse {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, idnName, autoreplyMessage, autoreplyStatus, autoreplySubject, comment, filterAction, filterStatus, forwardList, forwardStatus, outgoingControl, outgoingEmail, password, spambox, whiteList, webmail, dovecot, fqdn, leaveMessages, mailbox, ownerFullName) { 
+        obj['idn_name'] = idnName;
+        obj['autoreply_message'] = autoreplyMessage;
+        obj['autoreply_status'] = autoreplyStatus;
+        obj['autoreply_subject'] = autoreplySubject;
+        obj['comment'] = comment;
+        obj['filter_action'] = filterAction;
+        obj['filter_status'] = filterStatus;
+        obj['forward_list'] = forwardList;
+        obj['forward_status'] = forwardStatus;
+        obj['outgoing_control'] = outgoingControl;
+        obj['outgoing_email'] = outgoingEmail;
+        obj['password'] = password;
+        obj['spambox'] = spambox;
+        obj['white_list'] = whiteList;
+        obj['webmail'] = webmail;
+        obj['dovecot'] = dovecot;
+        obj['fqdn'] = fqdn;
+        obj['leave_messages'] = leaveMessages;
+        obj['mailbox'] = mailbox;
+        obj['owner_full_name'] = ownerFullName;
     }
 
     /**
-     * Constructs a <code>MailboxResponse</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>MailboxV2</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/MailboxResponse} obj Optional instance to populate.
-     * @return {module:model/MailboxResponse} The populated <code>MailboxResponse</code> instance.
+     * @param {module:model/MailboxV2} obj Optional instance to populate.
+     * @return {module:model/MailboxV2} The populated <code>MailboxV2</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new MailboxResponse();
+            obj = obj || new MailboxV2();
 
             if (data.hasOwnProperty('idn_name')) {
                 obj['idn_name'] = ApiClient.convertToType(data['idn_name'], 'String');
@@ -83,6 +124,9 @@ class MailboxResponse {
             if (data.hasOwnProperty('password')) {
                 obj['password'] = ApiClient.convertToType(data['password'], 'String');
             }
+            if (data.hasOwnProperty('spambox')) {
+                obj['spambox'] = ApiClient.convertToType(data['spambox'], 'String');
+            }
             if (data.hasOwnProperty('white_list')) {
                 obj['white_list'] = ApiClient.convertToType(data['white_list'], ['String']);
             }
@@ -109,11 +153,17 @@ class MailboxResponse {
     }
 
     /**
-     * Validates the JSON data with respect to <code>MailboxResponse</code>.
+     * Validates the JSON data with respect to <code>MailboxV2</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>MailboxResponse</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>MailboxV2</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of MailboxV2.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['idn_name'] && !(typeof data['idn_name'] === 'string' || data['idn_name'] instanceof String)) {
             throw new Error("Expected the field `idn_name` to be a primitive type in the JSON string but got " + data['idn_name']);
@@ -146,6 +196,10 @@ class MailboxResponse {
         if (data['password'] && !(typeof data['password'] === 'string' || data['password'] instanceof String)) {
             throw new Error("Expected the field `password` to be a primitive type in the JSON string but got " + data['password']);
         }
+        // ensure the json data is a string
+        if (data['spambox'] && !(typeof data['spambox'] === 'string' || data['spambox'] instanceof String)) {
+            throw new Error("Expected the field `spambox` to be a primitive type in the JSON string but got " + data['spambox']);
+        }
         // ensure the json data is an array
         if (!Array.isArray(data['white_list'])) {
             throw new Error("Expected the field `white_list` to be an array in the JSON data but got " + data['white_list']);
@@ -169,121 +223,127 @@ class MailboxResponse {
 
 }
 
-
+MailboxV2.RequiredProperties = ["idn_name", "autoreply_message", "autoreply_status", "autoreply_subject", "comment", "filter_action", "filter_status", "forward_list", "forward_status", "outgoing_control", "outgoing_email", "password", "spambox", "white_list", "webmail", "dovecot", "fqdn", "leave_messages", "mailbox", "owner_full_name"];
 
 /**
- * IDN имя домена
+ * IDN домен почтового ящика
  * @member {String} idn_name
  */
-MailboxResponse.prototype['idn_name'] = undefined;
+MailboxV2.prototype['idn_name'] = undefined;
 
 /**
- * Сообщение автоответчика
+ * Сообщение автоответчика на входящие письма
  * @member {String} autoreply_message
  */
-MailboxResponse.prototype['autoreply_message'] = undefined;
+MailboxV2.prototype['autoreply_message'] = undefined;
 
 /**
- * Статус автоответчика
+ * Включен ли автоответчик на входящие письма
  * @member {Boolean} autoreply_status
  */
-MailboxResponse.prototype['autoreply_status'] = undefined;
+MailboxV2.prototype['autoreply_status'] = undefined;
 
 /**
- * Тема автоответчика
+ * Тема сообщения автоответчика на входящие письма
  * @member {String} autoreply_subject
  */
-MailboxResponse.prototype['autoreply_subject'] = undefined;
+MailboxV2.prototype['autoreply_subject'] = undefined;
 
 /**
- * Комментарий
+ * Комментарий к почтовому ящику
  * @member {String} comment
  */
-MailboxResponse.prototype['comment'] = undefined;
+MailboxV2.prototype['comment'] = undefined;
 
 /**
- * Действие фильтра спама
- * @member {module:model/MailboxResponse.FilterActionEnum} filter_action
+ * Что делать с письмами, которые попадают в спам
+ * @member {module:model/MailboxV2.FilterActionEnum} filter_action
  */
-MailboxResponse.prototype['filter_action'] = undefined;
+MailboxV2.prototype['filter_action'] = undefined;
 
 /**
- * Статус фильтра спама
+ * Включен ли спам-фильтр
  * @member {Boolean} filter_status
  */
-MailboxResponse.prototype['filter_status'] = undefined;
+MailboxV2.prototype['filter_status'] = undefined;
 
 /**
- * Список адресов для пересылки
+ * Список адресов для пересылки входящих писем
  * @member {Array.<String>} forward_list
  */
-MailboxResponse.prototype['forward_list'] = undefined;
+MailboxV2.prototype['forward_list'] = undefined;
 
 /**
- * Статус пересылки
+ * Включена ли пересылка входящих писем
  * @member {Boolean} forward_status
  */
-MailboxResponse.prototype['forward_status'] = undefined;
+MailboxV2.prototype['forward_status'] = undefined;
 
 /**
- * Контроль исходящей почты
+ * Включена ли пересылка исходящих писем
  * @member {Boolean} outgoing_control
  */
-MailboxResponse.prototype['outgoing_control'] = undefined;
+MailboxV2.prototype['outgoing_control'] = undefined;
 
 /**
- * Email для исходящих писем
+ * Адрес для пересылки исходящих писем
  * @member {String} outgoing_email
  */
-MailboxResponse.prototype['outgoing_email'] = undefined;
+MailboxV2.prototype['outgoing_email'] = undefined;
 
 /**
- * Пароль (пустая строка в ответе)
+ * Пароль почтового ящика (всегда возвращается пустой строкой)
  * @member {String} password
  */
-MailboxResponse.prototype['password'] = undefined;
+MailboxV2.prototype['password'] = undefined;
 
 /**
- * Белый список адресов
+ * Адрес для пересылки спама при выбранном действии forward
+ * @member {String} spambox
+ */
+MailboxV2.prototype['spambox'] = undefined;
+
+/**
+ * Белый список адресов от которых письма не будут попадать в спам
  * @member {Array.<String>} white_list
  */
-MailboxResponse.prototype['white_list'] = undefined;
+MailboxV2.prototype['white_list'] = undefined;
 
 /**
- * Доступ к веб-почте
+ * Доступен ли Webmail
  * @member {Boolean} webmail
  */
-MailboxResponse.prototype['webmail'] = undefined;
+MailboxV2.prototype['webmail'] = undefined;
 
 /**
- * Использование Dovecot
+ * Есть ли доступ через dovecot
  * @member {Boolean} dovecot
  */
-MailboxResponse.prototype['dovecot'] = undefined;
+MailboxV2.prototype['dovecot'] = undefined;
 
 /**
- * Полное доменное имя
+ * Домен почты
  * @member {String} fqdn
  */
-MailboxResponse.prototype['fqdn'] = undefined;
+MailboxV2.prototype['fqdn'] = undefined;
 
 /**
- * Оставлять копии писем при пересылке
+ * Оставлять ли сообщения на сервере при пересылке
  * @member {Boolean} leave_messages
  */
-MailboxResponse.prototype['leave_messages'] = undefined;
+MailboxV2.prototype['leave_messages'] = undefined;
 
 /**
- * Имя почтового ящика
+ * Название почтового ящика
  * @member {String} mailbox
  */
-MailboxResponse.prototype['mailbox'] = undefined;
+MailboxV2.prototype['mailbox'] = undefined;
 
 /**
- * ФИО владельца
+ * ФИО владельца почтового ящика
  * @member {String} owner_full_name
  */
-MailboxResponse.prototype['owner_full_name'] = undefined;
+MailboxV2.prototype['owner_full_name'] = undefined;
 
 
 
@@ -294,7 +354,7 @@ MailboxResponse.prototype['owner_full_name'] = undefined;
  * @enum {String}
  * @readonly
  */
-MailboxResponse['FilterActionEnum'] = {
+MailboxV2['FilterActionEnum'] = {
 
     /**
      * value: "directory"
@@ -303,13 +363,25 @@ MailboxResponse['FilterActionEnum'] = {
     "directory": "directory",
 
     /**
-     * value: "label"
+     * value: "forward"
      * @const
      */
-    "label": "label"
+    "forward": "forward",
+
+    /**
+     * value: "delete"
+     * @const
+     */
+    "delete": "delete",
+
+    /**
+     * value: "tag"
+     * @const
+     */
+    "tag": "tag"
 };
 
 
 
-export default MailboxResponse;
+export default MailboxV2;
 

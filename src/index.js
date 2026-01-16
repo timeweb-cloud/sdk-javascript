@@ -125,6 +125,8 @@ import CreateDomainDNSRecord201Response from './model/CreateDomainDNSRecord201Re
 import CreateDomainDNSRecordV2201Response from './model/CreateDomainDNSRecordV2201Response';
 import CreateDomainMailbox201Response from './model/CreateDomainMailbox201Response';
 import CreateDomainMailboxRequest from './model/CreateDomainMailboxRequest';
+import CreateDomainMailboxV2201Response from './model/CreateDomainMailboxV2201Response';
+import CreateDomainMailboxV2Request from './model/CreateDomainMailboxV2Request';
 import CreateDomainRequest201Response from './model/CreateDomainRequest201Response';
 import CreateFloatingIp from './model/CreateFloatingIp';
 import CreateFloatingIp201Response from './model/CreateFloatingIp201Response';
@@ -136,6 +138,8 @@ import CreateKnowledgebase201Response from './model/CreateKnowledgebase201Respon
 import CreateMultipleDomainMailboxes201Response from './model/CreateMultipleDomainMailboxes201Response';
 import CreateMultipleDomainMailboxesRequest from './model/CreateMultipleDomainMailboxesRequest';
 import CreateMultipleDomainMailboxesRequestMailboxesInner from './model/CreateMultipleDomainMailboxesRequestMailboxesInner';
+import CreateMultipleDomainMailboxesV2201Response from './model/CreateMultipleDomainMailboxesV2201Response';
+import CreateMultipleDomainMailboxesV2RequestInner from './model/CreateMultipleDomainMailboxesV2RequestInner';
 import CreateNetworkDrive from './model/CreateNetworkDrive';
 import CreateNetworkDrive201Response from './model/CreateNetworkDrive201Response';
 import CreateProject from './model/CreateProject';
@@ -240,6 +244,7 @@ import GetAgents200Response from './model/GetAgents200Response';
 import GetAgents200ResponseMeta from './model/GetAgents200ResponseMeta';
 import GetAgentsTokenPackages200Response from './model/GetAgentsTokenPackages200Response';
 import GetAgentsTokenPackages200ResponseMeta from './model/GetAgentsTokenPackages200ResponseMeta';
+import GetAllMailboxesV2200Response from './model/GetAllMailboxesV2200Response';
 import GetAllProjectResources200Response from './model/GetAllProjectResources200Response';
 import GetAppDeploys200Response from './model/GetAppDeploys200Response';
 import GetAppLogs200Response from './model/GetAppLogs200Response';
@@ -358,6 +363,8 @@ import MailboxForwardingIncoming from './model/MailboxForwardingIncoming';
 import MailboxForwardingOutgoing from './model/MailboxForwardingOutgoing';
 import MailboxResponse from './model/MailboxResponse';
 import MailboxSpamFilter from './model/MailboxSpamFilter';
+import MailboxV2 from './model/MailboxV2';
+import MailboxesBatchV2 from './model/MailboxesBatchV2';
 import MasterPresetOutApi from './model/MasterPresetOutApi';
 import Meta from './model/Meta';
 import Meta1 from './model/Meta1';
@@ -1257,6 +1264,18 @@ export {
     CreateDomainMailboxRequest,
 
     /**
+     * The CreateDomainMailboxV2201Response model constructor.
+     * @property {module:model/CreateDomainMailboxV2201Response}
+     */
+    CreateDomainMailboxV2201Response,
+
+    /**
+     * The CreateDomainMailboxV2Request model constructor.
+     * @property {module:model/CreateDomainMailboxV2Request}
+     */
+    CreateDomainMailboxV2Request,
+
+    /**
      * The CreateDomainRequest201Response model constructor.
      * @property {module:model/CreateDomainRequest201Response}
      */
@@ -1321,6 +1340,18 @@ export {
      * @property {module:model/CreateMultipleDomainMailboxesRequestMailboxesInner}
      */
     CreateMultipleDomainMailboxesRequestMailboxesInner,
+
+    /**
+     * The CreateMultipleDomainMailboxesV2201Response model constructor.
+     * @property {module:model/CreateMultipleDomainMailboxesV2201Response}
+     */
+    CreateMultipleDomainMailboxesV2201Response,
+
+    /**
+     * The CreateMultipleDomainMailboxesV2RequestInner model constructor.
+     * @property {module:model/CreateMultipleDomainMailboxesV2RequestInner}
+     */
+    CreateMultipleDomainMailboxesV2RequestInner,
 
     /**
      * The CreateNetworkDrive model constructor.
@@ -1945,6 +1976,12 @@ export {
      * @property {module:model/GetAgentsTokenPackages200ResponseMeta}
      */
     GetAgentsTokenPackages200ResponseMeta,
+
+    /**
+     * The GetAllMailboxesV2200Response model constructor.
+     * @property {module:model/GetAllMailboxesV2200Response}
+     */
+    GetAllMailboxesV2200Response,
 
     /**
      * The GetAllProjectResources200Response model constructor.
@@ -2653,6 +2690,18 @@ export {
      * @property {module:model/MailboxSpamFilter}
      */
     MailboxSpamFilter,
+
+    /**
+     * The MailboxV2 model constructor.
+     * @property {module:model/MailboxV2}
+     */
+    MailboxV2,
+
+    /**
+     * The MailboxesBatchV2 model constructor.
+     * @property {module:model/MailboxesBatchV2}
+     */
+    MailboxesBatchV2,
 
     /**
      * The MasterPresetOutApi model constructor.

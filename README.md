@@ -469,11 +469,15 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.KubernetesApi* | [**updateClusterVersion**](docs/KubernetesApi.md#updateClusterVersion) | **PATCH** /api/v1/k8s/clusters/{cluster_id}/versions/update | Обновление версии кластера
 *TimewebCloudApi.LocationsApi* | [**getLocations**](docs/LocationsApi.md#getLocations) | **GET** /api/v2/locations | Получение списка локаций
 *TimewebCloudApi.MailApi* | [**createDomainMailbox**](docs/MailApi.md#createDomainMailbox) | **POST** /api/v1/mail/domains/{domain} | Создание почтового ящика
+*TimewebCloudApi.MailApi* | [**createDomainMailboxV2**](docs/MailApi.md#createDomainMailboxV2) | **POST** /api/v2/mail/domains/{domain} | Создание почтового ящика
 *TimewebCloudApi.MailApi* | [**createMultipleDomainMailboxes**](docs/MailApi.md#createMultipleDomainMailboxes) | **POST** /api/v1/mail/domains/{domain}/batch | Множественное создание почтовых ящиков
+*TimewebCloudApi.MailApi* | [**createMultipleDomainMailboxesV2**](docs/MailApi.md#createMultipleDomainMailboxesV2) | **POST** /api/v2/mail/domains/{domain}/batch | Множественное создание почтовых ящиков
 *TimewebCloudApi.MailApi* | [**deleteMailbox**](docs/MailApi.md#deleteMailbox) | **DELETE** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Удаление почтового ящика
+*TimewebCloudApi.MailApi* | [**getAllMailboxesV2**](docs/MailApi.md#getAllMailboxesV2) | **GET** /api/v2/mail | Получение списка всех почтовых ящиков аккаунта
 *TimewebCloudApi.MailApi* | [**getDomainMailInfo**](docs/MailApi.md#getDomainMailInfo) | **GET** /api/v1/mail/domains/{domain}/info | Получение почтовой информации о домене
 *TimewebCloudApi.MailApi* | [**getDomainMailboxes**](docs/MailApi.md#getDomainMailboxes) | **GET** /api/v1/mail/domains/{domain} | Получение списка почтовых ящиков домена
 *TimewebCloudApi.MailApi* | [**getMailbox**](docs/MailApi.md#getMailbox) | **GET** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Получение почтового ящика
+*TimewebCloudApi.MailApi* | [**getMailboxV2**](docs/MailApi.md#getMailboxV2) | **GET** /api/v2/mail/domains/{domain}/mailboxes/{mailbox} | Получение почтового ящика
 *TimewebCloudApi.MailApi* | [**getMailboxes**](docs/MailApi.md#getMailboxes) | **GET** /api/v1/mail | Получение списка почтовых ящиков аккаунта
 *TimewebCloudApi.MailApi* | [**updateDomainMailInfo**](docs/MailApi.md#updateDomainMailInfo) | **PATCH** /api/v1/mail/domains/{domain}/info | Изменение почтовой информации о домене
 *TimewebCloudApi.MailApi* | [**updateMailbox**](docs/MailApi.md#updateMailbox) | **PATCH** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Изменение почтового ящика
@@ -696,6 +700,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateDomainDNSRecordV2201Response](docs/CreateDomainDNSRecordV2201Response.md)
  - [TimewebCloudApi.CreateDomainMailbox201Response](docs/CreateDomainMailbox201Response.md)
  - [TimewebCloudApi.CreateDomainMailboxRequest](docs/CreateDomainMailboxRequest.md)
+ - [TimewebCloudApi.CreateDomainMailboxV2201Response](docs/CreateDomainMailboxV2201Response.md)
+ - [TimewebCloudApi.CreateDomainMailboxV2Request](docs/CreateDomainMailboxV2Request.md)
  - [TimewebCloudApi.CreateDomainRequest201Response](docs/CreateDomainRequest201Response.md)
  - [TimewebCloudApi.CreateFloatingIp](docs/CreateFloatingIp.md)
  - [TimewebCloudApi.CreateFloatingIp201Response](docs/CreateFloatingIp201Response.md)
@@ -707,6 +713,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateMultipleDomainMailboxes201Response](docs/CreateMultipleDomainMailboxes201Response.md)
  - [TimewebCloudApi.CreateMultipleDomainMailboxesRequest](docs/CreateMultipleDomainMailboxesRequest.md)
  - [TimewebCloudApi.CreateMultipleDomainMailboxesRequestMailboxesInner](docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md)
+ - [TimewebCloudApi.CreateMultipleDomainMailboxesV2201Response](docs/CreateMultipleDomainMailboxesV2201Response.md)
+ - [TimewebCloudApi.CreateMultipleDomainMailboxesV2RequestInner](docs/CreateMultipleDomainMailboxesV2RequestInner.md)
  - [TimewebCloudApi.CreateNetworkDrive](docs/CreateNetworkDrive.md)
  - [TimewebCloudApi.CreateNetworkDrive201Response](docs/CreateNetworkDrive201Response.md)
  - [TimewebCloudApi.CreateProject](docs/CreateProject.md)
@@ -811,6 +819,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetAgents200ResponseMeta](docs/GetAgents200ResponseMeta.md)
  - [TimewebCloudApi.GetAgentsTokenPackages200Response](docs/GetAgentsTokenPackages200Response.md)
  - [TimewebCloudApi.GetAgentsTokenPackages200ResponseMeta](docs/GetAgentsTokenPackages200ResponseMeta.md)
+ - [TimewebCloudApi.GetAllMailboxesV2200Response](docs/GetAllMailboxesV2200Response.md)
  - [TimewebCloudApi.GetAllProjectResources200Response](docs/GetAllProjectResources200Response.md)
  - [TimewebCloudApi.GetAppDeploys200Response](docs/GetAppDeploys200Response.md)
  - [TimewebCloudApi.GetAppLogs200Response](docs/GetAppLogs200Response.md)
@@ -929,6 +938,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.MailboxForwardingOutgoing](docs/MailboxForwardingOutgoing.md)
  - [TimewebCloudApi.MailboxResponse](docs/MailboxResponse.md)
  - [TimewebCloudApi.MailboxSpamFilter](docs/MailboxSpamFilter.md)
+ - [TimewebCloudApi.MailboxV2](docs/MailboxV2.md)
+ - [TimewebCloudApi.MailboxesBatchV2](docs/MailboxesBatchV2.md)
  - [TimewebCloudApi.MasterPresetOutApi](docs/MasterPresetOutApi.md)
  - [TimewebCloudApi.Meta](docs/Meta.md)
  - [TimewebCloudApi.Meta1](docs/Meta1.md)

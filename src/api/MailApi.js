@@ -16,9 +16,14 @@ import ApiClient from "../ApiClient";
 import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
 import CreateDomainMailbox201Response from '../model/CreateDomainMailbox201Response';
 import CreateDomainMailboxRequest from '../model/CreateDomainMailboxRequest';
+import CreateDomainMailboxV2201Response from '../model/CreateDomainMailboxV2201Response';
+import CreateDomainMailboxV2Request from '../model/CreateDomainMailboxV2Request';
 import CreateMultipleDomainMailboxes201Response from '../model/CreateMultipleDomainMailboxes201Response';
 import CreateMultipleDomainMailboxesRequest from '../model/CreateMultipleDomainMailboxesRequest';
+import CreateMultipleDomainMailboxesV2201Response from '../model/CreateMultipleDomainMailboxesV2201Response';
+import CreateMultipleDomainMailboxesV2RequestInner from '../model/CreateMultipleDomainMailboxesV2RequestInner';
 import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
+import GetAllMailboxesV2200Response from '../model/GetAllMailboxesV2200Response';
 import GetDomainMailInfo200Response from '../model/GetDomainMailInfo200Response';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
@@ -99,6 +104,54 @@ export default class MailApi {
     }
 
     /**
+     * Callback function to receive the result of the createDomainMailboxV2 operation.
+     * @callback module:api/MailApi~createDomainMailboxV2Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateDomainMailboxV2201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Создание почтового ящика
+     * Чтобы создать почтовый ящик, отправьте POST-запрос на `/api/v2/mail/domains/{domain}`.
+     * @param {String} domain Полное имя домена
+     * @param {module:model/CreateDomainMailboxV2Request} createDomainMailboxV2Request 
+     * @param {module:api/MailApi~createDomainMailboxV2Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateDomainMailboxV2201Response}
+     */
+    createDomainMailboxV2(domain, createDomainMailboxV2Request, callback) {
+      let postBody = createDomainMailboxV2Request;
+      // verify the required parameter 'domain' is set
+      if (domain === undefined || domain === null) {
+        throw new Error("Missing the required parameter 'domain' when calling createDomainMailboxV2");
+      }
+      // verify the required parameter 'createDomainMailboxV2Request' is set
+      if (createDomainMailboxV2Request === undefined || createDomainMailboxV2Request === null) {
+        throw new Error("Missing the required parameter 'createDomainMailboxV2Request' when calling createDomainMailboxV2");
+      }
+
+      let pathParams = {
+        'domain': domain
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateDomainMailboxV2201Response;
+      return this.apiClient.callApi(
+        '/api/v2/mail/domains/{domain}', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the createMultipleDomainMailboxes operation.
      * @callback module:api/MailApi~createMultipleDomainMailboxesCallback
      * @param {String} error Error message, if any.
@@ -147,6 +200,54 @@ export default class MailApi {
     }
 
     /**
+     * Callback function to receive the result of the createMultipleDomainMailboxesV2 operation.
+     * @callback module:api/MailApi~createMultipleDomainMailboxesV2Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateMultipleDomainMailboxesV2201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Множественное создание почтовых ящиков
+     * Чтобы создать несколько почтовых ящиков одновременно, отправьте POST-запрос на `/api/v2/mail/domains/{domain}/batch`.
+     * @param {String} domain Полное имя домена
+     * @param {Array.<module:model/CreateMultipleDomainMailboxesV2RequestInner>} createMultipleDomainMailboxesV2RequestInner 
+     * @param {module:api/MailApi~createMultipleDomainMailboxesV2Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateMultipleDomainMailboxesV2201Response}
+     */
+    createMultipleDomainMailboxesV2(domain, createMultipleDomainMailboxesV2RequestInner, callback) {
+      let postBody = createMultipleDomainMailboxesV2RequestInner;
+      // verify the required parameter 'domain' is set
+      if (domain === undefined || domain === null) {
+        throw new Error("Missing the required parameter 'domain' when calling createMultipleDomainMailboxesV2");
+      }
+      // verify the required parameter 'createMultipleDomainMailboxesV2RequestInner' is set
+      if (createMultipleDomainMailboxesV2RequestInner === undefined || createMultipleDomainMailboxesV2RequestInner === null) {
+        throw new Error("Missing the required parameter 'createMultipleDomainMailboxesV2RequestInner' when calling createMultipleDomainMailboxesV2");
+      }
+
+      let pathParams = {
+        'domain': domain
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateMultipleDomainMailboxesV2201Response;
+      return this.apiClient.callApi(
+        '/api/v2/mail/domains/{domain}/batch', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the deleteMailbox operation.
      * @callback module:api/MailApi~deleteMailboxCallback
      * @param {String} error Error message, if any.
@@ -189,6 +290,51 @@ export default class MailApi {
       let returnType = null;
       return this.apiClient.callApi(
         '/api/v1/mail/domains/{domain}/mailboxes/{mailbox}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getAllMailboxesV2 operation.
+     * @callback module:api/MailApi~getAllMailboxesV2Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetAllMailboxesV2200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка всех почтовых ящиков аккаунта
+     * Чтобы получить список всех почтовых ящиков, отправьте GET-запрос на `/api/v2/mail`.
+     * @param {Object} opts Optional parameters
+     * @param {Number} [limit = 100)] Обозначает количество записей, которое необходимо вернуть.
+     * @param {Number} [offset = 0)] Указывает на смещение относительно начала списка.
+     * @param {String} [search] Поиск почтового ящика по названию
+     * @param {module:api/MailApi~getAllMailboxesV2Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetAllMailboxesV2200Response}
+     */
+    getAllMailboxesV2(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'limit': opts['limit'],
+        'offset': opts['offset'],
+        'search': opts['search']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetAllMailboxesV2200Response;
+      return this.apiClient.callApi(
+        '/api/v2/mail', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -332,6 +478,55 @@ export default class MailApi {
       let returnType = CreateDomainMailbox201Response;
       return this.apiClient.callApi(
         '/api/v1/mail/domains/{domain}/mailboxes/{mailbox}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getMailboxV2 operation.
+     * @callback module:api/MailApi~getMailboxV2Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateDomainMailboxV2201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение почтового ящика
+     * Чтобы получить почтовый ящик, отправьте GET-запрос на `/api/v2/mail/domains/{domain}/mailboxes/{mailbox}`.
+     * @param {String} domain Полное имя домена
+     * @param {String} mailbox Название почтового ящика
+     * @param {module:api/MailApi~getMailboxV2Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateDomainMailboxV2201Response}
+     */
+    getMailboxV2(domain, mailbox, callback) {
+      let postBody = null;
+      // verify the required parameter 'domain' is set
+      if (domain === undefined || domain === null) {
+        throw new Error("Missing the required parameter 'domain' when calling getMailboxV2");
+      }
+      // verify the required parameter 'mailbox' is set
+      if (mailbox === undefined || mailbox === null) {
+        throw new Error("Missing the required parameter 'mailbox' when calling getMailboxV2");
+      }
+
+      let pathParams = {
+        'domain': domain,
+        'mailbox': mailbox
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CreateDomainMailboxV2201Response;
+      return this.apiClient.callApi(
+        '/api/v2/mail/domains/{domain}/mailboxes/{mailbox}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

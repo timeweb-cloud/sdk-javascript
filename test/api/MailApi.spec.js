@@ -58,6 +58,16 @@
         done();
       });
     });
+    describe('createDomainMailboxV2', function() {
+      it('should call createDomainMailboxV2 successfully', function(done) {
+        //uncomment below and update the code to test createDomainMailboxV2
+        //instance.createDomainMailboxV2(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('createMultipleDomainMailboxes', function() {
       it('should call createMultipleDomainMailboxes successfully', function(done) {
         //uncomment below and update the code to test createMultipleDomainMailboxes
@@ -68,10 +78,30 @@
         done();
       });
     });
+    describe('createMultipleDomainMailboxesV2', function() {
+      it('should call createMultipleDomainMailboxesV2 successfully', function(done) {
+        //uncomment below and update the code to test createMultipleDomainMailboxesV2
+        //instance.createMultipleDomainMailboxesV2(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('deleteMailbox', function() {
       it('should call deleteMailbox successfully', function(done) {
         //uncomment below and update the code to test deleteMailbox
         //instance.deleteMailbox(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getAllMailboxesV2', function() {
+      it('should call getAllMailboxesV2 successfully', function(done) {
+        //uncomment below and update the code to test getAllMailboxesV2
+        //instance.getAllMailboxesV2(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -102,6 +132,16 @@
       it('should call getMailbox successfully', function(done) {
         //uncomment below and update the code to test getMailbox
         //instance.getMailbox(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getMailboxV2', function() {
+      it('should call getMailboxV2 successfully', function(done) {
+        //uncomment below and update the code to test getMailboxV2
+        //instance.getMailboxV2(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
