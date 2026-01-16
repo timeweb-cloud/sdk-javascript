@@ -19,11 +19,13 @@ import CreateAgent201Response from '../model/CreateAgent201Response';
 import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
 import GetAgentStatistics200Response from '../model/GetAgentStatistics200Response';
 import GetAgents200Response from '../model/GetAgents200Response';
+import GetAgentsTokenPackages200Response from '../model/GetAgentsTokenPackages200Response';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetImage404Response from '../model/GetImage404Response';
+import GetModels200Response from '../model/GetModels200Response';
 import UpdateAgent from '../model/UpdateAgent';
 
 /**
@@ -300,6 +302,117 @@ export default class AIAgentsApi {
       let returnType = GetAgents200Response;
       return this.apiClient.callApi(
         '/api/v1/cloud-ai/agents', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getAgentsTokenPackages operation.
+     * @callback module:api/AIAgentsApi~getAgentsTokenPackagesCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetAgentsTokenPackages200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка пакетов токенов для агентов
+     * Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на `/api/v1/cloud-ai/token-packages/agents`.  Тело ответа будет представлять собой объект JSON с ключом `token_packages`.
+     * @param {module:api/AIAgentsApi~getAgentsTokenPackagesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetAgentsTokenPackages200Response}
+     */
+    getAgentsTokenPackages(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetAgentsTokenPackages200Response;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/token-packages/agents', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getKnowledgebasesTokenPackages operation.
+     * @callback module:api/AIAgentsApi~getKnowledgebasesTokenPackagesCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetAgentsTokenPackages200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка пакетов токенов для баз знаний
+     * Чтобы получить список доступных пакетов токенов для баз знаний, отправьте GET-запрос на `/api/v1/cloud-ai/token-packages/knowledge-bases`.  Тело ответа будет представлять собой объект JSON с ключом `token_packages`.
+     * @param {module:api/AIAgentsApi~getKnowledgebasesTokenPackagesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetAgentsTokenPackages200Response}
+     */
+    getKnowledgebasesTokenPackages(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetAgentsTokenPackages200Response;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/token-packages/knowledge-bases', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getModels operation.
+     * @callback module:api/AIAgentsApi~getModelsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetModels200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка моделей
+     * Чтобы получить список доступных AI моделей, отправьте GET-запрос на `/api/v1/cloud-ai/models`.  Тело ответа будет представлять собой объект JSON с ключом `models`.
+     * @param {module:api/AIAgentsApi~getModelsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetModels200Response}
+     */
+    getModels(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetModels200Response;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/models', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

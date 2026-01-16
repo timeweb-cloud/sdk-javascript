@@ -108,6 +108,36 @@
         done();
       });
     });
+    describe('getAgentsTokenPackages', function() {
+      it('should call getAgentsTokenPackages successfully', function(done) {
+        //uncomment below and update the code to test getAgentsTokenPackages
+        //instance.getAgentsTokenPackages(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getKnowledgebasesTokenPackages', function() {
+      it('should call getKnowledgebasesTokenPackages successfully', function(done) {
+        //uncomment below and update the code to test getKnowledgebasesTokenPackages
+        //instance.getKnowledgebasesTokenPackages(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getModels', function() {
+      it('should call getModels successfully', function(done) {
+        //uncomment below and update the code to test getModels
+        //instance.getModels(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('updateAgent', function() {
       it('should call updateAgent successfully', function(done) {
         //uncomment below and update the code to test updateAgent

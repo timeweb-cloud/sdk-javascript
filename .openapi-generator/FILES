@@ -4,7 +4,6 @@
 .travis.yml
 README.md
 docs/AIAgentsApi.md
-docs/AIModelsApi.md
 docs/APIKeysApi.md
 docs/AccountApi.md
 docs/AddBalancerToProject200Response.md
@@ -540,7 +539,6 @@ mocha.opts
 package.json
 src/ApiClient.js
 src/api/AIAgentsApi.js
-src/api/AIModelsApi.js
 src/api/APIKeysApi.js
 src/api/AccountApi.js
 src/api/AppsApi.js
@@ -1073,7 +1071,6 @@ src/model/VpcPortService.js
 src/model/VpcService.js
 src/model/WorkerPresetOutApi.js
 test/api/AIAgentsApi.spec.js
-test/api/AIModelsApi.spec.js
 test/api/APIKeysApi.spec.js
 test/api/AccountApi.spec.js
 test/api/AppsApi.spec.js

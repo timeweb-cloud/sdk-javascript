@@ -279,10 +279,10 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.AIAgentsApi* | [**getAgent**](docs/AIAgentsApi.md#getAgent) | **GET** /api/v1/cloud-ai/agents/{id} | Получение AI агента
 *TimewebCloudApi.AIAgentsApi* | [**getAgentStatistics**](docs/AIAgentsApi.md#getAgentStatistics) | **GET** /api/v1/cloud-ai/agents/{id}/statistic | Получение статистики использования токенов агента
 *TimewebCloudApi.AIAgentsApi* | [**getAgents**](docs/AIAgentsApi.md#getAgents) | **GET** /api/v1/cloud-ai/agents | Получение списка AI агентов
+*TimewebCloudApi.AIAgentsApi* | [**getAgentsTokenPackages**](docs/AIAgentsApi.md#getAgentsTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/agents | Получение списка пакетов токенов для агентов
+*TimewebCloudApi.AIAgentsApi* | [**getKnowledgebasesTokenPackages**](docs/AIAgentsApi.md#getKnowledgebasesTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/knowledge-bases | Получение списка пакетов токенов для баз знаний
+*TimewebCloudApi.AIAgentsApi* | [**getModels**](docs/AIAgentsApi.md#getModels) | **GET** /api/v1/cloud-ai/models | Получение списка моделей
 *TimewebCloudApi.AIAgentsApi* | [**updateAgent**](docs/AIAgentsApi.md#updateAgent) | **PATCH** /api/v1/cloud-ai/agents/{id} | Обновление AI агента
-*TimewebCloudApi.AIModelsApi* | [**getAgentsTokenPackages**](docs/AIModelsApi.md#getAgentsTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/agents | Получение списка пакетов токенов для агентов
-*TimewebCloudApi.AIModelsApi* | [**getKnowledgebasesTokenPackages**](docs/AIModelsApi.md#getKnowledgebasesTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/knowledge-bases | Получение списка пакетов токенов для баз знаний
-*TimewebCloudApi.AIModelsApi* | [**getModels**](docs/AIModelsApi.md#getModels) | **GET** /api/v1/cloud-ai/models | Получение списка моделей
 *TimewebCloudApi.APIKeysApi* | [**createToken**](docs/APIKeysApi.md#createToken) | **POST** /api/v1/auth/api-keys | Создание токена
 *TimewebCloudApi.APIKeysApi* | [**deleteToken**](docs/APIKeysApi.md#deleteToken) | **DELETE** /api/v1/auth/api-keys/{token_id} | Удалить токен
 *TimewebCloudApi.APIKeysApi* | [**getTokens**](docs/APIKeysApi.md#getTokens) | **GET** /api/v1/auth/api-keys | Получение списка выпущенных токенов

@@ -522,7 +522,6 @@ import VpcPortService from './model/VpcPortService';
 import VpcService from './model/VpcService';
 import WorkerPresetOutApi from './model/WorkerPresetOutApi';
 import AIAgentsApi from './api/AIAgentsApi';
-import AIModelsApi from './api/AIModelsApi';
 import APIKeysApi from './api/APIKeysApi';
 import AccountApi from './api/AccountApi';
 import AppsApi from './api/AppsApi';
@@ -3638,12 +3637,6 @@ export {
     * @property {module:api/AIAgentsApi}
     */
     AIAgentsApi,
-
-    /**
-    * The AIModelsApi service constructor.
-    * @property {module:api/AIModelsApi}
-    */
-    AIModelsApi,
 
     /**
     * The APIKeysApi service constructor.
