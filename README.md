@@ -381,9 +381,11 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.DomainsApi* | [**addSubdomain**](docs/DomainsApi.md#addSubdomain) | **POST** /api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn} | Добавление поддомена
 *TimewebCloudApi.DomainsApi* | [**checkDomain**](docs/DomainsApi.md#checkDomain) | **GET** /api/v1/check-domain/{fqdn} | Проверить, доступен ли домен для регистрации
 *TimewebCloudApi.DomainsApi* | [**createDomainDNSRecord**](docs/DomainsApi.md#createDomainDNSRecord) | **POST** /api/v1/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена
+*TimewebCloudApi.DomainsApi* | [**createDomainDNSRecordV2**](docs/DomainsApi.md#createDomainDNSRecordV2) | **POST** /api/v2/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена
 *TimewebCloudApi.DomainsApi* | [**createDomainRequest**](docs/DomainsApi.md#createDomainRequest) | **POST** /api/v1/domains-requests | Создание заявки на регистрацию/продление/трансфер домена
 *TimewebCloudApi.DomainsApi* | [**deleteDomain**](docs/DomainsApi.md#deleteDomain) | **DELETE** /api/v1/domains/{fqdn} | Удаление домена
 *TimewebCloudApi.DomainsApi* | [**deleteDomainDNSRecord**](docs/DomainsApi.md#deleteDomainDNSRecord) | **DELETE** /api/v1/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена
+*TimewebCloudApi.DomainsApi* | [**deleteDomainDNSRecordV2**](docs/DomainsApi.md#deleteDomainDNSRecordV2) | **DELETE** /api/v2/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена
 *TimewebCloudApi.DomainsApi* | [**deleteSubdomain**](docs/DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn} | Удаление поддомена
 *TimewebCloudApi.DomainsApi* | [**getDomain**](docs/DomainsApi.md#getDomain) | **GET** /api/v1/domains/{fqdn} | Получение информации о домене
 *TimewebCloudApi.DomainsApi* | [**getDomainDNSRecords**](docs/DomainsApi.md#getDomainDNSRecords) | **GET** /api/v1/domains/{fqdn}/dns-records | Получить информацию обо всех пользовательских DNS-записях домена или поддомена
@@ -396,6 +398,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.DomainsApi* | [**getTLDs**](docs/DomainsApi.md#getTLDs) | **GET** /api/v1/tlds | Получить информацию о доменных зонах
 *TimewebCloudApi.DomainsApi* | [**updateDomainAutoProlongation**](docs/DomainsApi.md#updateDomainAutoProlongation) | **PATCH** /api/v1/domains/{fqdn} | Включение/выключение автопродления домена
 *TimewebCloudApi.DomainsApi* | [**updateDomainDNSRecord**](docs/DomainsApi.md#updateDomainDNSRecord) | **PATCH** /api/v1/domains/{fqdn}/dns-records/{record_id} | Обновить информацию о DNS-записи домена или поддомена
+*TimewebCloudApi.DomainsApi* | [**updateDomainDNSRecordV2**](docs/DomainsApi.md#updateDomainDNSRecordV2) | **PATCH** /api/v2/domains/{fqdn}/dns-records/{record_id} | Обновить информацию о DNS-записи домена или поддомена
 *TimewebCloudApi.DomainsApi* | [**updateDomainNameServers**](docs/DomainsApi.md#updateDomainNameServers) | **PUT** /api/v1/domains/{fqdn}/name-servers | Изменение name-серверов домена
 *TimewebCloudApi.DomainsApi* | [**updateDomainRequest**](docs/DomainsApi.md#updateDomainRequest) | **PATCH** /api/v1/domains-requests/{request_id} | Оплата/обновление заявки на регистрацию/продление/трансфер домена
 *TimewebCloudApi.FirewallApi* | [**addResourceToGroup**](docs/FirewallApi.md#addResourceToGroup) | **POST** /api/v1/firewall/groups/{group_id}/resources/{resource_id} | Линковка ресурса в firewall group
@@ -688,7 +691,9 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateDeploy201Response](docs/CreateDeploy201Response.md)
  - [TimewebCloudApi.CreateDeployRequest](docs/CreateDeployRequest.md)
  - [TimewebCloudApi.CreateDns](docs/CreateDns.md)
+ - [TimewebCloudApi.CreateDnsV2](docs/CreateDnsV2.md)
  - [TimewebCloudApi.CreateDomainDNSRecord201Response](docs/CreateDomainDNSRecord201Response.md)
+ - [TimewebCloudApi.CreateDomainDNSRecordV2201Response](docs/CreateDomainDNSRecordV2201Response.md)
  - [TimewebCloudApi.CreateDomainMailbox201Response](docs/CreateDomainMailbox201Response.md)
  - [TimewebCloudApi.CreateDomainMailboxRequest](docs/CreateDomainMailboxRequest.md)
  - [TimewebCloudApi.CreateDomainRequest201Response](docs/CreateDomainRequest201Response.md)
@@ -758,6 +763,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DeployStatus](docs/DeployStatus.md)
  - [TimewebCloudApi.DnsRecord](docs/DnsRecord.md)
  - [TimewebCloudApi.DnsRecordData](docs/DnsRecordData.md)
+ - [TimewebCloudApi.DnsRecordV2](docs/DnsRecordV2.md)
+ - [TimewebCloudApi.DnsRecordV2Data](docs/DnsRecordV2Data.md)
  - [TimewebCloudApi.Document](docs/Document.md)
  - [TimewebCloudApi.DocumentStatusInfo](docs/DocumentStatusInfo.md)
  - [TimewebCloudApi.DocumentStatusInfoDetails](docs/DocumentStatusInfoDetails.md)

@@ -17,7 +17,9 @@ import AddSubdomain201Response from '../model/AddSubdomain201Response';
 import CheckDomain200Response from '../model/CheckDomain200Response';
 import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
 import CreateDns from '../model/CreateDns';
+import CreateDnsV2 from '../model/CreateDnsV2';
 import CreateDomainDNSRecord201Response from '../model/CreateDomainDNSRecord201Response';
+import CreateDomainDNSRecordV2201Response from '../model/CreateDomainDNSRecordV2201Response';
 import CreateDomainRequest201Response from '../model/CreateDomainRequest201Response';
 import DomainRegister from '../model/DomainRegister';
 import GetDomain200Response from '../model/GetDomain200Response';
@@ -239,6 +241,54 @@ export default class DomainsApi {
     }
 
     /**
+     * Callback function to receive the result of the createDomainDNSRecordV2 operation.
+     * @callback module:api/DomainsApi~createDomainDNSRecordV2Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateDomainDNSRecordV2201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Добавить информацию о DNS-записи для домена или поддомена
+     * Чтобы добавить информацию о DNS-записи для домена или поддомена, отправьте запрос POST на `/api/v2/domains/{fqdn}/dns-records`, задав необходимые атрибуты.  DNS-запись будет добавлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленной DNS-записи.
+     * @param {String} fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).
+     * @param {module:model/CreateDnsV2} createDnsV2 
+     * @param {module:api/DomainsApi~createDomainDNSRecordV2Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateDomainDNSRecordV2201Response}
+     */
+    createDomainDNSRecordV2(fqdn, createDnsV2, callback) {
+      let postBody = createDnsV2;
+      // verify the required parameter 'fqdn' is set
+      if (fqdn === undefined || fqdn === null) {
+        throw new Error("Missing the required parameter 'fqdn' when calling createDomainDNSRecordV2");
+      }
+      // verify the required parameter 'createDnsV2' is set
+      if (createDnsV2 === undefined || createDnsV2 === null) {
+        throw new Error("Missing the required parameter 'createDnsV2' when calling createDomainDNSRecordV2");
+      }
+
+      let pathParams = {
+        'fqdn': fqdn
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateDomainDNSRecordV2201Response;
+      return this.apiClient.callApi(
+        '/api/v2/domains/{fqdn}/dns-records', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the createDomainRequest operation.
      * @callback module:api/DomainsApi~createDomainRequestCallback
      * @param {String} error Error message, if any.
@@ -365,6 +415,54 @@ export default class DomainsApi {
       let returnType = null;
       return this.apiClient.callApi(
         '/api/v1/domains/{fqdn}/dns-records/{record_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deleteDomainDNSRecordV2 operation.
+     * @callback module:api/DomainsApi~deleteDomainDNSRecordV2Callback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Удалить информацию о DNS-записи для домена или поддомена
+     * Чтобы удалить информацию о DNS-записи для домена или поддомена, отправьте запрос DELETE на `/api/v2/domains/{fqdn}/dns-records/{record_id}`.
+     * @param {String} fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).
+     * @param {Number} recordId ID DNS-записи домена или поддомена.
+     * @param {module:api/DomainsApi~deleteDomainDNSRecordV2Callback} callback The callback function, accepting three arguments: error, data, response
+     */
+    deleteDomainDNSRecordV2(fqdn, recordId, callback) {
+      let postBody = null;
+      // verify the required parameter 'fqdn' is set
+      if (fqdn === undefined || fqdn === null) {
+        throw new Error("Missing the required parameter 'fqdn' when calling deleteDomainDNSRecordV2");
+      }
+      // verify the required parameter 'recordId' is set
+      if (recordId === undefined || recordId === null) {
+        throw new Error("Missing the required parameter 'recordId' when calling deleteDomainDNSRecordV2");
+      }
+
+      let pathParams = {
+        'fqdn': fqdn,
+        'record_id': recordId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v2/domains/{fqdn}/dns-records/{record_id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -920,6 +1018,60 @@ export default class DomainsApi {
       let returnType = CreateDomainDNSRecord201Response;
       return this.apiClient.callApi(
         '/api/v1/domains/{fqdn}/dns-records/{record_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updateDomainDNSRecordV2 operation.
+     * @callback module:api/DomainsApi~updateDomainDNSRecordV2Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateDomainDNSRecordV2201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Обновить информацию о DNS-записи домена или поддомена
+     * Чтобы обновить информацию о DNS-записи для домена или поддомена, отправьте запрос PATCH на `/api/v2/domains/{fqdn}/dns-records/{record_id}`, задав необходимые атрибуты.  DNS-запись будет обновлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией об обновленной DNS-записи.
+     * @param {String} fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).
+     * @param {Number} recordId ID DNS-записи домена или поддомена.
+     * @param {module:model/CreateDnsV2} createDnsV2 
+     * @param {module:api/DomainsApi~updateDomainDNSRecordV2Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateDomainDNSRecordV2201Response}
+     */
+    updateDomainDNSRecordV2(fqdn, recordId, createDnsV2, callback) {
+      let postBody = createDnsV2;
+      // verify the required parameter 'fqdn' is set
+      if (fqdn === undefined || fqdn === null) {
+        throw new Error("Missing the required parameter 'fqdn' when calling updateDomainDNSRecordV2");
+      }
+      // verify the required parameter 'recordId' is set
+      if (recordId === undefined || recordId === null) {
+        throw new Error("Missing the required parameter 'recordId' when calling updateDomainDNSRecordV2");
+      }
+      // verify the required parameter 'createDnsV2' is set
+      if (createDnsV2 === undefined || createDnsV2 === null) {
+        throw new Error("Missing the required parameter 'createDnsV2' when calling updateDomainDNSRecordV2");
+      }
+
+      let pathParams = {
+        'fqdn': fqdn,
+        'record_id': recordId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateDomainDNSRecordV2201Response;
+      return this.apiClient.callApi(
+        '/api/v2/domains/{fqdn}/dns-records/{record_id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

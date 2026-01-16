@@ -117,7 +117,9 @@ docs/CreateDedicatedServer201Response.md
 docs/CreateDeploy201Response.md
 docs/CreateDeployRequest.md
 docs/CreateDns.md
+docs/CreateDnsV2.md
 docs/CreateDomainDNSRecord201Response.md
+docs/CreateDomainDNSRecordV2201Response.md
 docs/CreateDomainMailbox201Response.md
 docs/CreateDomainMailboxRequest.md
 docs/CreateDomainRequest201Response.md
@@ -189,6 +191,8 @@ docs/DeploySettingsInner.md
 docs/DeployStatus.md
 docs/DnsRecord.md
 docs/DnsRecordData.md
+docs/DnsRecordV2.md
+docs/DnsRecordV2Data.md
 docs/Document.md
 docs/DocumentStatusInfo.md
 docs/DocumentStatusInfoDetails.md
@@ -667,7 +671,9 @@ src/model/CreateDedicatedServer201Response.js
 src/model/CreateDeploy201Response.js
 src/model/CreateDeployRequest.js
 src/model/CreateDns.js
+src/model/CreateDnsV2.js
 src/model/CreateDomainDNSRecord201Response.js
+src/model/CreateDomainDNSRecordV2201Response.js
 src/model/CreateDomainMailbox201Response.js
 src/model/CreateDomainMailboxRequest.js
 src/model/CreateDomainRequest201Response.js
@@ -737,6 +743,8 @@ src/model/DeploySettingsInner.js
 src/model/DeployStatus.js
 src/model/DnsRecord.js
 src/model/DnsRecordData.js
+src/model/DnsRecordV2.js
+src/model/DnsRecordV2Data.js
 src/model/Document.js
 src/model/DocumentStatusInfo.js
 src/model/DocumentStatusInfoDetails.js
@@ -1195,7 +1203,9 @@ test/model/CreateDedicatedServer201Response.spec.js
 test/model/CreateDeploy201Response.spec.js
 test/model/CreateDeployRequest.spec.js
 test/model/CreateDns.spec.js
+test/model/CreateDnsV2.spec.js
 test/model/CreateDomainDNSRecord201Response.spec.js
+test/model/CreateDomainDNSRecordV2201Response.spec.js
 test/model/CreateDomainMailbox201Response.spec.js
 test/model/CreateDomainMailboxRequest.spec.js
 test/model/CreateDomainRequest201Response.spec.js
@@ -1265,6 +1275,8 @@ test/model/DeploySettingsInner.spec.js
 test/model/DeployStatus.spec.js
 test/model/DnsRecord.spec.js
 test/model/DnsRecordData.spec.js
+test/model/DnsRecordV2.spec.js
+test/model/DnsRecordV2Data.spec.js
 test/model/Document.spec.js
 test/model/DocumentStatusInfo.spec.js
 test/model/DocumentStatusInfoDetails.spec.js

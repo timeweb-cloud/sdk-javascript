@@ -120,7 +120,9 @@ import CreateDedicatedServer201Response from './model/CreateDedicatedServer201Re
 import CreateDeploy201Response from './model/CreateDeploy201Response';
 import CreateDeployRequest from './model/CreateDeployRequest';
 import CreateDns from './model/CreateDns';
+import CreateDnsV2 from './model/CreateDnsV2';
 import CreateDomainDNSRecord201Response from './model/CreateDomainDNSRecord201Response';
+import CreateDomainDNSRecordV2201Response from './model/CreateDomainDNSRecordV2201Response';
 import CreateDomainMailbox201Response from './model/CreateDomainMailbox201Response';
 import CreateDomainMailboxRequest from './model/CreateDomainMailboxRequest';
 import CreateDomainRequest201Response from './model/CreateDomainRequest201Response';
@@ -190,6 +192,8 @@ import DeploySettingsInner from './model/DeploySettingsInner';
 import DeployStatus from './model/DeployStatus';
 import DnsRecord from './model/DnsRecord';
 import DnsRecordData from './model/DnsRecordData';
+import DnsRecordV2 from './model/DnsRecordV2';
+import DnsRecordV2Data from './model/DnsRecordV2Data';
 import Document from './model/Document';
 import DocumentStatusInfo from './model/DocumentStatusInfo';
 import DocumentStatusInfoDetails from './model/DocumentStatusInfoDetails';
@@ -1224,10 +1228,22 @@ export {
     CreateDns,
 
     /**
+     * The CreateDnsV2 model constructor.
+     * @property {module:model/CreateDnsV2}
+     */
+    CreateDnsV2,
+
+    /**
      * The CreateDomainDNSRecord201Response model constructor.
      * @property {module:model/CreateDomainDNSRecord201Response}
      */
     CreateDomainDNSRecord201Response,
+
+    /**
+     * The CreateDomainDNSRecordV2201Response model constructor.
+     * @property {module:model/CreateDomainDNSRecordV2201Response}
+     */
+    CreateDomainDNSRecordV2201Response,
 
     /**
      * The CreateDomainMailbox201Response model constructor.
@@ -1642,6 +1658,18 @@ export {
      * @property {module:model/DnsRecordData}
      */
     DnsRecordData,
+
+    /**
+     * The DnsRecordV2 model constructor.
+     * @property {module:model/DnsRecordV2}
+     */
+    DnsRecordV2,
+
+    /**
+     * The DnsRecordV2Data model constructor.
+     * @property {module:model/DnsRecordV2Data}
+     */
+    DnsRecordV2Data,
 
     /**
      * The Document model constructor.
