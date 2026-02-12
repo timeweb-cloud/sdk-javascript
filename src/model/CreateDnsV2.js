@@ -60,6 +60,9 @@ class CreateDnsV2 {
             if (data.hasOwnProperty('ttl')) {
                 obj['ttl'] = ApiClient.convertToType(data['ttl'], 'Number');
             }
+            if (data.hasOwnProperty('app_id')) {
+                obj['app_id'] = ApiClient.convertToType(data['app_id'], 'Number');
+            }
         }
         return obj;
     }
@@ -110,6 +113,12 @@ CreateDnsV2.prototype['value'] = undefined;
  * @member {Number} ttl
  */
 CreateDnsV2.prototype['ttl'] = undefined;
+
+/**
+ * Идентификатор приложения в App Platform, к которому будет привязан домен или поддомен.
+ * @member {Number} app_id
+ */
+CreateDnsV2.prototype['app_id'] = undefined;
 
 
 
