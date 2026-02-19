@@ -283,6 +283,49 @@ export default class S3Api {
     }
 
     /**
+     * Callback function to receive the result of the getStorage operation.
+     * @callback module:api/S3Api~getStorageCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateStorage201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение хранилища по ID
+     * Чтобы получить хранилище по ID, отправьте GET-запрос на `/api/v1/storages/buckets/{bucket_id}`.
+     * @param {Number} bucketId ID хранилища.
+     * @param {module:api/S3Api~getStorageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateStorage201Response}
+     */
+    getStorage(bucketId, callback) {
+      let postBody = null;
+      // verify the required parameter 'bucketId' is set
+      if (bucketId === undefined || bucketId === null) {
+        throw new Error("Missing the required parameter 'bucketId' when calling getStorage");
+      }
+
+      let pathParams = {
+        'bucket_id': bucketId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CreateStorage201Response;
+      return this.apiClient.callApi(
+        '/api/v1/storages/buckets/{bucket_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getStorageSubdomains operation.
      * @callback module:api/S3Api~getStorageSubdomainsCallback
      * @param {String} error Error message, if any.

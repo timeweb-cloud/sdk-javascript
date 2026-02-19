@@ -98,6 +98,16 @@
         done();
       });
     });
+    describe('getStorage', function() {
+      it('should call getStorage successfully', function(done) {
+        //uncomment below and update the code to test getStorage
+        //instance.getStorage(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getStorageSubdomains', function() {
       it('should call getStorageSubdomains successfully', function(done) {
         //uncomment below and update the code to test getStorageSubdomains

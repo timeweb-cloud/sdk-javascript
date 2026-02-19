@@ -23,12 +23,13 @@ class BucketDiskStats {
      * Constructs a new <code>BucketDiskStats</code>.
      * Статистика использования диска хранилища.
      * @alias module:model/BucketDiskStats
-     * @param size {Number} Размер (в Кб) диска хранилища.
+     * @param size {Number} Размер (в Кб) диска хранилища включенного в тариф.
      * @param used {Number} Размер (в Кб) использованного пространства диска хранилища.
+     * @param isUnlimited {Boolean} Признак безлимитного размера хранилища.
      */
-    constructor(size, used) { 
+    constructor(size, used, isUnlimited) { 
         
-        BucketDiskStats.initialize(this, size, used);
+        BucketDiskStats.initialize(this, size, used, isUnlimited);
     }
 
     /**
@@ -36,9 +37,10 @@ class BucketDiskStats {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, size, used) { 
+    static initialize(obj, size, used, isUnlimited) { 
         obj['size'] = size;
         obj['used'] = used;
+        obj['is_unlimited'] = isUnlimited;
     }
 
     /**
@@ -57,6 +59,9 @@ class BucketDiskStats {
             }
             if (data.hasOwnProperty('used')) {
                 obj['used'] = ApiClient.convertToType(data['used'], 'Number');
+            }
+            if (data.hasOwnProperty('is_unlimited')) {
+                obj['is_unlimited'] = ApiClient.convertToType(data['is_unlimited'], 'Boolean');
             }
         }
         return obj;
@@ -81,10 +86,10 @@ class BucketDiskStats {
 
 }
 
-BucketDiskStats.RequiredProperties = ["size", "used"];
+BucketDiskStats.RequiredProperties = ["size", "used", "is_unlimited"];
 
 /**
- * Размер (в Кб) диска хранилища.
+ * Размер (в Кб) диска хранилища включенного в тариф.
  * @member {Number} size
  */
 BucketDiskStats.prototype['size'] = undefined;
@@ -94,6 +99,12 @@ BucketDiskStats.prototype['size'] = undefined;
  * @member {Number} used
  */
 BucketDiskStats.prototype['used'] = undefined;
+
+/**
+ * Признак безлимитного размера хранилища.
+ * @member {Boolean} is_unlimited
+ */
+BucketDiskStats.prototype['is_unlimited'] = undefined;
 
 
 

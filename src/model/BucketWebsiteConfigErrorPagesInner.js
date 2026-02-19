@@ -83,7 +83,7 @@ class BucketWebsiteConfigErrorPagesInner {
 BucketWebsiteConfigErrorPagesInner.prototype['code'] = undefined;
 
 /**
- * Страница сайта.
+ * Страница сайта.
  * @member {String} document
  */
 BucketWebsiteConfigErrorPagesInner.prototype['document'] = undefined;

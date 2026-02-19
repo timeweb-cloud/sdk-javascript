@@ -168,6 +168,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isAllowAutoUpgrade (base name: "is_allow_auto_upgrade")', function() {
+      // uncomment below and update the code to test the property isAllowAutoUpgrade
+      //var instance = new TimewebCloudApi.Bucket();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

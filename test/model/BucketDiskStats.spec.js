@@ -66,6 +66,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isUnlimited (base name: "is_unlimited")', function() {
+      // uncomment below and update the code to test the property isUnlimited
+      //var instance = new TimewebCloudApi.BucketDiskStats();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

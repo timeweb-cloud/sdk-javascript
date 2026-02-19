@@ -27,6 +27,7 @@ class Bucket {
      * @alias module:model/Bucket
      * @param id {Number} ID для каждого экземпляра хранилища. Автоматически генерируется при создании.
      * @param name {String} Удобочитаемое имя, установленное для хранилища.
+     * @param description {String} Комментарий к хранилищу.
      * @param diskStats {module:model/BucketDiskStats} 
      * @param type {module:model/Bucket.TypeEnum} Тип хранилища.
      * @param presetId {Number} ID тарифа хранилища.
@@ -43,10 +44,11 @@ class Bucket {
      * @param projectId {Number} ID проекта.
      * @param rateId {Number} ID тарифа.
      * @param websiteConfig {module:model/BucketWebsiteConfig} 
+     * @param isAllowAutoUpgrade {Boolean} Разрешено ли автоматическое повышение тарифа.
      */
-    constructor(id, name, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass, projectId, rateId, websiteConfig) { 
+    constructor(id, name, description, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass, projectId, rateId, websiteConfig, isAllowAutoUpgrade) { 
         
-        Bucket.initialize(this, id, name, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass, projectId, rateId, websiteConfig);
+        Bucket.initialize(this, id, name, description, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass, projectId, rateId, websiteConfig, isAllowAutoUpgrade);
     }
 
     /**
@@ -54,9 +56,10 @@ class Bucket {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass, projectId, rateId, websiteConfig) { 
+    static initialize(obj, id, name, description, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass, projectId, rateId, websiteConfig, isAllowAutoUpgrade) { 
         obj['id'] = id;
         obj['name'] = name;
+        obj['description'] = description;
         obj['disk_stats'] = diskStats;
         obj['type'] = type;
         obj['preset_id'] = presetId;
@@ -73,6 +76,7 @@ class Bucket {
         obj['project_id'] = projectId;
         obj['rate_id'] = rateId;
         obj['website_config'] = websiteConfig;
+        obj['is_allow_auto_upgrade'] = isAllowAutoUpgrade;
     }
 
     /**
@@ -142,6 +146,9 @@ class Bucket {
             }
             if (data.hasOwnProperty('website_config')) {
                 obj['website_config'] = BucketWebsiteConfig.constructFromObject(data['website_config']);
+            }
+            if (data.hasOwnProperty('is_allow_auto_upgrade')) {
+                obj['is_allow_auto_upgrade'] = ApiClient.convertToType(data['is_allow_auto_upgrade'], 'Boolean');
             }
         }
         return obj;
@@ -214,7 +221,7 @@ class Bucket {
 
 }
 
-Bucket.RequiredProperties = ["id", "name", "disk_stats", "type", "preset_id", "configurator_id", "avatar_link", "status", "object_amount", "location", "hostname", "access_key", "secret_key", "moved_in_quarantine_at", "storage_class", "project_id", "rate_id", "website_config"];
+Bucket.RequiredProperties = ["id", "name", "description", "disk_stats", "type", "preset_id", "configurator_id", "avatar_link", "status", "object_amount", "location", "hostname", "access_key", "secret_key", "moved_in_quarantine_at", "storage_class", "project_id", "rate_id", "website_config", "is_allow_auto_upgrade"];
 
 /**
  * ID для каждого экземпляра хранилища. Автоматически генерируется при создании.
@@ -327,6 +334,12 @@ Bucket.prototype['rate_id'] = undefined;
  * @member {module:model/BucketWebsiteConfig} website_config
  */
 Bucket.prototype['website_config'] = undefined;
+
+/**
+ * Разрешено ли автоматическое повышение тарифа.
+ * @member {Boolean} is_allow_auto_upgrade
+ */
+Bucket.prototype['is_allow_auto_upgrade'] = undefined;
 
 
 

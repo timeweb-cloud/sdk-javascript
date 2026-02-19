@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Number** | ID для каждого экземпляра хранилища. Автоматически генерируется при создании. | 
 **name** | **String** | Удобочитаемое имя, установленное для хранилища. | 
-**description** | **String** | Комментарий к хранилищу. | [optional] 
+**description** | **String** | Комментарий к хранилищу. | 
 **diskStats** | [**BucketDiskStats**](BucketDiskStats.md) |  | 
 **type** | **String** | Тип хранилища. | 
 **presetId** | **Number** | ID тарифа хранилища. | 
@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **projectId** | **Number** | ID проекта. | 
 **rateId** | **Number** | ID тарифа. | 
 **websiteConfig** | [**BucketWebsiteConfig**](BucketWebsiteConfig.md) |  | 
+**isAllowAutoUpgrade** | **Boolean** | Разрешено ли автоматическое повышение тарифа. | 
 
 
 
