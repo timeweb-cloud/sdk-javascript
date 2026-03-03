@@ -1204,7 +1204,7 @@ Name | Type | Description  | Notes
 
 ## getDatabasesPresets
 
-> GetDatabasesPresets200Response getDatabasesPresets()
+> GetDatabasesPresets200Response getDatabasesPresets(opts)
 
 Получение списка тарифов для баз данных
 
@@ -1220,7 +1220,10 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DatabasesApi();
-apiInstance.getDatabasesPresets((error, data, response) => {
+let opts = {
+  'dbId': 56 // Number | ID базы данных
+};
+apiInstance.getDatabasesPresets(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -1231,7 +1234,10 @@ apiInstance.getDatabasesPresets((error, data, response) => {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dbId** | **Number**| ID базы данных | [optional] 
 
 ### Return type
 

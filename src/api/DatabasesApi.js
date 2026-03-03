@@ -1115,15 +1115,19 @@ export default class DatabasesApi {
     /**
      * Получение списка тарифов для баз данных
      * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на `/api/v2/presets/dbs`.   Тело ответа будет представлять собой объект JSON с ключом `databases_presets`.
+     * @param {Object} opts Optional parameters
+     * @param {Number} [dbId] ID базы данных
      * @param {module:api/DatabasesApi~getDatabasesPresetsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetDatabasesPresets200Response}
      */
-    getDatabasesPresets(callback) {
+    getDatabasesPresets(opts, callback) {
+      opts = opts || {};
       let postBody = null;
 
       let pathParams = {
       };
       let queryParams = {
+        'db_id': opts['dbId']
       };
       let headerParams = {
       };
