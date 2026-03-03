@@ -1114,7 +1114,7 @@ export default class DatabasesApi {
 
     /**
      * Получение списка тарифов для баз данных
-     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на `/api/v1/presets/dbs`.   Тело ответа будет представлять собой объект JSON с ключом `databases_presets`.
+     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на `/api/v2/presets/dbs`.   Тело ответа будет представлять собой объект JSON с ключом `databases_presets`.
      * @param {module:api/DatabasesApi~getDatabasesPresetsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetDatabasesPresets200Response}
      */
@@ -1135,7 +1135,7 @@ export default class DatabasesApi {
       let accepts = ['application/json'];
       let returnType = GetDatabasesPresets200Response;
       return this.apiClient.callApi(
-        '/api/v1/presets/dbs', 'GET',
+        '/api/v2/presets/dbs', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
