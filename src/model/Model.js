@@ -27,12 +27,15 @@ class Model {
      * @param id {Number} Уникальный идентификатор модели
      * @param providerId {Number} ID провайдера, который предоставляет модель
      * @param name {String} Название модели
+     * @param publicName {String} Публичное имя модели
      * @param type {module:model/Model.TypeEnum} Тип модели (llm - языковая модель, embedding - модель для эмбеддингов)
+     * @param isDeprecated {Boolean} Признак, что модель устарела
+     * @param isReasoning {Boolean} Признак поддержки режима рассуждения
      * @param version {String} Версия модели
      */
-    constructor(id, providerId, name, type, version) { 
+    constructor(id, providerId, name, publicName, type, isDeprecated, isReasoning, version) { 
         
-        Model.initialize(this, id, providerId, name, type, version);
+        Model.initialize(this, id, providerId, name, publicName, type, isDeprecated, isReasoning, version);
     }
 
     /**
@@ -40,11 +43,14 @@ class Model {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, providerId, name, type, version) { 
+    static initialize(obj, id, providerId, name, publicName, type, isDeprecated, isReasoning, version) { 
         obj['id'] = id;
         obj['provider_id'] = providerId;
         obj['name'] = name;
+        obj['public_name'] = publicName;
         obj['type'] = type;
+        obj['is_deprecated'] = isDeprecated;
+        obj['is_reasoning'] = isReasoning;
         obj['version'] = version;
     }
 
@@ -68,8 +74,17 @@ class Model {
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
+            if (data.hasOwnProperty('public_name')) {
+                obj['public_name'] = ApiClient.convertToType(data['public_name'], 'String');
+            }
             if (data.hasOwnProperty('type')) {
                 obj['type'] = ApiClient.convertToType(data['type'], 'String');
+            }
+            if (data.hasOwnProperty('is_deprecated')) {
+                obj['is_deprecated'] = ApiClient.convertToType(data['is_deprecated'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_reasoning')) {
+                obj['is_reasoning'] = ApiClient.convertToType(data['is_reasoning'], 'Boolean');
             }
             if (data.hasOwnProperty('version')) {
                 obj['version'] = ApiClient.convertToType(data['version'], 'String');
@@ -98,6 +113,10 @@ class Model {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
+        if (data['public_name'] && !(typeof data['public_name'] === 'string' || data['public_name'] instanceof String)) {
+            throw new Error("Expected the field `public_name` to be a primitive type in the JSON string but got " + data['public_name']);
+        }
+        // ensure the json data is a string
         if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
             throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
         }
@@ -116,7 +135,7 @@ class Model {
 
 }
 
-Model.RequiredProperties = ["id", "provider_id", "name", "type", "version"];
+Model.RequiredProperties = ["id", "provider_id", "name", "public_name", "type", "is_deprecated", "is_reasoning", "version"];
 
 /**
  * Уникальный идентификатор модели
@@ -137,10 +156,28 @@ Model.prototype['provider_id'] = undefined;
 Model.prototype['name'] = undefined;
 
 /**
+ * Публичное имя модели
+ * @member {String} public_name
+ */
+Model.prototype['public_name'] = undefined;
+
+/**
  * Тип модели (llm - языковая модель, embedding - модель для эмбеддингов)
  * @member {module:model/Model.TypeEnum} type
  */
 Model.prototype['type'] = undefined;
+
+/**
+ * Признак, что модель устарела
+ * @member {Boolean} is_deprecated
+ */
+Model.prototype['is_deprecated'] = undefined;
+
+/**
+ * Признак поддержки режима рассуждения
+ * @member {Boolean} is_reasoning
+ */
+Model.prototype['is_reasoning'] = undefined;
 
 /**
  * Версия модели
