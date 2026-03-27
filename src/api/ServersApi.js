@@ -1419,6 +1419,48 @@ export default class ServersApi {
     }
 
     /**
+     * Callback function to receive the result of the rebootServerHard operation.
+     * @callback module:api/ServersApi~rebootServerHardCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Принудительная перезагрузка сервера
+     * Чтобы принудительно перезагрузить сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/hard-reboot`.
+     * @param {Number} serverId ID облачного сервера.
+     * @param {module:api/ServersApi~rebootServerHardCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    rebootServerHard(serverId, callback) {
+      let postBody = null;
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling rebootServerHard");
+      }
+
+      let pathParams = {
+        'server_id': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/servers/{server_id}/hard-reboot', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the resetServerPassword operation.
      * @callback module:api/ServersApi~resetServerPasswordCallback
      * @param {String} error Error message, if any.

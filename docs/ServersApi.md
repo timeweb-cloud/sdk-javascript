@@ -33,6 +33,7 @@ Method | HTTP request | Description
 [**performActionOnBackup**](ServersApi.md#performActionOnBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/action | Выполнение действия над бэкапом диска сервера
 [**performActionOnServer**](ServersApi.md#performActionOnServer) | **POST** /api/v1/servers/{server_id}/action | Выполнение действия над сервером
 [**rebootServer**](ServersApi.md#rebootServer) | **POST** /api/v1/servers/{server_id}/reboot | Перезагрузка сервера
+[**rebootServerHard**](ServersApi.md#rebootServerHard) | **POST** /api/v1/servers/{server_id}/hard-reboot | Принудительная перезагрузка сервера
 [**resetServerPassword**](ServersApi.md#resetServerPassword) | **POST** /api/v1/servers/{server_id}/reset-password | Сброс пароля сервера
 [**shutdownServer**](ServersApi.md#shutdownServer) | **POST** /api/v1/servers/{server_id}/shutdown | Выключение сервера
 [**startServer**](ServersApi.md#startServer) | **POST** /api/v1/servers/{server_id}/start | Запуск сервера
@@ -1492,6 +1493,55 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new TimewebCloudApi.ServersApi();
 let serverId = 1051; // Number | ID облачного сервера.
 apiInstance.rebootServer(serverId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **serverId** | **Number**| ID облачного сервера. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## rebootServerHard
+
+> rebootServerHard(serverId)
+
+Принудительная перезагрузка сервера
+
+Чтобы принудительно перезагрузить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/hard-reboot&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.ServersApi();
+let serverId = 1051; // Number | ID облачного сервера.
+apiInstance.rebootServerHard(serverId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {

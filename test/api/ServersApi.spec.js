@@ -338,6 +338,16 @@
         done();
       });
     });
+    describe('rebootServerHard', function() {
+      it('should call rebootServerHard successfully', function(done) {
+        //uncomment below and update the code to test rebootServerHard
+        //instance.rebootServerHard(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('resetServerPassword', function() {
       it('should call resetServerPassword successfully', function(done) {
         //uncomment below and update the code to test resetServerPassword
