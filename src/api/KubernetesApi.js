@@ -13,8 +13,11 @@
 
 
 import ApiClient from "../ApiClient";
+import AddonsConfigResponse from '../model/AddonsConfigResponse';
+import AddonsResponse from '../model/AddonsResponse';
 import ClusterEdit from '../model/ClusterEdit';
 import ClusterIn from '../model/ClusterIn';
+import ClusterIn1 from '../model/ClusterIn1';
 import ClusterResponse from '../model/ClusterResponse';
 import ClusterVersionEdit from '../model/ClusterVersionEdit';
 import ClustersResponse from '../model/ClustersResponse';
@@ -285,6 +288,54 @@ export default class KubernetesApi {
       let returnType = null;
       return this.apiClient.callApi(
         '/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deleteKubernetesAddons operation.
+     * @callback module:api/KubernetesApi~deleteKubernetesAddonsCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Удаление дополнения
+     * Чтобы удалить дополнение, отправьте DELETE-запрос в `/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}`.
+     * @param {Number} clusterId ID кластера
+     * @param {Number} addonId ID аддона
+     * @param {module:api/KubernetesApi~deleteKubernetesAddonsCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    deleteKubernetesAddons(clusterId, addonId, callback) {
+      let postBody = null;
+      // verify the required parameter 'clusterId' is set
+      if (clusterId === undefined || clusterId === null) {
+        throw new Error("Missing the required parameter 'clusterId' when calling deleteKubernetesAddons");
+      }
+      // verify the required parameter 'addonId' is set
+      if (addonId === undefined || addonId === null) {
+        throw new Error("Missing the required parameter 'addonId' when calling deleteKubernetesAddons");
+      }
+
+      let pathParams = {
+        'cluster_id': clusterId,
+        'addon_id': addonId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -727,6 +778,92 @@ export default class KubernetesApi {
     }
 
     /**
+     * Callback function to receive the result of the getKubernetesAddons operation.
+     * @callback module:api/KubernetesApi~getKubernetesAddonsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/AddonsResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка установленных дополнений
+     * Чтобы получить список установленных дополнений, отправьте GET-запрос в `/api/v1/k8s/clusters/{cluster_id}/addons`.
+     * @param {Number} clusterId ID кластера
+     * @param {module:api/KubernetesApi~getKubernetesAddonsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/AddonsResponse}
+     */
+    getKubernetesAddons(clusterId, callback) {
+      let postBody = null;
+      // verify the required parameter 'clusterId' is set
+      if (clusterId === undefined || clusterId === null) {
+        throw new Error("Missing the required parameter 'clusterId' when calling getKubernetesAddons");
+      }
+
+      let pathParams = {
+        'cluster_id': clusterId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = AddonsResponse;
+      return this.apiClient.callApi(
+        '/api/v1/k8s/clusters/{cluster_id}/addons', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getKubernetesAddonsConfig operation.
+     * @callback module:api/KubernetesApi~getKubernetesAddonsConfigCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/AddonsConfigResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка конфигураций дополнений
+     * Чтобы получить список конфигураций дополнений, отправьте GET-запрос в `/api/v1/k8s/clusters/{cluster_id}/addons-configs`.
+     * @param {Number} clusterId ID кластера
+     * @param {module:api/KubernetesApi~getKubernetesAddonsConfigCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/AddonsConfigResponse}
+     */
+    getKubernetesAddonsConfig(clusterId, callback) {
+      let postBody = null;
+      // verify the required parameter 'clusterId' is set
+      if (clusterId === undefined || clusterId === null) {
+        throw new Error("Missing the required parameter 'clusterId' when calling getKubernetesAddonsConfig");
+      }
+
+      let pathParams = {
+        'cluster_id': clusterId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = AddonsConfigResponse;
+      return this.apiClient.callApi(
+        '/api/v1/k8s/clusters/{cluster_id}/addons-configs', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getKubernetesPresets operation.
      * @callback module:api/KubernetesApi~getKubernetesPresetsCallback
      * @param {String} error Error message, if any.
@@ -812,6 +949,106 @@ export default class KubernetesApi {
       let returnType = NodesResponse;
       return this.apiClient.callApi(
         '/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the postKubernetesAddons operation.
+     * @callback module:api/KubernetesApi~postKubernetesAddonsCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Установка дополнения
+     * Чтобы установить дополнение, отправьте POST-запрос в `/api/v1/k8s/clusters/{cluster_id}/addons`.
+     * @param {Number} clusterId ID кластера
+     * @param {module:model/ClusterIn1} clusterIn1 
+     * @param {module:api/KubernetesApi~postKubernetesAddonsCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    postKubernetesAddons(clusterId, clusterIn1, callback) {
+      let postBody = clusterIn1;
+      // verify the required parameter 'clusterId' is set
+      if (clusterId === undefined || clusterId === null) {
+        throw new Error("Missing the required parameter 'clusterId' when calling postKubernetesAddons");
+      }
+      // verify the required parameter 'clusterIn1' is set
+      if (clusterIn1 === undefined || clusterIn1 === null) {
+        throw new Error("Missing the required parameter 'clusterIn1' when calling postKubernetesAddons");
+      }
+
+      let pathParams = {
+        'cluster_id': clusterId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/k8s/clusters/{cluster_id}/addons', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the postKubernetesAddonsUpdate operation.
+     * @callback module:api/KubernetesApi~postKubernetesAddonsUpdateCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Изменение конфигурации дополнения
+     * Чтобы обновить конфигурацию дополнения, отправьте POST-запрос в `/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}`.
+     * @param {Number} clusterId ID кластера
+     * @param {Number} addonId ID аддона
+     * @param {module:model/ClusterIn1} clusterIn1 
+     * @param {module:api/KubernetesApi~postKubernetesAddonsUpdateCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    postKubernetesAddonsUpdate(clusterId, addonId, clusterIn1, callback) {
+      let postBody = clusterIn1;
+      // verify the required parameter 'clusterId' is set
+      if (clusterId === undefined || clusterId === null) {
+        throw new Error("Missing the required parameter 'clusterId' when calling postKubernetesAddonsUpdate");
+      }
+      // verify the required parameter 'addonId' is set
+      if (addonId === undefined || addonId === null) {
+        throw new Error("Missing the required parameter 'addonId' when calling postKubernetesAddonsUpdate");
+      }
+      // verify the required parameter 'clusterIn1' is set
+      if (clusterIn1 === undefined || clusterIn1 === null) {
+        throw new Error("Missing the required parameter 'clusterIn1' when calling postKubernetesAddonsUpdate");
+      }
+
+      let pathParams = {
+        'cluster_id': clusterId,
+        'addon_id': addonId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

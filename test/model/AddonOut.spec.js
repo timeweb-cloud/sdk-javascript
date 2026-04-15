@@ -11,221 +11,97 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', process.cwd()+'/src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.TimewebCloudApi);
+  }
+}(this, function(expect, TimewebCloudApi) {
+  'use strict';
 
-/**
- * The CreateDedicatedServer model module.
- * @module model/CreateDedicatedServer
- * @version 1.0.0
- */
-class CreateDedicatedServer {
-    /**
-     * Constructs a new <code>CreateDedicatedServer</code>.
-     * @alias module:model/CreateDedicatedServer
-     * @param presetId {Number} ID тарифа выделенного сервера.
-     * @param paymentPeriod {module:model/CreateDedicatedServer.PaymentPeriodEnum} Период оплаты.
-     * @param name {String} Удобочитаемое имя выделенного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
-     */
-    constructor(presetId, paymentPeriod, name) { 
-        
-        CreateDedicatedServer.initialize(this, presetId, paymentPeriod, name);
-    }
+  var instance;
 
-    /**
-     * Initializes the fields of this object.
-     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
-     * Only for internal use.
-     */
-    static initialize(obj, presetId, paymentPeriod, name) { 
-        obj['preset_id'] = presetId;
-        obj['payment_period'] = paymentPeriod;
-        obj['name'] = name;
-    }
+  beforeEach(function() {
+    instance = new TimewebCloudApi.AddonOut();
+  });
 
-    /**
-     * Constructs a <code>CreateDedicatedServer</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/CreateDedicatedServer} obj Optional instance to populate.
-     * @return {module:model/CreateDedicatedServer} The populated <code>CreateDedicatedServer</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new CreateDedicatedServer();
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
-            if (data.hasOwnProperty('plan_id')) {
-                obj['plan_id'] = ApiClient.convertToType(data['plan_id'], 'Number');
-            }
-            if (data.hasOwnProperty('preset_id')) {
-                obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
-            }
-            if (data.hasOwnProperty('os_id')) {
-                obj['os_id'] = ApiClient.convertToType(data['os_id'], 'Number');
-            }
-            if (data.hasOwnProperty('cp_id')) {
-                obj['cp_id'] = ApiClient.convertToType(data['cp_id'], 'Number');
-            }
-            if (data.hasOwnProperty('bandwidth_id')) {
-                obj['bandwidth_id'] = ApiClient.convertToType(data['bandwidth_id'], 'Number');
-            }
-            if (data.hasOwnProperty('network_drive_id')) {
-                obj['network_drive_id'] = ApiClient.convertToType(data['network_drive_id'], 'Number');
-            }
-            if (data.hasOwnProperty('additional_ip_addr_id')) {
-                obj['additional_ip_addr_id'] = ApiClient.convertToType(data['additional_ip_addr_id'], 'Number');
-            }
-            if (data.hasOwnProperty('payment_period')) {
-                obj['payment_period'] = ApiClient.convertToType(data['payment_period'], 'String');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('comment')) {
-                obj['comment'] = ApiClient.convertToType(data['comment'], 'String');
-            }
-            if (data.hasOwnProperty('project_id')) {
-                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
-            }
-        }
-        return obj;
-    }
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-    /**
-     * Validates the JSON data with respect to <code>CreateDedicatedServer</code>.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateDedicatedServer</code>.
-     */
-    static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of CreateDedicatedServer.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
-        // ensure the json data is a string
-        if (data['payment_period'] && !(typeof data['payment_period'] === 'string' || data['payment_period'] instanceof String)) {
-            throw new Error("Expected the field `payment_period` to be a primitive type in the JSON string but got " + data['payment_period']);
-        }
-        // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
-            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
-        }
-        // ensure the json data is a string
-        if (data['comment'] && !(typeof data['comment'] === 'string' || data['comment'] instanceof String)) {
-            throw new Error("Expected the field `comment` to be a primitive type in the JSON string but got " + data['comment']);
-        }
+  describe('AddonOut', function() {
+    it('should create an instance of AddonOut', function() {
+      // uncomment below and update the code to test AddonOut
+      //var instance = new TimewebCloudApi.AddonOut();
+      //expect(instance).to.be.a(TimewebCloudApi.AddonOut);
+    });
 
-        return true;
-    }
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instance = new TimewebCloudApi.AddonOut();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instance = new TimewebCloudApi.AddonOut();
+      //expect(instance).to.be();
+    });
 
-}
+    it('should have the property status (base name: "status")', function() {
+      // uncomment below and update the code to test the property status
+      //var instance = new TimewebCloudApi.AddonOut();
+      //expect(instance).to.be();
+    });
 
-CreateDedicatedServer.RequiredProperties = ["preset_id", "payment_period", "name"];
+    it('should have the property createdAt (base name: "created_at")', function() {
+      // uncomment below and update the code to test the property createdAt
+      //var instance = new TimewebCloudApi.AddonOut();
+      //expect(instance).to.be();
+    });
 
-/**
- * ID списка дополнительных услуг выделенного сервера.
- * @member {Number} plan_id
- */
-CreateDedicatedServer.prototype['plan_id'] = undefined;
+    it('should have the property version (base name: "version")', function() {
+      // uncomment below and update the code to test the property version
+      //var instance = new TimewebCloudApi.AddonOut();
+      //expect(instance).to.be();
+    });
 
-/**
- * ID тарифа выделенного сервера.
- * @member {Number} preset_id
- */
-CreateDedicatedServer.prototype['preset_id'] = undefined;
+    it('should have the property config (base name: "config")', function() {
+      // uncomment below and update the code to test the property config
+      //var instance = new TimewebCloudApi.AddonOut();
+      //expect(instance).to.be();
+    });
 
-/**
- * ID операционной системы, которая будет установлена на выделенный сервер.
- * @member {Number} os_id
- */
-CreateDedicatedServer.prototype['os_id'] = undefined;
+    it('should have the property yamlConfig (base name: "yaml_config")', function() {
+      // uncomment below and update the code to test the property yamlConfig
+      //var instance = new TimewebCloudApi.AddonOut();
+      //expect(instance).to.be();
+    });
 
-/**
- * ID панели управления, которая будет установлена на выделенный сервер.
- * @member {Number} cp_id
- */
-CreateDedicatedServer.prototype['cp_id'] = undefined;
+    it('should have the property configType (base name: "config_type")', function() {
+      // uncomment below and update the code to test the property configType
+      //var instance = new TimewebCloudApi.AddonOut();
+      //expect(instance).to.be();
+    });
 
-/**
- * ID интернет-канала, который будет установлен на выделенный сервер.
- * @member {Number} bandwidth_id
- */
-CreateDedicatedServer.prototype['bandwidth_id'] = undefined;
+  });
 
-/**
- * ID сетевого диска, который будет установлен на выделенный сервер.
- * @member {Number} network_drive_id
- */
-CreateDedicatedServer.prototype['network_drive_id'] = undefined;
-
-/**
- * ID дополнительного IP-адреса, который будет установлен на выделенный сервер.
- * @member {Number} additional_ip_addr_id
- */
-CreateDedicatedServer.prototype['additional_ip_addr_id'] = undefined;
-
-/**
- * Период оплаты.
- * @member {module:model/CreateDedicatedServer.PaymentPeriodEnum} payment_period
- */
-CreateDedicatedServer.prototype['payment_period'] = undefined;
-
-/**
- * Удобочитаемое имя выделенного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
- * @member {String} name
- */
-CreateDedicatedServer.prototype['name'] = undefined;
-
-/**
- * Комментарий к выделенному серверу. Максимальная длина — 255 символов.
- * @member {String} comment
- */
-CreateDedicatedServer.prototype['comment'] = undefined;
-
-/**
- * ID проекта, в который будет добавлен выделенный сервер.
- * @member {Number} project_id
- */
-CreateDedicatedServer.prototype['project_id'] = undefined;
-
-
-
-
-
-/**
- * Allowed values for the <code>payment_period</code> property.
- * @enum {String}
- * @readonly
- */
-CreateDedicatedServer['PaymentPeriodEnum'] = {
-
-    /**
-     * value: "P1M"
-     * @const
-     */
-    "P1M": "P1M",
-
-    /**
-     * value: "P3M"
-     * @const
-     */
-    "P3M": "P3M",
-
-    /**
-     * value: "P6M"
-     * @const
-     */
-    "P6M": "P6M",
-
-    /**
-     * value: "P1Y"
-     * @const
-     */
-    "P1Y": "P1Y"
-};
-
-
-
-export default CreateDedicatedServer;
-
+}));

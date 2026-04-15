@@ -452,6 +452,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.KubernetesApi* | [**deleteCluster**](docs/KubernetesApi.md#deleteCluster) | **DELETE** /api/v1/k8s/clusters/{cluster_id} | Удаление кластера
 *TimewebCloudApi.KubernetesApi* | [**deleteClusterNode**](docs/KubernetesApi.md#deleteClusterNode) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/nodes/{node_id} | Удаление ноды
 *TimewebCloudApi.KubernetesApi* | [**deleteClusterNodeGroup**](docs/KubernetesApi.md#deleteClusterNodeGroup) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id} | Удаление группы нод
+*TimewebCloudApi.KubernetesApi* | [**deleteKubernetesAddons**](docs/KubernetesApi.md#deleteKubernetesAddons) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/addons/{addon_id} | Удаление дополнения
 *TimewebCloudApi.KubernetesApi* | [**getCluster**](docs/KubernetesApi.md#getCluster) | **GET** /api/v1/k8s/clusters/{cluster_id} | Получение информации о кластере
 *TimewebCloudApi.KubernetesApi* | [**getClusterKubeconfig**](docs/KubernetesApi.md#getClusterKubeconfig) | **GET** /api/v1/k8s/clusters/{cluster_id}/kubeconfig | Получение файла kubeconfig
 *TimewebCloudApi.KubernetesApi* | [**getClusterNodeGroup**](docs/KubernetesApi.md#getClusterNodeGroup) | **GET** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id} | Получение информации о группе нод
@@ -462,8 +463,12 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.KubernetesApi* | [**getClusters**](docs/KubernetesApi.md#getClusters) | **GET** /api/v1/k8s/clusters | Получение списка кластеров
 *TimewebCloudApi.KubernetesApi* | [**getK8SNetworkDrivers**](docs/KubernetesApi.md#getK8SNetworkDrivers) | **GET** /api/v1/k8s/network-drivers | Получение списка сетевых драйверов k8s
 *TimewebCloudApi.KubernetesApi* | [**getK8SVersions**](docs/KubernetesApi.md#getK8SVersions) | **GET** /api/v1/k8s/k8s-versions | Получение списка версий k8s
+*TimewebCloudApi.KubernetesApi* | [**getKubernetesAddons**](docs/KubernetesApi.md#getKubernetesAddons) | **GET** /api/v1/k8s/clusters/{cluster_id}/addons | Получение списка установленных дополнений
+*TimewebCloudApi.KubernetesApi* | [**getKubernetesAddonsConfig**](docs/KubernetesApi.md#getKubernetesAddonsConfig) | **GET** /api/v1/k8s/clusters/{cluster_id}/addons-configs | Получение списка конфигураций дополнений
 *TimewebCloudApi.KubernetesApi* | [**getKubernetesPresets**](docs/KubernetesApi.md#getKubernetesPresets) | **GET** /api/v1/presets/k8s | Получение списка тарифов
 *TimewebCloudApi.KubernetesApi* | [**increaseCountOfNodesInGroup**](docs/KubernetesApi.md#increaseCountOfNodesInGroup) | **POST** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Увеличение количества нод в группе на указанное количество
+*TimewebCloudApi.KubernetesApi* | [**postKubernetesAddons**](docs/KubernetesApi.md#postKubernetesAddons) | **POST** /api/v1/k8s/clusters/{cluster_id}/addons | Установка дополнения
+*TimewebCloudApi.KubernetesApi* | [**postKubernetesAddonsUpdate**](docs/KubernetesApi.md#postKubernetesAddonsUpdate) | **POST** /api/v1/k8s/clusters/{cluster_id}/addons/{addon_id} | Изменение конфигурации дополнения
 *TimewebCloudApi.KubernetesApi* | [**reduceCountOfNodesInGroup**](docs/KubernetesApi.md#reduceCountOfNodesInGroup) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Уменьшение количества нод в группе на указанное количество
 *TimewebCloudApi.KubernetesApi* | [**updateCluster**](docs/KubernetesApi.md#updateCluster) | **PATCH** /api/v1/k8s/clusters/{cluster_id} | Обновление информации о кластере
 *TimewebCloudApi.KubernetesApi* | [**updateClusterVersion**](docs/KubernetesApi.md#updateClusterVersion) | **PATCH** /api/v1/k8s/clusters/{cluster_id}/versions/update | Обновление версии кластера
@@ -618,6 +623,10 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.AddSubdomain201Response](docs/AddSubdomain201Response.md)
  - [TimewebCloudApi.AddTokenPackage](docs/AddTokenPackage.md)
  - [TimewebCloudApi.AddedSubdomain](docs/AddedSubdomain.md)
+ - [TimewebCloudApi.AddonConfigOut](docs/AddonConfigOut.md)
+ - [TimewebCloudApi.AddonOut](docs/AddonOut.md)
+ - [TimewebCloudApi.AddonsConfigResponse](docs/AddonsConfigResponse.md)
+ - [TimewebCloudApi.AddonsResponse](docs/AddonsResponse.md)
  - [TimewebCloudApi.Agent](docs/Agent.md)
  - [TimewebCloudApi.AgentModelSettings](docs/AgentModelSettings.md)
  - [TimewebCloudApi.AgentSettings](docs/AgentSettings.md)
@@ -657,6 +666,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ClusterEdit](docs/ClusterEdit.md)
  - [TimewebCloudApi.ClusterEditOidcProvider](docs/ClusterEditOidcProvider.md)
  - [TimewebCloudApi.ClusterIn](docs/ClusterIn.md)
+ - [TimewebCloudApi.ClusterIn1](docs/ClusterIn1.md)
  - [TimewebCloudApi.ClusterInClusterNetworkCidr](docs/ClusterInClusterNetworkCidr.md)
  - [TimewebCloudApi.ClusterInConfiguration](docs/ClusterInConfiguration.md)
  - [TimewebCloudApi.ClusterInMaintenanceSlot](docs/ClusterInMaintenanceSlot.md)

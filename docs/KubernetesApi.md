@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**deleteCluster**](KubernetesApi.md#deleteCluster) | **DELETE** /api/v1/k8s/clusters/{cluster_id} | Удаление кластера
 [**deleteClusterNode**](KubernetesApi.md#deleteClusterNode) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/nodes/{node_id} | Удаление ноды
 [**deleteClusterNodeGroup**](KubernetesApi.md#deleteClusterNodeGroup) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id} | Удаление группы нод
+[**deleteKubernetesAddons**](KubernetesApi.md#deleteKubernetesAddons) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/addons/{addon_id} | Удаление дополнения
 [**getCluster**](KubernetesApi.md#getCluster) | **GET** /api/v1/k8s/clusters/{cluster_id} | Получение информации о кластере
 [**getClusterKubeconfig**](KubernetesApi.md#getClusterKubeconfig) | **GET** /api/v1/k8s/clusters/{cluster_id}/kubeconfig | Получение файла kubeconfig
 [**getClusterNodeGroup**](KubernetesApi.md#getClusterNodeGroup) | **GET** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id} | Получение информации о группе нод
@@ -19,8 +20,12 @@ Method | HTTP request | Description
 [**getClusters**](KubernetesApi.md#getClusters) | **GET** /api/v1/k8s/clusters | Получение списка кластеров
 [**getK8SNetworkDrivers**](KubernetesApi.md#getK8SNetworkDrivers) | **GET** /api/v1/k8s/network-drivers | Получение списка сетевых драйверов k8s
 [**getK8SVersions**](KubernetesApi.md#getK8SVersions) | **GET** /api/v1/k8s/k8s-versions | Получение списка версий k8s
+[**getKubernetesAddons**](KubernetesApi.md#getKubernetesAddons) | **GET** /api/v1/k8s/clusters/{cluster_id}/addons | Получение списка установленных дополнений
+[**getKubernetesAddonsConfig**](KubernetesApi.md#getKubernetesAddonsConfig) | **GET** /api/v1/k8s/clusters/{cluster_id}/addons-configs | Получение списка конфигураций дополнений
 [**getKubernetesPresets**](KubernetesApi.md#getKubernetesPresets) | **GET** /api/v1/presets/k8s | Получение списка тарифов
 [**increaseCountOfNodesInGroup**](KubernetesApi.md#increaseCountOfNodesInGroup) | **POST** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Увеличение количества нод в группе на указанное количество
+[**postKubernetesAddons**](KubernetesApi.md#postKubernetesAddons) | **POST** /api/v1/k8s/clusters/{cluster_id}/addons | Установка дополнения
+[**postKubernetesAddonsUpdate**](KubernetesApi.md#postKubernetesAddonsUpdate) | **POST** /api/v1/k8s/clusters/{cluster_id}/addons/{addon_id} | Изменение конфигурации дополнения
 [**reduceCountOfNodesInGroup**](KubernetesApi.md#reduceCountOfNodesInGroup) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Уменьшение количества нод в группе на указанное количество
 [**updateCluster**](KubernetesApi.md#updateCluster) | **PATCH** /api/v1/k8s/clusters/{cluster_id} | Обновление информации о кластере
 [**updateClusterVersion**](KubernetesApi.md#updateClusterVersion) | **PATCH** /api/v1/k8s/clusters/{cluster_id}/versions/update | Обновление версии кластера
@@ -269,6 +274,57 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **clusterId** | **Number**| ID кластера | 
  **groupId** | **Number**| ID группы | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deleteKubernetesAddons
+
+> deleteKubernetesAddons(clusterId, addonId)
+
+Удаление дополнения
+
+Чтобы удалить дополнение, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.KubernetesApi();
+let clusterId = 56; // Number | ID кластера
+let addonId = 56; // Number | ID аддона
+apiInstance.deleteKubernetesAddons(clusterId, addonId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clusterId** | **Number**| ID кластера | 
+ **addonId** | **Number**| ID аддона | 
 
 ### Return type
 
@@ -780,6 +836,104 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
+## getKubernetesAddons
+
+> AddonsResponse getKubernetesAddons(clusterId)
+
+Получение списка установленных дополнений
+
+Чтобы получить список установленных дополнений, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.KubernetesApi();
+let clusterId = 56; // Number | ID кластера
+apiInstance.getKubernetesAddons(clusterId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clusterId** | **Number**| ID кластера | 
+
+### Return type
+
+[**AddonsResponse**](AddonsResponse.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getKubernetesAddonsConfig
+
+> AddonsConfigResponse getKubernetesAddonsConfig(clusterId)
+
+Получение списка конфигураций дополнений
+
+Чтобы получить список конфигураций дополнений, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons-configs&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.KubernetesApi();
+let clusterId = 56; // Number | ID кластера
+apiInstance.getKubernetesAddonsConfig(clusterId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clusterId** | **Number**| ID кластера | 
+
+### Return type
+
+[**AddonsConfigResponse**](AddonsConfigResponse.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## getKubernetesPresets
 
 > PresetsResponse getKubernetesPresets()
@@ -867,6 +1021,110 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**NodesResponse**](NodesResponse.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## postKubernetesAddons
+
+> postKubernetesAddons(clusterId, clusterIn1)
+
+Установка дополнения
+
+Чтобы установить дополнение, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.KubernetesApi();
+let clusterId = 56; // Number | ID кластера
+let clusterIn1 = new TimewebCloudApi.ClusterIn1(); // ClusterIn1 | 
+apiInstance.postKubernetesAddons(clusterId, clusterIn1, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clusterId** | **Number**| ID кластера | 
+ **clusterIn1** | [**ClusterIn1**](ClusterIn1.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## postKubernetesAddonsUpdate
+
+> postKubernetesAddonsUpdate(clusterId, addonId, clusterIn1)
+
+Изменение конфигурации дополнения
+
+Чтобы обновить конфигурацию дополнения, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.KubernetesApi();
+let clusterId = 56; // Number | ID кластера
+let addonId = 56; // Number | ID аддона
+let clusterIn1 = new TimewebCloudApi.ClusterIn1(); // ClusterIn1 | 
+apiInstance.postKubernetesAddonsUpdate(clusterId, addonId, clusterIn1, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clusterId** | **Number**| ID кластера | 
+ **addonId** | **Number**| ID аддона | 
+ **clusterIn1** | [**ClusterIn1**](ClusterIn1.md)|  | 
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 

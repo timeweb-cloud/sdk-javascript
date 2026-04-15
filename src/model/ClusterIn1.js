@@ -14,21 +14,22 @@
 import ApiClient from '../ApiClient';
 
 /**
- * The CreateDedicatedServer model module.
- * @module model/CreateDedicatedServer
+ * The ClusterIn1 model module.
+ * @module model/ClusterIn1
  * @version 1.0.0
  */
-class CreateDedicatedServer {
+class ClusterIn1 {
     /**
-     * Constructs a new <code>CreateDedicatedServer</code>.
-     * @alias module:model/CreateDedicatedServer
-     * @param presetId {Number} ID тарифа выделенного сервера.
-     * @param paymentPeriod {module:model/CreateDedicatedServer.PaymentPeriodEnum} Период оплаты.
-     * @param name {String} Удобочитаемое имя выделенного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
+     * Constructs a new <code>ClusterIn1</code>.
+     * @alias module:model/ClusterIn1
+     * @param type {String} Тип дополнения
+     * @param configType {module:model/ClusterIn1.ConfigTypeEnum} Тип конфигурации дополнения
+     * @param yamlConfig {String} YAML-конфигурация дополнения
+     * @param version {String} Версия дополнения
      */
-    constructor(presetId, paymentPeriod, name) { 
+    constructor(type, configType, yamlConfig, version) { 
         
-        CreateDedicatedServer.initialize(this, presetId, paymentPeriod, name);
+        ClusterIn1.initialize(this, type, configType, yamlConfig, version);
     }
 
     /**
@@ -36,83 +37,67 @@ class CreateDedicatedServer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, presetId, paymentPeriod, name) { 
-        obj['preset_id'] = presetId;
-        obj['payment_period'] = paymentPeriod;
-        obj['name'] = name;
+    static initialize(obj, type, configType, yamlConfig, version) { 
+        obj['type'] = type;
+        obj['config_type'] = configType;
+        obj['yaml_config'] = yamlConfig;
+        obj['version'] = version;
     }
 
     /**
-     * Constructs a <code>CreateDedicatedServer</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>ClusterIn1</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/CreateDedicatedServer} obj Optional instance to populate.
-     * @return {module:model/CreateDedicatedServer} The populated <code>CreateDedicatedServer</code> instance.
+     * @param {module:model/ClusterIn1} obj Optional instance to populate.
+     * @return {module:model/ClusterIn1} The populated <code>ClusterIn1</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new CreateDedicatedServer();
+            obj = obj || new ClusterIn1();
 
-            if (data.hasOwnProperty('plan_id')) {
-                obj['plan_id'] = ApiClient.convertToType(data['plan_id'], 'Number');
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = ApiClient.convertToType(data['type'], 'String');
             }
-            if (data.hasOwnProperty('preset_id')) {
-                obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
+            if (data.hasOwnProperty('config_type')) {
+                obj['config_type'] = ApiClient.convertToType(data['config_type'], 'String');
             }
-            if (data.hasOwnProperty('os_id')) {
-                obj['os_id'] = ApiClient.convertToType(data['os_id'], 'Number');
+            if (data.hasOwnProperty('yaml_config')) {
+                obj['yaml_config'] = ApiClient.convertToType(data['yaml_config'], 'String');
             }
-            if (data.hasOwnProperty('cp_id')) {
-                obj['cp_id'] = ApiClient.convertToType(data['cp_id'], 'Number');
-            }
-            if (data.hasOwnProperty('bandwidth_id')) {
-                obj['bandwidth_id'] = ApiClient.convertToType(data['bandwidth_id'], 'Number');
-            }
-            if (data.hasOwnProperty('network_drive_id')) {
-                obj['network_drive_id'] = ApiClient.convertToType(data['network_drive_id'], 'Number');
-            }
-            if (data.hasOwnProperty('additional_ip_addr_id')) {
-                obj['additional_ip_addr_id'] = ApiClient.convertToType(data['additional_ip_addr_id'], 'Number');
-            }
-            if (data.hasOwnProperty('payment_period')) {
-                obj['payment_period'] = ApiClient.convertToType(data['payment_period'], 'String');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('comment')) {
-                obj['comment'] = ApiClient.convertToType(data['comment'], 'String');
-            }
-            if (data.hasOwnProperty('project_id')) {
-                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            if (data.hasOwnProperty('version')) {
+                obj['version'] = ApiClient.convertToType(data['version'], 'String');
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>CreateDedicatedServer</code>.
+     * Validates the JSON data with respect to <code>ClusterIn1</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateDedicatedServer</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ClusterIn1</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of CreateDedicatedServer.RequiredProperties) {
+        for (const property of ClusterIn1.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
-        if (data['payment_period'] && !(typeof data['payment_period'] === 'string' || data['payment_period'] instanceof String)) {
-            throw new Error("Expected the field `payment_period` to be a primitive type in the JSON string but got " + data['payment_period']);
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
         }
         // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
-            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        if (data['config_type'] && !(typeof data['config_type'] === 'string' || data['config_type'] instanceof String)) {
+            throw new Error("Expected the field `config_type` to be a primitive type in the JSON string but got " + data['config_type']);
         }
         // ensure the json data is a string
-        if (data['comment'] && !(typeof data['comment'] === 'string' || data['comment'] instanceof String)) {
-            throw new Error("Expected the field `comment` to be a primitive type in the JSON string but got " + data['comment']);
+        if (data['yaml_config'] && !(typeof data['yaml_config'] === 'string' || data['yaml_config'] instanceof String)) {
+            throw new Error("Expected the field `yaml_config` to be a primitive type in the JSON string but got " + data['yaml_config']);
+        }
+        // ensure the json data is a string
+        if (data['version'] && !(typeof data['version'] === 'string' || data['version'] instanceof String)) {
+            throw new Error("Expected the field `version` to be a primitive type in the JSON string but got " + data['version']);
         }
 
         return true;
@@ -121,111 +106,57 @@ class CreateDedicatedServer {
 
 }
 
-CreateDedicatedServer.RequiredProperties = ["preset_id", "payment_period", "name"];
+ClusterIn1.RequiredProperties = ["type", "config_type", "yaml_config", "version"];
 
 /**
- * ID списка дополнительных услуг выделенного сервера.
- * @member {Number} plan_id
+ * Тип дополнения
+ * @member {String} type
  */
-CreateDedicatedServer.prototype['plan_id'] = undefined;
+ClusterIn1.prototype['type'] = undefined;
 
 /**
- * ID тарифа выделенного сервера.
- * @member {Number} preset_id
+ * Тип конфигурации дополнения
+ * @member {module:model/ClusterIn1.ConfigTypeEnum} config_type
  */
-CreateDedicatedServer.prototype['preset_id'] = undefined;
+ClusterIn1.prototype['config_type'] = undefined;
 
 /**
- * ID операционной системы, которая будет установлена на выделенный сервер.
- * @member {Number} os_id
+ * YAML-конфигурация дополнения
+ * @member {String} yaml_config
  */
-CreateDedicatedServer.prototype['os_id'] = undefined;
+ClusterIn1.prototype['yaml_config'] = undefined;
 
 /**
- * ID панели управления, которая будет установлена на выделенный сервер.
- * @member {Number} cp_id
+ * Версия дополнения
+ * @member {String} version
  */
-CreateDedicatedServer.prototype['cp_id'] = undefined;
-
-/**
- * ID интернет-канала, который будет установлен на выделенный сервер.
- * @member {Number} bandwidth_id
- */
-CreateDedicatedServer.prototype['bandwidth_id'] = undefined;
-
-/**
- * ID сетевого диска, который будет установлен на выделенный сервер.
- * @member {Number} network_drive_id
- */
-CreateDedicatedServer.prototype['network_drive_id'] = undefined;
-
-/**
- * ID дополнительного IP-адреса, который будет установлен на выделенный сервер.
- * @member {Number} additional_ip_addr_id
- */
-CreateDedicatedServer.prototype['additional_ip_addr_id'] = undefined;
-
-/**
- * Период оплаты.
- * @member {module:model/CreateDedicatedServer.PaymentPeriodEnum} payment_period
- */
-CreateDedicatedServer.prototype['payment_period'] = undefined;
-
-/**
- * Удобочитаемое имя выделенного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
- * @member {String} name
- */
-CreateDedicatedServer.prototype['name'] = undefined;
-
-/**
- * Комментарий к выделенному серверу. Максимальная длина — 255 символов.
- * @member {String} comment
- */
-CreateDedicatedServer.prototype['comment'] = undefined;
-
-/**
- * ID проекта, в который будет добавлен выделенный сервер.
- * @member {Number} project_id
- */
-CreateDedicatedServer.prototype['project_id'] = undefined;
+ClusterIn1.prototype['version'] = undefined;
 
 
 
 
 
 /**
- * Allowed values for the <code>payment_period</code> property.
+ * Allowed values for the <code>config_type</code> property.
  * @enum {String}
  * @readonly
  */
-CreateDedicatedServer['PaymentPeriodEnum'] = {
+ClusterIn1['ConfigTypeEnum'] = {
 
     /**
-     * value: "P1M"
+     * value: "basic"
      * @const
      */
-    "P1M": "P1M",
+    "basic": "basic",
 
     /**
-     * value: "P3M"
+     * value: "custom"
      * @const
      */
-    "P3M": "P3M",
-
-    /**
-     * value: "P6M"
-     * @const
-     */
-    "P6M": "P6M",
-
-    /**
-     * value: "P1Y"
-     * @const
-     */
-    "P1Y": "P1Y"
+    "custom": "custom"
 };
 
 
 
-export default CreateDedicatedServer;
+export default ClusterIn1;
 

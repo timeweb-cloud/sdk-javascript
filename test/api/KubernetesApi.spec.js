@@ -98,6 +98,16 @@
         done();
       });
     });
+    describe('deleteKubernetesAddons', function() {
+      it('should call deleteKubernetesAddons successfully', function(done) {
+        //uncomment below and update the code to test deleteKubernetesAddons
+        //instance.deleteKubernetesAddons(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getCluster', function() {
       it('should call getCluster successfully', function(done) {
         //uncomment below and update the code to test getCluster
@@ -198,6 +208,26 @@
         done();
       });
     });
+    describe('getKubernetesAddons', function() {
+      it('should call getKubernetesAddons successfully', function(done) {
+        //uncomment below and update the code to test getKubernetesAddons
+        //instance.getKubernetesAddons(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getKubernetesAddonsConfig', function() {
+      it('should call getKubernetesAddonsConfig successfully', function(done) {
+        //uncomment below and update the code to test getKubernetesAddonsConfig
+        //instance.getKubernetesAddonsConfig(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getKubernetesPresets', function() {
       it('should call getKubernetesPresets successfully', function(done) {
         //uncomment below and update the code to test getKubernetesPresets
@@ -212,6 +242,26 @@
       it('should call increaseCountOfNodesInGroup successfully', function(done) {
         //uncomment below and update the code to test increaseCountOfNodesInGroup
         //instance.increaseCountOfNodesInGroup(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('postKubernetesAddons', function() {
+      it('should call postKubernetesAddons successfully', function(done) {
+        //uncomment below and update the code to test postKubernetesAddons
+        //instance.postKubernetesAddons(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('postKubernetesAddonsUpdate', function() {
+      it('should call postKubernetesAddonsUpdate successfully', function(done) {
+        //uncomment below and update the code to test postKubernetesAddonsUpdate
+        //instance.postKubernetesAddonsUpdate(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

@@ -14,21 +14,25 @@
 import ApiClient from '../ApiClient';
 
 /**
- * The CreateDedicatedServer model module.
- * @module model/CreateDedicatedServer
+ * The AddonOut model module.
+ * @module model/AddonOut
  * @version 1.0.0
  */
-class CreateDedicatedServer {
+class AddonOut {
     /**
-     * Constructs a new <code>CreateDedicatedServer</code>.
-     * @alias module:model/CreateDedicatedServer
-     * @param presetId {Number} ID тарифа выделенного сервера.
-     * @param paymentPeriod {module:model/CreateDedicatedServer.PaymentPeriodEnum} Период оплаты.
-     * @param name {String} Удобочитаемое имя выделенного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
+     * Constructs a new <code>AddonOut</code>.
+     * @alias module:model/AddonOut
+     * @param id {Number} ID дополнения
+     * @param type {String} Тип дополнения
+     * @param status {String} Статус дополнения
+     * @param createdAt {Date} Дата и время создания дополнения в формате ISO8601
+     * @param version {String} Версия дополнения
+     * @param yamlConfig {String} Yaml конфигурация дополнения
+     * @param configType {String} Тип конфигурации дополнения
      */
-    constructor(presetId, paymentPeriod, name) { 
+    constructor(id, type, status, createdAt, version, yamlConfig, configType) { 
         
-        CreateDedicatedServer.initialize(this, presetId, paymentPeriod, name);
+        AddonOut.initialize(this, id, type, status, createdAt, version, yamlConfig, configType);
     }
 
     /**
@@ -36,83 +40,86 @@ class CreateDedicatedServer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, presetId, paymentPeriod, name) { 
-        obj['preset_id'] = presetId;
-        obj['payment_period'] = paymentPeriod;
-        obj['name'] = name;
+    static initialize(obj, id, type, status, createdAt, version, yamlConfig, configType) { 
+        obj['id'] = id;
+        obj['type'] = type;
+        obj['status'] = status;
+        obj['created_at'] = createdAt;
+        obj['version'] = version;
+        obj['yaml_config'] = yamlConfig;
+        obj['config_type'] = configType;
     }
 
     /**
-     * Constructs a <code>CreateDedicatedServer</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>AddonOut</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/CreateDedicatedServer} obj Optional instance to populate.
-     * @return {module:model/CreateDedicatedServer} The populated <code>CreateDedicatedServer</code> instance.
+     * @param {module:model/AddonOut} obj Optional instance to populate.
+     * @return {module:model/AddonOut} The populated <code>AddonOut</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new CreateDedicatedServer();
+            obj = obj || new AddonOut();
 
-            if (data.hasOwnProperty('plan_id')) {
-                obj['plan_id'] = ApiClient.convertToType(data['plan_id'], 'Number');
+            if (data.hasOwnProperty('id')) {
+                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
             }
-            if (data.hasOwnProperty('preset_id')) {
-                obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = ApiClient.convertToType(data['type'], 'String');
             }
-            if (data.hasOwnProperty('os_id')) {
-                obj['os_id'] = ApiClient.convertToType(data['os_id'], 'Number');
+            if (data.hasOwnProperty('status')) {
+                obj['status'] = ApiClient.convertToType(data['status'], 'String');
             }
-            if (data.hasOwnProperty('cp_id')) {
-                obj['cp_id'] = ApiClient.convertToType(data['cp_id'], 'Number');
+            if (data.hasOwnProperty('created_at')) {
+                obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
             }
-            if (data.hasOwnProperty('bandwidth_id')) {
-                obj['bandwidth_id'] = ApiClient.convertToType(data['bandwidth_id'], 'Number');
+            if (data.hasOwnProperty('version')) {
+                obj['version'] = ApiClient.convertToType(data['version'], 'String');
             }
-            if (data.hasOwnProperty('network_drive_id')) {
-                obj['network_drive_id'] = ApiClient.convertToType(data['network_drive_id'], 'Number');
+            if (data.hasOwnProperty('config')) {
+                obj['config'] = ApiClient.convertToType(data['config'], Object);
             }
-            if (data.hasOwnProperty('additional_ip_addr_id')) {
-                obj['additional_ip_addr_id'] = ApiClient.convertToType(data['additional_ip_addr_id'], 'Number');
+            if (data.hasOwnProperty('yaml_config')) {
+                obj['yaml_config'] = ApiClient.convertToType(data['yaml_config'], 'String');
             }
-            if (data.hasOwnProperty('payment_period')) {
-                obj['payment_period'] = ApiClient.convertToType(data['payment_period'], 'String');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('comment')) {
-                obj['comment'] = ApiClient.convertToType(data['comment'], 'String');
-            }
-            if (data.hasOwnProperty('project_id')) {
-                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            if (data.hasOwnProperty('config_type')) {
+                obj['config_type'] = ApiClient.convertToType(data['config_type'], 'String');
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>CreateDedicatedServer</code>.
+     * Validates the JSON data with respect to <code>AddonOut</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateDedicatedServer</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>AddonOut</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of CreateDedicatedServer.RequiredProperties) {
+        for (const property of AddonOut.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
-        if (data['payment_period'] && !(typeof data['payment_period'] === 'string' || data['payment_period'] instanceof String)) {
-            throw new Error("Expected the field `payment_period` to be a primitive type in the JSON string but got " + data['payment_period']);
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
         }
         // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
-            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
+            throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
         }
         // ensure the json data is a string
-        if (data['comment'] && !(typeof data['comment'] === 'string' || data['comment'] instanceof String)) {
-            throw new Error("Expected the field `comment` to be a primitive type in the JSON string but got " + data['comment']);
+        if (data['version'] && !(typeof data['version'] === 'string' || data['version'] instanceof String)) {
+            throw new Error("Expected the field `version` to be a primitive type in the JSON string but got " + data['version']);
+        }
+        // ensure the json data is a string
+        if (data['yaml_config'] && !(typeof data['yaml_config'] === 'string' || data['yaml_config'] instanceof String)) {
+            throw new Error("Expected the field `yaml_config` to be a primitive type in the JSON string but got " + data['yaml_config']);
+        }
+        // ensure the json data is a string
+        if (data['config_type'] && !(typeof data['config_type'] === 'string' || data['config_type'] instanceof String)) {
+            throw new Error("Expected the field `config_type` to be a primitive type in the JSON string but got " + data['config_type']);
         }
 
         return true;
@@ -121,111 +128,60 @@ class CreateDedicatedServer {
 
 }
 
-CreateDedicatedServer.RequiredProperties = ["preset_id", "payment_period", "name"];
+AddonOut.RequiredProperties = ["id", "type", "status", "created_at", "version", "yaml_config", "config_type"];
 
 /**
- * ID списка дополнительных услуг выделенного сервера.
- * @member {Number} plan_id
+ * ID дополнения
+ * @member {Number} id
  */
-CreateDedicatedServer.prototype['plan_id'] = undefined;
+AddonOut.prototype['id'] = undefined;
 
 /**
- * ID тарифа выделенного сервера.
- * @member {Number} preset_id
+ * Тип дополнения
+ * @member {String} type
  */
-CreateDedicatedServer.prototype['preset_id'] = undefined;
+AddonOut.prototype['type'] = undefined;
 
 /**
- * ID операционной системы, которая будет установлена на выделенный сервер.
- * @member {Number} os_id
+ * Статус дополнения
+ * @member {String} status
  */
-CreateDedicatedServer.prototype['os_id'] = undefined;
+AddonOut.prototype['status'] = undefined;
 
 /**
- * ID панели управления, которая будет установлена на выделенный сервер.
- * @member {Number} cp_id
+ * Дата и время создания дополнения в формате ISO8601
+ * @member {Date} created_at
  */
-CreateDedicatedServer.prototype['cp_id'] = undefined;
+AddonOut.prototype['created_at'] = undefined;
 
 /**
- * ID интернет-канала, который будет установлен на выделенный сервер.
- * @member {Number} bandwidth_id
+ * Версия дополнения
+ * @member {String} version
  */
-CreateDedicatedServer.prototype['bandwidth_id'] = undefined;
+AddonOut.prototype['version'] = undefined;
 
 /**
- * ID сетевого диска, который будет установлен на выделенный сервер.
- * @member {Number} network_drive_id
+ * Дополнительная конфигурация дополнения
+ * @member {Object} config
  */
-CreateDedicatedServer.prototype['network_drive_id'] = undefined;
+AddonOut.prototype['config'] = undefined;
 
 /**
- * ID дополнительного IP-адреса, который будет установлен на выделенный сервер.
- * @member {Number} additional_ip_addr_id
+ * Yaml конфигурация дополнения
+ * @member {String} yaml_config
  */
-CreateDedicatedServer.prototype['additional_ip_addr_id'] = undefined;
+AddonOut.prototype['yaml_config'] = undefined;
 
 /**
- * Период оплаты.
- * @member {module:model/CreateDedicatedServer.PaymentPeriodEnum} payment_period
+ * Тип конфигурации дополнения
+ * @member {String} config_type
  */
-CreateDedicatedServer.prototype['payment_period'] = undefined;
-
-/**
- * Удобочитаемое имя выделенного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
- * @member {String} name
- */
-CreateDedicatedServer.prototype['name'] = undefined;
-
-/**
- * Комментарий к выделенному серверу. Максимальная длина — 255 символов.
- * @member {String} comment
- */
-CreateDedicatedServer.prototype['comment'] = undefined;
-
-/**
- * ID проекта, в который будет добавлен выделенный сервер.
- * @member {Number} project_id
- */
-CreateDedicatedServer.prototype['project_id'] = undefined;
+AddonOut.prototype['config_type'] = undefined;
 
 
 
 
 
-/**
- * Allowed values for the <code>payment_period</code> property.
- * @enum {String}
- * @readonly
- */
-CreateDedicatedServer['PaymentPeriodEnum'] = {
 
-    /**
-     * value: "P1M"
-     * @const
-     */
-    "P1M": "P1M",
-
-    /**
-     * value: "P3M"
-     * @const
-     */
-    "P3M": "P3M",
-
-    /**
-     * value: "P6M"
-     * @const
-     */
-    "P6M": "P6M",
-
-    /**
-     * value: "P1Y"
-     * @const
-     */
-    "P1Y": "P1Y"
-};
-
-
-
-export default CreateDedicatedServer;
+export default AddonOut;
 

@@ -114,6 +114,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property projectId (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property projectId
+      //var instance = new TimewebCloudApi.CreateDedicatedServer();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

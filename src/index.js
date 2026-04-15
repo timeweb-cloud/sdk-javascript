@@ -41,6 +41,10 @@ import AddStorageToProjectRequest from './model/AddStorageToProjectRequest';
 import AddSubdomain201Response from './model/AddSubdomain201Response';
 import AddTokenPackage from './model/AddTokenPackage';
 import AddedSubdomain from './model/AddedSubdomain';
+import AddonConfigOut from './model/AddonConfigOut';
+import AddonOut from './model/AddonOut';
+import AddonsConfigResponse from './model/AddonsConfigResponse';
+import AddonsResponse from './model/AddonsResponse';
 import Agent from './model/Agent';
 import AgentModelSettings from './model/AgentModelSettings';
 import AgentSettings from './model/AgentSettings';
@@ -80,6 +84,7 @@ import CheckDomain200Response from './model/CheckDomain200Response';
 import ClusterEdit from './model/ClusterEdit';
 import ClusterEditOidcProvider from './model/ClusterEditOidcProvider';
 import ClusterIn from './model/ClusterIn';
+import ClusterIn1 from './model/ClusterIn1';
 import ClusterInClusterNetworkCidr from './model/ClusterInClusterNetworkCidr';
 import ClusterInConfiguration from './model/ClusterInConfiguration';
 import ClusterInMaintenanceSlot from './model/ClusterInMaintenanceSlot';
@@ -760,6 +765,30 @@ export {
     AddedSubdomain,
 
     /**
+     * The AddonConfigOut model constructor.
+     * @property {module:model/AddonConfigOut}
+     */
+    AddonConfigOut,
+
+    /**
+     * The AddonOut model constructor.
+     * @property {module:model/AddonOut}
+     */
+    AddonOut,
+
+    /**
+     * The AddonsConfigResponse model constructor.
+     * @property {module:model/AddonsConfigResponse}
+     */
+    AddonsConfigResponse,
+
+    /**
+     * The AddonsResponse model constructor.
+     * @property {module:model/AddonsResponse}
+     */
+    AddonsResponse,
+
+    /**
      * The Agent model constructor.
      * @property {module:model/Agent}
      */
@@ -992,6 +1021,12 @@ export {
      * @property {module:model/ClusterIn}
      */
     ClusterIn,
+
+    /**
+     * The ClusterIn1 model constructor.
+     * @property {module:model/ClusterIn1}
+     */
+    ClusterIn1,
 
     /**
      * The ClusterInClusterNetworkCidr model constructor.
