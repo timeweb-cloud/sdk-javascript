@@ -283,11 +283,6 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.AIAgentsApi* | [**getKnowledgebasesTokenPackages**](docs/AIAgentsApi.md#getKnowledgebasesTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/knowledge-bases | Получение списка пакетов токенов для баз знаний
 *TimewebCloudApi.AIAgentsApi* | [**getModels**](docs/AIAgentsApi.md#getModels) | **GET** /api/v1/cloud-ai/models | Получение списка моделей
 *TimewebCloudApi.AIAgentsApi* | [**updateAgent**](docs/AIAgentsApi.md#updateAgent) | **PATCH** /api/v1/cloud-ai/agents/{id} | Обновление AI агента
-*TimewebCloudApi.APIKeysApi* | [**createToken**](docs/APIKeysApi.md#createToken) | **POST** /api/v1/auth/api-keys | Создание токена
-*TimewebCloudApi.APIKeysApi* | [**deleteToken**](docs/APIKeysApi.md#deleteToken) | **DELETE** /api/v1/auth/api-keys/{token_id} | Удалить токен
-*TimewebCloudApi.APIKeysApi* | [**getTokens**](docs/APIKeysApi.md#getTokens) | **GET** /api/v1/auth/api-keys | Получение списка выпущенных токенов
-*TimewebCloudApi.APIKeysApi* | [**reissueToken**](docs/APIKeysApi.md#reissueToken) | **PUT** /api/v1/auth/api-keys/{token_id} | Перевыпустить токен
-*TimewebCloudApi.APIKeysApi* | [**updateToken**](docs/APIKeysApi.md#updateToken) | **PATCH** /api/v1/auth/api-keys/{token_id} | Изменить токен
 *TimewebCloudApi.AccountApi* | [**addCountriesToAllowedList**](docs/AccountApi.md#addCountriesToAllowedList) | **POST** /api/v1/auth/access/countries | Добавление стран в список разрешенных
 *TimewebCloudApi.AccountApi* | [**addIPsToAllowedList**](docs/AccountApi.md#addIPsToAllowedList) | **POST** /api/v1/auth/access/ips | Добавление IP-адресов в список разрешенных
 *TimewebCloudApi.AccountApi* | [**deleteCountriesFromAllowedList**](docs/AccountApi.md#deleteCountriesFromAllowedList) | **DELETE** /api/v1/auth/access/countries | Удаление стран из списка разрешенных
@@ -631,7 +626,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.AgentModelSettings](docs/AgentModelSettings.md)
  - [TimewebCloudApi.AgentSettings](docs/AgentSettings.md)
  - [TimewebCloudApi.AgentSettingsWidget](docs/AgentSettingsWidget.md)
- - [TimewebCloudApi.ApiKey](docs/ApiKey.md)
  - [TimewebCloudApi.App](docs/App.md)
  - [TimewebCloudApi.AppConfiguration](docs/AppConfiguration.md)
  - [TimewebCloudApi.AppDiskStatus](docs/AppDiskStatus.md)
@@ -684,7 +678,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateAdmin](docs/CreateAdmin.md)
  - [TimewebCloudApi.CreateAgent](docs/CreateAgent.md)
  - [TimewebCloudApi.CreateAgent201Response](docs/CreateAgent201Response.md)
- - [TimewebCloudApi.CreateApiKey](docs/CreateApiKey.md)
  - [TimewebCloudApi.CreateApp](docs/CreateApp.md)
  - [TimewebCloudApi.CreateApp201Response](docs/CreateApp201Response.md)
  - [TimewebCloudApi.CreateBalancer](docs/CreateBalancer.md)
@@ -743,10 +736,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateStorage201Response](docs/CreateStorage201Response.md)
  - [TimewebCloudApi.CreateStorageRequest](docs/CreateStorageRequest.md)
  - [TimewebCloudApi.CreateStorageRequestConfigurator](docs/CreateStorageRequestConfigurator.md)
- - [TimewebCloudApi.CreateToken201Response](docs/CreateToken201Response.md)
  - [TimewebCloudApi.CreateVPC201Response](docs/CreateVPC201Response.md)
  - [TimewebCloudApi.CreateVpc](docs/CreateVpc.md)
- - [TimewebCloudApi.CreatedApiKey](docs/CreatedApiKey.md)
  - [TimewebCloudApi.DatabaseAdmin](docs/DatabaseAdmin.md)
  - [TimewebCloudApi.DatabaseAdminInstancesInner](docs/DatabaseAdminInstancesInner.md)
  - [TimewebCloudApi.DatabaseCluster](docs/DatabaseCluster.md)
@@ -799,7 +790,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DomainRegister](docs/DomainRegister.md)
  - [TimewebCloudApi.DomainRequest](docs/DomainRequest.md)
  - [TimewebCloudApi.DomainTransfer](docs/DomainTransfer.md)
- - [TimewebCloudApi.EditApiKey](docs/EditApiKey.md)
  - [TimewebCloudApi.Finances](docs/Finances.md)
  - [TimewebCloudApi.FirewallGroup](docs/FirewallGroup.md)
  - [TimewebCloudApi.FirewallGroupInAPI](docs/FirewallGroupInAPI.md)
@@ -921,7 +911,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetStoragesPresets200Response](docs/GetStoragesPresets200Response.md)
  - [TimewebCloudApi.GetTLD200Response](docs/GetTLD200Response.md)
  - [TimewebCloudApi.GetTLDs200Response](docs/GetTLDs200Response.md)
- - [TimewebCloudApi.GetTokens200Response](docs/GetTokens200Response.md)
  - [TimewebCloudApi.GetVPCPorts200Response](docs/GetVPCPorts200Response.md)
  - [TimewebCloudApi.GetVPCServices200Response](docs/GetVPCServices200Response.md)
  - [TimewebCloudApi.GetVPCs200Response](docs/GetVPCs200Response.md)
@@ -995,7 +984,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Provider](docs/Provider.md)
  - [TimewebCloudApi.Providers](docs/Providers.md)
  - [TimewebCloudApi.ReduceNodes](docs/ReduceNodes.md)
- - [TimewebCloudApi.RefreshApiKey](docs/RefreshApiKey.md)
  - [TimewebCloudApi.RegistriesResponse](docs/RegistriesResponse.md)
  - [TimewebCloudApi.RegistryEdit](docs/RegistryEdit.md)
  - [TimewebCloudApi.RegistryIn](docs/RegistryIn.md)
@@ -1096,7 +1084,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateStorageRequestConfigurator](docs/UpdateStorageRequestConfigurator.md)
  - [TimewebCloudApi.UpdateStorageUser200Response](docs/UpdateStorageUser200Response.md)
  - [TimewebCloudApi.UpdateStorageUserRequest](docs/UpdateStorageUserRequest.md)
- - [TimewebCloudApi.UpdateToken200Response](docs/UpdateToken200Response.md)
  - [TimewebCloudApi.UpdateVpc](docs/UpdateVpc.md)
  - [TimewebCloudApi.UploadFilesToKnowledgebase200Response](docs/UploadFilesToKnowledgebase200Response.md)
  - [TimewebCloudApi.UploadSuccessful](docs/UploadSuccessful.md)

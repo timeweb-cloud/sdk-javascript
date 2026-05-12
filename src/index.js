@@ -49,7 +49,6 @@ import Agent from './model/Agent';
 import AgentModelSettings from './model/AgentModelSettings';
 import AgentSettings from './model/AgentSettings';
 import AgentSettingsWidget from './model/AgentSettingsWidget';
-import ApiKey from './model/ApiKey';
 import App from './model/App';
 import AppConfiguration from './model/AppConfiguration';
 import AppDiskStatus from './model/AppDiskStatus';
@@ -102,7 +101,6 @@ import ContainerRegistryRepositoriesInner from './model/ContainerRegistryReposit
 import CreateAdmin from './model/CreateAdmin';
 import CreateAgent from './model/CreateAgent';
 import CreateAgent201Response from './model/CreateAgent201Response';
-import CreateApiKey from './model/CreateApiKey';
 import CreateApp from './model/CreateApp';
 import CreateApp201Response from './model/CreateApp201Response';
 import CreateBalancer from './model/CreateBalancer';
@@ -161,10 +159,8 @@ import CreateServerNetwork from './model/CreateServerNetwork';
 import CreateStorage201Response from './model/CreateStorage201Response';
 import CreateStorageRequest from './model/CreateStorageRequest';
 import CreateStorageRequestConfigurator from './model/CreateStorageRequestConfigurator';
-import CreateToken201Response from './model/CreateToken201Response';
 import CreateVPC201Response from './model/CreateVPC201Response';
 import CreateVpc from './model/CreateVpc';
-import CreatedApiKey from './model/CreatedApiKey';
 import DatabaseAdmin from './model/DatabaseAdmin';
 import DatabaseAdminInstancesInner from './model/DatabaseAdminInstancesInner';
 import DatabaseCluster from './model/DatabaseCluster';
@@ -217,7 +213,6 @@ import DomainProlong from './model/DomainProlong';
 import DomainRegister from './model/DomainRegister';
 import DomainRequest from './model/DomainRequest';
 import DomainTransfer from './model/DomainTransfer';
-import EditApiKey from './model/EditApiKey';
 import Finances from './model/Finances';
 import FirewallGroup from './model/FirewallGroup';
 import FirewallGroupInAPI from './model/FirewallGroupInAPI';
@@ -339,7 +334,6 @@ import GetStorageUsers200Response from './model/GetStorageUsers200Response';
 import GetStoragesPresets200Response from './model/GetStoragesPresets200Response';
 import GetTLD200Response from './model/GetTLD200Response';
 import GetTLDs200Response from './model/GetTLDs200Response';
-import GetTokens200Response from './model/GetTokens200Response';
 import GetVPCPorts200Response from './model/GetVPCPorts200Response';
 import GetVPCServices200Response from './model/GetVPCServices200Response';
 import GetVPCs200Response from './model/GetVPCs200Response';
@@ -413,7 +407,6 @@ import ProjectResource from './model/ProjectResource';
 import Provider from './model/Provider';
 import Providers from './model/Providers';
 import ReduceNodes from './model/ReduceNodes';
-import RefreshApiKey from './model/RefreshApiKey';
 import RegistriesResponse from './model/RegistriesResponse';
 import RegistryEdit from './model/RegistryEdit';
 import RegistryIn from './model/RegistryIn';
@@ -514,7 +507,6 @@ import UpdateStorageRequest from './model/UpdateStorageRequest';
 import UpdateStorageRequestConfigurator from './model/UpdateStorageRequestConfigurator';
 import UpdateStorageUser200Response from './model/UpdateStorageUser200Response';
 import UpdateStorageUserRequest from './model/UpdateStorageUserRequest';
-import UpdateToken200Response from './model/UpdateToken200Response';
 import UpdateVpc from './model/UpdateVpc';
 import UploadFilesToKnowledgebase200Response from './model/UploadFilesToKnowledgebase200Response';
 import UploadSuccessful from './model/UploadSuccessful';
@@ -534,7 +526,6 @@ import VpcPortService from './model/VpcPortService';
 import VpcService from './model/VpcService';
 import WorkerPresetOutApi from './model/WorkerPresetOutApi';
 import AIAgentsApi from './api/AIAgentsApi';
-import APIKeysApi from './api/APIKeysApi';
 import AccountApi from './api/AccountApi';
 import AppsApi from './api/AppsApi';
 import BalancersApi from './api/BalancersApi';
@@ -811,12 +802,6 @@ export {
      * @property {module:model/AgentSettingsWidget}
      */
     AgentSettingsWidget,
-
-    /**
-     * The ApiKey model constructor.
-     * @property {module:model/ApiKey}
-     */
-    ApiKey,
 
     /**
      * The App model constructor.
@@ -1129,12 +1114,6 @@ export {
      * @property {module:model/CreateAgent201Response}
      */
     CreateAgent201Response,
-
-    /**
-     * The CreateApiKey model constructor.
-     * @property {module:model/CreateApiKey}
-     */
-    CreateApiKey,
 
     /**
      * The CreateApp model constructor.
@@ -1485,12 +1464,6 @@ export {
     CreateStorageRequestConfigurator,
 
     /**
-     * The CreateToken201Response model constructor.
-     * @property {module:model/CreateToken201Response}
-     */
-    CreateToken201Response,
-
-    /**
      * The CreateVPC201Response model constructor.
      * @property {module:model/CreateVPC201Response}
      */
@@ -1501,12 +1474,6 @@ export {
      * @property {module:model/CreateVpc}
      */
     CreateVpc,
-
-    /**
-     * The CreatedApiKey model constructor.
-     * @property {module:model/CreatedApiKey}
-     */
-    CreatedApiKey,
 
     /**
      * The DatabaseAdmin model constructor.
@@ -1819,12 +1786,6 @@ export {
      * @property {module:model/DomainTransfer}
      */
     DomainTransfer,
-
-    /**
-     * The EditApiKey model constructor.
-     * @property {module:model/EditApiKey}
-     */
-    EditApiKey,
 
     /**
      * The Finances model constructor.
@@ -2553,12 +2514,6 @@ export {
     GetTLDs200Response,
 
     /**
-     * The GetTokens200Response model constructor.
-     * @property {module:model/GetTokens200Response}
-     */
-    GetTokens200Response,
-
-    /**
      * The GetVPCPorts200Response model constructor.
      * @property {module:model/GetVPCPorts200Response}
      */
@@ -2995,12 +2950,6 @@ export {
      * @property {module:model/ReduceNodes}
      */
     ReduceNodes,
-
-    /**
-     * The RefreshApiKey model constructor.
-     * @property {module:model/RefreshApiKey}
-     */
-    RefreshApiKey,
 
     /**
      * The RegistriesResponse model constructor.
@@ -3603,12 +3552,6 @@ export {
     UpdateStorageUserRequest,
 
     /**
-     * The UpdateToken200Response model constructor.
-     * @property {module:model/UpdateToken200Response}
-     */
-    UpdateToken200Response,
-
-    /**
      * The UpdateVpc model constructor.
      * @property {module:model/UpdateVpc}
      */
@@ -3721,12 +3664,6 @@ export {
     * @property {module:api/AIAgentsApi}
     */
     AIAgentsApi,
-
-    /**
-    * The APIKeysApi service constructor.
-    * @property {module:api/APIKeysApi}
-    */
-    APIKeysApi,
 
     /**
     * The AccountApi service constructor.
