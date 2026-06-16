@@ -66,6 +66,11 @@ import AvailabilityZone from './model/AvailabilityZone';
 import AvailableFrameworks from './model/AvailableFrameworks';
 import AvailableFrameworksBackendFrameworksInner from './model/AvailableFrameworksBackendFrameworksInner';
 import AvailableFrameworksFrontendFrameworksInner from './model/AvailableFrameworksFrontendFrameworksInner';
+import AvailableNetwork from './model/AvailableNetwork';
+import AvailableNetworksResponse from './model/AvailableNetworksResponse';
+import AvailableStaticRoute from './model/AvailableStaticRoute';
+import AvailableStaticRouteSubnetsInner from './model/AvailableStaticRouteSubnetsInner';
+import AvailableStaticRoutesResponse from './model/AvailableStaticRoutesResponse';
 import Backup from './model/Backup';
 import Balancer from './model/Balancer';
 import BalancerNetworksInner from './model/BalancerNetworksInner';
@@ -95,6 +100,7 @@ import Clusterk8s from './model/Clusterk8s';
 import ClustersResponse from './model/ClustersResponse';
 import Commit from './model/Commit';
 import ComponentsSchemasBaseError from './model/ComponentsSchemasBaseError';
+import ComponentsSchemasMeta from './model/ComponentsSchemasMeta';
 import ConfigParameters from './model/ConfigParameters';
 import ContainerRegistryPresetsInner from './model/ContainerRegistryPresetsInner';
 import ContainerRegistryRepositoriesInner from './model/ContainerRegistryRepositoriesInner';
@@ -195,6 +201,12 @@ import DeleteStorage200Response from './model/DeleteStorage200Response';
 import Deploy from './model/Deploy';
 import DeploySettingsInner from './model/DeploySettingsInner';
 import DeployStatus from './model/DeployStatus';
+import DnatIn from './model/DnatIn';
+import DnatInLocal from './model/DnatInLocal';
+import DnatInPublic from './model/DnatInPublic';
+import DnatRuleOut from './model/DnatRuleOut';
+import DnatRuleResponse from './model/DnatRuleResponse';
+import DnatRulesResponse from './model/DnatRulesResponse';
 import DnsRecord from './model/DnsRecord';
 import DnsRecordData from './model/DnsRecordData';
 import DnsRecordV2 from './model/DnsRecordV2';
@@ -373,6 +385,7 @@ import ModelParamsInfoMaxTokens from './model/ModelParamsInfoMaxTokens';
 import ModelParamsInfoReasoningEffort from './model/ModelParamsInfoReasoningEffort';
 import ModelParamsInfoTemperature from './model/ModelParamsInfoTemperature';
 import MountNetworkDrive from './model/MountNetworkDrive';
+import NatIn from './model/NatIn';
 import Network from './model/Network';
 import NetworkDrive from './model/NetworkDrive';
 import NetworkDriveAvailableResource from './model/NetworkDriveAvailableResource';
@@ -381,6 +394,11 @@ import NetworkDrivePresetRead from './model/NetworkDrivePresetRead';
 import NetworkDrivePresetWrite from './model/NetworkDrivePresetWrite';
 import NetworkDriveServiceListInner from './model/NetworkDriveServiceListInner';
 import NetworkDriversResponse from './model/NetworkDriversResponse';
+import NetworkEdit from './model/NetworkEdit';
+import NetworkIn from './model/NetworkIn';
+import NetworkOut from './model/NetworkOut';
+import NetworkResponse from './model/NetworkResponse';
+import NetworksResponse from './model/NetworksResponse';
 import NodeGroupIn from './model/NodeGroupIn';
 import NodeGroupInConfiguration from './model/NodeGroupInConfiguration';
 import NodeGroupOut from './model/NodeGroupOut';
@@ -423,6 +441,27 @@ import ResourceTransfer from './model/ResourceTransfer';
 import ResourceType from './model/ResourceType';
 import Resources from './model/Resources';
 import ResourcesResponse from './model/ResourcesResponse';
+import RouterEdit from './model/RouterEdit';
+import RouterIn from './model/RouterIn';
+import RouterInIpsInner from './model/RouterInIpsInner';
+import RouterInIpsInnerNat from './model/RouterInIpsInnerNat';
+import RouterInNetworksInner from './model/RouterInNetworksInner';
+import RouterInParentService from './model/RouterInParentService';
+import RouterNetworkMeta from './model/RouterNetworkMeta';
+import RouterNetworkMetaDhcp from './model/RouterNetworkMetaDhcp';
+import RouterOut from './model/RouterOut';
+import RouterOutIpsInner from './model/RouterOutIpsInner';
+import RouterOutIpsInnerNat from './model/RouterOutIpsInnerNat';
+import RouterOutNodesInner from './model/RouterOutNodesInner';
+import RouterOutParentServicesInner from './model/RouterOutParentServicesInner';
+import RouterPreset from './model/RouterPreset';
+import RouterPresetsResponse from './model/RouterPresetsResponse';
+import RouterResponse from './model/RouterResponse';
+import RouterStatistic from './model/RouterStatistic';
+import RouterStatisticListInner from './model/RouterStatisticListInner';
+import RouterStatisticMeta from './model/RouterStatisticMeta';
+import RouterStatisticsResponse from './model/RouterStatisticsResponse';
+import RoutersResponse from './model/RoutersResponse';
 import Rule from './model/Rule';
 import S3Subdomain from './model/S3Subdomain';
 import SchemasBaseError from './model/SchemasBaseError';
@@ -456,6 +495,10 @@ import SpamProtectionIsDisabled from './model/SpamProtectionIsDisabled';
 import SpamProtectionIsEnabled from './model/SpamProtectionIsEnabled';
 import SshKey from './model/SshKey';
 import SshKeyUsedByInner from './model/SshKeyUsedByInner';
+import StaticRouteIn from './model/StaticRouteIn';
+import StaticRouteOut from './model/StaticRouteOut';
+import StaticRouteResponse from './model/StaticRouteResponse';
+import StaticRoutesResponse from './model/StaticRoutesResponse';
 import Status from './model/Status';
 import StatusCompanyInfo from './model/StatusCompanyInfo';
 import Subdomain from './model/Subdomain';
@@ -543,6 +586,7 @@ import MailApi from './api/MailApi';
 import NetworkDrivesApi from './api/NetworkDrivesApi';
 import PaymentsApi from './api/PaymentsApi';
 import ProjectsApi from './api/ProjectsApi';
+import RoutersApi from './api/RoutersApi';
 import S3Api from './api/S3Api';
 import SSHApi from './api/SSHApi';
 import ServersApi from './api/ServersApi';
@@ -906,6 +950,36 @@ export {
     AvailableFrameworksFrontendFrameworksInner,
 
     /**
+     * The AvailableNetwork model constructor.
+     * @property {module:model/AvailableNetwork}
+     */
+    AvailableNetwork,
+
+    /**
+     * The AvailableNetworksResponse model constructor.
+     * @property {module:model/AvailableNetworksResponse}
+     */
+    AvailableNetworksResponse,
+
+    /**
+     * The AvailableStaticRoute model constructor.
+     * @property {module:model/AvailableStaticRoute}
+     */
+    AvailableStaticRoute,
+
+    /**
+     * The AvailableStaticRouteSubnetsInner model constructor.
+     * @property {module:model/AvailableStaticRouteSubnetsInner}
+     */
+    AvailableStaticRouteSubnetsInner,
+
+    /**
+     * The AvailableStaticRoutesResponse model constructor.
+     * @property {module:model/AvailableStaticRoutesResponse}
+     */
+    AvailableStaticRoutesResponse,
+
+    /**
      * The Backup model constructor.
      * @property {module:model/Backup}
      */
@@ -1078,6 +1152,12 @@ export {
      * @property {module:model/ComponentsSchemasBaseError}
      */
     ComponentsSchemasBaseError,
+
+    /**
+     * The ComponentsSchemasMeta model constructor.
+     * @property {module:model/ComponentsSchemasMeta}
+     */
+    ComponentsSchemasMeta,
 
     /**
      * The ConfigParameters model constructor.
@@ -1678,6 +1758,42 @@ export {
      * @property {module:model/DeployStatus}
      */
     DeployStatus,
+
+    /**
+     * The DnatIn model constructor.
+     * @property {module:model/DnatIn}
+     */
+    DnatIn,
+
+    /**
+     * The DnatInLocal model constructor.
+     * @property {module:model/DnatInLocal}
+     */
+    DnatInLocal,
+
+    /**
+     * The DnatInPublic model constructor.
+     * @property {module:model/DnatInPublic}
+     */
+    DnatInPublic,
+
+    /**
+     * The DnatRuleOut model constructor.
+     * @property {module:model/DnatRuleOut}
+     */
+    DnatRuleOut,
+
+    /**
+     * The DnatRuleResponse model constructor.
+     * @property {module:model/DnatRuleResponse}
+     */
+    DnatRuleResponse,
+
+    /**
+     * The DnatRulesResponse model constructor.
+     * @property {module:model/DnatRulesResponse}
+     */
+    DnatRulesResponse,
 
     /**
      * The DnsRecord model constructor.
@@ -2748,6 +2864,12 @@ export {
     MountNetworkDrive,
 
     /**
+     * The NatIn model constructor.
+     * @property {module:model/NatIn}
+     */
+    NatIn,
+
+    /**
      * The Network model constructor.
      * @property {module:model/Network}
      */
@@ -2794,6 +2916,36 @@ export {
      * @property {module:model/NetworkDriversResponse}
      */
     NetworkDriversResponse,
+
+    /**
+     * The NetworkEdit model constructor.
+     * @property {module:model/NetworkEdit}
+     */
+    NetworkEdit,
+
+    /**
+     * The NetworkIn model constructor.
+     * @property {module:model/NetworkIn}
+     */
+    NetworkIn,
+
+    /**
+     * The NetworkOut model constructor.
+     * @property {module:model/NetworkOut}
+     */
+    NetworkOut,
+
+    /**
+     * The NetworkResponse model constructor.
+     * @property {module:model/NetworkResponse}
+     */
+    NetworkResponse,
+
+    /**
+     * The NetworksResponse model constructor.
+     * @property {module:model/NetworksResponse}
+     */
+    NetworksResponse,
 
     /**
      * The NodeGroupIn model constructor.
@@ -3048,6 +3200,132 @@ export {
     ResourcesResponse,
 
     /**
+     * The RouterEdit model constructor.
+     * @property {module:model/RouterEdit}
+     */
+    RouterEdit,
+
+    /**
+     * The RouterIn model constructor.
+     * @property {module:model/RouterIn}
+     */
+    RouterIn,
+
+    /**
+     * The RouterInIpsInner model constructor.
+     * @property {module:model/RouterInIpsInner}
+     */
+    RouterInIpsInner,
+
+    /**
+     * The RouterInIpsInnerNat model constructor.
+     * @property {module:model/RouterInIpsInnerNat}
+     */
+    RouterInIpsInnerNat,
+
+    /**
+     * The RouterInNetworksInner model constructor.
+     * @property {module:model/RouterInNetworksInner}
+     */
+    RouterInNetworksInner,
+
+    /**
+     * The RouterInParentService model constructor.
+     * @property {module:model/RouterInParentService}
+     */
+    RouterInParentService,
+
+    /**
+     * The RouterNetworkMeta model constructor.
+     * @property {module:model/RouterNetworkMeta}
+     */
+    RouterNetworkMeta,
+
+    /**
+     * The RouterNetworkMetaDhcp model constructor.
+     * @property {module:model/RouterNetworkMetaDhcp}
+     */
+    RouterNetworkMetaDhcp,
+
+    /**
+     * The RouterOut model constructor.
+     * @property {module:model/RouterOut}
+     */
+    RouterOut,
+
+    /**
+     * The RouterOutIpsInner model constructor.
+     * @property {module:model/RouterOutIpsInner}
+     */
+    RouterOutIpsInner,
+
+    /**
+     * The RouterOutIpsInnerNat model constructor.
+     * @property {module:model/RouterOutIpsInnerNat}
+     */
+    RouterOutIpsInnerNat,
+
+    /**
+     * The RouterOutNodesInner model constructor.
+     * @property {module:model/RouterOutNodesInner}
+     */
+    RouterOutNodesInner,
+
+    /**
+     * The RouterOutParentServicesInner model constructor.
+     * @property {module:model/RouterOutParentServicesInner}
+     */
+    RouterOutParentServicesInner,
+
+    /**
+     * The RouterPreset model constructor.
+     * @property {module:model/RouterPreset}
+     */
+    RouterPreset,
+
+    /**
+     * The RouterPresetsResponse model constructor.
+     * @property {module:model/RouterPresetsResponse}
+     */
+    RouterPresetsResponse,
+
+    /**
+     * The RouterResponse model constructor.
+     * @property {module:model/RouterResponse}
+     */
+    RouterResponse,
+
+    /**
+     * The RouterStatistic model constructor.
+     * @property {module:model/RouterStatistic}
+     */
+    RouterStatistic,
+
+    /**
+     * The RouterStatisticListInner model constructor.
+     * @property {module:model/RouterStatisticListInner}
+     */
+    RouterStatisticListInner,
+
+    /**
+     * The RouterStatisticMeta model constructor.
+     * @property {module:model/RouterStatisticMeta}
+     */
+    RouterStatisticMeta,
+
+    /**
+     * The RouterStatisticsResponse model constructor.
+     * @property {module:model/RouterStatisticsResponse}
+     */
+    RouterStatisticsResponse,
+
+    /**
+     * The RoutersResponse model constructor.
+     * @property {module:model/RoutersResponse}
+     */
+    RoutersResponse,
+
+    /**
      * The Rule model constructor.
      * @property {module:model/Rule}
      */
@@ -3244,6 +3522,30 @@ export {
      * @property {module:model/SshKeyUsedByInner}
      */
     SshKeyUsedByInner,
+
+    /**
+     * The StaticRouteIn model constructor.
+     * @property {module:model/StaticRouteIn}
+     */
+    StaticRouteIn,
+
+    /**
+     * The StaticRouteOut model constructor.
+     * @property {module:model/StaticRouteOut}
+     */
+    StaticRouteOut,
+
+    /**
+     * The StaticRouteResponse model constructor.
+     * @property {module:model/StaticRouteResponse}
+     */
+    StaticRouteResponse,
+
+    /**
+     * The StaticRoutesResponse model constructor.
+     * @property {module:model/StaticRoutesResponse}
+     */
+    StaticRoutesResponse,
 
     /**
      * The Status model constructor.
@@ -3766,6 +4068,12 @@ export {
     * @property {module:api/ProjectsApi}
     */
     ProjectsApi,
+
+    /**
+    * The RoutersApi service constructor.
+    * @property {module:api/RoutersApi}
+    */
+    RoutersApi,
 
     /**
     * The S3Api service constructor.

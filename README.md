@@ -518,6 +518,29 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.ProjectsApi* | [**getProjects**](docs/ProjectsApi.md#getProjects) | **GET** /api/v1/projects | Получение списка проектов
 *TimewebCloudApi.ProjectsApi* | [**transferResourceToAnotherProject**](docs/ProjectsApi.md#transferResourceToAnotherProject) | **PUT** /api/v1/projects/{project_id}/resources/transfer | Перенести ресурс в другой проект
 *TimewebCloudApi.ProjectsApi* | [**updateProject**](docs/ProjectsApi.md#updateProject) | **PUT** /api/v1/projects/{project_id} | Изменение проекта
+*TimewebCloudApi.RoutersApi* | [**addNetworks**](docs/RoutersApi.md#addNetworks) | **POST** /api/v1/routers/{router_id}/networks | Подключение сетей к роутеру
+*TimewebCloudApi.RoutersApi* | [**createRouter**](docs/RoutersApi.md#createRouter) | **POST** /api/v1/routers | Создание роутера
+*TimewebCloudApi.RoutersApi* | [**deleteDnat**](docs/RoutersApi.md#deleteDnat) | **DELETE** /api/v1/routers/{router_id}/dnat-rules/{dnat_id} | Удаление правила проброса портов
+*TimewebCloudApi.RoutersApi* | [**deleteRouter**](docs/RoutersApi.md#deleteRouter) | **DELETE** /api/v1/routers/{router_id} | Удаление роутера
+*TimewebCloudApi.RoutersApi* | [**deleteRouterNat**](docs/RoutersApi.md#deleteRouterNat) | **DELETE** /api/v1/routers/{router_id}/networks/{network_name}/nat | Выключение NAT для сети
+*TimewebCloudApi.RoutersApi* | [**deleteRouterNetwork**](docs/RoutersApi.md#deleteRouterNetwork) | **DELETE** /api/v1/routers/{router_id}/networks/{network_name} | Удаление сети из роутера
+*TimewebCloudApi.RoutersApi* | [**deleteStaticRoute**](docs/RoutersApi.md#deleteStaticRoute) | **DELETE** /api/v1/routers/{router_id}/static-routes/{static_route_id} | Удаление статического маршрута
+*TimewebCloudApi.RoutersApi* | [**getAvailableStaticRoutes**](docs/RoutersApi.md#getAvailableStaticRoutes) | **GET** /api/v1/routers/{router_id}/static-routes/available | Получение доступных подсетей для статических маршрутов
+*TimewebCloudApi.RoutersApi* | [**getDnat**](docs/RoutersApi.md#getDnat) | **GET** /api/v1/routers/{router_id}/dnat-rules | Получение списка правил проброса портов
+*TimewebCloudApi.RoutersApi* | [**getDnatRule**](docs/RoutersApi.md#getDnatRule) | **GET** /api/v1/routers/{router_id}/dnat-rules/{dnat_id} | Получение правила проброса портов
+*TimewebCloudApi.RoutersApi* | [**getNetworks**](docs/RoutersApi.md#getNetworks) | **GET** /api/v1/routers/{router_id}/networks | Получение списка сетей роутера
+*TimewebCloudApi.RoutersApi* | [**getRouter**](docs/RoutersApi.md#getRouter) | **GET** /api/v1/routers/{router_id} | Получение информации о роутере
+*TimewebCloudApi.RoutersApi* | [**getRouterAvailableNetworks**](docs/RoutersApi.md#getRouterAvailableNetworks) | **GET** /api/v1/routers/networks/available | Получение списка доступных сетей
+*TimewebCloudApi.RoutersApi* | [**getRouterPresets**](docs/RoutersApi.md#getRouterPresets) | **GET** /api/v1/presets/routers | Получение списка тарифов роутеров
+*TimewebCloudApi.RoutersApi* | [**getRouterStatistics**](docs/RoutersApi.md#getRouterStatistics) | **GET** /api/v1/routers/{router_id}/statistics/{time_from}/{period}/{keys} | Получение статистики роутера
+*TimewebCloudApi.RoutersApi* | [**getRouters**](docs/RoutersApi.md#getRouters) | **GET** /api/v1/routers | Получение списка роутеров
+*TimewebCloudApi.RoutersApi* | [**getStaticRoutes**](docs/RoutersApi.md#getStaticRoutes) | **GET** /api/v1/routers/{router_id}/static-routes | Получение списка статических маршрутов
+*TimewebCloudApi.RoutersApi* | [**patchNetwork**](docs/RoutersApi.md#patchNetwork) | **PATCH** /api/v1/routers/{router_id}/networks/{network_name} | Обновление информации о сети
+*TimewebCloudApi.RoutersApi* | [**patchNetworks**](docs/RoutersApi.md#patchNetworks) | **PATCH** /api/v1/routers/{router_id}/networks | Обновление сетей роутера
+*TimewebCloudApi.RoutersApi* | [**postDnat**](docs/RoutersApi.md#postDnat) | **POST** /api/v1/routers/{router_id}/dnat-rules | Добавление правила проброса портов
+*TimewebCloudApi.RoutersApi* | [**postStaticRoute**](docs/RoutersApi.md#postStaticRoute) | **POST** /api/v1/routers/{router_id}/static-routes | Добавление статического маршрута
+*TimewebCloudApi.RoutersApi* | [**updateRouter**](docs/RoutersApi.md#updateRouter) | **PATCH** /api/v1/routers/{router_id} | Обновление информации о роутере
+*TimewebCloudApi.RoutersApi* | [**updateRouterNat**](docs/RoutersApi.md#updateRouterNat) | **PATCH** /api/v1/routers/{router_id}/networks/{network_name}/nat | Включение NAT для сети
 *TimewebCloudApi.S3Api* | [**addStorageSubdomainCertificate**](docs/S3Api.md#addStorageSubdomainCertificate) | **POST** /api/v1/storages/certificates/generate | Добавление сертификата для поддомена хранилища
 *TimewebCloudApi.S3Api* | [**addStorageSubdomains**](docs/S3Api.md#addStorageSubdomains) | **POST** /api/v1/storages/buckets/{bucket_id}/subdomains | Добавление поддоменов для хранилища
 *TimewebCloudApi.S3Api* | [**createStorage**](docs/S3Api.md#createStorage) | **POST** /api/v1/storages/buckets | Создание хранилища
@@ -643,6 +666,11 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.AvailableFrameworks](docs/AvailableFrameworks.md)
  - [TimewebCloudApi.AvailableFrameworksBackendFrameworksInner](docs/AvailableFrameworksBackendFrameworksInner.md)
  - [TimewebCloudApi.AvailableFrameworksFrontendFrameworksInner](docs/AvailableFrameworksFrontendFrameworksInner.md)
+ - [TimewebCloudApi.AvailableNetwork](docs/AvailableNetwork.md)
+ - [TimewebCloudApi.AvailableNetworksResponse](docs/AvailableNetworksResponse.md)
+ - [TimewebCloudApi.AvailableStaticRoute](docs/AvailableStaticRoute.md)
+ - [TimewebCloudApi.AvailableStaticRouteSubnetsInner](docs/AvailableStaticRouteSubnetsInner.md)
+ - [TimewebCloudApi.AvailableStaticRoutesResponse](docs/AvailableStaticRoutesResponse.md)
  - [TimewebCloudApi.Backup](docs/Backup.md)
  - [TimewebCloudApi.Balancer](docs/Balancer.md)
  - [TimewebCloudApi.BalancerNetworksInner](docs/BalancerNetworksInner.md)
@@ -672,6 +700,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ClustersResponse](docs/ClustersResponse.md)
  - [TimewebCloudApi.Commit](docs/Commit.md)
  - [TimewebCloudApi.ComponentsSchemasBaseError](docs/ComponentsSchemasBaseError.md)
+ - [TimewebCloudApi.ComponentsSchemasMeta](docs/ComponentsSchemasMeta.md)
  - [TimewebCloudApi.ConfigParameters](docs/ConfigParameters.md)
  - [TimewebCloudApi.ContainerRegistryPresetsInner](docs/ContainerRegistryPresetsInner.md)
  - [TimewebCloudApi.ContainerRegistryRepositoriesInner](docs/ContainerRegistryRepositoriesInner.md)
@@ -772,6 +801,12 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Deploy](docs/Deploy.md)
  - [TimewebCloudApi.DeploySettingsInner](docs/DeploySettingsInner.md)
  - [TimewebCloudApi.DeployStatus](docs/DeployStatus.md)
+ - [TimewebCloudApi.DnatIn](docs/DnatIn.md)
+ - [TimewebCloudApi.DnatInLocal](docs/DnatInLocal.md)
+ - [TimewebCloudApi.DnatInPublic](docs/DnatInPublic.md)
+ - [TimewebCloudApi.DnatRuleOut](docs/DnatRuleOut.md)
+ - [TimewebCloudApi.DnatRuleResponse](docs/DnatRuleResponse.md)
+ - [TimewebCloudApi.DnatRulesResponse](docs/DnatRulesResponse.md)
  - [TimewebCloudApi.DnsRecord](docs/DnsRecord.md)
  - [TimewebCloudApi.DnsRecordData](docs/DnsRecordData.md)
  - [TimewebCloudApi.DnsRecordV2](docs/DnsRecordV2.md)
@@ -950,6 +985,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ModelParamsInfoReasoningEffort](docs/ModelParamsInfoReasoningEffort.md)
  - [TimewebCloudApi.ModelParamsInfoTemperature](docs/ModelParamsInfoTemperature.md)
  - [TimewebCloudApi.MountNetworkDrive](docs/MountNetworkDrive.md)
+ - [TimewebCloudApi.NatIn](docs/NatIn.md)
  - [TimewebCloudApi.Network](docs/Network.md)
  - [TimewebCloudApi.NetworkDrive](docs/NetworkDrive.md)
  - [TimewebCloudApi.NetworkDriveAvailableResource](docs/NetworkDriveAvailableResource.md)
@@ -958,6 +994,11 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.NetworkDrivePresetWrite](docs/NetworkDrivePresetWrite.md)
  - [TimewebCloudApi.NetworkDriveServiceListInner](docs/NetworkDriveServiceListInner.md)
  - [TimewebCloudApi.NetworkDriversResponse](docs/NetworkDriversResponse.md)
+ - [TimewebCloudApi.NetworkEdit](docs/NetworkEdit.md)
+ - [TimewebCloudApi.NetworkIn](docs/NetworkIn.md)
+ - [TimewebCloudApi.NetworkOut](docs/NetworkOut.md)
+ - [TimewebCloudApi.NetworkResponse](docs/NetworkResponse.md)
+ - [TimewebCloudApi.NetworksResponse](docs/NetworksResponse.md)
  - [TimewebCloudApi.NodeGroupIn](docs/NodeGroupIn.md)
  - [TimewebCloudApi.NodeGroupInConfiguration](docs/NodeGroupInConfiguration.md)
  - [TimewebCloudApi.NodeGroupOut](docs/NodeGroupOut.md)
@@ -1000,6 +1041,27 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ResourceType](docs/ResourceType.md)
  - [TimewebCloudApi.Resources](docs/Resources.md)
  - [TimewebCloudApi.ResourcesResponse](docs/ResourcesResponse.md)
+ - [TimewebCloudApi.RouterEdit](docs/RouterEdit.md)
+ - [TimewebCloudApi.RouterIn](docs/RouterIn.md)
+ - [TimewebCloudApi.RouterInIpsInner](docs/RouterInIpsInner.md)
+ - [TimewebCloudApi.RouterInIpsInnerNat](docs/RouterInIpsInnerNat.md)
+ - [TimewebCloudApi.RouterInNetworksInner](docs/RouterInNetworksInner.md)
+ - [TimewebCloudApi.RouterInParentService](docs/RouterInParentService.md)
+ - [TimewebCloudApi.RouterNetworkMeta](docs/RouterNetworkMeta.md)
+ - [TimewebCloudApi.RouterNetworkMetaDhcp](docs/RouterNetworkMetaDhcp.md)
+ - [TimewebCloudApi.RouterOut](docs/RouterOut.md)
+ - [TimewebCloudApi.RouterOutIpsInner](docs/RouterOutIpsInner.md)
+ - [TimewebCloudApi.RouterOutIpsInnerNat](docs/RouterOutIpsInnerNat.md)
+ - [TimewebCloudApi.RouterOutNodesInner](docs/RouterOutNodesInner.md)
+ - [TimewebCloudApi.RouterOutParentServicesInner](docs/RouterOutParentServicesInner.md)
+ - [TimewebCloudApi.RouterPreset](docs/RouterPreset.md)
+ - [TimewebCloudApi.RouterPresetsResponse](docs/RouterPresetsResponse.md)
+ - [TimewebCloudApi.RouterResponse](docs/RouterResponse.md)
+ - [TimewebCloudApi.RouterStatistic](docs/RouterStatistic.md)
+ - [TimewebCloudApi.RouterStatisticListInner](docs/RouterStatisticListInner.md)
+ - [TimewebCloudApi.RouterStatisticMeta](docs/RouterStatisticMeta.md)
+ - [TimewebCloudApi.RouterStatisticsResponse](docs/RouterStatisticsResponse.md)
+ - [TimewebCloudApi.RoutersResponse](docs/RoutersResponse.md)
  - [TimewebCloudApi.Rule](docs/Rule.md)
  - [TimewebCloudApi.S3Subdomain](docs/S3Subdomain.md)
  - [TimewebCloudApi.SchemasBaseError](docs/SchemasBaseError.md)
@@ -1033,6 +1095,10 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.SpamProtectionIsEnabled](docs/SpamProtectionIsEnabled.md)
  - [TimewebCloudApi.SshKey](docs/SshKey.md)
  - [TimewebCloudApi.SshKeyUsedByInner](docs/SshKeyUsedByInner.md)
+ - [TimewebCloudApi.StaticRouteIn](docs/StaticRouteIn.md)
+ - [TimewebCloudApi.StaticRouteOut](docs/StaticRouteOut.md)
+ - [TimewebCloudApi.StaticRouteResponse](docs/StaticRouteResponse.md)
+ - [TimewebCloudApi.StaticRoutesResponse](docs/StaticRoutesResponse.md)
  - [TimewebCloudApi.Status](docs/Status.md)
  - [TimewebCloudApi.StatusCompanyInfo](docs/StatusCompanyInfo.md)
  - [TimewebCloudApi.Subdomain](docs/Subdomain.md)
