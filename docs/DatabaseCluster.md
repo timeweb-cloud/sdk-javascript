@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **location** | **String** | Локация сервера. | 
 **name** | **String** | Название кластера базы данных. | 
 **networks** | [**[DatabaseClusterNetworksInner]**](DatabaseClusterNetworksInner.md) | Список сетей кластера базы данных. | 
+**isPublicIpv6** | **Boolean** | Использование IPv6 адреса. | [optional] 
 **type** | [**DbType**](DbType.md) |  | 
 **hashType** | **String** | Тип хеширования кластера базы данных (mysql5 | mysql | postgres). | 
 **avatarLink** | **String** | Ссылка на аватар для базы данных. | 

@@ -92,6 +92,9 @@ class CreateCluster {
             if (data.hasOwnProperty('network')) {
                 obj['network'] = Network.constructFromObject(data['network']);
             }
+            if (data.hasOwnProperty('is_public_ipv6')) {
+                obj['is_public_ipv6'] = ApiClient.convertToType(data['is_public_ipv6'], 'Boolean');
+            }
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
@@ -221,6 +224,12 @@ CreateCluster.prototype['replication'] = undefined;
  * @member {module:model/Network} network
  */
 CreateCluster.prototype['network'] = undefined;
+
+/**
+ * Использование IPv6 адреса.
+ * @member {Boolean} is_public_ipv6
+ */
+CreateCluster.prototype['is_public_ipv6'] = undefined;
 
 /**
  * Описание кластера базы данных

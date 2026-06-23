@@ -59,6 +59,9 @@ class UpdateCluster {
             if (data.hasOwnProperty('is_enabled_public_network')) {
                 obj['is_enabled_public_network'] = ApiClient.convertToType(data['is_enabled_public_network'], 'Boolean');
             }
+            if (data.hasOwnProperty('is_public_ipv6')) {
+                obj['is_public_ipv6'] = ApiClient.convertToType(data['is_public_ipv6'], 'Boolean');
+            }
         }
         return obj;
     }
@@ -109,6 +112,12 @@ UpdateCluster.prototype['description'] = undefined;
  * @member {Boolean} is_enabled_public_network
  */
 UpdateCluster.prototype['is_enabled_public_network'] = undefined;
+
+/**
+ * Использование IPv6 адреса.
+ * @member {Boolean} is_public_ipv6
+ */
+UpdateCluster.prototype['is_public_ipv6'] = undefined;
 
 
 

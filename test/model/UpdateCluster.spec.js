@@ -78,6 +78,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isPublicIpv6 (base name: "is_public_ipv6")', function() {
+      // uncomment below and update the code to test the property isPublicIpv6
+      //var instance = new TimewebCloudApi.UpdateCluster();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

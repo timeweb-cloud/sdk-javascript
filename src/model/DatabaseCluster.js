@@ -93,6 +93,9 @@ class DatabaseCluster {
             if (data.hasOwnProperty('networks')) {
                 obj['networks'] = ApiClient.convertToType(data['networks'], [DatabaseClusterNetworksInner]);
             }
+            if (data.hasOwnProperty('is_public_ipv6')) {
+                obj['is_public_ipv6'] = ApiClient.convertToType(data['is_public_ipv6'], 'Boolean');
+            }
             if (data.hasOwnProperty('type')) {
                 obj['type'] = DbType.constructFromObject(data['type']);
             }
@@ -216,6 +219,12 @@ DatabaseCluster.prototype['name'] = undefined;
  * @member {Array.<module:model/DatabaseClusterNetworksInner>} networks
  */
 DatabaseCluster.prototype['networks'] = undefined;
+
+/**
+ * Использование IPv6 адреса.
+ * @member {Boolean} is_public_ipv6
+ */
+DatabaseCluster.prototype['is_public_ipv6'] = undefined;
 
 /**
  * @member {module:model/DbType} type

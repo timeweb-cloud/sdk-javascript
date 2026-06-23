@@ -15,6 +15,8 @@
 
 * `postgres17` (value: `"postgres17"`)
 
+* `postgres18` (value: `"postgres18"`)
+
 * `valkey7` (value: `"valkey7"`)
 
 * `valkey8_1` (value: `"valkey8_1"`)
@@ -24,8 +26,6 @@
 * `mongodb7` (value: `"mongodb7"`)
 
 * `mongodb8_0` (value: `"mongodb8_0"`)
-
-* `opensearch` (value: `"opensearch"`)
 
 * `opensearch2_19` (value: `"opensearch2_19"`)
 

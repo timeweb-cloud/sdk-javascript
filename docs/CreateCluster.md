@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **configParameters** | [**ConfigParameters**](ConfigParameters.md) |  | [optional] 
 **replication** | [**DbReplication**](DbReplication.md) |  | [optional] 
 **network** | [**Network**](Network.md) |  | [optional] 
+**isPublicIpv6** | **Boolean** | Использование IPv6 адреса. | [optional] 
 **description** | **String** | Описание кластера базы данных | [optional] 
 **availabilityZone** | [**AvailabilityZone**](AvailabilityZone.md) |  | [optional] 
 **autoBackups** | [**CreateDbAutoBackups**](CreateDbAutoBackups.md) |  | [optional] 

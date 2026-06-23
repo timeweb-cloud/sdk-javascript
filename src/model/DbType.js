@@ -62,6 +62,13 @@ export default class DbType {
 
     
         /**
+         * value: "postgres18"
+         * @const
+         */
+        "postgres18" = "postgres18";
+
+    
+        /**
          * value: "valkey7"
          * @const
          */
@@ -94,13 +101,6 @@ export default class DbType {
          * @const
          */
         "mongodb8_0" = "mongodb8_0";
-
-    
-        /**
-         * value: "opensearch"
-         * @const
-         */
-        "opensearch" = "opensearch";
 
     
         /**
