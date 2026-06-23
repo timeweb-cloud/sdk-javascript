@@ -62,17 +62,24 @@ export default class DbType {
 
     
         /**
-         * value: "redis7"
+         * value: "valkey7"
          * @const
          */
-        "redis7" = "redis7";
+        "valkey7" = "valkey7";
 
     
         /**
-         * value: "redis8_1"
+         * value: "valkey8_1"
          * @const
          */
-        "redis8_1" = "redis8_1";
+        "valkey8_1" = "valkey8_1";
+
+    
+        /**
+         * value: "valkey9_1"
+         * @const
+         */
+        "valkey9_1" = "valkey9_1";
 
     
         /**
