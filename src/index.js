@@ -116,13 +116,11 @@ import CreateBalancerRule200Response from './model/CreateBalancerRule200Response
 import CreateCluster from './model/CreateCluster';
 import CreateClusterAdmin from './model/CreateClusterAdmin';
 import CreateClusterInstance from './model/CreateClusterInstance';
-import CreateDatabase201Response from './model/CreateDatabase201Response';
 import CreateDatabaseBackup201Response from './model/CreateDatabaseBackup201Response';
 import CreateDatabaseBackup409Response from './model/CreateDatabaseBackup409Response';
 import CreateDatabaseCluster201Response from './model/CreateDatabaseCluster201Response';
 import CreateDatabaseInstance201Response from './model/CreateDatabaseInstance201Response';
 import CreateDatabaseUser201Response from './model/CreateDatabaseUser201Response';
-import CreateDb from './model/CreateDb';
 import CreateDbAutoBackups from './model/CreateDbAutoBackups';
 import CreateDedicatedServer from './model/CreateDedicatedServer';
 import CreateDedicatedServer201Response from './model/CreateDedicatedServer201Response';
@@ -190,7 +188,6 @@ import DeleteBalancer200Response from './model/DeleteBalancer200Response';
 import DeleteCluster200Response from './model/DeleteCluster200Response';
 import DeleteCountriesFromAllowedList200Response from './model/DeleteCountriesFromAllowedList200Response';
 import DeleteCountriesFromAllowedListRequest from './model/DeleteCountriesFromAllowedListRequest';
-import DeleteDatabase200Response from './model/DeleteDatabase200Response';
 import DeleteDatabaseCluster200Response from './model/DeleteDatabaseCluster200Response';
 import DeleteIPsFromAllowedList200Response from './model/DeleteIPsFromAllowedList200Response';
 import DeleteIPsFromAllowedListRequest from './model/DeleteIPsFromAllowedListRequest';
@@ -277,7 +274,6 @@ import GetDatabaseClusterTypes200Response from './model/GetDatabaseClusterTypes2
 import GetDatabaseClusters200Response from './model/GetDatabaseClusters200Response';
 import GetDatabaseInstances200Response from './model/GetDatabaseInstances200Response';
 import GetDatabaseUsers200Response from './model/GetDatabaseUsers200Response';
-import GetDatabases200Response from './model/GetDatabases200Response';
 import GetDatabasesPresets200Response from './model/GetDatabasesPresets200Response';
 import GetDedicatedServerPresetAdditionalServices200Response from './model/GetDedicatedServerPresetAdditionalServices200Response';
 import GetDedicatedServers200Response from './model/GetDedicatedServers200Response';
@@ -518,7 +514,6 @@ import UpdateAppSettings200Response from './model/UpdateAppSettings200Response';
 import UpdateAuthRestrictionsByCountriesRequest from './model/UpdateAuthRestrictionsByCountriesRequest';
 import UpdateBalancer from './model/UpdateBalancer';
 import UpdateCluster from './model/UpdateCluster';
-import UpdateDb from './model/UpdateDb';
 import UpdateDedicatedServerRequest from './model/UpdateDedicatedServerRequest';
 import UpdateDomain from './model/UpdateDomain';
 import UpdateDomainAutoProlongation200Response from './model/UpdateDomainAutoProlongation200Response';
@@ -1250,12 +1245,6 @@ export {
     CreateClusterInstance,
 
     /**
-     * The CreateDatabase201Response model constructor.
-     * @property {module:model/CreateDatabase201Response}
-     */
-    CreateDatabase201Response,
-
-    /**
      * The CreateDatabaseBackup201Response model constructor.
      * @property {module:model/CreateDatabaseBackup201Response}
      */
@@ -1284,12 +1273,6 @@ export {
      * @property {module:model/CreateDatabaseUser201Response}
      */
     CreateDatabaseUser201Response,
-
-    /**
-     * The CreateDb model constructor.
-     * @property {module:model/CreateDb}
-     */
-    CreateDb,
 
     /**
      * The CreateDbAutoBackups model constructor.
@@ -1692,12 +1675,6 @@ export {
      * @property {module:model/DeleteCountriesFromAllowedListRequest}
      */
     DeleteCountriesFromAllowedListRequest,
-
-    /**
-     * The DeleteDatabase200Response model constructor.
-     * @property {module:model/DeleteDatabase200Response}
-     */
-    DeleteDatabase200Response,
 
     /**
      * The DeleteDatabaseCluster200Response model constructor.
@@ -2214,12 +2191,6 @@ export {
      * @property {module:model/GetDatabaseUsers200Response}
      */
     GetDatabaseUsers200Response,
-
-    /**
-     * The GetDatabases200Response model constructor.
-     * @property {module:model/GetDatabases200Response}
-     */
-    GetDatabases200Response,
 
     /**
      * The GetDatabasesPresets200Response model constructor.
@@ -3660,12 +3631,6 @@ export {
      * @property {module:model/UpdateCluster}
      */
     UpdateCluster,
-
-    /**
-     * The UpdateDb model constructor.
-     * @property {module:model/UpdateDb}
-     */
-    UpdateDb,
 
     /**
      * The UpdateDedicatedServerRequest model constructor.

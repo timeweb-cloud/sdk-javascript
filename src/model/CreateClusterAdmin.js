@@ -150,10 +150,40 @@ CreateClusterAdmin['PrivilegesEnum'] = {
     "ALTER": "ALTER",
 
     /**
+     * value: "ALTER_TABLE"
+     * @const
+     */
+    "ALTER_TABLE": "ALTER_TABLE",
+
+    /**
+     * value: "ALTER_VIEW"
+     * @const
+     */
+    "ALTER_VIEW": "ALTER_VIEW",
+
+    /**
      * value: "CREATE_VIEW"
      * @const
      */
     "CREATE_VIEW": "CREATE_VIEW",
+
+    /**
+     * value: "CREATE_DICTIONARY"
+     * @const
+     */
+    "CREATE_DICTIONARY": "CREATE_DICTIONARY",
+
+    /**
+     * value: "CREATE_FUNCTION"
+     * @const
+     */
+    "CREATE_FUNCTION": "CREATE_FUNCTION",
+
+    /**
+     * value: "CREATE_TABLE"
+     * @const
+     */
+    "CREATE_TABLE": "CREATE_TABLE",
 
     /**
      * value: "CREATE"
@@ -172,6 +202,24 @@ CreateClusterAdmin['PrivilegesEnum'] = {
      * @const
      */
     "DROP": "DROP",
+
+    /**
+     * value: "DROP_TABLE"
+     * @const
+     */
+    "DROP_TABLE": "DROP_TABLE",
+
+    /**
+     * value: "DROP_VIEW"
+     * @const
+     */
+    "DROP_VIEW": "DROP_VIEW",
+
+    /**
+     * value: "DROP_DICTIONARY"
+     * @const
+     */
+    "DROP_DICTIONARY": "DROP_DICTIONARY",
 
     /**
      * value: "EVENT"
@@ -210,6 +258,12 @@ CreateClusterAdmin['PrivilegesEnum'] = {
     "SELECT": "SELECT",
 
     /**
+     * value: "SHOW"
+     * @const
+     */
+    "SHOW": "SHOW",
+
+    /**
      * value: "SHOW_VIEW"
      * @const
      */
@@ -220,6 +274,12 @@ CreateClusterAdmin['PrivilegesEnum'] = {
      * @const
      */
     "TRUNCATE": "TRUNCATE",
+
+    /**
+     * value: "TRIGGER"
+     * @const
+     */
+    "TRIGGER": "TRIGGER",
 
     /**
      * value: "UPDATE"
@@ -240,22 +300,16 @@ CreateClusterAdmin['PrivilegesEnum'] = {
     "WRITE": "WRITE",
 
     /**
-     * value: "CONNECTION"
+     * value: "READ_WRITE"
      * @const
      */
-    "CONNECTION": "CONNECTION",
+    "READ_WRITE": "READ_WRITE",
 
     /**
-     * value: "FAST"
+     * value: "DB_ADMIN"
      * @const
      */
-    "FAST": "FAST",
-
-    /**
-     * value: "readWrite"
-     * @const
-     */
-    "readWrite": "readWrite",
+    "DB_ADMIN": "DB_ADMIN",
 
     /**
      * value: "ALTER_ROUTINE"
@@ -270,10 +324,226 @@ CreateClusterAdmin['PrivilegesEnum'] = {
     "CREATE_ROUTINE": "CREATE_ROUTINE",
 
     /**
+     * value: "CREATE_TEMPORARY_TABLES"
+     * @const
+     */
+    "CREATE_TEMPORARY_TABLES": "CREATE_TEMPORARY_TABLES",
+
+    /**
+     * value: "TEMPORARY"
+     * @const
+     */
+    "TEMPORARY": "TEMPORARY",
+
+    /**
+     * value: "CONFIGURE"
+     * @const
+     */
+    "CONFIGURE": "CONFIGURE",
+
+    /**
+     * value: "READ_DASHBOARD"
+     * @const
+     */
+    "READ_DASHBOARD": "READ_DASHBOARD",
+
+    /**
+     * value: "WRITE_DASHBOARD"
+     * @const
+     */
+    "WRITE_DASHBOARD": "WRITE_DASHBOARD",
+
+    /**
+     * value: "DESCRIBE"
+     * @const
+     */
+    "DESCRIBE": "DESCRIBE",
+
+    /**
+     * value: "OPTIMIZE"
+     * @const
+     */
+    "OPTIMIZE": "OPTIMIZE",
+
+    /**
+     * value: "EXECUTE"
+     * @const
+     */
+    "EXECUTE": "EXECUTE",
+
+    /**
+     * value: "CREATEDB"
+     * @const
+     */
+    "CREATEDB": "CREATEDB",
+
+    /**
+     * value: "CREATEROLE"
+     * @const
+     */
+    "CREATEROLE": "CREATEROLE",
+
+    /**
+     * value: "CREATE_DB"
+     * @const
+     */
+    "CREATE_DB": "CREATE_DB",
+
+    /**
+     * value: "CREATE_USER"
+     * @const
+     */
+    "CREATE_USER": "CREATE_USER",
+
+    /**
+     * value: "PROCESS"
+     * @const
+     */
+    "PROCESS": "PROCESS",
+
+    /**
+     * value: "SLOW_LOG"
+     * @const
+     */
+    "SLOW_LOG": "SLOW_LOG",
+
+    /**
+     * value: "CREATE_TEMPORARY_TABLE"
+     * @const
+     */
+    "CREATE_TEMPORARY_TABLE": "CREATE_TEMPORARY_TABLE",
+
+    /**
+     * value: "ADMIN"
+     * @const
+     */
+    "ADMIN": "ADMIN",
+
+    /**
+     * value: "BITMAP"
+     * @const
+     */
+    "BITMAP": "BITMAP",
+
+    /**
+     * value: "BLOCKING"
+     * @const
+     */
+    "BLOCKING": "BLOCKING",
+
+    /**
+     * value: "CONNECTION"
+     * @const
+     */
+    "CONNECTION": "CONNECTION",
+
+    /**
+     * value: "DANGEROUS"
+     * @const
+     */
+    "DANGEROUS": "DANGEROUS",
+
+    /**
+     * value: "GEO"
+     * @const
+     */
+    "GEO": "GEO",
+
+    /**
+     * value: "HASH"
+     * @const
+     */
+    "HASH": "HASH",
+
+    /**
+     * value: "HYPERLOGLOG"
+     * @const
+     */
+    "HYPERLOGLOG": "HYPERLOGLOG",
+
+    /**
+     * value: "FAST"
+     * @const
+     */
+    "FAST": "FAST",
+
+    /**
+     * value: "KEYSPACE"
+     * @const
+     */
+    "KEYSPACE": "KEYSPACE",
+
+    /**
+     * value: "LIST"
+     * @const
+     */
+    "LIST": "LIST",
+
+    /**
+     * value: "PUBSUB"
+     * @const
+     */
+    "PUBSUB": "PUBSUB",
+
+    /**
+     * value: "SCRIPTING"
+     * @const
+     */
+    "SCRIPTING": "SCRIPTING",
+
+    /**
+     * value: "SET"
+     * @const
+     */
+    "SET": "SET",
+
+    /**
+     * value: "SORTEDSET"
+     * @const
+     */
+    "SORTEDSET": "SORTEDSET",
+
+    /**
+     * value: "SLOW"
+     * @const
+     */
+    "SLOW": "SLOW",
+
+    /**
+     * value: "STREAM"
+     * @const
+     */
+    "STREAM": "STREAM",
+
+    /**
+     * value: "STRING"
+     * @const
+     */
+    "STRING": "STRING",
+
+    /**
      * value: "TRANSACTION"
      * @const
      */
-    "TRANSACTION": "TRANSACTION"
+    "TRANSACTION": "TRANSACTION",
+
+    /**
+     * value: "dictGet"
+     * @const
+     */
+    "dictGet": "dictGet",
+
+    /**
+     * value: "dbAdmin"
+     * @const
+     */
+    "dbAdmin": "dbAdmin",
+
+    /**
+     * value: "readWrite"
+     * @const
+     */
+    "readWrite": "readWrite"
 };
 
 

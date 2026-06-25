@@ -16,15 +16,12 @@ import ApiClient from "../ApiClient";
 import AutoBackup from '../model/AutoBackup';
 import CreateAdmin from '../model/CreateAdmin';
 import CreateCluster from '../model/CreateCluster';
-import CreateDatabase201Response from '../model/CreateDatabase201Response';
 import CreateDatabaseBackup201Response from '../model/CreateDatabaseBackup201Response';
 import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
 import CreateDatabaseCluster201Response from '../model/CreateDatabaseCluster201Response';
 import CreateDatabaseInstance201Response from '../model/CreateDatabaseInstance201Response';
 import CreateDatabaseUser201Response from '../model/CreateDatabaseUser201Response';
-import CreateDb from '../model/CreateDb';
 import CreateInstance from '../model/CreateInstance';
-import DeleteDatabase200Response from '../model/DeleteDatabase200Response';
 import DeleteDatabaseCluster200Response from '../model/DeleteDatabaseCluster200Response';
 import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
 import GetDatabaseAutoBackupsSettings200Response from '../model/GetDatabaseAutoBackupsSettings200Response';
@@ -33,7 +30,6 @@ import GetDatabaseClusterTypes200Response from '../model/GetDatabaseClusterTypes
 import GetDatabaseClusters200Response from '../model/GetDatabaseClusters200Response';
 import GetDatabaseInstances200Response from '../model/GetDatabaseInstances200Response';
 import GetDatabaseUsers200Response from '../model/GetDatabaseUsers200Response';
-import GetDatabases200Response from '../model/GetDatabases200Response';
 import GetDatabasesPresets200Response from '../model/GetDatabasesPresets200Response';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
@@ -42,7 +38,6 @@ import GetFinances500Response from '../model/GetFinances500Response';
 import GetImage404Response from '../model/GetImage404Response';
 import UpdateAdmin from '../model/UpdateAdmin';
 import UpdateCluster from '../model/UpdateCluster';
-import UpdateDb from '../model/UpdateDb';
 import UpdateInstance from '../model/UpdateInstance';
 
 /**
@@ -63,48 +58,6 @@ export default class DatabasesApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
-
-    /**
-     * Callback function to receive the result of the createDatabase operation.
-     * @callback module:api/DatabasesApi~createDatabaseCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateDatabase201Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Создание базы данных
-     * Чтобы создать базу данных на вашем аккаунте, отправьте POST-запрос на `/api/v1/dbs`, задав необходимые атрибуты.  База данных будет создана с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданной базе данных.
-     * @param {module:model/CreateDb} createDb 
-     * @param {module:api/DatabasesApi~createDatabaseCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateDatabase201Response}
-     */
-    createDatabase(createDb, callback) {
-      let postBody = createDb;
-      // verify the required parameter 'createDb' is set
-      if (createDb === undefined || createDb === null) {
-        throw new Error("Missing the required parameter 'createDb' when calling createDatabase");
-      }
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = CreateDatabase201Response;
-      return this.apiClient.callApi(
-        '/api/v1/dbs', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
 
     /**
      * Callback function to receive the result of the createDatabaseBackup operation.
@@ -286,55 +239,6 @@ export default class DatabasesApi {
       let returnType = CreateDatabaseUser201Response;
       return this.apiClient.callApi(
         '/api/v1/databases/{db_cluster_id}/admins', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the deleteDatabase operation.
-     * @callback module:api/DatabasesApi~deleteDatabaseCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/DeleteDatabase200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Удаление базы данных
-     * Чтобы удалить базу данных, отправьте запрос DELETE в `api/v1/dbs/{db_id}`. 
-     * @param {Number} dbId ID базы данных
-     * @param {Object} opts Optional parameters
-     * @param {String} [hash] Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм.
-     * @param {String} [code] Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена `is_able_to_delete` установлен в значение `true`
-     * @param {module:api/DatabasesApi~deleteDatabaseCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/DeleteDatabase200Response}
-     */
-    deleteDatabase(dbId, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'dbId' is set
-      if (dbId === undefined || dbId === null) {
-        throw new Error("Missing the required parameter 'dbId' when calling deleteDatabase");
-      }
-
-      let pathParams = {
-        'db_id': dbId
-      };
-      let queryParams = {
-        'hash': opts['hash'],
-        'code': opts['code']
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = DeleteDatabase200Response;
-      return this.apiClient.callApi(
-        '/api/v1/dbs/{db_id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -528,49 +432,6 @@ export default class DatabasesApi {
       let returnType = null;
       return this.apiClient.callApi(
         '/api/v1/databases/{db_cluster_id}/admins/{admin_id}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getDatabase operation.
-     * @callback module:api/DatabasesApi~getDatabaseCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateDatabase201Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение базы данных
-     * Чтобы отобразить информацию об отдельной базе данных, отправьте запрос GET на `api/v1/dbs/{db_id}`. 
-     * @param {Number} dbId ID базы данных
-     * @param {module:api/DatabasesApi~getDatabaseCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateDatabase201Response}
-     */
-    getDatabase(dbId, callback) {
-      let postBody = null;
-      // verify the required parameter 'dbId' is set
-      if (dbId === undefined || dbId === null) {
-        throw new Error("Missing the required parameter 'dbId' when calling getDatabase");
-      }
-
-      let pathParams = {
-        'db_id': dbId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = CreateDatabase201Response;
-      return this.apiClient.callApi(
-        '/api/v1/dbs/{db_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -1062,49 +923,6 @@ export default class DatabasesApi {
     }
 
     /**
-     * Callback function to receive the result of the getDatabases operation.
-     * @callback module:api/DatabasesApi~getDatabasesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/GetDatabases200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение списка всех баз данных
-     * Чтобы получить список всех баз данных на вашем аккаунте, отправьте GET-запрос на `/api/v1/dbs`.   Тело ответа будет представлять собой объект JSON с ключом `dbs`.
-     * @param {Object} opts Optional parameters
-     * @param {Number} [limit = 100)] Обозначает количество записей, которое необходимо вернуть.
-     * @param {Number} [offset = 0)] Указывает на смещение относительно начала списка.
-     * @param {module:api/DatabasesApi~getDatabasesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetDatabases200Response}
-     */
-    getDatabases(opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-
-      let pathParams = {
-      };
-      let queryParams = {
-        'limit': opts['limit'],
-        'offset': opts['offset']
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetDatabases200Response;
-      return this.apiClient.callApi(
-        '/api/v1/dbs', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the getDatabasesPresets operation.
      * @callback module:api/DatabasesApi~getDatabasesPresetsCallback
      * @param {String} error Error message, if any.
@@ -1188,54 +1006,6 @@ export default class DatabasesApi {
       let returnType = null;
       return this.apiClient.callApi(
         '/api/v1/dbs/{db_id}/backups/{backup_id}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the updateDatabase operation.
-     * @callback module:api/DatabasesApi~updateDatabaseCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateDatabase201Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Обновление базы данных
-     * Чтобы обновить только определенные атрибуты базы данных, отправьте запрос PATCH в `api/v1/dbs/{db_id}`. 
-     * @param {Number} dbId ID базы данных
-     * @param {module:model/UpdateDb} updateDb 
-     * @param {module:api/DatabasesApi~updateDatabaseCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateDatabase201Response}
-     */
-    updateDatabase(dbId, updateDb, callback) {
-      let postBody = updateDb;
-      // verify the required parameter 'dbId' is set
-      if (dbId === undefined || dbId === null) {
-        throw new Error("Missing the required parameter 'dbId' when calling updateDatabase");
-      }
-      // verify the required parameter 'updateDb' is set
-      if (updateDb === undefined || updateDb === null) {
-        throw new Error("Missing the required parameter 'updateDb' when calling updateDatabase");
-      }
-
-      let pathParams = {
-        'db_id': dbId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = CreateDatabase201Response;
-      return this.apiClient.callApi(
-        '/api/v1/dbs/{db_id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

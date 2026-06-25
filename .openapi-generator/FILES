@@ -111,13 +111,11 @@ docs/CreateBalancerRule200Response.md
 docs/CreateCluster.md
 docs/CreateClusterAdmin.md
 docs/CreateClusterInstance.md
-docs/CreateDatabase201Response.md
 docs/CreateDatabaseBackup201Response.md
 docs/CreateDatabaseBackup409Response.md
 docs/CreateDatabaseCluster201Response.md
 docs/CreateDatabaseInstance201Response.md
 docs/CreateDatabaseUser201Response.md
-docs/CreateDb.md
 docs/CreateDbAutoBackups.md
 docs/CreateDedicatedServer.md
 docs/CreateDedicatedServer201Response.md
@@ -187,7 +185,6 @@ docs/DeleteBalancer200Response.md
 docs/DeleteCluster200Response.md
 docs/DeleteCountriesFromAllowedList200Response.md
 docs/DeleteCountriesFromAllowedListRequest.md
-docs/DeleteDatabase200Response.md
 docs/DeleteDatabaseCluster200Response.md
 docs/DeleteIPsFromAllowedList200Response.md
 docs/DeleteIPsFromAllowedListRequest.md
@@ -277,7 +274,6 @@ docs/GetDatabaseClusterTypes200Response.md
 docs/GetDatabaseClusters200Response.md
 docs/GetDatabaseInstances200Response.md
 docs/GetDatabaseUsers200Response.md
-docs/GetDatabases200Response.md
 docs/GetDatabasesPresets200Response.md
 docs/GetDedicatedServerPresetAdditionalServices200Response.md
 docs/GetDedicatedServers200Response.md
@@ -530,7 +526,6 @@ docs/UpdateAppSettings200Response.md
 docs/UpdateAuthRestrictionsByCountriesRequest.md
 docs/UpdateBalancer.md
 docs/UpdateCluster.md
-docs/UpdateDb.md
 docs/UpdateDedicatedServerRequest.md
 docs/UpdateDomain.md
 docs/UpdateDomainAutoProlongation200Response.md
@@ -712,13 +707,11 @@ src/model/CreateBalancerRule200Response.js
 src/model/CreateCluster.js
 src/model/CreateClusterAdmin.js
 src/model/CreateClusterInstance.js
-src/model/CreateDatabase201Response.js
 src/model/CreateDatabaseBackup201Response.js
 src/model/CreateDatabaseBackup409Response.js
 src/model/CreateDatabaseCluster201Response.js
 src/model/CreateDatabaseInstance201Response.js
 src/model/CreateDatabaseUser201Response.js
-src/model/CreateDb.js
 src/model/CreateDbAutoBackups.js
 src/model/CreateDedicatedServer.js
 src/model/CreateDedicatedServer201Response.js
@@ -786,7 +779,6 @@ src/model/DeleteBalancer200Response.js
 src/model/DeleteCluster200Response.js
 src/model/DeleteCountriesFromAllowedList200Response.js
 src/model/DeleteCountriesFromAllowedListRequest.js
-src/model/DeleteDatabase200Response.js
 src/model/DeleteDatabaseCluster200Response.js
 src/model/DeleteIPsFromAllowedList200Response.js
 src/model/DeleteIPsFromAllowedListRequest.js
@@ -873,7 +865,6 @@ src/model/GetDatabaseClusterTypes200Response.js
 src/model/GetDatabaseClusters200Response.js
 src/model/GetDatabaseInstances200Response.js
 src/model/GetDatabaseUsers200Response.js
-src/model/GetDatabases200Response.js
 src/model/GetDatabasesPresets200Response.js
 src/model/GetDedicatedServerPresetAdditionalServices200Response.js
 src/model/GetDedicatedServers200Response.js
@@ -1114,7 +1105,6 @@ src/model/UpdateAppSettings200Response.js
 src/model/UpdateAuthRestrictionsByCountriesRequest.js
 src/model/UpdateBalancer.js
 src/model/UpdateCluster.js
-src/model/UpdateDb.js
 src/model/UpdateDedicatedServerRequest.js
 src/model/UpdateDomain.js
 src/model/UpdateDomainAutoProlongation200Response.js
@@ -1290,13 +1280,11 @@ test/model/CreateBalancerRule200Response.spec.js
 test/model/CreateCluster.spec.js
 test/model/CreateClusterAdmin.spec.js
 test/model/CreateClusterInstance.spec.js
-test/model/CreateDatabase201Response.spec.js
 test/model/CreateDatabaseBackup201Response.spec.js
 test/model/CreateDatabaseBackup409Response.spec.js
 test/model/CreateDatabaseCluster201Response.spec.js
 test/model/CreateDatabaseInstance201Response.spec.js
 test/model/CreateDatabaseUser201Response.spec.js
-test/model/CreateDb.spec.js
 test/model/CreateDbAutoBackups.spec.js
 test/model/CreateDedicatedServer.spec.js
 test/model/CreateDedicatedServer201Response.spec.js
@@ -1364,7 +1352,6 @@ test/model/DeleteBalancer200Response.spec.js
 test/model/DeleteCluster200Response.spec.js
 test/model/DeleteCountriesFromAllowedList200Response.spec.js
 test/model/DeleteCountriesFromAllowedListRequest.spec.js
-test/model/DeleteDatabase200Response.spec.js
 test/model/DeleteDatabaseCluster200Response.spec.js
 test/model/DeleteIPsFromAllowedList200Response.spec.js
 test/model/DeleteIPsFromAllowedListRequest.spec.js
@@ -1451,7 +1438,6 @@ test/model/GetDatabaseClusterTypes200Response.spec.js
 test/model/GetDatabaseClusters200Response.spec.js
 test/model/GetDatabaseInstances200Response.spec.js
 test/model/GetDatabaseUsers200Response.spec.js
-test/model/GetDatabases200Response.spec.js
 test/model/GetDatabasesPresets200Response.spec.js
 test/model/GetDedicatedServerPresetAdditionalServices200Response.spec.js
 test/model/GetDedicatedServers200Response.spec.js
@@ -1692,7 +1678,6 @@ test/model/UpdateAppSettings200Response.spec.js
 test/model/UpdateAuthRestrictionsByCountriesRequest.spec.js
 test/model/UpdateBalancer.spec.js
 test/model/UpdateCluster.spec.js
-test/model/UpdateDb.spec.js
 test/model/UpdateDedicatedServerRequest.spec.js
 test/model/UpdateDomain.spec.js
 test/model/UpdateDomainAutoProlongation200Response.spec.js

@@ -335,17 +335,14 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.ContainerRegistryApi* | [**getRegistryPresets**](docs/ContainerRegistryApi.md#getRegistryPresets) | **GET** /api/v1/container-registry/presets | Получение списка тарифов
 *TimewebCloudApi.ContainerRegistryApi* | [**getRegistryRepositories**](docs/ContainerRegistryApi.md#getRegistryRepositories) | **GET** /api/v1/container-registry/{registry_id}/repositories | Получение списка репозиториев
 *TimewebCloudApi.ContainerRegistryApi* | [**updateRegistry**](docs/ContainerRegistryApi.md#updateRegistry) | **PATCH** /api/v1/container-registry/{registry_id} | Обновление информации о реестре
-*TimewebCloudApi.DatabasesApi* | [**createDatabase**](docs/DatabasesApi.md#createDatabase) | **POST** /api/v1/dbs | Создание базы данных
 *TimewebCloudApi.DatabasesApi* | [**createDatabaseBackup**](docs/DatabasesApi.md#createDatabaseBackup) | **POST** /api/v1/dbs/{db_id}/backups | Создание бэкапа базы данных
 *TimewebCloudApi.DatabasesApi* | [**createDatabaseCluster**](docs/DatabasesApi.md#createDatabaseCluster) | **POST** /api/v1/databases | Создание кластера базы данных
 *TimewebCloudApi.DatabasesApi* | [**createDatabaseInstance**](docs/DatabasesApi.md#createDatabaseInstance) | **POST** /api/v1/databases/{db_cluster_id}/instances | Создание инстанса базы данных
 *TimewebCloudApi.DatabasesApi* | [**createDatabaseUser**](docs/DatabasesApi.md#createDatabaseUser) | **POST** /api/v1/databases/{db_cluster_id}/admins | Создание пользователя базы данных
-*TimewebCloudApi.DatabasesApi* | [**deleteDatabase**](docs/DatabasesApi.md#deleteDatabase) | **DELETE** /api/v1/dbs/{db_id} | Удаление базы данных
 *TimewebCloudApi.DatabasesApi* | [**deleteDatabaseBackup**](docs/DatabasesApi.md#deleteDatabaseBackup) | **DELETE** /api/v1/dbs/{db_id}/backups/{backup_id} | Удаление бэкапа базы данных
 *TimewebCloudApi.DatabasesApi* | [**deleteDatabaseCluster**](docs/DatabasesApi.md#deleteDatabaseCluster) | **DELETE** /api/v1/databases/{db_cluster_id} | Удаление кластера базы данных
 *TimewebCloudApi.DatabasesApi* | [**deleteDatabaseInstance**](docs/DatabasesApi.md#deleteDatabaseInstance) | **DELETE** /api/v1/databases/{db_cluster_id}/instances/{instance_id} | Удаление инстанса базы данных
 *TimewebCloudApi.DatabasesApi* | [**deleteDatabaseUser**](docs/DatabasesApi.md#deleteDatabaseUser) | **DELETE** /api/v1/databases/{db_cluster_id}/admins/{admin_id} | Удаление пользователя базы данных
-*TimewebCloudApi.DatabasesApi* | [**getDatabase**](docs/DatabasesApi.md#getDatabase) | **GET** /api/v1/dbs/{db_id} | Получение базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseAutoBackupsSettings**](docs/DatabasesApi.md#getDatabaseAutoBackupsSettings) | **GET** /api/v1/dbs/{db_id}/auto-backups | Получение настроек автобэкапов базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseBackup**](docs/DatabasesApi.md#getDatabaseBackup) | **GET** /api/v1/dbs/{db_id}/backups/{backup_id} | Получение бэкапа базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseBackups**](docs/DatabasesApi.md#getDatabaseBackups) | **GET** /api/v1/dbs/{db_id}/backups | Список бэкапов базы данных
@@ -357,10 +354,8 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseParameters**](docs/DatabasesApi.md#getDatabaseParameters) | **GET** /api/v1/dbs/parameters | Получение списка параметров баз данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseUser**](docs/DatabasesApi.md#getDatabaseUser) | **GET** /api/v1/databases/{db_cluster_id}/admins/{admin_id} | Получение пользователя базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseUsers**](docs/DatabasesApi.md#getDatabaseUsers) | **GET** /api/v1/databases/{db_cluster_id}/admins | Получение списка пользователей базы данных
-*TimewebCloudApi.DatabasesApi* | [**getDatabases**](docs/DatabasesApi.md#getDatabases) | **GET** /api/v1/dbs | Получение списка всех баз данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabasesPresets**](docs/DatabasesApi.md#getDatabasesPresets) | **GET** /api/v2/presets/dbs | Получение списка тарифов для баз данных
 *TimewebCloudApi.DatabasesApi* | [**restoreDatabaseFromBackup**](docs/DatabasesApi.md#restoreDatabaseFromBackup) | **PUT** /api/v1/dbs/{db_id}/backups/{backup_id} | Восстановление базы данных из бэкапа
-*TimewebCloudApi.DatabasesApi* | [**updateDatabase**](docs/DatabasesApi.md#updateDatabase) | **PATCH** /api/v1/dbs/{db_id} | Обновление базы данных
 *TimewebCloudApi.DatabasesApi* | [**updateDatabaseAutoBackupsSettings**](docs/DatabasesApi.md#updateDatabaseAutoBackupsSettings) | **PATCH** /api/v1/dbs/{db_id}/auto-backups | Изменение настроек автобэкапов базы данных
 *TimewebCloudApi.DatabasesApi* | [**updateDatabaseCluster**](docs/DatabasesApi.md#updateDatabaseCluster) | **PATCH** /api/v1/databases/{db_cluster_id} | Изменение кластера базы данных
 *TimewebCloudApi.DatabasesApi* | [**updateDatabaseInstance**](docs/DatabasesApi.md#updateDatabaseInstance) | **PATCH** /api/v1/databases/{db_cluster_id}/instances/{instance_id} | Изменение инстанса базы данных
@@ -716,13 +711,11 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateCluster](docs/CreateCluster.md)
  - [TimewebCloudApi.CreateClusterAdmin](docs/CreateClusterAdmin.md)
  - [TimewebCloudApi.CreateClusterInstance](docs/CreateClusterInstance.md)
- - [TimewebCloudApi.CreateDatabase201Response](docs/CreateDatabase201Response.md)
  - [TimewebCloudApi.CreateDatabaseBackup201Response](docs/CreateDatabaseBackup201Response.md)
  - [TimewebCloudApi.CreateDatabaseBackup409Response](docs/CreateDatabaseBackup409Response.md)
  - [TimewebCloudApi.CreateDatabaseCluster201Response](docs/CreateDatabaseCluster201Response.md)
  - [TimewebCloudApi.CreateDatabaseInstance201Response](docs/CreateDatabaseInstance201Response.md)
  - [TimewebCloudApi.CreateDatabaseUser201Response](docs/CreateDatabaseUser201Response.md)
- - [TimewebCloudApi.CreateDb](docs/CreateDb.md)
  - [TimewebCloudApi.CreateDbAutoBackups](docs/CreateDbAutoBackups.md)
  - [TimewebCloudApi.CreateDedicatedServer](docs/CreateDedicatedServer.md)
  - [TimewebCloudApi.CreateDedicatedServer201Response](docs/CreateDedicatedServer201Response.md)
@@ -790,7 +783,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DeleteCluster200Response](docs/DeleteCluster200Response.md)
  - [TimewebCloudApi.DeleteCountriesFromAllowedList200Response](docs/DeleteCountriesFromAllowedList200Response.md)
  - [TimewebCloudApi.DeleteCountriesFromAllowedListRequest](docs/DeleteCountriesFromAllowedListRequest.md)
- - [TimewebCloudApi.DeleteDatabase200Response](docs/DeleteDatabase200Response.md)
  - [TimewebCloudApi.DeleteDatabaseCluster200Response](docs/DeleteDatabaseCluster200Response.md)
  - [TimewebCloudApi.DeleteIPsFromAllowedList200Response](docs/DeleteIPsFromAllowedList200Response.md)
  - [TimewebCloudApi.DeleteIPsFromAllowedListRequest](docs/DeleteIPsFromAllowedListRequest.md)
@@ -877,7 +869,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetDatabaseClusters200Response](docs/GetDatabaseClusters200Response.md)
  - [TimewebCloudApi.GetDatabaseInstances200Response](docs/GetDatabaseInstances200Response.md)
  - [TimewebCloudApi.GetDatabaseUsers200Response](docs/GetDatabaseUsers200Response.md)
- - [TimewebCloudApi.GetDatabases200Response](docs/GetDatabases200Response.md)
  - [TimewebCloudApi.GetDatabasesPresets200Response](docs/GetDatabasesPresets200Response.md)
  - [TimewebCloudApi.GetDedicatedServerPresetAdditionalServices200Response](docs/GetDedicatedServerPresetAdditionalServices200Response.md)
  - [TimewebCloudApi.GetDedicatedServers200Response](docs/GetDedicatedServers200Response.md)
@@ -1118,7 +1109,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateAuthRestrictionsByCountriesRequest](docs/UpdateAuthRestrictionsByCountriesRequest.md)
  - [TimewebCloudApi.UpdateBalancer](docs/UpdateBalancer.md)
  - [TimewebCloudApi.UpdateCluster](docs/UpdateCluster.md)
- - [TimewebCloudApi.UpdateDb](docs/UpdateDb.md)
  - [TimewebCloudApi.UpdateDedicatedServerRequest](docs/UpdateDedicatedServerRequest.md)
  - [TimewebCloudApi.UpdateDomain](docs/UpdateDomain.md)
  - [TimewebCloudApi.UpdateDomainAutoProlongation200Response](docs/UpdateDomainAutoProlongation200Response.md)

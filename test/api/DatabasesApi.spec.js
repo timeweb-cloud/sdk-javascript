@@ -48,16 +48,6 @@
   }
 
   describe('DatabasesApi', function() {
-    describe('createDatabase', function() {
-      it('should call createDatabase successfully', function(done) {
-        //uncomment below and update the code to test createDatabase
-        //instance.createDatabase(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('createDatabaseBackup', function() {
       it('should call createDatabaseBackup successfully', function(done) {
         //uncomment below and update the code to test createDatabaseBackup
@@ -98,16 +88,6 @@
         done();
       });
     });
-    describe('deleteDatabase', function() {
-      it('should call deleteDatabase successfully', function(done) {
-        //uncomment below and update the code to test deleteDatabase
-        //instance.deleteDatabase(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('deleteDatabaseBackup', function() {
       it('should call deleteDatabaseBackup successfully', function(done) {
         //uncomment below and update the code to test deleteDatabaseBackup
@@ -142,16 +122,6 @@
       it('should call deleteDatabaseUser successfully', function(done) {
         //uncomment below and update the code to test deleteDatabaseUser
         //instance.deleteDatabaseUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDatabase', function() {
-      it('should call getDatabase successfully', function(done) {
-        //uncomment below and update the code to test getDatabase
-        //instance.getDatabase(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -268,16 +238,6 @@
         done();
       });
     });
-    describe('getDatabases', function() {
-      it('should call getDatabases successfully', function(done) {
-        //uncomment below and update the code to test getDatabases
-        //instance.getDatabases(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getDatabasesPresets', function() {
       it('should call getDatabasesPresets successfully', function(done) {
         //uncomment below and update the code to test getDatabasesPresets
@@ -292,16 +252,6 @@
       it('should call restoreDatabaseFromBackup successfully', function(done) {
         //uncomment below and update the code to test restoreDatabaseFromBackup
         //instance.restoreDatabaseFromBackup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDatabase', function() {
-      it('should call updateDatabase successfully', function(done) {
-        //uncomment below and update the code to test updateDatabase
-        //instance.updateDatabase(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
