@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.ConfigParameters();
+    instance = new TimewebCloudApi.Mysql();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,22 +47,304 @@
       object[property] = value;
   }
 
-  describe('ConfigParameters', function() {
-    it('should create an instance of ConfigParameters', function() {
-      // uncomment below and update the code to test ConfigParameters
-      //var instance = new TimewebCloudApi.ConfigParameters();
-      //expect(instance).to.be.a(TimewebCloudApi.ConfigParameters);
+  describe('Mysql', function() {
+    it('should create an instance of Mysql', function() {
+      // uncomment below and update the code to test Mysql
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be.a(TimewebCloudApi.Mysql);
     });
 
-    it('should have the property mysql (base name: "mysql")', function() {
-      // uncomment below and update the code to test the property mysql
-      //var instance = new TimewebCloudApi.ConfigParameters();
+    it('should have the property joinBufferSize (base name: "join_buffer_size")', function() {
+      // uncomment below and update the code to test the property joinBufferSize
+      //var instance = new TimewebCloudApi.Mysql();
       //expect(instance).to.be();
     });
 
-    it('should have the property postgres (base name: "postgres")', function() {
-      // uncomment below and update the code to test the property postgres
-      //var instance = new TimewebCloudApi.ConfigParameters();
+    it('should have the property maxConnections (base name: "max_connections")', function() {
+      // uncomment below and update the code to test the property maxConnections
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property sortBufferSize (base name: "sort_buffer_size")', function() {
+      // uncomment below and update the code to test the property sortBufferSize
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property threadCacheSize (base name: "thread_cache_size")', function() {
+      // uncomment below and update the code to test the property threadCacheSize
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property innodbBufferPoolSize (base name: "innodb_buffer_pool_size")', function() {
+      // uncomment below and update the code to test the property innodbBufferPoolSize
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property autoIncrementIncrement (base name: "auto_increment_increment")', function() {
+      // uncomment below and update the code to test the property autoIncrementIncrement
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property autoIncrementOffset (base name: "auto_increment_offset")', function() {
+      // uncomment below and update the code to test the property autoIncrementOffset
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property innodbIoCapacity (base name: "innodb_io_capacity")', function() {
+      // uncomment below and update the code to test the property innodbIoCapacity
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property innodbPurgeThreads (base name: "innodb_purge_threads")', function() {
+      // uncomment below and update the code to test the property innodbPurgeThreads
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property innodbReadIoThreads (base name: "innodb_read_io_threads")', function() {
+      // uncomment below and update the code to test the property innodbReadIoThreads
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property innodbThreadConcurrency (base name: "innodb_thread_concurrency")', function() {
+      // uncomment below and update the code to test the property innodbThreadConcurrency
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property innodbWriteIoThreads (base name: "innodb_write_io_threads")', function() {
+      // uncomment below and update the code to test the property innodbWriteIoThreads
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property innodbLogFileSize (base name: "innodb_log_file_size")', function() {
+      // uncomment below and update the code to test the property innodbLogFileSize
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maxAllowedPacket (base name: "max_allowed_packet")', function() {
+      // uncomment below and update the code to test the property maxAllowedPacket
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maxHeapTableSize (base name: "max_heap_table_size")', function() {
+      // uncomment below and update the code to test the property maxHeapTableSize
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property sqlMode (base name: "sql_mode")', function() {
+      // uncomment below and update the code to test the property sqlMode
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property queryCacheType (base name: "query_cache_type")', function() {
+      // uncomment below and update the code to test the property queryCacheType
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property queryCacheSize (base name: "query_cache_size")', function() {
+      // uncomment below and update the code to test the property queryCacheSize
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property innodbFlushLogAtTrxCommit (base name: "innodb_flush_log_at_trx_commit")', function() {
+      // uncomment below and update the code to test the property innodbFlushLogAtTrxCommit
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property transactionIsolation (base name: "transaction_isolation")', function() {
+      // uncomment below and update the code to test the property transactionIsolation
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property longQueryTime (base name: "long_query_time")', function() {
+      // uncomment below and update the code to test the property longQueryTime
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tmpTableSize (base name: "tmp_table_size")', function() {
+      // uncomment below and update the code to test the property tmpTableSize
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tableOpenCache (base name: "table_open_cache")', function() {
+      // uncomment below and update the code to test the property tableOpenCache
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tableOpenCacheInstances (base name: "table_open_cache_instances")', function() {
+      // uncomment below and update the code to test the property tableOpenCacheInstances
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property innodbFlushMethod (base name: "innodb_flush_method")', function() {
+      // uncomment below and update the code to test the property innodbFlushMethod
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property innodbStrictMode (base name: "innodb_strict_mode")', function() {
+      // uncomment below and update the code to test the property innodbStrictMode
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property slowQueryLog (base name: "slow_query_log")', function() {
+      // uncomment below and update the code to test the property slowQueryLog
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property binlogCacheSize (base name: "binlog_cache_size")', function() {
+      // uncomment below and update the code to test the property binlogCacheSize
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property binlogGroupCommitSyncDelay (base name: "binlog_group_commit_sync_delay")', function() {
+      // uncomment below and update the code to test the property binlogGroupCommitSyncDelay
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property binlogRowImage (base name: "binlog_row_image")', function() {
+      // uncomment below and update the code to test the property binlogRowImage
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property binlogRowsQueryLogEvents (base name: "binlog_rows_query_log_events")', function() {
+      // uncomment below and update the code to test the property binlogRowsQueryLogEvents
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property characterSetServer (base name: "character_set_server")', function() {
+      // uncomment below and update the code to test the property characterSetServer
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property explicitDefaultsForTimestamp (base name: "explicit_defaults_for_timestamp")', function() {
+      // uncomment below and update the code to test the property explicitDefaultsForTimestamp
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property groupConcatMaxLen (base name: "group_concat_max_len")', function() {
+      // uncomment below and update the code to test the property groupConcatMaxLen
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property innodbAdaptiveHashIndex (base name: "innodb_adaptive_hash_index")', function() {
+      // uncomment below and update the code to test the property innodbAdaptiveHashIndex
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property innodbLockWaitTimeout (base name: "innodb_lock_wait_timeout")', function() {
+      // uncomment below and update the code to test the property innodbLockWaitTimeout
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property innodbNumaInterleave (base name: "innodb_numa_interleave")', function() {
+      // uncomment below and update the code to test the property innodbNumaInterleave
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property netReadTimeout (base name: "net_read_timeout")', function() {
+      // uncomment below and update the code to test the property netReadTimeout
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property netWriteTimeout (base name: "net_write_timeout")', function() {
+      // uncomment below and update the code to test the property netWriteTimeout
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property regexpTimeLimit (base name: "regexp_time_limit")', function() {
+      // uncomment below and update the code to test the property regexpTimeLimit
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property syncBinlog (base name: "sync_binlog")', function() {
+      // uncomment below and update the code to test the property syncBinlog
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tableDefinitionCache (base name: "table_definition_cache")', function() {
+      // uncomment below and update the code to test the property tableDefinitionCache
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property logBinTrustFunctionCreators (base name: "log_bin_trust_function_creators")', function() {
+      // uncomment below and update the code to test the property logBinTrustFunctionCreators
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property skipNameResolve (base name: "skip_name_resolve")', function() {
+      // uncomment below and update the code to test the property skipNameResolve
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property innodbRedoLogCapacity (base name: "innodb_redo_log_capacity")', function() {
+      // uncomment below and update the code to test the property innodbRedoLogCapacity
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property waitTimeout (base name: "wait_timeout")', function() {
+      // uncomment below and update the code to test the property waitTimeout
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property interactiveTimeout (base name: "interactive_timeout")', function() {
+      // uncomment below and update the code to test the property interactiveTimeout
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property defaultTimeZone (base name: "default-time-zone")', function() {
+      // uncomment below and update the code to test the property defaultTimeZone
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property pxcStrictMode (base name: "pxc_strict_mode")', function() {
+      // uncomment below and update the code to test the property pxcStrictMode
+      //var instance = new TimewebCloudApi.Mysql();
       //expect(instance).to.be();
     });
 

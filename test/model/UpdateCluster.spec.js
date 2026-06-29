@@ -66,6 +66,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property configParameters (base name: "config_parameters")', function() {
+      // uncomment below and update the code to test the property configParameters
+      //var instance = new TimewebCloudApi.UpdateCluster();
+      //expect(instance).to.be();
+    });
+
     it('should have the property description (base name: "description")', function() {
       // uncomment below and update the code to test the property description
       //var instance = new TimewebCloudApi.UpdateCluster();

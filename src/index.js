@@ -102,6 +102,8 @@ import Commit from './model/Commit';
 import ComponentsSchemasBaseError from './model/ComponentsSchemasBaseError';
 import ComponentsSchemasMeta from './model/ComponentsSchemasMeta';
 import ConfigParameters from './model/ConfigParameters';
+import ConfigParametersMysql from './model/ConfigParametersMysql';
+import ConfigParametersPostgres from './model/ConfigParametersPostgres';
 import ContainerRegistryPresetsInner from './model/ContainerRegistryPresetsInner';
 import ContainerRegistryRepositoriesInner from './model/ContainerRegistryRepositoriesInner';
 import CreateAdmin from './model/CreateAdmin';
@@ -381,6 +383,7 @@ import ModelParamsInfoMaxTokens from './model/ModelParamsInfoMaxTokens';
 import ModelParamsInfoReasoningEffort from './model/ModelParamsInfoReasoningEffort';
 import ModelParamsInfoTemperature from './model/ModelParamsInfoTemperature';
 import MountNetworkDrive from './model/MountNetworkDrive';
+import Mysql from './model/Mysql';
 import NatIn from './model/NatIn';
 import Network from './model/Network';
 import NetworkDrive from './model/NetworkDrive';
@@ -412,6 +415,7 @@ import OutgoingIsEnabled from './model/OutgoingIsEnabled';
 import PerformActionOnBackupRequest from './model/PerformActionOnBackupRequest';
 import PerformActionOnServerRequest from './model/PerformActionOnServerRequest';
 import Policy from './model/Policy';
+import Postgres from './model/Postgres';
 import PresetsBalancer from './model/PresetsBalancer';
 import PresetsDbs from './model/PresetsDbs';
 import PresetsResponse from './model/PresetsResponse';
@@ -1159,6 +1163,18 @@ export {
      * @property {module:model/ConfigParameters}
      */
     ConfigParameters,
+
+    /**
+     * The ConfigParametersMysql model constructor.
+     * @property {module:model/ConfigParametersMysql}
+     */
+    ConfigParametersMysql,
+
+    /**
+     * The ConfigParametersPostgres model constructor.
+     * @property {module:model/ConfigParametersPostgres}
+     */
+    ConfigParametersPostgres,
 
     /**
      * The ContainerRegistryPresetsInner model constructor.
@@ -2835,6 +2851,12 @@ export {
     MountNetworkDrive,
 
     /**
+     * The Mysql model constructor.
+     * @property {module:model/Mysql}
+     */
+    Mysql,
+
+    /**
      * The NatIn model constructor.
      * @property {module:model/NatIn}
      */
@@ -3019,6 +3041,12 @@ export {
      * @property {module:model/Policy}
      */
     Policy,
+
+    /**
+     * The Postgres model constructor.
+     * @property {module:model/Postgres}
+     */
+    Postgres,
 
     /**
      * The PresetsBalancer model constructor.

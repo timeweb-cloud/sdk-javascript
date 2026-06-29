@@ -13,9 +13,9 @@
 
 import ApiClient from '../ApiClient';
 import AvailabilityZone from './AvailabilityZone';
-import ConfigParameters from './ConfigParameters';
 import DbDiskStats from './DbDiskStats';
 import DbType from './DbType';
+import Mysql from './Mysql';
 
 /**
  * The Db model module.
@@ -42,7 +42,7 @@ class Db {
      * @param status {module:model/Db.StatusEnum} Текущий статус базы данных.
      * @param presetId {Number} ID тарифа.
      * @param diskStats {module:model/DbDiskStats} 
-     * @param configParameters {module:model/ConfigParameters} 
+     * @param configParameters {module:model/Mysql} 
      * @param isOnlyLocalIpAccess {Boolean} Это логическое значение, которое показывает, доступна ли база данных только по локальному IP адресу.
      * @param availabilityZone {module:model/AvailabilityZone} 
      */
@@ -137,7 +137,7 @@ class Db {
                 obj['disk_stats'] = DbDiskStats.constructFromObject(data['disk_stats']);
             }
             if (data.hasOwnProperty('config_parameters')) {
-                obj['config_parameters'] = ConfigParameters.constructFromObject(data['config_parameters']);
+                obj['config_parameters'] = Mysql.constructFromObject(data['config_parameters']);
             }
             if (data.hasOwnProperty('is_only_local_ip_access')) {
                 obj['is_only_local_ip_access'] = ApiClient.convertToType(data['is_only_local_ip_access'], 'Boolean');
@@ -211,7 +211,7 @@ class Db {
         }
         // validate the optional field `config_parameters`
         if (data['config_parameters']) { // data not null
-          ConfigParameters.validateJSON(data['config_parameters']);
+          Mysql.validateJSON(data['config_parameters']);
         }
 
         return true;
@@ -317,7 +317,7 @@ Db.prototype['preset_id'] = undefined;
 Db.prototype['disk_stats'] = undefined;
 
 /**
- * @member {module:model/ConfigParameters} config_parameters
+ * @member {module:model/Mysql} config_parameters
  */
 Db.prototype['config_parameters'] = undefined;
 

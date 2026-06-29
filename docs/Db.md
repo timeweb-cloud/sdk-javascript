@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **status** | **String** | Текущий статус базы данных. | 
 **presetId** | **Number** | ID тарифа. | 
 **diskStats** | [**DbDiskStats**](DbDiskStats.md) |  | 
-**configParameters** | [**ConfigParameters**](ConfigParameters.md) |  | 
+**configParameters** | [**Mysql**](Mysql.md) |  | 
 **isOnlyLocalIpAccess** | **Boolean** | Это логическое значение, которое показывает, доступна ли база данных только по локальному IP адресу. | 
 **availabilityZone** | [**AvailabilityZone**](AvailabilityZone.md) |  | 
 

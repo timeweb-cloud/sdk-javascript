@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **presetId** | **Number** | ID тарифа. Нельзя передавать вместе с &#x60;configurator_id&#x60; | [optional] 
 **configuratorId** | **Number** | ID конфигуратора. Нельзя передавать вместе с &#x60;preset_id&#x60; | [optional] 
 **projectId** | **Number** | ID проекта. | [optional] 
-**configParameters** | [**ConfigParameters**](ConfigParameters.md) |  | [optional] 
+**configParameters** | [**Mysql**](Mysql.md) |  | [optional] 
 **replication** | [**DbReplication**](DbReplication.md) |  | [optional] 
 **network** | [**Network**](Network.md) |  | [optional] 
 **isPublicIpv6** | **Boolean** | Использование IPv6 адреса. | [optional] 

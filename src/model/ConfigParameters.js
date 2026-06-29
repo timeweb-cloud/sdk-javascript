@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import ConfigParametersMysql from './ConfigParametersMysql';
+import ConfigParametersPostgres from './ConfigParametersPostgres';
 
 /**
  * The ConfigParameters model module.
@@ -48,89 +50,11 @@ class ConfigParameters {
         if (data) {
             obj = obj || new ConfigParameters();
 
-            if (data.hasOwnProperty('auto_increment_increment')) {
-                obj['auto_increment_increment'] = ApiClient.convertToType(data['auto_increment_increment'], 'String');
+            if (data.hasOwnProperty('mysql')) {
+                obj['mysql'] = ConfigParametersMysql.constructFromObject(data['mysql']);
             }
-            if (data.hasOwnProperty('auto_increment_offset')) {
-                obj['auto_increment_offset'] = ApiClient.convertToType(data['auto_increment_offset'], 'String');
-            }
-            if (data.hasOwnProperty('innodb_io_capacity')) {
-                obj['innodb_io_capacity'] = ApiClient.convertToType(data['innodb_io_capacity'], 'String');
-            }
-            if (data.hasOwnProperty('innodb_purge_threads')) {
-                obj['innodb_purge_threads'] = ApiClient.convertToType(data['innodb_purge_threads'], 'String');
-            }
-            if (data.hasOwnProperty('innodb_read_io_threads')) {
-                obj['innodb_read_io_threads'] = ApiClient.convertToType(data['innodb_read_io_threads'], 'String');
-            }
-            if (data.hasOwnProperty('innodb_thread_concurrency')) {
-                obj['innodb_thread_concurrency'] = ApiClient.convertToType(data['innodb_thread_concurrency'], 'String');
-            }
-            if (data.hasOwnProperty('innodb_write_io_threads')) {
-                obj['innodb_write_io_threads'] = ApiClient.convertToType(data['innodb_write_io_threads'], 'String');
-            }
-            if (data.hasOwnProperty('join_buffer_size')) {
-                obj['join_buffer_size'] = ApiClient.convertToType(data['join_buffer_size'], 'String');
-            }
-            if (data.hasOwnProperty('max_allowed_packet')) {
-                obj['max_allowed_packet'] = ApiClient.convertToType(data['max_allowed_packet'], 'String');
-            }
-            if (data.hasOwnProperty('max_heap_table_size')) {
-                obj['max_heap_table_size'] = ApiClient.convertToType(data['max_heap_table_size'], 'String');
-            }
-            if (data.hasOwnProperty('autovacuum_analyze_scale_factor')) {
-                obj['autovacuum_analyze_scale_factor'] = ApiClient.convertToType(data['autovacuum_analyze_scale_factor'], 'String');
-            }
-            if (data.hasOwnProperty('bgwriter_delay')) {
-                obj['bgwriter_delay'] = ApiClient.convertToType(data['bgwriter_delay'], 'String');
-            }
-            if (data.hasOwnProperty('bgwriter_lru_maxpages')) {
-                obj['bgwriter_lru_maxpages'] = ApiClient.convertToType(data['bgwriter_lru_maxpages'], 'String');
-            }
-            if (data.hasOwnProperty('deadlock_timeout')) {
-                obj['deadlock_timeout'] = ApiClient.convertToType(data['deadlock_timeout'], 'String');
-            }
-            if (data.hasOwnProperty('gin_pending_list_limit')) {
-                obj['gin_pending_list_limit'] = ApiClient.convertToType(data['gin_pending_list_limit'], 'String');
-            }
-            if (data.hasOwnProperty('idle_in_transaction_session_timeout')) {
-                obj['idle_in_transaction_session_timeout'] = ApiClient.convertToType(data['idle_in_transaction_session_timeout'], 'String');
-            }
-            if (data.hasOwnProperty('idle_session_timeout')) {
-                obj['idle_session_timeout'] = ApiClient.convertToType(data['idle_session_timeout'], 'String');
-            }
-            if (data.hasOwnProperty('join_collapse_limit')) {
-                obj['join_collapse_limit'] = ApiClient.convertToType(data['join_collapse_limit'], 'String');
-            }
-            if (data.hasOwnProperty('lock_timeout')) {
-                obj['lock_timeout'] = ApiClient.convertToType(data['lock_timeout'], 'String');
-            }
-            if (data.hasOwnProperty('max_prepared_transactions')) {
-                obj['max_prepared_transactions'] = ApiClient.convertToType(data['max_prepared_transactions'], 'String');
-            }
-            if (data.hasOwnProperty('max_connections')) {
-                obj['max_connections'] = ApiClient.convertToType(data['max_connections'], 'String');
-            }
-            if (data.hasOwnProperty('shared_buffers')) {
-                obj['shared_buffers'] = ApiClient.convertToType(data['shared_buffers'], 'String');
-            }
-            if (data.hasOwnProperty('wal_buffers')) {
-                obj['wal_buffers'] = ApiClient.convertToType(data['wal_buffers'], 'String');
-            }
-            if (data.hasOwnProperty('temp_buffers')) {
-                obj['temp_buffers'] = ApiClient.convertToType(data['temp_buffers'], 'String');
-            }
-            if (data.hasOwnProperty('work_mem')) {
-                obj['work_mem'] = ApiClient.convertToType(data['work_mem'], 'String');
-            }
-            if (data.hasOwnProperty('sql_mode')) {
-                obj['sql_mode'] = ApiClient.convertToType(data['sql_mode'], 'String');
-            }
-            if (data.hasOwnProperty('query_cache_type')) {
-                obj['query_cache_type'] = ApiClient.convertToType(data['query_cache_type'], 'String');
-            }
-            if (data.hasOwnProperty('query_cache_size')) {
-                obj['query_cache_size'] = ApiClient.convertToType(data['query_cache_size'], 'String');
+            if (data.hasOwnProperty('postgres')) {
+                obj['postgres'] = ConfigParametersPostgres.constructFromObject(data['postgres']);
             }
         }
         return obj;
@@ -142,117 +66,13 @@ class ConfigParameters {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ConfigParameters</code>.
      */
     static validateJSON(data) {
-        // ensure the json data is a string
-        if (data['auto_increment_increment'] && !(typeof data['auto_increment_increment'] === 'string' || data['auto_increment_increment'] instanceof String)) {
-            throw new Error("Expected the field `auto_increment_increment` to be a primitive type in the JSON string but got " + data['auto_increment_increment']);
+        // validate the optional field `mysql`
+        if (data['mysql']) { // data not null
+          ConfigParametersMysql.validateJSON(data['mysql']);
         }
-        // ensure the json data is a string
-        if (data['auto_increment_offset'] && !(typeof data['auto_increment_offset'] === 'string' || data['auto_increment_offset'] instanceof String)) {
-            throw new Error("Expected the field `auto_increment_offset` to be a primitive type in the JSON string but got " + data['auto_increment_offset']);
-        }
-        // ensure the json data is a string
-        if (data['innodb_io_capacity'] && !(typeof data['innodb_io_capacity'] === 'string' || data['innodb_io_capacity'] instanceof String)) {
-            throw new Error("Expected the field `innodb_io_capacity` to be a primitive type in the JSON string but got " + data['innodb_io_capacity']);
-        }
-        // ensure the json data is a string
-        if (data['innodb_purge_threads'] && !(typeof data['innodb_purge_threads'] === 'string' || data['innodb_purge_threads'] instanceof String)) {
-            throw new Error("Expected the field `innodb_purge_threads` to be a primitive type in the JSON string but got " + data['innodb_purge_threads']);
-        }
-        // ensure the json data is a string
-        if (data['innodb_read_io_threads'] && !(typeof data['innodb_read_io_threads'] === 'string' || data['innodb_read_io_threads'] instanceof String)) {
-            throw new Error("Expected the field `innodb_read_io_threads` to be a primitive type in the JSON string but got " + data['innodb_read_io_threads']);
-        }
-        // ensure the json data is a string
-        if (data['innodb_thread_concurrency'] && !(typeof data['innodb_thread_concurrency'] === 'string' || data['innodb_thread_concurrency'] instanceof String)) {
-            throw new Error("Expected the field `innodb_thread_concurrency` to be a primitive type in the JSON string but got " + data['innodb_thread_concurrency']);
-        }
-        // ensure the json data is a string
-        if (data['innodb_write_io_threads'] && !(typeof data['innodb_write_io_threads'] === 'string' || data['innodb_write_io_threads'] instanceof String)) {
-            throw new Error("Expected the field `innodb_write_io_threads` to be a primitive type in the JSON string but got " + data['innodb_write_io_threads']);
-        }
-        // ensure the json data is a string
-        if (data['join_buffer_size'] && !(typeof data['join_buffer_size'] === 'string' || data['join_buffer_size'] instanceof String)) {
-            throw new Error("Expected the field `join_buffer_size` to be a primitive type in the JSON string but got " + data['join_buffer_size']);
-        }
-        // ensure the json data is a string
-        if (data['max_allowed_packet'] && !(typeof data['max_allowed_packet'] === 'string' || data['max_allowed_packet'] instanceof String)) {
-            throw new Error("Expected the field `max_allowed_packet` to be a primitive type in the JSON string but got " + data['max_allowed_packet']);
-        }
-        // ensure the json data is a string
-        if (data['max_heap_table_size'] && !(typeof data['max_heap_table_size'] === 'string' || data['max_heap_table_size'] instanceof String)) {
-            throw new Error("Expected the field `max_heap_table_size` to be a primitive type in the JSON string but got " + data['max_heap_table_size']);
-        }
-        // ensure the json data is a string
-        if (data['autovacuum_analyze_scale_factor'] && !(typeof data['autovacuum_analyze_scale_factor'] === 'string' || data['autovacuum_analyze_scale_factor'] instanceof String)) {
-            throw new Error("Expected the field `autovacuum_analyze_scale_factor` to be a primitive type in the JSON string but got " + data['autovacuum_analyze_scale_factor']);
-        }
-        // ensure the json data is a string
-        if (data['bgwriter_delay'] && !(typeof data['bgwriter_delay'] === 'string' || data['bgwriter_delay'] instanceof String)) {
-            throw new Error("Expected the field `bgwriter_delay` to be a primitive type in the JSON string but got " + data['bgwriter_delay']);
-        }
-        // ensure the json data is a string
-        if (data['bgwriter_lru_maxpages'] && !(typeof data['bgwriter_lru_maxpages'] === 'string' || data['bgwriter_lru_maxpages'] instanceof String)) {
-            throw new Error("Expected the field `bgwriter_lru_maxpages` to be a primitive type in the JSON string but got " + data['bgwriter_lru_maxpages']);
-        }
-        // ensure the json data is a string
-        if (data['deadlock_timeout'] && !(typeof data['deadlock_timeout'] === 'string' || data['deadlock_timeout'] instanceof String)) {
-            throw new Error("Expected the field `deadlock_timeout` to be a primitive type in the JSON string but got " + data['deadlock_timeout']);
-        }
-        // ensure the json data is a string
-        if (data['gin_pending_list_limit'] && !(typeof data['gin_pending_list_limit'] === 'string' || data['gin_pending_list_limit'] instanceof String)) {
-            throw new Error("Expected the field `gin_pending_list_limit` to be a primitive type in the JSON string but got " + data['gin_pending_list_limit']);
-        }
-        // ensure the json data is a string
-        if (data['idle_in_transaction_session_timeout'] && !(typeof data['idle_in_transaction_session_timeout'] === 'string' || data['idle_in_transaction_session_timeout'] instanceof String)) {
-            throw new Error("Expected the field `idle_in_transaction_session_timeout` to be a primitive type in the JSON string but got " + data['idle_in_transaction_session_timeout']);
-        }
-        // ensure the json data is a string
-        if (data['idle_session_timeout'] && !(typeof data['idle_session_timeout'] === 'string' || data['idle_session_timeout'] instanceof String)) {
-            throw new Error("Expected the field `idle_session_timeout` to be a primitive type in the JSON string but got " + data['idle_session_timeout']);
-        }
-        // ensure the json data is a string
-        if (data['join_collapse_limit'] && !(typeof data['join_collapse_limit'] === 'string' || data['join_collapse_limit'] instanceof String)) {
-            throw new Error("Expected the field `join_collapse_limit` to be a primitive type in the JSON string but got " + data['join_collapse_limit']);
-        }
-        // ensure the json data is a string
-        if (data['lock_timeout'] && !(typeof data['lock_timeout'] === 'string' || data['lock_timeout'] instanceof String)) {
-            throw new Error("Expected the field `lock_timeout` to be a primitive type in the JSON string but got " + data['lock_timeout']);
-        }
-        // ensure the json data is a string
-        if (data['max_prepared_transactions'] && !(typeof data['max_prepared_transactions'] === 'string' || data['max_prepared_transactions'] instanceof String)) {
-            throw new Error("Expected the field `max_prepared_transactions` to be a primitive type in the JSON string but got " + data['max_prepared_transactions']);
-        }
-        // ensure the json data is a string
-        if (data['max_connections'] && !(typeof data['max_connections'] === 'string' || data['max_connections'] instanceof String)) {
-            throw new Error("Expected the field `max_connections` to be a primitive type in the JSON string but got " + data['max_connections']);
-        }
-        // ensure the json data is a string
-        if (data['shared_buffers'] && !(typeof data['shared_buffers'] === 'string' || data['shared_buffers'] instanceof String)) {
-            throw new Error("Expected the field `shared_buffers` to be a primitive type in the JSON string but got " + data['shared_buffers']);
-        }
-        // ensure the json data is a string
-        if (data['wal_buffers'] && !(typeof data['wal_buffers'] === 'string' || data['wal_buffers'] instanceof String)) {
-            throw new Error("Expected the field `wal_buffers` to be a primitive type in the JSON string but got " + data['wal_buffers']);
-        }
-        // ensure the json data is a string
-        if (data['temp_buffers'] && !(typeof data['temp_buffers'] === 'string' || data['temp_buffers'] instanceof String)) {
-            throw new Error("Expected the field `temp_buffers` to be a primitive type in the JSON string but got " + data['temp_buffers']);
-        }
-        // ensure the json data is a string
-        if (data['work_mem'] && !(typeof data['work_mem'] === 'string' || data['work_mem'] instanceof String)) {
-            throw new Error("Expected the field `work_mem` to be a primitive type in the JSON string but got " + data['work_mem']);
-        }
-        // ensure the json data is a string
-        if (data['sql_mode'] && !(typeof data['sql_mode'] === 'string' || data['sql_mode'] instanceof String)) {
-            throw new Error("Expected the field `sql_mode` to be a primitive type in the JSON string but got " + data['sql_mode']);
-        }
-        // ensure the json data is a string
-        if (data['query_cache_type'] && !(typeof data['query_cache_type'] === 'string' || data['query_cache_type'] instanceof String)) {
-            throw new Error("Expected the field `query_cache_type` to be a primitive type in the JSON string but got " + data['query_cache_type']);
-        }
-        // ensure the json data is a string
-        if (data['query_cache_size'] && !(typeof data['query_cache_size'] === 'string' || data['query_cache_size'] instanceof String)) {
-            throw new Error("Expected the field `query_cache_size` to be a primitive type in the JSON string but got " + data['query_cache_size']);
+        // validate the optional field `postgres`
+        if (data['postgres']) { // data not null
+          ConfigParametersPostgres.validateJSON(data['postgres']);
         }
 
         return true;
@@ -264,172 +84,14 @@ class ConfigParameters {
 
 
 /**
- * Интервал между значениями столбцов с атрибутом `AUTO_INCREMENT` (`mysql5` | `mysql`).
- * @member {String} auto_increment_increment
+ * @member {module:model/ConfigParametersMysql} mysql
  */
-ConfigParameters.prototype['auto_increment_increment'] = undefined;
+ConfigParameters.prototype['mysql'] = undefined;
 
 /**
- * Начальное значение для столбцов с атрибутом `AUTO_INCREMENT` (`mysql5` | `mysql`).
- * @member {String} auto_increment_offset
+ * @member {module:model/ConfigParametersPostgres} postgres
  */
-ConfigParameters.prototype['auto_increment_offset'] = undefined;
-
-/**
- * Количество операций ввода-вывода в секунду `IOPS` (`mysql5` | `mysql`).
- * @member {String} innodb_io_capacity
- */
-ConfigParameters.prototype['innodb_io_capacity'] = undefined;
-
-/**
- * Количество потоков ввода-вывода, используемых для операций очистки (`mysql5` | `mysql`).
- * @member {String} innodb_purge_threads
- */
-ConfigParameters.prototype['innodb_purge_threads'] = undefined;
-
-/**
- * Количество потоков ввода-вывода, используемых для операций чтения (`mysql5` | `mysql`).
- * @member {String} innodb_read_io_threads
- */
-ConfigParameters.prototype['innodb_read_io_threads'] = undefined;
-
-/**
- * Максимальное число потоков, которые могут исполняться (`mysql5` | `mysql`).
- * @member {String} innodb_thread_concurrency
- */
-ConfigParameters.prototype['innodb_thread_concurrency'] = undefined;
-
-/**
- * Количество потоков ввода-вывода, используемых для операций записи (`mysql5` | `mysql`).
- * @member {String} innodb_write_io_threads
- */
-ConfigParameters.prototype['innodb_write_io_threads'] = undefined;
-
-/**
- * Минимальный размер буфера (`mysql5` | `mysql`).
- * @member {String} join_buffer_size
- */
-ConfigParameters.prototype['join_buffer_size'] = undefined;
-
-/**
- * Максимальный размер одного пакета, строки или параметра, отправляемого функцией `mysql_stmt_send_long_data()` (`mysql5` | `mysql`).
- * @member {String} max_allowed_packet
- */
-ConfigParameters.prototype['max_allowed_packet'] = undefined;
-
-/**
- * Максимальный размер пользовательских MEMORY-таблиц (`mysql5` | `mysql`).
- * @member {String} max_heap_table_size
- */
-ConfigParameters.prototype['max_heap_table_size'] = undefined;
-
-/**
- * Доля измененных или удаленных записей в таблице, при которой процесс автоочистки выполнит команду `ANALYZE` (`postgres` | `postgres14`| `postgres15`).
- * @member {String} autovacuum_analyze_scale_factor
- */
-ConfigParameters.prototype['autovacuum_analyze_scale_factor'] = undefined;
-
-/**
- * Задержка между запусками процесса фоновой записи (`postgres` | `postgres14`| `postgres15`).
- * @member {String} bgwriter_delay
- */
-ConfigParameters.prototype['bgwriter_delay'] = undefined;
-
-/**
- * Максимальное число элементов буферного кеша (`postgres` | `postgres14`| `postgres15`).
- * @member {String} bgwriter_lru_maxpages
- */
-ConfigParameters.prototype['bgwriter_lru_maxpages'] = undefined;
-
-/**
- * Время ожидания, по истечении которого будет выполняться проверка состояния перекрестной блокировки (`postgres` | `postgres14`| `postgres15`).
- * @member {String} deadlock_timeout
- */
-ConfigParameters.prototype['deadlock_timeout'] = undefined;
-
-/**
- * Максимальный размер очереди записей индекса `GIN` (`postgres` | `postgres14`| `postgres15`).
- * @member {String} gin_pending_list_limit
- */
-ConfigParameters.prototype['gin_pending_list_limit'] = undefined;
-
-/**
- * Время простоя открытой транзакции, при превышении которого будет завершена сессия с этой транзакцией (`postgres` | `postgres14`| `postgres15`).
- * @member {String} idle_in_transaction_session_timeout
- */
-ConfigParameters.prototype['idle_in_transaction_session_timeout'] = undefined;
-
-/**
- * Время простоя не открытой транзакции, при превышении которого будет завершена сессия с этой транзакцией (`postgres` | `postgres14`| `postgres15`).
- * @member {String} idle_session_timeout
- */
-ConfigParameters.prototype['idle_session_timeout'] = undefined;
-
-/**
- * Значение количества элементов в списке `FROM` при превышении которого, планировщик будет переносить в список явные инструкции `JOIN` (`postgres` | `postgres14`| `postgres15`).
- * @member {String} join_collapse_limit
- */
-ConfigParameters.prototype['join_collapse_limit'] = undefined;
-
-/**
- * Время ожидания освобождения блокировки (`postgres` | `postgres14`| `postgres15`).
- * @member {String} lock_timeout
- */
-ConfigParameters.prototype['lock_timeout'] = undefined;
-
-/**
- * Максимальное число транзакций, которые могут одновременно находиться в подготовленном состоянии (`postgres` | `postgres14`| `postgres15`).
- * @member {String} max_prepared_transactions
- */
-ConfigParameters.prototype['max_prepared_transactions'] = undefined;
-
-/**
- * Допустимое количество соединений (`postgres` | `postgres14`| `postgres15` | `mysql`).
- * @member {String} max_connections
- */
-ConfigParameters.prototype['max_connections'] = undefined;
-
-/**
- * Устанавливает количество буферов общей памяти, используемых сервером (`postgres` | `postgres14`| `postgres15`).
- * @member {String} shared_buffers
- */
-ConfigParameters.prototype['shared_buffers'] = undefined;
-
-/**
- * Устанавливает количество буферов дисковых страниц в общей памяти для WAL (`postgres` | `postgres14`| `postgres15`).
- * @member {String} wal_buffers
- */
-ConfigParameters.prototype['wal_buffers'] = undefined;
-
-/**
- * Устанавливает максимальное количество временных буферов, используемых каждой сессией (`postgres` | `postgres14`| `postgres15`).
- * @member {String} temp_buffers
- */
-ConfigParameters.prototype['temp_buffers'] = undefined;
-
-/**
- * Устанавливает максимальное количество памяти, используемое для рабочих пространств запросов (`postgres` | `postgres14`| `postgres15`).
- * @member {String} work_mem
- */
-ConfigParameters.prototype['work_mem'] = undefined;
-
-/**
- * Устанавливает режим SQL. Можно задать несколько режимов, разделяя их запятой. (`mysql`).
- * @member {String} sql_mode
- */
-ConfigParameters.prototype['sql_mode'] = undefined;
-
-/**
- * Параметр включает или отключает работу MySQL Query Cache (`mysql`).
- * @member {String} query_cache_type
- */
-ConfigParameters.prototype['query_cache_type'] = undefined;
-
-/**
- * Размер в байтах, доступный для кэша запросов (`mysql`).
- * @member {String} query_cache_size
- */
-ConfigParameters.prototype['query_cache_size'] = undefined;
+ConfigParameters.prototype['postgres'] = undefined;
 
 
 

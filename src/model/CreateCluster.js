@@ -13,12 +13,12 @@
 
 import ApiClient from '../ApiClient';
 import AvailabilityZone from './AvailabilityZone';
-import ConfigParameters from './ConfigParameters';
 import CreateClusterAdmin from './CreateClusterAdmin';
 import CreateClusterInstance from './CreateClusterInstance';
 import CreateDbAutoBackups from './CreateDbAutoBackups';
 import DbReplication from './DbReplication';
 import DbType from './DbType';
+import Mysql from './Mysql';
 import Network from './Network';
 
 /**
@@ -84,7 +84,7 @@ class CreateCluster {
                 obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
             }
             if (data.hasOwnProperty('config_parameters')) {
-                obj['config_parameters'] = ConfigParameters.constructFromObject(data['config_parameters']);
+                obj['config_parameters'] = Mysql.constructFromObject(data['config_parameters']);
             }
             if (data.hasOwnProperty('replication')) {
                 obj['replication'] = DbReplication.constructFromObject(data['replication']);
@@ -138,7 +138,7 @@ class CreateCluster {
         }
         // validate the optional field `config_parameters`
         if (data['config_parameters']) { // data not null
-          ConfigParameters.validateJSON(data['config_parameters']);
+          Mysql.validateJSON(data['config_parameters']);
         }
         // validate the optional field `replication`
         if (data['replication']) { // data not null
@@ -211,7 +211,7 @@ CreateCluster.prototype['configurator_id'] = undefined;
 CreateCluster.prototype['project_id'] = undefined;
 
 /**
- * @member {module:model/ConfigParameters} config_parameters
+ * @member {module:model/Mysql} config_parameters
  */
 CreateCluster.prototype['config_parameters'] = undefined;
 

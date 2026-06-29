@@ -12,10 +12,10 @@
  */
 
 import ApiClient from '../ApiClient';
-import ConfigParameters from './ConfigParameters';
 import DatabaseClusterDisk from './DatabaseClusterDisk';
 import DatabaseClusterNetworksInner from './DatabaseClusterNetworksInner';
 import DbType from './DbType';
+import Mysql from './Mysql';
 
 /**
  * The DatabaseCluster model module.
@@ -38,7 +38,7 @@ class DatabaseCluster {
      * @param port {Number} Порт
      * @param status {module:model/DatabaseCluster.StatusEnum} Текущий статус кластера базы данных.
      * @param presetId {Number} ID тарифа.
-     * @param configParameters {module:model/ConfigParameters} 
+     * @param configParameters {module:model/Mysql} 
      * @param isEnabledPublicNetwork {Boolean} Доступность публичного IP-адреса
      */
     constructor(id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, configParameters, isEnabledPublicNetwork) { 
@@ -118,7 +118,7 @@ class DatabaseCluster {
                 obj['disk'] = DatabaseClusterDisk.constructFromObject(data['disk']);
             }
             if (data.hasOwnProperty('config_parameters')) {
-                obj['config_parameters'] = ConfigParameters.constructFromObject(data['config_parameters']);
+                obj['config_parameters'] = Mysql.constructFromObject(data['config_parameters']);
             }
             if (data.hasOwnProperty('is_enabled_public_network')) {
                 obj['is_enabled_public_network'] = ApiClient.convertToType(data['is_enabled_public_network'], 'Boolean');
@@ -179,7 +179,7 @@ class DatabaseCluster {
         }
         // validate the optional field `config_parameters`
         if (data['config_parameters']) { // data not null
-          ConfigParameters.validateJSON(data['config_parameters']);
+          Mysql.validateJSON(data['config_parameters']);
         }
 
         return true;
@@ -267,7 +267,7 @@ DatabaseCluster.prototype['preset_id'] = undefined;
 DatabaseCluster.prototype['disk'] = undefined;
 
 /**
- * @member {module:model/ConfigParameters} config_parameters
+ * @member {module:model/Mysql} config_parameters
  */
 DatabaseCluster.prototype['config_parameters'] = undefined;
 

@@ -848,7 +848,7 @@ Name | Type | Description  | Notes
 
 ## getDatabaseParameters
 
-> {String: [String]} getDatabaseParameters()
+> ConfigParameters getDatabaseParameters()
 
 Получение списка параметров баз данных
 
@@ -879,7 +879,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**{String: [String]}**
+[**ConfigParameters**](ConfigParameters.md)
 
 ### Authorization
 

@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import Mysql from './Mysql';
 
 /**
  * The UpdateCluster model module.
@@ -53,6 +54,9 @@ class UpdateCluster {
             if (data.hasOwnProperty('preset_id')) {
                 obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
             }
+            if (data.hasOwnProperty('config_parameters')) {
+                obj['config_parameters'] = Mysql.constructFromObject(data['config_parameters']);
+            }
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
@@ -75,6 +79,10 @@ class UpdateCluster {
         // ensure the json data is a string
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
+        // validate the optional field `config_parameters`
+        if (data['config_parameters']) { // data not null
+          Mysql.validateJSON(data['config_parameters']);
         }
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
@@ -100,6 +108,11 @@ UpdateCluster.prototype['name'] = undefined;
  * @member {Number} preset_id
  */
 UpdateCluster.prototype['preset_id'] = undefined;
+
+/**
+ * @member {module:model/Mysql} config_parameters
+ */
+UpdateCluster.prototype['config_parameters'] = undefined;
 
 /**
  * Описание кластера базы данных

@@ -14,6 +14,7 @@
 
 import ApiClient from "../ApiClient";
 import AutoBackup from '../model/AutoBackup';
+import ConfigParameters from '../model/ConfigParameters';
 import CreateAdmin from '../model/CreateAdmin';
 import CreateCluster from '../model/CreateCluster';
 import CreateDatabaseBackup201Response from '../model/CreateDatabaseBackup201Response';
@@ -797,7 +798,7 @@ export default class DatabasesApi {
      * Callback function to receive the result of the getDatabaseParameters operation.
      * @callback module:api/DatabasesApi~getDatabaseParametersCallback
      * @param {String} error Error message, if any.
-     * @param {Object.<String, {String: [String]}>} data The data returned by the service call.
+     * @param {module:model/ConfigParameters} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -805,7 +806,7 @@ export default class DatabasesApi {
      * Получение списка параметров баз данных
      * Чтобы получить список параметров баз данных, отправьте GET-запрос на `/api/v1/dbs/parameters`.
      * @param {module:api/DatabasesApi~getDatabaseParametersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Object.<String, {String: [String]}>}
+     * data is of type: {@link module:model/ConfigParameters}
      */
     getDatabaseParameters(callback) {
       let postBody = null;
@@ -822,7 +823,7 @@ export default class DatabasesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = {'String': ['String']};
+      let returnType = ConfigParameters;
       return this.apiClient.callApi(
         '/api/v1/dbs/parameters', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
