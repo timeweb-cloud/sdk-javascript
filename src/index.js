@@ -85,6 +85,7 @@ import BucketUser from './model/BucketUser';
 import BucketWebsiteConfig from './model/BucketWebsiteConfig';
 import BucketWebsiteConfigErrorPagesInner from './model/BucketWebsiteConfigErrorPagesInner';
 import CheckDomain200Response from './model/CheckDomain200Response';
+import Clickhouse from './model/Clickhouse';
 import ClusterEdit from './model/ClusterEdit';
 import ClusterEditOidcProvider from './model/ClusterEditOidcProvider';
 import ClusterIn from './model/ClusterIn';
@@ -104,6 +105,7 @@ import ComponentsSchemasMeta from './model/ComponentsSchemasMeta';
 import ConfigParameters from './model/ConfigParameters';
 import ConfigParametersMysql from './model/ConfigParametersMysql';
 import ConfigParametersPostgres from './model/ConfigParametersPostgres';
+import ConfigParametersValkey from './model/ConfigParametersValkey';
 import ContainerRegistryPresetsInner from './model/ContainerRegistryPresetsInner';
 import ContainerRegistryRepositoriesInner from './model/ContainerRegistryRepositoriesInner';
 import CreateAdmin from './model/CreateAdmin';
@@ -362,6 +364,7 @@ import IncreaseNodes from './model/IncreaseNodes';
 import InfoServicePrice from './model/InfoServicePrice';
 import Invoice from './model/Invoice';
 import K8SVersionsResponse from './model/K8SVersionsResponse';
+import Kafka from './model/Kafka';
 import Knowledgebase from './model/Knowledgebase';
 import KnowledgebaseV2 from './model/KnowledgebaseV2';
 import Location from './model/Location';
@@ -382,6 +385,7 @@ import ModelParamsInfo from './model/ModelParamsInfo';
 import ModelParamsInfoMaxTokens from './model/ModelParamsInfoMaxTokens';
 import ModelParamsInfoReasoningEffort from './model/ModelParamsInfoReasoningEffort';
 import ModelParamsInfoTemperature from './model/ModelParamsInfoTemperature';
+import Mongodb from './model/Mongodb';
 import MountNetworkDrive from './model/MountNetworkDrive';
 import Mysql from './model/Mysql';
 import NatIn from './model/NatIn';
@@ -410,20 +414,25 @@ import NotificationSettingChannel from './model/NotificationSettingChannel';
 import NotificationSettingChannels from './model/NotificationSettingChannels';
 import NotificationSettingType from './model/NotificationSettingType';
 import OS from './model/OS';
+import Opensearch from './model/Opensearch';
 import OutgoingIsDisabled from './model/OutgoingIsDisabled';
 import OutgoingIsEnabled from './model/OutgoingIsEnabled';
 import PerformActionOnBackupRequest from './model/PerformActionOnBackupRequest';
 import PerformActionOnServerRequest from './model/PerformActionOnServerRequest';
 import Policy from './model/Policy';
 import Postgres from './model/Postgres';
+import Postgresql from './model/Postgresql';
 import PresetsBalancer from './model/PresetsBalancer';
 import PresetsDbs from './model/PresetsDbs';
 import PresetsResponse from './model/PresetsResponse';
 import PresetsStorage from './model/PresetsStorage';
 import Project from './model/Project';
 import ProjectResource from './model/ProjectResource';
+import PropertiesMysql from './model/PropertiesMysql';
+import PropertiesValkey from './model/PropertiesValkey';
 import Provider from './model/Provider';
 import Providers from './model/Providers';
+import Rabbitmq from './model/Rabbitmq';
 import ReduceNodes from './model/ReduceNodes';
 import RegistriesResponse from './model/RegistriesResponse';
 import RegistryEdit from './model/RegistryEdit';
@@ -555,6 +564,7 @@ import UploadSuccessful from './model/UploadSuccessful';
 import UploadSuccessfulResponse from './model/UploadSuccessfulResponse';
 import UrlStatus from './model/UrlStatus';
 import Use from './model/Use';
+import Valkey from './model/Valkey';
 import Vds from './model/Vds';
 import VdsDisksInner from './model/VdsDisksInner';
 import VdsImage from './model/VdsImage';
@@ -1063,6 +1073,12 @@ export {
     CheckDomain200Response,
 
     /**
+     * The Clickhouse model constructor.
+     * @property {module:model/Clickhouse}
+     */
+    Clickhouse,
+
+    /**
      * The ClusterEdit model constructor.
      * @property {module:model/ClusterEdit}
      */
@@ -1175,6 +1191,12 @@ export {
      * @property {module:model/ConfigParametersPostgres}
      */
     ConfigParametersPostgres,
+
+    /**
+     * The ConfigParametersValkey model constructor.
+     * @property {module:model/ConfigParametersValkey}
+     */
+    ConfigParametersValkey,
 
     /**
      * The ContainerRegistryPresetsInner model constructor.
@@ -2725,6 +2747,12 @@ export {
     K8SVersionsResponse,
 
     /**
+     * The Kafka model constructor.
+     * @property {module:model/Kafka}
+     */
+    Kafka,
+
+    /**
      * The Knowledgebase model constructor.
      * @property {module:model/Knowledgebase}
      */
@@ -2843,6 +2871,12 @@ export {
      * @property {module:model/ModelParamsInfoTemperature}
      */
     ModelParamsInfoTemperature,
+
+    /**
+     * The Mongodb model constructor.
+     * @property {module:model/Mongodb}
+     */
+    Mongodb,
 
     /**
      * The MountNetworkDrive model constructor.
@@ -3013,6 +3047,12 @@ export {
     OS,
 
     /**
+     * The Opensearch model constructor.
+     * @property {module:model/Opensearch}
+     */
+    Opensearch,
+
+    /**
      * The OutgoingIsDisabled model constructor.
      * @property {module:model/OutgoingIsDisabled}
      */
@@ -3047,6 +3087,12 @@ export {
      * @property {module:model/Postgres}
      */
     Postgres,
+
+    /**
+     * The Postgresql model constructor.
+     * @property {module:model/Postgresql}
+     */
+    Postgresql,
 
     /**
      * The PresetsBalancer model constructor.
@@ -3085,6 +3131,18 @@ export {
     ProjectResource,
 
     /**
+     * The PropertiesMysql model constructor.
+     * @property {module:model/PropertiesMysql}
+     */
+    PropertiesMysql,
+
+    /**
+     * The PropertiesValkey model constructor.
+     * @property {module:model/PropertiesValkey}
+     */
+    PropertiesValkey,
+
+    /**
      * The Provider model constructor.
      * @property {module:model/Provider}
      */
@@ -3095,6 +3153,12 @@ export {
      * @property {module:model/Providers}
      */
     Providers,
+
+    /**
+     * The Rabbitmq model constructor.
+     * @property {module:model/Rabbitmq}
+     */
+    Rabbitmq,
 
     /**
      * The ReduceNodes model constructor.
@@ -3881,6 +3945,12 @@ export {
      * @property {module:model/Use}
      */
     Use,
+
+    /**
+     * The Valkey model constructor.
+     * @property {module:model/Valkey}
+     */
+    Valkey,
 
     /**
      * The Vds model constructor.

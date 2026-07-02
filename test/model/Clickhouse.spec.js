@@ -11,152 +11,48 @@
  *
  */
 
-import ApiClient from '../ApiClient';
-import PropertiesMysql from './PropertiesMysql';
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', process.cwd()+'/src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.TimewebCloudApi);
+  }
+}(this, function(expect, TimewebCloudApi) {
+  'use strict';
 
-/**
- * The CreateAdmin model module.
- * @module model/CreateAdmin
- * @version 1.0.0
- */
-class CreateAdmin {
-    /**
-     * Constructs a new <code>CreateAdmin</code>.
-     * @alias module:model/CreateAdmin
-     * @param login {String} Имя пользователя базы данных
-     * @param password {String} Пароль пользователя базы данных
-     * @param privileges {Array.<module:model/PropertiesMysql>} Список привилегий пользователя базы данных
-     */
-    constructor(login, password, privileges) { 
-        
-        CreateAdmin.initialize(this, login, password, privileges);
-    }
+  var instance;
 
-    /**
-     * Initializes the fields of this object.
-     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
-     * Only for internal use.
-     */
-    static initialize(obj, login, password, privileges) { 
-        obj['login'] = login;
-        obj['password'] = password;
-        obj['privileges'] = privileges;
-    }
+  beforeEach(function() {
+  });
 
-    /**
-     * Constructs a <code>CreateAdmin</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/CreateAdmin} obj Optional instance to populate.
-     * @return {module:model/CreateAdmin} The populated <code>CreateAdmin</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new CreateAdmin();
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
-            if (data.hasOwnProperty('login')) {
-                obj['login'] = ApiClient.convertToType(data['login'], 'String');
-            }
-            if (data.hasOwnProperty('password')) {
-                obj['password'] = ApiClient.convertToType(data['password'], 'String');
-            }
-            if (data.hasOwnProperty('host')) {
-                obj['host'] = ApiClient.convertToType(data['host'], 'String');
-            }
-            if (data.hasOwnProperty('instance_id')) {
-                obj['instance_id'] = ApiClient.convertToType(data['instance_id'], 'Number');
-            }
-            if (data.hasOwnProperty('privileges')) {
-                obj['privileges'] = ApiClient.convertToType(data['privileges'], [PropertiesMysql]);
-            }
-            if (data.hasOwnProperty('description')) {
-                obj['description'] = ApiClient.convertToType(data['description'], 'String');
-            }
-        }
-        return obj;
-    }
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-    /**
-     * Validates the JSON data with respect to <code>CreateAdmin</code>.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateAdmin</code>.
-     */
-    static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of CreateAdmin.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
-        // ensure the json data is a string
-        if (data['login'] && !(typeof data['login'] === 'string' || data['login'] instanceof String)) {
-            throw new Error("Expected the field `login` to be a primitive type in the JSON string but got " + data['login']);
-        }
-        // ensure the json data is a string
-        if (data['password'] && !(typeof data['password'] === 'string' || data['password'] instanceof String)) {
-            throw new Error("Expected the field `password` to be a primitive type in the JSON string but got " + data['password']);
-        }
-        // ensure the json data is a string
-        if (data['host'] && !(typeof data['host'] === 'string' || data['host'] instanceof String)) {
-            throw new Error("Expected the field `host` to be a primitive type in the JSON string but got " + data['host']);
-        }
-        // ensure the json data is an array
-        if (!Array.isArray(data['privileges'])) {
-            throw new Error("Expected the field `privileges` to be an array in the JSON data but got " + data['privileges']);
-        }
-        // ensure the json data is a string
-        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
-            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
-        }
+  describe('Clickhouse', function() {
+    it('should create an instance of Clickhouse', function() {
+      // uncomment below and update the code to test Clickhouse
+      //var instance = new TimewebCloudApi.Clickhouse();
+      //expect(instance).to.be.a(TimewebCloudApi.Clickhouse);
+    });
 
-        return true;
-    }
+  });
 
-
-}
-
-CreateAdmin.RequiredProperties = ["login", "password", "privileges"];
-
-/**
- * Имя пользователя базы данных
- * @member {String} login
- */
-CreateAdmin.prototype['login'] = undefined;
-
-/**
- * Пароль пользователя базы данных
- * @member {String} password
- */
-CreateAdmin.prototype['password'] = undefined;
-
-/**
- * Хост пользователя
- * @member {String} host
- */
-CreateAdmin.prototype['host'] = undefined;
-
-/**
- * ID инстанса базы данных для применения привилегий. Если поле не передано, то привилегии будут применены ко всем инстансам
- * @member {Number} instance_id
- */
-CreateAdmin.prototype['instance_id'] = undefined;
-
-/**
- * Список привилегий пользователя базы данных
- * @member {Array.<module:model/PropertiesMysql>} privileges
- */
-CreateAdmin.prototype['privileges'] = undefined;
-
-/**
- * Описание пользователя базы данных
- * @member {String} description
- */
-CreateAdmin.prototype['description'] = undefined;
-
-
-
-
-
-
-export default CreateAdmin;
-
+}));

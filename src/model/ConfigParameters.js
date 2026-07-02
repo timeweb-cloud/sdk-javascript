@@ -14,6 +14,7 @@
 import ApiClient from '../ApiClient';
 import ConfigParametersMysql from './ConfigParametersMysql';
 import ConfigParametersPostgres from './ConfigParametersPostgres';
+import ConfigParametersValkey from './ConfigParametersValkey';
 
 /**
  * The ConfigParameters model module.
@@ -56,6 +57,9 @@ class ConfigParameters {
             if (data.hasOwnProperty('postgres')) {
                 obj['postgres'] = ConfigParametersPostgres.constructFromObject(data['postgres']);
             }
+            if (data.hasOwnProperty('valkey')) {
+                obj['valkey'] = ConfigParametersValkey.constructFromObject(data['valkey']);
+            }
         }
         return obj;
     }
@@ -73,6 +77,10 @@ class ConfigParameters {
         // validate the optional field `postgres`
         if (data['postgres']) { // data not null
           ConfigParametersPostgres.validateJSON(data['postgres']);
+        }
+        // validate the optional field `valkey`
+        if (data['valkey']) { // data not null
+          ConfigParametersValkey.validateJSON(data['valkey']);
         }
 
         return true;
@@ -92,6 +100,11 @@ ConfigParameters.prototype['mysql'] = undefined;
  * @member {module:model/ConfigParametersPostgres} postgres
  */
 ConfigParameters.prototype['postgres'] = undefined;
+
+/**
+ * @member {module:model/ConfigParametersValkey} valkey
+ */
+ConfigParameters.prototype['valkey'] = undefined;
 
 
 

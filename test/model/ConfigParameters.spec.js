@@ -66,6 +66,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property valkey (base name: "valkey")', function() {
+      // uncomment below and update the code to test the property valkey
+      //var instance = new TimewebCloudApi.ConfigParameters();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

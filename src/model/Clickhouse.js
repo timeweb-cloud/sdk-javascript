@@ -12,151 +12,147 @@
  */
 
 import ApiClient from '../ApiClient';
-import PropertiesMysql from './PropertiesMysql';
-
 /**
- * The CreateAdmin model module.
- * @module model/CreateAdmin
- * @version 1.0.0
- */
-class CreateAdmin {
-    /**
-     * Constructs a new <code>CreateAdmin</code>.
-     * @alias module:model/CreateAdmin
-     * @param login {String} Имя пользователя базы данных
-     * @param password {String} Пароль пользователя базы данных
-     * @param privileges {Array.<module:model/PropertiesMysql>} Список привилегий пользователя базы данных
-     */
-    constructor(login, password, privileges) { 
-        
-        CreateAdmin.initialize(this, login, password, privileges);
-    }
+* Enum class Clickhouse.
+* @enum {}
+* @readonly
+*/
+export default class Clickhouse {
+    
+        /**
+         * value: "ALTER"
+         * @const
+         */
+        "ALTER" = "ALTER";
+
+    
+        /**
+         * value: "ALTER_TABLE"
+         * @const
+         */
+        "ALTER_TABLE" = "ALTER_TABLE";
+
+    
+        /**
+         * value: "ALTER_VIEW"
+         * @const
+         */
+        "ALTER_VIEW" = "ALTER_VIEW";
+
+    
+        /**
+         * value: "CREATE"
+         * @const
+         */
+        "CREATE" = "CREATE";
+
+    
+        /**
+         * value: "CREATE_VIEW"
+         * @const
+         */
+        "CREATE_VIEW" = "CREATE_VIEW";
+
+    
+        /**
+         * value: "CREATE_DICTIONARY"
+         * @const
+         */
+        "CREATE_DICTIONARY" = "CREATE_DICTIONARY";
+
+    
+        /**
+         * value: "CREATE_TABLE"
+         * @const
+         */
+        "CREATE_TABLE" = "CREATE_TABLE";
+
+    
+        /**
+         * value: "DROP"
+         * @const
+         */
+        "DROP" = "DROP";
+
+    
+        /**
+         * value: "DROP_TABLE"
+         * @const
+         */
+        "DROP_TABLE" = "DROP_TABLE";
+
+    
+        /**
+         * value: "DROP_VIEW"
+         * @const
+         */
+        "DROP_VIEW" = "DROP_VIEW";
+
+    
+        /**
+         * value: "DROP_DICTIONARY"
+         * @const
+         */
+        "DROP_DICTIONARY" = "DROP_DICTIONARY";
+
+    
+        /**
+         * value: "SELECT"
+         * @const
+         */
+        "SELECT" = "SELECT";
+
+    
+        /**
+         * value: "INSERT"
+         * @const
+         */
+        "INSERT" = "INSERT";
+
+    
+        /**
+         * value: "SHOW"
+         * @const
+         */
+        "SHOW" = "SHOW";
+
+    
+        /**
+         * value: "TRUNCATE"
+         * @const
+         */
+        "TRUNCATE" = "TRUNCATE";
+
+    
+        /**
+         * value: "OPTIMIZE"
+         * @const
+         */
+        "OPTIMIZE" = "OPTIMIZE";
+
+    
+        /**
+         * value: "CREATE_TEMPORARY_TABLE"
+         * @const
+         */
+        "CREATE_TEMPORARY_TABLE" = "CREATE_TEMPORARY_TABLE";
+
+    
+        /**
+         * value: "dictGet"
+         * @const
+         */
+        "dictGet" = "dictGet";
+
+    
 
     /**
-     * Initializes the fields of this object.
-     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
-     * Only for internal use.
-     */
-    static initialize(obj, login, password, privileges) { 
-        obj['login'] = login;
-        obj['password'] = password;
-        obj['privileges'] = privileges;
+    * Returns a <code>Clickhouse</code> enum value from a Javascript object name.
+    * @param {Object} data The plain JavaScript object containing the name of the enum value.
+    * @return {module:model/Clickhouse} The enum <code>Clickhouse</code> value.
+    */
+    static constructFromObject(object) {
+        return object;
     }
-
-    /**
-     * Constructs a <code>CreateAdmin</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/CreateAdmin} obj Optional instance to populate.
-     * @return {module:model/CreateAdmin} The populated <code>CreateAdmin</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new CreateAdmin();
-
-            if (data.hasOwnProperty('login')) {
-                obj['login'] = ApiClient.convertToType(data['login'], 'String');
-            }
-            if (data.hasOwnProperty('password')) {
-                obj['password'] = ApiClient.convertToType(data['password'], 'String');
-            }
-            if (data.hasOwnProperty('host')) {
-                obj['host'] = ApiClient.convertToType(data['host'], 'String');
-            }
-            if (data.hasOwnProperty('instance_id')) {
-                obj['instance_id'] = ApiClient.convertToType(data['instance_id'], 'Number');
-            }
-            if (data.hasOwnProperty('privileges')) {
-                obj['privileges'] = ApiClient.convertToType(data['privileges'], [PropertiesMysql]);
-            }
-            if (data.hasOwnProperty('description')) {
-                obj['description'] = ApiClient.convertToType(data['description'], 'String');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * Validates the JSON data with respect to <code>CreateAdmin</code>.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateAdmin</code>.
-     */
-    static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of CreateAdmin.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
-        // ensure the json data is a string
-        if (data['login'] && !(typeof data['login'] === 'string' || data['login'] instanceof String)) {
-            throw new Error("Expected the field `login` to be a primitive type in the JSON string but got " + data['login']);
-        }
-        // ensure the json data is a string
-        if (data['password'] && !(typeof data['password'] === 'string' || data['password'] instanceof String)) {
-            throw new Error("Expected the field `password` to be a primitive type in the JSON string but got " + data['password']);
-        }
-        // ensure the json data is a string
-        if (data['host'] && !(typeof data['host'] === 'string' || data['host'] instanceof String)) {
-            throw new Error("Expected the field `host` to be a primitive type in the JSON string but got " + data['host']);
-        }
-        // ensure the json data is an array
-        if (!Array.isArray(data['privileges'])) {
-            throw new Error("Expected the field `privileges` to be an array in the JSON data but got " + data['privileges']);
-        }
-        // ensure the json data is a string
-        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
-            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
-        }
-
-        return true;
-    }
-
-
 }
-
-CreateAdmin.RequiredProperties = ["login", "password", "privileges"];
-
-/**
- * Имя пользователя базы данных
- * @member {String} login
- */
-CreateAdmin.prototype['login'] = undefined;
-
-/**
- * Пароль пользователя базы данных
- * @member {String} password
- */
-CreateAdmin.prototype['password'] = undefined;
-
-/**
- * Хост пользователя
- * @member {String} host
- */
-CreateAdmin.prototype['host'] = undefined;
-
-/**
- * ID инстанса базы данных для применения привилегий. Если поле не передано, то привилегии будут применены ко всем инстансам
- * @member {Number} instance_id
- */
-CreateAdmin.prototype['instance_id'] = undefined;
-
-/**
- * Список привилегий пользователя базы данных
- * @member {Array.<module:model/PropertiesMysql>} privileges
- */
-CreateAdmin.prototype['privileges'] = undefined;
-
-/**
- * Описание пользователя базы данных
- * @member {String} description
- */
-CreateAdmin.prototype['description'] = undefined;
-
-
-
-
-
-
-export default CreateAdmin;
 

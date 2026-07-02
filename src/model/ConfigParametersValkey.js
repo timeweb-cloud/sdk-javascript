@@ -12,24 +12,21 @@
  */
 
 import ApiClient from '../ApiClient';
-import PropertiesMysql from './PropertiesMysql';
 
 /**
- * The CreateAdmin model module.
- * @module model/CreateAdmin
+ * The ConfigParametersValkey model module.
+ * @module model/ConfigParametersValkey
  * @version 1.0.0
  */
-class CreateAdmin {
+class ConfigParametersValkey {
     /**
-     * Constructs a new <code>CreateAdmin</code>.
-     * @alias module:model/CreateAdmin
-     * @param login {String} Имя пользователя базы данных
-     * @param password {String} Пароль пользователя базы данных
-     * @param privileges {Array.<module:model/PropertiesMysql>} Список привилегий пользователя базы данных
+     * Constructs a new <code>ConfigParametersValkey</code>.
+     * Параметры Valkey (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;)
+     * @alias module:model/ConfigParametersValkey
      */
-    constructor(login, password, privileges) { 
+    constructor() { 
         
-        CreateAdmin.initialize(this, login, password, privileges);
+        ConfigParametersValkey.initialize(this);
     }
 
     /**
@@ -37,76 +34,106 @@ class CreateAdmin {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, login, password, privileges) { 
-        obj['login'] = login;
-        obj['password'] = password;
-        obj['privileges'] = privileges;
+    static initialize(obj) { 
     }
 
     /**
-     * Constructs a <code>CreateAdmin</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>ConfigParametersValkey</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/CreateAdmin} obj Optional instance to populate.
-     * @return {module:model/CreateAdmin} The populated <code>CreateAdmin</code> instance.
+     * @param {module:model/ConfigParametersValkey} obj Optional instance to populate.
+     * @return {module:model/ConfigParametersValkey} The populated <code>ConfigParametersValkey</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new CreateAdmin();
+            obj = obj || new ConfigParametersValkey();
 
-            if (data.hasOwnProperty('login')) {
-                obj['login'] = ApiClient.convertToType(data['login'], 'String');
+            if (data.hasOwnProperty('client-output-buffer-limit normal')) {
+                obj['client-output-buffer-limit normal'] = ApiClient.convertToType(data['client-output-buffer-limit normal'], 'String');
             }
-            if (data.hasOwnProperty('password')) {
-                obj['password'] = ApiClient.convertToType(data['password'], 'String');
+            if (data.hasOwnProperty('client-output-buffer-limit pubsub')) {
+                obj['client-output-buffer-limit pubsub'] = ApiClient.convertToType(data['client-output-buffer-limit pubsub'], 'String');
             }
-            if (data.hasOwnProperty('host')) {
-                obj['host'] = ApiClient.convertToType(data['host'], 'String');
+            if (data.hasOwnProperty('databases')) {
+                obj['databases'] = ApiClient.convertToType(data['databases'], 'String');
             }
-            if (data.hasOwnProperty('instance_id')) {
-                obj['instance_id'] = ApiClient.convertToType(data['instance_id'], 'Number');
+            if (data.hasOwnProperty('timeout')) {
+                obj['timeout'] = ApiClient.convertToType(data['timeout'], 'String');
             }
-            if (data.hasOwnProperty('privileges')) {
-                obj['privileges'] = ApiClient.convertToType(data['privileges'], [PropertiesMysql]);
+            if (data.hasOwnProperty('maxmemory-policy')) {
+                obj['maxmemory-policy'] = ApiClient.convertToType(data['maxmemory-policy'], 'String');
             }
-            if (data.hasOwnProperty('description')) {
-                obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            if (data.hasOwnProperty('slowlog-log-slower-than')) {
+                obj['slowlog-log-slower-than'] = ApiClient.convertToType(data['slowlog-log-slower-than'], 'String');
+            }
+            if (data.hasOwnProperty('slowlog-max-len')) {
+                obj['slowlog-max-len'] = ApiClient.convertToType(data['slowlog-max-len'], 'String');
+            }
+            if (data.hasOwnProperty('save')) {
+                obj['save'] = ApiClient.convertToType(data['save'], 'String');
+            }
+            if (data.hasOwnProperty('appendonly')) {
+                obj['appendonly'] = ApiClient.convertToType(data['appendonly'], 'String');
+            }
+            if (data.hasOwnProperty('appendfsync')) {
+                obj['appendfsync'] = ApiClient.convertToType(data['appendfsync'], 'String');
+            }
+            if (data.hasOwnProperty('tcp-keepalive')) {
+                obj['tcp-keepalive'] = ApiClient.convertToType(data['tcp-keepalive'], 'String');
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>CreateAdmin</code>.
+     * Validates the JSON data with respect to <code>ConfigParametersValkey</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateAdmin</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ConfigParametersValkey</code>.
      */
     static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of CreateAdmin.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
+        // ensure the json data is a string
+        if (data['client-output-buffer-limit normal'] && !(typeof data['client-output-buffer-limit normal'] === 'string' || data['client-output-buffer-limit normal'] instanceof String)) {
+            throw new Error("Expected the field `client-output-buffer-limit normal` to be a primitive type in the JSON string but got " + data['client-output-buffer-limit normal']);
         }
         // ensure the json data is a string
-        if (data['login'] && !(typeof data['login'] === 'string' || data['login'] instanceof String)) {
-            throw new Error("Expected the field `login` to be a primitive type in the JSON string but got " + data['login']);
+        if (data['client-output-buffer-limit pubsub'] && !(typeof data['client-output-buffer-limit pubsub'] === 'string' || data['client-output-buffer-limit pubsub'] instanceof String)) {
+            throw new Error("Expected the field `client-output-buffer-limit pubsub` to be a primitive type in the JSON string but got " + data['client-output-buffer-limit pubsub']);
         }
         // ensure the json data is a string
-        if (data['password'] && !(typeof data['password'] === 'string' || data['password'] instanceof String)) {
-            throw new Error("Expected the field `password` to be a primitive type in the JSON string but got " + data['password']);
+        if (data['databases'] && !(typeof data['databases'] === 'string' || data['databases'] instanceof String)) {
+            throw new Error("Expected the field `databases` to be a primitive type in the JSON string but got " + data['databases']);
         }
         // ensure the json data is a string
-        if (data['host'] && !(typeof data['host'] === 'string' || data['host'] instanceof String)) {
-            throw new Error("Expected the field `host` to be a primitive type in the JSON string but got " + data['host']);
-        }
-        // ensure the json data is an array
-        if (!Array.isArray(data['privileges'])) {
-            throw new Error("Expected the field `privileges` to be an array in the JSON data but got " + data['privileges']);
+        if (data['timeout'] && !(typeof data['timeout'] === 'string' || data['timeout'] instanceof String)) {
+            throw new Error("Expected the field `timeout` to be a primitive type in the JSON string but got " + data['timeout']);
         }
         // ensure the json data is a string
-        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
-            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        if (data['maxmemory-policy'] && !(typeof data['maxmemory-policy'] === 'string' || data['maxmemory-policy'] instanceof String)) {
+            throw new Error("Expected the field `maxmemory-policy` to be a primitive type in the JSON string but got " + data['maxmemory-policy']);
+        }
+        // ensure the json data is a string
+        if (data['slowlog-log-slower-than'] && !(typeof data['slowlog-log-slower-than'] === 'string' || data['slowlog-log-slower-than'] instanceof String)) {
+            throw new Error("Expected the field `slowlog-log-slower-than` to be a primitive type in the JSON string but got " + data['slowlog-log-slower-than']);
+        }
+        // ensure the json data is a string
+        if (data['slowlog-max-len'] && !(typeof data['slowlog-max-len'] === 'string' || data['slowlog-max-len'] instanceof String)) {
+            throw new Error("Expected the field `slowlog-max-len` to be a primitive type in the JSON string but got " + data['slowlog-max-len']);
+        }
+        // ensure the json data is a string
+        if (data['save'] && !(typeof data['save'] === 'string' || data['save'] instanceof String)) {
+            throw new Error("Expected the field `save` to be a primitive type in the JSON string but got " + data['save']);
+        }
+        // ensure the json data is a string
+        if (data['appendonly'] && !(typeof data['appendonly'] === 'string' || data['appendonly'] instanceof String)) {
+            throw new Error("Expected the field `appendonly` to be a primitive type in the JSON string but got " + data['appendonly']);
+        }
+        // ensure the json data is a string
+        if (data['appendfsync'] && !(typeof data['appendfsync'] === 'string' || data['appendfsync'] instanceof String)) {
+            throw new Error("Expected the field `appendfsync` to be a primitive type in the JSON string but got " + data['appendfsync']);
+        }
+        // ensure the json data is a string
+        if (data['tcp-keepalive'] && !(typeof data['tcp-keepalive'] === 'string' || data['tcp-keepalive'] instanceof String)) {
+            throw new Error("Expected the field `tcp-keepalive` to be a primitive type in the JSON string but got " + data['tcp-keepalive']);
         }
 
         return true;
@@ -115,48 +142,78 @@ class CreateAdmin {
 
 }
 
-CreateAdmin.RequiredProperties = ["login", "password", "privileges"];
+
 
 /**
- * Имя пользователя базы данных
- * @member {String} login
+ * Ограничение буфера вывода для обычных клиентских подключений. Формат: `hard-limit soft-limit soft-seconds` (`valkey` | `valkey7` | `valkey8_1` | `valkey9_1`).
+ * @member {String} client-output-buffer-limit normal
  */
-CreateAdmin.prototype['login'] = undefined;
+ConfigParametersValkey.prototype['client-output-buffer-limit normal'] = undefined;
 
 /**
- * Пароль пользователя базы данных
- * @member {String} password
+ * Ограничение буфера вывода для клиентов pub/sub. Формат: `hard-limit soft-limit soft-seconds` (`valkey` | `valkey7` | `valkey8_1` | `valkey9_1`).
+ * @member {String} client-output-buffer-limit pubsub
  */
-CreateAdmin.prototype['password'] = undefined;
+ConfigParametersValkey.prototype['client-output-buffer-limit pubsub'] = undefined;
 
 /**
- * Хост пользователя
- * @member {String} host
+ * Количество логических баз данных на сервере (`valkey` | `valkey7` | `valkey8_1` | `valkey9_1`).
+ * @member {String} databases
  */
-CreateAdmin.prototype['host'] = undefined;
+ConfigParametersValkey.prototype['databases'] = undefined;
 
 /**
- * ID инстанса базы данных для применения привилегий. Если поле не передано, то привилегии будут применены ко всем инстансам
- * @member {Number} instance_id
+ * Время ожидания в секундах перед закрытием неактивного клиентского соединения. `0` — отключено (`valkey` | `valkey7` | `valkey8_1` | `valkey9_1`).
+ * @member {String} timeout
  */
-CreateAdmin.prototype['instance_id'] = undefined;
+ConfigParametersValkey.prototype['timeout'] = undefined;
 
 /**
- * Список привилегий пользователя базы данных
- * @member {Array.<module:model/PropertiesMysql>} privileges
+ * Политика вытеснения ключей при достижении лимита памяти (`valkey` | `valkey7` | `valkey8_1` | `valkey9_1`).
+ * @member {String} maxmemory-policy
  */
-CreateAdmin.prototype['privileges'] = undefined;
+ConfigParametersValkey.prototype['maxmemory-policy'] = undefined;
 
 /**
- * Описание пользователя базы данных
- * @member {String} description
+ * Минимальное время выполнения команды в микросекундах для записи в журнал медленных команд (`valkey` | `valkey7` | `valkey8_1` | `valkey9_1`).
+ * @member {String} slowlog-log-slower-than
  */
-CreateAdmin.prototype['description'] = undefined;
+ConfigParametersValkey.prototype['slowlog-log-slower-than'] = undefined;
+
+/**
+ * Максимальное количество записей, хранящихся в журнале медленных команд (`valkey` | `valkey7` | `valkey8_1` | `valkey9_1`).
+ * @member {String} slowlog-max-len
+ */
+ConfigParametersValkey.prototype['slowlog-max-len'] = undefined;
+
+/**
+ * Условие создания снимка RDB на диск. Формат: `seconds changes` — сохранение выполняется, если за указанное время было сделано не менее указанного количества изменений (`valkey` | `valkey7` | `valkey8_1` | `valkey9_1`).
+ * @member {String} save
+ */
+ConfigParametersValkey.prototype['save'] = undefined;
+
+/**
+ * Включение режима AOF (Append Only File) для персистентного хранения данных (`valkey` | `valkey7` | `valkey8_1` | `valkey9_1`).
+ * @member {String} appendonly
+ */
+ConfigParametersValkey.prototype['appendonly'] = undefined;
+
+/**
+ * Режим синхронизации AOF-файла с диском: `always` — при каждой записи, `everysec` — раз в секунду, `no` — управление передаётся ОС (`valkey` | `valkey7` | `valkey8_1` | `valkey9_1`).
+ * @member {String} appendfsync
+ */
+ConfigParametersValkey.prototype['appendfsync'] = undefined;
+
+/**
+ * Интервал проверки активности TCP-соединения в секундах. `0` — отключено (`valkey` | `valkey7` | `valkey8_1` | `valkey9_1`).
+ * @member {String} tcp-keepalive
+ */
+ConfigParametersValkey.prototype['tcp-keepalive'] = undefined;
 
 
 
 
 
 
-export default CreateAdmin;
+export default ConfigParametersValkey;
 
