@@ -323,6 +323,8 @@ docs/GetProjectStorages200Response.md
 docs/GetProjects200Response.md
 docs/GetProviders200Response.md
 docs/GetRepositories200Response.md
+docs/GetRestorePoint200Response.md
+docs/GetRestorePoints200Response.md
 docs/GetServerDiskAutoBackupSettings200Response.md
 docs/GetServerDiskBackup200Response.md
 docs/GetServerDiskBackups200Response.md
@@ -458,6 +460,7 @@ docs/ResourceTransfer.md
 docs/ResourceType.md
 docs/Resources.md
 docs/ResourcesResponse.md
+docs/RestorePoint.md
 docs/RouterEdit.md
 docs/RouterIn.md
 docs/RouterInIpsInner.md
@@ -510,6 +513,7 @@ docs/ServiceServicePrice.md
 docs/ServiceServicePriceNodeGroupsInner.md
 docs/SetLabels.md
 docs/SettingCondition.md
+docs/SnapshotsApi.md
 docs/SpamFilterIsDisabled.md
 docs/SpamFilterIsEnabled.md
 docs/SpamProtectionIsDisabled.md
@@ -616,6 +620,7 @@ src/api/RoutersApi.js
 src/api/S3Api.js
 src/api/SSHApi.js
 src/api/ServersApi.js
+src/api/SnapshotsApi.js
 src/api/VPCApi.js
 src/index.js
 src/model/AddBalancerToProject200Response.js
@@ -928,6 +933,8 @@ src/model/GetProjectStorages200Response.js
 src/model/GetProjects200Response.js
 src/model/GetProviders200Response.js
 src/model/GetRepositories200Response.js
+src/model/GetRestorePoint200Response.js
+src/model/GetRestorePoints200Response.js
 src/model/GetServerDiskAutoBackupSettings200Response.js
 src/model/GetServerDiskBackup200Response.js
 src/model/GetServerDiskBackups200Response.js
@@ -1055,6 +1062,7 @@ src/model/ResourceTransfer.js
 src/model/ResourceType.js
 src/model/Resources.js
 src/model/ResourcesResponse.js
+src/model/RestorePoint.js
 src/model/RouterEdit.js
 src/model/RouterIn.js
 src/model/RouterInIpsInner.js
@@ -1204,6 +1212,7 @@ test/api/RoutersApi.spec.js
 test/api/S3Api.spec.js
 test/api/SSHApi.spec.js
 test/api/ServersApi.spec.js
+test/api/SnapshotsApi.spec.js
 test/api/VPCApi.spec.js
 test/model/AddBalancerToProject200Response.spec.js
 test/model/AddBalancerToProjectRequest.spec.js
@@ -1515,6 +1524,8 @@ test/model/GetProjectStorages200Response.spec.js
 test/model/GetProjects200Response.spec.js
 test/model/GetProviders200Response.spec.js
 test/model/GetRepositories200Response.spec.js
+test/model/GetRestorePoint200Response.spec.js
+test/model/GetRestorePoints200Response.spec.js
 test/model/GetServerDiskAutoBackupSettings200Response.spec.js
 test/model/GetServerDiskBackup200Response.spec.js
 test/model/GetServerDiskBackups200Response.spec.js
@@ -1642,6 +1653,7 @@ test/model/ResourceTransfer.spec.js
 test/model/ResourceType.spec.js
 test/model/Resources.spec.js
 test/model/ResourcesResponse.spec.js
+test/model/RestorePoint.spec.js
 test/model/RouterEdit.spec.js
 test/model/RouterIn.spec.js
 test/model/RouterInIpsInner.spec.js

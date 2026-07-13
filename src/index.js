@@ -323,6 +323,8 @@ import GetProjectStorages200Response from './model/GetProjectStorages200Response
 import GetProjects200Response from './model/GetProjects200Response';
 import GetProviders200Response from './model/GetProviders200Response';
 import GetRepositories200Response from './model/GetRepositories200Response';
+import GetRestorePoint200Response from './model/GetRestorePoint200Response';
+import GetRestorePoints200Response from './model/GetRestorePoints200Response';
 import GetServerDiskAutoBackupSettings200Response from './model/GetServerDiskAutoBackupSettings200Response';
 import GetServerDiskBackup200Response from './model/GetServerDiskBackup200Response';
 import GetServerDiskBackups200Response from './model/GetServerDiskBackups200Response';
@@ -450,6 +452,7 @@ import ResourceTransfer from './model/ResourceTransfer';
 import ResourceType from './model/ResourceType';
 import Resources from './model/Resources';
 import ResourcesResponse from './model/ResourcesResponse';
+import RestorePoint from './model/RestorePoint';
 import RouterEdit from './model/RouterEdit';
 import RouterIn from './model/RouterIn';
 import RouterInIpsInner from './model/RouterInIpsInner';
@@ -599,6 +602,7 @@ import RoutersApi from './api/RoutersApi';
 import S3Api from './api/S3Api';
 import SSHApi from './api/SSHApi';
 import ServersApi from './api/ServersApi';
+import SnapshotsApi from './api/SnapshotsApi';
 import VPCApi from './api/VPCApi';
 
 
@@ -2501,6 +2505,18 @@ export {
     GetRepositories200Response,
 
     /**
+     * The GetRestorePoint200Response model constructor.
+     * @property {module:model/GetRestorePoint200Response}
+     */
+    GetRestorePoint200Response,
+
+    /**
+     * The GetRestorePoints200Response model constructor.
+     * @property {module:model/GetRestorePoints200Response}
+     */
+    GetRestorePoints200Response,
+
+    /**
      * The GetServerDiskAutoBackupSettings200Response model constructor.
      * @property {module:model/GetServerDiskAutoBackupSettings200Response}
      */
@@ -3261,6 +3277,12 @@ export {
      * @property {module:model/ResourcesResponse}
      */
     ResourcesResponse,
+
+    /**
+     * The RestorePoint model constructor.
+     * @property {module:model/RestorePoint}
+     */
+    RestorePoint,
 
     /**
      * The RouterEdit model constructor.
@@ -4155,6 +4177,12 @@ export {
     * @property {module:api/ServersApi}
     */
     ServersApi,
+
+    /**
+    * The SnapshotsApi service constructor.
+    * @property {module:api/SnapshotsApi}
+    */
+    SnapshotsApi,
 
     /**
     * The VPCApi service constructor.

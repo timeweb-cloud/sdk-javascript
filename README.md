@@ -597,6 +597,11 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.ServersApi* | [**updateServerIP**](docs/ServersApi.md#updateServerIP) | **PATCH** /api/v1/servers/{server_id}/ips | Изменение IP-адреса сервера
 *TimewebCloudApi.ServersApi* | [**updateServerNAT**](docs/ServersApi.md#updateServerNAT) | **PATCH** /api/v1/servers/{server_id}/local-networks/nat-mode | Изменение правил маршрутизации трафика сервера (NAT)
 *TimewebCloudApi.ServersApi* | [**updateServerOSBootMode**](docs/ServersApi.md#updateServerOSBootMode) | **POST** /api/v1/servers/{server_id}/boot-mode | Выбор типа загрузки операционной системы сервера
+*TimewebCloudApi.SnapshotsApi* | [**commitRestorePoint**](docs/SnapshotsApi.md#commitRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/commit | Фиксация снапшота
+*TimewebCloudApi.SnapshotsApi* | [**createRestorePoint**](docs/SnapshotsApi.md#createRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/create | Создание снапшота
+*TimewebCloudApi.SnapshotsApi* | [**getRestorePoint**](docs/SnapshotsApi.md#getRestorePoint) | **GET** /api/v1/restore-points/{vds_id} | Получение снапшота сервера
+*TimewebCloudApi.SnapshotsApi* | [**getRestorePoints**](docs/SnapshotsApi.md#getRestorePoints) | **GET** /api/v1/restore-points | Получение списка снапшотов
+*TimewebCloudApi.SnapshotsApi* | [**rollbackRestorePoint**](docs/SnapshotsApi.md#rollbackRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/rollback | Откат к снапшоту
 *TimewebCloudApi.VPCApi* | [**createVPC**](docs/VPCApi.md#createVPC) | **POST** /api/v2/vpcs | Создание VPC
 *TimewebCloudApi.VPCApi* | [**deleteVPC**](docs/VPCApi.md#deleteVPC) | **DELETE** /api/v1/vpcs/{vpc_id} | Удаление VPC по ID сети
 *TimewebCloudApi.VPCApi* | [**getVPC**](docs/VPCApi.md#getVPC) | **GET** /api/v2/vpcs/{vpc_id} | Получение VPC
@@ -918,6 +923,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetProjects200Response](docs/GetProjects200Response.md)
  - [TimewebCloudApi.GetProviders200Response](docs/GetProviders200Response.md)
  - [TimewebCloudApi.GetRepositories200Response](docs/GetRepositories200Response.md)
+ - [TimewebCloudApi.GetRestorePoint200Response](docs/GetRestorePoint200Response.md)
+ - [TimewebCloudApi.GetRestorePoints200Response](docs/GetRestorePoints200Response.md)
  - [TimewebCloudApi.GetServerDiskAutoBackupSettings200Response](docs/GetServerDiskAutoBackupSettings200Response.md)
  - [TimewebCloudApi.GetServerDiskBackup200Response](docs/GetServerDiskBackup200Response.md)
  - [TimewebCloudApi.GetServerDiskBackups200Response](docs/GetServerDiskBackups200Response.md)
@@ -1045,6 +1052,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ResourceType](docs/ResourceType.md)
  - [TimewebCloudApi.Resources](docs/Resources.md)
  - [TimewebCloudApi.ResourcesResponse](docs/ResourcesResponse.md)
+ - [TimewebCloudApi.RestorePoint](docs/RestorePoint.md)
  - [TimewebCloudApi.RouterEdit](docs/RouterEdit.md)
  - [TimewebCloudApi.RouterIn](docs/RouterIn.md)
  - [TimewebCloudApi.RouterInIpsInner](docs/RouterInIpsInner.md)
