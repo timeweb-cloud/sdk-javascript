@@ -110,26 +110,26 @@ export default class DomainsApi {
 
     /**
      * Добавление поддомена
-     * Чтобы добавить поддомен, отправьте запрос POST на `/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}`, задав необходимые атрибуты.  Поддомен будет добавлен с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленном поддомене.
+     * Чтобы добавить поддомен, отправьте запрос POST на `/api/v1/domains/{fqdn}/subdomains/{subdomain}`, задав необходимые атрибуты.  Поддомен будет добавлен с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленном поддомене.
      * @param {String} fqdn Полное имя домена.
-     * @param {String} subdomainFqdn Полное имя поддомена.
+     * @param {String} subdomain Имя поддомена без имени домена. Например, для поддомена `sub.somedomain.ru` нужно передать `sub`.
      * @param {module:api/DomainsApi~addSubdomainCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/AddSubdomain201Response}
      */
-    addSubdomain(fqdn, subdomainFqdn, callback) {
+    addSubdomain(fqdn, subdomain, callback) {
       let postBody = null;
       // verify the required parameter 'fqdn' is set
       if (fqdn === undefined || fqdn === null) {
         throw new Error("Missing the required parameter 'fqdn' when calling addSubdomain");
       }
-      // verify the required parameter 'subdomainFqdn' is set
-      if (subdomainFqdn === undefined || subdomainFqdn === null) {
-        throw new Error("Missing the required parameter 'subdomainFqdn' when calling addSubdomain");
+      // verify the required parameter 'subdomain' is set
+      if (subdomain === undefined || subdomain === null) {
+        throw new Error("Missing the required parameter 'subdomain' when calling addSubdomain");
       }
 
       let pathParams = {
         'fqdn': fqdn,
-        'subdomain_fqdn': subdomainFqdn
+        'subdomain': subdomain
       };
       let queryParams = {
       };
@@ -143,7 +143,7 @@ export default class DomainsApi {
       let accepts = ['application/json'];
       let returnType = AddSubdomain201Response;
       return this.apiClient.callApi(
-        '/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}', 'POST',
+        '/api/v1/domains/{fqdn}/subdomains/{subdomain}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -251,7 +251,7 @@ export default class DomainsApi {
     /**
      * Добавить информацию о DNS-записи для домена или поддомена
      * Чтобы добавить информацию о DNS-записи для домена или поддомена, отправьте запрос POST на `/api/v2/domains/{fqdn}/dns-records`, задав необходимые атрибуты.  DNS-запись будет добавлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленной DNS-записи.
-     * @param {String} fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).
+     * @param {String} fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).  Поддомен должен быть создан заранее методом добавления поддомена (`POST /api/v1/domains/{fqdn}/subdomains/{subdomain}`).
      * @param {module:model/CreateDnsV2} createDnsV2 
      * @param {module:api/DomainsApi~createDomainDNSRecordV2Callback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateDomainDNSRecordV2201Response}
@@ -431,7 +431,7 @@ export default class DomainsApi {
     /**
      * Удалить информацию о DNS-записи для домена или поддомена
      * Чтобы удалить информацию о DNS-записи для домена или поддомена, отправьте запрос DELETE на `/api/v2/domains/{fqdn}/dns-records/{record_id}`.
-     * @param {String} fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).
+     * @param {String} fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).  Поддомен должен быть создан заранее методом добавления поддомена (`POST /api/v1/domains/{fqdn}/subdomains/{subdomain}`).
      * @param {Number} recordId ID DNS-записи домена или поддомена.
      * @param {module:api/DomainsApi~deleteDomainDNSRecordV2Callback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -478,25 +478,25 @@ export default class DomainsApi {
 
     /**
      * Удаление поддомена
-     * Чтобы удалить поддомен, отправьте запрос DELETE на `/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}`.
+     * Чтобы удалить поддомен, отправьте запрос DELETE на `/api/v1/domains/{fqdn}/subdomains/{subdomain}`.
      * @param {String} fqdn Полное имя домена.
-     * @param {String} subdomainFqdn Полное имя поддомена.
+     * @param {String} subdomain Имя поддомена без имени домена. Например, для поддомена `sub.somedomain.ru` нужно передать `sub`.
      * @param {module:api/DomainsApi~deleteSubdomainCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    deleteSubdomain(fqdn, subdomainFqdn, callback) {
+    deleteSubdomain(fqdn, subdomain, callback) {
       let postBody = null;
       // verify the required parameter 'fqdn' is set
       if (fqdn === undefined || fqdn === null) {
         throw new Error("Missing the required parameter 'fqdn' when calling deleteSubdomain");
       }
-      // verify the required parameter 'subdomainFqdn' is set
-      if (subdomainFqdn === undefined || subdomainFqdn === null) {
-        throw new Error("Missing the required parameter 'subdomainFqdn' when calling deleteSubdomain");
+      // verify the required parameter 'subdomain' is set
+      if (subdomain === undefined || subdomain === null) {
+        throw new Error("Missing the required parameter 'subdomain' when calling deleteSubdomain");
       }
 
       let pathParams = {
         'fqdn': fqdn,
-        'subdomain_fqdn': subdomainFqdn
+        'subdomain': subdomain
       };
       let queryParams = {
       };
@@ -510,7 +510,7 @@ export default class DomainsApi {
       let accepts = ['application/json'];
       let returnType = null;
       return this.apiClient.callApi(
-        '/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}', 'DELETE',
+        '/api/v1/domains/{fqdn}/subdomains/{subdomain}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -1034,7 +1034,7 @@ export default class DomainsApi {
     /**
      * Обновить информацию о DNS-записи домена или поддомена
      * Чтобы обновить информацию о DNS-записи для домена или поддомена, отправьте запрос PATCH на `/api/v2/domains/{fqdn}/dns-records/{record_id}`, задав необходимые атрибуты.  DNS-запись будет обновлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией об обновленной DNS-записи.
-     * @param {String} fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).
+     * @param {String} fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).  Поддомен должен быть создан заранее методом добавления поддомена (`POST /api/v1/domains/{fqdn}/subdomains/{subdomain}`).
      * @param {Number} recordId ID DNS-записи домена или поддомена.
      * @param {module:model/CreateDnsV2} createDnsV2 
      * @param {module:api/DomainsApi~updateDomainDNSRecordV2Callback} callback The callback function, accepting three arguments: error, data, response

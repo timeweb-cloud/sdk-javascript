@@ -368,7 +368,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.DedicatedServersApi* | [**getDedicatedServersPresets**](docs/DedicatedServersApi.md#getDedicatedServersPresets) | **GET** /api/v1/presets/dedicated-servers | Получение списка тарифов для выделенного сервера
 *TimewebCloudApi.DedicatedServersApi* | [**updateDedicatedServer**](docs/DedicatedServersApi.md#updateDedicatedServer) | **PATCH** /api/v1/dedicated-servers/{dedicated_id} | Обновление выделенного сервера
 *TimewebCloudApi.DomainsApi* | [**addDomain**](docs/DomainsApi.md#addDomain) | **POST** /api/v1/add-domain/{fqdn} | Добавление домена на аккаунт
-*TimewebCloudApi.DomainsApi* | [**addSubdomain**](docs/DomainsApi.md#addSubdomain) | **POST** /api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn} | Добавление поддомена
+*TimewebCloudApi.DomainsApi* | [**addSubdomain**](docs/DomainsApi.md#addSubdomain) | **POST** /api/v1/domains/{fqdn}/subdomains/{subdomain} | Добавление поддомена
 *TimewebCloudApi.DomainsApi* | [**checkDomain**](docs/DomainsApi.md#checkDomain) | **GET** /api/v1/check-domain/{fqdn} | Проверить, доступен ли домен для регистрации
 *TimewebCloudApi.DomainsApi* | [**createDomainDNSRecord**](docs/DomainsApi.md#createDomainDNSRecord) | **POST** /api/v1/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена
 *TimewebCloudApi.DomainsApi* | [**createDomainDNSRecordV2**](docs/DomainsApi.md#createDomainDNSRecordV2) | **POST** /api/v2/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена
@@ -376,7 +376,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.DomainsApi* | [**deleteDomain**](docs/DomainsApi.md#deleteDomain) | **DELETE** /api/v1/domains/{fqdn} | Удаление домена
 *TimewebCloudApi.DomainsApi* | [**deleteDomainDNSRecord**](docs/DomainsApi.md#deleteDomainDNSRecord) | **DELETE** /api/v1/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена
 *TimewebCloudApi.DomainsApi* | [**deleteDomainDNSRecordV2**](docs/DomainsApi.md#deleteDomainDNSRecordV2) | **DELETE** /api/v2/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена
-*TimewebCloudApi.DomainsApi* | [**deleteSubdomain**](docs/DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn} | Удаление поддомена
+*TimewebCloudApi.DomainsApi* | [**deleteSubdomain**](docs/DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain} | Удаление поддомена
 *TimewebCloudApi.DomainsApi* | [**getDomain**](docs/DomainsApi.md#getDomain) | **GET** /api/v1/domains/{fqdn} | Получение информации о домене
 *TimewebCloudApi.DomainsApi* | [**getDomainDNSRecords**](docs/DomainsApi.md#getDomainDNSRecords) | **GET** /api/v1/domains/{fqdn}/dns-records | Получить информацию обо всех пользовательских DNS-записях домена или поддомена
 *TimewebCloudApi.DomainsApi* | [**getDomainDefaultDNSRecords**](docs/DomainsApi.md#getDomainDefaultDNSRecords) | **GET** /api/v1/domains/{fqdn}/default-dns-records | Получить информацию обо всех DNS-записях по умолчанию домена или поддомена

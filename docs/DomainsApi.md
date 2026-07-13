@@ -5,7 +5,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addDomain**](DomainsApi.md#addDomain) | **POST** /api/v1/add-domain/{fqdn} | Добавление домена на аккаунт
-[**addSubdomain**](DomainsApi.md#addSubdomain) | **POST** /api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn} | Добавление поддомена
+[**addSubdomain**](DomainsApi.md#addSubdomain) | **POST** /api/v1/domains/{fqdn}/subdomains/{subdomain} | Добавление поддомена
 [**checkDomain**](DomainsApi.md#checkDomain) | **GET** /api/v1/check-domain/{fqdn} | Проверить, доступен ли домен для регистрации
 [**createDomainDNSRecord**](DomainsApi.md#createDomainDNSRecord) | **POST** /api/v1/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена
 [**createDomainDNSRecordV2**](DomainsApi.md#createDomainDNSRecordV2) | **POST** /api/v2/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**deleteDomain**](DomainsApi.md#deleteDomain) | **DELETE** /api/v1/domains/{fqdn} | Удаление домена
 [**deleteDomainDNSRecord**](DomainsApi.md#deleteDomainDNSRecord) | **DELETE** /api/v1/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена
 [**deleteDomainDNSRecordV2**](DomainsApi.md#deleteDomainDNSRecordV2) | **DELETE** /api/v2/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена
-[**deleteSubdomain**](DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn} | Удаление поддомена
+[**deleteSubdomain**](DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain} | Удаление поддомена
 [**getDomain**](DomainsApi.md#getDomain) | **GET** /api/v1/domains/{fqdn} | Получение информации о домене
 [**getDomainDNSRecords**](DomainsApi.md#getDomainDNSRecords) | **GET** /api/v1/domains/{fqdn}/dns-records | Получить информацию обо всех пользовательских DNS-записях домена или поддомена
 [**getDomainDefaultDNSRecords**](DomainsApi.md#getDomainDefaultDNSRecords) | **GET** /api/v1/domains/{fqdn}/default-dns-records | Получить информацию обо всех DNS-записях по умолчанию домена или поддомена
@@ -82,11 +82,11 @@ null (empty response body)
 
 ## addSubdomain
 
-> AddSubdomain201Response addSubdomain(fqdn, subdomainFqdn)
+> AddSubdomain201Response addSubdomain(fqdn, subdomain)
 
 Добавление поддомена
 
-Чтобы добавить поддомен, отправьте запрос POST на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}&#x60;, задав необходимые атрибуты.  Поддомен будет добавлен с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленном поддомене.
+Чтобы добавить поддомен, отправьте запрос POST на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;, задав необходимые атрибуты.  Поддомен будет добавлен с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленном поддомене.
 
 ### Example
 
@@ -99,8 +99,8 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DomainsApi();
 let fqdn = somedomain.ru; // String | Полное имя домена.
-let subdomainFqdn = sub.somedomain.ru; // String | Полное имя поддомена.
-apiInstance.addSubdomain(fqdn, subdomainFqdn, (error, data, response) => {
+let subdomain = sub; // String | Имя поддомена без имени домена. Например, для поддомена `sub.somedomain.ru` нужно передать `sub`.
+apiInstance.addSubdomain(fqdn, subdomain, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -115,7 +115,7 @@ apiInstance.addSubdomain(fqdn, subdomainFqdn, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fqdn** | **String**| Полное имя домена. | 
- **subdomainFqdn** | **String**| Полное имя поддомена. | 
+ **subdomain** | **String**| Имя поддомена без имени домена. Например, для поддомена &#x60;sub.somedomain.ru&#x60; нужно передать &#x60;sub&#x60;. | 
 
 ### Return type
 
@@ -249,7 +249,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DomainsApi();
-let fqdn = somedomain.ru; // String | Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).
+let fqdn = somedomain.ru; // String | Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).  Поддомен должен быть создан заранее методом добавления поддомена (`POST /api/v1/domains/{fqdn}/subdomains/{subdomain}`).
 let createDnsV2 = new TimewebCloudApi.CreateDnsV2(); // CreateDnsV2 | 
 apiInstance.createDomainDNSRecordV2(fqdn, createDnsV2, (error, data, response) => {
   if (error) {
@@ -265,7 +265,7 @@ apiInstance.createDomainDNSRecordV2(fqdn, createDnsV2, (error, data, response) =
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fqdn** | **String**| Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). | 
+ **fqdn** | **String**| Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). | 
  **createDnsV2** | [**CreateDnsV2**](CreateDnsV2.md)|  | 
 
 ### Return type
@@ -449,7 +449,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DomainsApi();
-let fqdn = somedomain.ru; // String | Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).
+let fqdn = somedomain.ru; // String | Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).  Поддомен должен быть создан заранее методом добавления поддомена (`POST /api/v1/domains/{fqdn}/subdomains/{subdomain}`).
 let recordId = 123; // Number | ID DNS-записи домена или поддомена.
 apiInstance.deleteDomainDNSRecordV2(fqdn, recordId, (error, data, response) => {
   if (error) {
@@ -465,7 +465,7 @@ apiInstance.deleteDomainDNSRecordV2(fqdn, recordId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fqdn** | **String**| Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). | 
+ **fqdn** | **String**| Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). | 
  **recordId** | **Number**| ID DNS-записи домена или поддомена. | 
 
 ### Return type
@@ -484,11 +484,11 @@ null (empty response body)
 
 ## deleteSubdomain
 
-> deleteSubdomain(fqdn, subdomainFqdn)
+> deleteSubdomain(fqdn, subdomain)
 
 Удаление поддомена
 
-Чтобы удалить поддомен, отправьте запрос DELETE на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}&#x60;.
+Чтобы удалить поддомен, отправьте запрос DELETE на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;.
 
 ### Example
 
@@ -501,8 +501,8 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DomainsApi();
 let fqdn = somedomain.ru; // String | Полное имя домена.
-let subdomainFqdn = sub.somedomain.ru; // String | Полное имя поддомена.
-apiInstance.deleteSubdomain(fqdn, subdomainFqdn, (error, data, response) => {
+let subdomain = sub; // String | Имя поддомена без имени домена. Например, для поддомена `sub.somedomain.ru` нужно передать `sub`.
+apiInstance.deleteSubdomain(fqdn, subdomain, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -517,7 +517,7 @@ apiInstance.deleteSubdomain(fqdn, subdomainFqdn, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fqdn** | **String**| Полное имя домена. | 
- **subdomainFqdn** | **String**| Полное имя поддомена. | 
+ **subdomain** | **String**| Имя поддомена без имени домена. Например, для поддомена &#x60;sub.somedomain.ru&#x60; нужно передать &#x60;sub&#x60;. | 
 
 ### Return type
 
@@ -1126,7 +1126,7 @@ let Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.DomainsApi();
-let fqdn = somedomain.ru; // String | Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).
+let fqdn = somedomain.ru; // String | Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).  Поддомен должен быть создан заранее методом добавления поддомена (`POST /api/v1/domains/{fqdn}/subdomains/{subdomain}`).
 let recordId = 123; // Number | ID DNS-записи домена или поддомена.
 let createDnsV2 = new TimewebCloudApi.CreateDnsV2(); // CreateDnsV2 | 
 apiInstance.updateDomainDNSRecordV2(fqdn, recordId, createDnsV2, (error, data, response) => {
@@ -1143,7 +1143,7 @@ apiInstance.updateDomainDNSRecordV2(fqdn, recordId, createDnsV2, (error, data, r
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fqdn** | **String**| Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). | 
+ **fqdn** | **String**| Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). | 
  **recordId** | **Number**| ID DNS-записи домена или поддомена. | 
  **createDnsV2** | [**CreateDnsV2**](CreateDnsV2.md)|  | 
 
