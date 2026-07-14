@@ -559,6 +559,8 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.SSHApi* | [**updateKey**](docs/SSHApi.md#updateKey) | **PATCH** /api/v1/ssh-keys/{ssh_key_id} | Изменение SSH-ключа по ID
 *TimewebCloudApi.ServersApi* | [**addServerIP**](docs/ServersApi.md#addServerIP) | **POST** /api/v1/servers/{server_id}/ips | Добавление IP-адреса сервера
 *TimewebCloudApi.ServersApi* | [**cloneServer**](docs/ServersApi.md#cloneServer) | **POST** /api/v1/servers/{server_id}/clone | Клонирование сервера
+*TimewebCloudApi.ServersApi* | [**commitRestorePoint**](docs/ServersApi.md#commitRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/commit | Фиксация снапшота
+*TimewebCloudApi.ServersApi* | [**createRestorePoint**](docs/ServersApi.md#createRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/create | Создание снапшота
 *TimewebCloudApi.ServersApi* | [**createServer**](docs/ServersApi.md#createServer) | **POST** /api/v1/servers | Создание сервера
 *TimewebCloudApi.ServersApi* | [**createServerDisk**](docs/ServersApi.md#createServerDisk) | **POST** /api/v1/servers/{server_id}/disks | Создание диска сервера
 *TimewebCloudApi.ServersApi* | [**createServerDiskBackup**](docs/ServersApi.md#createServerDiskBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups | Создание бэкапа диска сервера
@@ -568,6 +570,8 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.ServersApi* | [**deleteServerIP**](docs/ServersApi.md#deleteServerIP) | **DELETE** /api/v1/servers/{server_id}/ips | Удаление IP-адреса сервера
 *TimewebCloudApi.ServersApi* | [**getConfigurators**](docs/ServersApi.md#getConfigurators) | **GET** /api/v1/configurator/servers | Получение списка конфигураторов серверов
 *TimewebCloudApi.ServersApi* | [**getOsList**](docs/ServersApi.md#getOsList) | **GET** /api/v1/os/servers | Получение списка операционных систем
+*TimewebCloudApi.ServersApi* | [**getRestorePoint**](docs/ServersApi.md#getRestorePoint) | **GET** /api/v1/restore-points/{vds_id} | Получение снапшота сервера
+*TimewebCloudApi.ServersApi* | [**getRestorePoints**](docs/ServersApi.md#getRestorePoints) | **GET** /api/v1/restore-points | Получение списка снапшотов
 *TimewebCloudApi.ServersApi* | [**getServer**](docs/ServersApi.md#getServer) | **GET** /api/v1/servers/{server_id} | Получение сервера
 *TimewebCloudApi.ServersApi* | [**getServerDisk**](docs/ServersApi.md#getServerDisk) | **GET** /api/v1/servers/{server_id}/disks/{disk_id} | Получение диска сервера
 *TimewebCloudApi.ServersApi* | [**getServerDiskAutoBackupSettings**](docs/ServersApi.md#getServerDiskAutoBackupSettings) | **GET** /api/v1/servers/{server_id}/disks/{disk_id}/auto-backups | Получить настройки автобэкапов диска сервера
@@ -588,6 +592,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.ServersApi* | [**rebootServer**](docs/ServersApi.md#rebootServer) | **POST** /api/v1/servers/{server_id}/reboot | Перезагрузка сервера
 *TimewebCloudApi.ServersApi* | [**rebootServerHard**](docs/ServersApi.md#rebootServerHard) | **POST** /api/v1/servers/{server_id}/hard-reboot | Принудительная перезагрузка сервера
 *TimewebCloudApi.ServersApi* | [**resetServerPassword**](docs/ServersApi.md#resetServerPassword) | **POST** /api/v1/servers/{server_id}/reset-password | Сброс пароля сервера
+*TimewebCloudApi.ServersApi* | [**rollbackRestorePoint**](docs/ServersApi.md#rollbackRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/rollback | Откат к снапшоту
 *TimewebCloudApi.ServersApi* | [**shutdownServer**](docs/ServersApi.md#shutdownServer) | **POST** /api/v1/servers/{server_id}/shutdown | Выключение сервера
 *TimewebCloudApi.ServersApi* | [**startServer**](docs/ServersApi.md#startServer) | **POST** /api/v1/servers/{server_id}/start | Запуск сервера
 *TimewebCloudApi.ServersApi* | [**updateServer**](docs/ServersApi.md#updateServer) | **PATCH** /api/v1/servers/{server_id} | Изменение сервера
@@ -597,11 +602,6 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.ServersApi* | [**updateServerIP**](docs/ServersApi.md#updateServerIP) | **PATCH** /api/v1/servers/{server_id}/ips | Изменение IP-адреса сервера
 *TimewebCloudApi.ServersApi* | [**updateServerNAT**](docs/ServersApi.md#updateServerNAT) | **PATCH** /api/v1/servers/{server_id}/local-networks/nat-mode | Изменение правил маршрутизации трафика сервера (NAT)
 *TimewebCloudApi.ServersApi* | [**updateServerOSBootMode**](docs/ServersApi.md#updateServerOSBootMode) | **POST** /api/v1/servers/{server_id}/boot-mode | Выбор типа загрузки операционной системы сервера
-*TimewebCloudApi.SnapshotsApi* | [**commitRestorePoint**](docs/SnapshotsApi.md#commitRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/commit | Фиксация снапшота
-*TimewebCloudApi.SnapshotsApi* | [**createRestorePoint**](docs/SnapshotsApi.md#createRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/create | Создание снапшота
-*TimewebCloudApi.SnapshotsApi* | [**getRestorePoint**](docs/SnapshotsApi.md#getRestorePoint) | **GET** /api/v1/restore-points/{vds_id} | Получение снапшота сервера
-*TimewebCloudApi.SnapshotsApi* | [**getRestorePoints**](docs/SnapshotsApi.md#getRestorePoints) | **GET** /api/v1/restore-points | Получение списка снапшотов
-*TimewebCloudApi.SnapshotsApi* | [**rollbackRestorePoint**](docs/SnapshotsApi.md#rollbackRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/rollback | Откат к снапшоту
 *TimewebCloudApi.VPCApi* | [**createVPC**](docs/VPCApi.md#createVPC) | **POST** /api/v2/vpcs | Создание VPC
 *TimewebCloudApi.VPCApi* | [**deleteVPC**](docs/VPCApi.md#deleteVPC) | **DELETE** /api/v1/vpcs/{vpc_id} | Удаление VPC по ID сети
 *TimewebCloudApi.VPCApi* | [**getVPC**](docs/VPCApi.md#getVPC) | **GET** /api/v2/vpcs/{vpc_id} | Получение VPC

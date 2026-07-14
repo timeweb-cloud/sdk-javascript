@@ -33,6 +33,8 @@ import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetImage404Response from '../model/GetImage404Response';
 import GetOsList200Response from '../model/GetOsList200Response';
+import GetRestorePoint200Response from '../model/GetRestorePoint200Response';
+import GetRestorePoints200Response from '../model/GetRestorePoints200Response';
 import GetServerDiskAutoBackupSettings200Response from '../model/GetServerDiskAutoBackupSettings200Response';
 import GetServerDiskBackup200Response from '../model/GetServerDiskBackup200Response';
 import GetServerDiskBackups200Response from '../model/GetServerDiskBackups200Response';
@@ -158,6 +160,91 @@ export default class ServersApi {
       let returnType = CreateServer201Response;
       return this.apiClient.callApi(
         '/api/v1/servers/{server_id}/clone', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the commitRestorePoint operation.
+     * @callback module:api/ServersApi~commitRestorePointCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Фиксация снапшота
+     * Чтобы зафиксировать (применить) снапшот облачного сервера (VDS), отправьте POST-запрос на `/api/v1/restore-points/{vds_id}/commit`.  Фиксация подтверждает текущее состояние сервера. Действие выполняется асинхронно, ответ не содержит тела.  Для выполнения действия сервер должен быть включён, иначе вернётся ошибка `403`.
+     * @param {Number} vdsId ID облачного сервера (VDS).
+     * @param {module:api/ServersApi~commitRestorePointCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    commitRestorePoint(vdsId, callback) {
+      let postBody = null;
+      // verify the required parameter 'vdsId' is set
+      if (vdsId === undefined || vdsId === null) {
+        throw new Error("Missing the required parameter 'vdsId' when calling commitRestorePoint");
+      }
+
+      let pathParams = {
+        'vds_id': vdsId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/restore-points/{vds_id}/commit', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the createRestorePoint operation.
+     * @callback module:api/ServersApi~createRestorePointCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetRestorePoint200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Создание снапшота
+     * Чтобы создать снапшот облачного сервера (VDS), отправьте POST-запрос на `/api/v1/restore-points/{vds_id}/create`.  Тело ответа будет содержать объект JSON с ключом `restore_point` и информацией о созданном снапшоте. Сразу после создания снапшот может находиться в статусе `creating`.  Для создания снапшота сервер должен быть включён, иначе вернётся ошибка `403`.
+     * @param {Number} vdsId ID облачного сервера (VDS).
+     * @param {module:api/ServersApi~createRestorePointCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetRestorePoint200Response}
+     */
+    createRestorePoint(vdsId, callback) {
+      let postBody = null;
+      // verify the required parameter 'vdsId' is set
+      if (vdsId === undefined || vdsId === null) {
+        throw new Error("Missing the required parameter 'vdsId' when calling createRestorePoint");
+      }
+
+      let pathParams = {
+        'vds_id': vdsId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetRestorePoint200Response;
+      return this.apiClient.callApi(
+        '/api/v1/restore-points/{vds_id}/create', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -570,6 +657,86 @@ export default class ServersApi {
       let returnType = GetOsList200Response;
       return this.apiClient.callApi(
         '/api/v1/os/servers', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getRestorePoint operation.
+     * @callback module:api/ServersApi~getRestorePointCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetRestorePoint200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение снапшота сервера
+     * Чтобы получить снапшот облачного сервера (VDS), отправьте GET-запрос на `/api/v1/restore-points/{vds_id}`.  Тело ответа будет представлять собой объект JSON с ключом `restore_point`.
+     * @param {Number} vdsId ID облачного сервера (VDS).
+     * @param {module:api/ServersApi~getRestorePointCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetRestorePoint200Response}
+     */
+    getRestorePoint(vdsId, callback) {
+      let postBody = null;
+      // verify the required parameter 'vdsId' is set
+      if (vdsId === undefined || vdsId === null) {
+        throw new Error("Missing the required parameter 'vdsId' when calling getRestorePoint");
+      }
+
+      let pathParams = {
+        'vds_id': vdsId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetRestorePoint200Response;
+      return this.apiClient.callApi(
+        '/api/v1/restore-points/{vds_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getRestorePoints operation.
+     * @callback module:api/ServersApi~getRestorePointsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetRestorePoints200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка снапшотов
+     * Чтобы получить список снапшотов аккаунта, отправьте GET-запрос на `/api/v1/restore-points`.  Тело ответа будет представлять собой объект JSON с ключом `restore_points`.  Снапшот — это снимок состояния облачного сервера (VDS), к которому можно вернуться. Каждому снапшоту соответствует один сервер.
+     * @param {module:api/ServersApi~getRestorePointsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetRestorePoints200Response}
+     */
+    getRestorePoints(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetRestorePoints200Response;
+      return this.apiClient.callApi(
+        '/api/v1/restore-points', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -1497,6 +1664,48 @@ export default class ServersApi {
       let returnType = null;
       return this.apiClient.callApi(
         '/api/v1/servers/{server_id}/reset-password', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the rollbackRestorePoint operation.
+     * @callback module:api/ServersApi~rollbackRestorePointCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Откат к снапшоту
+     * Чтобы откатить облачный сервер (VDS) к снапшоту, отправьте POST-запрос на `/api/v1/restore-points/{vds_id}/rollback`.  Откат возвращает сервер к состоянию, сохранённому в снапшоте. Действие выполняется асинхронно, ответ не содержит тела.  Для выполнения действия сервер должен быть включён, иначе вернётся ошибка `403`.
+     * @param {Number} vdsId ID облачного сервера (VDS).
+     * @param {module:api/ServersApi~rollbackRestorePointCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    rollbackRestorePoint(vdsId, callback) {
+      let postBody = null;
+      // verify the required parameter 'vdsId' is set
+      if (vdsId === undefined || vdsId === null) {
+        throw new Error("Missing the required parameter 'vdsId' when calling rollbackRestorePoint");
+      }
+
+      let pathParams = {
+        'vds_id': vdsId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/restore-points/{vds_id}/rollback', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

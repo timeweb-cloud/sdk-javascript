@@ -68,6 +68,26 @@
         done();
       });
     });
+    describe('commitRestorePoint', function() {
+      it('should call commitRestorePoint successfully', function(done) {
+        //uncomment below and update the code to test commitRestorePoint
+        //instance.commitRestorePoint(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('createRestorePoint', function() {
+      it('should call createRestorePoint successfully', function(done) {
+        //uncomment below and update the code to test createRestorePoint
+        //instance.createRestorePoint(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('createServer', function() {
       it('should call createServer successfully', function(done) {
         //uncomment below and update the code to test createServer
@@ -152,6 +172,26 @@
       it('should call getOsList successfully', function(done) {
         //uncomment below and update the code to test getOsList
         //instance.getOsList(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getRestorePoint', function() {
+      it('should call getRestorePoint successfully', function(done) {
+        //uncomment below and update the code to test getRestorePoint
+        //instance.getRestorePoint(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getRestorePoints', function() {
+      it('should call getRestorePoints successfully', function(done) {
+        //uncomment below and update the code to test getRestorePoints
+        //instance.getRestorePoints(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -352,6 +392,16 @@
       it('should call resetServerPassword successfully', function(done) {
         //uncomment below and update the code to test resetServerPassword
         //instance.resetServerPassword(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('rollbackRestorePoint', function() {
+      it('should call rollbackRestorePoint successfully', function(done) {
+        //uncomment below and update the code to test rollbackRestorePoint
+        //instance.rollbackRestorePoint(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

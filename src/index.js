@@ -602,7 +602,6 @@ import RoutersApi from './api/RoutersApi';
 import S3Api from './api/S3Api';
 import SSHApi from './api/SSHApi';
 import ServersApi from './api/ServersApi';
-import SnapshotsApi from './api/SnapshotsApi';
 import VPCApi from './api/VPCApi';
 
 
@@ -4177,12 +4176,6 @@ export {
     * @property {module:api/ServersApi}
     */
     ServersApi,
-
-    /**
-    * The SnapshotsApi service constructor.
-    * @property {module:api/SnapshotsApi}
-    */
-    SnapshotsApi,
 
     /**
     * The VPCApi service constructor.

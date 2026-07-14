@@ -513,7 +513,6 @@ docs/ServiceServicePrice.md
 docs/ServiceServicePriceNodeGroupsInner.md
 docs/SetLabels.md
 docs/SettingCondition.md
-docs/SnapshotsApi.md
 docs/SpamFilterIsDisabled.md
 docs/SpamFilterIsEnabled.md
 docs/SpamProtectionIsDisabled.md
@@ -620,7 +619,6 @@ src/api/RoutersApi.js
 src/api/S3Api.js
 src/api/SSHApi.js
 src/api/ServersApi.js
-src/api/SnapshotsApi.js
 src/api/VPCApi.js
 src/index.js
 src/model/AddBalancerToProject200Response.js
@@ -1212,7 +1210,6 @@ test/api/RoutersApi.spec.js
 test/api/S3Api.spec.js
 test/api/SSHApi.spec.js
 test/api/ServersApi.spec.js
-test/api/SnapshotsApi.spec.js
 test/api/VPCApi.spec.js
 test/model/AddBalancerToProject200Response.spec.js
 test/model/AddBalancerToProjectRequest.spec.js
