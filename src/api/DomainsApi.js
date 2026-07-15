@@ -21,6 +21,7 @@ import CreateDnsV2 from '../model/CreateDnsV2';
 import CreateDomainDNSRecord201Response from '../model/CreateDomainDNSRecord201Response';
 import CreateDomainDNSRecordV2201Response from '../model/CreateDomainDNSRecordV2201Response';
 import CreateDomainRequest201Response from '../model/CreateDomainRequest201Response';
+import CreatePerson201Response from '../model/CreatePerson201Response';
 import DomainRegister from '../model/DomainRegister';
 import GetDomain200Response from '../model/GetDomain200Response';
 import GetDomainDNSRecords200Response from '../model/GetDomainDNSRecords200Response';
@@ -32,11 +33,14 @@ import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetImage404Response from '../model/GetImage404Response';
+import GetPersons200Response from '../model/GetPersons200Response';
 import GetTLD200Response from '../model/GetTLD200Response';
 import GetTLDs200Response from '../model/GetTLDs200Response';
+import Person2 from '../model/Person2';
 import UpdateDomain from '../model/UpdateDomain';
 import UpdateDomainAutoProlongation200Response from '../model/UpdateDomainAutoProlongation200Response';
 import UpdateDomainNameServers from '../model/UpdateDomainNameServers';
+import UpdatePerson from '../model/UpdatePerson';
 import Use from '../model/Use';
 
 /**
@@ -331,6 +335,48 @@ export default class DomainsApi {
     }
 
     /**
+     * Callback function to receive the result of the createPerson operation.
+     * @callback module:api/DomainsApi~createPersonCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreatePerson201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Создание администратора доменов
+     * Чтобы создать администратора доменов, отправьте POST-запрос на `/api/v1/persons`, задав необходимые атрибуты. Набор полей зависит от типа администратора: физическое лицо (`person`), организация (`org`) или индивидуальный предприниматель (`ip`).   Тело ответа будет представлять собой объект JSON с ключом `person`.
+     * @param {module:model/Person2} person2 
+     * @param {module:api/DomainsApi~createPersonCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreatePerson201Response}
+     */
+    createPerson(person2, callback) {
+      let postBody = person2;
+      // verify the required parameter 'person2' is set
+      if (person2 === undefined || person2 === null) {
+        throw new Error("Missing the required parameter 'person2' when calling createPerson");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreatePerson201Response;
+      return this.apiClient.callApi(
+        '/api/v1/persons', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the deleteDomain operation.
      * @callback module:api/DomainsApi~deleteDomainCallback
      * @param {String} error Error message, if any.
@@ -463,6 +509,48 @@ export default class DomainsApi {
       let returnType = null;
       return this.apiClient.callApi(
         '/api/v2/domains/{fqdn}/dns-records/{record_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deletePerson operation.
+     * @callback module:api/DomainsApi~deletePersonCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Удаление администратора доменов
+     * Чтобы удалить администратора доменов, отправьте DELETE-запрос на `/api/v1/persons/{person_id}`.
+     * @param {Number} personId ID администратора домена.
+     * @param {module:api/DomainsApi~deletePersonCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    deletePerson(personId, callback) {
+      let postBody = null;
+      // verify the required parameter 'personId' is set
+      if (personId === undefined || personId === null) {
+        throw new Error("Missing the required parameter 'personId' when calling deletePerson");
+      }
+
+      let pathParams = {
+        'person_id': personId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/persons/{person_id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -836,6 +924,94 @@ export default class DomainsApi {
     }
 
     /**
+     * Callback function to receive the result of the getPerson operation.
+     * @callback module:api/DomainsApi~getPersonCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreatePerson201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение администратора доменов
+     * Чтобы получить администратора доменов, отправьте GET-запрос на `/api/v1/persons/{person_id}`.   Тело ответа будет представлять собой объект JSON с ключом `person`.
+     * @param {Number} personId ID администратора домена.
+     * @param {module:api/DomainsApi~getPersonCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreatePerson201Response}
+     */
+    getPerson(personId, callback) {
+      let postBody = null;
+      // verify the required parameter 'personId' is set
+      if (personId === undefined || personId === null) {
+        throw new Error("Missing the required parameter 'personId' when calling getPerson");
+      }
+
+      let pathParams = {
+        'person_id': personId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CreatePerson201Response;
+      return this.apiClient.callApi(
+        '/api/v1/persons/{person_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getPersons operation.
+     * @callback module:api/DomainsApi~getPersonsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetPersons200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка администраторов доменов
+     * Чтобы получить список администраторов доменов на вашем аккаунте, отправьте GET-запрос на `/api/v1/persons`.   Тело ответа будет представлять собой объект JSON с ключом `persons`.
+     * @param {Object} opts Optional parameters
+     * @param {Number} [limit = 100)] Обозначает количество записей, которое необходимо вернуть.
+     * @param {Number} [offset = 0)] Указывает на смещение относительно начала списка.
+     * @param {Boolean} [isClosed] Фильтр по закрытым администраторам: `true` — вернуть только закрытых, `false` — только активных.
+     * @param {module:api/DomainsApi~getPersonsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetPersons200Response}
+     */
+    getPersons(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'limit': opts['limit'],
+        'offset': opts['offset'],
+        'is_closed': opts['isClosed']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetPersons200Response;
+      return this.apiClient.callApi(
+        '/api/v1/persons', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getTLD operation.
      * @callback module:api/DomainsApi~getTLDCallback
      * @param {String} error Error message, if any.
@@ -1168,6 +1344,54 @@ export default class DomainsApi {
       let returnType = CreateDomainRequest201Response;
       return this.apiClient.callApi(
         '/api/v1/domains-requests/{request_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updatePerson operation.
+     * @callback module:api/DomainsApi~updatePersonCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreatePerson201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Обновление контактных данных администратора доменов
+     * Чтобы обновить контактные данные администратора доменов, отправьте PUT-запрос на `/api/v1/persons/{person_id}`.   Тело ответа будет представлять собой объект JSON с ключом `person`.
+     * @param {Number} personId ID администратора домена.
+     * @param {module:model/UpdatePerson} updatePerson 
+     * @param {module:api/DomainsApi~updatePersonCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreatePerson201Response}
+     */
+    updatePerson(personId, updatePerson, callback) {
+      let postBody = updatePerson;
+      // verify the required parameter 'personId' is set
+      if (personId === undefined || personId === null) {
+        throw new Error("Missing the required parameter 'personId' when calling updatePerson");
+      }
+      // verify the required parameter 'updatePerson' is set
+      if (updatePerson === undefined || updatePerson === null) {
+        throw new Error("Missing the required parameter 'updatePerson' when calling updatePerson");
+      }
+
+      let pathParams = {
+        'person_id': personId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreatePerson201Response;
+      return this.apiClient.callApi(
+        '/api/v1/persons/{person_id}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

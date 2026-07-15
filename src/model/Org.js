@@ -11,333 +11,259 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
 
-  var instance;
+/**
+ * The Org model module.
+ * @module model/Org
+ * @version 1.0.0
+ */
+class Org {
+    /**
+     * Constructs a new <code>Org</code>.
+     * Администратор домена — организация
+     * @alias module:model/Org
+     * @param type {module:model/Org.TypeEnum} Тип администратора.
+     * @param name {String} Название организации.
+     * @param isResident {Boolean} Это логическое значение, которое показывает, является ли администратор резидентом РФ.
+     * @param contactName {String} Контактное лицо организации.
+     * @param inn {String} ИНН организации.
+     * @param legalAddress {String} Юридический адрес организации.
+     * @param postcode {String} Почтовый индекс.
+     * @param mailingAddress {String} Почтовый адрес.
+     * @param phone {String} Контактный телефон.
+     * @param email {String} Адрес электронной почты.
+     */
+    constructor(type, name, isResident, contactName, inn, legalAddress, postcode, mailingAddress, phone, email) { 
+        
+        Org.initialize(this, type, name, isResident, contactName, inn, legalAddress, postcode, mailingAddress, phone, email);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.DomainsApi();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, type, name, isResident, contactName, inn, legalAddress, postcode, mailingAddress, phone, email) { 
+        obj['type'] = type;
+        obj['name'] = name;
+        obj['is_resident'] = isResident;
+        obj['contact_name'] = contactName;
+        obj['inn'] = inn;
+        obj['legal_address'] = legalAddress;
+        obj['postcode'] = postcode;
+        obj['mailing_address'] = mailingAddress;
+        obj['phone'] = phone;
+        obj['email'] = email;
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>Org</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/Org} obj Optional instance to populate.
+     * @return {module:model/Org} The populated <code>Org</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new Org();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = ApiClient.convertToType(data['type'], 'String');
+            }
+            if (data.hasOwnProperty('name')) {
+                obj['name'] = ApiClient.convertToType(data['name'], 'String');
+            }
+            if (data.hasOwnProperty('is_resident')) {
+                obj['is_resident'] = ApiClient.convertToType(data['is_resident'], 'Boolean');
+            }
+            if (data.hasOwnProperty('contact_name')) {
+                obj['contact_name'] = ApiClient.convertToType(data['contact_name'], 'String');
+            }
+            if (data.hasOwnProperty('inn')) {
+                obj['inn'] = ApiClient.convertToType(data['inn'], 'String');
+            }
+            if (data.hasOwnProperty('kpp')) {
+                obj['kpp'] = ApiClient.convertToType(data['kpp'], 'String');
+            }
+            if (data.hasOwnProperty('legal_address')) {
+                obj['legal_address'] = ApiClient.convertToType(data['legal_address'], 'String');
+            }
+            if (data.hasOwnProperty('postcode')) {
+                obj['postcode'] = ApiClient.convertToType(data['postcode'], 'String');
+            }
+            if (data.hasOwnProperty('mailing_address')) {
+                obj['mailing_address'] = ApiClient.convertToType(data['mailing_address'], 'String');
+            }
+            if (data.hasOwnProperty('phone')) {
+                obj['phone'] = ApiClient.convertToType(data['phone'], 'String');
+            }
+            if (data.hasOwnProperty('email')) {
+                obj['email'] = ApiClient.convertToType(data['email'], 'String');
+            }
+            if (data.hasOwnProperty('country_code')) {
+                obj['country_code'] = ApiClient.convertToType(data['country_code'], 'String');
+            }
+        }
+        return obj;
+    }
 
-  describe('DomainsApi', function() {
-    describe('addDomain', function() {
-      it('should call addDomain successfully', function(done) {
-        //uncomment below and update the code to test addDomain
-        //instance.addDomain(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('addSubdomain', function() {
-      it('should call addSubdomain successfully', function(done) {
-        //uncomment below and update the code to test addSubdomain
-        //instance.addSubdomain(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('checkDomain', function() {
-      it('should call checkDomain successfully', function(done) {
-        //uncomment below and update the code to test checkDomain
-        //instance.checkDomain(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createDomainDNSRecord', function() {
-      it('should call createDomainDNSRecord successfully', function(done) {
-        //uncomment below and update the code to test createDomainDNSRecord
-        //instance.createDomainDNSRecord(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createDomainDNSRecordV2', function() {
-      it('should call createDomainDNSRecordV2 successfully', function(done) {
-        //uncomment below and update the code to test createDomainDNSRecordV2
-        //instance.createDomainDNSRecordV2(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createDomainRequest', function() {
-      it('should call createDomainRequest successfully', function(done) {
-        //uncomment below and update the code to test createDomainRequest
-        //instance.createDomainRequest(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createPerson', function() {
-      it('should call createPerson successfully', function(done) {
-        //uncomment below and update the code to test createPerson
-        //instance.createPerson(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDomain', function() {
-      it('should call deleteDomain successfully', function(done) {
-        //uncomment below and update the code to test deleteDomain
-        //instance.deleteDomain(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDomainDNSRecord', function() {
-      it('should call deleteDomainDNSRecord successfully', function(done) {
-        //uncomment below and update the code to test deleteDomainDNSRecord
-        //instance.deleteDomainDNSRecord(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDomainDNSRecordV2', function() {
-      it('should call deleteDomainDNSRecordV2 successfully', function(done) {
-        //uncomment below and update the code to test deleteDomainDNSRecordV2
-        //instance.deleteDomainDNSRecordV2(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deletePerson', function() {
-      it('should call deletePerson successfully', function(done) {
-        //uncomment below and update the code to test deletePerson
-        //instance.deletePerson(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteSubdomain', function() {
-      it('should call deleteSubdomain successfully', function(done) {
-        //uncomment below and update the code to test deleteSubdomain
-        //instance.deleteSubdomain(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomain', function() {
-      it('should call getDomain successfully', function(done) {
-        //uncomment below and update the code to test getDomain
-        //instance.getDomain(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainDNSRecords', function() {
-      it('should call getDomainDNSRecords successfully', function(done) {
-        //uncomment below and update the code to test getDomainDNSRecords
-        //instance.getDomainDNSRecords(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainDefaultDNSRecords', function() {
-      it('should call getDomainDefaultDNSRecords successfully', function(done) {
-        //uncomment below and update the code to test getDomainDefaultDNSRecords
-        //instance.getDomainDefaultDNSRecords(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainNameServers', function() {
-      it('should call getDomainNameServers successfully', function(done) {
-        //uncomment below and update the code to test getDomainNameServers
-        //instance.getDomainNameServers(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainRequest', function() {
-      it('should call getDomainRequest successfully', function(done) {
-        //uncomment below and update the code to test getDomainRequest
-        //instance.getDomainRequest(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainRequests', function() {
-      it('should call getDomainRequests successfully', function(done) {
-        //uncomment below and update the code to test getDomainRequests
-        //instance.getDomainRequests(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomains', function() {
-      it('should call getDomains successfully', function(done) {
-        //uncomment below and update the code to test getDomains
-        //instance.getDomains(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getPerson', function() {
-      it('should call getPerson successfully', function(done) {
-        //uncomment below and update the code to test getPerson
-        //instance.getPerson(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getPersons', function() {
-      it('should call getPersons successfully', function(done) {
-        //uncomment below and update the code to test getPersons
-        //instance.getPersons(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getTLD', function() {
-      it('should call getTLD successfully', function(done) {
-        //uncomment below and update the code to test getTLD
-        //instance.getTLD(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getTLDs', function() {
-      it('should call getTLDs successfully', function(done) {
-        //uncomment below and update the code to test getTLDs
-        //instance.getTLDs(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDomainAutoProlongation', function() {
-      it('should call updateDomainAutoProlongation successfully', function(done) {
-        //uncomment below and update the code to test updateDomainAutoProlongation
-        //instance.updateDomainAutoProlongation(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDomainDNSRecord', function() {
-      it('should call updateDomainDNSRecord successfully', function(done) {
-        //uncomment below and update the code to test updateDomainDNSRecord
-        //instance.updateDomainDNSRecord(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDomainDNSRecordV2', function() {
-      it('should call updateDomainDNSRecordV2 successfully', function(done) {
-        //uncomment below and update the code to test updateDomainDNSRecordV2
-        //instance.updateDomainDNSRecordV2(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDomainNameServers', function() {
-      it('should call updateDomainNameServers successfully', function(done) {
-        //uncomment below and update the code to test updateDomainNameServers
-        //instance.updateDomainNameServers(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDomainRequest', function() {
-      it('should call updateDomainRequest successfully', function(done) {
-        //uncomment below and update the code to test updateDomainRequest
-        //instance.updateDomainRequest(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updatePerson', function() {
-      it('should call updatePerson successfully', function(done) {
-        //uncomment below and update the code to test updatePerson
-        //instance.updatePerson(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-  });
+    /**
+     * Validates the JSON data with respect to <code>Org</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Org</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of Org.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
+        }
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
+        // ensure the json data is a string
+        if (data['contact_name'] && !(typeof data['contact_name'] === 'string' || data['contact_name'] instanceof String)) {
+            throw new Error("Expected the field `contact_name` to be a primitive type in the JSON string but got " + data['contact_name']);
+        }
+        // ensure the json data is a string
+        if (data['inn'] && !(typeof data['inn'] === 'string' || data['inn'] instanceof String)) {
+            throw new Error("Expected the field `inn` to be a primitive type in the JSON string but got " + data['inn']);
+        }
+        // ensure the json data is a string
+        if (data['kpp'] && !(typeof data['kpp'] === 'string' || data['kpp'] instanceof String)) {
+            throw new Error("Expected the field `kpp` to be a primitive type in the JSON string but got " + data['kpp']);
+        }
+        // ensure the json data is a string
+        if (data['legal_address'] && !(typeof data['legal_address'] === 'string' || data['legal_address'] instanceof String)) {
+            throw new Error("Expected the field `legal_address` to be a primitive type in the JSON string but got " + data['legal_address']);
+        }
+        // ensure the json data is a string
+        if (data['postcode'] && !(typeof data['postcode'] === 'string' || data['postcode'] instanceof String)) {
+            throw new Error("Expected the field `postcode` to be a primitive type in the JSON string but got " + data['postcode']);
+        }
+        // ensure the json data is a string
+        if (data['mailing_address'] && !(typeof data['mailing_address'] === 'string' || data['mailing_address'] instanceof String)) {
+            throw new Error("Expected the field `mailing_address` to be a primitive type in the JSON string but got " + data['mailing_address']);
+        }
+        // ensure the json data is a string
+        if (data['phone'] && !(typeof data['phone'] === 'string' || data['phone'] instanceof String)) {
+            throw new Error("Expected the field `phone` to be a primitive type in the JSON string but got " + data['phone']);
+        }
+        // ensure the json data is a string
+        if (data['email'] && !(typeof data['email'] === 'string' || data['email'] instanceof String)) {
+            throw new Error("Expected the field `email` to be a primitive type in the JSON string but got " + data['email']);
+        }
+        // ensure the json data is a string
+        if (data['country_code'] && !(typeof data['country_code'] === 'string' || data['country_code'] instanceof String)) {
+            throw new Error("Expected the field `country_code` to be a primitive type in the JSON string but got " + data['country_code']);
+        }
 
-}));
+        return true;
+    }
+
+
+}
+
+Org.RequiredProperties = ["type", "name", "is_resident", "contact_name", "inn", "legal_address", "postcode", "mailing_address", "phone", "email"];
+
+/**
+ * Тип администратора.
+ * @member {module:model/Org.TypeEnum} type
+ */
+Org.prototype['type'] = undefined;
+
+/**
+ * Название организации.
+ * @member {String} name
+ */
+Org.prototype['name'] = undefined;
+
+/**
+ * Это логическое значение, которое показывает, является ли администратор резидентом РФ.
+ * @member {Boolean} is_resident
+ */
+Org.prototype['is_resident'] = undefined;
+
+/**
+ * Контактное лицо организации.
+ * @member {String} contact_name
+ */
+Org.prototype['contact_name'] = undefined;
+
+/**
+ * ИНН организации.
+ * @member {String} inn
+ */
+Org.prototype['inn'] = undefined;
+
+/**
+ * КПП организации.
+ * @member {String} kpp
+ */
+Org.prototype['kpp'] = undefined;
+
+/**
+ * Юридический адрес организации.
+ * @member {String} legal_address
+ */
+Org.prototype['legal_address'] = undefined;
+
+/**
+ * Почтовый индекс.
+ * @member {String} postcode
+ */
+Org.prototype['postcode'] = undefined;
+
+/**
+ * Почтовый адрес.
+ * @member {String} mailing_address
+ */
+Org.prototype['mailing_address'] = undefined;
+
+/**
+ * Контактный телефон.
+ * @member {String} phone
+ */
+Org.prototype['phone'] = undefined;
+
+/**
+ * Адрес электронной почты.
+ * @member {String} email
+ */
+Org.prototype['email'] = undefined;
+
+/**
+ * Код страны. Только для нерезидентов РФ (`is_resident: false`); для резидентов поле передавать не нужно.
+ * @member {String} country_code
+ */
+Org.prototype['country_code'] = undefined;
+
+
+
+
+
+/**
+ * Allowed values for the <code>type</code> property.
+ * @enum {String}
+ * @readonly
+ */
+Org['TypeEnum'] = {
+
+    /**
+     * value: "org"
+     * @const
+     */
+    "org": "org"
+};
+
+
+
+export default Org;
+

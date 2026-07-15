@@ -373,9 +373,11 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.DomainsApi* | [**createDomainDNSRecord**](docs/DomainsApi.md#createDomainDNSRecord) | **POST** /api/v1/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена
 *TimewebCloudApi.DomainsApi* | [**createDomainDNSRecordV2**](docs/DomainsApi.md#createDomainDNSRecordV2) | **POST** /api/v2/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена
 *TimewebCloudApi.DomainsApi* | [**createDomainRequest**](docs/DomainsApi.md#createDomainRequest) | **POST** /api/v1/domains-requests | Создание заявки на регистрацию/продление/трансфер домена
+*TimewebCloudApi.DomainsApi* | [**createPerson**](docs/DomainsApi.md#createPerson) | **POST** /api/v1/persons | Создание администратора доменов
 *TimewebCloudApi.DomainsApi* | [**deleteDomain**](docs/DomainsApi.md#deleteDomain) | **DELETE** /api/v1/domains/{fqdn} | Удаление домена
 *TimewebCloudApi.DomainsApi* | [**deleteDomainDNSRecord**](docs/DomainsApi.md#deleteDomainDNSRecord) | **DELETE** /api/v1/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена
 *TimewebCloudApi.DomainsApi* | [**deleteDomainDNSRecordV2**](docs/DomainsApi.md#deleteDomainDNSRecordV2) | **DELETE** /api/v2/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена
+*TimewebCloudApi.DomainsApi* | [**deletePerson**](docs/DomainsApi.md#deletePerson) | **DELETE** /api/v1/persons/{person_id} | Удаление администратора доменов
 *TimewebCloudApi.DomainsApi* | [**deleteSubdomain**](docs/DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain} | Удаление поддомена
 *TimewebCloudApi.DomainsApi* | [**getDomain**](docs/DomainsApi.md#getDomain) | **GET** /api/v1/domains/{fqdn} | Получение информации о домене
 *TimewebCloudApi.DomainsApi* | [**getDomainDNSRecords**](docs/DomainsApi.md#getDomainDNSRecords) | **GET** /api/v1/domains/{fqdn}/dns-records | Получить информацию обо всех пользовательских DNS-записях домена или поддомена
@@ -384,6 +386,8 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.DomainsApi* | [**getDomainRequest**](docs/DomainsApi.md#getDomainRequest) | **GET** /api/v1/domains-requests/{request_id} | Получение заявки на регистрацию/продление/трансфер домена
 *TimewebCloudApi.DomainsApi* | [**getDomainRequests**](docs/DomainsApi.md#getDomainRequests) | **GET** /api/v1/domains-requests | Получение списка заявок на регистрацию/продление/трансфер домена
 *TimewebCloudApi.DomainsApi* | [**getDomains**](docs/DomainsApi.md#getDomains) | **GET** /api/v1/domains | Получение списка всех доменов
+*TimewebCloudApi.DomainsApi* | [**getPerson**](docs/DomainsApi.md#getPerson) | **GET** /api/v1/persons/{person_id} | Получение администратора доменов
+*TimewebCloudApi.DomainsApi* | [**getPersons**](docs/DomainsApi.md#getPersons) | **GET** /api/v1/persons | Получение списка администраторов доменов
 *TimewebCloudApi.DomainsApi* | [**getTLD**](docs/DomainsApi.md#getTLD) | **GET** /api/v1/tlds/{tld_id} | Получить информацию о доменной зоне по ID
 *TimewebCloudApi.DomainsApi* | [**getTLDs**](docs/DomainsApi.md#getTLDs) | **GET** /api/v1/tlds | Получить информацию о доменных зонах
 *TimewebCloudApi.DomainsApi* | [**updateDomainAutoProlongation**](docs/DomainsApi.md#updateDomainAutoProlongation) | **PATCH** /api/v1/domains/{fqdn} | Включение/выключение автопродления домена
@@ -391,6 +395,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.DomainsApi* | [**updateDomainDNSRecordV2**](docs/DomainsApi.md#updateDomainDNSRecordV2) | **PATCH** /api/v2/domains/{fqdn}/dns-records/{record_id} | Обновить информацию о DNS-записи домена или поддомена
 *TimewebCloudApi.DomainsApi* | [**updateDomainNameServers**](docs/DomainsApi.md#updateDomainNameServers) | **PUT** /api/v1/domains/{fqdn}/name-servers | Изменение name-серверов домена
 *TimewebCloudApi.DomainsApi* | [**updateDomainRequest**](docs/DomainsApi.md#updateDomainRequest) | **PATCH** /api/v1/domains-requests/{request_id} | Оплата/обновление заявки на регистрацию/продление/трансфер домена
+*TimewebCloudApi.DomainsApi* | [**updatePerson**](docs/DomainsApi.md#updatePerson) | **PUT** /api/v1/persons/{person_id} | Обновление контактных данных администратора доменов
 *TimewebCloudApi.FirewallApi* | [**addResourceToGroup**](docs/FirewallApi.md#addResourceToGroup) | **POST** /api/v1/firewall/groups/{group_id}/resources/{resource_id} | Линковка ресурса в firewall group
 *TimewebCloudApi.FirewallApi* | [**createGroup**](docs/FirewallApi.md#createGroup) | **POST** /api/v1/firewall/groups | Создание группы правил
 *TimewebCloudApi.FirewallApi* | [**createGroupRule**](docs/FirewallApi.md#createGroupRule) | **POST** /api/v1/firewall/groups/{group_id}/rules | Создание firewall правила
@@ -753,6 +758,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateMultipleDomainMailboxesV2RequestInner](docs/CreateMultipleDomainMailboxesV2RequestInner.md)
  - [TimewebCloudApi.CreateNetworkDrive](docs/CreateNetworkDrive.md)
  - [TimewebCloudApi.CreateNetworkDrive201Response](docs/CreateNetworkDrive201Response.md)
+ - [TimewebCloudApi.CreatePerson201Response](docs/CreatePerson201Response.md)
  - [TimewebCloudApi.CreateProject](docs/CreateProject.md)
  - [TimewebCloudApi.CreateProject201Response](docs/CreateProject201Response.md)
  - [TimewebCloudApi.CreateRule](docs/CreateRule.md)
@@ -914,6 +920,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetNetworkDrivesPresets200Response](docs/GetNetworkDrivesPresets200Response.md)
  - [TimewebCloudApi.GetNotificationSettings200Response](docs/GetNotificationSettings200Response.md)
  - [TimewebCloudApi.GetOsList200Response](docs/GetOsList200Response.md)
+ - [TimewebCloudApi.GetPersons200Response](docs/GetPersons200Response.md)
  - [TimewebCloudApi.GetProjectBalancers200Response](docs/GetProjectBalancers200Response.md)
  - [TimewebCloudApi.GetProjectClusters200Response](docs/GetProjectClusters200Response.md)
  - [TimewebCloudApi.GetProjectDatabases200Response](docs/GetProjectDatabases200Response.md)
@@ -965,6 +972,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.IncreaseNodes](docs/IncreaseNodes.md)
  - [TimewebCloudApi.InfoServicePrice](docs/InfoServicePrice.md)
  - [TimewebCloudApi.Invoice](docs/Invoice.md)
+ - [TimewebCloudApi.Ip](docs/Ip.md)
  - [TimewebCloudApi.K8SVersionsResponse](docs/K8SVersionsResponse.md)
  - [TimewebCloudApi.Kafka](docs/Kafka.md)
  - [TimewebCloudApi.Knowledgebase](docs/Knowledgebase.md)
@@ -1017,10 +1025,13 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.NotificationSettingType](docs/NotificationSettingType.md)
  - [TimewebCloudApi.OS](docs/OS.md)
  - [TimewebCloudApi.Opensearch](docs/Opensearch.md)
+ - [TimewebCloudApi.Org](docs/Org.md)
  - [TimewebCloudApi.OutgoingIsDisabled](docs/OutgoingIsDisabled.md)
  - [TimewebCloudApi.OutgoingIsEnabled](docs/OutgoingIsEnabled.md)
  - [TimewebCloudApi.PerformActionOnBackupRequest](docs/PerformActionOnBackupRequest.md)
  - [TimewebCloudApi.PerformActionOnServerRequest](docs/PerformActionOnServerRequest.md)
+ - [TimewebCloudApi.Person](docs/Person.md)
+ - [TimewebCloudApi.Person2](docs/Person2.md)
  - [TimewebCloudApi.Policy](docs/Policy.md)
  - [TimewebCloudApi.Postgres](docs/Postgres.md)
  - [TimewebCloudApi.Postgresql](docs/Postgresql.md)
@@ -1147,6 +1158,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateNotificationSettingsRequest](docs/UpdateNotificationSettingsRequest.md)
  - [TimewebCloudApi.UpdateNotificationSettingsRequestSettingsInner](docs/UpdateNotificationSettingsRequestSettingsInner.md)
  - [TimewebCloudApi.UpdateNotificationSettingsRequestSettingsInnerChannels](docs/UpdateNotificationSettingsRequestSettingsInnerChannels.md)
+ - [TimewebCloudApi.UpdatePerson](docs/UpdatePerson.md)
  - [TimewebCloudApi.UpdateProject](docs/UpdateProject.md)
  - [TimewebCloudApi.UpdateRule](docs/UpdateRule.md)
  - [TimewebCloudApi.UpdateServer](docs/UpdateServer.md)

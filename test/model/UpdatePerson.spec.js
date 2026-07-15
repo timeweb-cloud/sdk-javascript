@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.DomainsApi();
+    instance = new TimewebCloudApi.UpdatePerson();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,297 +47,37 @@
       object[property] = value;
   }
 
-  describe('DomainsApi', function() {
-    describe('addDomain', function() {
-      it('should call addDomain successfully', function(done) {
-        //uncomment below and update the code to test addDomain
-        //instance.addDomain(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('UpdatePerson', function() {
+    it('should create an instance of UpdatePerson', function() {
+      // uncomment below and update the code to test UpdatePerson
+      //var instance = new TimewebCloudApi.UpdatePerson();
+      //expect(instance).to.be.a(TimewebCloudApi.UpdatePerson);
     });
-    describe('addSubdomain', function() {
-      it('should call addSubdomain successfully', function(done) {
-        //uncomment below and update the code to test addSubdomain
-        //instance.addSubdomain(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property address (base name: "address")', function() {
+      // uncomment below and update the code to test the property address
+      //var instance = new TimewebCloudApi.UpdatePerson();
+      //expect(instance).to.be();
     });
-    describe('checkDomain', function() {
-      it('should call checkDomain successfully', function(done) {
-        //uncomment below and update the code to test checkDomain
-        //instance.checkDomain(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property email (base name: "email")', function() {
+      // uncomment below and update the code to test the property email
+      //var instance = new TimewebCloudApi.UpdatePerson();
+      //expect(instance).to.be();
     });
-    describe('createDomainDNSRecord', function() {
-      it('should call createDomainDNSRecord successfully', function(done) {
-        //uncomment below and update the code to test createDomainDNSRecord
-        //instance.createDomainDNSRecord(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property phone (base name: "phone")', function() {
+      // uncomment below and update the code to test the property phone
+      //var instance = new TimewebCloudApi.UpdatePerson();
+      //expect(instance).to.be();
     });
-    describe('createDomainDNSRecordV2', function() {
-      it('should call createDomainDNSRecordV2 successfully', function(done) {
-        //uncomment below and update the code to test createDomainDNSRecordV2
-        //instance.createDomainDNSRecordV2(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property postcode (base name: "postcode")', function() {
+      // uncomment below and update the code to test the property postcode
+      //var instance = new TimewebCloudApi.UpdatePerson();
+      //expect(instance).to.be();
     });
-    describe('createDomainRequest', function() {
-      it('should call createDomainRequest successfully', function(done) {
-        //uncomment below and update the code to test createDomainRequest
-        //instance.createDomainRequest(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createPerson', function() {
-      it('should call createPerson successfully', function(done) {
-        //uncomment below and update the code to test createPerson
-        //instance.createPerson(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDomain', function() {
-      it('should call deleteDomain successfully', function(done) {
-        //uncomment below and update the code to test deleteDomain
-        //instance.deleteDomain(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDomainDNSRecord', function() {
-      it('should call deleteDomainDNSRecord successfully', function(done) {
-        //uncomment below and update the code to test deleteDomainDNSRecord
-        //instance.deleteDomainDNSRecord(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteDomainDNSRecordV2', function() {
-      it('should call deleteDomainDNSRecordV2 successfully', function(done) {
-        //uncomment below and update the code to test deleteDomainDNSRecordV2
-        //instance.deleteDomainDNSRecordV2(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deletePerson', function() {
-      it('should call deletePerson successfully', function(done) {
-        //uncomment below and update the code to test deletePerson
-        //instance.deletePerson(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteSubdomain', function() {
-      it('should call deleteSubdomain successfully', function(done) {
-        //uncomment below and update the code to test deleteSubdomain
-        //instance.deleteSubdomain(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomain', function() {
-      it('should call getDomain successfully', function(done) {
-        //uncomment below and update the code to test getDomain
-        //instance.getDomain(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainDNSRecords', function() {
-      it('should call getDomainDNSRecords successfully', function(done) {
-        //uncomment below and update the code to test getDomainDNSRecords
-        //instance.getDomainDNSRecords(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainDefaultDNSRecords', function() {
-      it('should call getDomainDefaultDNSRecords successfully', function(done) {
-        //uncomment below and update the code to test getDomainDefaultDNSRecords
-        //instance.getDomainDefaultDNSRecords(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainNameServers', function() {
-      it('should call getDomainNameServers successfully', function(done) {
-        //uncomment below and update the code to test getDomainNameServers
-        //instance.getDomainNameServers(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainRequest', function() {
-      it('should call getDomainRequest successfully', function(done) {
-        //uncomment below and update the code to test getDomainRequest
-        //instance.getDomainRequest(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainRequests', function() {
-      it('should call getDomainRequests successfully', function(done) {
-        //uncomment below and update the code to test getDomainRequests
-        //instance.getDomainRequests(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomains', function() {
-      it('should call getDomains successfully', function(done) {
-        //uncomment below and update the code to test getDomains
-        //instance.getDomains(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getPerson', function() {
-      it('should call getPerson successfully', function(done) {
-        //uncomment below and update the code to test getPerson
-        //instance.getPerson(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getPersons', function() {
-      it('should call getPersons successfully', function(done) {
-        //uncomment below and update the code to test getPersons
-        //instance.getPersons(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getTLD', function() {
-      it('should call getTLD successfully', function(done) {
-        //uncomment below and update the code to test getTLD
-        //instance.getTLD(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getTLDs', function() {
-      it('should call getTLDs successfully', function(done) {
-        //uncomment below and update the code to test getTLDs
-        //instance.getTLDs(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDomainAutoProlongation', function() {
-      it('should call updateDomainAutoProlongation successfully', function(done) {
-        //uncomment below and update the code to test updateDomainAutoProlongation
-        //instance.updateDomainAutoProlongation(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDomainDNSRecord', function() {
-      it('should call updateDomainDNSRecord successfully', function(done) {
-        //uncomment below and update the code to test updateDomainDNSRecord
-        //instance.updateDomainDNSRecord(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDomainDNSRecordV2', function() {
-      it('should call updateDomainDNSRecordV2 successfully', function(done) {
-        //uncomment below and update the code to test updateDomainDNSRecordV2
-        //instance.updateDomainDNSRecordV2(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDomainNameServers', function() {
-      it('should call updateDomainNameServers successfully', function(done) {
-        //uncomment below and update the code to test updateDomainNameServers
-        //instance.updateDomainNameServers(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateDomainRequest', function() {
-      it('should call updateDomainRequest successfully', function(done) {
-        //uncomment below and update the code to test updateDomainRequest
-        //instance.updateDomainRequest(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updatePerson', function() {
-      it('should call updatePerson successfully', function(done) {
-        //uncomment below and update the code to test updatePerson
-        //instance.updatePerson(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
+
   });
 
 }));

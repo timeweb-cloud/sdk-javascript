@@ -153,6 +153,7 @@ import CreateMultipleDomainMailboxesV2201Response from './model/CreateMultipleDo
 import CreateMultipleDomainMailboxesV2RequestInner from './model/CreateMultipleDomainMailboxesV2RequestInner';
 import CreateNetworkDrive from './model/CreateNetworkDrive';
 import CreateNetworkDrive201Response from './model/CreateNetworkDrive201Response';
+import CreatePerson201Response from './model/CreatePerson201Response';
 import CreateProject from './model/CreateProject';
 import CreateProject201Response from './model/CreateProject201Response';
 import CreateRule from './model/CreateRule';
@@ -314,6 +315,7 @@ import GetNetworkDrivesAvailableResources200Response from './model/GetNetworkDri
 import GetNetworkDrivesPresets200Response from './model/GetNetworkDrivesPresets200Response';
 import GetNotificationSettings200Response from './model/GetNotificationSettings200Response';
 import GetOsList200Response from './model/GetOsList200Response';
+import GetPersons200Response from './model/GetPersons200Response';
 import GetProjectBalancers200Response from './model/GetProjectBalancers200Response';
 import GetProjectClusters200Response from './model/GetProjectClusters200Response';
 import GetProjectDatabases200Response from './model/GetProjectDatabases200Response';
@@ -365,6 +367,7 @@ import ImagesOutResponse from './model/ImagesOutResponse';
 import IncreaseNodes from './model/IncreaseNodes';
 import InfoServicePrice from './model/InfoServicePrice';
 import Invoice from './model/Invoice';
+import Ip from './model/Ip';
 import K8SVersionsResponse from './model/K8SVersionsResponse';
 import Kafka from './model/Kafka';
 import Knowledgebase from './model/Knowledgebase';
@@ -417,10 +420,13 @@ import NotificationSettingChannels from './model/NotificationSettingChannels';
 import NotificationSettingType from './model/NotificationSettingType';
 import OS from './model/OS';
 import Opensearch from './model/Opensearch';
+import Org from './model/Org';
 import OutgoingIsDisabled from './model/OutgoingIsDisabled';
 import OutgoingIsEnabled from './model/OutgoingIsEnabled';
 import PerformActionOnBackupRequest from './model/PerformActionOnBackupRequest';
 import PerformActionOnServerRequest from './model/PerformActionOnServerRequest';
+import Person from './model/Person';
+import Person2 from './model/Person2';
 import Policy from './model/Policy';
 import Postgres from './model/Postgres';
 import Postgresql from './model/Postgresql';
@@ -547,6 +553,7 @@ import UpdateNetworkDrive from './model/UpdateNetworkDrive';
 import UpdateNotificationSettingsRequest from './model/UpdateNotificationSettingsRequest';
 import UpdateNotificationSettingsRequestSettingsInner from './model/UpdateNotificationSettingsRequestSettingsInner';
 import UpdateNotificationSettingsRequestSettingsInnerChannels from './model/UpdateNotificationSettingsRequestSettingsInnerChannels';
+import UpdatePerson from './model/UpdatePerson';
 import UpdateProject from './model/UpdateProject';
 import UpdateRule from './model/UpdateRule';
 import UpdateServer from './model/UpdateServer';
@@ -1482,6 +1489,12 @@ export {
      * @property {module:model/CreateNetworkDrive201Response}
      */
     CreateNetworkDrive201Response,
+
+    /**
+     * The CreatePerson201Response model constructor.
+     * @property {module:model/CreatePerson201Response}
+     */
+    CreatePerson201Response,
 
     /**
      * The CreateProject model constructor.
@@ -2450,6 +2463,12 @@ export {
     GetOsList200Response,
 
     /**
+     * The GetPersons200Response model constructor.
+     * @property {module:model/GetPersons200Response}
+     */
+    GetPersons200Response,
+
+    /**
      * The GetProjectBalancers200Response model constructor.
      * @property {module:model/GetProjectBalancers200Response}
      */
@@ -2754,6 +2773,12 @@ export {
      * @property {module:model/Invoice}
      */
     Invoice,
+
+    /**
+     * The Ip model constructor.
+     * @property {module:model/Ip}
+     */
+    Ip,
 
     /**
      * The K8SVersionsResponse model constructor.
@@ -3068,6 +3093,12 @@ export {
     Opensearch,
 
     /**
+     * The Org model constructor.
+     * @property {module:model/Org}
+     */
+    Org,
+
+    /**
      * The OutgoingIsDisabled model constructor.
      * @property {module:model/OutgoingIsDisabled}
      */
@@ -3090,6 +3121,18 @@ export {
      * @property {module:model/PerformActionOnServerRequest}
      */
     PerformActionOnServerRequest,
+
+    /**
+     * The Person model constructor.
+     * @property {module:model/Person}
+     */
+    Person,
+
+    /**
+     * The Person2 model constructor.
+     * @property {module:model/Person2}
+     */
+    Person2,
 
     /**
      * The Policy model constructor.
@@ -3846,6 +3889,12 @@ export {
      * @property {module:model/UpdateNotificationSettingsRequestSettingsInnerChannels}
      */
     UpdateNotificationSettingsRequestSettingsInnerChannels,
+
+    /**
+     * The UpdatePerson model constructor.
+     * @property {module:model/UpdatePerson}
+     */
+    UpdatePerson,
 
     /**
      * The UpdateProject model constructor.

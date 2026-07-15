@@ -10,9 +10,11 @@ Method | HTTP request | Description
 [**createDomainDNSRecord**](DomainsApi.md#createDomainDNSRecord) | **POST** /api/v1/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена
 [**createDomainDNSRecordV2**](DomainsApi.md#createDomainDNSRecordV2) | **POST** /api/v2/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена
 [**createDomainRequest**](DomainsApi.md#createDomainRequest) | **POST** /api/v1/domains-requests | Создание заявки на регистрацию/продление/трансфер домена
+[**createPerson**](DomainsApi.md#createPerson) | **POST** /api/v1/persons | Создание администратора доменов
 [**deleteDomain**](DomainsApi.md#deleteDomain) | **DELETE** /api/v1/domains/{fqdn} | Удаление домена
 [**deleteDomainDNSRecord**](DomainsApi.md#deleteDomainDNSRecord) | **DELETE** /api/v1/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена
 [**deleteDomainDNSRecordV2**](DomainsApi.md#deleteDomainDNSRecordV2) | **DELETE** /api/v2/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена
+[**deletePerson**](DomainsApi.md#deletePerson) | **DELETE** /api/v1/persons/{person_id} | Удаление администратора доменов
 [**deleteSubdomain**](DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain} | Удаление поддомена
 [**getDomain**](DomainsApi.md#getDomain) | **GET** /api/v1/domains/{fqdn} | Получение информации о домене
 [**getDomainDNSRecords**](DomainsApi.md#getDomainDNSRecords) | **GET** /api/v1/domains/{fqdn}/dns-records | Получить информацию обо всех пользовательских DNS-записях домена или поддомена
@@ -21,6 +23,8 @@ Method | HTTP request | Description
 [**getDomainRequest**](DomainsApi.md#getDomainRequest) | **GET** /api/v1/domains-requests/{request_id} | Получение заявки на регистрацию/продление/трансфер домена
 [**getDomainRequests**](DomainsApi.md#getDomainRequests) | **GET** /api/v1/domains-requests | Получение списка заявок на регистрацию/продление/трансфер домена
 [**getDomains**](DomainsApi.md#getDomains) | **GET** /api/v1/domains | Получение списка всех доменов
+[**getPerson**](DomainsApi.md#getPerson) | **GET** /api/v1/persons/{person_id} | Получение администратора доменов
+[**getPersons**](DomainsApi.md#getPersons) | **GET** /api/v1/persons | Получение списка администраторов доменов
 [**getTLD**](DomainsApi.md#getTLD) | **GET** /api/v1/tlds/{tld_id} | Получить информацию о доменной зоне по ID
 [**getTLDs**](DomainsApi.md#getTLDs) | **GET** /api/v1/tlds | Получить информацию о доменных зонах
 [**updateDomainAutoProlongation**](DomainsApi.md#updateDomainAutoProlongation) | **PATCH** /api/v1/domains/{fqdn} | Включение/выключение автопродления домена
@@ -28,6 +32,7 @@ Method | HTTP request | Description
 [**updateDomainDNSRecordV2**](DomainsApi.md#updateDomainDNSRecordV2) | **PATCH** /api/v2/domains/{fqdn}/dns-records/{record_id} | Обновить информацию о DNS-записи домена или поддомена
 [**updateDomainNameServers**](DomainsApi.md#updateDomainNameServers) | **PUT** /api/v1/domains/{fqdn}/name-servers | Изменение name-серверов домена
 [**updateDomainRequest**](DomainsApi.md#updateDomainRequest) | **PATCH** /api/v1/domains-requests/{request_id} | Оплата/обновление заявки на регистрацию/продление/трансфер домена
+[**updatePerson**](DomainsApi.md#updatePerson) | **PUT** /api/v1/persons/{person_id} | Обновление контактных данных администратора доменов
 
 
 
@@ -331,6 +336,55 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## createPerson
+
+> CreatePerson201Response createPerson(person2)
+
+Создание администратора доменов
+
+Чтобы создать администратора доменов, отправьте POST-запрос на &#x60;/api/v1/persons&#x60;, задав необходимые атрибуты. Набор полей зависит от типа администратора: физическое лицо (&#x60;person&#x60;), организация (&#x60;org&#x60;) или индивидуальный предприниматель (&#x60;ip&#x60;).   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.DomainsApi();
+let person2 = new TimewebCloudApi.Person2(); // Person2 | 
+apiInstance.createPerson(person2, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **person2** | [**Person2**](Person2.md)|  | 
+
+### Return type
+
+[**CreatePerson201Response**](CreatePerson201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## deleteDomain
 
 > deleteDomain(fqdn)
@@ -467,6 +521,55 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fqdn** | **String**| Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). | 
  **recordId** | **Number**| ID DNS-записи домена или поддомена. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deletePerson
+
+> deletePerson(personId)
+
+Удаление администратора доменов
+
+Чтобы удалить администратора доменов, отправьте DELETE-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.DomainsApi();
+let personId = 123; // Number | ID администратора домена.
+apiInstance.deletePerson(personId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **personId** | **Number**| ID администратора домена. | 
 
 ### Return type
 
@@ -902,6 +1005,110 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## getPerson
+
+> CreatePerson201Response getPerson(personId)
+
+Получение администратора доменов
+
+Чтобы получить администратора доменов, отправьте GET-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.DomainsApi();
+let personId = 123; // Number | ID администратора домена.
+apiInstance.getPerson(personId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **personId** | **Number**| ID администратора домена. | 
+
+### Return type
+
+[**CreatePerson201Response**](CreatePerson201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getPersons
+
+> GetPersons200Response getPersons(opts)
+
+Получение списка администраторов доменов
+
+Чтобы получить список администраторов доменов на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/persons&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;persons&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.DomainsApi();
+let opts = {
+  'limit': 100, // Number | Обозначает количество записей, которое необходимо вернуть.
+  'offset': 0, // Number | Указывает на смещение относительно начала списка.
+  'isClosed': false // Boolean | Фильтр по закрытым администраторам: `true` — вернуть только закрытых, `false` — только активных.
+};
+apiInstance.getPersons(opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **Number**| Обозначает количество записей, которое необходимо вернуть. | [optional] [default to 100]
+ **offset** | **Number**| Указывает на смещение относительно начала списка. | [optional] [default to 0]
+ **isClosed** | **Boolean**| Фильтр по закрытым администраторам: &#x60;true&#x60; — вернуть только закрытых, &#x60;false&#x60; — только активных. | [optional] 
+
+### Return type
+
+[**GetPersons200Response**](GetPersons200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## getTLD
 
 > GetTLD200Response getTLD(tldId)
@@ -1252,6 +1459,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateDomainRequest201Response**](CreateDomainRequest201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updatePerson
+
+> CreatePerson201Response updatePerson(personId, updatePerson)
+
+Обновление контактных данных администратора доменов
+
+Чтобы обновить контактные данные администратора доменов, отправьте PUT-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.DomainsApi();
+let personId = 123; // Number | ID администратора домена.
+let updatePerson = new TimewebCloudApi.UpdatePerson(); // UpdatePerson | 
+apiInstance.updatePerson(personId, updatePerson, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **personId** | **Number**| ID администратора домена. | 
+ **updatePerson** | [**UpdatePerson**](UpdatePerson.md)|  | 
+
+### Return type
+
+[**CreatePerson201Response**](CreatePerson201Response.md)
 
 ### Authorization
 
