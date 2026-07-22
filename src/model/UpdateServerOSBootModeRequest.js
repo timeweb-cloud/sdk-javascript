@@ -22,7 +22,7 @@ class UpdateServerOSBootModeRequest {
     /**
      * Constructs a new <code>UpdateServerOSBootModeRequest</code>.
      * @alias module:model/UpdateServerOSBootModeRequest
-     * @param bootMode {module:model/UpdateServerOSBootModeRequest.BootModeEnum} Тип загрузки операционной системы. \\  Параметры: `default` – стандартный режим, `single` – однопользовательский режим, `recovery_disk` – загрузка с диска восстановления.
+     * @param bootMode {module:model/UpdateServerOSBootModeRequest.BootModeEnum} Тип загрузки операционной системы. \\  Параметры: `default` – стандартный режим, `single` – однопользовательский режим (**deprecated**, оставлен для обратной совместимости, выбор недоступен), `recovery_disk` – загрузка с диска восстановления.
      */
     constructor(bootMode) { 
         
@@ -82,7 +82,7 @@ class UpdateServerOSBootModeRequest {
 UpdateServerOSBootModeRequest.RequiredProperties = ["boot_mode"];
 
 /**
- * Тип загрузки операционной системы. \\  Параметры: `default` – стандартный режим, `single` – однопользовательский режим, `recovery_disk` – загрузка с диска восстановления.
+ * Тип загрузки операционной системы. \\  Параметры: `default` – стандартный режим, `single` – однопользовательский режим (**deprecated**, оставлен для обратной совместимости, выбор недоступен), `recovery_disk` – загрузка с диска восстановления.
  * @member {module:model/UpdateServerOSBootModeRequest.BootModeEnum} boot_mode
  */
 UpdateServerOSBootModeRequest.prototype['boot_mode'] = undefined;
