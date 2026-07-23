@@ -11,153 +11,202 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TimewebCloudApi);
-  }
-}(this, function(expect, TimewebCloudApi) {
-  'use strict';
+import ApiClient from '../ApiClient';
+import AgentSettings from './AgentSettings';
 
-  var instance;
+/**
+ * The CreateAgentV2 model module.
+ * @module model/CreateAgentV2
+ * @version 1.0.0
+ */
+class CreateAgentV2 {
+    /**
+     * Constructs a new <code>CreateAgentV2</code>.
+     * Данные для создания AI агента через API v2
+     * @alias module:model/CreateAgentV2
+     * @param name {String} Название агента
+     * @param accessType {module:model/CreateAgentV2.AccessTypeEnum} Тип доступа к агенту
+     * @param modelId {Number} ID основной модели
+     * @param settings {module:model/AgentSettings} 
+     */
+    constructor(name, accessType, modelId, settings) { 
+        
+        CreateAgentV2.initialize(this, name, accessType, modelId, settings);
+    }
 
-  beforeEach(function() {
-    instance = new TimewebCloudApi.AIAgentsApi();
-  });
+    /**
+     * Initializes the fields of this object.
+     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
+     * Only for internal use.
+     */
+    static initialize(obj, name, accessType, modelId, settings) { 
+        obj['name'] = name;
+        obj['access_type'] = accessType;
+        obj['model_id'] = modelId;
+        obj['settings'] = settings;
+    }
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    /**
+     * Constructs a <code>CreateAgentV2</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {module:model/CreateAgentV2} obj Optional instance to populate.
+     * @return {module:model/CreateAgentV2} The populated <code>CreateAgentV2</code> instance.
+     */
+    static constructFromObject(data, obj) {
+        if (data) {
+            obj = obj || new CreateAgentV2();
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+            if (data.hasOwnProperty('name')) {
+                obj['name'] = ApiClient.convertToType(data['name'], 'String');
+            }
+            if (data.hasOwnProperty('description')) {
+                obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
+            if (data.hasOwnProperty('access_type')) {
+                obj['access_type'] = ApiClient.convertToType(data['access_type'], 'String');
+            }
+            if (data.hasOwnProperty('model_id')) {
+                obj['model_id'] = ApiClient.convertToType(data['model_id'], 'Number');
+            }
+            if (data.hasOwnProperty('token_limit')) {
+                obj['token_limit'] = ApiClient.convertToType(data['token_limit'], 'Number');
+            }
+            if (data.hasOwnProperty('settings')) {
+                obj['settings'] = AgentSettings.constructFromObject(data['settings']);
+            }
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            }
+            if (data.hasOwnProperty('additional_model_ids')) {
+                obj['additional_model_ids'] = ApiClient.convertToType(data['additional_model_ids'], ['Number']);
+            }
+            if (data.hasOwnProperty('is_web_search_enabled')) {
+                obj['is_web_search_enabled'] = ApiClient.convertToType(data['is_web_search_enabled'], 'Boolean');
+            }
+        }
+        return obj;
+    }
 
-  describe('AIAgentsApi', function() {
-    describe('addAdditionalTokenPackage', function() {
-      it('should call addAdditionalTokenPackage successfully', function(done) {
-        //uncomment below and update the code to test addAdditionalTokenPackage
-        //instance.addAdditionalTokenPackage(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createAgent', function() {
-      it('should call createAgent successfully', function(done) {
-        //uncomment below and update the code to test createAgent
-        //instance.createAgent(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createAgentV2', function() {
-      it('should call createAgentV2 successfully', function(done) {
-        //uncomment below and update the code to test createAgentV2
-        //instance.createAgentV2(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteAgent', function() {
-      it('should call deleteAgent successfully', function(done) {
-        //uncomment below and update the code to test deleteAgent
-        //instance.deleteAgent(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getAgent', function() {
-      it('should call getAgent successfully', function(done) {
-        //uncomment below and update the code to test getAgent
-        //instance.getAgent(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getAgentStatistics', function() {
-      it('should call getAgentStatistics successfully', function(done) {
-        //uncomment below and update the code to test getAgentStatistics
-        //instance.getAgentStatistics(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getAgents', function() {
-      it('should call getAgents successfully', function(done) {
-        //uncomment below and update the code to test getAgents
-        //instance.getAgents(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getAgentsTokenPackages', function() {
-      it('should call getAgentsTokenPackages successfully', function(done) {
-        //uncomment below and update the code to test getAgentsTokenPackages
-        //instance.getAgentsTokenPackages(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getKnowledgebasesTokenPackages', function() {
-      it('should call getKnowledgebasesTokenPackages successfully', function(done) {
-        //uncomment below and update the code to test getKnowledgebasesTokenPackages
-        //instance.getKnowledgebasesTokenPackages(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getModels', function() {
-      it('should call getModels successfully', function(done) {
-        //uncomment below and update the code to test getModels
-        //instance.getModels(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateAgent', function() {
-      it('should call updateAgent successfully', function(done) {
-        //uncomment below and update the code to test updateAgent
-        //instance.updateAgent(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-  });
+    /**
+     * Validates the JSON data with respect to <code>CreateAgentV2</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateAgentV2</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of CreateAgentV2.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
+        // ensure the json data is a string
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // ensure the json data is a string
+        if (data['access_type'] && !(typeof data['access_type'] === 'string' || data['access_type'] instanceof String)) {
+            throw new Error("Expected the field `access_type` to be a primitive type in the JSON string but got " + data['access_type']);
+        }
+        // validate the optional field `settings`
+        if (data['settings']) { // data not null
+          AgentSettings.validateJSON(data['settings']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['additional_model_ids'])) {
+            throw new Error("Expected the field `additional_model_ids` to be an array in the JSON data but got " + data['additional_model_ids']);
+        }
 
-}));
+        return true;
+    }
+
+
+}
+
+CreateAgentV2.RequiredProperties = ["name", "access_type", "model_id", "settings"];
+
+/**
+ * Название агента
+ * @member {String} name
+ */
+CreateAgentV2.prototype['name'] = undefined;
+
+/**
+ * Описание агента
+ * @member {String} description
+ */
+CreateAgentV2.prototype['description'] = undefined;
+
+/**
+ * Тип доступа к агенту
+ * @member {module:model/CreateAgentV2.AccessTypeEnum} access_type
+ */
+CreateAgentV2.prototype['access_type'] = undefined;
+
+/**
+ * ID основной модели
+ * @member {Number} model_id
+ */
+CreateAgentV2.prototype['model_id'] = undefined;
+
+/**
+ * Дневной лимит токенов для агента (0 — без лимита)
+ * @member {Number} token_limit
+ */
+CreateAgentV2.prototype['token_limit'] = undefined;
+
+/**
+ * @member {module:model/AgentSettings} settings
+ */
+CreateAgentV2.prototype['settings'] = undefined;
+
+/**
+ * ID проекта
+ * @member {Number} project_id
+ */
+CreateAgentV2.prototype['project_id'] = undefined;
+
+/**
+ * Список ID дополнительных моделей агента
+ * @member {Array.<Number>} additional_model_ids
+ */
+CreateAgentV2.prototype['additional_model_ids'] = undefined;
+
+/**
+ * Признак использования веб-поиска агентом
+ * @member {Boolean} is_web_search_enabled
+ */
+CreateAgentV2.prototype['is_web_search_enabled'] = undefined;
+
+
+
+
+
+/**
+ * Allowed values for the <code>access_type</code> property.
+ * @enum {String}
+ * @readonly
+ */
+CreateAgentV2['AccessTypeEnum'] = {
+
+    /**
+     * value: "public"
+     * @const
+     */
+    "public": "public",
+
+    /**
+     * value: "private"
+     * @const
+     */
+    "private": "private"
+};
+
+
+
+export default CreateAgentV2;
+

@@ -90,6 +90,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isStopped (base name: "is_stopped")', function() {
+      // uncomment below and update the code to test the property isStopped
+      //var instance = new TimewebCloudApi.Model();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property deprecationDate (base name: "deprecation_date")', function() {
+      // uncomment below and update the code to test the property deprecationDate
+      //var instance = new TimewebCloudApi.Model();
+      //expect(instance).to.be();
+    });
+
     it('should have the property isReasoning (base name: "is_reasoning")', function() {
       // uncomment below and update the code to test the property isReasoning
       //var instance = new TimewebCloudApi.Model();

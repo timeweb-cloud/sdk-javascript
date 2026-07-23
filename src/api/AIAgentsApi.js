@@ -16,6 +16,7 @@ import ApiClient from "../ApiClient";
 import AddTokenPackage from '../model/AddTokenPackage';
 import CreateAgent from '../model/CreateAgent';
 import CreateAgent201Response from '../model/CreateAgent201Response';
+import CreateAgentV2 from '../model/CreateAgentV2';
 import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
 import GetAgentStatistics200Response from '../model/GetAgentStatistics200Response';
 import GetAgents200Response from '../model/GetAgents200Response';
@@ -129,6 +130,48 @@ export default class AIAgentsApi {
       let returnType = CreateAgent201Response;
       return this.apiClient.callApi(
         '/api/v1/cloud-ai/agents', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the createAgentV2 operation.
+     * @callback module:api/AIAgentsApi~createAgentV2Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateAgent201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Создание AI агента
+     * Чтобы создать AI агента, отправьте POST-запрос на `/api/v2/cloud-ai/agents`, задав необходимые атрибуты.  Агент будет создан с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданном агенте.
+     * @param {module:model/CreateAgentV2} createAgentV2 
+     * @param {module:api/AIAgentsApi~createAgentV2Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateAgent201Response}
+     */
+    createAgentV2(createAgentV2, callback) {
+      let postBody = createAgentV2;
+      // verify the required parameter 'createAgentV2' is set
+      if (createAgentV2 === undefined || createAgentV2 === null) {
+        throw new Error("Missing the required parameter 'createAgentV2' when calling createAgentV2");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateAgent201Response;
+      return this.apiClient.callApi(
+        '/api/v2/cloud-ai/agents', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

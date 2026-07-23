@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addAdditionalTokenPackage**](AIAgentsApi.md#addAdditionalTokenPackage) | **POST** /api/v1/cloud-ai/agents/{id}/add-additional-token-package | Добавление дополнительного пакета токенов
 [**createAgent**](AIAgentsApi.md#createAgent) | **POST** /api/v1/cloud-ai/agents | Создание AI агента
+[**createAgentV2**](AIAgentsApi.md#createAgentV2) | **POST** /api/v2/cloud-ai/agents | Создание AI агента
 [**deleteAgent**](AIAgentsApi.md#deleteAgent) | **DELETE** /api/v1/cloud-ai/agents/{id} | Удаление AI агента
 [**getAgent**](AIAgentsApi.md#getAgent) | **GET** /api/v1/cloud-ai/agents/{id} | Получение AI агента
 [**getAgentStatistics**](AIAgentsApi.md#getAgentStatistics) | **GET** /api/v1/cloud-ai/agents/{id}/statistic | Получение статистики использования токенов агента
@@ -104,6 +105,55 @@ apiInstance.createAgent(createAgent, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createAgent** | [**CreateAgent**](CreateAgent.md)|  | 
+
+### Return type
+
+[**CreateAgent201Response**](CreateAgent201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## createAgentV2
+
+> CreateAgent201Response createAgentV2(createAgentV2)
+
+Создание AI агента
+
+Чтобы создать AI агента, отправьте POST-запрос на &#x60;/api/v2/cloud-ai/agents&#x60;, задав необходимые атрибуты.  Агент будет создан с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданном агенте.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.AIAgentsApi();
+let createAgentV2 = new TimewebCloudApi.CreateAgentV2(); // CreateAgentV2 | 
+apiInstance.createAgentV2(createAgentV2, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createAgentV2** | [**CreateAgentV2**](CreateAgentV2.md)|  | 
 
 ### Return type
 

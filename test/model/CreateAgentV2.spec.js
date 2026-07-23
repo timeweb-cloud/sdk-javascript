@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.AIAgentsApi();
+    instance = new TimewebCloudApi.CreateAgentV2();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,117 +47,67 @@
       object[property] = value;
   }
 
-  describe('AIAgentsApi', function() {
-    describe('addAdditionalTokenPackage', function() {
-      it('should call addAdditionalTokenPackage successfully', function(done) {
-        //uncomment below and update the code to test addAdditionalTokenPackage
-        //instance.addAdditionalTokenPackage(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('CreateAgentV2', function() {
+    it('should create an instance of CreateAgentV2', function() {
+      // uncomment below and update the code to test CreateAgentV2
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be.a(TimewebCloudApi.CreateAgentV2);
     });
-    describe('createAgent', function() {
-      it('should call createAgent successfully', function(done) {
-        //uncomment below and update the code to test createAgent
-        //instance.createAgent(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be();
     });
-    describe('createAgentV2', function() {
-      it('should call createAgentV2 successfully', function(done) {
-        //uncomment below and update the code to test createAgentV2
-        //instance.createAgentV2(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property description (base name: "description")', function() {
+      // uncomment below and update the code to test the property description
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be();
     });
-    describe('deleteAgent', function() {
-      it('should call deleteAgent successfully', function(done) {
-        //uncomment below and update the code to test deleteAgent
-        //instance.deleteAgent(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property accessType (base name: "access_type")', function() {
+      // uncomment below and update the code to test the property accessType
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be();
     });
-    describe('getAgent', function() {
-      it('should call getAgent successfully', function(done) {
-        //uncomment below and update the code to test getAgent
-        //instance.getAgent(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property modelId (base name: "model_id")', function() {
+      // uncomment below and update the code to test the property modelId
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be();
     });
-    describe('getAgentStatistics', function() {
-      it('should call getAgentStatistics successfully', function(done) {
-        //uncomment below and update the code to test getAgentStatistics
-        //instance.getAgentStatistics(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property tokenLimit (base name: "token_limit")', function() {
+      // uncomment below and update the code to test the property tokenLimit
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be();
     });
-    describe('getAgents', function() {
-      it('should call getAgents successfully', function(done) {
-        //uncomment below and update the code to test getAgents
-        //instance.getAgents(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property settings (base name: "settings")', function() {
+      // uncomment below and update the code to test the property settings
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be();
     });
-    describe('getAgentsTokenPackages', function() {
-      it('should call getAgentsTokenPackages successfully', function(done) {
-        //uncomment below and update the code to test getAgentsTokenPackages
-        //instance.getAgentsTokenPackages(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property projectId (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property projectId
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be();
     });
-    describe('getKnowledgebasesTokenPackages', function() {
-      it('should call getKnowledgebasesTokenPackages successfully', function(done) {
-        //uncomment below and update the code to test getKnowledgebasesTokenPackages
-        //instance.getKnowledgebasesTokenPackages(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property additionalModelIds (base name: "additional_model_ids")', function() {
+      // uncomment below and update the code to test the property additionalModelIds
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be();
     });
-    describe('getModels', function() {
-      it('should call getModels successfully', function(done) {
-        //uncomment below and update the code to test getModels
-        //instance.getModels(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property isWebSearchEnabled (base name: "is_web_search_enabled")', function() {
+      // uncomment below and update the code to test the property isWebSearchEnabled
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be();
     });
-    describe('updateAgent', function() {
-      it('should call updateAgent successfully', function(done) {
-        //uncomment below and update the code to test updateAgent
-        //instance.updateAgent(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
+
   });
 
 }));

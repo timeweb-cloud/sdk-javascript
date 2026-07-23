@@ -111,6 +111,7 @@ import ContainerRegistryRepositoriesInner from './model/ContainerRegistryReposit
 import CreateAdmin from './model/CreateAdmin';
 import CreateAgent from './model/CreateAgent';
 import CreateAgent201Response from './model/CreateAgent201Response';
+import CreateAgentV2 from './model/CreateAgentV2';
 import CreateApp from './model/CreateApp';
 import CreateApp201Response from './model/CreateApp201Response';
 import CreateBalancer from './model/CreateBalancer';
@@ -1237,6 +1238,12 @@ export {
      * @property {module:model/CreateAgent201Response}
      */
     CreateAgent201Response,
+
+    /**
+     * The CreateAgentV2 model constructor.
+     * @property {module:model/CreateAgentV2}
+     */
+    CreateAgentV2,
 
     /**
      * The CreateApp model constructor.

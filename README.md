@@ -275,6 +275,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *TimewebCloudApi.AIAgentsApi* | [**addAdditionalTokenPackage**](docs/AIAgentsApi.md#addAdditionalTokenPackage) | **POST** /api/v1/cloud-ai/agents/{id}/add-additional-token-package | Добавление дополнительного пакета токенов
 *TimewebCloudApi.AIAgentsApi* | [**createAgent**](docs/AIAgentsApi.md#createAgent) | **POST** /api/v1/cloud-ai/agents | Создание AI агента
+*TimewebCloudApi.AIAgentsApi* | [**createAgentV2**](docs/AIAgentsApi.md#createAgentV2) | **POST** /api/v2/cloud-ai/agents | Создание AI агента
 *TimewebCloudApi.AIAgentsApi* | [**deleteAgent**](docs/AIAgentsApi.md#deleteAgent) | **DELETE** /api/v1/cloud-ai/agents/{id} | Удаление AI агента
 *TimewebCloudApi.AIAgentsApi* | [**getAgent**](docs/AIAgentsApi.md#getAgent) | **GET** /api/v1/cloud-ai/agents/{id} | Получение AI агента
 *TimewebCloudApi.AIAgentsApi* | [**getAgentStatistics**](docs/AIAgentsApi.md#getAgentStatistics) | **GET** /api/v1/cloud-ai/agents/{id}/statistic | Получение статистики использования токенов агента
@@ -716,6 +717,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateAdmin](docs/CreateAdmin.md)
  - [TimewebCloudApi.CreateAgent](docs/CreateAgent.md)
  - [TimewebCloudApi.CreateAgent201Response](docs/CreateAgent201Response.md)
+ - [TimewebCloudApi.CreateAgentV2](docs/CreateAgentV2.md)
  - [TimewebCloudApi.CreateApp](docs/CreateApp.md)
  - [TimewebCloudApi.CreateApp201Response](docs/CreateApp201Response.md)
  - [TimewebCloudApi.CreateBalancer](docs/CreateBalancer.md)

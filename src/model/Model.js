@@ -30,12 +30,13 @@ class Model {
      * @param publicName {String} Публичное имя модели
      * @param type {module:model/Model.TypeEnum} Тип модели (llm - языковая модель, embedding - модель для эмбеддингов)
      * @param isDeprecated {Boolean} Признак, что модель устарела
+     * @param isStopped {Boolean} Признак, что поддержка модели остановлена в системе
      * @param isReasoning {Boolean} Признак поддержки режима рассуждения
      * @param version {String} Версия модели
      */
-    constructor(id, providerId, name, publicName, type, isDeprecated, isReasoning, version) { 
+    constructor(id, providerId, name, publicName, type, isDeprecated, isStopped, isReasoning, version) { 
         
-        Model.initialize(this, id, providerId, name, publicName, type, isDeprecated, isReasoning, version);
+        Model.initialize(this, id, providerId, name, publicName, type, isDeprecated, isStopped, isReasoning, version);
     }
 
     /**
@@ -43,13 +44,14 @@ class Model {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, providerId, name, publicName, type, isDeprecated, isReasoning, version) { 
+    static initialize(obj, id, providerId, name, publicName, type, isDeprecated, isStopped, isReasoning, version) { 
         obj['id'] = id;
         obj['provider_id'] = providerId;
         obj['name'] = name;
         obj['public_name'] = publicName;
         obj['type'] = type;
         obj['is_deprecated'] = isDeprecated;
+        obj['is_stopped'] = isStopped;
         obj['is_reasoning'] = isReasoning;
         obj['version'] = version;
     }
@@ -82,6 +84,12 @@ class Model {
             }
             if (data.hasOwnProperty('is_deprecated')) {
                 obj['is_deprecated'] = ApiClient.convertToType(data['is_deprecated'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_stopped')) {
+                obj['is_stopped'] = ApiClient.convertToType(data['is_stopped'], 'Boolean');
+            }
+            if (data.hasOwnProperty('deprecation_date')) {
+                obj['deprecation_date'] = ApiClient.convertToType(data['deprecation_date'], 'Date');
             }
             if (data.hasOwnProperty('is_reasoning')) {
                 obj['is_reasoning'] = ApiClient.convertToType(data['is_reasoning'], 'Boolean');
@@ -135,7 +143,7 @@ class Model {
 
 }
 
-Model.RequiredProperties = ["id", "provider_id", "name", "public_name", "type", "is_deprecated", "is_reasoning", "version"];
+Model.RequiredProperties = ["id", "provider_id", "name", "public_name", "type", "is_deprecated", "is_stopped", "is_reasoning", "version"];
 
 /**
  * Уникальный идентификатор модели
@@ -172,6 +180,18 @@ Model.prototype['type'] = undefined;
  * @member {Boolean} is_deprecated
  */
 Model.prototype['is_deprecated'] = undefined;
+
+/**
+ * Признак, что поддержка модели остановлена в системе
+ * @member {Boolean} is_stopped
+ */
+Model.prototype['is_stopped'] = undefined;
+
+/**
+ * Дата депрекейта модели у провайдера
+ * @member {Date} deprecation_date
+ */
+Model.prototype['deprecation_date'] = undefined;
 
 /**
  * Признак поддержки режима рассуждения
