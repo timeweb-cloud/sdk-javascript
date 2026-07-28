@@ -310,7 +310,8 @@ docs/GetKnowledgebasesV2200ResponseMeta.md
 docs/GetLocations200Response.md
 docs/GetMailboxes200Response.md
 docs/GetModels200Response.md
-docs/GetModels200ResponseMeta.md
+docs/GetModelsV3200Response.md
+docs/GetModelsV3200ResponseMeta.md
 docs/GetNetworkDrives200Response.md
 docs/GetNetworkDrivesAvailableResources200Response.md
 docs/GetNetworkDrivesPresets200Response.md
@@ -396,6 +397,7 @@ docs/ModelParamsInfo.md
 docs/ModelParamsInfoMaxTokens.md
 docs/ModelParamsInfoReasoningEffort.md
 docs/ModelParamsInfoTemperature.md
+docs/ModelV3.md
 docs/Mongodb.md
 docs/MountNetworkDrive.md
 docs/Mysql.md
@@ -926,7 +928,8 @@ src/model/GetKnowledgebasesV2200ResponseMeta.js
 src/model/GetLocations200Response.js
 src/model/GetMailboxes200Response.js
 src/model/GetModels200Response.js
-src/model/GetModels200ResponseMeta.js
+src/model/GetModelsV3200Response.js
+src/model/GetModelsV3200ResponseMeta.js
 src/model/GetNetworkDrives200Response.js
 src/model/GetNetworkDrivesAvailableResources200Response.js
 src/model/GetNetworkDrivesPresets200Response.js
@@ -1007,6 +1010,7 @@ src/model/ModelParamsInfo.js
 src/model/ModelParamsInfoMaxTokens.js
 src/model/ModelParamsInfoReasoningEffort.js
 src/model/ModelParamsInfoTemperature.js
+src/model/ModelV3.js
 src/model/Mongodb.js
 src/model/MountNetworkDrive.js
 src/model/Mysql.js
@@ -1524,7 +1528,8 @@ test/model/GetKnowledgebasesV2200ResponseMeta.spec.js
 test/model/GetLocations200Response.spec.js
 test/model/GetMailboxes200Response.spec.js
 test/model/GetModels200Response.spec.js
-test/model/GetModels200ResponseMeta.spec.js
+test/model/GetModelsV3200Response.spec.js
+test/model/GetModelsV3200ResponseMeta.spec.js
 test/model/GetNetworkDrives200Response.spec.js
 test/model/GetNetworkDrivesAvailableResources200Response.spec.js
 test/model/GetNetworkDrivesPresets200Response.spec.js
@@ -1605,6 +1610,7 @@ test/model/ModelParamsInfo.spec.js
 test/model/ModelParamsInfoMaxTokens.spec.js
 test/model/ModelParamsInfoReasoningEffort.spec.js
 test/model/ModelParamsInfoTemperature.spec.js
+test/model/ModelV3.spec.js
 test/model/Mongodb.spec.js
 test/model/MountNetworkDrive.spec.js
 test/model/Mysql.spec.js

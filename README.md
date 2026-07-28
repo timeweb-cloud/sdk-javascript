@@ -283,6 +283,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.AIAgentsApi* | [**getAgentsTokenPackages**](docs/AIAgentsApi.md#getAgentsTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/agents | Получение списка пакетов токенов для агентов
 *TimewebCloudApi.AIAgentsApi* | [**getKnowledgebasesTokenPackages**](docs/AIAgentsApi.md#getKnowledgebasesTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/knowledge-bases | Получение списка пакетов токенов для баз знаний
 *TimewebCloudApi.AIAgentsApi* | [**getModels**](docs/AIAgentsApi.md#getModels) | **GET** /api/v1/cloud-ai/models | Получение списка моделей
+*TimewebCloudApi.AIAgentsApi* | [**getModelsV3**](docs/AIAgentsApi.md#getModelsV3) | **GET** /api/v3/cloud-ai/models | Получение списка моделей
 *TimewebCloudApi.AIAgentsApi* | [**updateAgent**](docs/AIAgentsApi.md#updateAgent) | **PATCH** /api/v1/cloud-ai/agents/{id} | Обновление AI агента
 *TimewebCloudApi.AccountApi* | [**addCountriesToAllowedList**](docs/AccountApi.md#addCountriesToAllowedList) | **POST** /api/v1/auth/access/countries | Добавление стран в список разрешенных
 *TimewebCloudApi.AccountApi* | [**addIPsToAllowedList**](docs/AccountApi.md#addIPsToAllowedList) | **POST** /api/v1/auth/access/ips | Добавление IP-адресов в список разрешенных
@@ -916,7 +917,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetLocations200Response](docs/GetLocations200Response.md)
  - [TimewebCloudApi.GetMailboxes200Response](docs/GetMailboxes200Response.md)
  - [TimewebCloudApi.GetModels200Response](docs/GetModels200Response.md)
- - [TimewebCloudApi.GetModels200ResponseMeta](docs/GetModels200ResponseMeta.md)
+ - [TimewebCloudApi.GetModelsV3200Response](docs/GetModelsV3200Response.md)
+ - [TimewebCloudApi.GetModelsV3200ResponseMeta](docs/GetModelsV3200ResponseMeta.md)
  - [TimewebCloudApi.GetNetworkDrives200Response](docs/GetNetworkDrives200Response.md)
  - [TimewebCloudApi.GetNetworkDrivesAvailableResources200Response](docs/GetNetworkDrivesAvailableResources200Response.md)
  - [TimewebCloudApi.GetNetworkDrivesPresets200Response](docs/GetNetworkDrivesPresets200Response.md)
@@ -997,6 +999,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ModelParamsInfoMaxTokens](docs/ModelParamsInfoMaxTokens.md)
  - [TimewebCloudApi.ModelParamsInfoReasoningEffort](docs/ModelParamsInfoReasoningEffort.md)
  - [TimewebCloudApi.ModelParamsInfoTemperature](docs/ModelParamsInfoTemperature.md)
+ - [TimewebCloudApi.ModelV3](docs/ModelV3.md)
  - [TimewebCloudApi.Mongodb](docs/Mongodb.md)
  - [TimewebCloudApi.MountNetworkDrive](docs/MountNetworkDrive.md)
  - [TimewebCloudApi.Mysql](docs/Mysql.md)

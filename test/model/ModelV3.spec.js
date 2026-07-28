@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TimewebCloudApi.GetModels200ResponseMeta();
+    instance = new TimewebCloudApi.ModelV3();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,16 +47,94 @@
       object[property] = value;
   }
 
-  describe('GetModels200ResponseMeta', function() {
-    it('should create an instance of GetModels200ResponseMeta', function() {
-      // uncomment below and update the code to test GetModels200ResponseMeta
-      //var instance = new TimewebCloudApi.GetModels200ResponseMeta();
-      //expect(instance).to.be.a(TimewebCloudApi.GetModels200ResponseMeta);
+  describe('ModelV3', function() {
+    it('should create an instance of ModelV3', function() {
+      // uncomment below and update the code to test ModelV3
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be.a(TimewebCloudApi.ModelV3);
     });
 
-    it('should have the property total (base name: "total")', function() {
-      // uncomment below and update the code to test the property total
-      //var instance = new TimewebCloudApi.GetModels200ResponseMeta();
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property providerId (base name: "provider_id")', function() {
+      // uncomment below and update the code to test the property providerId
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property publicName (base name: "public_name")', function() {
+      // uncomment below and update the code to test the property publicName
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property modelName (base name: "model_name")', function() {
+      // uncomment below and update the code to test the property modelName
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property version (base name: "version")', function() {
+      // uncomment below and update the code to test the property version
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isDeprecated (base name: "is_deprecated")', function() {
+      // uncomment below and update the code to test the property isDeprecated
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isStopped (base name: "is_stopped")', function() {
+      // uncomment below and update the code to test the property isStopped
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property deprecationDate (base name: "deprecation_date")', function() {
+      // uncomment below and update the code to test the property deprecationDate
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property createdAt (base name: "created_at")', function() {
+      // uncomment below and update the code to test the property createdAt
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property updatedAt (base name: "updated_at")', function() {
+      // uncomment below and update the code to test the property updatedAt
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property paramsInfo (base name: "params_info")', function() {
+      // uncomment below and update the code to test the property paramsInfo
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property parameterValues (base name: "parameter_values")', function() {
+      // uncomment below and update the code to test the property parameterValues
+      //var instance = new TimewebCloudApi.ModelV3();
       //expect(instance).to.be();
     });
 

@@ -27,6 +27,7 @@ import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetImage404Response from '../model/GetImage404Response';
 import GetModels200Response from '../model/GetModels200Response';
+import GetModelsV3200Response from '../model/GetModelsV3200Response';
 import UpdateAgent from '../model/UpdateAgent';
 
 /**
@@ -360,7 +361,7 @@ export default class AIAgentsApi {
 
     /**
      * Получение списка пакетов токенов для агентов
-     * Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на `/api/v1/cloud-ai/token-packages/agents`.  Тело ответа будет представлять собой объект JSON с ключом `token_packages`.
+     * Метод устарел.  Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на `/api/v1/cloud-ai/token-packages/agents`.  Тело ответа будет представлять собой объект JSON с ключом `token_packages`.
      * @param {module:api/AIAgentsApi~getAgentsTokenPackagesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetAgentsTokenPackages200Response}
      */
@@ -434,7 +435,7 @@ export default class AIAgentsApi {
 
     /**
      * Получение списка моделей
-     * Чтобы получить список доступных AI моделей, отправьте GET-запрос на `/api/v1/cloud-ai/models`.  Тело ответа будет представлять собой объект JSON с ключом `models`.
+     * Метод устарел — используйте `GET /api/v3/cloud-ai/models`.  Чтобы получить список доступных AI моделей, отправьте GET-запрос на `/api/v1/cloud-ai/models`.  Тело ответа будет представлять собой объект JSON с ключом `models`.
      * @param {module:api/AIAgentsApi~getModelsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetModels200Response}
      */
@@ -456,6 +457,43 @@ export default class AIAgentsApi {
       let returnType = GetModels200Response;
       return this.apiClient.callApi(
         '/api/v1/cloud-ai/models', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getModelsV3 operation.
+     * @callback module:api/AIAgentsApi~getModelsV3Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetModelsV3200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка моделей
+     * Чтобы получить список доступных AI моделей с их характеристиками, отправьте GET-запрос на `/api/v3/cloud-ai/models`.  Тело ответа будет представлять собой объект JSON с ключом `models`.  Характеристики модели (цены, лимиты, возможности) возвращаются в словаре `parameter_values`. Актуальные цены за токены — в ключах `parameter_values.cost_in` и `parameter_values.cost_out` (в рублях за 1 токен).
+     * @param {module:api/AIAgentsApi~getModelsV3Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetModelsV3200Response}
+     */
+    getModelsV3(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetModelsV3200Response;
+      return this.apiClient.callApi(
+        '/api/v3/cloud-ai/models', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

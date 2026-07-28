@@ -1,4 +1,4 @@
-# TimewebCloudApi.GetModels200ResponseMeta
+# TimewebCloudApi.GetModelsV3200ResponseMeta
 
 ## Properties
 

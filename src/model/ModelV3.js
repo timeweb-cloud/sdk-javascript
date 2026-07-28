@@ -12,24 +12,33 @@
  */
 
 import ApiClient from '../ApiClient';
-import GetModelsV3200ResponseMeta from './GetModelsV3200ResponseMeta';
-import Model from './Model';
 
 /**
- * The GetModels200Response model module.
- * @module model/GetModels200Response
+ * The ModelV3 model module.
+ * @module model/ModelV3
  * @version 1.0.0
  */
-class GetModels200Response {
+class ModelV3 {
     /**
-     * Constructs a new <code>GetModels200Response</code>.
-     * @alias module:model/GetModels200Response
-     * @param models {Array.<module:model/Model>} 
-     * @param meta {module:model/GetModelsV3200ResponseMeta} 
+     * Constructs a new <code>ModelV3</code>.
+     * Модель AI (v3). Идентификация и управляющие поля находятся на верхнем уровне, все сравнимые характеристики (цены, лимиты, возможности) — в словаре &#x60;parameter_values&#x60;
+     * @alias module:model/ModelV3
+     * @param id {Number} Уникальный идентификатор модели
+     * @param providerId {Number} ID провайдера, который предоставляет модель
+     * @param name {String} Название модели
+     * @param publicName {String} Публичное имя модели
+     * @param modelName {String} Идентификатор модели, который передаётся в поле `model` тела запроса
+     * @param type {module:model/ModelV3.TypeEnum} Тип модели (llm — языковая модель, hosted-llm — self-hosted языковая модель, embedding — модель для эмбеддингов, image — генерация изображений, audio — работа с аудио, moderation — модерация контента)
+     * @param version {String} Версия модели
+     * @param isDeprecated {Boolean} Признак, что модель устарела
+     * @param isStopped {Boolean} Признак, что поддержка модели остановлена
+     * @param createdAt {Date} Дата и время добавления модели
+     * @param updatedAt {Date} Дата и время последнего обновления модели
+     * @param parameterValues {Object.<String, Object>} Характеристики модели. Ключ — код характеристики, значение — число, строка, булево значение или массив строк.  Основные коды: - `cost_in` — цена за 1 входной токен в рублях - `cost_out` — цена за 1 выходной токен в рублях - `context_window` — размер контекстного окна в токенах - `max_output_tokens` — максимальное количество токенов в ответе - `is_reasoning` — поддержка режима рассуждений - `supports_function_calling` — поддержка function calling - `supported_input_modalities` — поддерживаемые входные модальности (например, `text`, `image`) - `supported_output_modalities` — поддерживаемые выходные модальности - `avg_speed` — средняя скорость генерации в токенах в секунду - `aa_intelligence_index`, `aa_coding_index`, `aa_agentic_index` — индексы качества Artificial Analysis - `release_date` — дата релиза модели
      */
-    constructor(models, meta) { 
+    constructor(id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, createdAt, updatedAt, parameterValues) { 
         
-        GetModels200Response.initialize(this, models, meta);
+        ModelV3.initialize(this, id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, createdAt, updatedAt, parameterValues);
     }
 
     /**
@@ -37,57 +46,109 @@ class GetModels200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, models, meta) { 
-        obj['models'] = models;
-        obj['meta'] = meta;
+    static initialize(obj, id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, createdAt, updatedAt, parameterValues) { 
+        obj['id'] = id;
+        obj['provider_id'] = providerId;
+        obj['name'] = name;
+        obj['public_name'] = publicName;
+        obj['model_name'] = modelName;
+        obj['type'] = type;
+        obj['version'] = version;
+        obj['is_deprecated'] = isDeprecated;
+        obj['is_stopped'] = isStopped;
+        obj['created_at'] = createdAt;
+        obj['updated_at'] = updatedAt;
+        obj['parameter_values'] = parameterValues;
     }
 
     /**
-     * Constructs a <code>GetModels200Response</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>ModelV3</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GetModels200Response} obj Optional instance to populate.
-     * @return {module:model/GetModels200Response} The populated <code>GetModels200Response</code> instance.
+     * @param {module:model/ModelV3} obj Optional instance to populate.
+     * @return {module:model/ModelV3} The populated <code>ModelV3</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new GetModels200Response();
+            obj = obj || new ModelV3();
 
-            if (data.hasOwnProperty('models')) {
-                obj['models'] = ApiClient.convertToType(data['models'], [Model]);
+            if (data.hasOwnProperty('id')) {
+                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
             }
-            if (data.hasOwnProperty('meta')) {
-                obj['meta'] = GetModelsV3200ResponseMeta.constructFromObject(data['meta']);
+            if (data.hasOwnProperty('provider_id')) {
+                obj['provider_id'] = ApiClient.convertToType(data['provider_id'], 'Number');
+            }
+            if (data.hasOwnProperty('name')) {
+                obj['name'] = ApiClient.convertToType(data['name'], 'String');
+            }
+            if (data.hasOwnProperty('public_name')) {
+                obj['public_name'] = ApiClient.convertToType(data['public_name'], 'String');
+            }
+            if (data.hasOwnProperty('model_name')) {
+                obj['model_name'] = ApiClient.convertToType(data['model_name'], 'String');
+            }
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = ApiClient.convertToType(data['type'], 'String');
+            }
+            if (data.hasOwnProperty('version')) {
+                obj['version'] = ApiClient.convertToType(data['version'], 'String');
+            }
+            if (data.hasOwnProperty('is_deprecated')) {
+                obj['is_deprecated'] = ApiClient.convertToType(data['is_deprecated'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_stopped')) {
+                obj['is_stopped'] = ApiClient.convertToType(data['is_stopped'], 'Boolean');
+            }
+            if (data.hasOwnProperty('deprecation_date')) {
+                obj['deprecation_date'] = ApiClient.convertToType(data['deprecation_date'], 'Date');
+            }
+            if (data.hasOwnProperty('created_at')) {
+                obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
+            }
+            if (data.hasOwnProperty('updated_at')) {
+                obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'Date');
+            }
+            if (data.hasOwnProperty('params_info')) {
+                obj['params_info'] = ApiClient.convertToType(data['params_info'], Object);
+            }
+            if (data.hasOwnProperty('parameter_values')) {
+                obj['parameter_values'] = ApiClient.convertToType(data['parameter_values'], {'String': Object});
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>GetModels200Response</code>.
+     * Validates the JSON data with respect to <code>ModelV3</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetModels200Response</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ModelV3</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of GetModels200Response.RequiredProperties) {
+        for (const property of ModelV3.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        if (data['models']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['models'])) {
-                throw new Error("Expected the field `models` to be an array in the JSON data but got " + data['models']);
-            }
-            // validate the optional field `models` (array)
-            for (const item of data['models']) {
-                Model.validateJSON(item);
-            };
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
-        // validate the optional field `meta`
-        if (data['meta']) { // data not null
-          GetModelsV3200ResponseMeta.validateJSON(data['meta']);
+        // ensure the json data is a string
+        if (data['public_name'] && !(typeof data['public_name'] === 'string' || data['public_name'] instanceof String)) {
+            throw new Error("Expected the field `public_name` to be a primitive type in the JSON string but got " + data['public_name']);
+        }
+        // ensure the json data is a string
+        if (data['model_name'] && !(typeof data['model_name'] === 'string' || data['model_name'] instanceof String)) {
+            throw new Error("Expected the field `model_name` to be a primitive type in the JSON string but got " + data['model_name']);
+        }
+        // ensure the json data is a string
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
+        }
+        // ensure the json data is a string
+        if (data['version'] && !(typeof data['version'] === 'string' || data['version'] instanceof String)) {
+            throw new Error("Expected the field `version` to be a primitive type in the JSON string but got " + data['version']);
         }
 
         return true;
@@ -96,22 +157,141 @@ class GetModels200Response {
 
 }
 
-GetModels200Response.RequiredProperties = ["models", "meta"];
+ModelV3.RequiredProperties = ["id", "provider_id", "name", "public_name", "model_name", "type", "version", "is_deprecated", "is_stopped", "created_at", "updated_at", "parameter_values"];
 
 /**
- * @member {Array.<module:model/Model>} models
+ * Уникальный идентификатор модели
+ * @member {Number} id
  */
-GetModels200Response.prototype['models'] = undefined;
+ModelV3.prototype['id'] = undefined;
 
 /**
- * @member {module:model/GetModelsV3200ResponseMeta} meta
+ * ID провайдера, который предоставляет модель
+ * @member {Number} provider_id
  */
-GetModels200Response.prototype['meta'] = undefined;
+ModelV3.prototype['provider_id'] = undefined;
+
+/**
+ * Название модели
+ * @member {String} name
+ */
+ModelV3.prototype['name'] = undefined;
+
+/**
+ * Публичное имя модели
+ * @member {String} public_name
+ */
+ModelV3.prototype['public_name'] = undefined;
+
+/**
+ * Идентификатор модели, который передаётся в поле `model` тела запроса
+ * @member {String} model_name
+ */
+ModelV3.prototype['model_name'] = undefined;
+
+/**
+ * Тип модели (llm — языковая модель, hosted-llm — self-hosted языковая модель, embedding — модель для эмбеддингов, image — генерация изображений, audio — работа с аудио, moderation — модерация контента)
+ * @member {module:model/ModelV3.TypeEnum} type
+ */
+ModelV3.prototype['type'] = undefined;
+
+/**
+ * Версия модели
+ * @member {String} version
+ */
+ModelV3.prototype['version'] = undefined;
+
+/**
+ * Признак, что модель устарела
+ * @member {Boolean} is_deprecated
+ */
+ModelV3.prototype['is_deprecated'] = undefined;
+
+/**
+ * Признак, что поддержка модели остановлена
+ * @member {Boolean} is_stopped
+ */
+ModelV3.prototype['is_stopped'] = undefined;
+
+/**
+ * Дата отключения модели у провайдера. `null`, если отключение не запланировано
+ * @member {Date} deprecation_date
+ */
+ModelV3.prototype['deprecation_date'] = undefined;
+
+/**
+ * Дата и время добавления модели
+ * @member {Date} created_at
+ */
+ModelV3.prototype['created_at'] = undefined;
+
+/**
+ * Дата и время последнего обновления модели
+ * @member {Date} updated_at
+ */
+ModelV3.prototype['updated_at'] = undefined;
+
+/**
+ * Информация о доступных параметрах модели с их ограничениями. Ключ — название параметра, значение — его тип, ограничения и значение по умолчанию
+ * @member {Object} params_info
+ */
+ModelV3.prototype['params_info'] = undefined;
+
+/**
+ * Характеристики модели. Ключ — код характеристики, значение — число, строка, булево значение или массив строк.  Основные коды: - `cost_in` — цена за 1 входной токен в рублях - `cost_out` — цена за 1 выходной токен в рублях - `context_window` — размер контекстного окна в токенах - `max_output_tokens` — максимальное количество токенов в ответе - `is_reasoning` — поддержка режима рассуждений - `supports_function_calling` — поддержка function calling - `supported_input_modalities` — поддерживаемые входные модальности (например, `text`, `image`) - `supported_output_modalities` — поддерживаемые выходные модальности - `avg_speed` — средняя скорость генерации в токенах в секунду - `aa_intelligence_index`, `aa_coding_index`, `aa_agentic_index` — индексы качества Artificial Analysis - `release_date` — дата релиза модели
+ * @member {Object.<String, Object>} parameter_values
+ */
+ModelV3.prototype['parameter_values'] = undefined;
 
 
 
 
 
+/**
+ * Allowed values for the <code>type</code> property.
+ * @enum {String}
+ * @readonly
+ */
+ModelV3['TypeEnum'] = {
 
-export default GetModels200Response;
+    /**
+     * value: "llm"
+     * @const
+     */
+    "llm": "llm",
+
+    /**
+     * value: "hosted-llm"
+     * @const
+     */
+    "hosted-llm": "hosted-llm",
+
+    /**
+     * value: "embedding"
+     * @const
+     */
+    "embedding": "embedding",
+
+    /**
+     * value: "image"
+     * @const
+     */
+    "image": "image",
+
+    /**
+     * value: "audio"
+     * @const
+     */
+    "audio": "audio",
+
+    /**
+     * value: "moderation"
+     * @const
+     */
+    "moderation": "moderation"
+};
+
+
+
+export default ModelV3;
 

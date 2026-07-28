@@ -13,23 +13,23 @@
 
 import ApiClient from '../ApiClient';
 import GetModelsV3200ResponseMeta from './GetModelsV3200ResponseMeta';
-import Model from './Model';
+import ModelV3 from './ModelV3';
 
 /**
- * The GetModels200Response model module.
- * @module model/GetModels200Response
+ * The GetModelsV3200Response model module.
+ * @module model/GetModelsV3200Response
  * @version 1.0.0
  */
-class GetModels200Response {
+class GetModelsV3200Response {
     /**
-     * Constructs a new <code>GetModels200Response</code>.
-     * @alias module:model/GetModels200Response
-     * @param models {Array.<module:model/Model>} 
+     * Constructs a new <code>GetModelsV3200Response</code>.
+     * @alias module:model/GetModelsV3200Response
+     * @param models {Array.<module:model/ModelV3>} 
      * @param meta {module:model/GetModelsV3200ResponseMeta} 
      */
     constructor(models, meta) { 
         
-        GetModels200Response.initialize(this, models, meta);
+        GetModelsV3200Response.initialize(this, models, meta);
     }
 
     /**
@@ -43,18 +43,18 @@ class GetModels200Response {
     }
 
     /**
-     * Constructs a <code>GetModels200Response</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>GetModelsV3200Response</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GetModels200Response} obj Optional instance to populate.
-     * @return {module:model/GetModels200Response} The populated <code>GetModels200Response</code> instance.
+     * @param {module:model/GetModelsV3200Response} obj Optional instance to populate.
+     * @return {module:model/GetModelsV3200Response} The populated <code>GetModelsV3200Response</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new GetModels200Response();
+            obj = obj || new GetModelsV3200Response();
 
             if (data.hasOwnProperty('models')) {
-                obj['models'] = ApiClient.convertToType(data['models'], [Model]);
+                obj['models'] = ApiClient.convertToType(data['models'], [ModelV3]);
             }
             if (data.hasOwnProperty('meta')) {
                 obj['meta'] = GetModelsV3200ResponseMeta.constructFromObject(data['meta']);
@@ -64,13 +64,13 @@ class GetModels200Response {
     }
 
     /**
-     * Validates the JSON data with respect to <code>GetModels200Response</code>.
+     * Validates the JSON data with respect to <code>GetModelsV3200Response</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetModels200Response</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetModelsV3200Response</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of GetModels200Response.RequiredProperties) {
+        for (const property of GetModelsV3200Response.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
@@ -82,7 +82,7 @@ class GetModels200Response {
             }
             // validate the optional field `models` (array)
             for (const item of data['models']) {
-                Model.validateJSON(item);
+                ModelV3.validateJSON(item);
             };
         }
         // validate the optional field `meta`
@@ -96,22 +96,22 @@ class GetModels200Response {
 
 }
 
-GetModels200Response.RequiredProperties = ["models", "meta"];
+GetModelsV3200Response.RequiredProperties = ["models", "meta"];
 
 /**
- * @member {Array.<module:model/Model>} models
+ * @member {Array.<module:model/ModelV3>} models
  */
-GetModels200Response.prototype['models'] = undefined;
+GetModelsV3200Response.prototype['models'] = undefined;
 
 /**
  * @member {module:model/GetModelsV3200ResponseMeta} meta
  */
-GetModels200Response.prototype['meta'] = undefined;
+GetModelsV3200Response.prototype['meta'] = undefined;
 
 
 
 
 
 
-export default GetModels200Response;
+export default GetModelsV3200Response;
 

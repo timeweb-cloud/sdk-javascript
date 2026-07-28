@@ -310,7 +310,8 @@ import GetKnowledgebasesV2200ResponseMeta from './model/GetKnowledgebasesV2200Re
 import GetLocations200Response from './model/GetLocations200Response';
 import GetMailboxes200Response from './model/GetMailboxes200Response';
 import GetModels200Response from './model/GetModels200Response';
-import GetModels200ResponseMeta from './model/GetModels200ResponseMeta';
+import GetModelsV3200Response from './model/GetModelsV3200Response';
+import GetModelsV3200ResponseMeta from './model/GetModelsV3200ResponseMeta';
 import GetNetworkDrives200Response from './model/GetNetworkDrives200Response';
 import GetNetworkDrivesAvailableResources200Response from './model/GetNetworkDrivesAvailableResources200Response';
 import GetNetworkDrivesPresets200Response from './model/GetNetworkDrivesPresets200Response';
@@ -391,6 +392,7 @@ import ModelParamsInfo from './model/ModelParamsInfo';
 import ModelParamsInfoMaxTokens from './model/ModelParamsInfoMaxTokens';
 import ModelParamsInfoReasoningEffort from './model/ModelParamsInfoReasoningEffort';
 import ModelParamsInfoTemperature from './model/ModelParamsInfoTemperature';
+import ModelV3 from './model/ModelV3';
 import Mongodb from './model/Mongodb';
 import MountNetworkDrive from './model/MountNetworkDrive';
 import Mysql from './model/Mysql';
@@ -2434,10 +2436,16 @@ export {
     GetModels200Response,
 
     /**
-     * The GetModels200ResponseMeta model constructor.
-     * @property {module:model/GetModels200ResponseMeta}
+     * The GetModelsV3200Response model constructor.
+     * @property {module:model/GetModelsV3200Response}
      */
-    GetModels200ResponseMeta,
+    GetModelsV3200Response,
+
+    /**
+     * The GetModelsV3200ResponseMeta model constructor.
+     * @property {module:model/GetModelsV3200ResponseMeta}
+     */
+    GetModelsV3200ResponseMeta,
 
     /**
      * The GetNetworkDrives200Response model constructor.
@@ -2918,6 +2926,12 @@ export {
      * @property {module:model/ModelParamsInfoTemperature}
      */
     ModelParamsInfoTemperature,
+
+    /**
+     * The ModelV3 model constructor.
+     * @property {module:model/ModelV3}
+     */
+    ModelV3,
 
     /**
      * The Mongodb model constructor.

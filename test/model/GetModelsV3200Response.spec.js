@@ -11,107 +11,61 @@
  *
  */
 
-import ApiClient from '../ApiClient';
-import GetModelsV3200ResponseMeta from './GetModelsV3200ResponseMeta';
-import Model from './Model';
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', process.cwd()+'/src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.TimewebCloudApi);
+  }
+}(this, function(expect, TimewebCloudApi) {
+  'use strict';
 
-/**
- * The GetModels200Response model module.
- * @module model/GetModels200Response
- * @version 1.0.0
- */
-class GetModels200Response {
-    /**
-     * Constructs a new <code>GetModels200Response</code>.
-     * @alias module:model/GetModels200Response
-     * @param models {Array.<module:model/Model>} 
-     * @param meta {module:model/GetModelsV3200ResponseMeta} 
-     */
-    constructor(models, meta) { 
-        
-        GetModels200Response.initialize(this, models, meta);
-    }
+  var instance;
 
-    /**
-     * Initializes the fields of this object.
-     * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
-     * Only for internal use.
-     */
-    static initialize(obj, models, meta) { 
-        obj['models'] = models;
-        obj['meta'] = meta;
-    }
+  beforeEach(function() {
+    instance = new TimewebCloudApi.GetModelsV3200Response();
+  });
 
-    /**
-     * Constructs a <code>GetModels200Response</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GetModels200Response} obj Optional instance to populate.
-     * @return {module:model/GetModels200Response} The populated <code>GetModels200Response</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new GetModels200Response();
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
-            if (data.hasOwnProperty('models')) {
-                obj['models'] = ApiClient.convertToType(data['models'], [Model]);
-            }
-            if (data.hasOwnProperty('meta')) {
-                obj['meta'] = GetModelsV3200ResponseMeta.constructFromObject(data['meta']);
-            }
-        }
-        return obj;
-    }
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-    /**
-     * Validates the JSON data with respect to <code>GetModels200Response</code>.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetModels200Response</code>.
-     */
-    static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of GetModels200Response.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
-        if (data['models']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['models'])) {
-                throw new Error("Expected the field `models` to be an array in the JSON data but got " + data['models']);
-            }
-            // validate the optional field `models` (array)
-            for (const item of data['models']) {
-                Model.validateJSON(item);
-            };
-        }
-        // validate the optional field `meta`
-        if (data['meta']) { // data not null
-          GetModelsV3200ResponseMeta.validateJSON(data['meta']);
-        }
+  describe('GetModelsV3200Response', function() {
+    it('should create an instance of GetModelsV3200Response', function() {
+      // uncomment below and update the code to test GetModelsV3200Response
+      //var instance = new TimewebCloudApi.GetModelsV3200Response();
+      //expect(instance).to.be.a(TimewebCloudApi.GetModelsV3200Response);
+    });
 
-        return true;
-    }
+    it('should have the property models (base name: "models")', function() {
+      // uncomment below and update the code to test the property models
+      //var instance = new TimewebCloudApi.GetModelsV3200Response();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property meta (base name: "meta")', function() {
+      // uncomment below and update the code to test the property meta
+      //var instance = new TimewebCloudApi.GetModelsV3200Response();
+      //expect(instance).to.be();
+    });
 
-}
+  });
 
-GetModels200Response.RequiredProperties = ["models", "meta"];
-
-/**
- * @member {Array.<module:model/Model>} models
- */
-GetModels200Response.prototype['models'] = undefined;
-
-/**
- * @member {module:model/GetModelsV3200ResponseMeta} meta
- */
-GetModels200Response.prototype['meta'] = undefined;
-
-
-
-
-
-
-export default GetModels200Response;
-
+}));

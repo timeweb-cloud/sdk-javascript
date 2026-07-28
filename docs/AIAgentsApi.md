@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**getAgentsTokenPackages**](AIAgentsApi.md#getAgentsTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/agents | Получение списка пакетов токенов для агентов
 [**getKnowledgebasesTokenPackages**](AIAgentsApi.md#getKnowledgebasesTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/knowledge-bases | Получение списка пакетов токенов для баз знаний
 [**getModels**](AIAgentsApi.md#getModels) | **GET** /api/v1/cloud-ai/models | Получение списка моделей
+[**getModelsV3**](AIAgentsApi.md#getModelsV3) | **GET** /api/v3/cloud-ai/models | Получение списка моделей
 [**updateAgent**](AIAgentsApi.md#updateAgent) | **PATCH** /api/v1/cloud-ai/agents/{id} | Обновление AI агента
 
 
@@ -375,7 +376,7 @@ This endpoint does not need any parameter.
 
 Получение списка пакетов токенов для агентов
 
-Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
+Метод устарел.  Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
 
 ### Example
 
@@ -465,7 +466,7 @@ This endpoint does not need any parameter.
 
 Получение списка моделей
 
-Чтобы получить список доступных AI моделей, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.
+Метод устарел — используйте &#x60;GET /api/v3/cloud-ai/models&#x60;.  Чтобы получить список доступных AI моделей, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.
 
 ### Example
 
@@ -493,6 +494,51 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**GetModels200Response**](GetModels200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getModelsV3
+
+> GetModelsV3200Response getModelsV3()
+
+Получение списка моделей
+
+Чтобы получить список доступных AI моделей с их характеристиками, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.  Характеристики модели (цены, лимиты, возможности) возвращаются в словаре &#x60;parameter_values&#x60;. Актуальные цены за токены — в ключах &#x60;parameter_values.cost_in&#x60; и &#x60;parameter_values.cost_out&#x60; (в рублях за 1 токен).
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.AIAgentsApi();
+apiInstance.getModelsV3((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetModelsV3200Response**](GetModelsV3200Response.md)
 
 ### Authorization
 

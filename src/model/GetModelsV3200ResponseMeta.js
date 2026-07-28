@@ -14,19 +14,19 @@
 import ApiClient from '../ApiClient';
 
 /**
- * The GetModels200ResponseMeta model module.
- * @module model/GetModels200ResponseMeta
+ * The GetModelsV3200ResponseMeta model module.
+ * @module model/GetModelsV3200ResponseMeta
  * @version 1.0.0
  */
-class GetModels200ResponseMeta {
+class GetModelsV3200ResponseMeta {
     /**
-     * Constructs a new <code>GetModels200ResponseMeta</code>.
-     * @alias module:model/GetModels200ResponseMeta
+     * Constructs a new <code>GetModelsV3200ResponseMeta</code>.
+     * @alias module:model/GetModelsV3200ResponseMeta
      * @param total {Number} Общее количество моделей
      */
     constructor(total) { 
         
-        GetModels200ResponseMeta.initialize(this, total);
+        GetModelsV3200ResponseMeta.initialize(this, total);
     }
 
     /**
@@ -39,15 +39,15 @@ class GetModels200ResponseMeta {
     }
 
     /**
-     * Constructs a <code>GetModels200ResponseMeta</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>GetModelsV3200ResponseMeta</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GetModels200ResponseMeta} obj Optional instance to populate.
-     * @return {module:model/GetModels200ResponseMeta} The populated <code>GetModels200ResponseMeta</code> instance.
+     * @param {module:model/GetModelsV3200ResponseMeta} obj Optional instance to populate.
+     * @return {module:model/GetModelsV3200ResponseMeta} The populated <code>GetModelsV3200ResponseMeta</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new GetModels200ResponseMeta();
+            obj = obj || new GetModelsV3200ResponseMeta();
 
             if (data.hasOwnProperty('total')) {
                 obj['total'] = ApiClient.convertToType(data['total'], 'Number');
@@ -57,13 +57,13 @@ class GetModels200ResponseMeta {
     }
 
     /**
-     * Validates the JSON data with respect to <code>GetModels200ResponseMeta</code>.
+     * Validates the JSON data with respect to <code>GetModelsV3200ResponseMeta</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetModels200ResponseMeta</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetModelsV3200ResponseMeta</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of GetModels200ResponseMeta.RequiredProperties) {
+        for (const property of GetModelsV3200ResponseMeta.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
@@ -75,18 +75,18 @@ class GetModels200ResponseMeta {
 
 }
 
-GetModels200ResponseMeta.RequiredProperties = ["total"];
+GetModelsV3200ResponseMeta.RequiredProperties = ["total"];
 
 /**
  * Общее количество моделей
  * @member {Number} total
  */
-GetModels200ResponseMeta.prototype['total'] = undefined;
+GetModelsV3200ResponseMeta.prototype['total'] = undefined;
 
 
 
 
 
 
-export default GetModels200ResponseMeta;
+export default GetModelsV3200ResponseMeta;
 

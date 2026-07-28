@@ -148,6 +148,16 @@
         done();
       });
     });
+    describe('getModelsV3', function() {
+      it('should call getModelsV3 successfully', function(done) {
+        //uncomment below and update the code to test getModelsV3
+        //instance.getModelsV3(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('updateAgent', function() {
       it('should call updateAgent successfully', function(done) {
         //uncomment below and update the code to test updateAgent
