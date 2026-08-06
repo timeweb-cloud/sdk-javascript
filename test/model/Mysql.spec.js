@@ -162,6 +162,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property queryCacheLimit (base name: "query_cache_limit")', function() {
+      // uncomment below and update the code to test the property queryCacheLimit
+      //var instance = new TimewebCloudApi.Mysql();
+      //expect(instance).to.be();
+    });
+
     it('should have the property innodbFlushLogAtTrxCommit (base name: "innodb_flush_log_at_trx_commit")', function() {
       // uncomment below and update the code to test the property innodbFlushLogAtTrxCommit
       //var instance = new TimewebCloudApi.Mysql();

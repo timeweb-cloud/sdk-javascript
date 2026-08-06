@@ -22,6 +22,7 @@ import DatabaseClusterNetworksInnerIpsInner from './DatabaseClusterNetworksInner
 class DatabaseClusterNetworksInner {
     /**
      * Constructs a new <code>DatabaseClusterNetworksInner</code>.
+     * Публичная сеть кластера базы данных.
      * @alias module:model/DatabaseClusterNetworksInner
      * @param type {module:model/DatabaseClusterNetworksInner.TypeEnum} Тип сети.
      * @param ips {Array.<module:model/DatabaseClusterNetworksInnerIpsInner>} Список IP-адресов сети.
@@ -124,13 +125,7 @@ DatabaseClusterNetworksInner['TypeEnum'] = {
      * value: "public"
      * @const
      */
-    "public": "public",
-
-    /**
-     * value: "local"
-     * @const
-     */
-    "local": "local"
+    "public": "public"
 };
 
 

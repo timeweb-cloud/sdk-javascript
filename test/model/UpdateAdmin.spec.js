@@ -54,6 +54,12 @@
       //expect(instance).to.be.a(TimewebCloudApi.UpdateAdmin);
     });
 
+    it('should have the property login (base name: "login")', function() {
+      // uncomment below and update the code to test the property login
+      //var instance = new TimewebCloudApi.UpdateAdmin();
+      //expect(instance).to.be();
+    });
+
     it('should have the property password (base name: "password")', function() {
       // uncomment below and update the code to test the property password
       //var instance = new TimewebCloudApi.UpdateAdmin();
@@ -74,6 +80,12 @@
 
     it('should have the property instanceId (base name: "instance_id")', function() {
       // uncomment below and update the code to test the property instanceId
+      //var instance = new TimewebCloudApi.UpdateAdmin();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property forAll (base name: "for_all")', function() {
+      // uncomment below and update the code to test the property forAll
       //var instance = new TimewebCloudApi.UpdateAdmin();
       //expect(instance).to.be();
     });

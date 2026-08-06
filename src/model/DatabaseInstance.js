@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import DatabaseExtensions from './DatabaseExtensions';
+import KafkaConfigParameters from './KafkaConfigParameters';
 
 /**
  * The DatabaseInstance model module.
@@ -27,10 +29,13 @@ class DatabaseInstance {
      * @param createdAt {String} Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда была создана база данных.
      * @param name {String} Название базы данных.
      * @param description {String} Описание базы данных
+     * @param extensions {module:model/DatabaseExtensions} 
+     * @param ownerId {Number} ID администратора базы данных, который является владельцем этой базы данных. `null`, если владелец не задан.
+     * @param configParameters {module:model/KafkaConfigParameters} 
      */
-    constructor(id, createdAt, name, description) { 
+    constructor(id, createdAt, name, description, extensions, ownerId, configParameters) { 
         
-        DatabaseInstance.initialize(this, id, createdAt, name, description);
+        DatabaseInstance.initialize(this, id, createdAt, name, description, extensions, ownerId, configParameters);
     }
 
     /**
@@ -38,11 +43,14 @@ class DatabaseInstance {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, createdAt, name, description) { 
+    static initialize(obj, id, createdAt, name, description, extensions, ownerId, configParameters) { 
         obj['id'] = id;
         obj['created_at'] = createdAt;
         obj['name'] = name;
         obj['description'] = description;
+        obj['extensions'] = extensions;
+        obj['owner_id'] = ownerId;
+        obj['config_parameters'] = configParameters;
     }
 
     /**
@@ -67,6 +75,15 @@ class DatabaseInstance {
             }
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
+            if (data.hasOwnProperty('extensions')) {
+                obj['extensions'] = DatabaseExtensions.constructFromObject(data['extensions']);
+            }
+            if (data.hasOwnProperty('owner_id')) {
+                obj['owner_id'] = ApiClient.convertToType(data['owner_id'], 'Number');
+            }
+            if (data.hasOwnProperty('config_parameters')) {
+                obj['config_parameters'] = KafkaConfigParameters.constructFromObject(data['config_parameters']);
             }
         }
         return obj;
@@ -96,6 +113,14 @@ class DatabaseInstance {
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
+        // validate the optional field `extensions`
+        if (data['extensions']) { // data not null
+          DatabaseExtensions.validateJSON(data['extensions']);
+        }
+        // validate the optional field `config_parameters`
+        if (data['config_parameters']) { // data not null
+          KafkaConfigParameters.validateJSON(data['config_parameters']);
+        }
 
         return true;
     }
@@ -103,7 +128,7 @@ class DatabaseInstance {
 
 }
 
-DatabaseInstance.RequiredProperties = ["id", "created_at", "name", "description"];
+DatabaseInstance.RequiredProperties = ["id", "created_at", "name", "description", "extensions", "owner_id", "config_parameters"];
 
 /**
  * ID для каждого экземпляра базы данных. Автоматически генерируется при создании.
@@ -128,6 +153,22 @@ DatabaseInstance.prototype['name'] = undefined;
  * @member {String} description
  */
 DatabaseInstance.prototype['description'] = undefined;
+
+/**
+ * @member {module:model/DatabaseExtensions} extensions
+ */
+DatabaseInstance.prototype['extensions'] = undefined;
+
+/**
+ * ID администратора базы данных, который является владельцем этой базы данных. `null`, если владелец не задан.
+ * @member {Number} owner_id
+ */
+DatabaseInstance.prototype['owner_id'] = undefined;
+
+/**
+ * @member {module:model/KafkaConfigParameters} config_parameters
+ */
+DatabaseInstance.prototype['config_parameters'] = undefined;
 
 
 

@@ -78,14 +78,20 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property description (base name: "description")', function() {
+      // uncomment below and update the code to test the property description
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
     it('should have the property networks (base name: "networks")', function() {
       // uncomment below and update the code to test the property networks
       //var instance = new TimewebCloudApi.DatabaseCluster();
       //expect(instance).to.be();
     });
 
-    it('should have the property isPublicIpv6 (base name: "is_public_ipv6")', function() {
-      // uncomment below and update the code to test the property isPublicIpv6
+    it('should have the property isEnabledPublicIpv6 (base name: "is_enabled_public_ipv6")', function() {
+      // uncomment below and update the code to test the property isEnabledPublicIpv6
       //var instance = new TimewebCloudApi.DatabaseCluster();
       //expect(instance).to.be();
     });
@@ -126,8 +132,50 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property configuratorId (base name: "configurator_id")', function() {
+      // uncomment below and update the code to test the property configuratorId
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cpu (base name: "cpu")', function() {
+      // uncomment below and update the code to test the property cpu
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cpuFrequency (base name: "cpu_frequency")', function() {
+      // uncomment below and update the code to test the property cpuFrequency
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isDedicatedCpu (base name: "is_dedicated_cpu")', function() {
+      // uncomment below and update the code to test the property isDedicatedCpu
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property ram (base name: "ram")', function() {
+      // uncomment below and update the code to test the property ram
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
     it('should have the property disk (base name: "disk")', function() {
       // uncomment below and update the code to test the property disk
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property hasAdditionalDisk (base name: "has_additional_disk")', function() {
+      // uncomment below and update the code to test the property hasAdditionalDisk
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property diskAutoscaling (base name: "disk_autoscaling")', function() {
+      // uncomment below and update the code to test the property diskAutoscaling
       //var instance = new TimewebCloudApi.DatabaseCluster();
       //expect(instance).to.be();
     });
@@ -140,6 +188,66 @@
 
     it('should have the property isEnabledPublicNetwork (base name: "is_enabled_public_network")', function() {
       // uncomment below and update the code to test the property isEnabledPublicNetwork
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isSecureConnectionEnabled (base name: "is_secure_connection_enabled")', function() {
+      // uncomment below and update the code to test the property isSecureConnectionEnabled
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isAutobackupsEnabled (base name: "is_autobackups_enabled")', function() {
+      // uncomment below and update the code to test the property isAutobackupsEnabled
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isBackupScheduleEnabled (base name: "is_backup_schedule_enabled")', function() {
+      // uncomment below and update the code to test the property isBackupScheduleEnabled
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property availabilityZone (base name: "availability_zone")', function() {
+      // uncomment below and update the code to test the property availabilityZone
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property projectId (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property projectId
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property replicaList (base name: "replica_list")', function() {
+      // uncomment below and update the code to test the property replicaList
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property domains (base name: "domains")', function() {
+      // uncomment below and update the code to test the property domains
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property childServices (base name: "child_services")', function() {
+      // uncomment below and update the code to test the property childServices
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property parentServices (base name: "parent_services")', function() {
+      // uncomment below and update the code to test the property parentServices
+      //var instance = new TimewebCloudApi.DatabaseCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maintenanceSlot (base name: "maintenance_slot")', function() {
+      // uncomment below and update the code to test the property maintenanceSlot
       //var instance = new TimewebCloudApi.DatabaseCluster();
       //expect(instance).to.be();
     });

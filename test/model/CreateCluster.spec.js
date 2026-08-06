@@ -90,8 +90,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property configuratorId (base name: "configurator_id")', function() {
-      // uncomment below and update the code to test the property configuratorId
+    it('should have the property configuration (base name: "configuration")', function() {
+      // uncomment below and update the code to test the property configuration
       //var instance = new TimewebCloudApi.CreateCluster();
       //expect(instance).to.be();
     });
@@ -140,6 +140,24 @@
 
     it('should have the property autoBackups (base name: "auto_backups")', function() {
       // uncomment below and update the code to test the property autoBackups
+      //var instance = new TimewebCloudApi.CreateCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property backupSchedule (base name: "backup_schedule")', function() {
+      // uncomment below and update the code to test the property backupSchedule
+      //var instance = new TimewebCloudApi.CreateCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maintenanceSlot (base name: "maintenance_slot")', function() {
+      // uncomment below and update the code to test the property maintenanceSlot
+      //var instance = new TimewebCloudApi.CreateCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property diskAutoscaling (base name: "disk_autoscaling")', function() {
+      // uncomment below and update the code to test the property diskAutoscaling
       //var instance = new TimewebCloudApi.CreateCluster();
       //expect(instance).to.be();
     });

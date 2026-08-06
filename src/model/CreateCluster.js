@@ -14,7 +14,11 @@
 import ApiClient from '../ApiClient';
 import AvailabilityZone from './AvailabilityZone';
 import CreateClusterAdmin from './CreateClusterAdmin';
+import CreateClusterBackupSchedule from './CreateClusterBackupSchedule';
+import CreateClusterConfiguration from './CreateClusterConfiguration';
+import CreateClusterDiskAutoscaling from './CreateClusterDiskAutoscaling';
 import CreateClusterInstance from './CreateClusterInstance';
+import CreateClusterMaintenanceSlot from './CreateClusterMaintenanceSlot';
 import CreateDbAutoBackups from './CreateDbAutoBackups';
 import DbReplication from './DbReplication';
 import DbType from './DbType';
@@ -77,8 +81,8 @@ class CreateCluster {
             if (data.hasOwnProperty('preset_id')) {
                 obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
             }
-            if (data.hasOwnProperty('configurator_id')) {
-                obj['configurator_id'] = ApiClient.convertToType(data['configurator_id'], 'Number');
+            if (data.hasOwnProperty('configuration')) {
+                obj['configuration'] = CreateClusterConfiguration.constructFromObject(data['configuration']);
             }
             if (data.hasOwnProperty('project_id')) {
                 obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
@@ -103,6 +107,15 @@ class CreateCluster {
             }
             if (data.hasOwnProperty('auto_backups')) {
                 obj['auto_backups'] = CreateDbAutoBackups.constructFromObject(data['auto_backups']);
+            }
+            if (data.hasOwnProperty('backup_schedule')) {
+                obj['backup_schedule'] = CreateClusterBackupSchedule.constructFromObject(data['backup_schedule']);
+            }
+            if (data.hasOwnProperty('maintenance_slot')) {
+                obj['maintenance_slot'] = CreateClusterMaintenanceSlot.constructFromObject(data['maintenance_slot']);
+            }
+            if (data.hasOwnProperty('disk_autoscaling')) {
+                obj['disk_autoscaling'] = CreateClusterDiskAutoscaling.constructFromObject(data['disk_autoscaling']);
             }
         }
         return obj;
@@ -136,6 +149,10 @@ class CreateCluster {
         if (data['hash_type'] && !(typeof data['hash_type'] === 'string' || data['hash_type'] instanceof String)) {
             throw new Error("Expected the field `hash_type` to be a primitive type in the JSON string but got " + data['hash_type']);
         }
+        // validate the optional field `configuration`
+        if (data['configuration']) { // data not null
+          CreateClusterConfiguration.validateJSON(data['configuration']);
+        }
         // validate the optional field `config_parameters`
         if (data['config_parameters']) { // data not null
           Mysql.validateJSON(data['config_parameters']);
@@ -155,6 +172,18 @@ class CreateCluster {
         // validate the optional field `auto_backups`
         if (data['auto_backups']) { // data not null
           CreateDbAutoBackups.validateJSON(data['auto_backups']);
+        }
+        // validate the optional field `backup_schedule`
+        if (data['backup_schedule']) { // data not null
+          CreateClusterBackupSchedule.validateJSON(data['backup_schedule']);
+        }
+        // validate the optional field `maintenance_slot`
+        if (data['maintenance_slot']) { // data not null
+          CreateClusterMaintenanceSlot.validateJSON(data['maintenance_slot']);
+        }
+        // validate the optional field `disk_autoscaling`
+        if (data['disk_autoscaling']) { // data not null
+          CreateClusterDiskAutoscaling.validateJSON(data['disk_autoscaling']);
         }
 
         return true;
@@ -193,16 +222,15 @@ CreateCluster.prototype['instance'] = undefined;
 CreateCluster.prototype['hash_type'] = undefined;
 
 /**
- * ID тарифа. Нельзя передавать вместе с `configurator_id`
+ * ID тарифа. Нельзя передавать вместе с `configuration`
  * @member {Number} preset_id
  */
 CreateCluster.prototype['preset_id'] = undefined;
 
 /**
- * ID конфигуратора. Нельзя передавать вместе с `preset_id`
- * @member {Number} configurator_id
+ * @member {module:model/CreateClusterConfiguration} configuration
  */
-CreateCluster.prototype['configurator_id'] = undefined;
+CreateCluster.prototype['configuration'] = undefined;
 
 /**
  * ID проекта.
@@ -246,6 +274,21 @@ CreateCluster.prototype['availability_zone'] = undefined;
  * @member {module:model/CreateDbAutoBackups} auto_backups
  */
 CreateCluster.prototype['auto_backups'] = undefined;
+
+/**
+ * @member {module:model/CreateClusterBackupSchedule} backup_schedule
+ */
+CreateCluster.prototype['backup_schedule'] = undefined;
+
+/**
+ * @member {module:model/CreateClusterMaintenanceSlot} maintenance_slot
+ */
+CreateCluster.prototype['maintenance_slot'] = undefined;
+
+/**
+ * @member {module:model/CreateClusterDiskAutoscaling} disk_autoscaling
+ */
+CreateCluster.prototype['disk_autoscaling'] = undefined;
 
 
 

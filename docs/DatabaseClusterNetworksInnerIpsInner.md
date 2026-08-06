@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Тип IP-адреса сети | 
-**ip** | **String** | IP-адрес сети | 
+**type** | **String** | Тип IP-адреса сети. | 
+**ip** | **String** | IP-адрес сети. | 
 
 
 
 ## Enum: TypeEnum
 
 
-* `ipv4` (value: `"ipv4"`)
+* `4` (value: `"ipv_4"`)
 
-* `ipv6` (value: `"ipv6"`)
+* `6` (value: `"ipv_6"`)
 
 
 

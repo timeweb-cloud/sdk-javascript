@@ -54,8 +54,8 @@
       //expect(instance).to.be.a(TimewebCloudApi.DeleteDatabaseCluster200Response);
     });
 
-    it('should have the property hash (base name: "hash")', function() {
-      // uncomment below and update the code to test the property hash
+    it('should have the property databaseDelete (base name: "database_delete")', function() {
+      // uncomment below and update the code to test the property databaseDelete
       //var instance = new TimewebCloudApi.DeleteDatabaseCluster200Response();
       //expect(instance).to.be();
     });

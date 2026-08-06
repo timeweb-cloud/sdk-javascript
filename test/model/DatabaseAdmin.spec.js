@@ -90,6 +90,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property forAll (base name: "for_all")', function() {
+      // uncomment below and update the code to test the property forAll
+      //var instance = new TimewebCloudApi.DatabaseAdmin();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isResetPassword (base name: "is_reset_password")', function() {
+      // uncomment below and update the code to test the property isResetPassword
+      //var instance = new TimewebCloudApi.DatabaseAdmin();
+      //expect(instance).to.be();
+    });
+
     it('should have the property instances (base name: "instances")', function() {
       // uncomment below and update the code to test the property instances
       //var instance = new TimewebCloudApi.DatabaseAdmin();

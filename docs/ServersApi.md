@@ -903,7 +903,7 @@ Name | Type | Description  | Notes
 
 ## getServerDiskAutoBackupSettings
 
-> GetServerDiskAutoBackupSettings200Response getServerDiskAutoBackupSettings(serverId, diskId)
+> GetDatabaseAutoBackupsSettings200Response getServerDiskAutoBackupSettings(serverId, diskId)
 
 Получить настройки автобэкапов диска сервера
 
@@ -940,7 +940,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetServerDiskAutoBackupSettings200Response**](GetServerDiskAutoBackupSettings200Response.md)
+[**GetDatabaseAutoBackupsSettings200Response**](GetDatabaseAutoBackupsSettings200Response.md)
 
 ### Authorization
 
@@ -2072,7 +2072,7 @@ Name | Type | Description  | Notes
 
 ## updateServerDiskAutoBackupSettings
 
-> GetServerDiskAutoBackupSettings200Response updateServerDiskAutoBackupSettings(serverId, diskId, opts)
+> GetDatabaseAutoBackupsSettings200Response updateServerDiskAutoBackupSettings(serverId, diskId, opts)
 
 Изменение настроек автобэкапов диска сервера
 
@@ -2113,7 +2113,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetServerDiskAutoBackupSettings200Response**](GetServerDiskAutoBackupSettings200Response.md)
+[**GetDatabaseAutoBackupsSettings200Response**](GetDatabaseAutoBackupsSettings200Response.md)
 
 ### Authorization
 

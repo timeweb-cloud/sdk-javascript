@@ -13,7 +13,6 @@
 
 import ApiClient from '../ApiClient';
 import AutoBackup from './AutoBackup';
-import Meta from './Meta';
 
 /**
  * The GetDatabaseAutoBackupsSettings200Response model module.
@@ -24,12 +23,11 @@ class GetDatabaseAutoBackupsSettings200Response {
     /**
      * Constructs a new <code>GetDatabaseAutoBackupsSettings200Response</code>.
      * @alias module:model/GetDatabaseAutoBackupsSettings200Response
-     * @param meta {module:model/Meta} 
-     * @param autoBackupsSettings {Array.<module:model/AutoBackup>} 
+     * @param autoBackupsSettings {module:model/AutoBackup} 
      */
-    constructor(meta, autoBackupsSettings) { 
+    constructor(autoBackupsSettings) { 
         
-        GetDatabaseAutoBackupsSettings200Response.initialize(this, meta, autoBackupsSettings);
+        GetDatabaseAutoBackupsSettings200Response.initialize(this, autoBackupsSettings);
     }
 
     /**
@@ -37,8 +35,7 @@ class GetDatabaseAutoBackupsSettings200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, meta, autoBackupsSettings) { 
-        obj['meta'] = meta;
+    static initialize(obj, autoBackupsSettings) { 
         obj['auto_backups_settings'] = autoBackupsSettings;
     }
 
@@ -53,11 +50,8 @@ class GetDatabaseAutoBackupsSettings200Response {
         if (data) {
             obj = obj || new GetDatabaseAutoBackupsSettings200Response();
 
-            if (data.hasOwnProperty('meta')) {
-                obj['meta'] = Meta.constructFromObject(data['meta']);
-            }
             if (data.hasOwnProperty('auto_backups_settings')) {
-                obj['auto_backups_settings'] = ApiClient.convertToType(data['auto_backups_settings'], [AutoBackup]);
+                obj['auto_backups_settings'] = AutoBackup.constructFromObject(data['auto_backups_settings']);
             }
         }
         return obj;
@@ -75,19 +69,9 @@ class GetDatabaseAutoBackupsSettings200Response {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // validate the optional field `meta`
-        if (data['meta']) { // data not null
-          Meta.validateJSON(data['meta']);
-        }
+        // validate the optional field `auto_backups_settings`
         if (data['auto_backups_settings']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['auto_backups_settings'])) {
-                throw new Error("Expected the field `auto_backups_settings` to be an array in the JSON data but got " + data['auto_backups_settings']);
-            }
-            // validate the optional field `auto_backups_settings` (array)
-            for (const item of data['auto_backups_settings']) {
-                AutoBackup.validateJSON(item);
-            };
+          AutoBackup.validateJSON(data['auto_backups_settings']);
         }
 
         return true;
@@ -96,15 +80,10 @@ class GetDatabaseAutoBackupsSettings200Response {
 
 }
 
-GetDatabaseAutoBackupsSettings200Response.RequiredProperties = ["meta", "auto_backups_settings"];
+GetDatabaseAutoBackupsSettings200Response.RequiredProperties = ["auto_backups_settings"];
 
 /**
- * @member {module:model/Meta} meta
- */
-GetDatabaseAutoBackupsSettings200Response.prototype['meta'] = undefined;
-
-/**
- * @member {Array.<module:model/AutoBackup>} auto_backups_settings
+ * @member {module:model/AutoBackup} auto_backups_settings
  */
 GetDatabaseAutoBackupsSettings200Response.prototype['auto_backups_settings'] = undefined;
 

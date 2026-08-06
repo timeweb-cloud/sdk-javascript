@@ -12,9 +12,15 @@
  */
 
 import ApiClient from '../ApiClient';
+import AvailabilityZone from './AvailabilityZone';
+import DatabaseClusterChildServicesInner from './DatabaseClusterChildServicesInner';
 import DatabaseClusterDisk from './DatabaseClusterDisk';
+import DatabaseClusterDiskAutoscaling from './DatabaseClusterDiskAutoscaling';
+import DatabaseClusterDomainsInner from './DatabaseClusterDomainsInner';
+import DatabaseClusterMaintenanceSlot from './DatabaseClusterMaintenanceSlot';
 import DatabaseClusterNetworksInner from './DatabaseClusterNetworksInner';
-import DbType from './DbType';
+import DatabaseClusterParentServicesInner from './DatabaseClusterParentServicesInner';
+import DatabaseClusterReplicaListInner from './DatabaseClusterReplicaListInner';
 import Mysql from './Mysql';
 
 /**
@@ -31,19 +37,38 @@ class DatabaseCluster {
      * @param createdAt {String} Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда была создана база данных.
      * @param location {module:model/DatabaseCluster.LocationEnum} Локация сервера.
      * @param name {String} Название кластера базы данных.
+     * @param description {String} Описание кластера базы данных.
      * @param networks {Array.<module:model/DatabaseClusterNetworksInner>} Список сетей кластера базы данных.
-     * @param type {module:model/DbType} 
+     * @param isEnabledPublicIpv6 {Boolean} Использование публичного IPv6-адреса.
+     * @param type {module:model/DatabaseCluster.TypeEnum} Тип базы данных. Список возможных значений шире, чем список типов, доступных при создании нового кластера.
      * @param hashType {module:model/DatabaseCluster.HashTypeEnum} Тип хеширования кластера базы данных (mysql5 | mysql | postgres).
      * @param avatarLink {String} Ссылка на аватар для базы данных.
      * @param port {Number} Порт
-     * @param status {module:model/DatabaseCluster.StatusEnum} Текущий статус кластера базы данных.
-     * @param presetId {Number} ID тарифа.
+     * @param status {module:model/DatabaseCluster.StatusEnum} Текущий статус кластера базы данных. Значение `read_only` означает, что запись в кластер заблокирована из-за переполнения диска — чтобы снять блокировку, освободите место или увеличьте размер диска.
+     * @param presetId {Number} ID тарифа. Равен `null` у кластеров, созданных через конфигуратор — в этом случае заполнен `configurator_id`.
+     * @param configuratorId {Number} ID конфигуратора. Равен `null` у кластеров, созданных по тарифу.
+     * @param cpu {Number} Количество ядер процессора.
+     * @param cpuFrequency {String} Частота процессора.
+     * @param isDedicatedCpu {Boolean} Используются ли выделенные ядра процессора.
+     * @param ram {Number} Объем оперативной памяти (в Мб).
+     * @param disk {module:model/DatabaseClusterDisk} 
+     * @param hasAdditionalDisk {Boolean} Подключен ли к кластеру дополнительный диск.
+     * @param diskAutoscaling {module:model/DatabaseClusterDiskAutoscaling} 
      * @param configParameters {module:model/Mysql} 
      * @param isEnabledPublicNetwork {Boolean} Доступность публичного IP-адреса
+     * @param isSecureConnectionEnabled {Boolean} Включено ли защищенное подключение к кластеру базы данных.
+     * @param isAutobackupsEnabled {Boolean} Включены ли автоматические резервные копии кластера базы данных.
+     * @param isBackupScheduleEnabled {Boolean} Включено ли расписание резервного копирования кластера базы данных.
+     * @param availabilityZone {module:model/AvailabilityZone} 
+     * @param replicaList {Array.<module:model/DatabaseClusterReplicaListInner>} Список реплик кластера базы данных.
+     * @param domains {Array.<module:model/DatabaseClusterDomainsInner>} Список доменов кластера базы данных. Если публичная сеть отключена (`is_enabled_public_network: false`), список всегда пустой.
+     * @param childServices {Array.<module:model/DatabaseClusterChildServicesInner>} Список дочерних сервисов кластера базы данных.
+     * @param parentServices {Array.<module:model/DatabaseClusterParentServicesInner>} Список родительских сервисов кластера базы данных.
+     * @param maintenanceSlot {module:model/DatabaseClusterMaintenanceSlot} 
      */
-    constructor(id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, configParameters, isEnabledPublicNetwork) { 
+    constructor(id, createdAt, location, name, description, networks, isEnabledPublicIpv6, type, hashType, avatarLink, port, status, presetId, configuratorId, cpu, cpuFrequency, isDedicatedCpu, ram, disk, hasAdditionalDisk, diskAutoscaling, configParameters, isEnabledPublicNetwork, isSecureConnectionEnabled, isAutobackupsEnabled, isBackupScheduleEnabled, availabilityZone, replicaList, domains, childServices, parentServices, maintenanceSlot) { 
         
-        DatabaseCluster.initialize(this, id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, configParameters, isEnabledPublicNetwork);
+        DatabaseCluster.initialize(this, id, createdAt, location, name, description, networks, isEnabledPublicIpv6, type, hashType, avatarLink, port, status, presetId, configuratorId, cpu, cpuFrequency, isDedicatedCpu, ram, disk, hasAdditionalDisk, diskAutoscaling, configParameters, isEnabledPublicNetwork, isSecureConnectionEnabled, isAutobackupsEnabled, isBackupScheduleEnabled, availabilityZone, replicaList, domains, childServices, parentServices, maintenanceSlot);
     }
 
     /**
@@ -51,20 +76,39 @@ class DatabaseCluster {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, configParameters, isEnabledPublicNetwork) { 
+    static initialize(obj, id, createdAt, location, name, description, networks, isEnabledPublicIpv6, type, hashType, avatarLink, port, status, presetId, configuratorId, cpu, cpuFrequency, isDedicatedCpu, ram, disk, hasAdditionalDisk, diskAutoscaling, configParameters, isEnabledPublicNetwork, isSecureConnectionEnabled, isAutobackupsEnabled, isBackupScheduleEnabled, availabilityZone, replicaList, domains, childServices, parentServices, maintenanceSlot) { 
         obj['id'] = id;
         obj['created_at'] = createdAt;
         obj['location'] = location;
         obj['name'] = name;
+        obj['description'] = description;
         obj['networks'] = networks;
+        obj['is_enabled_public_ipv6'] = isEnabledPublicIpv6;
         obj['type'] = type;
         obj['hash_type'] = hashType;
         obj['avatar_link'] = avatarLink;
         obj['port'] = port;
         obj['status'] = status;
         obj['preset_id'] = presetId;
+        obj['configurator_id'] = configuratorId;
+        obj['cpu'] = cpu;
+        obj['cpu_frequency'] = cpuFrequency;
+        obj['is_dedicated_cpu'] = isDedicatedCpu;
+        obj['ram'] = ram;
+        obj['disk'] = disk;
+        obj['has_additional_disk'] = hasAdditionalDisk;
+        obj['disk_autoscaling'] = diskAutoscaling;
         obj['config_parameters'] = configParameters;
         obj['is_enabled_public_network'] = isEnabledPublicNetwork;
+        obj['is_secure_connection_enabled'] = isSecureConnectionEnabled;
+        obj['is_autobackups_enabled'] = isAutobackupsEnabled;
+        obj['is_backup_schedule_enabled'] = isBackupScheduleEnabled;
+        obj['availability_zone'] = availabilityZone;
+        obj['replica_list'] = replicaList;
+        obj['domains'] = domains;
+        obj['child_services'] = childServices;
+        obj['parent_services'] = parentServices;
+        obj['maintenance_slot'] = maintenanceSlot;
     }
 
     /**
@@ -90,14 +134,17 @@ class DatabaseCluster {
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
+            if (data.hasOwnProperty('description')) {
+                obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
             if (data.hasOwnProperty('networks')) {
                 obj['networks'] = ApiClient.convertToType(data['networks'], [DatabaseClusterNetworksInner]);
             }
-            if (data.hasOwnProperty('is_public_ipv6')) {
-                obj['is_public_ipv6'] = ApiClient.convertToType(data['is_public_ipv6'], 'Boolean');
+            if (data.hasOwnProperty('is_enabled_public_ipv6')) {
+                obj['is_enabled_public_ipv6'] = ApiClient.convertToType(data['is_enabled_public_ipv6'], 'Boolean');
             }
             if (data.hasOwnProperty('type')) {
-                obj['type'] = DbType.constructFromObject(data['type']);
+                obj['type'] = ApiClient.convertToType(data['type'], 'String');
             }
             if (data.hasOwnProperty('hash_type')) {
                 obj['hash_type'] = ApiClient.convertToType(data['hash_type'], 'String');
@@ -114,14 +161,65 @@ class DatabaseCluster {
             if (data.hasOwnProperty('preset_id')) {
                 obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
             }
+            if (data.hasOwnProperty('configurator_id')) {
+                obj['configurator_id'] = ApiClient.convertToType(data['configurator_id'], 'Number');
+            }
+            if (data.hasOwnProperty('cpu')) {
+                obj['cpu'] = ApiClient.convertToType(data['cpu'], 'Number');
+            }
+            if (data.hasOwnProperty('cpu_frequency')) {
+                obj['cpu_frequency'] = ApiClient.convertToType(data['cpu_frequency'], 'String');
+            }
+            if (data.hasOwnProperty('is_dedicated_cpu')) {
+                obj['is_dedicated_cpu'] = ApiClient.convertToType(data['is_dedicated_cpu'], 'Boolean');
+            }
+            if (data.hasOwnProperty('ram')) {
+                obj['ram'] = ApiClient.convertToType(data['ram'], 'Number');
+            }
             if (data.hasOwnProperty('disk')) {
                 obj['disk'] = DatabaseClusterDisk.constructFromObject(data['disk']);
+            }
+            if (data.hasOwnProperty('has_additional_disk')) {
+                obj['has_additional_disk'] = ApiClient.convertToType(data['has_additional_disk'], 'Boolean');
+            }
+            if (data.hasOwnProperty('disk_autoscaling')) {
+                obj['disk_autoscaling'] = DatabaseClusterDiskAutoscaling.constructFromObject(data['disk_autoscaling']);
             }
             if (data.hasOwnProperty('config_parameters')) {
                 obj['config_parameters'] = Mysql.constructFromObject(data['config_parameters']);
             }
             if (data.hasOwnProperty('is_enabled_public_network')) {
                 obj['is_enabled_public_network'] = ApiClient.convertToType(data['is_enabled_public_network'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_secure_connection_enabled')) {
+                obj['is_secure_connection_enabled'] = ApiClient.convertToType(data['is_secure_connection_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_autobackups_enabled')) {
+                obj['is_autobackups_enabled'] = ApiClient.convertToType(data['is_autobackups_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_backup_schedule_enabled')) {
+                obj['is_backup_schedule_enabled'] = ApiClient.convertToType(data['is_backup_schedule_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('availability_zone')) {
+                obj['availability_zone'] = AvailabilityZone.constructFromObject(data['availability_zone']);
+            }
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            }
+            if (data.hasOwnProperty('replica_list')) {
+                obj['replica_list'] = ApiClient.convertToType(data['replica_list'], [DatabaseClusterReplicaListInner]);
+            }
+            if (data.hasOwnProperty('domains')) {
+                obj['domains'] = ApiClient.convertToType(data['domains'], [DatabaseClusterDomainsInner]);
+            }
+            if (data.hasOwnProperty('child_services')) {
+                obj['child_services'] = ApiClient.convertToType(data['child_services'], [DatabaseClusterChildServicesInner]);
+            }
+            if (data.hasOwnProperty('parent_services')) {
+                obj['parent_services'] = ApiClient.convertToType(data['parent_services'], [DatabaseClusterParentServicesInner]);
+            }
+            if (data.hasOwnProperty('maintenance_slot')) {
+                obj['maintenance_slot'] = DatabaseClusterMaintenanceSlot.constructFromObject(data['maintenance_slot']);
             }
         }
         return obj;
@@ -151,6 +249,10 @@ class DatabaseCluster {
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
+        // ensure the json data is a string
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
         if (data['networks']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['networks'])) {
@@ -160,6 +262,10 @@ class DatabaseCluster {
             for (const item of data['networks']) {
                 DatabaseClusterNetworksInner.validateJSON(item);
             };
+        }
+        // ensure the json data is a string
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
         }
         // ensure the json data is a string
         if (data['hash_type'] && !(typeof data['hash_type'] === 'string' || data['hash_type'] instanceof String)) {
@@ -173,13 +279,65 @@ class DatabaseCluster {
         if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
             throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
         }
+        // ensure the json data is a string
+        if (data['cpu_frequency'] && !(typeof data['cpu_frequency'] === 'string' || data['cpu_frequency'] instanceof String)) {
+            throw new Error("Expected the field `cpu_frequency` to be a primitive type in the JSON string but got " + data['cpu_frequency']);
+        }
         // validate the optional field `disk`
         if (data['disk']) { // data not null
           DatabaseClusterDisk.validateJSON(data['disk']);
         }
+        // validate the optional field `disk_autoscaling`
+        if (data['disk_autoscaling']) { // data not null
+          DatabaseClusterDiskAutoscaling.validateJSON(data['disk_autoscaling']);
+        }
         // validate the optional field `config_parameters`
         if (data['config_parameters']) { // data not null
           Mysql.validateJSON(data['config_parameters']);
+        }
+        if (data['replica_list']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['replica_list'])) {
+                throw new Error("Expected the field `replica_list` to be an array in the JSON data but got " + data['replica_list']);
+            }
+            // validate the optional field `replica_list` (array)
+            for (const item of data['replica_list']) {
+                DatabaseClusterReplicaListInner.validateJSON(item);
+            };
+        }
+        if (data['domains']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['domains'])) {
+                throw new Error("Expected the field `domains` to be an array in the JSON data but got " + data['domains']);
+            }
+            // validate the optional field `domains` (array)
+            for (const item of data['domains']) {
+                DatabaseClusterDomainsInner.validateJSON(item);
+            };
+        }
+        if (data['child_services']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['child_services'])) {
+                throw new Error("Expected the field `child_services` to be an array in the JSON data but got " + data['child_services']);
+            }
+            // validate the optional field `child_services` (array)
+            for (const item of data['child_services']) {
+                DatabaseClusterChildServicesInner.validateJSON(item);
+            };
+        }
+        if (data['parent_services']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['parent_services'])) {
+                throw new Error("Expected the field `parent_services` to be an array in the JSON data but got " + data['parent_services']);
+            }
+            // validate the optional field `parent_services` (array)
+            for (const item of data['parent_services']) {
+                DatabaseClusterParentServicesInner.validateJSON(item);
+            };
+        }
+        // validate the optional field `maintenance_slot`
+        if (data['maintenance_slot']) { // data not null
+          DatabaseClusterMaintenanceSlot.validateJSON(data['maintenance_slot']);
         }
 
         return true;
@@ -188,7 +346,7 @@ class DatabaseCluster {
 
 }
 
-DatabaseCluster.RequiredProperties = ["id", "created_at", "location", "name", "networks", "type", "hash_type", "avatar_link", "port", "status", "preset_id", "config_parameters", "is_enabled_public_network"];
+DatabaseCluster.RequiredProperties = ["id", "created_at", "location", "name", "description", "networks", "is_enabled_public_ipv6", "type", "hash_type", "avatar_link", "port", "status", "preset_id", "configurator_id", "cpu", "cpu_frequency", "is_dedicated_cpu", "ram", "disk", "has_additional_disk", "disk_autoscaling", "config_parameters", "is_enabled_public_network", "is_secure_connection_enabled", "is_autobackups_enabled", "is_backup_schedule_enabled", "availability_zone", "replica_list", "domains", "child_services", "parent_services", "maintenance_slot"];
 
 /**
  * ID для каждого экземпляра базы данных. Автоматически генерируется при создании.
@@ -215,19 +373,26 @@ DatabaseCluster.prototype['location'] = undefined;
 DatabaseCluster.prototype['name'] = undefined;
 
 /**
+ * Описание кластера базы данных.
+ * @member {String} description
+ */
+DatabaseCluster.prototype['description'] = undefined;
+
+/**
  * Список сетей кластера базы данных.
  * @member {Array.<module:model/DatabaseClusterNetworksInner>} networks
  */
 DatabaseCluster.prototype['networks'] = undefined;
 
 /**
- * Использование IPv6 адреса.
- * @member {Boolean} is_public_ipv6
+ * Использование публичного IPv6-адреса.
+ * @member {Boolean} is_enabled_public_ipv6
  */
-DatabaseCluster.prototype['is_public_ipv6'] = undefined;
+DatabaseCluster.prototype['is_enabled_public_ipv6'] = undefined;
 
 /**
- * @member {module:model/DbType} type
+ * Тип базы данных. Список возможных значений шире, чем список типов, доступных при создании нового кластера.
+ * @member {module:model/DatabaseCluster.TypeEnum} type
  */
 DatabaseCluster.prototype['type'] = undefined;
 
@@ -250,21 +415,62 @@ DatabaseCluster.prototype['avatar_link'] = undefined;
 DatabaseCluster.prototype['port'] = undefined;
 
 /**
- * Текущий статус кластера базы данных.
+ * Текущий статус кластера базы данных. Значение `read_only` означает, что запись в кластер заблокирована из-за переполнения диска — чтобы снять блокировку, освободите место или увеличьте размер диска.
  * @member {module:model/DatabaseCluster.StatusEnum} status
  */
 DatabaseCluster.prototype['status'] = undefined;
 
 /**
- * ID тарифа.
+ * ID тарифа. Равен `null` у кластеров, созданных через конфигуратор — в этом случае заполнен `configurator_id`.
  * @member {Number} preset_id
  */
 DatabaseCluster.prototype['preset_id'] = undefined;
 
 /**
+ * ID конфигуратора. Равен `null` у кластеров, созданных по тарифу.
+ * @member {Number} configurator_id
+ */
+DatabaseCluster.prototype['configurator_id'] = undefined;
+
+/**
+ * Количество ядер процессора.
+ * @member {Number} cpu
+ */
+DatabaseCluster.prototype['cpu'] = undefined;
+
+/**
+ * Частота процессора.
+ * @member {String} cpu_frequency
+ */
+DatabaseCluster.prototype['cpu_frequency'] = undefined;
+
+/**
+ * Используются ли выделенные ядра процессора.
+ * @member {Boolean} is_dedicated_cpu
+ */
+DatabaseCluster.prototype['is_dedicated_cpu'] = undefined;
+
+/**
+ * Объем оперативной памяти (в Мб).
+ * @member {Number} ram
+ */
+DatabaseCluster.prototype['ram'] = undefined;
+
+/**
  * @member {module:model/DatabaseClusterDisk} disk
  */
 DatabaseCluster.prototype['disk'] = undefined;
+
+/**
+ * Подключен ли к кластеру дополнительный диск.
+ * @member {Boolean} has_additional_disk
+ */
+DatabaseCluster.prototype['has_additional_disk'] = undefined;
+
+/**
+ * @member {module:model/DatabaseClusterDiskAutoscaling} disk_autoscaling
+ */
+DatabaseCluster.prototype['disk_autoscaling'] = undefined;
 
 /**
  * @member {module:model/Mysql} config_parameters
@@ -276,6 +482,64 @@ DatabaseCluster.prototype['config_parameters'] = undefined;
  * @member {Boolean} is_enabled_public_network
  */
 DatabaseCluster.prototype['is_enabled_public_network'] = undefined;
+
+/**
+ * Включено ли защищенное подключение к кластеру базы данных.
+ * @member {Boolean} is_secure_connection_enabled
+ */
+DatabaseCluster.prototype['is_secure_connection_enabled'] = undefined;
+
+/**
+ * Включены ли автоматические резервные копии кластера базы данных.
+ * @member {Boolean} is_autobackups_enabled
+ */
+DatabaseCluster.prototype['is_autobackups_enabled'] = undefined;
+
+/**
+ * Включено ли расписание резервного копирования кластера базы данных.
+ * @member {Boolean} is_backup_schedule_enabled
+ */
+DatabaseCluster.prototype['is_backup_schedule_enabled'] = undefined;
+
+/**
+ * @member {module:model/AvailabilityZone} availability_zone
+ */
+DatabaseCluster.prototype['availability_zone'] = undefined;
+
+/**
+ * ID проекта, в котором находится кластер базы данных.
+ * @member {Number} project_id
+ */
+DatabaseCluster.prototype['project_id'] = undefined;
+
+/**
+ * Список реплик кластера базы данных.
+ * @member {Array.<module:model/DatabaseClusterReplicaListInner>} replica_list
+ */
+DatabaseCluster.prototype['replica_list'] = undefined;
+
+/**
+ * Список доменов кластера базы данных. Если публичная сеть отключена (`is_enabled_public_network: false`), список всегда пустой.
+ * @member {Array.<module:model/DatabaseClusterDomainsInner>} domains
+ */
+DatabaseCluster.prototype['domains'] = undefined;
+
+/**
+ * Список дочерних сервисов кластера базы данных.
+ * @member {Array.<module:model/DatabaseClusterChildServicesInner>} child_services
+ */
+DatabaseCluster.prototype['child_services'] = undefined;
+
+/**
+ * Список родительских сервисов кластера базы данных.
+ * @member {Array.<module:model/DatabaseClusterParentServicesInner>} parent_services
+ */
+DatabaseCluster.prototype['parent_services'] = undefined;
+
+/**
+ * @member {module:model/DatabaseClusterMaintenanceSlot} maintenance_slot
+ */
+DatabaseCluster.prototype['maintenance_slot'] = undefined;
 
 
 
@@ -301,6 +565,12 @@ DatabaseCluster['LocationEnum'] = {
     "ru-3": "ru-3",
 
     /**
+     * value: "pl-1"
+     * @const
+     */
+    "pl-1": "pl-1",
+
+    /**
      * value: "nl-1"
      * @const
      */
@@ -310,7 +580,202 @@ DatabaseCluster['LocationEnum'] = {
      * value: "de-1"
      * @const
      */
-    "de-1": "de-1"
+    "de-1": "de-1",
+
+    /**
+     * value: "us-2"
+     * @const
+     */
+    "us-2": "us-2",
+
+    /**
+     * value: "us-3"
+     * @const
+     */
+    "us-3": "us-3"
+};
+
+
+/**
+ * Allowed values for the <code>type</code> property.
+ * @enum {String}
+ * @readonly
+ */
+DatabaseCluster['TypeEnum'] = {
+
+    /**
+     * value: "mysql"
+     * @const
+     */
+    "mysql": "mysql",
+
+    /**
+     * value: "mysql5"
+     * @const
+     */
+    "mysql5": "mysql5",
+
+    /**
+     * value: "mysql8_4"
+     * @const
+     */
+    "mysql8_4": "mysql8_4",
+
+    /**
+     * value: "postgres"
+     * @const
+     */
+    "postgres": "postgres",
+
+    /**
+     * value: "postgres14"
+     * @const
+     */
+    "postgres14": "postgres14",
+
+    /**
+     * value: "postgres15"
+     * @const
+     */
+    "postgres15": "postgres15",
+
+    /**
+     * value: "postgres16"
+     * @const
+     */
+    "postgres16": "postgres16",
+
+    /**
+     * value: "postgres17"
+     * @const
+     */
+    "postgres17": "postgres17",
+
+    /**
+     * value: "postgres18"
+     * @const
+     */
+    "postgres18": "postgres18",
+
+    /**
+     * value: "redis"
+     * @const
+     */
+    "redis": "redis",
+
+    /**
+     * value: "redis7"
+     * @const
+     */
+    "redis7": "redis7",
+
+    /**
+     * value: "redis8_1"
+     * @const
+     */
+    "redis8_1": "redis8_1",
+
+    /**
+     * value: "valkey"
+     * @const
+     */
+    "valkey": "valkey",
+
+    /**
+     * value: "valkey7"
+     * @const
+     */
+    "valkey7": "valkey7",
+
+    /**
+     * value: "valkey8_1"
+     * @const
+     */
+    "valkey8_1": "valkey8_1",
+
+    /**
+     * value: "valkey9_1"
+     * @const
+     */
+    "valkey9_1": "valkey9_1",
+
+    /**
+     * value: "mongodb"
+     * @const
+     */
+    "mongodb": "mongodb",
+
+    /**
+     * value: "mongodb4"
+     * @const
+     */
+    "mongodb4": "mongodb4",
+
+    /**
+     * value: "mongodb6"
+     * @const
+     */
+    "mongodb6": "mongodb6",
+
+    /**
+     * value: "mongodb7"
+     * @const
+     */
+    "mongodb7": "mongodb7",
+
+    /**
+     * value: "mongodb8_0"
+     * @const
+     */
+    "mongodb8_0": "mongodb8_0",
+
+    /**
+     * value: "opensearch"
+     * @const
+     */
+    "opensearch": "opensearch",
+
+    /**
+     * value: "opensearch2_19"
+     * @const
+     */
+    "opensearch2_19": "opensearch2_19",
+
+    /**
+     * value: "clickhouse"
+     * @const
+     */
+    "clickhouse": "clickhouse",
+
+    /**
+     * value: "clickhouse24"
+     * @const
+     */
+    "clickhouse24": "clickhouse24",
+
+    /**
+     * value: "clickhouse25"
+     * @const
+     */
+    "clickhouse25": "clickhouse25",
+
+    /**
+     * value: "kafka"
+     * @const
+     */
+    "kafka": "kafka",
+
+    /**
+     * value: "rabbitmq"
+     * @const
+     */
+    "rabbitmq": "rabbitmq",
+
+    /**
+     * value: "rabbitmq4_0"
+     * @const
+     */
+    "rabbitmq4_0": "rabbitmq4_0"
 };
 
 
@@ -397,6 +862,12 @@ DatabaseCluster['StatusEnum'] = {
     "backup_recovery": "backup_recovery",
 
     /**
+     * value: "transfer"
+     * @const
+     */
+    "transfer": "transfer",
+
+    /**
      * value: "rebooting"
      * @const
      */
@@ -412,7 +883,19 @@ DatabaseCluster['StatusEnum'] = {
      * value: "turning_on"
      * @const
      */
-    "turning_on": "turning_on"
+    "turning_on": "turning_on",
+
+    /**
+     * value: "read_only"
+     * @const
+     */
+    "read_only": "read_only",
+
+    /**
+     * value: "user_transfer"
+     * @const
+     */
+    "user_transfer": "user_transfer"
 };
 
 

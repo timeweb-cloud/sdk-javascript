@@ -74,6 +74,8 @@ import AvailableStaticRoute from './model/AvailableStaticRoute';
 import AvailableStaticRouteSubnetsInner from './model/AvailableStaticRouteSubnetsInner';
 import AvailableStaticRoutesResponse from './model/AvailableStaticRoutesResponse';
 import Backup from './model/Backup';
+import BackupDownloadUrl from './model/BackupDownloadUrl';
+import BackupDownloadUrlRequest from './model/BackupDownloadUrlRequest';
 import Balancer from './model/Balancer';
 import BalancerNetworksInner from './model/BalancerNetworksInner';
 import BalancerNetworksInnerIpsInner from './model/BalancerNetworksInnerIpsInner';
@@ -91,6 +93,7 @@ import CertificateTask from './model/CertificateTask';
 import CheckDomain200Response from './model/CheckDomain200Response';
 import ClearCache from './model/ClearCache';
 import Clickhouse from './model/Clickhouse';
+import ClusterAction from './model/ClusterAction';
 import ClusterEdit from './model/ClusterEdit';
 import ClusterEditOidcProvider from './model/ClusterEditOidcProvider';
 import ClusterIn from './model/ClusterIn';
@@ -122,10 +125,6 @@ import ConfigHttpHeaders from './model/ConfigHttpHeaders';
 import ConfigHttpHeadersCors from './model/ConfigHttpHeadersCors';
 import ConfigOrigin from './model/ConfigOrigin';
 import ConfigOriginAws from './model/ConfigOriginAws';
-import ConfigParameters from './model/ConfigParameters';
-import ConfigParametersMysql from './model/ConfigParametersMysql';
-import ConfigParametersPostgres from './model/ConfigParametersPostgres';
-import ConfigParametersValkey from './model/ConfigParametersValkey';
 import ConfigRobots from './model/ConfigRobots';
 import ConfigSecurity from './model/ConfigSecurity';
 import ConfigSecuritySecureToken from './model/ConfigSecuritySecureToken';
@@ -144,11 +143,16 @@ import CreateBalancerRule200Response from './model/CreateBalancerRule200Response
 import CreateCdnResource201Response from './model/CreateCdnResource201Response';
 import CreateCluster from './model/CreateCluster';
 import CreateClusterAdmin from './model/CreateClusterAdmin';
+import CreateClusterBackupSchedule from './model/CreateClusterBackupSchedule';
+import CreateClusterConfiguration from './model/CreateClusterConfiguration';
+import CreateClusterDiskAutoscaling from './model/CreateClusterDiskAutoscaling';
 import CreateClusterInstance from './model/CreateClusterInstance';
+import CreateClusterMaintenanceSlot from './model/CreateClusterMaintenanceSlot';
 import CreateDatabaseBackup201Response from './model/CreateDatabaseBackup201Response';
-import CreateDatabaseBackup409Response from './model/CreateDatabaseBackup409Response';
+import CreateDatabaseBackupDownloadUrl201Response from './model/CreateDatabaseBackupDownloadUrl201Response';
 import CreateDatabaseCluster201Response from './model/CreateDatabaseCluster201Response';
 import CreateDatabaseInstance201Response from './model/CreateDatabaseInstance201Response';
+import CreateDatabaseS3Backup201Response from './model/CreateDatabaseS3Backup201Response';
 import CreateDatabaseUser201Response from './model/CreateDatabaseUser201Response';
 import CreateDbAutoBackups from './model/CreateDbAutoBackups';
 import CreateDedicatedServer from './model/CreateDedicatedServer';
@@ -183,6 +187,7 @@ import CreatePerson201Response from './model/CreatePerson201Response';
 import CreateProject from './model/CreateProject';
 import CreateProject201Response from './model/CreateProject201Response';
 import CreateRule from './model/CreateRule';
+import CreateS3Backup from './model/CreateS3Backup';
 import CreateServer from './model/CreateServer';
 import CreateServer201Response from './model/CreateServer201Response';
 import CreateServerConfiguration from './model/CreateServerConfiguration';
@@ -199,16 +204,32 @@ import CreateVpc from './model/CreateVpc';
 import DatabaseAdmin from './model/DatabaseAdmin';
 import DatabaseAdminInstancesInner from './model/DatabaseAdminInstancesInner';
 import DatabaseCluster from './model/DatabaseCluster';
+import DatabaseClusterChildServicesInner from './model/DatabaseClusterChildServicesInner';
 import DatabaseClusterDisk from './model/DatabaseClusterDisk';
+import DatabaseClusterDiskAutoscaling from './model/DatabaseClusterDiskAutoscaling';
+import DatabaseClusterDomainsInner from './model/DatabaseClusterDomainsInner';
+import DatabaseClusterMaintenanceSlot from './model/DatabaseClusterMaintenanceSlot';
 import DatabaseClusterNetworksInner from './model/DatabaseClusterNetworksInner';
 import DatabaseClusterNetworksInnerIpsInner from './model/DatabaseClusterNetworksInnerIpsInner';
+import DatabaseClusterParentServicesInner from './model/DatabaseClusterParentServicesInner';
+import DatabaseClusterReplicaListInner from './model/DatabaseClusterReplicaListInner';
+import DatabaseClusterReplicaListInnerDisk from './model/DatabaseClusterReplicaListInnerDisk';
+import DatabaseConfigurator from './model/DatabaseConfigurator';
+import DatabaseConfiguratorPrices from './model/DatabaseConfiguratorPrices';
+import DatabaseConfiguratorRequirements from './model/DatabaseConfiguratorRequirements';
+import DatabaseExtensions from './model/DatabaseExtensions';
 import DatabaseInstance from './model/DatabaseInstance';
 import DatabaseType from './model/DatabaseType';
 import DatabaseTypeRequirements from './model/DatabaseTypeRequirements';
 import Db from './model/Db';
 import DbDiskStats from './model/DbDiskStats';
+import DbExtension from './model/DbExtension';
+import DbParametersByType from './model/DbParametersByType';
+import DbPrivilegeGroup from './model/DbPrivilegeGroup';
 import DbReplication from './model/DbReplication';
 import DbType from './model/DbType';
+import DbsCreateBackup from './model/DbsCreateBackup';
+import DbsUpdateBackup from './model/DbsUpdateBackup';
 import DedicatedServer from './model/DedicatedServer';
 import DedicatedServerAdditionalService from './model/DedicatedServerAdditionalService';
 import DedicatedServerPreset from './model/DedicatedServerPreset';
@@ -220,6 +241,7 @@ import DeleteCluster200Response from './model/DeleteCluster200Response';
 import DeleteCountriesFromAllowedList200Response from './model/DeleteCountriesFromAllowedList200Response';
 import DeleteCountriesFromAllowedListRequest from './model/DeleteCountriesFromAllowedListRequest';
 import DeleteDatabaseCluster200Response from './model/DeleteDatabaseCluster200Response';
+import DeleteDatabaseCluster200ResponseDatabaseDelete from './model/DeleteDatabaseCluster200ResponseDatabaseDelete';
 import DeleteIPsFromAllowedList200Response from './model/DeleteIPsFromAllowedList200Response';
 import DeleteIPsFromAllowedListRequest from './model/DeleteIPsFromAllowedListRequest';
 import DeleteServer200Response from './model/DeleteServer200Response';
@@ -308,10 +330,18 @@ import GetCommits200Response from './model/GetCommits200Response';
 import GetConfigurators200Response from './model/GetConfigurators200Response';
 import GetCountries200Response from './model/GetCountries200Response';
 import GetDatabaseAutoBackupsSettings200Response from './model/GetDatabaseAutoBackupsSettings200Response';
+import GetDatabaseBackup200Response from './model/GetDatabaseBackup200Response';
 import GetDatabaseBackups200Response from './model/GetDatabaseBackups200Response';
+import GetDatabaseClusterReplicas200Response from './model/GetDatabaseClusterReplicas200Response';
 import GetDatabaseClusterTypes200Response from './model/GetDatabaseClusterTypes200Response';
 import GetDatabaseClusters200Response from './model/GetDatabaseClusters200Response';
+import GetDatabaseConfigurators200Response from './model/GetDatabaseConfigurators200Response';
+import GetDatabaseDefaultParameters200Response from './model/GetDatabaseDefaultParameters200Response';
+import GetDatabaseDefaultParameters200ResponseConfigParams from './model/GetDatabaseDefaultParameters200ResponseConfigParams';
 import GetDatabaseInstances200Response from './model/GetDatabaseInstances200Response';
+import GetDatabasePreset200Response from './model/GetDatabasePreset200Response';
+import GetDatabasePrivileges200Response from './model/GetDatabasePrivileges200Response';
+import GetDatabaseS3Backups200Response from './model/GetDatabaseS3Backups200Response';
 import GetDatabaseUsers200Response from './model/GetDatabaseUsers200Response';
 import GetDatabasesPresets200Response from './model/GetDatabasesPresets200Response';
 import GetDedicatedServerPresetAdditionalServices200Response from './model/GetDedicatedServerPresetAdditionalServices200Response';
@@ -362,7 +392,6 @@ import GetProviders200Response from './model/GetProviders200Response';
 import GetRepositories200Response from './model/GetRepositories200Response';
 import GetRestorePoint200Response from './model/GetRestorePoint200Response';
 import GetRestorePoints200Response from './model/GetRestorePoints200Response';
-import GetServerDiskAutoBackupSettings200Response from './model/GetServerDiskAutoBackupSettings200Response';
 import GetServerDiskBackup200Response from './model/GetServerDiskBackup200Response';
 import GetServerDiskBackups200Response from './model/GetServerDiskBackups200Response';
 import GetServerDisks200Response from './model/GetServerDisks200Response';
@@ -408,6 +437,7 @@ import Ip from './model/Ip';
 import IssueCertificate from './model/IssueCertificate';
 import K8SVersionsResponse from './model/K8SVersionsResponse';
 import Kafka from './model/Kafka';
+import KafkaConfigParameters from './model/KafkaConfigParameters';
 import Knowledgebase from './model/Knowledgebase';
 import KnowledgebaseV2 from './model/KnowledgebaseV2';
 import Location from './model/Location';
@@ -494,6 +524,8 @@ import RegistryOutDiskStats from './model/RegistryOutDiskStats';
 import RegistryResponse from './model/RegistryResponse';
 import RemoveCountries from './model/RemoveCountries';
 import RemoveIps from './model/RemoveIps';
+import Replica from './model/Replica';
+import ReplicaDisk from './model/ReplicaDisk';
 import RepositoriesResponse from './model/RepositoriesResponse';
 import Repository from './model/Repository';
 import Resource from './model/Resource';
@@ -524,6 +556,7 @@ import RouterStatisticMeta from './model/RouterStatisticMeta';
 import RouterStatisticsResponse from './model/RouterStatisticsResponse';
 import RoutersResponse from './model/RoutersResponse';
 import Rule from './model/Rule';
+import S3Backup from './model/S3Backup';
 import S3Subdomain from './model/S3Subdomain';
 import SchemasBaseError from './model/SchemasBaseError';
 import SchemasMeta from './model/SchemasMeta';
@@ -581,8 +614,15 @@ import UpdateAgent from './model/UpdateAgent';
 import UpdateAgentSettings from './model/UpdateAgentSettings';
 import UpdateAppSettings200Response from './model/UpdateAppSettings200Response';
 import UpdateAuthRestrictionsByCountriesRequest from './model/UpdateAuthRestrictionsByCountriesRequest';
+import UpdateAutoBackup from './model/UpdateAutoBackup';
 import UpdateBalancer from './model/UpdateBalancer';
 import UpdateCluster from './model/UpdateCluster';
+import UpdateClusterConfiguration from './model/UpdateClusterConfiguration';
+import UpdateClusterV2 from './model/UpdateClusterV2';
+import UpdateClusterV2DiskAutoscaling from './model/UpdateClusterV2DiskAutoscaling';
+import UpdateClusterV2MaintenanceSlot from './model/UpdateClusterV2MaintenanceSlot';
+import UpdateDatabaseCluster200Response from './model/UpdateDatabaseCluster200Response';
+import UpdateDatabaseInstance409Response from './model/UpdateDatabaseInstance409Response';
 import UpdateDedicatedServerRequest from './model/UpdateDedicatedServerRequest';
 import UpdateDomain from './model/UpdateDomain';
 import UpdateDomainAutoProlongation200Response from './model/UpdateDomainAutoProlongation200Response';
@@ -592,6 +632,7 @@ import UpdateDomainNameServersNameServersInner from './model/UpdateDomainNameSer
 import UpdateFloatingIp from './model/UpdateFloatingIp';
 import UpdateHttpResource from './model/UpdateHttpResource';
 import UpdateInstance from './model/UpdateInstance';
+import UpdateKafkaConfigParameters from './model/UpdateKafkaConfigParameters';
 import UpdateKeyRequest from './model/UpdateKeyRequest';
 import UpdateKnowledgebase from './model/UpdateKnowledgebase';
 import UpdateMailbox from './model/UpdateMailbox';
@@ -604,6 +645,7 @@ import UpdateNotificationSettingsRequestSettingsInnerChannels from './model/Upda
 import UpdatePerson from './model/UpdatePerson';
 import UpdateProject from './model/UpdateProject';
 import UpdateRule from './model/UpdateRule';
+import UpdateS3Backup from './model/UpdateS3Backup';
 import UpdateServer from './model/UpdateServer';
 import UpdateServerConfigurator from './model/UpdateServerConfigurator';
 import UpdateServerDiskBackupRequest from './model/UpdateServerDiskBackupRequest';
@@ -1067,6 +1109,18 @@ export {
     Backup,
 
     /**
+     * The BackupDownloadUrl model constructor.
+     * @property {module:model/BackupDownloadUrl}
+     */
+    BackupDownloadUrl,
+
+    /**
+     * The BackupDownloadUrlRequest model constructor.
+     * @property {module:model/BackupDownloadUrlRequest}
+     */
+    BackupDownloadUrlRequest,
+
+    /**
      * The Balancer model constructor.
      * @property {module:model/Balancer}
      */
@@ -1167,6 +1221,12 @@ export {
      * @property {module:model/Clickhouse}
      */
     Clickhouse,
+
+    /**
+     * The ClusterAction model constructor.
+     * @property {module:model/ClusterAction}
+     */
+    ClusterAction,
 
     /**
      * The ClusterEdit model constructor.
@@ -1355,30 +1415,6 @@ export {
     ConfigOriginAws,
 
     /**
-     * The ConfigParameters model constructor.
-     * @property {module:model/ConfigParameters}
-     */
-    ConfigParameters,
-
-    /**
-     * The ConfigParametersMysql model constructor.
-     * @property {module:model/ConfigParametersMysql}
-     */
-    ConfigParametersMysql,
-
-    /**
-     * The ConfigParametersPostgres model constructor.
-     * @property {module:model/ConfigParametersPostgres}
-     */
-    ConfigParametersPostgres,
-
-    /**
-     * The ConfigParametersValkey model constructor.
-     * @property {module:model/ConfigParametersValkey}
-     */
-    ConfigParametersValkey,
-
-    /**
      * The ConfigRobots model constructor.
      * @property {module:model/ConfigRobots}
      */
@@ -1487,10 +1523,34 @@ export {
     CreateClusterAdmin,
 
     /**
+     * The CreateClusterBackupSchedule model constructor.
+     * @property {module:model/CreateClusterBackupSchedule}
+     */
+    CreateClusterBackupSchedule,
+
+    /**
+     * The CreateClusterConfiguration model constructor.
+     * @property {module:model/CreateClusterConfiguration}
+     */
+    CreateClusterConfiguration,
+
+    /**
+     * The CreateClusterDiskAutoscaling model constructor.
+     * @property {module:model/CreateClusterDiskAutoscaling}
+     */
+    CreateClusterDiskAutoscaling,
+
+    /**
      * The CreateClusterInstance model constructor.
      * @property {module:model/CreateClusterInstance}
      */
     CreateClusterInstance,
+
+    /**
+     * The CreateClusterMaintenanceSlot model constructor.
+     * @property {module:model/CreateClusterMaintenanceSlot}
+     */
+    CreateClusterMaintenanceSlot,
 
     /**
      * The CreateDatabaseBackup201Response model constructor.
@@ -1499,10 +1559,10 @@ export {
     CreateDatabaseBackup201Response,
 
     /**
-     * The CreateDatabaseBackup409Response model constructor.
-     * @property {module:model/CreateDatabaseBackup409Response}
+     * The CreateDatabaseBackupDownloadUrl201Response model constructor.
+     * @property {module:model/CreateDatabaseBackupDownloadUrl201Response}
      */
-    CreateDatabaseBackup409Response,
+    CreateDatabaseBackupDownloadUrl201Response,
 
     /**
      * The CreateDatabaseCluster201Response model constructor.
@@ -1515,6 +1575,12 @@ export {
      * @property {module:model/CreateDatabaseInstance201Response}
      */
     CreateDatabaseInstance201Response,
+
+    /**
+     * The CreateDatabaseS3Backup201Response model constructor.
+     * @property {module:model/CreateDatabaseS3Backup201Response}
+     */
+    CreateDatabaseS3Backup201Response,
 
     /**
      * The CreateDatabaseUser201Response model constructor.
@@ -1721,6 +1787,12 @@ export {
     CreateRule,
 
     /**
+     * The CreateS3Backup model constructor.
+     * @property {module:model/CreateS3Backup}
+     */
+    CreateS3Backup,
+
+    /**
      * The CreateServer model constructor.
      * @property {module:model/CreateServer}
      */
@@ -1817,10 +1889,34 @@ export {
     DatabaseCluster,
 
     /**
+     * The DatabaseClusterChildServicesInner model constructor.
+     * @property {module:model/DatabaseClusterChildServicesInner}
+     */
+    DatabaseClusterChildServicesInner,
+
+    /**
      * The DatabaseClusterDisk model constructor.
      * @property {module:model/DatabaseClusterDisk}
      */
     DatabaseClusterDisk,
+
+    /**
+     * The DatabaseClusterDiskAutoscaling model constructor.
+     * @property {module:model/DatabaseClusterDiskAutoscaling}
+     */
+    DatabaseClusterDiskAutoscaling,
+
+    /**
+     * The DatabaseClusterDomainsInner model constructor.
+     * @property {module:model/DatabaseClusterDomainsInner}
+     */
+    DatabaseClusterDomainsInner,
+
+    /**
+     * The DatabaseClusterMaintenanceSlot model constructor.
+     * @property {module:model/DatabaseClusterMaintenanceSlot}
+     */
+    DatabaseClusterMaintenanceSlot,
 
     /**
      * The DatabaseClusterNetworksInner model constructor.
@@ -1833,6 +1929,48 @@ export {
      * @property {module:model/DatabaseClusterNetworksInnerIpsInner}
      */
     DatabaseClusterNetworksInnerIpsInner,
+
+    /**
+     * The DatabaseClusterParentServicesInner model constructor.
+     * @property {module:model/DatabaseClusterParentServicesInner}
+     */
+    DatabaseClusterParentServicesInner,
+
+    /**
+     * The DatabaseClusterReplicaListInner model constructor.
+     * @property {module:model/DatabaseClusterReplicaListInner}
+     */
+    DatabaseClusterReplicaListInner,
+
+    /**
+     * The DatabaseClusterReplicaListInnerDisk model constructor.
+     * @property {module:model/DatabaseClusterReplicaListInnerDisk}
+     */
+    DatabaseClusterReplicaListInnerDisk,
+
+    /**
+     * The DatabaseConfigurator model constructor.
+     * @property {module:model/DatabaseConfigurator}
+     */
+    DatabaseConfigurator,
+
+    /**
+     * The DatabaseConfiguratorPrices model constructor.
+     * @property {module:model/DatabaseConfiguratorPrices}
+     */
+    DatabaseConfiguratorPrices,
+
+    /**
+     * The DatabaseConfiguratorRequirements model constructor.
+     * @property {module:model/DatabaseConfiguratorRequirements}
+     */
+    DatabaseConfiguratorRequirements,
+
+    /**
+     * The DatabaseExtensions model constructor.
+     * @property {module:model/DatabaseExtensions}
+     */
+    DatabaseExtensions,
 
     /**
      * The DatabaseInstance model constructor.
@@ -1865,6 +2003,24 @@ export {
     DbDiskStats,
 
     /**
+     * The DbExtension model constructor.
+     * @property {module:model/DbExtension}
+     */
+    DbExtension,
+
+    /**
+     * The DbParametersByType model constructor.
+     * @property {module:model/DbParametersByType}
+     */
+    DbParametersByType,
+
+    /**
+     * The DbPrivilegeGroup model constructor.
+     * @property {module:model/DbPrivilegeGroup}
+     */
+    DbPrivilegeGroup,
+
+    /**
      * The DbReplication model constructor.
      * @property {module:model/DbReplication}
      */
@@ -1875,6 +2031,18 @@ export {
      * @property {module:model/DbType}
      */
     DbType,
+
+    /**
+     * The DbsCreateBackup model constructor.
+     * @property {module:model/DbsCreateBackup}
+     */
+    DbsCreateBackup,
+
+    /**
+     * The DbsUpdateBackup model constructor.
+     * @property {module:model/DbsUpdateBackup}
+     */
+    DbsUpdateBackup,
 
     /**
      * The DedicatedServer model constructor.
@@ -1941,6 +2109,12 @@ export {
      * @property {module:model/DeleteDatabaseCluster200Response}
      */
     DeleteDatabaseCluster200Response,
+
+    /**
+     * The DeleteDatabaseCluster200ResponseDatabaseDelete model constructor.
+     * @property {module:model/DeleteDatabaseCluster200ResponseDatabaseDelete}
+     */
+    DeleteDatabaseCluster200ResponseDatabaseDelete,
 
     /**
      * The DeleteIPsFromAllowedList200Response model constructor.
@@ -2471,10 +2645,22 @@ export {
     GetDatabaseAutoBackupsSettings200Response,
 
     /**
+     * The GetDatabaseBackup200Response model constructor.
+     * @property {module:model/GetDatabaseBackup200Response}
+     */
+    GetDatabaseBackup200Response,
+
+    /**
      * The GetDatabaseBackups200Response model constructor.
      * @property {module:model/GetDatabaseBackups200Response}
      */
     GetDatabaseBackups200Response,
+
+    /**
+     * The GetDatabaseClusterReplicas200Response model constructor.
+     * @property {module:model/GetDatabaseClusterReplicas200Response}
+     */
+    GetDatabaseClusterReplicas200Response,
 
     /**
      * The GetDatabaseClusterTypes200Response model constructor.
@@ -2489,10 +2675,46 @@ export {
     GetDatabaseClusters200Response,
 
     /**
+     * The GetDatabaseConfigurators200Response model constructor.
+     * @property {module:model/GetDatabaseConfigurators200Response}
+     */
+    GetDatabaseConfigurators200Response,
+
+    /**
+     * The GetDatabaseDefaultParameters200Response model constructor.
+     * @property {module:model/GetDatabaseDefaultParameters200Response}
+     */
+    GetDatabaseDefaultParameters200Response,
+
+    /**
+     * The GetDatabaseDefaultParameters200ResponseConfigParams model constructor.
+     * @property {module:model/GetDatabaseDefaultParameters200ResponseConfigParams}
+     */
+    GetDatabaseDefaultParameters200ResponseConfigParams,
+
+    /**
      * The GetDatabaseInstances200Response model constructor.
      * @property {module:model/GetDatabaseInstances200Response}
      */
     GetDatabaseInstances200Response,
+
+    /**
+     * The GetDatabasePreset200Response model constructor.
+     * @property {module:model/GetDatabasePreset200Response}
+     */
+    GetDatabasePreset200Response,
+
+    /**
+     * The GetDatabasePrivileges200Response model constructor.
+     * @property {module:model/GetDatabasePrivileges200Response}
+     */
+    GetDatabasePrivileges200Response,
+
+    /**
+     * The GetDatabaseS3Backups200Response model constructor.
+     * @property {module:model/GetDatabaseS3Backups200Response}
+     */
+    GetDatabaseS3Backups200Response,
 
     /**
      * The GetDatabaseUsers200Response model constructor.
@@ -2795,12 +3017,6 @@ export {
     GetRestorePoints200Response,
 
     /**
-     * The GetServerDiskAutoBackupSettings200Response model constructor.
-     * @property {module:model/GetServerDiskAutoBackupSettings200Response}
-     */
-    GetServerDiskAutoBackupSettings200Response,
-
-    /**
      * The GetServerDiskBackup200Response model constructor.
      * @property {module:model/GetServerDiskBackup200Response}
      */
@@ -3069,6 +3285,12 @@ export {
      * @property {module:model/Kafka}
      */
     Kafka,
+
+    /**
+     * The KafkaConfigParameters model constructor.
+     * @property {module:model/KafkaConfigParameters}
+     */
+    KafkaConfigParameters,
 
     /**
      * The Knowledgebase model constructor.
@@ -3587,6 +3809,18 @@ export {
     RemoveIps,
 
     /**
+     * The Replica model constructor.
+     * @property {module:model/Replica}
+     */
+    Replica,
+
+    /**
+     * The ReplicaDisk model constructor.
+     * @property {module:model/ReplicaDisk}
+     */
+    ReplicaDisk,
+
+    /**
      * The RepositoriesResponse model constructor.
      * @property {module:model/RepositoriesResponse}
      */
@@ -3765,6 +3999,12 @@ export {
      * @property {module:model/Rule}
      */
     Rule,
+
+    /**
+     * The S3Backup model constructor.
+     * @property {module:model/S3Backup}
+     */
+    S3Backup,
 
     /**
      * The S3Subdomain model constructor.
@@ -4109,6 +4349,12 @@ export {
     UpdateAuthRestrictionsByCountriesRequest,
 
     /**
+     * The UpdateAutoBackup model constructor.
+     * @property {module:model/UpdateAutoBackup}
+     */
+    UpdateAutoBackup,
+
+    /**
      * The UpdateBalancer model constructor.
      * @property {module:model/UpdateBalancer}
      */
@@ -4119,6 +4365,42 @@ export {
      * @property {module:model/UpdateCluster}
      */
     UpdateCluster,
+
+    /**
+     * The UpdateClusterConfiguration model constructor.
+     * @property {module:model/UpdateClusterConfiguration}
+     */
+    UpdateClusterConfiguration,
+
+    /**
+     * The UpdateClusterV2 model constructor.
+     * @property {module:model/UpdateClusterV2}
+     */
+    UpdateClusterV2,
+
+    /**
+     * The UpdateClusterV2DiskAutoscaling model constructor.
+     * @property {module:model/UpdateClusterV2DiskAutoscaling}
+     */
+    UpdateClusterV2DiskAutoscaling,
+
+    /**
+     * The UpdateClusterV2MaintenanceSlot model constructor.
+     * @property {module:model/UpdateClusterV2MaintenanceSlot}
+     */
+    UpdateClusterV2MaintenanceSlot,
+
+    /**
+     * The UpdateDatabaseCluster200Response model constructor.
+     * @property {module:model/UpdateDatabaseCluster200Response}
+     */
+    UpdateDatabaseCluster200Response,
+
+    /**
+     * The UpdateDatabaseInstance409Response model constructor.
+     * @property {module:model/UpdateDatabaseInstance409Response}
+     */
+    UpdateDatabaseInstance409Response,
 
     /**
      * The UpdateDedicatedServerRequest model constructor.
@@ -4173,6 +4455,12 @@ export {
      * @property {module:model/UpdateInstance}
      */
     UpdateInstance,
+
+    /**
+     * The UpdateKafkaConfigParameters model constructor.
+     * @property {module:model/UpdateKafkaConfigParameters}
+     */
+    UpdateKafkaConfigParameters,
 
     /**
      * The UpdateKeyRequest model constructor.
@@ -4245,6 +4533,12 @@ export {
      * @property {module:model/UpdateRule}
      */
     UpdateRule,
+
+    /**
+     * The UpdateS3Backup model constructor.
+     * @property {module:model/UpdateS3Backup}
+     */
+    UpdateS3Backup,
 
     /**
      * The UpdateServer model constructor.

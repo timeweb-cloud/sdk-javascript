@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import DatabaseExtensions from './DatabaseExtensions';
+import UpdateKafkaConfigParameters from './UpdateKafkaConfigParameters';
 
 /**
  * The UpdateInstance model module.
@@ -53,6 +55,15 @@ class UpdateInstance {
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
+            if (data.hasOwnProperty('owner_id')) {
+                obj['owner_id'] = ApiClient.convertToType(data['owner_id'], 'Number');
+            }
+            if (data.hasOwnProperty('extensions')) {
+                obj['extensions'] = DatabaseExtensions.constructFromObject(data['extensions']);
+            }
+            if (data.hasOwnProperty('config_parameters')) {
+                obj['config_parameters'] = UpdateKafkaConfigParameters.constructFromObject(data['config_parameters']);
+            }
         }
         return obj;
     }
@@ -70,6 +81,14 @@ class UpdateInstance {
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // validate the optional field `extensions`
+        if (data['extensions']) { // data not null
+          DatabaseExtensions.validateJSON(data['extensions']);
+        }
+        // validate the optional field `config_parameters`
+        if (data['config_parameters']) { // data not null
+          UpdateKafkaConfigParameters.validateJSON(data['config_parameters']);
         }
 
         return true;
@@ -91,6 +110,22 @@ UpdateInstance.prototype['name'] = undefined;
  * @member {String} description
  */
 UpdateInstance.prototype['description'] = undefined;
+
+/**
+ * ID пользователя базы данных, который станет владельцем инстанса. Доступно только в кластерах PostgreSQL
+ * @member {Number} owner_id
+ */
+UpdateInstance.prototype['owner_id'] = undefined;
+
+/**
+ * @member {module:model/DatabaseExtensions} extensions
+ */
+UpdateInstance.prototype['extensions'] = undefined;
+
+/**
+ * @member {module:model/UpdateKafkaConfigParameters} config_parameters
+ */
+UpdateInstance.prototype['config_parameters'] = undefined;
 
 
 

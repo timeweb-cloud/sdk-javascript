@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **admin** | [**CreateClusterAdmin**](CreateClusterAdmin.md) |  | [optional] 
 **instance** | [**CreateClusterInstance**](CreateClusterInstance.md) |  | [optional] 
 **hashType** | **String** | Тип хеширования базы данных (mysql | postgres). | [optional] 
-**presetId** | **Number** | ID тарифа. Нельзя передавать вместе с &#x60;configurator_id&#x60; | [optional] 
-**configuratorId** | **Number** | ID конфигуратора. Нельзя передавать вместе с &#x60;preset_id&#x60; | [optional] 
+**presetId** | **Number** | ID тарифа. Нельзя передавать вместе с &#x60;configuration&#x60; | [optional] 
+**configuration** | [**CreateClusterConfiguration**](CreateClusterConfiguration.md) |  | [optional] 
 **projectId** | **Number** | ID проекта. | [optional] 
 **configParameters** | [**Mysql**](Mysql.md) |  | [optional] 
 **replication** | [**DbReplication**](DbReplication.md) |  | [optional] 
@@ -19,6 +19,9 @@ Name | Type | Description | Notes
 **description** | **String** | Описание кластера базы данных | [optional] 
 **availabilityZone** | [**AvailabilityZone**](AvailabilityZone.md) |  | [optional] 
 **autoBackups** | [**CreateDbAutoBackups**](CreateDbAutoBackups.md) |  | [optional] 
+**backupSchedule** | [**CreateClusterBackupSchedule**](CreateClusterBackupSchedule.md) |  | [optional] 
+**maintenanceSlot** | [**CreateClusterMaintenanceSlot**](CreateClusterMaintenanceSlot.md) |  | [optional] 
+**diskAutoscaling** | [**CreateClusterDiskAutoscaling**](CreateClusterDiskAutoscaling.md) |  | [optional] 
 
 
 

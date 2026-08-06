@@ -78,6 +78,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property extensions (base name: "extensions")', function() {
+      // uncomment below and update the code to test the property extensions
+      //var instance = new TimewebCloudApi.DatabaseInstance();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property ownerId (base name: "owner_id")', function() {
+      // uncomment below and update the code to test the property ownerId
+      //var instance = new TimewebCloudApi.DatabaseInstance();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property configParameters (base name: "config_parameters")', function() {
+      // uncomment below and update the code to test the property configParameters
+      //var instance = new TimewebCloudApi.DatabaseInstance();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

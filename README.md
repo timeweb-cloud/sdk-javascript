@@ -358,29 +358,44 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.ContainerRegistryApi* | [**getRegistryRepositories**](docs/ContainerRegistryApi.md#getRegistryRepositories) | **GET** /api/v1/container-registry/{registry_id}/repositories | Получение списка репозиториев
 *TimewebCloudApi.ContainerRegistryApi* | [**updateRegistry**](docs/ContainerRegistryApi.md#updateRegistry) | **PATCH** /api/v1/container-registry/{registry_id} | Обновление информации о реестре
 *TimewebCloudApi.DatabasesApi* | [**createDatabaseBackup**](docs/DatabasesApi.md#createDatabaseBackup) | **POST** /api/v1/dbs/{db_id}/backups | Создание бэкапа базы данных
+*TimewebCloudApi.DatabasesApi* | [**createDatabaseBackupDownloadUrl**](docs/DatabasesApi.md#createDatabaseBackupDownloadUrl) | **POST** /api/v1/dbs/{db_id}/backups/{backup_id}/download-url | Получение ссылки для скачивания бэкапа базы данных
 *TimewebCloudApi.DatabasesApi* | [**createDatabaseCluster**](docs/DatabasesApi.md#createDatabaseCluster) | **POST** /api/v1/databases | Создание кластера базы данных
 *TimewebCloudApi.DatabasesApi* | [**createDatabaseInstance**](docs/DatabasesApi.md#createDatabaseInstance) | **POST** /api/v1/databases/{db_cluster_id}/instances | Создание инстанса базы данных
+*TimewebCloudApi.DatabasesApi* | [**createDatabaseS3Backup**](docs/DatabasesApi.md#createDatabaseS3Backup) | **POST** /api/v2/databases/{db_id}/backups | Создание S3-бэкапа базы данных
 *TimewebCloudApi.DatabasesApi* | [**createDatabaseUser**](docs/DatabasesApi.md#createDatabaseUser) | **POST** /api/v1/databases/{db_cluster_id}/admins | Создание пользователя базы данных
 *TimewebCloudApi.DatabasesApi* | [**deleteDatabaseBackup**](docs/DatabasesApi.md#deleteDatabaseBackup) | **DELETE** /api/v1/dbs/{db_id}/backups/{backup_id} | Удаление бэкапа базы данных
 *TimewebCloudApi.DatabasesApi* | [**deleteDatabaseCluster**](docs/DatabasesApi.md#deleteDatabaseCluster) | **DELETE** /api/v1/databases/{db_cluster_id} | Удаление кластера базы данных
 *TimewebCloudApi.DatabasesApi* | [**deleteDatabaseInstance**](docs/DatabasesApi.md#deleteDatabaseInstance) | **DELETE** /api/v1/databases/{db_cluster_id}/instances/{instance_id} | Удаление инстанса базы данных
+*TimewebCloudApi.DatabasesApi* | [**deleteDatabaseS3Backup**](docs/DatabasesApi.md#deleteDatabaseS3Backup) | **DELETE** /api/v2/databases/{db_id}/backups/{backup_id} | Удаление S3-бэкапа базы данных
 *TimewebCloudApi.DatabasesApi* | [**deleteDatabaseUser**](docs/DatabasesApi.md#deleteDatabaseUser) | **DELETE** /api/v1/databases/{db_cluster_id}/admins/{admin_id} | Удаление пользователя базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseAutoBackupsSettings**](docs/DatabasesApi.md#getDatabaseAutoBackupsSettings) | **GET** /api/v1/dbs/{db_id}/auto-backups | Получение настроек автобэкапов базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseBackup**](docs/DatabasesApi.md#getDatabaseBackup) | **GET** /api/v1/dbs/{db_id}/backups/{backup_id} | Получение бэкапа базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseBackups**](docs/DatabasesApi.md#getDatabaseBackups) | **GET** /api/v1/dbs/{db_id}/backups | Список бэкапов базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseCluster**](docs/DatabasesApi.md#getDatabaseCluster) | **GET** /api/v1/databases/{db_cluster_id} | Получение кластера базы данных
+*TimewebCloudApi.DatabasesApi* | [**getDatabaseClusterReplicas**](docs/DatabasesApi.md#getDatabaseClusterReplicas) | **GET** /api/v1/databases/{db_cluster_id}/replicas | Получение списка реплик кластера базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseClusterTypes**](docs/DatabasesApi.md#getDatabaseClusterTypes) | **GET** /api/v1/database-types | Получение списка типов кластеров баз данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseClusters**](docs/DatabasesApi.md#getDatabaseClusters) | **GET** /api/v1/databases | Получение списка кластеров баз данных
+*TimewebCloudApi.DatabasesApi* | [**getDatabaseConfigurators**](docs/DatabasesApi.md#getDatabaseConfigurators) | **GET** /api/v1/configurator/databases | Получение списка конфигураторов баз данных
+*TimewebCloudApi.DatabasesApi* | [**getDatabaseDefaultParameters**](docs/DatabasesApi.md#getDatabaseDefaultParameters) | **GET** /api/v1/dbs/default-parameters | Получение рекомендуемых значений параметров баз данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseInstance**](docs/DatabasesApi.md#getDatabaseInstance) | **GET** /api/v1/databases/{db_cluster_id}/instances/{instance_id} | Получение инстанса базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseInstances**](docs/DatabasesApi.md#getDatabaseInstances) | **GET** /api/v1/databases/{db_cluster_id}/instances | Получение списка инстансов баз данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseParameters**](docs/DatabasesApi.md#getDatabaseParameters) | **GET** /api/v1/dbs/parameters | Получение списка параметров баз данных
+*TimewebCloudApi.DatabasesApi* | [**getDatabasePreset**](docs/DatabasesApi.md#getDatabasePreset) | **GET** /api/v2/dbs/presets/{preset_id} | Получение тарифа для базы данных
+*TimewebCloudApi.DatabasesApi* | [**getDatabasePrivileges**](docs/DatabasesApi.md#getDatabasePrivileges) | **GET** /api/v1/databases/{db_cluster_id}/privileges | Получение привилегий кластера базы данных
+*TimewebCloudApi.DatabasesApi* | [**getDatabaseS3Backup**](docs/DatabasesApi.md#getDatabaseS3Backup) | **GET** /api/v2/databases/{db_id}/backups/{backup_id} | Получение S3-бэкапа базы данных
+*TimewebCloudApi.DatabasesApi* | [**getDatabaseS3Backups**](docs/DatabasesApi.md#getDatabaseS3Backups) | **GET** /api/v2/databases/{db_id}/backups | Список S3-бэкапов базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseUser**](docs/DatabasesApi.md#getDatabaseUser) | **GET** /api/v1/databases/{db_cluster_id}/admins/{admin_id} | Получение пользователя базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabaseUsers**](docs/DatabasesApi.md#getDatabaseUsers) | **GET** /api/v1/databases/{db_cluster_id}/admins | Получение списка пользователей базы данных
 *TimewebCloudApi.DatabasesApi* | [**getDatabasesPresets**](docs/DatabasesApi.md#getDatabasesPresets) | **GET** /api/v2/presets/dbs | Получение списка тарифов для баз данных
+*TimewebCloudApi.DatabasesApi* | [**performDatabaseClusterAction**](docs/DatabasesApi.md#performDatabaseClusterAction) | **POST** /api/v1/databases/{db_cluster_id}/action | Выполнение действия над кластером базы данных
 *TimewebCloudApi.DatabasesApi* | [**restoreDatabaseFromBackup**](docs/DatabasesApi.md#restoreDatabaseFromBackup) | **PUT** /api/v1/dbs/{db_id}/backups/{backup_id} | Восстановление базы данных из бэкапа
+*TimewebCloudApi.DatabasesApi* | [**restoreDatabaseFromS3Backup**](docs/DatabasesApi.md#restoreDatabaseFromS3Backup) | **POST** /api/v2/databases/{db_id}/backups/{backup_id}/restore | Восстановление базы данных из S3-бэкапа
 *TimewebCloudApi.DatabasesApi* | [**updateDatabaseAutoBackupsSettings**](docs/DatabasesApi.md#updateDatabaseAutoBackupsSettings) | **PATCH** /api/v1/dbs/{db_id}/auto-backups | Изменение настроек автобэкапов базы данных
+*TimewebCloudApi.DatabasesApi* | [**updateDatabaseBackup**](docs/DatabasesApi.md#updateDatabaseBackup) | **PATCH** /api/v1/dbs/{db_id}/backups/{backup_id} | Изменение комментария к бэкапу базы данных
 *TimewebCloudApi.DatabasesApi* | [**updateDatabaseCluster**](docs/DatabasesApi.md#updateDatabaseCluster) | **PATCH** /api/v1/databases/{db_cluster_id} | Изменение кластера базы данных
+*TimewebCloudApi.DatabasesApi* | [**updateDatabaseClusterV2**](docs/DatabasesApi.md#updateDatabaseClusterV2) | **PATCH** /api/v2/databases/{db_cluster_id} | Изменение кластера базы данных (v2)
 *TimewebCloudApi.DatabasesApi* | [**updateDatabaseInstance**](docs/DatabasesApi.md#updateDatabaseInstance) | **PATCH** /api/v1/databases/{db_cluster_id}/instances/{instance_id} | Изменение инстанса базы данных
+*TimewebCloudApi.DatabasesApi* | [**updateDatabaseS3Backup**](docs/DatabasesApi.md#updateDatabaseS3Backup) | **PATCH** /api/v2/databases/{db_id}/backups/{backup_id} | Изменение комментария S3-бэкапа базы данных
 *TimewebCloudApi.DatabasesApi* | [**updateDatabaseUser**](docs/DatabasesApi.md#updateDatabaseUser) | **PATCH** /api/v1/databases/{db_cluster_id}/admins/{admin_id} | Изменение пользователя базы данных
 *TimewebCloudApi.DedicatedServersApi* | [**createDedicatedServer**](docs/DedicatedServersApi.md#createDedicatedServer) | **POST** /api/v1/dedicated-servers | Создание выделенного сервера
 *TimewebCloudApi.DedicatedServersApi* | [**deleteDedicatedServer**](docs/DedicatedServersApi.md#deleteDedicatedServer) | **DELETE** /api/v1/dedicated-servers/{dedicated_id} | Удаление выделенного сервера
@@ -701,6 +716,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.AvailableStaticRouteSubnetsInner](docs/AvailableStaticRouteSubnetsInner.md)
  - [TimewebCloudApi.AvailableStaticRoutesResponse](docs/AvailableStaticRoutesResponse.md)
  - [TimewebCloudApi.Backup](docs/Backup.md)
+ - [TimewebCloudApi.BackupDownloadUrl](docs/BackupDownloadUrl.md)
+ - [TimewebCloudApi.BackupDownloadUrlRequest](docs/BackupDownloadUrlRequest.md)
  - [TimewebCloudApi.Balancer](docs/Balancer.md)
  - [TimewebCloudApi.BalancerNetworksInner](docs/BalancerNetworksInner.md)
  - [TimewebCloudApi.BalancerNetworksInnerIpsInner](docs/BalancerNetworksInnerIpsInner.md)
@@ -718,6 +735,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CheckDomain200Response](docs/CheckDomain200Response.md)
  - [TimewebCloudApi.ClearCache](docs/ClearCache.md)
  - [TimewebCloudApi.Clickhouse](docs/Clickhouse.md)
+ - [TimewebCloudApi.ClusterAction](docs/ClusterAction.md)
  - [TimewebCloudApi.ClusterEdit](docs/ClusterEdit.md)
  - [TimewebCloudApi.ClusterEditOidcProvider](docs/ClusterEditOidcProvider.md)
  - [TimewebCloudApi.ClusterIn](docs/ClusterIn.md)
@@ -749,10 +767,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ConfigHttpHeadersCors](docs/ConfigHttpHeadersCors.md)
  - [TimewebCloudApi.ConfigOrigin](docs/ConfigOrigin.md)
  - [TimewebCloudApi.ConfigOriginAws](docs/ConfigOriginAws.md)
- - [TimewebCloudApi.ConfigParameters](docs/ConfigParameters.md)
- - [TimewebCloudApi.ConfigParametersMysql](docs/ConfigParametersMysql.md)
- - [TimewebCloudApi.ConfigParametersPostgres](docs/ConfigParametersPostgres.md)
- - [TimewebCloudApi.ConfigParametersValkey](docs/ConfigParametersValkey.md)
  - [TimewebCloudApi.ConfigRobots](docs/ConfigRobots.md)
  - [TimewebCloudApi.ConfigSecurity](docs/ConfigSecurity.md)
  - [TimewebCloudApi.ConfigSecuritySecureToken](docs/ConfigSecuritySecureToken.md)
@@ -771,11 +785,16 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateCdnResource201Response](docs/CreateCdnResource201Response.md)
  - [TimewebCloudApi.CreateCluster](docs/CreateCluster.md)
  - [TimewebCloudApi.CreateClusterAdmin](docs/CreateClusterAdmin.md)
+ - [TimewebCloudApi.CreateClusterBackupSchedule](docs/CreateClusterBackupSchedule.md)
+ - [TimewebCloudApi.CreateClusterConfiguration](docs/CreateClusterConfiguration.md)
+ - [TimewebCloudApi.CreateClusterDiskAutoscaling](docs/CreateClusterDiskAutoscaling.md)
  - [TimewebCloudApi.CreateClusterInstance](docs/CreateClusterInstance.md)
+ - [TimewebCloudApi.CreateClusterMaintenanceSlot](docs/CreateClusterMaintenanceSlot.md)
  - [TimewebCloudApi.CreateDatabaseBackup201Response](docs/CreateDatabaseBackup201Response.md)
- - [TimewebCloudApi.CreateDatabaseBackup409Response](docs/CreateDatabaseBackup409Response.md)
+ - [TimewebCloudApi.CreateDatabaseBackupDownloadUrl201Response](docs/CreateDatabaseBackupDownloadUrl201Response.md)
  - [TimewebCloudApi.CreateDatabaseCluster201Response](docs/CreateDatabaseCluster201Response.md)
  - [TimewebCloudApi.CreateDatabaseInstance201Response](docs/CreateDatabaseInstance201Response.md)
+ - [TimewebCloudApi.CreateDatabaseS3Backup201Response](docs/CreateDatabaseS3Backup201Response.md)
  - [TimewebCloudApi.CreateDatabaseUser201Response](docs/CreateDatabaseUser201Response.md)
  - [TimewebCloudApi.CreateDbAutoBackups](docs/CreateDbAutoBackups.md)
  - [TimewebCloudApi.CreateDedicatedServer](docs/CreateDedicatedServer.md)
@@ -810,6 +829,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateProject](docs/CreateProject.md)
  - [TimewebCloudApi.CreateProject201Response](docs/CreateProject201Response.md)
  - [TimewebCloudApi.CreateRule](docs/CreateRule.md)
+ - [TimewebCloudApi.CreateS3Backup](docs/CreateS3Backup.md)
  - [TimewebCloudApi.CreateServer](docs/CreateServer.md)
  - [TimewebCloudApi.CreateServer201Response](docs/CreateServer201Response.md)
  - [TimewebCloudApi.CreateServerConfiguration](docs/CreateServerConfiguration.md)
@@ -826,16 +846,32 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DatabaseAdmin](docs/DatabaseAdmin.md)
  - [TimewebCloudApi.DatabaseAdminInstancesInner](docs/DatabaseAdminInstancesInner.md)
  - [TimewebCloudApi.DatabaseCluster](docs/DatabaseCluster.md)
+ - [TimewebCloudApi.DatabaseClusterChildServicesInner](docs/DatabaseClusterChildServicesInner.md)
  - [TimewebCloudApi.DatabaseClusterDisk](docs/DatabaseClusterDisk.md)
+ - [TimewebCloudApi.DatabaseClusterDiskAutoscaling](docs/DatabaseClusterDiskAutoscaling.md)
+ - [TimewebCloudApi.DatabaseClusterDomainsInner](docs/DatabaseClusterDomainsInner.md)
+ - [TimewebCloudApi.DatabaseClusterMaintenanceSlot](docs/DatabaseClusterMaintenanceSlot.md)
  - [TimewebCloudApi.DatabaseClusterNetworksInner](docs/DatabaseClusterNetworksInner.md)
  - [TimewebCloudApi.DatabaseClusterNetworksInnerIpsInner](docs/DatabaseClusterNetworksInnerIpsInner.md)
+ - [TimewebCloudApi.DatabaseClusterParentServicesInner](docs/DatabaseClusterParentServicesInner.md)
+ - [TimewebCloudApi.DatabaseClusterReplicaListInner](docs/DatabaseClusterReplicaListInner.md)
+ - [TimewebCloudApi.DatabaseClusterReplicaListInnerDisk](docs/DatabaseClusterReplicaListInnerDisk.md)
+ - [TimewebCloudApi.DatabaseConfigurator](docs/DatabaseConfigurator.md)
+ - [TimewebCloudApi.DatabaseConfiguratorPrices](docs/DatabaseConfiguratorPrices.md)
+ - [TimewebCloudApi.DatabaseConfiguratorRequirements](docs/DatabaseConfiguratorRequirements.md)
+ - [TimewebCloudApi.DatabaseExtensions](docs/DatabaseExtensions.md)
  - [TimewebCloudApi.DatabaseInstance](docs/DatabaseInstance.md)
  - [TimewebCloudApi.DatabaseType](docs/DatabaseType.md)
  - [TimewebCloudApi.DatabaseTypeRequirements](docs/DatabaseTypeRequirements.md)
  - [TimewebCloudApi.Db](docs/Db.md)
  - [TimewebCloudApi.DbDiskStats](docs/DbDiskStats.md)
+ - [TimewebCloudApi.DbExtension](docs/DbExtension.md)
+ - [TimewebCloudApi.DbParametersByType](docs/DbParametersByType.md)
+ - [TimewebCloudApi.DbPrivilegeGroup](docs/DbPrivilegeGroup.md)
  - [TimewebCloudApi.DbReplication](docs/DbReplication.md)
  - [TimewebCloudApi.DbType](docs/DbType.md)
+ - [TimewebCloudApi.DbsCreateBackup](docs/DbsCreateBackup.md)
+ - [TimewebCloudApi.DbsUpdateBackup](docs/DbsUpdateBackup.md)
  - [TimewebCloudApi.DedicatedServer](docs/DedicatedServer.md)
  - [TimewebCloudApi.DedicatedServerAdditionalService](docs/DedicatedServerAdditionalService.md)
  - [TimewebCloudApi.DedicatedServerPreset](docs/DedicatedServerPreset.md)
@@ -847,6 +883,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DeleteCountriesFromAllowedList200Response](docs/DeleteCountriesFromAllowedList200Response.md)
  - [TimewebCloudApi.DeleteCountriesFromAllowedListRequest](docs/DeleteCountriesFromAllowedListRequest.md)
  - [TimewebCloudApi.DeleteDatabaseCluster200Response](docs/DeleteDatabaseCluster200Response.md)
+ - [TimewebCloudApi.DeleteDatabaseCluster200ResponseDatabaseDelete](docs/DeleteDatabaseCluster200ResponseDatabaseDelete.md)
  - [TimewebCloudApi.DeleteIPsFromAllowedList200Response](docs/DeleteIPsFromAllowedList200Response.md)
  - [TimewebCloudApi.DeleteIPsFromAllowedListRequest](docs/DeleteIPsFromAllowedListRequest.md)
  - [TimewebCloudApi.DeleteServer200Response](docs/DeleteServer200Response.md)
@@ -935,10 +972,18 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetConfigurators200Response](docs/GetConfigurators200Response.md)
  - [TimewebCloudApi.GetCountries200Response](docs/GetCountries200Response.md)
  - [TimewebCloudApi.GetDatabaseAutoBackupsSettings200Response](docs/GetDatabaseAutoBackupsSettings200Response.md)
+ - [TimewebCloudApi.GetDatabaseBackup200Response](docs/GetDatabaseBackup200Response.md)
  - [TimewebCloudApi.GetDatabaseBackups200Response](docs/GetDatabaseBackups200Response.md)
+ - [TimewebCloudApi.GetDatabaseClusterReplicas200Response](docs/GetDatabaseClusterReplicas200Response.md)
  - [TimewebCloudApi.GetDatabaseClusterTypes200Response](docs/GetDatabaseClusterTypes200Response.md)
  - [TimewebCloudApi.GetDatabaseClusters200Response](docs/GetDatabaseClusters200Response.md)
+ - [TimewebCloudApi.GetDatabaseConfigurators200Response](docs/GetDatabaseConfigurators200Response.md)
+ - [TimewebCloudApi.GetDatabaseDefaultParameters200Response](docs/GetDatabaseDefaultParameters200Response.md)
+ - [TimewebCloudApi.GetDatabaseDefaultParameters200ResponseConfigParams](docs/GetDatabaseDefaultParameters200ResponseConfigParams.md)
  - [TimewebCloudApi.GetDatabaseInstances200Response](docs/GetDatabaseInstances200Response.md)
+ - [TimewebCloudApi.GetDatabasePreset200Response](docs/GetDatabasePreset200Response.md)
+ - [TimewebCloudApi.GetDatabasePrivileges200Response](docs/GetDatabasePrivileges200Response.md)
+ - [TimewebCloudApi.GetDatabaseS3Backups200Response](docs/GetDatabaseS3Backups200Response.md)
  - [TimewebCloudApi.GetDatabaseUsers200Response](docs/GetDatabaseUsers200Response.md)
  - [TimewebCloudApi.GetDatabasesPresets200Response](docs/GetDatabasesPresets200Response.md)
  - [TimewebCloudApi.GetDedicatedServerPresetAdditionalServices200Response](docs/GetDedicatedServerPresetAdditionalServices200Response.md)
@@ -989,7 +1034,6 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetRepositories200Response](docs/GetRepositories200Response.md)
  - [TimewebCloudApi.GetRestorePoint200Response](docs/GetRestorePoint200Response.md)
  - [TimewebCloudApi.GetRestorePoints200Response](docs/GetRestorePoints200Response.md)
- - [TimewebCloudApi.GetServerDiskAutoBackupSettings200Response](docs/GetServerDiskAutoBackupSettings200Response.md)
  - [TimewebCloudApi.GetServerDiskBackup200Response](docs/GetServerDiskBackup200Response.md)
  - [TimewebCloudApi.GetServerDiskBackups200Response](docs/GetServerDiskBackups200Response.md)
  - [TimewebCloudApi.GetServerDisks200Response](docs/GetServerDisks200Response.md)
@@ -1035,6 +1079,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.IssueCertificate](docs/IssueCertificate.md)
  - [TimewebCloudApi.K8SVersionsResponse](docs/K8SVersionsResponse.md)
  - [TimewebCloudApi.Kafka](docs/Kafka.md)
+ - [TimewebCloudApi.KafkaConfigParameters](docs/KafkaConfigParameters.md)
  - [TimewebCloudApi.Knowledgebase](docs/Knowledgebase.md)
  - [TimewebCloudApi.KnowledgebaseV2](docs/KnowledgebaseV2.md)
  - [TimewebCloudApi.Location](docs/Location.md)
@@ -1121,6 +1166,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.RegistryResponse](docs/RegistryResponse.md)
  - [TimewebCloudApi.RemoveCountries](docs/RemoveCountries.md)
  - [TimewebCloudApi.RemoveIps](docs/RemoveIps.md)
+ - [TimewebCloudApi.Replica](docs/Replica.md)
+ - [TimewebCloudApi.ReplicaDisk](docs/ReplicaDisk.md)
  - [TimewebCloudApi.RepositoriesResponse](docs/RepositoriesResponse.md)
  - [TimewebCloudApi.Repository](docs/Repository.md)
  - [TimewebCloudApi.Resource](docs/Resource.md)
@@ -1151,6 +1198,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.RouterStatisticsResponse](docs/RouterStatisticsResponse.md)
  - [TimewebCloudApi.RoutersResponse](docs/RoutersResponse.md)
  - [TimewebCloudApi.Rule](docs/Rule.md)
+ - [TimewebCloudApi.S3Backup](docs/S3Backup.md)
  - [TimewebCloudApi.S3Subdomain](docs/S3Subdomain.md)
  - [TimewebCloudApi.SchemasBaseError](docs/SchemasBaseError.md)
  - [TimewebCloudApi.SchemasMeta](docs/SchemasMeta.md)
@@ -1208,8 +1256,15 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateAgentSettings](docs/UpdateAgentSettings.md)
  - [TimewebCloudApi.UpdateAppSettings200Response](docs/UpdateAppSettings200Response.md)
  - [TimewebCloudApi.UpdateAuthRestrictionsByCountriesRequest](docs/UpdateAuthRestrictionsByCountriesRequest.md)
+ - [TimewebCloudApi.UpdateAutoBackup](docs/UpdateAutoBackup.md)
  - [TimewebCloudApi.UpdateBalancer](docs/UpdateBalancer.md)
  - [TimewebCloudApi.UpdateCluster](docs/UpdateCluster.md)
+ - [TimewebCloudApi.UpdateClusterConfiguration](docs/UpdateClusterConfiguration.md)
+ - [TimewebCloudApi.UpdateClusterV2](docs/UpdateClusterV2.md)
+ - [TimewebCloudApi.UpdateClusterV2DiskAutoscaling](docs/UpdateClusterV2DiskAutoscaling.md)
+ - [TimewebCloudApi.UpdateClusterV2MaintenanceSlot](docs/UpdateClusterV2MaintenanceSlot.md)
+ - [TimewebCloudApi.UpdateDatabaseCluster200Response](docs/UpdateDatabaseCluster200Response.md)
+ - [TimewebCloudApi.UpdateDatabaseInstance409Response](docs/UpdateDatabaseInstance409Response.md)
  - [TimewebCloudApi.UpdateDedicatedServerRequest](docs/UpdateDedicatedServerRequest.md)
  - [TimewebCloudApi.UpdateDomain](docs/UpdateDomain.md)
  - [TimewebCloudApi.UpdateDomainAutoProlongation200Response](docs/UpdateDomainAutoProlongation200Response.md)
@@ -1219,6 +1274,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateFloatingIp](docs/UpdateFloatingIp.md)
  - [TimewebCloudApi.UpdateHttpResource](docs/UpdateHttpResource.md)
  - [TimewebCloudApi.UpdateInstance](docs/UpdateInstance.md)
+ - [TimewebCloudApi.UpdateKafkaConfigParameters](docs/UpdateKafkaConfigParameters.md)
  - [TimewebCloudApi.UpdateKeyRequest](docs/UpdateKeyRequest.md)
  - [TimewebCloudApi.UpdateKnowledgebase](docs/UpdateKnowledgebase.md)
  - [TimewebCloudApi.UpdateMailbox](docs/UpdateMailbox.md)
@@ -1231,6 +1287,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdatePerson](docs/UpdatePerson.md)
  - [TimewebCloudApi.UpdateProject](docs/UpdateProject.md)
  - [TimewebCloudApi.UpdateRule](docs/UpdateRule.md)
+ - [TimewebCloudApi.UpdateS3Backup](docs/UpdateS3Backup.md)
  - [TimewebCloudApi.UpdateServer](docs/UpdateServer.md)
  - [TimewebCloudApi.UpdateServerConfigurator](docs/UpdateServerConfigurator.md)
  - [TimewebCloudApi.UpdateServerDiskBackupRequest](docs/UpdateServerDiskBackupRequest.md)

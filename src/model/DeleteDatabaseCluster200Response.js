@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import DeleteDatabaseCluster200ResponseDatabaseDelete from './DeleteDatabaseCluster200ResponseDatabaseDelete';
 
 /**
  * The DeleteDatabaseCluster200Response model module.
@@ -22,11 +23,11 @@ class DeleteDatabaseCluster200Response {
     /**
      * Constructs a new <code>DeleteDatabaseCluster200Response</code>.
      * @alias module:model/DeleteDatabaseCluster200Response
-     * @param hash {String} Хеш, который совместно с кодом авторизации надо будет отправить для удаления
+     * @param databaseDelete {module:model/DeleteDatabaseCluster200ResponseDatabaseDelete} 
      */
-    constructor(hash) { 
+    constructor(databaseDelete) { 
         
-        DeleteDatabaseCluster200Response.initialize(this, hash);
+        DeleteDatabaseCluster200Response.initialize(this, databaseDelete);
     }
 
     /**
@@ -34,8 +35,8 @@ class DeleteDatabaseCluster200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, hash) { 
-        obj['hash'] = hash;
+    static initialize(obj, databaseDelete) { 
+        obj['database_delete'] = databaseDelete;
     }
 
     /**
@@ -49,8 +50,8 @@ class DeleteDatabaseCluster200Response {
         if (data) {
             obj = obj || new DeleteDatabaseCluster200Response();
 
-            if (data.hasOwnProperty('hash')) {
-                obj['hash'] = ApiClient.convertToType(data['hash'], 'String');
+            if (data.hasOwnProperty('database_delete')) {
+                obj['database_delete'] = DeleteDatabaseCluster200ResponseDatabaseDelete.constructFromObject(data['database_delete']);
             }
         }
         return obj;
@@ -68,9 +69,9 @@ class DeleteDatabaseCluster200Response {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // ensure the json data is a string
-        if (data['hash'] && !(typeof data['hash'] === 'string' || data['hash'] instanceof String)) {
-            throw new Error("Expected the field `hash` to be a primitive type in the JSON string but got " + data['hash']);
+        // validate the optional field `database_delete`
+        if (data['database_delete']) { // data not null
+          DeleteDatabaseCluster200ResponseDatabaseDelete.validateJSON(data['database_delete']);
         }
 
         return true;
@@ -79,13 +80,12 @@ class DeleteDatabaseCluster200Response {
 
 }
 
-DeleteDatabaseCluster200Response.RequiredProperties = ["hash"];
+DeleteDatabaseCluster200Response.RequiredProperties = ["database_delete"];
 
 /**
- * Хеш, который совместно с кодом авторизации надо будет отправить для удаления
- * @member {String} hash
+ * @member {module:model/DeleteDatabaseCluster200ResponseDatabaseDelete} database_delete
  */
-DeleteDatabaseCluster200Response.prototype['hash'] = undefined;
+DeleteDatabaseCluster200Response.prototype['database_delete'] = undefined;
 
 
 

@@ -12,7 +12,10 @@
  */
 
 import ApiClient from '../ApiClient';
+import CreateClusterDiskAutoscaling from './CreateClusterDiskAutoscaling';
+import CreateClusterMaintenanceSlot from './CreateClusterMaintenanceSlot';
 import Mysql from './Mysql';
+import UpdateClusterConfiguration from './UpdateClusterConfiguration';
 
 /**
  * The UpdateCluster model module.
@@ -54,8 +57,14 @@ class UpdateCluster {
             if (data.hasOwnProperty('preset_id')) {
                 obj['preset_id'] = ApiClient.convertToType(data['preset_id'], 'Number');
             }
+            if (data.hasOwnProperty('configuration')) {
+                obj['configuration'] = UpdateClusterConfiguration.constructFromObject(data['configuration']);
+            }
             if (data.hasOwnProperty('config_parameters')) {
                 obj['config_parameters'] = Mysql.constructFromObject(data['config_parameters']);
+            }
+            if (data.hasOwnProperty('hash_type')) {
+                obj['hash_type'] = ApiClient.convertToType(data['hash_type'], 'String');
             }
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
@@ -63,8 +72,17 @@ class UpdateCluster {
             if (data.hasOwnProperty('is_enabled_public_network')) {
                 obj['is_enabled_public_network'] = ApiClient.convertToType(data['is_enabled_public_network'], 'Boolean');
             }
-            if (data.hasOwnProperty('is_public_ipv6')) {
-                obj['is_public_ipv6'] = ApiClient.convertToType(data['is_public_ipv6'], 'Boolean');
+            if (data.hasOwnProperty('is_enabled_public_ipv6')) {
+                obj['is_enabled_public_ipv6'] = ApiClient.convertToType(data['is_enabled_public_ipv6'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_secure_connection_enable')) {
+                obj['is_secure_connection_enable'] = ApiClient.convertToType(data['is_secure_connection_enable'], 'Boolean');
+            }
+            if (data.hasOwnProperty('maintenance_slot')) {
+                obj['maintenance_slot'] = CreateClusterMaintenanceSlot.constructFromObject(data['maintenance_slot']);
+            }
+            if (data.hasOwnProperty('disk_autoscaling')) {
+                obj['disk_autoscaling'] = CreateClusterDiskAutoscaling.constructFromObject(data['disk_autoscaling']);
             }
         }
         return obj;
@@ -80,13 +98,29 @@ class UpdateCluster {
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
+        // validate the optional field `configuration`
+        if (data['configuration']) { // data not null
+          UpdateClusterConfiguration.validateJSON(data['configuration']);
+        }
         // validate the optional field `config_parameters`
         if (data['config_parameters']) { // data not null
           Mysql.validateJSON(data['config_parameters']);
         }
         // ensure the json data is a string
+        if (data['hash_type'] && !(typeof data['hash_type'] === 'string' || data['hash_type'] instanceof String)) {
+            throw new Error("Expected the field `hash_type` to be a primitive type in the JSON string but got " + data['hash_type']);
+        }
+        // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // validate the optional field `maintenance_slot`
+        if (data['maintenance_slot']) { // data not null
+          CreateClusterMaintenanceSlot.validateJSON(data['maintenance_slot']);
+        }
+        // validate the optional field `disk_autoscaling`
+        if (data['disk_autoscaling']) { // data not null
+          CreateClusterDiskAutoscaling.validateJSON(data['disk_autoscaling']);
         }
 
         return true;
@@ -104,15 +138,26 @@ class UpdateCluster {
 UpdateCluster.prototype['name'] = undefined;
 
 /**
- * ID тарифа.
+ * ID тарифа. Нельзя передавать вместе с `configuration`
  * @member {Number} preset_id
  */
 UpdateCluster.prototype['preset_id'] = undefined;
 
 /**
+ * @member {module:model/UpdateClusterConfiguration} configuration
+ */
+UpdateCluster.prototype['configuration'] = undefined;
+
+/**
  * @member {module:model/Mysql} config_parameters
  */
 UpdateCluster.prototype['config_parameters'] = undefined;
+
+/**
+ * Тип хеширования базы данных (mysql | postgres).
+ * @member {module:model/UpdateCluster.HashTypeEnum} hash_type
+ */
+UpdateCluster.prototype['hash_type'] = undefined;
 
 /**
  * Описание кластера базы данных
@@ -127,13 +172,50 @@ UpdateCluster.prototype['description'] = undefined;
 UpdateCluster.prototype['is_enabled_public_network'] = undefined;
 
 /**
- * Использование IPv6 адреса.
- * @member {Boolean} is_public_ipv6
+ * Использование публичного IPv6-адреса.
+ * @member {Boolean} is_enabled_public_ipv6
  */
-UpdateCluster.prototype['is_public_ipv6'] = undefined;
+UpdateCluster.prototype['is_enabled_public_ipv6'] = undefined;
+
+/**
+ * Включить защищенное подключение к кластеру базы данных
+ * @member {Boolean} is_secure_connection_enable
+ */
+UpdateCluster.prototype['is_secure_connection_enable'] = undefined;
+
+/**
+ * @member {module:model/CreateClusterMaintenanceSlot} maintenance_slot
+ */
+UpdateCluster.prototype['maintenance_slot'] = undefined;
+
+/**
+ * @member {module:model/CreateClusterDiskAutoscaling} disk_autoscaling
+ */
+UpdateCluster.prototype['disk_autoscaling'] = undefined;
 
 
 
+
+
+/**
+ * Allowed values for the <code>hash_type</code> property.
+ * @enum {String}
+ * @readonly
+ */
+UpdateCluster['HashTypeEnum'] = {
+
+    /**
+     * value: "caching_sha2"
+     * @const
+     */
+    "caching_sha2": "caching_sha2",
+
+    /**
+     * value: "mysql_native"
+     * @const
+     */
+    "mysql_native": "mysql_native"
+};
 
 
 

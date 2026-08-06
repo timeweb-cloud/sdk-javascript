@@ -51,7 +51,7 @@ class CreateDatabaseBackup201Response {
             obj = obj || new CreateDatabaseBackup201Response();
 
             if (data.hasOwnProperty('backup')) {
-                obj['backup'] = Backup.constructFromObject(data['backup']);
+                obj['backup'] = ApiClient.convertToType(data['backup'], Backup);
             }
         }
         return obj;

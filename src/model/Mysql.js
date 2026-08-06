@@ -102,6 +102,9 @@ class Mysql {
             if (data.hasOwnProperty('query_cache_size')) {
                 obj['query_cache_size'] = ApiClient.convertToType(data['query_cache_size'], 'String');
             }
+            if (data.hasOwnProperty('query_cache_limit')) {
+                obj['query_cache_limit'] = ApiClient.convertToType(data['query_cache_limit'], 'String');
+            }
             if (data.hasOwnProperty('innodb_flush_log_at_trx_commit')) {
                 obj['innodb_flush_log_at_trx_commit'] = ApiClient.convertToType(data['innodb_flush_log_at_trx_commit'], 'String');
             }
@@ -276,6 +279,10 @@ class Mysql {
         // ensure the json data is a string
         if (data['query_cache_size'] && !(typeof data['query_cache_size'] === 'string' || data['query_cache_size'] instanceof String)) {
             throw new Error("Expected the field `query_cache_size` to be a primitive type in the JSON string but got " + data['query_cache_size']);
+        }
+        // ensure the json data is a string
+        if (data['query_cache_limit'] && !(typeof data['query_cache_limit'] === 'string' || data['query_cache_limit'] instanceof String)) {
+            throw new Error("Expected the field `query_cache_limit` to be a primitive type in the JSON string but got " + data['query_cache_limit']);
         }
         // ensure the json data is a string
         if (data['innodb_flush_log_at_trx_commit'] && !(typeof data['innodb_flush_log_at_trx_commit'] === 'string' || data['innodb_flush_log_at_trx_commit'] instanceof String)) {
@@ -507,16 +514,22 @@ Mysql.prototype['max_heap_table_size'] = undefined;
 Mysql.prototype['sql_mode'] = undefined;
 
 /**
- * Тип кэша запросов (`mysql5` | `mysql` | `mysql8_4`).
+ * Тип кэша запросов (`mysql5`).
  * @member {String} query_cache_type
  */
 Mysql.prototype['query_cache_type'] = undefined;
 
 /**
- * Объем памяти, выделяемый для кэширования результатов запросов (`mysql5` | `mysql` | `mysql8_4`).
+ * Объем памяти, выделяемый для кэширования результатов запросов (`mysql5`).
  * @member {String} query_cache_size
  */
 Mysql.prototype['query_cache_size'] = undefined;
+
+/**
+ * Максимальный размер результата запроса, который может быть закэширован (`mysql5`).
+ * @member {String} query_cache_limit
+ */
+Mysql.prototype['query_cache_limit'] = undefined;
 
 /**
  * Режим записи журнала InnoDB при фиксации транзакций (`mysql5` | `mysql` | `mysql8_4`).

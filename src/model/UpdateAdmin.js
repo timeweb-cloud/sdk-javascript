@@ -48,6 +48,9 @@ class UpdateAdmin {
         if (data) {
             obj = obj || new UpdateAdmin();
 
+            if (data.hasOwnProperty('login')) {
+                obj['login'] = ApiClient.convertToType(data['login'], 'String');
+            }
             if (data.hasOwnProperty('password')) {
                 obj['password'] = ApiClient.convertToType(data['password'], 'String');
             }
@@ -60,6 +63,9 @@ class UpdateAdmin {
             if (data.hasOwnProperty('instance_id')) {
                 obj['instance_id'] = ApiClient.convertToType(data['instance_id'], 'Number');
             }
+            if (data.hasOwnProperty('for_all')) {
+                obj['for_all'] = ApiClient.convertToType(data['for_all'], 'Boolean');
+            }
         }
         return obj;
     }
@@ -70,6 +76,10 @@ class UpdateAdmin {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateAdmin</code>.
      */
     static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['login'] && !(typeof data['login'] === 'string' || data['login'] instanceof String)) {
+            throw new Error("Expected the field `login` to be a primitive type in the JSON string but got " + data['login']);
+        }
         // ensure the json data is a string
         if (data['password'] && !(typeof data['password'] === 'string' || data['password'] instanceof String)) {
             throw new Error("Expected the field `password` to be a primitive type in the JSON string but got " + data['password']);
@@ -90,6 +100,12 @@ class UpdateAdmin {
 }
 
 
+
+/**
+ * Новое имя пользователя базы данных. Переименование доступно только в кластерах PostgreSQL
+ * @member {String} login
+ */
+UpdateAdmin.prototype['login'] = undefined;
 
 /**
  * Пароль пользователя базы данных
@@ -114,6 +130,12 @@ UpdateAdmin.prototype['description'] = undefined;
  * @member {Number} instance_id
  */
 UpdateAdmin.prototype['instance_id'] = undefined;
+
+/**
+ * Выдать привилегии на все инстансы базы данных
+ * @member {Boolean} for_all
+ */
+UpdateAdmin.prototype['for_all'] = undefined;
 
 
 

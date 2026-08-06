@@ -13,23 +13,35 @@
 
 
 import ApiClient from "../ApiClient";
-import AutoBackup from '../model/AutoBackup';
-import ConfigParameters from '../model/ConfigParameters';
+import BackupDownloadUrlRequest from '../model/BackupDownloadUrlRequest';
+import ClusterAction from '../model/ClusterAction';
 import CreateAdmin from '../model/CreateAdmin';
 import CreateCluster from '../model/CreateCluster';
 import CreateDatabaseBackup201Response from '../model/CreateDatabaseBackup201Response';
-import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
+import CreateDatabaseBackupDownloadUrl201Response from '../model/CreateDatabaseBackupDownloadUrl201Response';
 import CreateDatabaseCluster201Response from '../model/CreateDatabaseCluster201Response';
 import CreateDatabaseInstance201Response from '../model/CreateDatabaseInstance201Response';
+import CreateDatabaseS3Backup201Response from '../model/CreateDatabaseS3Backup201Response';
 import CreateDatabaseUser201Response from '../model/CreateDatabaseUser201Response';
 import CreateInstance from '../model/CreateInstance';
+import CreateS3Backup from '../model/CreateS3Backup';
+import DbParametersByType from '../model/DbParametersByType';
+import DbsCreateBackup from '../model/DbsCreateBackup';
+import DbsUpdateBackup from '../model/DbsUpdateBackup';
 import DeleteDatabaseCluster200Response from '../model/DeleteDatabaseCluster200Response';
 import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
 import GetDatabaseAutoBackupsSettings200Response from '../model/GetDatabaseAutoBackupsSettings200Response';
+import GetDatabaseBackup200Response from '../model/GetDatabaseBackup200Response';
 import GetDatabaseBackups200Response from '../model/GetDatabaseBackups200Response';
+import GetDatabaseClusterReplicas200Response from '../model/GetDatabaseClusterReplicas200Response';
 import GetDatabaseClusterTypes200Response from '../model/GetDatabaseClusterTypes200Response';
 import GetDatabaseClusters200Response from '../model/GetDatabaseClusters200Response';
+import GetDatabaseConfigurators200Response from '../model/GetDatabaseConfigurators200Response';
+import GetDatabaseDefaultParameters200Response from '../model/GetDatabaseDefaultParameters200Response';
 import GetDatabaseInstances200Response from '../model/GetDatabaseInstances200Response';
+import GetDatabasePreset200Response from '../model/GetDatabasePreset200Response';
+import GetDatabasePrivileges200Response from '../model/GetDatabasePrivileges200Response';
+import GetDatabaseS3Backups200Response from '../model/GetDatabaseS3Backups200Response';
 import GetDatabaseUsers200Response from '../model/GetDatabaseUsers200Response';
 import GetDatabasesPresets200Response from '../model/GetDatabasesPresets200Response';
 import GetFinances400Response from '../model/GetFinances400Response';
@@ -38,8 +50,13 @@ import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetImage404Response from '../model/GetImage404Response';
 import UpdateAdmin from '../model/UpdateAdmin';
+import UpdateAutoBackup from '../model/UpdateAutoBackup';
 import UpdateCluster from '../model/UpdateCluster';
+import UpdateClusterV2 from '../model/UpdateClusterV2';
+import UpdateDatabaseCluster200Response from '../model/UpdateDatabaseCluster200Response';
+import UpdateDatabaseInstance409Response from '../model/UpdateDatabaseInstance409Response';
 import UpdateInstance from '../model/UpdateInstance';
+import UpdateS3Backup from '../model/UpdateS3Backup';
 
 /**
 * Databases service.
@@ -73,13 +90,13 @@ export default class DatabasesApi {
      * Чтобы создать бэкап базы данных, отправьте запрос POST в `api/v1/dbs/{db_id}/backups`. 
      * @param {Number} dbId ID базы данных
      * @param {Object} opts Optional parameters
-     * @param {String} [comment] Описание бэкапа
+     * @param {module:model/DbsCreateBackup} [dbsCreateBackup] 
      * @param {module:api/DatabasesApi~createDatabaseBackupCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateDatabaseBackup201Response}
      */
     createDatabaseBackup(dbId, opts, callback) {
       opts = opts || {};
-      let postBody = null;
+      let postBody = opts['dbsCreateBackup'];
       // verify the required parameter 'dbId' is set
       if (dbId === undefined || dbId === null) {
         throw new Error("Missing the required parameter 'dbId' when calling createDatabaseBackup");
@@ -89,7 +106,6 @@ export default class DatabasesApi {
         'db_id': dbId
       };
       let queryParams = {
-        'comment': opts['comment']
       };
       let headerParams = {
       };
@@ -97,11 +113,65 @@ export default class DatabasesApi {
       };
 
       let authNames = ['Bearer'];
-      let contentTypes = [];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = CreateDatabaseBackup201Response;
       return this.apiClient.callApi(
         '/api/v1/dbs/{db_id}/backups', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the createDatabaseBackupDownloadUrl operation.
+     * @callback module:api/DatabasesApi~createDatabaseBackupDownloadUrlCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateDatabaseBackupDownloadUrl201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение ссылки для скачивания бэкапа базы данных
+     * Чтобы получить ссылку для скачивания резервной копии базы данных, отправьте POST-запрос на `/api/v1/dbs/{db_id}/backups/{backup_id}/download-url`.   Скачивание резервных копий доступно не для всех кластеров. Если для вашего кластера оно недоступно, метод вернет ошибку со статусом `400`.   Тело ответа будет представлять собой объект JSON с ключом `backup_url`.
+     * @param {Number} dbId ID базы данных
+     * @param {Number} backupId ID резервной копии
+     * @param {module:model/BackupDownloadUrlRequest} backupDownloadUrlRequest 
+     * @param {module:api/DatabasesApi~createDatabaseBackupDownloadUrlCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateDatabaseBackupDownloadUrl201Response}
+     */
+    createDatabaseBackupDownloadUrl(dbId, backupId, backupDownloadUrlRequest, callback) {
+      let postBody = backupDownloadUrlRequest;
+      // verify the required parameter 'dbId' is set
+      if (dbId === undefined || dbId === null) {
+        throw new Error("Missing the required parameter 'dbId' when calling createDatabaseBackupDownloadUrl");
+      }
+      // verify the required parameter 'backupId' is set
+      if (backupId === undefined || backupId === null) {
+        throw new Error("Missing the required parameter 'backupId' when calling createDatabaseBackupDownloadUrl");
+      }
+      // verify the required parameter 'backupDownloadUrlRequest' is set
+      if (backupDownloadUrlRequest === undefined || backupDownloadUrlRequest === null) {
+        throw new Error("Missing the required parameter 'backupDownloadUrlRequest' when calling createDatabaseBackupDownloadUrl");
+      }
+
+      let pathParams = {
+        'db_id': dbId,
+        'backup_id': backupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateDatabaseBackupDownloadUrl201Response;
+      return this.apiClient.callApi(
+        '/api/v1/dbs/{db_id}/backups/{backup_id}/download-url', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -117,7 +187,7 @@ export default class DatabasesApi {
 
     /**
      * Создание кластера базы данных
-     * Чтобы создать кластер базы данных на вашем аккаунте, отправьте POST-запрос на `/api/v1/databases`.   Вместе с кластером будет создан один инстанс базы данных и один пользователь.
+     * Чтобы создать кластер базы данных на вашем аккаунте, отправьте POST-запрос на `/api/v1/databases`.   Вместе с кластером будет создан один инстанс базы данных и один пользователь.   Размер кластера задается либо тарифом (`preset_id`), либо конфигуратором (`configuration`). Эти поля взаимоисключающие, но одно из них передать обязательно — запрос без обоих вернется с ошибкой.
      * @param {module:model/CreateCluster} createCluster 
      * @param {module:api/DatabasesApi~createDatabaseClusterCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateDatabaseCluster201Response}
@@ -192,6 +262,52 @@ export default class DatabasesApi {
       let returnType = CreateDatabaseInstance201Response;
       return this.apiClient.callApi(
         '/api/v1/databases/{db_cluster_id}/instances', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the createDatabaseS3Backup operation.
+     * @callback module:api/DatabasesApi~createDatabaseS3BackupCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateDatabaseS3Backup201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Создание S3-бэкапа базы данных
+     * Чтобы создать резервную копию кластера базы данных в объектном хранилище, отправьте POST-запрос на `/api/v2/databases/{db_id}/backups`.   Тело запроса необязательно: единственное поле `comment` можно не передавать. Тело ответа будет представлять собой объект JSON с ключом `backup`.   Копия создается асинхронно. Пока она создается, ее статус — `running`, и восстановиться из нее нельзя. Дождитесь статуса `success`, опрашивая `/api/v2/databases/{db_id}/backups/{backup_id}`.
+     * @param {Number} dbId ID базы данных
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CreateS3Backup} [createS3Backup] 
+     * @param {module:api/DatabasesApi~createDatabaseS3BackupCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateDatabaseS3Backup201Response}
+     */
+    createDatabaseS3Backup(dbId, opts, callback) {
+      opts = opts || {};
+      let postBody = opts['createS3Backup'];
+      // verify the required parameter 'dbId' is set
+      if (dbId === undefined || dbId === null) {
+        throw new Error("Missing the required parameter 'dbId' when calling createDatabaseS3Backup");
+      }
+
+      let pathParams = {
+        'db_id': dbId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateDatabaseS3Backup201Response;
+      return this.apiClient.callApi(
+        '/api/v2/databases/{db_id}/backups', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -305,14 +421,10 @@ export default class DatabasesApi {
      * Удаление кластера базы данных
      * Чтобы удалить кластер базы данных, отправьте DELETE-запрос на `/api/v1/databases/{db_cluster_id}`.
      * @param {Number} dbClusterId ID кластера базы данных
-     * @param {Object} opts Optional parameters
-     * @param {String} [hash] Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм.
-     * @param {String} [code] Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена `is_able_to_delete` установлен в значение `true`
      * @param {module:api/DatabasesApi~deleteDatabaseClusterCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/DeleteDatabaseCluster200Response}
      */
-    deleteDatabaseCluster(dbClusterId, opts, callback) {
-      opts = opts || {};
+    deleteDatabaseCluster(dbClusterId, callback) {
       let postBody = null;
       // verify the required parameter 'dbClusterId' is set
       if (dbClusterId === undefined || dbClusterId === null) {
@@ -323,8 +435,6 @@ export default class DatabasesApi {
         'db_cluster_id': dbClusterId
       };
       let queryParams = {
-        'hash': opts['hash'],
-        'code': opts['code']
       };
       let headerParams = {
       };
@@ -385,6 +495,54 @@ export default class DatabasesApi {
       let returnType = null;
       return this.apiClient.callApi(
         '/api/v1/databases/{db_cluster_id}/instances/{instance_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deleteDatabaseS3Backup operation.
+     * @callback module:api/DatabasesApi~deleteDatabaseS3BackupCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Удаление S3-бэкапа базы данных
+     * Чтобы удалить резервную копию кластера базы данных из объектного хранилища, отправьте DELETE-запрос на `/api/v2/databases/{db_id}/backups/{backup_id}`.   Копия удаляется безвозвратно, тело ответа пустое. На резервные копии из `/api/v1/dbs/{db_id}/backups/{backup_id}` этот метод не действует — они удаляются отдельным запросом.
+     * @param {Number} dbId ID базы данных
+     * @param {String} backupId ID резервной копии в формате UUID
+     * @param {module:api/DatabasesApi~deleteDatabaseS3BackupCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    deleteDatabaseS3Backup(dbId, backupId, callback) {
+      let postBody = null;
+      // verify the required parameter 'dbId' is set
+      if (dbId === undefined || dbId === null) {
+        throw new Error("Missing the required parameter 'dbId' when calling deleteDatabaseS3Backup");
+      }
+      // verify the required parameter 'backupId' is set
+      if (backupId === undefined || backupId === null) {
+        throw new Error("Missing the required parameter 'backupId' when calling deleteDatabaseS3Backup");
+      }
+
+      let pathParams = {
+        'db_id': dbId,
+        'backup_id': backupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v2/databases/{db_id}/backups/{backup_id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -485,7 +643,7 @@ export default class DatabasesApi {
      * Callback function to receive the result of the getDatabaseBackup operation.
      * @callback module:api/DatabasesApi~getDatabaseBackupCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateDatabaseBackup201Response} data The data returned by the service call.
+     * @param {module:model/GetDatabaseBackup200Response} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -495,7 +653,7 @@ export default class DatabasesApi {
      * @param {Number} dbId ID базы данных
      * @param {Number} backupId ID резервной копии
      * @param {module:api/DatabasesApi~getDatabaseBackupCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateDatabaseBackup201Response}
+     * data is of type: {@link module:model/GetDatabaseBackup200Response}
      */
     getDatabaseBackup(dbId, backupId, callback) {
       let postBody = null;
@@ -522,7 +680,7 @@ export default class DatabasesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = CreateDatabaseBackup201Response;
+      let returnType = GetDatabaseBackup200Response;
       return this.apiClient.callApi(
         '/api/v1/dbs/{db_id}/backups/{backup_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -623,6 +781,49 @@ export default class DatabasesApi {
     }
 
     /**
+     * Callback function to receive the result of the getDatabaseClusterReplicas operation.
+     * @callback module:api/DatabasesApi~getDatabaseClusterReplicasCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetDatabaseClusterReplicas200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка реплик кластера базы данных
+     * Чтобы получить список реплик кластера базы данных, отправьте GET-запрос на `/api/v1/databases/{db_cluster_id}/replicas`.   Тело ответа будет представлять собой объект JSON с ключом `replicas`.
+     * @param {Number} dbClusterId ID кластера базы данных
+     * @param {module:api/DatabasesApi~getDatabaseClusterReplicasCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetDatabaseClusterReplicas200Response}
+     */
+    getDatabaseClusterReplicas(dbClusterId, callback) {
+      let postBody = null;
+      // verify the required parameter 'dbClusterId' is set
+      if (dbClusterId === undefined || dbClusterId === null) {
+        throw new Error("Missing the required parameter 'dbClusterId' when calling getDatabaseClusterReplicas");
+      }
+
+      let pathParams = {
+        'db_cluster_id': dbClusterId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetDatabaseClusterReplicas200Response;
+      return this.apiClient.callApi(
+        '/api/v1/databases/{db_cluster_id}/replicas', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getDatabaseClusterTypes operation.
      * @callback module:api/DatabasesApi~getDatabaseClusterTypesCallback
      * @param {String} error Error message, if any.
@@ -697,6 +898,102 @@ export default class DatabasesApi {
       let returnType = GetDatabaseClusters200Response;
       return this.apiClient.callApi(
         '/api/v1/databases', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getDatabaseConfigurators operation.
+     * @callback module:api/DatabasesApi~getDatabaseConfiguratorsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetDatabaseConfigurators200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка конфигураторов баз данных
+     * Чтобы получить список конфигураторов баз данных, отправьте GET-запрос на `/api/v1/configurator/databases`.   Конфигуратор позволяет создать кластер с произвольным количеством ресурсов вместо готового тарифа: его ID передается при создании кластера в поле `configuration.configurator_id`, а допустимые значения ресурсов ограничены объектом `requirements`.   Тело ответа будет представлять собой объект JSON с ключом `database_configurators`.
+     * @param {Object} opts Optional parameters
+     * @param {Number} [clusterId] ID кластера базы данных. Возвращает конфигураторы группы, в пределах которой доступна смена конфигурации этого кластера (сценарий изменения кластера).
+     * @param {Boolean} [withUnavailable] Включить в ответ конфигураторы, недоступные к заказу из-за нехватки свободных ресурсов. Учитывается только при запросе без `cluster_id`.
+     * @param {module:api/DatabasesApi~getDatabaseConfiguratorsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetDatabaseConfigurators200Response}
+     */
+    getDatabaseConfigurators(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'cluster_id': opts['clusterId'],
+        'with_unavailable': opts['withUnavailable']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetDatabaseConfigurators200Response;
+      return this.apiClient.callApi(
+        '/api/v1/configurator/databases', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getDatabaseDefaultParameters operation.
+     * @callback module:api/DatabasesApi~getDatabaseDefaultParametersCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetDatabaseDefaultParameters200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение рекомендуемых значений параметров баз данных
+     * Чтобы получить рекомендуемые значения параметров базы данных, отправьте GET-запрос на `/api/v1/dbs/default-parameters`.   Значения рассчитываются для указанного типа кластера, объема оперативной памяти и количества реплик — их можно передать при создании кластера в поле `config_parameters`. Список имен параметров, доступных для каждого типа кластера, возвращает `GET /api/v1/dbs/parameters`.   Тело ответа будет представлять собой объект JSON с ключом `config_params`. Рекомендуемые значения рассчитываются только для кластеров MySQL, PostgreSQL и Valkey — для остальных типов возвращается пустой объект.
+     * @param {module:model/String} type Тип кластера базы данных.
+     * @param {Number} ram Объём оперативной памяти кластера (в Мб).
+     * @param {Object} opts Optional parameters
+     * @param {Number} [replicaCount = 1)] Количество нод (реплик) кластера.
+     * @param {module:api/DatabasesApi~getDatabaseDefaultParametersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetDatabaseDefaultParameters200Response}
+     */
+    getDatabaseDefaultParameters(type, ram, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'type' is set
+      if (type === undefined || type === null) {
+        throw new Error("Missing the required parameter 'type' when calling getDatabaseDefaultParameters");
+      }
+      // verify the required parameter 'ram' is set
+      if (ram === undefined || ram === null) {
+        throw new Error("Missing the required parameter 'ram' when calling getDatabaseDefaultParameters");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'type': type,
+        'ram': ram,
+        'replica_count': opts['replicaCount']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetDatabaseDefaultParameters200Response;
+      return this.apiClient.callApi(
+        '/api/v1/dbs/default-parameters', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -798,15 +1095,15 @@ export default class DatabasesApi {
      * Callback function to receive the result of the getDatabaseParameters operation.
      * @callback module:api/DatabasesApi~getDatabaseParametersCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/ConfigParameters} data The data returned by the service call.
+     * @param {module:model/DbParametersByType} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Получение списка параметров баз данных
-     * Чтобы получить список параметров баз данных, отправьте GET-запрос на `/api/v1/dbs/parameters`.
+     * Чтобы получить список параметров баз данных, отправьте GET-запрос на `/api/v1/dbs/parameters`.   Ответ содержит только имена параметров, доступных для каждого типа кластера. Рекомендуемые значения этих параметров для конкретной конфигурации возвращает `GET /api/v1/dbs/default-parameters`.
      * @param {module:api/DatabasesApi~getDatabaseParametersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ConfigParameters}
+     * data is of type: {@link module:model/DbParametersByType}
      */
     getDatabaseParameters(callback) {
       let postBody = null;
@@ -823,9 +1120,187 @@ export default class DatabasesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = ConfigParameters;
+      let returnType = DbParametersByType;
       return this.apiClient.callApi(
         '/api/v1/dbs/parameters', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getDatabasePreset operation.
+     * @callback module:api/DatabasesApi~getDatabasePresetCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetDatabasePreset200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение тарифа для базы данных
+     * Чтобы получить тариф для базы данных, отправьте GET-запрос на `/api/v2/dbs/presets/{preset_id}`.   Тело ответа будет представлять собой объект JSON с ключом `databases_preset`.
+     * @param {Number} presetId ID тарифа
+     * @param {module:api/DatabasesApi~getDatabasePresetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetDatabasePreset200Response}
+     */
+    getDatabasePreset(presetId, callback) {
+      let postBody = null;
+      // verify the required parameter 'presetId' is set
+      if (presetId === undefined || presetId === null) {
+        throw new Error("Missing the required parameter 'presetId' when calling getDatabasePreset");
+      }
+
+      let pathParams = {
+        'preset_id': presetId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetDatabasePreset200Response;
+      return this.apiClient.callApi(
+        '/api/v2/dbs/presets/{preset_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getDatabasePrivileges operation.
+     * @callback module:api/DatabasesApi~getDatabasePrivilegesCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetDatabasePrivileges200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение привилегий кластера базы данных
+     * Чтобы получить список привилегий, которые можно выдать пользователям кластера базы данных, отправьте GET-запрос на `/api/v1/databases/{db_cluster_id}/privileges`.\\    Список зависит от типа СУБД кластера и определяется сервером автоматически: возвращаются только те привилегии, которые допустимы для этого кластера. Используйте его, чтобы заполнить поле `privileges` при <a href='#tag/Bazy-dannyh/operation/createDatabaseUser'>создании</a> или <a href='#tag/Bazy-dannyh/operation/updateDatabaseUser'>изменении</a> пользователя базы данных.
+     * @param {Number} dbClusterId ID кластера базы данных
+     * @param {module:api/DatabasesApi~getDatabasePrivilegesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetDatabasePrivileges200Response}
+     */
+    getDatabasePrivileges(dbClusterId, callback) {
+      let postBody = null;
+      // verify the required parameter 'dbClusterId' is set
+      if (dbClusterId === undefined || dbClusterId === null) {
+        throw new Error("Missing the required parameter 'dbClusterId' when calling getDatabasePrivileges");
+      }
+
+      let pathParams = {
+        'db_cluster_id': dbClusterId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetDatabasePrivileges200Response;
+      return this.apiClient.callApi(
+        '/api/v1/databases/{db_cluster_id}/privileges', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getDatabaseS3Backup operation.
+     * @callback module:api/DatabasesApi~getDatabaseS3BackupCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateDatabaseS3Backup201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение S3-бэкапа базы данных
+     * Чтобы получить информацию о резервной копии кластера базы данных в объектном хранилище, отправьте GET-запрос на `/api/v2/databases/{db_id}/backups/{backup_id}`.   Тело ответа будет представлять собой объект JSON с ключом `backup`. Обратите внимание, что `backup_id` здесь — строка в формате UUID, а не число, как в `/api/v1/dbs/{db_id}/backups/{backup_id}`.
+     * @param {Number} dbId ID базы данных
+     * @param {String} backupId ID резервной копии в формате UUID
+     * @param {module:api/DatabasesApi~getDatabaseS3BackupCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateDatabaseS3Backup201Response}
+     */
+    getDatabaseS3Backup(dbId, backupId, callback) {
+      let postBody = null;
+      // verify the required parameter 'dbId' is set
+      if (dbId === undefined || dbId === null) {
+        throw new Error("Missing the required parameter 'dbId' when calling getDatabaseS3Backup");
+      }
+      // verify the required parameter 'backupId' is set
+      if (backupId === undefined || backupId === null) {
+        throw new Error("Missing the required parameter 'backupId' when calling getDatabaseS3Backup");
+      }
+
+      let pathParams = {
+        'db_id': dbId,
+        'backup_id': backupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CreateDatabaseS3Backup201Response;
+      return this.apiClient.callApi(
+        '/api/v2/databases/{db_id}/backups/{backup_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getDatabaseS3Backups operation.
+     * @callback module:api/DatabasesApi~getDatabaseS3BackupsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetDatabaseS3Backups200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Список S3-бэкапов базы данных
+     * Чтобы получить список резервных копий кластера базы данных в объектном хранилище, отправьте GET-запрос на `/api/v2/databases/{db_id}/backups`.   Тело ответа будет представлять собой объект JSON с ключом `backups`. Копии отсортированы по дате создания по убыванию — сначала самые свежие.   Резервное копирование в объектное хранилище доступно для кластеров MySQL и PostgreSQL. Идентификатор такой копии — строка в формате UUID; это отдельный от `/api/v1/dbs/{db_id}/backups` механизм, и идентификаторы копий между ними не взаимозаменяемы.
+     * @param {Number} dbId ID базы данных
+     * @param {module:api/DatabasesApi~getDatabaseS3BackupsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetDatabaseS3Backups200Response}
+     */
+    getDatabaseS3Backups(dbId, callback) {
+      let postBody = null;
+      // verify the required parameter 'dbId' is set
+      if (dbId === undefined || dbId === null) {
+        throw new Error("Missing the required parameter 'dbId' when calling getDatabaseS3Backups");
+      }
+
+      let pathParams = {
+        'db_id': dbId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetDatabaseS3Backups200Response;
+      return this.apiClient.callApi(
+        '/api/v2/databases/{db_id}/backups', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -933,9 +1408,10 @@ export default class DatabasesApi {
 
     /**
      * Получение списка тарифов для баз данных
-     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на `/api/v2/presets/dbs`.   Тело ответа будет представлять собой объект JSON с ключом `databases_presets`.
+     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на `/api/v2/presets/dbs`.   Без параметров возвращаются тарифы, доступные к заказу — этот список используется при создании кластера. Если передать `cluster_id`, вернутся тарифы группы, в пределах которой можно сменить тариф указанного кластера.   Тело ответа будет представлять собой объект JSON с ключом `databases_presets`.
      * @param {Object} opts Optional parameters
-     * @param {Number} [dbId] ID базы данных
+     * @param {Number} [clusterId] ID кластера базы данных. Возвращает тарифы группы, в пределах которой доступна смена тарифа этого кластера (сценарий изменения кластера).
+     * @param {Boolean} [withUnavailable] Включить в ответ тарифы, недоступные к заказу из-за нехватки свободных ресурсов. Учитывается только при запросе без `cluster_id`: вместе с `cluster_id` фильтр по свободным ресурсам и так не применяется.
      * @param {module:api/DatabasesApi~getDatabasesPresetsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetDatabasesPresets200Response}
      */
@@ -946,7 +1422,8 @@ export default class DatabasesApi {
       let pathParams = {
       };
       let queryParams = {
-        'db_id': opts['dbId']
+        'cluster_id': opts['clusterId'],
+        'with_unavailable': opts['withUnavailable']
       };
       let headerParams = {
       };
@@ -959,6 +1436,53 @@ export default class DatabasesApi {
       let returnType = GetDatabasesPresets200Response;
       return this.apiClient.callApi(
         '/api/v2/presets/dbs', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the performDatabaseClusterAction operation.
+     * @callback module:api/DatabasesApi~performDatabaseClusterActionCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Выполнение действия над кластером базы данных
+     * Чтобы выполнить действие над кластером базы данных, отправьте POST-запрос на `/api/v1/databases/{db_cluster_id}/action`.   Доступные действия: `reboot` — перезагрузка кластера, `shutdown` — выключение кластера, `start` — включение кластера.
+     * @param {Number} dbClusterId ID кластера базы данных
+     * @param {module:model/ClusterAction} clusterAction 
+     * @param {module:api/DatabasesApi~performDatabaseClusterActionCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    performDatabaseClusterAction(dbClusterId, clusterAction, callback) {
+      let postBody = clusterAction;
+      // verify the required parameter 'dbClusterId' is set
+      if (dbClusterId === undefined || dbClusterId === null) {
+        throw new Error("Missing the required parameter 'dbClusterId' when calling performDatabaseClusterAction");
+      }
+      // verify the required parameter 'clusterAction' is set
+      if (clusterAction === undefined || clusterAction === null) {
+        throw new Error("Missing the required parameter 'clusterAction' when calling performDatabaseClusterAction");
+      }
+
+      let pathParams = {
+        'db_cluster_id': dbClusterId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/databases/{db_cluster_id}/action', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -1013,6 +1537,54 @@ export default class DatabasesApi {
     }
 
     /**
+     * Callback function to receive the result of the restoreDatabaseFromS3Backup operation.
+     * @callback module:api/DatabasesApi~restoreDatabaseFromS3BackupCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Восстановление базы данных из S3-бэкапа
+     * Чтобы восстановить кластер базы данных из резервной копии в объектном хранилище, отправьте POST-запрос на `/api/v2/databases/{db_id}/backups/{backup_id}/restore`.   Тела запроса нет, тело ответа пустое. Восстановиться можно только из копии со статусом `success`.   Сразу после запуска кластер переходит в статус `backup_recovery`. Пока восстановление не завершится, создание, изменение и удаление резервных копий, а также повторный запуск восстановления недоступны.
+     * @param {Number} dbId ID базы данных
+     * @param {String} backupId ID резервной копии в формате UUID
+     * @param {module:api/DatabasesApi~restoreDatabaseFromS3BackupCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    restoreDatabaseFromS3Backup(dbId, backupId, callback) {
+      let postBody = null;
+      // verify the required parameter 'dbId' is set
+      if (dbId === undefined || dbId === null) {
+        throw new Error("Missing the required parameter 'dbId' when calling restoreDatabaseFromS3Backup");
+      }
+      // verify the required parameter 'backupId' is set
+      if (backupId === undefined || backupId === null) {
+        throw new Error("Missing the required parameter 'backupId' when calling restoreDatabaseFromS3Backup");
+      }
+
+      let pathParams = {
+        'db_id': dbId,
+        'backup_id': backupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v2/databases/{db_id}/backups/{backup_id}/restore', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the updateDatabaseAutoBackupsSettings operation.
      * @callback module:api/DatabasesApi~updateDatabaseAutoBackupsSettingsCallback
      * @param {String} error Error message, if any.
@@ -1024,17 +1596,19 @@ export default class DatabasesApi {
      * Изменение настроек автобэкапов базы данных
      * Чтобы изменить список настроек автобэкапов базы данных, отправьте запрос PATCH в `api/v1/dbs/{db_id}/auto-backups`
      * @param {Number} dbId ID базы данных
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AutoBackup} [autoBackup] При значении `is_enabled`: `true`, поля `copy_count`, `creation_start_at`, `interval` являются обязательными
+     * @param {module:model/UpdateAutoBackup} updateAutoBackup При значении `is_enabled`: `true`, поля `copy_count`, `creation_start_at`, `interval` являются обязательными
      * @param {module:api/DatabasesApi~updateDatabaseAutoBackupsSettingsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetDatabaseAutoBackupsSettings200Response}
      */
-    updateDatabaseAutoBackupsSettings(dbId, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['autoBackup'];
+    updateDatabaseAutoBackupsSettings(dbId, updateAutoBackup, callback) {
+      let postBody = updateAutoBackup;
       // verify the required parameter 'dbId' is set
       if (dbId === undefined || dbId === null) {
         throw new Error("Missing the required parameter 'dbId' when calling updateDatabaseAutoBackupsSettings");
+      }
+      // verify the required parameter 'updateAutoBackup' is set
+      if (updateAutoBackup === undefined || updateAutoBackup === null) {
+        throw new Error("Missing the required parameter 'updateAutoBackup' when calling updateDatabaseAutoBackupsSettings");
       }
 
       let pathParams = {
@@ -1059,20 +1633,74 @@ export default class DatabasesApi {
     }
 
     /**
+     * Callback function to receive the result of the updateDatabaseBackup operation.
+     * @callback module:api/DatabasesApi~updateDatabaseBackupCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetDatabaseBackup200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Изменение комментария к бэкапу базы данных
+     * Чтобы изменить комментарий к бэкапу базы данных, отправьте PATCH-запрос на `/api/v1/dbs/{db_id}/backups/{backup_id}`.  Тело ответа будет представлять собой объект JSON с ключом `backup`. 
+     * @param {Number} dbId ID базы данных
+     * @param {Number} backupId ID резервной копии
+     * @param {module:model/DbsUpdateBackup} dbsUpdateBackup 
+     * @param {module:api/DatabasesApi~updateDatabaseBackupCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetDatabaseBackup200Response}
+     */
+    updateDatabaseBackup(dbId, backupId, dbsUpdateBackup, callback) {
+      let postBody = dbsUpdateBackup;
+      // verify the required parameter 'dbId' is set
+      if (dbId === undefined || dbId === null) {
+        throw new Error("Missing the required parameter 'dbId' when calling updateDatabaseBackup");
+      }
+      // verify the required parameter 'backupId' is set
+      if (backupId === undefined || backupId === null) {
+        throw new Error("Missing the required parameter 'backupId' when calling updateDatabaseBackup");
+      }
+      // verify the required parameter 'dbsUpdateBackup' is set
+      if (dbsUpdateBackup === undefined || dbsUpdateBackup === null) {
+        throw new Error("Missing the required parameter 'dbsUpdateBackup' when calling updateDatabaseBackup");
+      }
+
+      let pathParams = {
+        'db_id': dbId,
+        'backup_id': backupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = GetDatabaseBackup200Response;
+      return this.apiClient.callApi(
+        '/api/v1/dbs/{db_id}/backups/{backup_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the updateDatabaseCluster operation.
      * @callback module:api/DatabasesApi~updateDatabaseClusterCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateDatabaseCluster201Response} data The data returned by the service call.
+     * @param {module:model/UpdateDatabaseCluster200Response} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Изменение кластера базы данных
-     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на `/api/v1/databases/{db_cluster_id}`.
+     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на `/api/v1/databases/{db_cluster_id}`.   Размер кластера задается либо тарифом (`preset_id`), либо конфигуратором (`configuration`) — эти поля взаимоисключающие.
      * @param {Number} dbClusterId ID кластера базы данных
      * @param {module:model/UpdateCluster} updateCluster 
      * @param {module:api/DatabasesApi~updateDatabaseClusterCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateDatabaseCluster201Response}
+     * data is of type: {@link module:model/UpdateDatabaseCluster200Response}
      */
     updateDatabaseCluster(dbClusterId, updateCluster, callback) {
       let postBody = updateCluster;
@@ -1098,7 +1726,7 @@ export default class DatabasesApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = CreateDatabaseCluster201Response;
+      let returnType = UpdateDatabaseCluster200Response;
       return this.apiClient.callApi(
         '/api/v1/databases/{db_cluster_id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1107,30 +1735,30 @@ export default class DatabasesApi {
     }
 
     /**
-     * Callback function to receive the result of the updateDatabaseInstance operation.
-     * @callback module:api/DatabasesApi~updateDatabaseInstanceCallback
+     * Callback function to receive the result of the updateDatabaseClusterV2 operation.
+     * @callback module:api/DatabasesApi~updateDatabaseClusterV2Callback
      * @param {String} error Error message, if any.
-     * @param {module:model/CreateDatabaseInstance201Response} data The data returned by the service call.
+     * @param {module:model/UpdateDatabaseCluster200Response} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Изменение инстанса базы данных
-     * Чтобы изменить инстанс базы данных, отправьте PATCH-запрос на `/api/v1/databases/{db_cluster_id}/instances/{instance_id}`.
+     * Изменение кластера базы данных (v2)
+     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на `/api/v2/databases/{db_cluster_id}`.   В отличие от `/api/v1/databases/{db_cluster_id}`, эта версия дополнительно позволяет привязать плавающий IP-адрес (`floating_ip`).   Размер кластера задается либо тарифом (`preset_id`), либо конфигуратором (`configuration`) — эти поля взаимоисключающие.
      * @param {Number} dbClusterId ID кластера базы данных
-     * @param {module:model/UpdateInstance} updateInstance 
-     * @param {module:api/DatabasesApi~updateDatabaseInstanceCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateDatabaseInstance201Response}
+     * @param {module:model/UpdateClusterV2} updateClusterV2 
+     * @param {module:api/DatabasesApi~updateDatabaseClusterV2Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/UpdateDatabaseCluster200Response}
      */
-    updateDatabaseInstance(dbClusterId, updateInstance, callback) {
-      let postBody = updateInstance;
+    updateDatabaseClusterV2(dbClusterId, updateClusterV2, callback) {
+      let postBody = updateClusterV2;
       // verify the required parameter 'dbClusterId' is set
       if (dbClusterId === undefined || dbClusterId === null) {
-        throw new Error("Missing the required parameter 'dbClusterId' when calling updateDatabaseInstance");
+        throw new Error("Missing the required parameter 'dbClusterId' when calling updateDatabaseClusterV2");
       }
-      // verify the required parameter 'updateInstance' is set
-      if (updateInstance === undefined || updateInstance === null) {
-        throw new Error("Missing the required parameter 'updateInstance' when calling updateDatabaseInstance");
+      // verify the required parameter 'updateClusterV2' is set
+      if (updateClusterV2 === undefined || updateClusterV2 === null) {
+        throw new Error("Missing the required parameter 'updateClusterV2' when calling updateDatabaseClusterV2");
       }
 
       let pathParams = {
@@ -1146,9 +1774,115 @@ export default class DatabasesApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
+      let returnType = UpdateDatabaseCluster200Response;
+      return this.apiClient.callApi(
+        '/api/v2/databases/{db_cluster_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updateDatabaseInstance operation.
+     * @callback module:api/DatabasesApi~updateDatabaseInstanceCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateDatabaseInstance201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Изменение инстанса базы данных
+     * Чтобы изменить инстанс базы данных, отправьте PATCH-запрос на `/api/v1/databases/{db_cluster_id}/instances/{instance_id}`.   Изменить название базы данных (`name`) и ее владельца (`owner_id`) можно только в кластере PostgreSQL, а настройки топика (`config_parameters`) — только в кластере Kafka. Если один из этих трех параметров передан для неподходящего типа кластера, запрос вернется с ошибкой 409.   Расширения (`extensions`) применимы к кластерам PostgreSQL и RabbitMQ.
+     * @param {Number} dbClusterId ID кластера базы данных
+     * @param {Number} instanceId ID инстанса базы данных
+     * @param {module:model/UpdateInstance} updateInstance 
+     * @param {module:api/DatabasesApi~updateDatabaseInstanceCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateDatabaseInstance201Response}
+     */
+    updateDatabaseInstance(dbClusterId, instanceId, updateInstance, callback) {
+      let postBody = updateInstance;
+      // verify the required parameter 'dbClusterId' is set
+      if (dbClusterId === undefined || dbClusterId === null) {
+        throw new Error("Missing the required parameter 'dbClusterId' when calling updateDatabaseInstance");
+      }
+      // verify the required parameter 'instanceId' is set
+      if (instanceId === undefined || instanceId === null) {
+        throw new Error("Missing the required parameter 'instanceId' when calling updateDatabaseInstance");
+      }
+      // verify the required parameter 'updateInstance' is set
+      if (updateInstance === undefined || updateInstance === null) {
+        throw new Error("Missing the required parameter 'updateInstance' when calling updateDatabaseInstance");
+      }
+
+      let pathParams = {
+        'db_cluster_id': dbClusterId,
+        'instance_id': instanceId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
       let returnType = CreateDatabaseInstance201Response;
       return this.apiClient.callApi(
         '/api/v1/databases/{db_cluster_id}/instances/{instance_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updateDatabaseS3Backup operation.
+     * @callback module:api/DatabasesApi~updateDatabaseS3BackupCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateDatabaseS3Backup201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Изменение комментария S3-бэкапа базы данных
+     * Чтобы изменить комментарий к резервной копии кластера базы данных, отправьте PATCH-запрос на `/api/v2/databases/{db_id}/backups/{backup_id}`.   Изменить можно только комментарий: других полей метод не принимает, сама резервная копия при этом не пересоздается. Тело ответа будет представлять собой объект JSON с ключом `backup`.
+     * @param {Number} dbId ID базы данных
+     * @param {String} backupId ID резервной копии в формате UUID
+     * @param {Object} opts Optional parameters
+     * @param {module:model/UpdateS3Backup} [updateS3Backup] 
+     * @param {module:api/DatabasesApi~updateDatabaseS3BackupCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateDatabaseS3Backup201Response}
+     */
+    updateDatabaseS3Backup(dbId, backupId, opts, callback) {
+      opts = opts || {};
+      let postBody = opts['updateS3Backup'];
+      // verify the required parameter 'dbId' is set
+      if (dbId === undefined || dbId === null) {
+        throw new Error("Missing the required parameter 'dbId' when calling updateDatabaseS3Backup");
+      }
+      // verify the required parameter 'backupId' is set
+      if (backupId === undefined || backupId === null) {
+        throw new Error("Missing the required parameter 'backupId' when calling updateDatabaseS3Backup");
+      }
+
+      let pathParams = {
+        'db_id': dbId,
+        'backup_id': backupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateDatabaseS3Backup201Response;
+      return this.apiClient.callApi(
+        '/api/v2/databases/{db_id}/backups/{backup_id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

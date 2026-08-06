@@ -58,6 +58,16 @@
         done();
       });
     });
+    describe('createDatabaseBackupDownloadUrl', function() {
+      it('should call createDatabaseBackupDownloadUrl successfully', function(done) {
+        //uncomment below and update the code to test createDatabaseBackupDownloadUrl
+        //instance.createDatabaseBackupDownloadUrl(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('createDatabaseCluster', function() {
       it('should call createDatabaseCluster successfully', function(done) {
         //uncomment below and update the code to test createDatabaseCluster
@@ -72,6 +82,16 @@
       it('should call createDatabaseInstance successfully', function(done) {
         //uncomment below and update the code to test createDatabaseInstance
         //instance.createDatabaseInstance(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('createDatabaseS3Backup', function() {
+      it('should call createDatabaseS3Backup successfully', function(done) {
+        //uncomment below and update the code to test createDatabaseS3Backup
+        //instance.createDatabaseS3Backup(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -112,6 +132,16 @@
       it('should call deleteDatabaseInstance successfully', function(done) {
         //uncomment below and update the code to test deleteDatabaseInstance
         //instance.deleteDatabaseInstance(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('deleteDatabaseS3Backup', function() {
+      it('should call deleteDatabaseS3Backup successfully', function(done) {
+        //uncomment below and update the code to test deleteDatabaseS3Backup
+        //instance.deleteDatabaseS3Backup(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -168,6 +198,16 @@
         done();
       });
     });
+    describe('getDatabaseClusterReplicas', function() {
+      it('should call getDatabaseClusterReplicas successfully', function(done) {
+        //uncomment below and update the code to test getDatabaseClusterReplicas
+        //instance.getDatabaseClusterReplicas(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getDatabaseClusterTypes', function() {
       it('should call getDatabaseClusterTypes successfully', function(done) {
         //uncomment below and update the code to test getDatabaseClusterTypes
@@ -182,6 +222,26 @@
       it('should call getDatabaseClusters successfully', function(done) {
         //uncomment below and update the code to test getDatabaseClusters
         //instance.getDatabaseClusters(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getDatabaseConfigurators', function() {
+      it('should call getDatabaseConfigurators successfully', function(done) {
+        //uncomment below and update the code to test getDatabaseConfigurators
+        //instance.getDatabaseConfigurators(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getDatabaseDefaultParameters', function() {
+      it('should call getDatabaseDefaultParameters successfully', function(done) {
+        //uncomment below and update the code to test getDatabaseDefaultParameters
+        //instance.getDatabaseDefaultParameters(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -218,6 +278,46 @@
         done();
       });
     });
+    describe('getDatabasePreset', function() {
+      it('should call getDatabasePreset successfully', function(done) {
+        //uncomment below and update the code to test getDatabasePreset
+        //instance.getDatabasePreset(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getDatabasePrivileges', function() {
+      it('should call getDatabasePrivileges successfully', function(done) {
+        //uncomment below and update the code to test getDatabasePrivileges
+        //instance.getDatabasePrivileges(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getDatabaseS3Backup', function() {
+      it('should call getDatabaseS3Backup successfully', function(done) {
+        //uncomment below and update the code to test getDatabaseS3Backup
+        //instance.getDatabaseS3Backup(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getDatabaseS3Backups', function() {
+      it('should call getDatabaseS3Backups successfully', function(done) {
+        //uncomment below and update the code to test getDatabaseS3Backups
+        //instance.getDatabaseS3Backups(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getDatabaseUser', function() {
       it('should call getDatabaseUser successfully', function(done) {
         //uncomment below and update the code to test getDatabaseUser
@@ -248,10 +348,30 @@
         done();
       });
     });
+    describe('performDatabaseClusterAction', function() {
+      it('should call performDatabaseClusterAction successfully', function(done) {
+        //uncomment below and update the code to test performDatabaseClusterAction
+        //instance.performDatabaseClusterAction(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('restoreDatabaseFromBackup', function() {
       it('should call restoreDatabaseFromBackup successfully', function(done) {
         //uncomment below and update the code to test restoreDatabaseFromBackup
         //instance.restoreDatabaseFromBackup(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('restoreDatabaseFromS3Backup', function() {
+      it('should call restoreDatabaseFromS3Backup successfully', function(done) {
+        //uncomment below and update the code to test restoreDatabaseFromS3Backup
+        //instance.restoreDatabaseFromS3Backup(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -268,6 +388,16 @@
         done();
       });
     });
+    describe('updateDatabaseBackup', function() {
+      it('should call updateDatabaseBackup successfully', function(done) {
+        //uncomment below and update the code to test updateDatabaseBackup
+        //instance.updateDatabaseBackup(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('updateDatabaseCluster', function() {
       it('should call updateDatabaseCluster successfully', function(done) {
         //uncomment below and update the code to test updateDatabaseCluster
@@ -278,10 +408,30 @@
         done();
       });
     });
+    describe('updateDatabaseClusterV2', function() {
+      it('should call updateDatabaseClusterV2 successfully', function(done) {
+        //uncomment below and update the code to test updateDatabaseClusterV2
+        //instance.updateDatabaseClusterV2(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('updateDatabaseInstance', function() {
       it('should call updateDatabaseInstance successfully', function(done) {
         //uncomment below and update the code to test updateDatabaseInstance
         //instance.updateDatabaseInstance(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('updateDatabaseS3Backup', function() {
+      it('should call updateDatabaseS3Backup successfully', function(done) {
+        //uncomment below and update the code to test updateDatabaseS3Backup
+        //instance.updateDatabaseS3Backup(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

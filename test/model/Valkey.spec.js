@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property notifyKeyspaceEvents (base name: "notify-keyspace-events")', function() {
+      // uncomment below and update the code to test the property notifyKeyspaceEvents
+      //var instance = new TimewebCloudApi.Valkey();
+      //expect(instance).to.be();
+    });
+
     it('should have the property clientOutputBufferLimitPubsub (base name: "client-output-buffer-limit pubsub")', function() {
       // uncomment below and update the code to test the property clientOutputBufferLimitPubsub
       //var instance = new TimewebCloudApi.Valkey();

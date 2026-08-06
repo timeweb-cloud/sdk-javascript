@@ -22,8 +22,8 @@ class DatabaseClusterNetworksInnerIpsInner {
     /**
      * Constructs a new <code>DatabaseClusterNetworksInnerIpsInner</code>.
      * @alias module:model/DatabaseClusterNetworksInnerIpsInner
-     * @param type {module:model/DatabaseClusterNetworksInnerIpsInner.TypeEnum} Тип IP-адреса сети
-     * @param ip {String} IP-адрес сети
+     * @param type {module:model/DatabaseClusterNetworksInnerIpsInner.TypeEnum} Тип IP-адреса сети.
+     * @param ip {String} IP-адрес сети.
      */
     constructor(type, ip) { 
         
@@ -91,13 +91,13 @@ class DatabaseClusterNetworksInnerIpsInner {
 DatabaseClusterNetworksInnerIpsInner.RequiredProperties = ["type", "ip"];
 
 /**
- * Тип IP-адреса сети
+ * Тип IP-адреса сети.
  * @member {module:model/DatabaseClusterNetworksInnerIpsInner.TypeEnum} type
  */
 DatabaseClusterNetworksInnerIpsInner.prototype['type'] = undefined;
 
 /**
- * IP-адрес сети
+ * IP-адрес сети.
  * @member {String} ip
  */
 DatabaseClusterNetworksInnerIpsInner.prototype['ip'] = undefined;
@@ -114,16 +114,16 @@ DatabaseClusterNetworksInnerIpsInner.prototype['ip'] = undefined;
 DatabaseClusterNetworksInnerIpsInner['TypeEnum'] = {
 
     /**
-     * value: "ipv4"
+     * value: "ipv_4"
      * @const
      */
-    "ipv4": "ipv4",
+    "4": "ipv_4",
 
     /**
-     * value: "ipv6"
+     * value: "ipv_6"
      * @const
      */
-    "ipv6": "ipv6"
+    "6": "ipv_6"
 };
 
 

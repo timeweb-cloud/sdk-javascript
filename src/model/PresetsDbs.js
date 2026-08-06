@@ -12,7 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import DbType from './DbType';
 
 /**
  * The PresetsDbs model module.
@@ -60,6 +59,9 @@ class PresetsDbs {
             if (data.hasOwnProperty('cpu')) {
                 obj['cpu'] = ApiClient.convertToType(data['cpu'], 'Number');
             }
+            if (data.hasOwnProperty('cpu_frequency')) {
+                obj['cpu_frequency'] = ApiClient.convertToType(data['cpu_frequency'], 'String');
+            }
             if (data.hasOwnProperty('ram')) {
                 obj['ram'] = ApiClient.convertToType(data['ram'], 'Number');
             }
@@ -67,13 +69,16 @@ class PresetsDbs {
                 obj['disk'] = ApiClient.convertToType(data['disk'], 'Number');
             }
             if (data.hasOwnProperty('type')) {
-                obj['type'] = DbType.constructFromObject(data['type']);
+                obj['type'] = ApiClient.convertToType(data['type'], 'String');
             }
             if (data.hasOwnProperty('price')) {
                 obj['price'] = ApiClient.convertToType(data['price'], 'Number');
             }
             if (data.hasOwnProperty('location')) {
                 obj['location'] = ApiClient.convertToType(data['location'], 'String');
+            }
+            if (data.hasOwnProperty('tags')) {
+                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
             }
         }
         return obj;
@@ -94,8 +99,20 @@ class PresetsDbs {
             throw new Error("Expected the field `description_short` to be a primitive type in the JSON string but got " + data['description_short']);
         }
         // ensure the json data is a string
+        if (data['cpu_frequency'] && !(typeof data['cpu_frequency'] === 'string' || data['cpu_frequency'] instanceof String)) {
+            throw new Error("Expected the field `cpu_frequency` to be a primitive type in the JSON string but got " + data['cpu_frequency']);
+        }
+        // ensure the json data is a string
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
+        }
+        // ensure the json data is a string
         if (data['location'] && !(typeof data['location'] === 'string' || data['location'] instanceof String)) {
             throw new Error("Expected the field `location` to be a primitive type in the JSON string but got " + data['location']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['tags'])) {
+            throw new Error("Expected the field `tags` to be an array in the JSON data but got " + data['tags']);
         }
 
         return true;
@@ -125,25 +142,32 @@ PresetsDbs.prototype['description'] = undefined;
 PresetsDbs.prototype['description_short'] = undefined;
 
 /**
- * Описание процессора тарифа.
+ * Количество ядер процессора тарифа.
  * @member {Number} cpu
  */
 PresetsDbs.prototype['cpu'] = undefined;
 
 /**
- * Описание ОЗУ тарифа.
+ * Частота процессора (в ГГц).
+ * @member {String} cpu_frequency
+ */
+PresetsDbs.prototype['cpu_frequency'] = undefined;
+
+/**
+ * Объём оперативной памяти тарифа (в Мб).
  * @member {Number} ram
  */
 PresetsDbs.prototype['ram'] = undefined;
 
 /**
- * Описание диска тарифа.
+ * Размер диска тарифа (в Мб).
  * @member {Number} disk
  */
 PresetsDbs.prototype['disk'] = undefined;
 
 /**
- * @member {module:model/DbType} type
+ * Семейство СУБД тарифа. Значение не совпадает с типом кластера, который передаётся в поле `type` при создании кластера (`POST /api/v1/databases`): там используется версионированный тип, например `postgres17`. Тарифы для Valkey возвращаются со значением `redis` — отдельного значения `valkey` в этом поле не бывает.
+ * @member {module:model/PresetsDbs.TypeEnum} type
  */
 PresetsDbs.prototype['type'] = undefined;
 
@@ -159,8 +183,77 @@ PresetsDbs.prototype['price'] = undefined;
  */
 PresetsDbs.prototype['location'] = undefined;
 
+/**
+ * Теги тарифа, в том числе тег группы тарифов, в пределах которой доступна смена тарифа.
+ * @member {Array.<String>} tags
+ */
+PresetsDbs.prototype['tags'] = undefined;
 
 
+
+
+
+/**
+ * Allowed values for the <code>type</code> property.
+ * @enum {String}
+ * @readonly
+ */
+PresetsDbs['TypeEnum'] = {
+
+    /**
+     * value: "mysql"
+     * @const
+     */
+    "mysql": "mysql",
+
+    /**
+     * value: "mysql5"
+     * @const
+     */
+    "mysql5": "mysql5",
+
+    /**
+     * value: "postgres"
+     * @const
+     */
+    "postgres": "postgres",
+
+    /**
+     * value: "redis"
+     * @const
+     */
+    "redis": "redis",
+
+    /**
+     * value: "mongodb"
+     * @const
+     */
+    "mongodb": "mongodb",
+
+    /**
+     * value: "opensearch"
+     * @const
+     */
+    "opensearch": "opensearch",
+
+    /**
+     * value: "clickhouse"
+     * @const
+     */
+    "clickhouse": "clickhouse",
+
+    /**
+     * value: "kafka"
+     * @const
+     */
+    "kafka": "kafka",
+
+    /**
+     * value: "rabbitmq"
+     * @const
+     */
+    "rabbitmq": "rabbitmq"
+};
 
 
 /**
@@ -177,16 +270,40 @@ PresetsDbs['LocationEnum'] = {
     "ru-1": "ru-1",
 
     /**
+     * value: "ru-3"
+     * @const
+     */
+    "ru-3": "ru-3",
+
+    /**
      * value: "pl-1"
      * @const
      */
     "pl-1": "pl-1",
 
     /**
-     * value: "kz-1"
+     * value: "nl-1"
      * @const
      */
-    "kz-1": "kz-1"
+    "nl-1": "nl-1",
+
+    /**
+     * value: "de-1"
+     * @const
+     */
+    "de-1": "de-1",
+
+    /**
+     * value: "us-2"
+     * @const
+     */
+    "us-2": "us-2",
+
+    /**
+     * value: "us-3"
+     * @const
+     */
+    "us-3": "us-3"
 };
 
 

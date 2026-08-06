@@ -25,16 +25,18 @@ class DatabaseAdmin {
      * Пользователь базы данных
      * @alias module:model/DatabaseAdmin
      * @param id {Number} ID для каждого экземпляра пользователя базы данных. Автоматически генерируется при создании.
-     * @param createdAt {String} Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда была создана база данных.
+     * @param createdAt {String} Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был создан пользователь базы данных.
      * @param login {String} Имя пользователя базы данных
      * @param password {String} Пароль пользователя базы данных
      * @param description {String} Описание пользователя базы данных
      * @param host {String} Хост пользователя
+     * @param forAll {Boolean} Флаг, выданы ли пользователю привилегии на все инстансы базы данных
+     * @param isResetPassword {Boolean} Флаг, был ли сброшен пароль пользователя
      * @param instances {Array.<module:model/DatabaseAdminInstancesInner>} 
      */
-    constructor(id, createdAt, login, password, description, host, instances) { 
+    constructor(id, createdAt, login, password, description, host, forAll, isResetPassword, instances) { 
         
-        DatabaseAdmin.initialize(this, id, createdAt, login, password, description, host, instances);
+        DatabaseAdmin.initialize(this, id, createdAt, login, password, description, host, forAll, isResetPassword, instances);
     }
 
     /**
@@ -42,13 +44,15 @@ class DatabaseAdmin {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, createdAt, login, password, description, host, instances) { 
+    static initialize(obj, id, createdAt, login, password, description, host, forAll, isResetPassword, instances) { 
         obj['id'] = id;
         obj['created_at'] = createdAt;
         obj['login'] = login;
         obj['password'] = password;
         obj['description'] = description;
         obj['host'] = host;
+        obj['for_all'] = forAll;
+        obj['is_reset_password'] = isResetPassword;
         obj['instances'] = instances;
     }
 
@@ -80,6 +84,12 @@ class DatabaseAdmin {
             }
             if (data.hasOwnProperty('host')) {
                 obj['host'] = ApiClient.convertToType(data['host'], 'String');
+            }
+            if (data.hasOwnProperty('for_all')) {
+                obj['for_all'] = ApiClient.convertToType(data['for_all'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_reset_password')) {
+                obj['is_reset_password'] = ApiClient.convertToType(data['is_reset_password'], 'Boolean');
             }
             if (data.hasOwnProperty('instances')) {
                 obj['instances'] = ApiClient.convertToType(data['instances'], [DatabaseAdminInstancesInner]);
@@ -137,7 +147,7 @@ class DatabaseAdmin {
 
 }
 
-DatabaseAdmin.RequiredProperties = ["id", "created_at", "login", "password", "description", "host", "instances"];
+DatabaseAdmin.RequiredProperties = ["id", "created_at", "login", "password", "description", "host", "for_all", "is_reset_password", "instances"];
 
 /**
  * ID для каждого экземпляра пользователя базы данных. Автоматически генерируется при создании.
@@ -146,7 +156,7 @@ DatabaseAdmin.RequiredProperties = ["id", "created_at", "login", "password", "de
 DatabaseAdmin.prototype['id'] = undefined;
 
 /**
- * Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда была создана база данных.
+ * Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был создан пользователь базы данных.
  * @member {String} created_at
  */
 DatabaseAdmin.prototype['created_at'] = undefined;
@@ -174,6 +184,18 @@ DatabaseAdmin.prototype['description'] = undefined;
  * @member {String} host
  */
 DatabaseAdmin.prototype['host'] = undefined;
+
+/**
+ * Флаг, выданы ли пользователю привилегии на все инстансы базы данных
+ * @member {Boolean} for_all
+ */
+DatabaseAdmin.prototype['for_all'] = undefined;
+
+/**
+ * Флаг, был ли сброшен пароль пользователя
+ * @member {Boolean} is_reset_password
+ */
+DatabaseAdmin.prototype['is_reset_password'] = undefined;
 
 /**
  * @member {Array.<module:model/DatabaseAdminInstancesInner>} instances

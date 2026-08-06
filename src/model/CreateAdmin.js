@@ -25,11 +25,10 @@ class CreateAdmin {
      * @alias module:model/CreateAdmin
      * @param login {String} Имя пользователя базы данных
      * @param password {String} Пароль пользователя базы данных
-     * @param privileges {Array.<module:model/PropertiesMysql>} Список привилегий пользователя базы данных
      */
-    constructor(login, password, privileges) { 
+    constructor(login, password) { 
         
-        CreateAdmin.initialize(this, login, password, privileges);
+        CreateAdmin.initialize(this, login, password);
     }
 
     /**
@@ -37,10 +36,9 @@ class CreateAdmin {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, login, password, privileges) { 
+    static initialize(obj, login, password) { 
         obj['login'] = login;
         obj['password'] = password;
-        obj['privileges'] = privileges;
     }
 
     /**
@@ -65,6 +63,9 @@ class CreateAdmin {
             }
             if (data.hasOwnProperty('instance_id')) {
                 obj['instance_id'] = ApiClient.convertToType(data['instance_id'], 'Number');
+            }
+            if (data.hasOwnProperty('for_all')) {
+                obj['for_all'] = ApiClient.convertToType(data['for_all'], 'Boolean');
             }
             if (data.hasOwnProperty('privileges')) {
                 obj['privileges'] = ApiClient.convertToType(data['privileges'], [PropertiesMysql]);
@@ -115,7 +116,7 @@ class CreateAdmin {
 
 }
 
-CreateAdmin.RequiredProperties = ["login", "password", "privileges"];
+CreateAdmin.RequiredProperties = ["login", "password"];
 
 /**
  * Имя пользователя базы данных
@@ -140,6 +141,12 @@ CreateAdmin.prototype['host'] = undefined;
  * @member {Number} instance_id
  */
 CreateAdmin.prototype['instance_id'] = undefined;
+
+/**
+ * Выдать привилегии на все инстансы базы данных
+ * @member {Boolean} for_all
+ */
+CreateAdmin.prototype['for_all'] = undefined;
 
 /**
  * Список привилегий пользователя базы данных

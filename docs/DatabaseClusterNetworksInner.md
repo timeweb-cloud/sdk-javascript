@@ -14,8 +14,6 @@ Name | Type | Description | Notes
 
 * `public` (value: `"public"`)
 
-* `local` (value: `"local"`)
-
 
 
 

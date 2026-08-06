@@ -78,6 +78,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property cpuFrequency (base name: "cpu_frequency")', function() {
+      // uncomment below and update the code to test the property cpuFrequency
+      //var instance = new TimewebCloudApi.PresetsDbs();
+      //expect(instance).to.be();
+    });
+
     it('should have the property ram (base name: "ram")', function() {
       // uncomment below and update the code to test the property ram
       //var instance = new TimewebCloudApi.PresetsDbs();
@@ -104,6 +110,12 @@
 
     it('should have the property location (base name: "location")', function() {
       // uncomment below and update the code to test the property location
+      //var instance = new TimewebCloudApi.PresetsDbs();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tags (base name: "tags")', function() {
+      // uncomment below and update the code to test the property tags
       //var instance = new TimewebCloudApi.PresetsDbs();
       //expect(instance).to.be();
     });

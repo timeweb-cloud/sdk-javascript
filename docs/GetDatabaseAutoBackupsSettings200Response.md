@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**meta** | [**Meta**](Meta.md) |  | 
-**autoBackupsSettings** | [**[AutoBackup]**](AutoBackup.md) |  | 
+**autoBackupsSettings** | [**AutoBackup**](AutoBackup.md) |  | 
 
 

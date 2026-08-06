@@ -13,7 +13,6 @@
 
 
 import ApiClient from "../ApiClient";
-import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
 import CreateVPC201Response from '../model/CreateVPC201Response';
 import CreateVpc from '../model/CreateVpc';
 import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
@@ -25,6 +24,7 @@ import GetImage404Response from '../model/GetImage404Response';
 import GetVPCPorts200Response from '../model/GetVPCPorts200Response';
 import GetVPCServices200Response from '../model/GetVPCServices200Response';
 import GetVPCs200Response from '../model/GetVPCs200Response';
+import UpdateDatabaseInstance409Response from '../model/UpdateDatabaseInstance409Response';
 import UpdateVpc from '../model/UpdateVpc';
 
 /**

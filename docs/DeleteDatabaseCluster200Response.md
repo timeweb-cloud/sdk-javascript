@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hash** | **String** | Хеш, который совместно с кодом авторизации надо будет отправить для удаления | 
+**databaseDelete** | [**DeleteDatabaseCluster200ResponseDatabaseDelete**](DeleteDatabaseCluster200ResponseDatabaseDelete.md) |  | 
 
 

@@ -20,13 +20,6 @@ import ApiClient from '../ApiClient';
 export default class Clickhouse {
     
         /**
-         * value: "ALTER"
-         * @const
-         */
-        "ALTER" = "ALTER";
-
-    
-        /**
          * value: "ALTER_TABLE"
          * @const
          */
@@ -38,13 +31,6 @@ export default class Clickhouse {
          * @const
          */
         "ALTER_VIEW" = "ALTER_VIEW";
-
-    
-        /**
-         * value: "CREATE"
-         * @const
-         */
-        "CREATE" = "CREATE";
 
     
         /**
@@ -66,13 +52,6 @@ export default class Clickhouse {
          * @const
          */
         "CREATE_TABLE" = "CREATE_TABLE";
-
-    
-        /**
-         * value: "DROP"
-         * @const
-         */
-        "DROP" = "DROP";
 
     
         /**

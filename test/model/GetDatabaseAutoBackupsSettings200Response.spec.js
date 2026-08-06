@@ -54,12 +54,6 @@
       //expect(instance).to.be.a(TimewebCloudApi.GetDatabaseAutoBackupsSettings200Response);
     });
 
-    it('should have the property meta (base name: "meta")', function() {
-      // uncomment below and update the code to test the property meta
-      //var instance = new TimewebCloudApi.GetDatabaseAutoBackupsSettings200Response();
-      //expect(instance).to.be();
-    });
-
     it('should have the property autoBackupsSettings (base name: "auto_backups_settings")', function() {
       // uncomment below and update the code to test the property autoBackupsSettings
       //var instance = new TimewebCloudApi.GetDatabaseAutoBackupsSettings200Response();

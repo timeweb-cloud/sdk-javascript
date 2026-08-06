@@ -17,7 +17,6 @@ import AddCdnCertificate422Response from '../model/AddCdnCertificate422Response'
 import AddCertificate from '../model/AddCertificate';
 import ClearCache from '../model/ClearCache';
 import CreateCdnResource201Response from '../model/CreateCdnResource201Response';
-import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
 import CreateHttpResource from '../model/CreateHttpResource';
 import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
 import GetCdnCertificateTasks200Response from '../model/GetCdnCertificateTasks200Response';
@@ -35,6 +34,7 @@ import GetFinances500Response from '../model/GetFinances500Response';
 import GetImage404Response from '../model/GetImage404Response';
 import IssueCertificate from '../model/IssueCertificate';
 import PreloadCache from '../model/PreloadCache';
+import UpdateDatabaseInstance409Response from '../model/UpdateDatabaseInstance409Response';
 import UpdateHttpResource from '../model/UpdateHttpResource';
 
 /**

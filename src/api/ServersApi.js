@@ -16,7 +16,6 @@ import ApiClient from "../ApiClient";
 import AddServerIP201Response from '../model/AddServerIP201Response';
 import AddServerIPRequest from '../model/AddServerIPRequest';
 import AutoBackup from '../model/AutoBackup';
-import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
 import CreateServer from '../model/CreateServer';
 import CreateServer201Response from '../model/CreateServer201Response';
 import CreateServerDisk201Response from '../model/CreateServerDisk201Response';
@@ -27,6 +26,7 @@ import DeleteServer200Response from '../model/DeleteServer200Response';
 import DeleteServerIPRequest from '../model/DeleteServerIPRequest';
 import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
 import GetConfigurators200Response from '../model/GetConfigurators200Response';
+import GetDatabaseAutoBackupsSettings200Response from '../model/GetDatabaseAutoBackupsSettings200Response';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances429Response from '../model/GetFinances429Response';
@@ -35,7 +35,6 @@ import GetImage404Response from '../model/GetImage404Response';
 import GetOsList200Response from '../model/GetOsList200Response';
 import GetRestorePoint200Response from '../model/GetRestorePoint200Response';
 import GetRestorePoints200Response from '../model/GetRestorePoints200Response';
-import GetServerDiskAutoBackupSettings200Response from '../model/GetServerDiskAutoBackupSettings200Response';
 import GetServerDiskBackup200Response from '../model/GetServerDiskBackup200Response';
 import GetServerDiskBackups200Response from '../model/GetServerDiskBackups200Response';
 import GetServerDisks200Response from '../model/GetServerDisks200Response';
@@ -48,6 +47,7 @@ import GetServersPresets200Response from '../model/GetServersPresets200Response'
 import GetSoftware200Response from '../model/GetSoftware200Response';
 import PerformActionOnBackupRequest from '../model/PerformActionOnBackupRequest';
 import PerformActionOnServerRequest from '../model/PerformActionOnServerRequest';
+import UpdateDatabaseInstance409Response from '../model/UpdateDatabaseInstance409Response';
 import UpdateServer from '../model/UpdateServer';
 import UpdateServerDiskBackupRequest from '../model/UpdateServerDiskBackupRequest';
 import UpdateServerDiskRequest from '../model/UpdateServerDiskRequest';
@@ -838,7 +838,7 @@ export default class ServersApi {
      * Callback function to receive the result of the getServerDiskAutoBackupSettings operation.
      * @callback module:api/ServersApi~getServerDiskAutoBackupSettingsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetServerDiskAutoBackupSettings200Response} data The data returned by the service call.
+     * @param {module:model/GetDatabaseAutoBackupsSettings200Response} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -848,7 +848,7 @@ export default class ServersApi {
      * @param {Number} serverId ID облачного сервера.
      * @param {Number} diskId ID диска сервера.
      * @param {module:api/ServersApi~getServerDiskAutoBackupSettingsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetServerDiskAutoBackupSettings200Response}
+     * data is of type: {@link module:model/GetDatabaseAutoBackupsSettings200Response}
      */
     getServerDiskAutoBackupSettings(serverId, diskId, callback) {
       let postBody = null;
@@ -875,7 +875,7 @@ export default class ServersApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetServerDiskAutoBackupSettings200Response;
+      let returnType = GetDatabaseAutoBackupsSettings200Response;
       return this.apiClient.callApi(
         '/api/v1/servers/{server_id}/disks/{disk_id}/auto-backups', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1899,7 +1899,7 @@ export default class ServersApi {
      * Callback function to receive the result of the updateServerDiskAutoBackupSettings operation.
      * @callback module:api/ServersApi~updateServerDiskAutoBackupSettingsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetServerDiskAutoBackupSettings200Response} data The data returned by the service call.
+     * @param {module:model/GetDatabaseAutoBackupsSettings200Response} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -1911,7 +1911,7 @@ export default class ServersApi {
      * @param {Object} opts Optional parameters
      * @param {module:model/AutoBackup} [autoBackup] При значении `is_enabled`: `true`, поля `copy_count`, `creation_start_at`, `interval` являются обязательными
      * @param {module:api/ServersApi~updateServerDiskAutoBackupSettingsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetServerDiskAutoBackupSettings200Response}
+     * data is of type: {@link module:model/GetDatabaseAutoBackupsSettings200Response}
      */
     updateServerDiskAutoBackupSettings(serverId, diskId, opts, callback) {
       opts = opts || {};
@@ -1939,7 +1939,7 @@ export default class ServersApi {
       let authNames = ['Bearer'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = GetServerDiskAutoBackupSettings200Response;
+      let returnType = GetDatabaseAutoBackupsSettings200Response;
       return this.apiClient.callApi(
         '/api/v1/servers/{server_id}/disks/{disk_id}/auto-backups', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,

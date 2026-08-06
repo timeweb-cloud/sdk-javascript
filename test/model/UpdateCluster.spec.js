@@ -66,8 +66,20 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property configuration (base name: "configuration")', function() {
+      // uncomment below and update the code to test the property configuration
+      //var instance = new TimewebCloudApi.UpdateCluster();
+      //expect(instance).to.be();
+    });
+
     it('should have the property configParameters (base name: "config_parameters")', function() {
       // uncomment below and update the code to test the property configParameters
+      //var instance = new TimewebCloudApi.UpdateCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property hashType (base name: "hash_type")', function() {
+      // uncomment below and update the code to test the property hashType
       //var instance = new TimewebCloudApi.UpdateCluster();
       //expect(instance).to.be();
     });
@@ -84,8 +96,26 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property isPublicIpv6 (base name: "is_public_ipv6")', function() {
-      // uncomment below and update the code to test the property isPublicIpv6
+    it('should have the property isEnabledPublicIpv6 (base name: "is_enabled_public_ipv6")', function() {
+      // uncomment below and update the code to test the property isEnabledPublicIpv6
+      //var instance = new TimewebCloudApi.UpdateCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isSecureConnectionEnable (base name: "is_secure_connection_enable")', function() {
+      // uncomment below and update the code to test the property isSecureConnectionEnable
+      //var instance = new TimewebCloudApi.UpdateCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maintenanceSlot (base name: "maintenance_slot")', function() {
+      // uncomment below and update the code to test the property maintenanceSlot
+      //var instance = new TimewebCloudApi.UpdateCluster();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property diskAutoscaling (base name: "disk_autoscaling")', function() {
+      // uncomment below and update the code to test the property diskAutoscaling
       //var instance = new TimewebCloudApi.UpdateCluster();
       //expect(instance).to.be();
     });

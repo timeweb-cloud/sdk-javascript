@@ -78,6 +78,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property forAll (base name: "for_all")', function() {
+      // uncomment below and update the code to test the property forAll
+      //var instance = new TimewebCloudApi.CreateAdmin();
+      //expect(instance).to.be();
+    });
+
     it('should have the property privileges (base name: "privileges")', function() {
       // uncomment below and update the code to test the property privileges
       //var instance = new TimewebCloudApi.CreateAdmin();

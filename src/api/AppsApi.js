@@ -19,7 +19,6 @@ import AppsPresets from '../model/AppsPresets';
 import AvailableFrameworks from '../model/AvailableFrameworks';
 import CreateApp from '../model/CreateApp';
 import CreateApp201Response from '../model/CreateApp201Response';
-import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
 import CreateDeploy201Response from '../model/CreateDeploy201Response';
 import CreateDeployRequest from '../model/CreateDeployRequest';
 import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
@@ -39,6 +38,7 @@ import GetProviders200Response from '../model/GetProviders200Response';
 import GetRepositories200Response from '../model/GetRepositories200Response';
 import GetServerStatistics200Response from '../model/GetServerStatistics200Response';
 import UpdateAppSettings200Response from '../model/UpdateAppSettings200Response';
+import UpdateDatabaseInstance409Response from '../model/UpdateDatabaseInstance409Response';
 import UpdateSettings from '../model/UpdateSettings';
 
 /**

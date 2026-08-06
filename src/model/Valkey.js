@@ -51,6 +51,9 @@ class Valkey {
             if (data.hasOwnProperty('client-output-buffer-limit normal')) {
                 obj['client-output-buffer-limit normal'] = ApiClient.convertToType(data['client-output-buffer-limit normal'], 'String');
             }
+            if (data.hasOwnProperty('notify-keyspace-events')) {
+                obj['notify-keyspace-events'] = ApiClient.convertToType(data['notify-keyspace-events'], 'String');
+            }
             if (data.hasOwnProperty('client-output-buffer-limit pubsub')) {
                 obj['client-output-buffer-limit pubsub'] = ApiClient.convertToType(data['client-output-buffer-limit pubsub'], 'String');
             }
@@ -94,6 +97,10 @@ class Valkey {
         // ensure the json data is a string
         if (data['client-output-buffer-limit normal'] && !(typeof data['client-output-buffer-limit normal'] === 'string' || data['client-output-buffer-limit normal'] instanceof String)) {
             throw new Error("Expected the field `client-output-buffer-limit normal` to be a primitive type in the JSON string but got " + data['client-output-buffer-limit normal']);
+        }
+        // ensure the json data is a string
+        if (data['notify-keyspace-events'] && !(typeof data['notify-keyspace-events'] === 'string' || data['notify-keyspace-events'] instanceof String)) {
+            throw new Error("Expected the field `notify-keyspace-events` to be a primitive type in the JSON string but got " + data['notify-keyspace-events']);
         }
         // ensure the json data is a string
         if (data['client-output-buffer-limit pubsub'] && !(typeof data['client-output-buffer-limit pubsub'] === 'string' || data['client-output-buffer-limit pubsub'] instanceof String)) {
@@ -149,6 +156,12 @@ class Valkey {
  * @member {String} client-output-buffer-limit normal
  */
 Valkey.prototype['client-output-buffer-limit normal'] = undefined;
+
+/**
+ * Настройка уведомлений о событиях пространства ключей (`valkey` | `valkey7` | `valkey8_1` | `valkey9_1`).
+ * @member {String} notify-keyspace-events
+ */
+Valkey.prototype['notify-keyspace-events'] = undefined;
 
 /**
  * Ограничение буфера вывода для клиентов pub/sub. Формат: `hard-limit soft-limit soft-seconds` (`valkey` | `valkey7` | `valkey8_1` | `valkey9_1`).

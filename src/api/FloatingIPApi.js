@@ -14,7 +14,6 @@
 
 import ApiClient from "../ApiClient";
 import BindFloatingIp from '../model/BindFloatingIp';
-import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
 import CreateFloatingIp from '../model/CreateFloatingIp';
 import CreateFloatingIp201Response from '../model/CreateFloatingIp201Response';
 import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
@@ -24,6 +23,7 @@ import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetFloatingIps200Response from '../model/GetFloatingIps200Response';
 import GetImage404Response from '../model/GetImage404Response';
+import UpdateDatabaseInstance409Response from '../model/UpdateDatabaseInstance409Response';
 import UpdateFloatingIp from '../model/UpdateFloatingIp';
 
 /**

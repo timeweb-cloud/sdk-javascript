@@ -15,7 +15,6 @@
 import ApiClient from "../ApiClient";
 import AddSubdomain201Response from '../model/AddSubdomain201Response';
 import CheckDomain200Response from '../model/CheckDomain200Response';
-import CreateDatabaseBackup409Response from '../model/CreateDatabaseBackup409Response';
 import CreateDns from '../model/CreateDns';
 import CreateDnsV2 from '../model/CreateDnsV2';
 import CreateDomainDNSRecord201Response from '../model/CreateDomainDNSRecord201Response';
@@ -37,6 +36,7 @@ import GetPersons200Response from '../model/GetPersons200Response';
 import GetTLD200Response from '../model/GetTLD200Response';
 import GetTLDs200Response from '../model/GetTLDs200Response';
 import Person2 from '../model/Person2';
+import UpdateDatabaseInstance409Response from '../model/UpdateDatabaseInstance409Response';
 import UpdateDomain from '../model/UpdateDomain';
 import UpdateDomainAutoProlongation200Response from '../model/UpdateDomainAutoProlongation200Response';
 import UpdateDomainNameServers from '../model/UpdateDomainNameServers';
