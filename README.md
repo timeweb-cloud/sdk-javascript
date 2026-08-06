@@ -330,6 +330,26 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.BalancersApi* | [**getBalancersPresets**](docs/BalancersApi.md#getBalancersPresets) | **GET** /api/v1/presets/balancers | Получение списка тарифов для балансировщика
 *TimewebCloudApi.BalancersApi* | [**updateBalancer**](docs/BalancersApi.md#updateBalancer) | **PATCH** /api/v1/balancers/{balancer_id} | Обновление балансировщика
 *TimewebCloudApi.BalancersApi* | [**updateBalancerRule**](docs/BalancersApi.md#updateBalancerRule) | **PATCH** /api/v1/balancers/{balancer_id}/rules/{rule_id} | Обновление правила для балансировщика
+*TimewebCloudApi.CDNApi* | [**addCdnCertificate**](docs/CDNApi.md#addCdnCertificate) | **POST** /api/v1/cdn/certificates | Загрузка собственного сертификата CDN
+*TimewebCloudApi.CDNApi* | [**archiveCdnCertificateTask**](docs/CDNApi.md#archiveCdnCertificateTask) | **POST** /api/v1/cdn/certificates/tasks/{task_id}/archive | Архивация задачи на выпуск сертификата
+*TimewebCloudApi.CDNApi* | [**clearCdnResourceCache**](docs/CDNApi.md#clearCdnResourceCache) | **POST** /api/v1/cdn/http-resources/{resource_id}/clear-cache | Очистка кэша CDN-ресурса
+*TimewebCloudApi.CDNApi* | [**createCdnResource**](docs/CDNApi.md#createCdnResource) | **POST** /api/v1/cdn/http-resources | Создание CDN-ресурса
+*TimewebCloudApi.CDNApi* | [**deleteCdnCertificate**](docs/CDNApi.md#deleteCdnCertificate) | **DELETE** /api/v1/cdn/certificates/{certificate_id} | Удаление сертификата CDN
+*TimewebCloudApi.CDNApi* | [**deleteCdnResource**](docs/CDNApi.md#deleteCdnResource) | **DELETE** /api/v1/cdn/http-resources/{resource_id} | Удаление CDN-ресурса
+*TimewebCloudApi.CDNApi* | [**getCdnCertificateTasks**](docs/CDNApi.md#getCdnCertificateTasks) | **GET** /api/v1/cdn/certificates/tasks | Получение списка задач на выпуск сертификатов
+*TimewebCloudApi.CDNApi* | [**getCdnCertificates**](docs/CDNApi.md#getCdnCertificates) | **GET** /api/v1/cdn/certificates | Получение списка сертификатов CDN
+*TimewebCloudApi.CDNApi* | [**getCdnOriginNodes**](docs/CDNApi.md#getCdnOriginNodes) | **GET** /api/v1/cdn/nodes/origin | Получение списка подсетей узлов CDN
+*TimewebCloudApi.CDNApi* | [**getCdnPresets**](docs/CDNApi.md#getCdnPresets) | **GET** /api/v1/cdn/presets | Получение списка тарифов CDN
+*TimewebCloudApi.CDNApi* | [**getCdnResource**](docs/CDNApi.md#getCdnResource) | **GET** /api/v1/cdn/http-resources/{resource_id} | Получение CDN-ресурса
+*TimewebCloudApi.CDNApi* | [**getCdnResourceConfiguration**](docs/CDNApi.md#getCdnResourceConfiguration) | **GET** /api/v1/cdn/http-resources/{resource_id}/configuration | Получение конфигурации CDN-ресурса
+*TimewebCloudApi.CDNApi* | [**getCdnResourceNodes**](docs/CDNApi.md#getCdnResourceNodes) | **GET** /api/v1/cdn/nodes/http-resources/{resource_id} | Получение списка раздающих узлов CDN-ресурса
+*TimewebCloudApi.CDNApi* | [**getCdnResourceStatistics**](docs/CDNApi.md#getCdnResourceStatistics) | **GET** /api/v1/cdn/http-resources/{resource_id}/statistics | Получение статистики CDN-ресурса
+*TimewebCloudApi.CDNApi* | [**getCdnResources**](docs/CDNApi.md#getCdnResources) | **GET** /api/v1/cdn/http-resources | Получение списка CDN-ресурсов
+*TimewebCloudApi.CDNApi* | [**issueCdnCertificate**](docs/CDNApi.md#issueCdnCertificate) | **POST** /api/v1/cdn/certificates/issue | Выпуск сертификата Let&#39;s Encrypt для CDN-ресурса
+*TimewebCloudApi.CDNApi* | [**preloadCdnResourceCache**](docs/CDNApi.md#preloadCdnResourceCache) | **POST** /api/v1/cdn/http-resources/{resource_id}/preload-cache | Предварительная загрузка кэша CDN-ресурса
+*TimewebCloudApi.CDNApi* | [**resumeCdnResource**](docs/CDNApi.md#resumeCdnResource) | **POST** /api/v1/cdn/http-resources/{resource_id}/resume | Возобновление раздачи CDN-ресурса
+*TimewebCloudApi.CDNApi* | [**suspendCdnResource**](docs/CDNApi.md#suspendCdnResource) | **POST** /api/v1/cdn/http-resources/{resource_id}/suspend | Приостановка раздачи CDN-ресурса
+*TimewebCloudApi.CDNApi* | [**updateCdnResource**](docs/CDNApi.md#updateCdnResource) | **PATCH** /api/v1/cdn/http-resources/{resource_id} | Изменение CDN-ресурса
 *TimewebCloudApi.ContainerRegistryApi* | [**createRegistry**](docs/ContainerRegistryApi.md#createRegistry) | **POST** /api/v1/container-registry | Создание реестра
 *TimewebCloudApi.ContainerRegistryApi* | [**deleteRegistry**](docs/ContainerRegistryApi.md#deleteRegistry) | **DELETE** /api/v1/container-registry/{registry_id} | Удаление реестра
 *TimewebCloudApi.ContainerRegistryApi* | [**getRegistries**](docs/ContainerRegistryApi.md#getRegistries) | **GET** /api/v1/container-registry | Получение списка реестров контейнеров
@@ -623,6 +643,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.AddBalancerToProject200Response](docs/AddBalancerToProject200Response.md)
  - [TimewebCloudApi.AddBalancerToProjectRequest](docs/AddBalancerToProjectRequest.md)
  - [TimewebCloudApi.AddBitbucket](docs/AddBitbucket.md)
+ - [TimewebCloudApi.AddCdnCertificate422Response](docs/AddCdnCertificate422Response.md)
+ - [TimewebCloudApi.AddCertificate](docs/AddCertificate.md)
  - [TimewebCloudApi.AddClusterToProjectRequest](docs/AddClusterToProjectRequest.md)
  - [TimewebCloudApi.AddCountries](docs/AddCountries.md)
  - [TimewebCloudApi.AddCountriesToAllowedList201Response](docs/AddCountriesToAllowedList201Response.md)
@@ -691,7 +713,10 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.BucketUser](docs/BucketUser.md)
  - [TimewebCloudApi.BucketWebsiteConfig](docs/BucketWebsiteConfig.md)
  - [TimewebCloudApi.BucketWebsiteConfigErrorPagesInner](docs/BucketWebsiteConfigErrorPagesInner.md)
+ - [TimewebCloudApi.Certificate](docs/Certificate.md)
+ - [TimewebCloudApi.CertificateTask](docs/CertificateTask.md)
  - [TimewebCloudApi.CheckDomain200Response](docs/CheckDomain200Response.md)
+ - [TimewebCloudApi.ClearCache](docs/ClearCache.md)
  - [TimewebCloudApi.Clickhouse](docs/Clickhouse.md)
  - [TimewebCloudApi.ClusterEdit](docs/ClusterEdit.md)
  - [TimewebCloudApi.ClusterEditOidcProvider](docs/ClusterEditOidcProvider.md)
@@ -709,10 +734,28 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Commit](docs/Commit.md)
  - [TimewebCloudApi.ComponentsSchemasBaseError](docs/ComponentsSchemasBaseError.md)
  - [TimewebCloudApi.ComponentsSchemasMeta](docs/ComponentsSchemasMeta.md)
+ - [TimewebCloudApi.ConfigAccess](docs/ConfigAccess.md)
+ - [TimewebCloudApi.ConfigCache](docs/ConfigCache.md)
+ - [TimewebCloudApi.ConfigCacheAlwaysOnline](docs/ConfigCacheAlwaysOnline.md)
+ - [TimewebCloudApi.ConfigCacheBrowser](docs/ConfigCacheBrowser.md)
+ - [TimewebCloudApi.ConfigCacheCdn](docs/ConfigCacheCdn.md)
+ - [TimewebCloudApi.ConfigCacheCdnTtl](docs/ConfigCacheCdnTtl.md)
+ - [TimewebCloudApi.ConfigCacheQueryArgs](docs/ConfigCacheQueryArgs.md)
+ - [TimewebCloudApi.ConfigDelivery](docs/ConfigDelivery.md)
+ - [TimewebCloudApi.ConfigDeliveryPackaging](docs/ConfigDeliveryPackaging.md)
+ - [TimewebCloudApi.ConfigDeliveryPackagingMp4](docs/ConfigDeliveryPackagingMp4.md)
+ - [TimewebCloudApi.ConfigDomains](docs/ConfigDomains.md)
+ - [TimewebCloudApi.ConfigHttpHeaders](docs/ConfigHttpHeaders.md)
+ - [TimewebCloudApi.ConfigHttpHeadersCors](docs/ConfigHttpHeadersCors.md)
+ - [TimewebCloudApi.ConfigOrigin](docs/ConfigOrigin.md)
+ - [TimewebCloudApi.ConfigOriginAws](docs/ConfigOriginAws.md)
  - [TimewebCloudApi.ConfigParameters](docs/ConfigParameters.md)
  - [TimewebCloudApi.ConfigParametersMysql](docs/ConfigParametersMysql.md)
  - [TimewebCloudApi.ConfigParametersPostgres](docs/ConfigParametersPostgres.md)
  - [TimewebCloudApi.ConfigParametersValkey](docs/ConfigParametersValkey.md)
+ - [TimewebCloudApi.ConfigRobots](docs/ConfigRobots.md)
+ - [TimewebCloudApi.ConfigSecurity](docs/ConfigSecurity.md)
+ - [TimewebCloudApi.ConfigSecuritySecureToken](docs/ConfigSecuritySecureToken.md)
  - [TimewebCloudApi.ContainerRegistryPresetsInner](docs/ContainerRegistryPresetsInner.md)
  - [TimewebCloudApi.ContainerRegistryRepositoriesInner](docs/ContainerRegistryRepositoriesInner.md)
  - [TimewebCloudApi.CreateAdmin](docs/CreateAdmin.md)
@@ -725,6 +768,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateBalancer200Response](docs/CreateBalancer200Response.md)
  - [TimewebCloudApi.CreateBalancerCertificates](docs/CreateBalancerCertificates.md)
  - [TimewebCloudApi.CreateBalancerRule200Response](docs/CreateBalancerRule200Response.md)
+ - [TimewebCloudApi.CreateCdnResource201Response](docs/CreateCdnResource201Response.md)
  - [TimewebCloudApi.CreateCluster](docs/CreateCluster.md)
  - [TimewebCloudApi.CreateClusterAdmin](docs/CreateClusterAdmin.md)
  - [TimewebCloudApi.CreateClusterInstance](docs/CreateClusterInstance.md)
@@ -749,6 +793,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateDomainRequest201Response](docs/CreateDomainRequest201Response.md)
  - [TimewebCloudApi.CreateFloatingIp](docs/CreateFloatingIp.md)
  - [TimewebCloudApi.CreateFloatingIp201Response](docs/CreateFloatingIp201Response.md)
+ - [TimewebCloudApi.CreateHttpResource](docs/CreateHttpResource.md)
  - [TimewebCloudApi.CreateInstance](docs/CreateInstance.md)
  - [TimewebCloudApi.CreateKey201Response](docs/CreateKey201Response.md)
  - [TimewebCloudApi.CreateKeyRequest](docs/CreateKeyRequest.md)
@@ -878,6 +923,14 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetBalancers200Response](docs/GetBalancers200Response.md)
  - [TimewebCloudApi.GetBalancersPresets200Response](docs/GetBalancersPresets200Response.md)
  - [TimewebCloudApi.GetBranches200Response](docs/GetBranches200Response.md)
+ - [TimewebCloudApi.GetCdnCertificateTasks200Response](docs/GetCdnCertificateTasks200Response.md)
+ - [TimewebCloudApi.GetCdnCertificates200Response](docs/GetCdnCertificates200Response.md)
+ - [TimewebCloudApi.GetCdnOriginNodes200Response](docs/GetCdnOriginNodes200Response.md)
+ - [TimewebCloudApi.GetCdnPresets200Response](docs/GetCdnPresets200Response.md)
+ - [TimewebCloudApi.GetCdnResourceConfiguration200Response](docs/GetCdnResourceConfiguration200Response.md)
+ - [TimewebCloudApi.GetCdnResourceNodes200Response](docs/GetCdnResourceNodes200Response.md)
+ - [TimewebCloudApi.GetCdnResourceStatistics200Response](docs/GetCdnResourceStatistics200Response.md)
+ - [TimewebCloudApi.GetCdnResources200Response](docs/GetCdnResources200Response.md)
  - [TimewebCloudApi.GetCommits200Response](docs/GetCommits200Response.md)
  - [TimewebCloudApi.GetConfigurators200Response](docs/GetConfigurators200Response.md)
  - [TimewebCloudApi.GetCountries200Response](docs/GetCountries200Response.md)
@@ -962,6 +1015,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetVPCPorts200Response](docs/GetVPCPorts200Response.md)
  - [TimewebCloudApi.GetVPCServices200Response](docs/GetVPCServices200Response.md)
  - [TimewebCloudApi.GetVPCs200Response](docs/GetVPCs200Response.md)
+ - [TimewebCloudApi.HttpResource](docs/HttpResource.md)
+ - [TimewebCloudApi.HttpResourceConfig](docs/HttpResourceConfig.md)
  - [TimewebCloudApi.Image](docs/Image.md)
  - [TimewebCloudApi.ImageDownload](docs/ImageDownload.md)
  - [TimewebCloudApi.ImageDownloadResponse](docs/ImageDownloadResponse.md)
@@ -977,6 +1032,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.InfoServicePrice](docs/InfoServicePrice.md)
  - [TimewebCloudApi.Invoice](docs/Invoice.md)
  - [TimewebCloudApi.Ip](docs/Ip.md)
+ - [TimewebCloudApi.IssueCertificate](docs/IssueCertificate.md)
  - [TimewebCloudApi.K8SVersionsResponse](docs/K8SVersionsResponse.md)
  - [TimewebCloudApi.Kafka](docs/Kafka.md)
  - [TimewebCloudApi.Knowledgebase](docs/Knowledgebase.md)
@@ -1031,6 +1087,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.OS](docs/OS.md)
  - [TimewebCloudApi.Opensearch](docs/Opensearch.md)
  - [TimewebCloudApi.Org](docs/Org.md)
+ - [TimewebCloudApi.OriginNode](docs/OriginNode.md)
+ - [TimewebCloudApi.OriginServer](docs/OriginServer.md)
  - [TimewebCloudApi.OutgoingIsDisabled](docs/OutgoingIsDisabled.md)
  - [TimewebCloudApi.OutgoingIsEnabled](docs/OutgoingIsEnabled.md)
  - [TimewebCloudApi.PerformActionOnBackupRequest](docs/PerformActionOnBackupRequest.md)
@@ -1040,6 +1098,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Policy](docs/Policy.md)
  - [TimewebCloudApi.Postgres](docs/Postgres.md)
  - [TimewebCloudApi.Postgresql](docs/Postgresql.md)
+ - [TimewebCloudApi.PreloadCache](docs/PreloadCache.md)
+ - [TimewebCloudApi.Preset](docs/Preset.md)
  - [TimewebCloudApi.PresetsBalancer](docs/PresetsBalancer.md)
  - [TimewebCloudApi.PresetsDbs](docs/PresetsDbs.md)
  - [TimewebCloudApi.PresetsResponse](docs/PresetsResponse.md)
@@ -1127,6 +1187,9 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.StaticRouteOut](docs/StaticRouteOut.md)
  - [TimewebCloudApi.StaticRouteResponse](docs/StaticRouteResponse.md)
  - [TimewebCloudApi.StaticRoutesResponse](docs/StaticRoutesResponse.md)
+ - [TimewebCloudApi.Statistics](docs/Statistics.md)
+ - [TimewebCloudApi.StatisticsRequestsInner](docs/StatisticsRequestsInner.md)
+ - [TimewebCloudApi.StatisticsTrafficInner](docs/StatisticsTrafficInner.md)
  - [TimewebCloudApi.Status](docs/Status.md)
  - [TimewebCloudApi.StatusCompanyInfo](docs/StatusCompanyInfo.md)
  - [TimewebCloudApi.Subdomain](docs/Subdomain.md)
@@ -1135,6 +1198,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.TokenStatistic](docs/TokenStatistic.md)
  - [TimewebCloudApi.TopLevelDomain](docs/TopLevelDomain.md)
  - [TimewebCloudApi.TopLevelDomainAllowedBuyPeriodsInner](docs/TopLevelDomainAllowedBuyPeriodsInner.md)
+ - [TimewebCloudApi.TrafficUsage](docs/TrafficUsage.md)
  - [TimewebCloudApi.TransferStatus](docs/TransferStatus.md)
  - [TimewebCloudApi.TransferStatusErrorsInner](docs/TransferStatusErrorsInner.md)
  - [TimewebCloudApi.TransferStorageRequest](docs/TransferStorageRequest.md)
@@ -1153,6 +1217,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateDomainNameServers](docs/UpdateDomainNameServers.md)
  - [TimewebCloudApi.UpdateDomainNameServersNameServersInner](docs/UpdateDomainNameServersNameServersInner.md)
  - [TimewebCloudApi.UpdateFloatingIp](docs/UpdateFloatingIp.md)
+ - [TimewebCloudApi.UpdateHttpResource](docs/UpdateHttpResource.md)
  - [TimewebCloudApi.UpdateInstance](docs/UpdateInstance.md)
  - [TimewebCloudApi.UpdateKeyRequest](docs/UpdateKeyRequest.md)
  - [TimewebCloudApi.UpdateKnowledgebase](docs/UpdateKnowledgebase.md)
@@ -1184,6 +1249,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UploadSuccessfulResponse](docs/UploadSuccessfulResponse.md)
  - [TimewebCloudApi.UrlStatus](docs/UrlStatus.md)
  - [TimewebCloudApi.Use](docs/Use.md)
+ - [TimewebCloudApi.UserNode](docs/UserNode.md)
  - [TimewebCloudApi.Valkey](docs/Valkey.md)
  - [TimewebCloudApi.Vds](docs/Vds.md)
  - [TimewebCloudApi.VdsDisksInner](docs/VdsDisksInner.md)

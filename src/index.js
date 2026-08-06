@@ -16,6 +16,8 @@ import ApiClient from './ApiClient';
 import AddBalancerToProject200Response from './model/AddBalancerToProject200Response';
 import AddBalancerToProjectRequest from './model/AddBalancerToProjectRequest';
 import AddBitbucket from './model/AddBitbucket';
+import AddCdnCertificate422Response from './model/AddCdnCertificate422Response';
+import AddCertificate from './model/AddCertificate';
 import AddClusterToProjectRequest from './model/AddClusterToProjectRequest';
 import AddCountries from './model/AddCountries';
 import AddCountriesToAllowedList201Response from './model/AddCountriesToAllowedList201Response';
@@ -84,7 +86,10 @@ import BucketDiskStats from './model/BucketDiskStats';
 import BucketUser from './model/BucketUser';
 import BucketWebsiteConfig from './model/BucketWebsiteConfig';
 import BucketWebsiteConfigErrorPagesInner from './model/BucketWebsiteConfigErrorPagesInner';
+import Certificate from './model/Certificate';
+import CertificateTask from './model/CertificateTask';
 import CheckDomain200Response from './model/CheckDomain200Response';
+import ClearCache from './model/ClearCache';
 import Clickhouse from './model/Clickhouse';
 import ClusterEdit from './model/ClusterEdit';
 import ClusterEditOidcProvider from './model/ClusterEditOidcProvider';
@@ -102,10 +107,28 @@ import ClustersResponse from './model/ClustersResponse';
 import Commit from './model/Commit';
 import ComponentsSchemasBaseError from './model/ComponentsSchemasBaseError';
 import ComponentsSchemasMeta from './model/ComponentsSchemasMeta';
+import ConfigAccess from './model/ConfigAccess';
+import ConfigCache from './model/ConfigCache';
+import ConfigCacheAlwaysOnline from './model/ConfigCacheAlwaysOnline';
+import ConfigCacheBrowser from './model/ConfigCacheBrowser';
+import ConfigCacheCdn from './model/ConfigCacheCdn';
+import ConfigCacheCdnTtl from './model/ConfigCacheCdnTtl';
+import ConfigCacheQueryArgs from './model/ConfigCacheQueryArgs';
+import ConfigDelivery from './model/ConfigDelivery';
+import ConfigDeliveryPackaging from './model/ConfigDeliveryPackaging';
+import ConfigDeliveryPackagingMp4 from './model/ConfigDeliveryPackagingMp4';
+import ConfigDomains from './model/ConfigDomains';
+import ConfigHttpHeaders from './model/ConfigHttpHeaders';
+import ConfigHttpHeadersCors from './model/ConfigHttpHeadersCors';
+import ConfigOrigin from './model/ConfigOrigin';
+import ConfigOriginAws from './model/ConfigOriginAws';
 import ConfigParameters from './model/ConfigParameters';
 import ConfigParametersMysql from './model/ConfigParametersMysql';
 import ConfigParametersPostgres from './model/ConfigParametersPostgres';
 import ConfigParametersValkey from './model/ConfigParametersValkey';
+import ConfigRobots from './model/ConfigRobots';
+import ConfigSecurity from './model/ConfigSecurity';
+import ConfigSecuritySecureToken from './model/ConfigSecuritySecureToken';
 import ContainerRegistryPresetsInner from './model/ContainerRegistryPresetsInner';
 import ContainerRegistryRepositoriesInner from './model/ContainerRegistryRepositoriesInner';
 import CreateAdmin from './model/CreateAdmin';
@@ -118,6 +141,7 @@ import CreateBalancer from './model/CreateBalancer';
 import CreateBalancer200Response from './model/CreateBalancer200Response';
 import CreateBalancerCertificates from './model/CreateBalancerCertificates';
 import CreateBalancerRule200Response from './model/CreateBalancerRule200Response';
+import CreateCdnResource201Response from './model/CreateCdnResource201Response';
 import CreateCluster from './model/CreateCluster';
 import CreateClusterAdmin from './model/CreateClusterAdmin';
 import CreateClusterInstance from './model/CreateClusterInstance';
@@ -142,6 +166,7 @@ import CreateDomainMailboxV2Request from './model/CreateDomainMailboxV2Request';
 import CreateDomainRequest201Response from './model/CreateDomainRequest201Response';
 import CreateFloatingIp from './model/CreateFloatingIp';
 import CreateFloatingIp201Response from './model/CreateFloatingIp201Response';
+import CreateHttpResource from './model/CreateHttpResource';
 import CreateInstance from './model/CreateInstance';
 import CreateKey201Response from './model/CreateKey201Response';
 import CreateKeyRequest from './model/CreateKeyRequest';
@@ -271,6 +296,14 @@ import GetBalancerRules200Response from './model/GetBalancerRules200Response';
 import GetBalancers200Response from './model/GetBalancers200Response';
 import GetBalancersPresets200Response from './model/GetBalancersPresets200Response';
 import GetBranches200Response from './model/GetBranches200Response';
+import GetCdnCertificateTasks200Response from './model/GetCdnCertificateTasks200Response';
+import GetCdnCertificates200Response from './model/GetCdnCertificates200Response';
+import GetCdnOriginNodes200Response from './model/GetCdnOriginNodes200Response';
+import GetCdnPresets200Response from './model/GetCdnPresets200Response';
+import GetCdnResourceConfiguration200Response from './model/GetCdnResourceConfiguration200Response';
+import GetCdnResourceNodes200Response from './model/GetCdnResourceNodes200Response';
+import GetCdnResourceStatistics200Response from './model/GetCdnResourceStatistics200Response';
+import GetCdnResources200Response from './model/GetCdnResources200Response';
 import GetCommits200Response from './model/GetCommits200Response';
 import GetConfigurators200Response from './model/GetConfigurators200Response';
 import GetCountries200Response from './model/GetCountries200Response';
@@ -355,6 +388,8 @@ import GetTLDs200Response from './model/GetTLDs200Response';
 import GetVPCPorts200Response from './model/GetVPCPorts200Response';
 import GetVPCServices200Response from './model/GetVPCServices200Response';
 import GetVPCs200Response from './model/GetVPCs200Response';
+import HttpResource from './model/HttpResource';
+import HttpResourceConfig from './model/HttpResourceConfig';
 import Image from './model/Image';
 import ImageDownload from './model/ImageDownload';
 import ImageDownloadResponse from './model/ImageDownloadResponse';
@@ -370,6 +405,7 @@ import IncreaseNodes from './model/IncreaseNodes';
 import InfoServicePrice from './model/InfoServicePrice';
 import Invoice from './model/Invoice';
 import Ip from './model/Ip';
+import IssueCertificate from './model/IssueCertificate';
 import K8SVersionsResponse from './model/K8SVersionsResponse';
 import Kafka from './model/Kafka';
 import Knowledgebase from './model/Knowledgebase';
@@ -424,6 +460,8 @@ import NotificationSettingType from './model/NotificationSettingType';
 import OS from './model/OS';
 import Opensearch from './model/Opensearch';
 import Org from './model/Org';
+import OriginNode from './model/OriginNode';
+import OriginServer from './model/OriginServer';
 import OutgoingIsDisabled from './model/OutgoingIsDisabled';
 import OutgoingIsEnabled from './model/OutgoingIsEnabled';
 import PerformActionOnBackupRequest from './model/PerformActionOnBackupRequest';
@@ -433,6 +471,8 @@ import Person2 from './model/Person2';
 import Policy from './model/Policy';
 import Postgres from './model/Postgres';
 import Postgresql from './model/Postgresql';
+import PreloadCache from './model/PreloadCache';
+import Preset from './model/Preset';
 import PresetsBalancer from './model/PresetsBalancer';
 import PresetsDbs from './model/PresetsDbs';
 import PresetsResponse from './model/PresetsResponse';
@@ -520,6 +560,9 @@ import StaticRouteIn from './model/StaticRouteIn';
 import StaticRouteOut from './model/StaticRouteOut';
 import StaticRouteResponse from './model/StaticRouteResponse';
 import StaticRoutesResponse from './model/StaticRoutesResponse';
+import Statistics from './model/Statistics';
+import StatisticsRequestsInner from './model/StatisticsRequestsInner';
+import StatisticsTrafficInner from './model/StatisticsTrafficInner';
 import Status from './model/Status';
 import StatusCompanyInfo from './model/StatusCompanyInfo';
 import Subdomain from './model/Subdomain';
@@ -528,6 +571,7 @@ import TokenPackage from './model/TokenPackage';
 import TokenStatistic from './model/TokenStatistic';
 import TopLevelDomain from './model/TopLevelDomain';
 import TopLevelDomainAllowedBuyPeriodsInner from './model/TopLevelDomainAllowedBuyPeriodsInner';
+import TrafficUsage from './model/TrafficUsage';
 import TransferStatus from './model/TransferStatus';
 import TransferStatusErrorsInner from './model/TransferStatusErrorsInner';
 import TransferStorageRequest from './model/TransferStorageRequest';
@@ -546,6 +590,7 @@ import UpdateDomainMailInfoRequest from './model/UpdateDomainMailInfoRequest';
 import UpdateDomainNameServers from './model/UpdateDomainNameServers';
 import UpdateDomainNameServersNameServersInner from './model/UpdateDomainNameServersNameServersInner';
 import UpdateFloatingIp from './model/UpdateFloatingIp';
+import UpdateHttpResource from './model/UpdateHttpResource';
 import UpdateInstance from './model/UpdateInstance';
 import UpdateKeyRequest from './model/UpdateKeyRequest';
 import UpdateKnowledgebase from './model/UpdateKnowledgebase';
@@ -577,6 +622,7 @@ import UploadSuccessful from './model/UploadSuccessful';
 import UploadSuccessfulResponse from './model/UploadSuccessfulResponse';
 import UrlStatus from './model/UrlStatus';
 import Use from './model/Use';
+import UserNode from './model/UserNode';
 import Valkey from './model/Valkey';
 import Vds from './model/Vds';
 import VdsDisksInner from './model/VdsDisksInner';
@@ -594,6 +640,7 @@ import AIAgentsApi from './api/AIAgentsApi';
 import AccountApi from './api/AccountApi';
 import AppsApi from './api/AppsApi';
 import BalancersApi from './api/BalancersApi';
+import CDNApi from './api/CDNApi';
 import ContainerRegistryApi from './api/ContainerRegistryApi';
 import DatabasesApi from './api/DatabasesApi';
 import DedicatedServersApi from './api/DedicatedServersApi';
@@ -670,6 +717,18 @@ export {
      * @property {module:model/AddBitbucket}
      */
     AddBitbucket,
+
+    /**
+     * The AddCdnCertificate422Response model constructor.
+     * @property {module:model/AddCdnCertificate422Response}
+     */
+    AddCdnCertificate422Response,
+
+    /**
+     * The AddCertificate model constructor.
+     * @property {module:model/AddCertificate}
+     */
+    AddCertificate,
 
     /**
      * The AddClusterToProjectRequest model constructor.
@@ -1080,10 +1139,28 @@ export {
     BucketWebsiteConfigErrorPagesInner,
 
     /**
+     * The Certificate model constructor.
+     * @property {module:model/Certificate}
+     */
+    Certificate,
+
+    /**
+     * The CertificateTask model constructor.
+     * @property {module:model/CertificateTask}
+     */
+    CertificateTask,
+
+    /**
      * The CheckDomain200Response model constructor.
      * @property {module:model/CheckDomain200Response}
      */
     CheckDomain200Response,
+
+    /**
+     * The ClearCache model constructor.
+     * @property {module:model/ClearCache}
+     */
+    ClearCache,
 
     /**
      * The Clickhouse model constructor.
@@ -1188,6 +1265,96 @@ export {
     ComponentsSchemasMeta,
 
     /**
+     * The ConfigAccess model constructor.
+     * @property {module:model/ConfigAccess}
+     */
+    ConfigAccess,
+
+    /**
+     * The ConfigCache model constructor.
+     * @property {module:model/ConfigCache}
+     */
+    ConfigCache,
+
+    /**
+     * The ConfigCacheAlwaysOnline model constructor.
+     * @property {module:model/ConfigCacheAlwaysOnline}
+     */
+    ConfigCacheAlwaysOnline,
+
+    /**
+     * The ConfigCacheBrowser model constructor.
+     * @property {module:model/ConfigCacheBrowser}
+     */
+    ConfigCacheBrowser,
+
+    /**
+     * The ConfigCacheCdn model constructor.
+     * @property {module:model/ConfigCacheCdn}
+     */
+    ConfigCacheCdn,
+
+    /**
+     * The ConfigCacheCdnTtl model constructor.
+     * @property {module:model/ConfigCacheCdnTtl}
+     */
+    ConfigCacheCdnTtl,
+
+    /**
+     * The ConfigCacheQueryArgs model constructor.
+     * @property {module:model/ConfigCacheQueryArgs}
+     */
+    ConfigCacheQueryArgs,
+
+    /**
+     * The ConfigDelivery model constructor.
+     * @property {module:model/ConfigDelivery}
+     */
+    ConfigDelivery,
+
+    /**
+     * The ConfigDeliveryPackaging model constructor.
+     * @property {module:model/ConfigDeliveryPackaging}
+     */
+    ConfigDeliveryPackaging,
+
+    /**
+     * The ConfigDeliveryPackagingMp4 model constructor.
+     * @property {module:model/ConfigDeliveryPackagingMp4}
+     */
+    ConfigDeliveryPackagingMp4,
+
+    /**
+     * The ConfigDomains model constructor.
+     * @property {module:model/ConfigDomains}
+     */
+    ConfigDomains,
+
+    /**
+     * The ConfigHttpHeaders model constructor.
+     * @property {module:model/ConfigHttpHeaders}
+     */
+    ConfigHttpHeaders,
+
+    /**
+     * The ConfigHttpHeadersCors model constructor.
+     * @property {module:model/ConfigHttpHeadersCors}
+     */
+    ConfigHttpHeadersCors,
+
+    /**
+     * The ConfigOrigin model constructor.
+     * @property {module:model/ConfigOrigin}
+     */
+    ConfigOrigin,
+
+    /**
+     * The ConfigOriginAws model constructor.
+     * @property {module:model/ConfigOriginAws}
+     */
+    ConfigOriginAws,
+
+    /**
      * The ConfigParameters model constructor.
      * @property {module:model/ConfigParameters}
      */
@@ -1210,6 +1377,24 @@ export {
      * @property {module:model/ConfigParametersValkey}
      */
     ConfigParametersValkey,
+
+    /**
+     * The ConfigRobots model constructor.
+     * @property {module:model/ConfigRobots}
+     */
+    ConfigRobots,
+
+    /**
+     * The ConfigSecurity model constructor.
+     * @property {module:model/ConfigSecurity}
+     */
+    ConfigSecurity,
+
+    /**
+     * The ConfigSecuritySecureToken model constructor.
+     * @property {module:model/ConfigSecuritySecureToken}
+     */
+    ConfigSecuritySecureToken,
 
     /**
      * The ContainerRegistryPresetsInner model constructor.
@@ -1282,6 +1467,12 @@ export {
      * @property {module:model/CreateBalancerRule200Response}
      */
     CreateBalancerRule200Response,
+
+    /**
+     * The CreateCdnResource201Response model constructor.
+     * @property {module:model/CreateCdnResource201Response}
+     */
+    CreateCdnResource201Response,
 
     /**
      * The CreateCluster model constructor.
@@ -1426,6 +1617,12 @@ export {
      * @property {module:model/CreateFloatingIp201Response}
      */
     CreateFloatingIp201Response,
+
+    /**
+     * The CreateHttpResource model constructor.
+     * @property {module:model/CreateHttpResource}
+     */
+    CreateHttpResource,
 
     /**
      * The CreateInstance model constructor.
@@ -2202,6 +2399,54 @@ export {
     GetBranches200Response,
 
     /**
+     * The GetCdnCertificateTasks200Response model constructor.
+     * @property {module:model/GetCdnCertificateTasks200Response}
+     */
+    GetCdnCertificateTasks200Response,
+
+    /**
+     * The GetCdnCertificates200Response model constructor.
+     * @property {module:model/GetCdnCertificates200Response}
+     */
+    GetCdnCertificates200Response,
+
+    /**
+     * The GetCdnOriginNodes200Response model constructor.
+     * @property {module:model/GetCdnOriginNodes200Response}
+     */
+    GetCdnOriginNodes200Response,
+
+    /**
+     * The GetCdnPresets200Response model constructor.
+     * @property {module:model/GetCdnPresets200Response}
+     */
+    GetCdnPresets200Response,
+
+    /**
+     * The GetCdnResourceConfiguration200Response model constructor.
+     * @property {module:model/GetCdnResourceConfiguration200Response}
+     */
+    GetCdnResourceConfiguration200Response,
+
+    /**
+     * The GetCdnResourceNodes200Response model constructor.
+     * @property {module:model/GetCdnResourceNodes200Response}
+     */
+    GetCdnResourceNodes200Response,
+
+    /**
+     * The GetCdnResourceStatistics200Response model constructor.
+     * @property {module:model/GetCdnResourceStatistics200Response}
+     */
+    GetCdnResourceStatistics200Response,
+
+    /**
+     * The GetCdnResources200Response model constructor.
+     * @property {module:model/GetCdnResources200Response}
+     */
+    GetCdnResources200Response,
+
+    /**
      * The GetCommits200Response model constructor.
      * @property {module:model/GetCommits200Response}
      */
@@ -2706,6 +2951,18 @@ export {
     GetVPCs200Response,
 
     /**
+     * The HttpResource model constructor.
+     * @property {module:model/HttpResource}
+     */
+    HttpResource,
+
+    /**
+     * The HttpResourceConfig model constructor.
+     * @property {module:model/HttpResourceConfig}
+     */
+    HttpResourceConfig,
+
+    /**
      * The Image model constructor.
      * @property {module:model/Image}
      */
@@ -2794,6 +3051,12 @@ export {
      * @property {module:model/Ip}
      */
     Ip,
+
+    /**
+     * The IssueCertificate model constructor.
+     * @property {module:model/IssueCertificate}
+     */
+    IssueCertificate,
 
     /**
      * The K8SVersionsResponse model constructor.
@@ -3120,6 +3383,18 @@ export {
     Org,
 
     /**
+     * The OriginNode model constructor.
+     * @property {module:model/OriginNode}
+     */
+    OriginNode,
+
+    /**
+     * The OriginServer model constructor.
+     * @property {module:model/OriginServer}
+     */
+    OriginServer,
+
+    /**
      * The OutgoingIsDisabled model constructor.
      * @property {module:model/OutgoingIsDisabled}
      */
@@ -3172,6 +3447,18 @@ export {
      * @property {module:model/Postgresql}
      */
     Postgresql,
+
+    /**
+     * The PreloadCache model constructor.
+     * @property {module:model/PreloadCache}
+     */
+    PreloadCache,
+
+    /**
+     * The Preset model constructor.
+     * @property {module:model/Preset}
+     */
+    Preset,
 
     /**
      * The PresetsBalancer model constructor.
@@ -3696,6 +3983,24 @@ export {
     StaticRoutesResponse,
 
     /**
+     * The Statistics model constructor.
+     * @property {module:model/Statistics}
+     */
+    Statistics,
+
+    /**
+     * The StatisticsRequestsInner model constructor.
+     * @property {module:model/StatisticsRequestsInner}
+     */
+    StatisticsRequestsInner,
+
+    /**
+     * The StatisticsTrafficInner model constructor.
+     * @property {module:model/StatisticsTrafficInner}
+     */
+    StatisticsTrafficInner,
+
+    /**
      * The Status model constructor.
      * @property {module:model/Status}
      */
@@ -3742,6 +4047,12 @@ export {
      * @property {module:model/TopLevelDomainAllowedBuyPeriodsInner}
      */
     TopLevelDomainAllowedBuyPeriodsInner,
+
+    /**
+     * The TrafficUsage model constructor.
+     * @property {module:model/TrafficUsage}
+     */
+    TrafficUsage,
 
     /**
      * The TransferStatus model constructor.
@@ -3850,6 +4161,12 @@ export {
      * @property {module:model/UpdateFloatingIp}
      */
     UpdateFloatingIp,
+
+    /**
+     * The UpdateHttpResource model constructor.
+     * @property {module:model/UpdateHttpResource}
+     */
+    UpdateHttpResource,
 
     /**
      * The UpdateInstance model constructor.
@@ -4038,6 +4355,12 @@ export {
     Use,
 
     /**
+     * The UserNode model constructor.
+     * @property {module:model/UserNode}
+     */
+    UserNode,
+
+    /**
      * The Valkey model constructor.
      * @property {module:model/Valkey}
      */
@@ -4138,6 +4461,12 @@ export {
     * @property {module:api/BalancersApi}
     */
     BalancersApi,
+
+    /**
+    * The CDNApi service constructor.
+    * @property {module:api/CDNApi}
+    */
+    CDNApi,
 
     /**
     * The ContainerRegistryApi service constructor.
