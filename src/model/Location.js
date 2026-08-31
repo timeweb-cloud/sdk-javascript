@@ -41,6 +41,20 @@ export default class Location {
 
     
         /**
+         * value: "ru-4"
+         * @const
+         */
+        "ru-4" = "ru-4";
+
+    
+        /**
+         * value: "ru-5"
+         * @const
+         */
+        "ru-5" = "ru-5";
+
+    
+        /**
          * value: "pl-1"
          * @const
          */
@@ -59,6 +73,20 @@ export default class Location {
          * @const
          */
         "nl-1" = "nl-1";
+
+    
+        /**
+         * value: "de-1"
+         * @const
+         */
+        "de-1" = "de-1";
+
+    
+        /**
+         * value: "us-4"
+         * @const
+         */
+        "us-4" = "us-4";
 
     
 

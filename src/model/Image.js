@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import ImageStatus from './ImageStatus';
+import Location from './Location';
 import OS from './OS';
 
 /**
@@ -33,7 +34,7 @@ class Image {
      * @param name {String} Имя образа.
      * @param description {String} Описание образа.
      * @param diskId {Number} ID связанного с образом диска.
-     * @param location {module:model/Image.LocationEnum} Локация образа.
+     * @param location {module:model/Location} 
      * @param os {module:model/OS} 
      * @param progress {Number} Процент создания образа.
      * @param isCustom {Boolean} Логическое значение, которое показывает, является ли образ кастомным.
@@ -105,7 +106,7 @@ class Image {
                 obj['disk_id'] = ApiClient.convertToType(data['disk_id'], 'Number');
             }
             if (data.hasOwnProperty('location')) {
-                obj['location'] = ApiClient.convertToType(data['location'], 'String');
+                obj['location'] = Location.constructFromObject(data['location']);
             }
             if (data.hasOwnProperty('os')) {
                 obj['os'] = OS.constructFromObject(data['os']);
@@ -154,10 +155,6 @@ class Image {
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
-        }
-        // ensure the json data is a string
-        if (data['location'] && !(typeof data['location'] === 'string' || data['location'] instanceof String)) {
-            throw new Error("Expected the field `location` to be a primitive type in the JSON string but got " + data['location']);
         }
         // ensure the json data is a string
         if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
@@ -226,8 +223,7 @@ Image.prototype['description'] = undefined;
 Image.prototype['disk_id'] = undefined;
 
 /**
- * Локация образа.
- * @member {module:model/Image.LocationEnum} location
+ * @member {module:model/Location} location
  */
 Image.prototype['location'] = undefined;
 
@@ -256,45 +252,6 @@ Image.prototype['type'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>location</code> property.
- * @enum {String}
- * @readonly
- */
-Image['LocationEnum'] = {
-
-    /**
-     * value: "ru-1"
-     * @const
-     */
-    "ru-1": "ru-1",
-
-    /**
-     * value: "ru-2"
-     * @const
-     */
-    "ru-2": "ru-2",
-
-    /**
-     * value: "pl-1"
-     * @const
-     */
-    "pl-1": "pl-1",
-
-    /**
-     * value: "kz-1"
-     * @const
-     */
-    "kz-1": "kz-1",
-
-    /**
-     * value: "nl-1"
-     * @const
-     */
-    "nl-1": "nl-1"
-};
 
 
 /**
