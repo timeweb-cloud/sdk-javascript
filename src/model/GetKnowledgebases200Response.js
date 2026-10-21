@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import GetKnowledgebasesV2200ResponseMeta from './GetKnowledgebasesV2200ResponseMeta';
+import GetKnowledgebasesV3200ResponseMeta from './GetKnowledgebasesV3200ResponseMeta';
 import Knowledgebase from './Knowledgebase';
 
 /**
@@ -24,12 +24,12 @@ class GetKnowledgebases200Response {
     /**
      * Constructs a new <code>GetKnowledgebases200Response</code>.
      * @alias module:model/GetKnowledgebases200Response
-     * @param knowledgebases {Array.<module:model/Knowledgebase>} 
-     * @param meta {module:model/GetKnowledgebasesV2200ResponseMeta} 
+     * @param knowledgeBases {Array.<module:model/Knowledgebase>} 
+     * @param meta {module:model/GetKnowledgebasesV3200ResponseMeta} 
      */
-    constructor(knowledgebases, meta) { 
+    constructor(knowledgeBases, meta) { 
         
-        GetKnowledgebases200Response.initialize(this, knowledgebases, meta);
+        GetKnowledgebases200Response.initialize(this, knowledgeBases, meta);
     }
 
     /**
@@ -37,8 +37,8 @@ class GetKnowledgebases200Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, knowledgebases, meta) { 
-        obj['knowledgebases'] = knowledgebases;
+    static initialize(obj, knowledgeBases, meta) { 
+        obj['knowledge_bases'] = knowledgeBases;
         obj['meta'] = meta;
     }
 
@@ -53,11 +53,11 @@ class GetKnowledgebases200Response {
         if (data) {
             obj = obj || new GetKnowledgebases200Response();
 
-            if (data.hasOwnProperty('knowledgebases')) {
-                obj['knowledgebases'] = ApiClient.convertToType(data['knowledgebases'], [Knowledgebase]);
+            if (data.hasOwnProperty('knowledge_bases')) {
+                obj['knowledge_bases'] = ApiClient.convertToType(data['knowledge_bases'], [Knowledgebase]);
             }
             if (data.hasOwnProperty('meta')) {
-                obj['meta'] = GetKnowledgebasesV2200ResponseMeta.constructFromObject(data['meta']);
+                obj['meta'] = GetKnowledgebasesV3200ResponseMeta.constructFromObject(data['meta']);
             }
         }
         return obj;
@@ -75,19 +75,19 @@ class GetKnowledgebases200Response {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        if (data['knowledgebases']) { // data not null
+        if (data['knowledge_bases']) { // data not null
             // ensure the json data is an array
-            if (!Array.isArray(data['knowledgebases'])) {
-                throw new Error("Expected the field `knowledgebases` to be an array in the JSON data but got " + data['knowledgebases']);
+            if (!Array.isArray(data['knowledge_bases'])) {
+                throw new Error("Expected the field `knowledge_bases` to be an array in the JSON data but got " + data['knowledge_bases']);
             }
-            // validate the optional field `knowledgebases` (array)
-            for (const item of data['knowledgebases']) {
+            // validate the optional field `knowledge_bases` (array)
+            for (const item of data['knowledge_bases']) {
                 Knowledgebase.validateJSON(item);
             };
         }
         // validate the optional field `meta`
         if (data['meta']) { // data not null
-          GetKnowledgebasesV2200ResponseMeta.validateJSON(data['meta']);
+          GetKnowledgebasesV3200ResponseMeta.validateJSON(data['meta']);
         }
 
         return true;
@@ -96,15 +96,15 @@ class GetKnowledgebases200Response {
 
 }
 
-GetKnowledgebases200Response.RequiredProperties = ["knowledgebases", "meta"];
+GetKnowledgebases200Response.RequiredProperties = ["knowledge_bases", "meta"];
 
 /**
- * @member {Array.<module:model/Knowledgebase>} knowledgebases
+ * @member {Array.<module:model/Knowledgebase>} knowledge_bases
  */
-GetKnowledgebases200Response.prototype['knowledgebases'] = undefined;
+GetKnowledgebases200Response.prototype['knowledge_bases'] = undefined;
 
 /**
- * @member {module:model/GetKnowledgebasesV2200ResponseMeta} meta
+ * @member {module:model/GetKnowledgebasesV3200ResponseMeta} meta
  */
 GetKnowledgebases200Response.prototype['meta'] = undefined;
 

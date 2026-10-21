@@ -4,20 +4,24 @@ All URIs are relative to *https://api.timeweb.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addAdditionalTokenPackageToKnowledgebase**](KnowledgeBasesApi.md#addAdditionalTokenPackageToKnowledgebase) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package | Добавление дополнительного пакета токенов
+[**addAdditionalTokenPackageToKnowledgebase**](KnowledgeBasesApi.md#addAdditionalTokenPackageToKnowledgebase) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package | Покупка дополнительных пакетов токенов
 [**createKnowledgebase**](KnowledgeBasesApi.md#createKnowledgebase) | **POST** /api/v1/cloud-ai/knowledge-bases | Создание базы знаний
+[**createKnowledgebaseDocument**](KnowledgeBasesApi.md#createKnowledgebaseDocument) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/documents | Добавление документа по ссылке
 [**deleteDocument**](KnowledgeBasesApi.md#deleteDocument) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id} | Удаление документа из базы знаний
 [**deleteKnowledgebase**](KnowledgeBasesApi.md#deleteKnowledgebase) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id} | Удаление базы знаний
-[**downloadDocument**](KnowledgeBasesApi.md#downloadDocument) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download | Скачивание документа из базы знаний
-[**getKnowledgebase**](KnowledgeBasesApi.md#getKnowledgebase) | **GET** /api/v1/cloud-ai/knowledge-bases/{id} | Получение базы знаний
+[**downloadDocument**](KnowledgeBasesApi.md#downloadDocument) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download | Скачивание файла документа
+[**getKnowledgebase**](KnowledgeBasesApi.md#getKnowledgebase) | **GET** /api/v1/cloud-ai/knowledge-bases/{id} | Получение базы знаний со списком документов
 [**getKnowledgebaseDocumentsV2**](KnowledgeBasesApi.md#getKnowledgebaseDocumentsV2) | **GET** /api/v2/cloud-ai/knowledge-bases/{id}/documents | Получение списка документов базы знаний
-[**getKnowledgebaseStatistics**](KnowledgeBasesApi.md#getKnowledgebaseStatistics) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/statistic | Получение статистики использования токенов базы знаний
-[**getKnowledgebases**](KnowledgeBasesApi.md#getKnowledgebases) | **GET** /api/v1/cloud-ai/knowledge-bases | Получение списка баз знаний
+[**getKnowledgebaseV3**](KnowledgeBasesApi.md#getKnowledgebaseV3) | **GET** /api/v3/cloud-ai/knowledge-bases/{id} | Получение базы знаний
+[**getKnowledgebases**](KnowledgeBasesApi.md#getKnowledgebases) | **GET** /api/v1/cloud-ai/knowledge-bases | Получение списка баз знаний (v1)
 [**getKnowledgebasesV2**](KnowledgeBasesApi.md#getKnowledgebasesV2) | **GET** /api/v2/cloud-ai/knowledge-bases | Получение списка баз знаний (v2)
+[**getKnowledgebasesV3**](KnowledgeBasesApi.md#getKnowledgebasesV3) | **GET** /api/v3/cloud-ai/knowledge-bases | Получение списка баз знаний
 [**linkKnowledgebaseToAgent**](KnowledgeBasesApi.md#linkKnowledgebaseToAgent) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Привязка базы знаний к агенту
 [**reindexDocument**](KnowledgeBasesApi.md#reindexDocument) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex | Переиндексация документа
 [**unlinkKnowledgebaseFromAgent**](KnowledgeBasesApi.md#unlinkKnowledgebaseFromAgent) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Отвязка базы знаний от агента
-[**updateKnowledgebase**](KnowledgeBasesApi.md#updateKnowledgebase) | **PATCH** /api/v1/cloud-ai/knowledge-bases/{id} | Обновление базы знаний
+[**updateKnowledgebase**](KnowledgeBasesApi.md#updateKnowledgebase) | **PATCH** /api/v1/cloud-ai/knowledge-bases/{id} | Изменение базы знаний
+[**updateKnowledgebaseAgentLink**](KnowledgeBasesApi.md#updateKnowledgebaseAgentLink) | **PATCH** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Изменение режима поиска по базе знаний для агента
+[**updateKnowledgebaseDocument**](KnowledgeBasesApi.md#updateKnowledgebaseDocument) | **PATCH** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id} | Изменение документа
 [**uploadFilesToKnowledgebase**](KnowledgeBasesApi.md#uploadFilesToKnowledgebase) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/upload | Загрузка файлов в базу знаний
 
 
@@ -26,9 +30,9 @@ Method | HTTP request | Description
 
 > addAdditionalTokenPackageToKnowledgebase(id, opts)
 
-Добавление дополнительного пакета токенов
+Покупка дополнительных пакетов токенов
 
-Чтобы добавить дополнительный пакет токенов для базы знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package&#x60;.
+Чтобы докупить токены для базы знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package&#x60;.  Покупается дополнительный пакет (&#x60;package_type: additional&#x60;) из &#x60;GET /api/v1/cloud-ai/token-packages/knowledge-bases&#x60; в количестве &#x60;count&#x60;. Стоимость списывается с баланса, токены добавляются к текущему периоду подписки, заблокированная база знаний разблокируется.  Возможные ошибки: - &#x60;400 insufficient_balance&#x60; — на балансе недостаточно средств - &#x60;400 subscription_expired&#x60; — база знаний заблокирована и дата продления подписки прошла: продлите подписку в панели управления - &#x60;404 additional_token_package_not_found&#x60; — дополнительный пакет недоступен
 
 ### Example
 
@@ -42,7 +46,7 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
 let id = 1; // Number | ID базы знаний
 let opts = {
-  'addTokenPackage': new TimewebCloudApi.AddTokenPackage() // AddTokenPackage | 
+  'knowledgebaseAddTokenPackage': new TimewebCloudApi.KnowledgebaseAddTokenPackage() // KnowledgebaseAddTokenPackage | 
 };
 apiInstance.addAdditionalTokenPackageToKnowledgebase(id, opts, (error, data, response) => {
   if (error) {
@@ -59,7 +63,7 @@ apiInstance.addAdditionalTokenPackageToKnowledgebase(id, opts, (error, data, res
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Number**| ID базы знаний | 
- **addTokenPackage** | [**AddTokenPackage**](AddTokenPackage.md)|  | [optional] 
+ **knowledgebaseAddTokenPackage** | [**KnowledgebaseAddTokenPackage**](KnowledgebaseAddTokenPackage.md)|  | [optional] 
 
 ### Return type
 
@@ -81,7 +85,7 @@ null (empty response body)
 
 Создание базы знаний
 
-Чтобы создать базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;, задав необходимые атрибуты.  База знаний будет создана с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданной базе знаний.
+Чтобы создать базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;, задав необходимые атрибуты.  Для базы знаний в вашем аккаунте создаётся кластер базы данных OpenSearch по выбранному тарифу в указанной приватной сети, а с баланса сразу списывается стоимость пакета токенов. Подписка продлевается автоматически раз в период пакета.  Пока кластер создаётся, база знаний находится в статусе &#x60;creating&#x60;; документы, добавленные в это время, будут проиндексированы после перехода в &#x60;active&#x60;.  Возможные ошибки: - &#x60;404 token_package_not_found&#x60; — пакет токенов не найден или недоступен - &#x60;400 invalid_token_package_type&#x60; — пакет не является базовым пакетом для баз знаний - &#x60;400 insufficient_balance&#x60; — на балансе недостаточно средств для оплаты пакета  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
 
 ### Example
 
@@ -124,13 +128,13 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## deleteDocument
+## createKnowledgebaseDocument
 
-> deleteDocument(id, documentId)
+> CreateKnowledgebaseDocument201Response createKnowledgebaseDocument(id, createDocument)
 
-Удаление документа из базы знаний
+Добавление документа по ссылке
 
-Чтобы удалить документ из базы знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.
+Чтобы добавить в базу знаний документ по ссылке, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Перед добавлением выполняется HEAD-запрос к &#x60;url&#x60;: адрес должен быть публично доступен, а ответ — содержать заголовок &#x60;Content-Type&#x60; одного из поддерживаемых форматов (текст, Markdown, HTML, XML, CSV, PDF, DOC, DOCX, XLS, XLSX; JSON не поддерживается). Документ сразу ставится в очередь на индексацию. Чтобы содержимое по ссылке переиндексировалось автоматически, задайте &#x60;indexing_schedule&#x60;.  Возможные ошибки: - &#x60;400 url_is_not_accessible&#x60; — адрес недоступен или вернул ошибку - &#x60;400 unsupported_file_type&#x60; — неподдерживаемый &#x60;Content-Type&#x60;  Тело ответа будет представлять собой объект JSON с ключом &#x60;document&#x60;.
 
 ### Example
 
@@ -143,7 +147,58 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
 let id = 1; // Number | ID базы знаний
-let documentId = 1; // Number | ID документа
+let createDocument = new TimewebCloudApi.CreateDocument(); // CreateDocument | 
+apiInstance.createKnowledgebaseDocument(id, createDocument, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**| ID базы знаний | 
+ **createDocument** | [**CreateDocument**](CreateDocument.md)|  | 
+
+### Return type
+
+[**CreateKnowledgebaseDocument201Response**](CreateKnowledgebaseDocument201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## deleteDocument
+
+> deleteDocument(id, documentId)
+
+Удаление документа из базы знаний
+
+Чтобы удалить документ из базы знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.  Документ удаляется вместе с его фрагментами в поисковом индексе.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
+let id = 1; // Number | ID базы знаний
+let documentId = 286071; // Number | ID документа
 apiInstance.deleteDocument(id, documentId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -181,7 +236,7 @@ null (empty response body)
 
 Удаление базы знаний
 
-Чтобы удалить базу знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+Чтобы удалить базу знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  База знаний отвязывается от всех агентов, её кластер базы данных OpenSearch удаляется, подписка закрывается.
 
 ### Example
 
@@ -228,9 +283,9 @@ null (empty response body)
 
 > File downloadDocument(id, documentId)
 
-Скачивание документа из базы знаний
+Скачивание файла документа
 
-Чтобы скачать документ из базы знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download&#x60;.
+Чтобы скачать загруженный файл документа, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download&#x60;.  Доступно только для документов типа &#x60;file&#x60;. Файл возвращается потоком с исходным MIME-типом в заголовке &#x60;Content-Type&#x60; и именем в &#x60;Content-Disposition&#x60;.
 
 ### Example
 
@@ -243,7 +298,7 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
 let id = 1; // Number | ID базы знаний
-let documentId = 1; // Number | ID документа
+let documentId = 286071; // Number | ID документа
 apiInstance.downloadDocument(id, documentId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -279,9 +334,9 @@ Name | Type | Description  | Notes
 
 > CreateKnowledgebase201Response getKnowledgebase(id)
 
-Получение базы знаний
+Получение базы знаний со списком документов
 
-Чтобы получить информацию о базе знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+Чтобы получить информацию о базе знаний вместе со всеми её документами, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
 
 ### Example
 
@@ -330,7 +385,7 @@ Name | Type | Description  | Notes
 
 Получение списка документов базы знаний
 
-Чтобы получить список документов базы знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
+Чтобы получить список документов базы знаний с пагинацией, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Некорректные значения параметров пагинации и сортировки не приводят к ошибке — вместо них применяются значения по умолчанию.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
 
 ### Example
 
@@ -344,10 +399,11 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
 let id = 1; // Number | ID базы знаний
 let opts = {
-  'limit': 20, // Number | Количество документов на странице (по умолчанию: 10, максимум: 100)
-  'offset': 0, // Number | Количество документов для пропуска (по умолчанию: 0)
-  'sortBy': indexing_timestamp, // String | Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа)
-  'sortOrder': DESC // String | Порядок сортировки (по умолчанию: DESC)
+  'limit': 20, // Number | Количество документов на странице. Значения больше 100 уменьшаются до 100
+  'offset': 0, // Number | Количество документов, которые нужно пропустить
+  'sortBy': name, // String | Поле сортировки. `indexing_timestamp` — время последнего изменения документа
+  'sortOrder': ASC, // String | Порядок сортировки
+  'search': faq // String | Фильтр по подстроке в названии документа
 };
 apiInstance.getKnowledgebaseDocumentsV2(id, opts, (error, data, response) => {
   if (error) {
@@ -364,10 +420,11 @@ apiInstance.getKnowledgebaseDocumentsV2(id, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Number**| ID базы знаний | 
- **limit** | **Number**| Количество документов на странице (по умолчанию: 10, максимум: 100) | [optional] [default to 10]
- **offset** | **Number**| Количество документов для пропуска (по умолчанию: 0) | [optional] [default to 0]
- **sortBy** | **String**| Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа) | [optional] [default to &#39;indexing_timestamp&#39;]
- **sortOrder** | **String**| Порядок сортировки (по умолчанию: DESC) | [optional] [default to &#39;DESC&#39;]
+ **limit** | **Number**| Количество документов на странице. Значения больше 100 уменьшаются до 100 | [optional] [default to 10]
+ **offset** | **Number**| Количество документов, которые нужно пропустить | [optional] [default to 0]
+ **sortBy** | **String**| Поле сортировки. &#x60;indexing_timestamp&#x60; — время последнего изменения документа | [optional] [default to &#39;indexing_timestamp&#39;]
+ **sortOrder** | **String**| Порядок сортировки | [optional] [default to &#39;DESC&#39;]
+ **search** | **String**| Фильтр по подстроке в названии документа | [optional] 
 
 ### Return type
 
@@ -383,13 +440,13 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## getKnowledgebaseStatistics
+## getKnowledgebaseV3
 
-> GetKnowledgebaseStatistics200Response getKnowledgebaseStatistics(id, opts)
+> GetKnowledgebaseV3200Response getKnowledgebaseV3(id)
 
-Получение статистики использования токенов базы знаний
+Получение базы знаний
 
-Чтобы получить статистику использования токенов базы знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/statistic&#x60;.  Можно указать временной диапазон и интервал агрегации.
+Чтобы получить информацию о базе знаний, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
 
 ### Example
 
@@ -402,12 +459,7 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
 let id = 1; // Number | ID базы знаний
-let opts = {
-  'startTime': 2024-10-01T00:00Z, // Date | Начало временного диапазона (ISO 8601)
-  'endTime': 2024-10-16T23:59:59.999Z, // Date | Конец временного диапазона (ISO 8601)
-  'interval': 60 // Number | Интервал в минутах (по умолчанию 60)
-};
-apiInstance.getKnowledgebaseStatistics(id, opts, (error, data, response) => {
+apiInstance.getKnowledgebaseV3(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -422,13 +474,10 @@ apiInstance.getKnowledgebaseStatistics(id, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Number**| ID базы знаний | 
- **startTime** | **Date**| Начало временного диапазона (ISO 8601) | [optional] 
- **endTime** | **Date**| Конец временного диапазона (ISO 8601) | [optional] 
- **interval** | **Number**| Интервал в минутах (по умолчанию 60) | [optional] [default to 60]
 
 ### Return type
 
-[**GetKnowledgebaseStatistics200Response**](GetKnowledgebaseStatistics200Response.md)
+[**GetKnowledgebaseV3200Response**](GetKnowledgebaseV3200Response.md)
 
 ### Authorization
 
@@ -444,9 +493,9 @@ Name | Type | Description  | Notes
 
 > GetKnowledgebases200Response getKnowledgebases()
 
-Получение списка баз знаний
+Получение списка баз знаний (v1)
 
-Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+Метод устарел — используйте &#x60;GET /api/v3/cloud-ai/knowledge-bases&#x60;.  Чтобы получить список баз знаний вместе со всеми их документами, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
 
 ### Example
 
@@ -491,7 +540,7 @@ This endpoint does not need any parameter.
 
 Получение списка баз знаний (v2)
 
-Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Версия API v2 возвращает оптимизированный ответ с количеством документов вместо полного списка документов.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Вместо списка документов возвращается их количество, привязанные агенты — списком ID. Режим поиска для каждого агента возвращает &#x60;GET /api/v3/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
 
 ### Example
 
@@ -530,13 +579,58 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
+## getKnowledgebasesV3
+
+> GetKnowledgebasesV3200Response getKnowledgebasesV3()
+
+Получение списка баз знаний
+
+Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/knowledge-bases&#x60;.  Ответ содержит количество документов и привязанных агентов с режимом поиска. Документы базы знаний запрашивайте отдельно — &#x60;GET /api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
+apiInstance.getKnowledgebasesV3((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetKnowledgebasesV3200Response**](GetKnowledgebasesV3200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## linkKnowledgebaseToAgent
 
-> linkKnowledgebaseToAgent(id, agentId)
+> linkKnowledgebaseToAgent(id, agentId, opts)
 
 Привязка базы знаний к агенту
 
-Чтобы привязать базу знаний к AI агенту, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.
+Чтобы привязать базу знаний к AI агенту, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Тело запроса необязательно: в нём можно выбрать режим поиска &#x60;retrievalMode&#x60; (по умолчанию &#x60;agentic&#x60;). Изменить режим для существующей привязки можно запросом PATCH на тот же адрес.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
 
 ### Example
 
@@ -549,8 +643,11 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
 let id = 1; // Number | ID базы знаний
-let agentId = 1; // Number | ID агента
-apiInstance.linkKnowledgebaseToAgent(id, agentId, (error, data, response) => {
+let agentId = 101; // Number | ID AI агента
+let opts = {
+  'linkKnowledgebase': new TimewebCloudApi.LinkKnowledgebase() // LinkKnowledgebase | 
+};
+apiInstance.linkKnowledgebaseToAgent(id, agentId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -565,7 +662,8 @@ apiInstance.linkKnowledgebaseToAgent(id, agentId, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Number**| ID базы знаний | 
- **agentId** | **Number**| ID агента | 
+ **agentId** | **Number**| ID AI агента | 
+ **linkKnowledgebase** | [**LinkKnowledgebase**](LinkKnowledgebase.md)|  | [optional] 
 
 ### Return type
 
@@ -577,7 +675,7 @@ null (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -587,7 +685,7 @@ null (empty response body)
 
 Переиндексация документа
 
-Чтобы переиндексировать документ в базе знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex&#x60;.
+Чтобы переиндексировать документ, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex&#x60;.  Документ ставится в очередь на индексацию; следите за полем &#x60;status&#x60; документа. Для документа по ссылке содержимое скачивается заново. Если база знаний не в статусе &#x60;active&#x60;, документ будет проиндексирован после активации.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 document_not_found&#x60;.
 
 ### Example
 
@@ -600,7 +698,7 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
 let id = 1; // Number | ID базы знаний
-let documentId = 1; // Number | ID документа
+let documentId = 286071; // Number | ID документа
 apiInstance.reindexDocument(id, documentId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -638,7 +736,7 @@ null (empty response body)
 
 Отвязка базы знаний от агента
 
-Чтобы отвязать базу знаний от AI агента, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.
+Чтобы отвязать базу знаний от AI агента, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
 
 ### Example
 
@@ -651,7 +749,7 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
 let id = 1; // Number | ID базы знаний
-let agentId = 1; // Number | ID агента
+let agentId = 101; // Number | ID AI агента
 apiInstance.unlinkKnowledgebaseFromAgent(id, agentId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -667,7 +765,7 @@ apiInstance.unlinkKnowledgebaseFromAgent(id, agentId, (error, data, response) =>
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Number**| ID базы знаний | 
- **agentId** | **Number**| ID агента | 
+ **agentId** | **Number**| ID AI агента | 
 
 ### Return type
 
@@ -687,9 +785,9 @@ null (empty response body)
 
 > CreateKnowledgebase201Response updateKnowledgebase(id, updateKnowledgebase)
 
-Обновление базы знаний
+Изменение базы знаний
 
-Чтобы обновить базу знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+Чтобы изменить название или описание базы знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
 
 ### Example
 
@@ -734,13 +832,13 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## uploadFilesToKnowledgebase
+## updateKnowledgebaseAgentLink
 
-> UploadFilesToKnowledgebase200Response uploadFilesToKnowledgebase(id, files)
+> updateKnowledgebaseAgentLink(id, agentId, opts)
 
-Загрузка файлов в базу знаний
+Изменение режима поиска по базе знаний для агента
 
-Чтобы загрузить файлы в базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/upload&#x60; с файлами в формате multipart/form-data.  Поддерживаемые форматы: CSV, XML, Markdown (md), HTML, TXT. JSON не поддерживается. Максимум 10 файлов, до 10 МБ каждый.
+Чтобы изменить режим поиска по привязанной базе знаний для AI агента, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Если &#x60;retrievalMode&#x60; не передан, устанавливается &#x60;agentic&#x60;. Если база знаний не привязана к агенту, запрос ничего не меняет и также возвращает &#x60;204&#x60;.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
 
 ### Example
 
@@ -753,7 +851,115 @@ Bearer.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
 let id = 1; // Number | ID базы знаний
-let files = ["null"]; // [File] | Файлы для загрузки (максимум 10 файлов, 10 МБ каждый)
+let agentId = 101; // Number | ID AI агента
+let opts = {
+  'linkKnowledgebase': new TimewebCloudApi.LinkKnowledgebase() // LinkKnowledgebase | 
+};
+apiInstance.updateKnowledgebaseAgentLink(id, agentId, opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**| ID базы знаний | 
+ **agentId** | **Number**| ID AI агента | 
+ **linkKnowledgebase** | [**LinkKnowledgebase**](LinkKnowledgebase.md)|  | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updateKnowledgebaseDocument
+
+> CreateKnowledgebaseDocument201Response updateKnowledgebaseDocument(id, documentId, updateDocument)
+
+Изменение документа
+
+Чтобы изменить документ базы знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.  Можно изменить название, расписание переиндексации и — только для документов типа &#x60;link&#x60; — адрес. После смены адреса документ переиндексируется; изменение названия и расписания переиндексацию не запускает. Новый адрес проверяется так же, как при добавлении документа.  Тело ответа будет представлять собой объект JSON с ключом &#x60;document&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
+let id = 1; // Number | ID базы знаний
+let documentId = 286071; // Number | ID документа
+let updateDocument = new TimewebCloudApi.UpdateDocument(); // UpdateDocument | 
+apiInstance.updateKnowledgebaseDocument(id, documentId, updateDocument, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**| ID базы знаний | 
+ **documentId** | **Number**| ID документа | 
+ **updateDocument** | [**UpdateDocument**](UpdateDocument.md)|  | 
+
+### Return type
+
+[**CreateKnowledgebaseDocument201Response**](CreateKnowledgebaseDocument201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## uploadFilesToKnowledgebase
+
+> UploadResult uploadFilesToKnowledgebase(id, files)
+
+Загрузка файлов в базу знаний
+
+Чтобы загрузить файлы в базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/upload&#x60; с файлами в поле &#x60;files&#x60; формата &#x60;multipart/form-data&#x60;. Для каждого файла создаётся документ типа &#x60;file&#x60;, после загрузки документы ставятся в очередь на индексацию (если база знаний в статусе &#x60;active&#x60;; иначе — после активации).  Поддерживаемые форматы: TXT, Markdown (&#x60;md&#x60;, &#x60;markdown&#x60;), HTML (&#x60;html&#x60;, &#x60;htm&#x60;), XML, CSV, PDF, DOC, DOCX, XLS, XLSX, а также другие файлы с MIME-типом &#x60;text/_*&#x60;. JSON (&#x60;json&#x60;, &#x60;jsonl&#x60;, &#x60;ndjson&#x60;) не поддерживается. Размер одного файла — не более 50 МБ.  Если хотя бы один файл неподдерживаемого формата, запрос завершается ошибкой.  Тело ответа будет представлять собой объект JSON с ключами &#x60;uploadedFiles&#x60; и &#x60;documents&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.KnowledgeBasesApi();
+let id = 1; // Number | ID базы знаний
+let files = ["null"]; // [File] | Файлы для загрузки
 apiInstance.uploadFilesToKnowledgebase(id, files, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -769,11 +975,11 @@ apiInstance.uploadFilesToKnowledgebase(id, files, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Number**| ID базы знаний | 
- **files** | **[File]**| Файлы для загрузки (максимум 10 файлов, 10 МБ каждый) | 
+ **files** | **[File]**| Файлы для загрузки | 
 
 ### Return type
 
-[**UploadFilesToKnowledgebase200Response**](UploadFilesToKnowledgebase200Response.md)
+[**UploadResult**](UploadResult.md)
 
 ### Authorization
 

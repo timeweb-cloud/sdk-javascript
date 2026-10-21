@@ -23,11 +23,11 @@ class CreateKnowledgebase201Response {
     /**
      * Constructs a new <code>CreateKnowledgebase201Response</code>.
      * @alias module:model/CreateKnowledgebase201Response
-     * @param knowledgebase {module:model/Knowledgebase} 
+     * @param knowledgeBase {module:model/Knowledgebase} 
      */
-    constructor(knowledgebase) { 
+    constructor(knowledgeBase) { 
         
-        CreateKnowledgebase201Response.initialize(this, knowledgebase);
+        CreateKnowledgebase201Response.initialize(this, knowledgeBase);
     }
 
     /**
@@ -35,8 +35,8 @@ class CreateKnowledgebase201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, knowledgebase) { 
-        obj['knowledgebase'] = knowledgebase;
+    static initialize(obj, knowledgeBase) { 
+        obj['knowledge_base'] = knowledgeBase;
     }
 
     /**
@@ -50,8 +50,8 @@ class CreateKnowledgebase201Response {
         if (data) {
             obj = obj || new CreateKnowledgebase201Response();
 
-            if (data.hasOwnProperty('knowledgebase')) {
-                obj['knowledgebase'] = Knowledgebase.constructFromObject(data['knowledgebase']);
+            if (data.hasOwnProperty('knowledge_base')) {
+                obj['knowledge_base'] = Knowledgebase.constructFromObject(data['knowledge_base']);
             }
         }
         return obj;
@@ -69,9 +69,9 @@ class CreateKnowledgebase201Response {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // validate the optional field `knowledgebase`
-        if (data['knowledgebase']) { // data not null
-          Knowledgebase.validateJSON(data['knowledgebase']);
+        // validate the optional field `knowledge_base`
+        if (data['knowledge_base']) { // data not null
+          Knowledgebase.validateJSON(data['knowledge_base']);
         }
 
         return true;
@@ -80,12 +80,12 @@ class CreateKnowledgebase201Response {
 
 }
 
-CreateKnowledgebase201Response.RequiredProperties = ["knowledgebase"];
+CreateKnowledgebase201Response.RequiredProperties = ["knowledge_base"];
 
 /**
- * @member {module:model/Knowledgebase} knowledgebase
+ * @member {module:model/Knowledgebase} knowledge_base
  */
-CreateKnowledgebase201Response.prototype['knowledgebase'] = undefined;
+CreateKnowledgebase201Response.prototype['knowledge_base'] = undefined;
 
 
 

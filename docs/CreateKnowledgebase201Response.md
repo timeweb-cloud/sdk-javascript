@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**knowledgebase** | [**Knowledgebase**](Knowledgebase.md) |  | 
+**knowledgeBase** | [**Knowledgebase**](Knowledgebase.md) |  | 
 
 

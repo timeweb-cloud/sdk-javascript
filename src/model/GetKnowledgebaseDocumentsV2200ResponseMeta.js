@@ -22,9 +22,9 @@ class GetKnowledgebaseDocumentsV2200ResponseMeta {
     /**
      * Constructs a new <code>GetKnowledgebaseDocumentsV2200ResponseMeta</code>.
      * @alias module:model/GetKnowledgebaseDocumentsV2200ResponseMeta
-     * @param total {Number} Общее количество документов
-     * @param limit {Number} Количество документов на странице
-     * @param offset {Number} Количество пропущенных документов
+     * @param total {Number} Количество документов, подходящих под фильтр
+     * @param limit {Number} Применённый размер страницы
+     * @param offset {Number} Применённое смещение
      */
     constructor(total, limit, offset) { 
         
@@ -88,19 +88,19 @@ class GetKnowledgebaseDocumentsV2200ResponseMeta {
 GetKnowledgebaseDocumentsV2200ResponseMeta.RequiredProperties = ["total", "limit", "offset"];
 
 /**
- * Общее количество документов
+ * Количество документов, подходящих под фильтр
  * @member {Number} total
  */
 GetKnowledgebaseDocumentsV2200ResponseMeta.prototype['total'] = undefined;
 
 /**
- * Количество документов на странице
+ * Применённый размер страницы
  * @member {Number} limit
  */
 GetKnowledgebaseDocumentsV2200ResponseMeta.prototype['limit'] = undefined;
 
 /**
- * Количество пропущенных документов
+ * Применённое смещение
  * @member {Number} offset
  */
 GetKnowledgebaseDocumentsV2200ResponseMeta.prototype['offset'] = undefined;

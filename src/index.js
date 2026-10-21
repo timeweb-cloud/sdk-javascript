@@ -13,6 +13,7 @@
 
 
 import ApiClient from './ApiClient';
+import AddAiSolutionTelegramBot201Response from './model/AddAiSolutionTelegramBot201Response';
 import AddBalancerToProject200Response from './model/AddBalancerToProject200Response';
 import AddBalancerToProjectRequest from './model/AddBalancerToProjectRequest';
 import AddBitbucket from './model/AddBitbucket';
@@ -48,17 +49,81 @@ import AddonOut from './model/AddonOut';
 import AddonsConfigResponse from './model/AddonsConfigResponse';
 import AddonsResponse from './model/AddonsResponse';
 import Agent from './model/Agent';
+import AgentAdditionalModel from './model/AgentAdditionalModel';
+import AgentEntityLimit from './model/AgentEntityLimit';
 import AgentModelSettings from './model/AgentModelSettings';
 import AgentSettings from './model/AgentSettings';
-import AgentSettingsWidget from './model/AgentSettingsWidget';
+import AgentSkill from './model/AgentSkill';
+import AgentTokenStatistic from './model/AgentTokenStatistic';
+import AgentToolsInner from './model/AgentToolsInner';
+import AgentV3 from './model/AgentV3';
+import AgentV3KnowledgeBasesInner from './model/AgentV3KnowledgeBasesInner';
+import AgentWidgetSettings from './model/AgentWidgetSettings';
+import AiGatewayBatch from './model/AiGatewayBatch';
+import AiGatewayBatchCreateRequest from './model/AiGatewayBatchCreateRequest';
+import AiGatewayBatchList from './model/AiGatewayBatchList';
+import AiGatewayBatchRequestCounts from './model/AiGatewayBatchRequestCounts';
+import AiGatewayChatCompletion from './model/AiGatewayChatCompletion';
+import AiGatewayChatCompletionChoicesInner from './model/AiGatewayChatCompletionChoicesInner';
+import AiGatewayChatCompletionChunk from './model/AiGatewayChatCompletionChunk';
+import AiGatewayChatCompletionChunkChoicesInner from './model/AiGatewayChatCompletionChunkChoicesInner';
+import AiGatewayChatCompletionRequest from './model/AiGatewayChatCompletionRequest';
+import AiGatewayChatCompletionRequestStreamOptions from './model/AiGatewayChatCompletionRequestStreamOptions';
+import AiGatewayChatMessage from './model/AiGatewayChatMessage';
+import AiGatewayCompletion from './model/AiGatewayCompletion';
+import AiGatewayCompletionChoicesInner from './model/AiGatewayCompletionChoicesInner';
+import AiGatewayCompletionRequest from './model/AiGatewayCompletionRequest';
+import AiGatewayEmbeddingList from './model/AiGatewayEmbeddingList';
+import AiGatewayEmbeddingListDataInner from './model/AiGatewayEmbeddingListDataInner';
+import AiGatewayEmbeddingListUsage from './model/AiGatewayEmbeddingListUsage';
+import AiGatewayEmbeddingRequest from './model/AiGatewayEmbeddingRequest';
+import AiGatewayError from './model/AiGatewayError';
+import AiGatewayErrorError from './model/AiGatewayErrorError';
+import AiGatewayFile from './model/AiGatewayFile';
+import AiGatewayFileDeleted from './model/AiGatewayFileDeleted';
+import AiGatewayImageGenerationRequest from './model/AiGatewayImageGenerationRequest';
+import AiGatewayImagesResponse from './model/AiGatewayImagesResponse';
+import AiGatewayImagesResponseDataInner from './model/AiGatewayImagesResponseDataInner';
+import AiGatewayModel from './model/AiGatewayModel';
+import AiGatewayModelList from './model/AiGatewayModelList';
+import AiGatewayResponse from './model/AiGatewayResponse';
+import AiGatewayResponseCreateRequest from './model/AiGatewayResponseCreateRequest';
+import AiGatewayResponseCreateRequestReasoning from './model/AiGatewayResponseCreateRequestReasoning';
+import AiGatewayResponseDeleted from './model/AiGatewayResponseDeleted';
+import AiGatewayResponseIncompleteDetails from './model/AiGatewayResponseIncompleteDetails';
+import AiGatewayResponseUsage from './model/AiGatewayResponseUsage';
+import AiGatewaySpeechRequest from './model/AiGatewaySpeechRequest';
+import AiGatewayToolCall from './model/AiGatewayToolCall';
+import AiGatewayToolCallFunction from './model/AiGatewayToolCallFunction';
+import AiGatewayTranscription from './model/AiGatewayTranscription';
+import AiGatewayUsage from './model/AiGatewayUsage';
+import AiGatewayUsageCompletionTokensDetails from './model/AiGatewayUsageCompletionTokensDetails';
+import AiGatewayUsagePromptTokensDetails from './model/AiGatewayUsagePromptTokensDetails';
+import AiGatewayValidationError from './model/AiGatewayValidationError';
+import AiKey from './model/AiKey';
+import AiKeyCallsStatisticPoint from './model/AiKeyCallsStatisticPoint';
+import AiKeyLimit from './model/AiKeyLimit';
+import AiKeyTokenStatisticPoint from './model/AiKeyTokenStatisticPoint';
+import AiProvider from './model/AiProvider';
+import AiSolution from './model/AiSolution';
+import AiSolutionAiKey from './model/AiSolutionAiKey';
+import AiSolutionChatMessage from './model/AiSolutionChatMessage';
+import AiSolutionChatReply from './model/AiSolutionChatReply';
+import AiSolutionChatStatus from './model/AiSolutionChatStatus';
+import AiSolutionConversation from './model/AiSolutionConversation';
+import AiSolutionTelegramBot from './model/AiSolutionTelegramBot';
+import AiSolutionType from './model/AiSolutionType';
+import AiSolutionTypeRequirements from './model/AiSolutionTypeRequirements';
 import App from './model/App';
 import AppConfiguration from './model/AppConfiguration';
 import AppDiskStatus from './model/AppDiskStatus';
 import AppDomainsInner from './model/AppDomainsInner';
 import AppProvider from './model/AppProvider';
+import ApproveTelegramPairing from './model/ApproveTelegramPairing';
 import AppsPresets from './model/AppsPresets';
 import AppsPresetsBackendPresetsInner from './model/AppsPresetsBackendPresetsInner';
 import AppsPresetsFrontendPresetsInner from './model/AppsPresetsFrontendPresetsInner';
+import AuthorizeUrl from './model/AuthorizeUrl';
 import AutoBackup from './model/AutoBackup';
 import AutoReplyIsDisabled from './model/AutoReplyIsDisabled';
 import AutoReplyIsEnabled from './model/AutoReplyIsEnabled';
@@ -82,6 +147,7 @@ import BalancerNetworksInnerIpsInner from './model/BalancerNetworksInnerIpsInner
 import BaseError from './model/BaseError';
 import BindFloatingIp from './model/BindFloatingIp';
 import Bonus from './model/Bonus';
+import Bot from './model/Bot';
 import Branch from './model/Branch';
 import Bucket from './model/Bucket';
 import BucketDiskStats from './model/BucketDiskStats';
@@ -90,6 +156,13 @@ import BucketWebsiteConfig from './model/BucketWebsiteConfig';
 import BucketWebsiteConfigErrorPagesInner from './model/BucketWebsiteConfigErrorPagesInner';
 import Certificate from './model/Certificate';
 import CertificateTask from './model/CertificateTask';
+import ChangeAgentModel from './model/ChangeAgentModel';
+import Chat from './model/Chat';
+import ChatFirstMessage from './model/ChatFirstMessage';
+import ChatListMetrics from './model/ChatListMetrics';
+import ChatMessage from './model/ChatMessage';
+import ChatMessageFile from './model/ChatMessageFile';
+import ChatsCsv from './model/ChatsCsv';
 import CheckDomain200Response from './model/CheckDomain200Response';
 import ClearCache from './model/ClearCache';
 import Clickhouse from './model/Clickhouse';
@@ -128,18 +201,34 @@ import ConfigOriginAws from './model/ConfigOriginAws';
 import ConfigRobots from './model/ConfigRobots';
 import ConfigSecurity from './model/ConfigSecurity';
 import ConfigSecuritySecureToken from './model/ConfigSecuritySecureToken';
+import ConnectAgentTool from './model/ConnectAgentTool';
+import ConnectSkillItem from './model/ConnectSkillItem';
+import ConnectSkills from './model/ConnectSkills';
+import ConnectTelegram from './model/ConnectTelegram';
 import ContainerRegistryPresetsInner from './model/ContainerRegistryPresetsInner';
 import ContainerRegistryRepositoriesInner from './model/ContainerRegistryRepositoriesInner';
 import CreateAdmin from './model/CreateAdmin';
 import CreateAgent from './model/CreateAgent';
 import CreateAgent201Response from './model/CreateAgent201Response';
+import CreateAgentBotTelegramBot201Response from './model/CreateAgentBotTelegramBot201Response';
+import CreateAgentEntityLimit from './model/CreateAgentEntityLimit';
+import CreateAgentEntityLimit201Response from './model/CreateAgentEntityLimit201Response';
+import CreateAgentSkill201Response from './model/CreateAgentSkill201Response';
+import CreateAgentTool201Response from './model/CreateAgentTool201Response';
 import CreateAgentV2 from './model/CreateAgentV2';
+import CreateAiKey from './model/CreateAiKey';
+import CreateAiKey201Response from './model/CreateAiKey201Response';
+import CreateAiKeyLimit from './model/CreateAiKeyLimit';
+import CreateAiKeyLimit201Response from './model/CreateAiKeyLimit201Response';
+import CreateAiSolution from './model/CreateAiSolution';
+import CreateAiSolution201Response from './model/CreateAiSolution201Response';
 import CreateApp from './model/CreateApp';
 import CreateApp201Response from './model/CreateApp201Response';
 import CreateBalancer from './model/CreateBalancer';
 import CreateBalancer200Response from './model/CreateBalancer200Response';
 import CreateBalancerCertificates from './model/CreateBalancerCertificates';
 import CreateBalancerRule200Response from './model/CreateBalancerRule200Response';
+import CreateBot from './model/CreateBot';
 import CreateCdnResource201Response from './model/CreateCdnResource201Response';
 import CreateCluster from './model/CreateCluster';
 import CreateClusterAdmin from './model/CreateClusterAdmin';
@@ -148,6 +237,7 @@ import CreateClusterConfiguration from './model/CreateClusterConfiguration';
 import CreateClusterDiskAutoscaling from './model/CreateClusterDiskAutoscaling';
 import CreateClusterInstance from './model/CreateClusterInstance';
 import CreateClusterMaintenanceSlot from './model/CreateClusterMaintenanceSlot';
+import CreateCrispIntegration from './model/CreateCrispIntegration';
 import CreateDatabaseBackup201Response from './model/CreateDatabaseBackup201Response';
 import CreateDatabaseBackupDownloadUrl201Response from './model/CreateDatabaseBackupDownloadUrl201Response';
 import CreateDatabaseCluster201Response from './model/CreateDatabaseCluster201Response';
@@ -161,6 +251,7 @@ import CreateDeploy201Response from './model/CreateDeploy201Response';
 import CreateDeployRequest from './model/CreateDeployRequest';
 import CreateDns from './model/CreateDns';
 import CreateDnsV2 from './model/CreateDnsV2';
+import CreateDocument from './model/CreateDocument';
 import CreateDomainDNSRecord201Response from './model/CreateDomainDNSRecord201Response';
 import CreateDomainDNSRecordV2201Response from './model/CreateDomainDNSRecordV2201Response';
 import CreateDomainMailbox201Response from './model/CreateDomainMailbox201Response';
@@ -172,10 +263,13 @@ import CreateFloatingIp from './model/CreateFloatingIp';
 import CreateFloatingIp201Response from './model/CreateFloatingIp201Response';
 import CreateHttpResource from './model/CreateHttpResource';
 import CreateInstance from './model/CreateInstance';
+import CreateJivoIntegration from './model/CreateJivoIntegration';
 import CreateKey201Response from './model/CreateKey201Response';
 import CreateKeyRequest from './model/CreateKeyRequest';
 import CreateKnowledgebase from './model/CreateKnowledgebase';
 import CreateKnowledgebase201Response from './model/CreateKnowledgebase201Response';
+import CreateKnowledgebaseDocument201Response from './model/CreateKnowledgebaseDocument201Response';
+import CreateMaxBot from './model/CreateMaxBot';
 import CreateMultipleDomainMailboxes201Response from './model/CreateMultipleDomainMailboxes201Response';
 import CreateMultipleDomainMailboxesRequest from './model/CreateMultipleDomainMailboxesRequest';
 import CreateMultipleDomainMailboxesRequestMailboxesInner from './model/CreateMultipleDomainMailboxesRequestMailboxesInner';
@@ -196,11 +290,14 @@ import CreateServerDiskBackup201Response from './model/CreateServerDiskBackup201
 import CreateServerDiskBackupRequest from './model/CreateServerDiskBackupRequest';
 import CreateServerDiskRequest from './model/CreateServerDiskRequest';
 import CreateServerNetwork from './model/CreateServerNetwork';
+import CreateSkill from './model/CreateSkill';
 import CreateStorage201Response from './model/CreateStorage201Response';
 import CreateStorageRequest from './model/CreateStorageRequest';
 import CreateStorageRequestConfigurator from './model/CreateStorageRequestConfigurator';
+import CreateTool from './model/CreateTool';
 import CreateVPC201Response from './model/CreateVPC201Response';
 import CreateVpc from './model/CreateVpc';
+import CrispIntegration from './model/CrispIntegration';
 import DatabaseAdmin from './model/DatabaseAdmin';
 import DatabaseAdminInstancesInner from './model/DatabaseAdminInstancesInner';
 import DatabaseCluster from './model/DatabaseCluster';
@@ -236,6 +333,7 @@ import DedicatedServerPreset from './model/DedicatedServerPreset';
 import DedicatedServerPresetCpu from './model/DedicatedServerPresetCpu';
 import DedicatedServerPresetDisk from './model/DedicatedServerPresetDisk';
 import DedicatedServerPresetMemory from './model/DedicatedServerPresetMemory';
+import DeleteAgent from './model/DeleteAgent';
 import DeleteBalancer200Response from './model/DeleteBalancer200Response';
 import DeleteCluster200Response from './model/DeleteCluster200Response';
 import DeleteCountriesFromAllowedList200Response from './model/DeleteCountriesFromAllowedList200Response';
@@ -275,6 +373,8 @@ import DomainProlong from './model/DomainProlong';
 import DomainRegister from './model/DomainRegister';
 import DomainRequest from './model/DomainRequest';
 import DomainTransfer from './model/DomainTransfer';
+import ErrorResponse from './model/ErrorResponse';
+import ExportAgentChatsCsv200Response from './model/ExportAgentChatsCsv200Response';
 import Finances from './model/Finances';
 import FirewallGroup from './model/FirewallGroup';
 import FirewallGroupInAPI from './model/FirewallGroupInAPI';
@@ -300,12 +400,65 @@ import Frameworks from './model/Frameworks';
 import Free from './model/Free';
 import GetAccountStatus200Response from './model/GetAccountStatus200Response';
 import GetAccountStatus403Response from './model/GetAccountStatus403Response';
+import GetAgentBotMaxBots200Response from './model/GetAgentBotMaxBots200Response';
+import GetAgentBotMaxBots200ResponseMeta from './model/GetAgentBotMaxBots200ResponseMeta';
+import GetAgentBotMaxBotsByAgent200Response from './model/GetAgentBotMaxBotsByAgent200Response';
+import GetAgentBotMaxBotsByAgent200ResponseMeta from './model/GetAgentBotMaxBotsByAgent200ResponseMeta';
+import GetAgentBotTelegramBots200Response from './model/GetAgentBotTelegramBots200Response';
+import GetAgentBotTelegramBots200ResponseMeta from './model/GetAgentBotTelegramBots200ResponseMeta';
+import GetAgentBotTelegramBotsByAgent200Response from './model/GetAgentBotTelegramBotsByAgent200Response';
+import GetAgentBotTelegramBotsByAgent200ResponseMeta from './model/GetAgentBotTelegramBotsByAgent200ResponseMeta';
+import GetAgentChatList200Response from './model/GetAgentChatList200Response';
+import GetAgentChatList200ResponseMeta from './model/GetAgentChatList200ResponseMeta';
+import GetAgentChatMessages200Response from './model/GetAgentChatMessages200Response';
+import GetAgentChatMessages200ResponseMeta from './model/GetAgentChatMessages200ResponseMeta';
+import GetAgentEntityLimits200Response from './model/GetAgentEntityLimits200Response';
+import GetAgentEntityLimits200ResponseMeta from './model/GetAgentEntityLimits200ResponseMeta';
+import GetAgentIntegrationCrisp200Response from './model/GetAgentIntegrationCrisp200Response';
+import GetAgentIntegrationJivo200Response from './model/GetAgentIntegrationJivo200Response';
+import GetAgentSkill200Response from './model/GetAgentSkill200Response';
+import GetAgentSkillCatalog200Response from './model/GetAgentSkillCatalog200Response';
+import GetAgentSkillCatalog200ResponseMeta from './model/GetAgentSkillCatalog200ResponseMeta';
+import GetAgentSkillLibrary200Response from './model/GetAgentSkillLibrary200Response';
+import GetAgentSkillLibrary200ResponseMeta from './model/GetAgentSkillLibrary200ResponseMeta';
+import GetAgentSkillVersion200Response from './model/GetAgentSkillVersion200Response';
+import GetAgentSkillVersions200Response from './model/GetAgentSkillVersions200Response';
+import GetAgentSkillVersions200ResponseMeta from './model/GetAgentSkillVersions200ResponseMeta';
+import GetAgentSkillsForAgent200Response from './model/GetAgentSkillsForAgent200Response';
+import GetAgentSkillsForAgent200ResponseMeta from './model/GetAgentSkillsForAgent200ResponseMeta';
 import GetAgentStatistics200Response from './model/GetAgentStatistics200Response';
 import GetAgentStatistics200ResponseMeta from './model/GetAgentStatistics200ResponseMeta';
+import GetAgentToolTemplatePrices200Response from './model/GetAgentToolTemplatePrices200Response';
+import GetAgentToolTemplates200Response from './model/GetAgentToolTemplates200Response';
+import GetAgentToolTemplates200ResponseMeta from './model/GetAgentToolTemplates200ResponseMeta';
+import GetAgentTools200Response from './model/GetAgentTools200Response';
+import GetAgentTools200ResponseMeta from './model/GetAgentTools200ResponseMeta';
+import GetAgentToolsByAgent200Response from './model/GetAgentToolsByAgent200Response';
+import GetAgentToolsByAgent200ResponseMeta from './model/GetAgentToolsByAgent200ResponseMeta';
+import GetAgentV3200Response from './model/GetAgentV3200Response';
 import GetAgents200Response from './model/GetAgents200Response';
 import GetAgents200ResponseMeta from './model/GetAgents200ResponseMeta';
 import GetAgentsTokenPackages200Response from './model/GetAgentsTokenPackages200Response';
 import GetAgentsTokenPackages200ResponseMeta from './model/GetAgentsTokenPackages200ResponseMeta';
+import GetAgentsV3200Response from './model/GetAgentsV3200Response';
+import GetAiKeyCallsStatistic200Response from './model/GetAiKeyCallsStatistic200Response';
+import GetAiKeyLimits200Response from './model/GetAiKeyLimits200Response';
+import GetAiKeyLimits200ResponseMeta from './model/GetAiKeyLimits200ResponseMeta';
+import GetAiKeyModelsStatistic200Response from './model/GetAiKeyModelsStatistic200Response';
+import GetAiKeyModelsStatistic200ResponseMeta from './model/GetAiKeyModelsStatistic200ResponseMeta';
+import GetAiKeyTokenUsageStatistic200Response from './model/GetAiKeyTokenUsageStatistic200Response';
+import GetAiKeyTokenUsageStatistic200ResponseMeta from './model/GetAiKeyTokenUsageStatistic200ResponseMeta';
+import GetAiKeys200Response from './model/GetAiKeys200Response';
+import GetAiKeys200ResponseMeta from './model/GetAiKeys200ResponseMeta';
+import GetAiModelParameters200Response from './model/GetAiModelParameters200Response';
+import GetAiModelParameters200ResponseMeta from './model/GetAiModelParameters200ResponseMeta';
+import GetAiModelTokenPackages200Response from './model/GetAiModelTokenPackages200Response';
+import GetAiModelTokenPackages200ResponseMeta from './model/GetAiModelTokenPackages200ResponseMeta';
+import GetAiProvider200Response from './model/GetAiProvider200Response';
+import GetAiProviders200Response from './model/GetAiProviders200Response';
+import GetAiProviders200ResponseMeta from './model/GetAiProviders200ResponseMeta';
+import GetAiSolutionChatStatus200Response from './model/GetAiSolutionChatStatus200Response';
+import GetAiSolutionMainChatHistory200Response from './model/GetAiSolutionMainChatHistory200Response';
 import GetAllMailboxesV2200Response from './model/GetAllMailboxesV2200Response';
 import GetAllProjectResources200Response from './model/GetAllProjectResources200Response';
 import GetAppDeploys200Response from './model/GetAppDeploys200Response';
@@ -366,10 +519,13 @@ import GetKey200Response from './model/GetKey200Response';
 import GetKeys200Response from './model/GetKeys200Response';
 import GetKnowledgebaseDocumentsV2200Response from './model/GetKnowledgebaseDocumentsV2200Response';
 import GetKnowledgebaseDocumentsV2200ResponseMeta from './model/GetKnowledgebaseDocumentsV2200ResponseMeta';
-import GetKnowledgebaseStatistics200Response from './model/GetKnowledgebaseStatistics200Response';
+import GetKnowledgebaseV3200Response from './model/GetKnowledgebaseV3200Response';
 import GetKnowledgebases200Response from './model/GetKnowledgebases200Response';
+import GetKnowledgebasesTokenPackages200Response from './model/GetKnowledgebasesTokenPackages200Response';
+import GetKnowledgebasesTokenPackages200ResponseMeta from './model/GetKnowledgebasesTokenPackages200ResponseMeta';
 import GetKnowledgebasesV2200Response from './model/GetKnowledgebasesV2200Response';
-import GetKnowledgebasesV2200ResponseMeta from './model/GetKnowledgebasesV2200ResponseMeta';
+import GetKnowledgebasesV3200Response from './model/GetKnowledgebasesV3200Response';
+import GetKnowledgebasesV3200ResponseMeta from './model/GetKnowledgebasesV3200ResponseMeta';
 import GetLocations200Response from './model/GetLocations200Response';
 import GetMailboxes200Response from './model/GetMailboxes200Response';
 import GetModels200Response from './model/GetModels200Response';
@@ -431,15 +587,38 @@ import ImageUrlAuth from './model/ImageUrlAuth';
 import ImageUrlIn from './model/ImageUrlIn';
 import ImagesOutResponse from './model/ImagesOutResponse';
 import IncreaseNodes from './model/IncreaseNodes';
+import IndexingSchedule from './model/IndexingSchedule';
 import InfoServicePrice from './model/InfoServicePrice';
+import InitializeParams from './model/InitializeParams';
+import InitializeParamsClientInfo from './model/InitializeParamsClientInfo';
+import InitializeResult from './model/InitializeResult';
+import InitializeResultServerInfo from './model/InitializeResultServerInfo';
+import InstallAgentSkillFromCatalog200Response from './model/InstallAgentSkillFromCatalog200Response';
+import InstallAgentSkillFromCatalog200ResponseMeta from './model/InstallAgentSkillFromCatalog200ResponseMeta';
+import InstallAndConnectAgentSkill200Response from './model/InstallAndConnectAgentSkill200Response';
+import InstallAndConnectSkill from './model/InstallAndConnectSkill';
+import InstallTool from './model/InstallTool';
 import Invoice from './model/Invoice';
 import Ip from './model/Ip';
 import IssueCertificate from './model/IssueCertificate';
+import JivoIntegration from './model/JivoIntegration';
+import JsonRpcError from './model/JsonRpcError';
+import JsonRpcErrorResponse from './model/JsonRpcErrorResponse';
+import JsonRpcNotification from './model/JsonRpcNotification';
+import JsonRpcRequest from './model/JsonRpcRequest';
+import JsonRpcResultResponse from './model/JsonRpcResultResponse';
 import K8SVersionsResponse from './model/K8SVersionsResponse';
 import Kafka from './model/Kafka';
 import KafkaConfigParameters from './model/KafkaConfigParameters';
 import Knowledgebase from './model/Knowledgebase';
+import KnowledgebaseAddTokenPackage from './model/KnowledgebaseAddTokenPackage';
 import KnowledgebaseV2 from './model/KnowledgebaseV2';
+import KnowledgebaseV3 from './model/KnowledgebaseV3';
+import LinkKnowledgebase from './model/LinkKnowledgebase';
+import ListAiSolutionConversations200Response from './model/ListAiSolutionConversations200Response';
+import ListAiSolutionTelegramBots200Response from './model/ListAiSolutionTelegramBots200Response';
+import ListAiSolutionTypes200Response from './model/ListAiSolutionTypes200Response';
+import ListAiSolutions200Response from './model/ListAiSolutions200Response';
 import Location from './model/Location';
 import LocationDto from './model/LocationDto';
 import Mailbox from './model/Mailbox';
@@ -454,10 +633,10 @@ import MasterPresetOutApi from './model/MasterPresetOutApi';
 import Meta from './model/Meta';
 import Meta1 from './model/Meta1';
 import Model from './model/Model';
-import ModelParamsInfo from './model/ModelParamsInfo';
-import ModelParamsInfoMaxTokens from './model/ModelParamsInfoMaxTokens';
-import ModelParamsInfoReasoningEffort from './model/ModelParamsInfoReasoningEffort';
-import ModelParamsInfoTemperature from './model/ModelParamsInfoTemperature';
+import ModelBatch from './model/ModelBatch';
+import ModelParamInfo from './model/ModelParamInfo';
+import ModelParameter from './model/ModelParameter';
+import ModelPriceTier from './model/ModelPriceTier';
 import ModelV3 from './model/ModelV3';
 import Mongodb from './model/Mongodb';
 import MountNetworkDrive from './model/MountNetworkDrive';
@@ -515,6 +694,7 @@ import Provider from './model/Provider';
 import Providers from './model/Providers';
 import Rabbitmq from './model/Rabbitmq';
 import ReduceNodes from './model/ReduceNodes';
+import RegenerateAiSolutionAiKey200Response from './model/RegenerateAiSolutionAiKey200Response';
 import RegistriesResponse from './model/RegistriesResponse';
 import RegistryEdit from './model/RegistryEdit';
 import RegistryIn from './model/RegistryIn';
@@ -528,12 +708,20 @@ import Replica from './model/Replica';
 import ReplicaDisk from './model/ReplicaDisk';
 import RepositoriesResponse from './model/RepositoriesResponse';
 import Repository from './model/Repository';
+import ResetAiSolutionChat from './model/ResetAiSolutionChat';
+import ResetAiSolutionChat200Response from './model/ResetAiSolutionChat200Response';
 import Resource from './model/Resource';
 import ResourceTransfer from './model/ResourceTransfer';
 import ResourceType from './model/ResourceType';
 import Resources from './model/Resources';
+import ResourcesListResult from './model/ResourcesListResult';
+import ResourcesReadParams from './model/ResourcesReadParams';
+import ResourcesReadResult from './model/ResourcesReadResult';
+import ResourcesReadResultContentsInner from './model/ResourcesReadResultContentsInner';
 import ResourcesResponse from './model/ResourcesResponse';
 import RestorePoint from './model/RestorePoint';
+import RetrievalMode from './model/RetrievalMode';
+import RetrievalModeRef from './model/RetrievalModeRef';
 import RouterEdit from './model/RouterEdit';
 import RouterIn from './model/RouterIn';
 import RouterInIpsInner from './model/RouterInIpsInner';
@@ -561,6 +749,8 @@ import S3Subdomain from './model/S3Subdomain';
 import SchemasBaseError from './model/SchemasBaseError';
 import SchemasMeta from './model/SchemasMeta';
 import SchemasPresetsResponse from './model/SchemasPresetsResponse';
+import SendAiSolutionMessage from './model/SendAiSolutionMessage';
+import SendAiSolutionMessage200Response from './model/SendAiSolutionMessage200Response';
 import ServerBackup from './model/ServerBackup';
 import ServerDisk from './model/ServerDisk';
 import ServerIp from './model/ServerIp';
@@ -581,8 +771,17 @@ import ServicePriceConfiguration from './model/ServicePriceConfiguration';
 import ServicePriceType from './model/ServicePriceType';
 import ServiceServicePrice from './model/ServiceServicePrice';
 import ServiceServicePriceNodeGroupsInner from './model/ServiceServicePriceNodeGroupsInner';
+import SetAgentSkill from './model/SetAgentSkill';
+import SetAgentSkillForAgent200Response from './model/SetAgentSkillForAgent200Response';
 import SetLabels from './model/SetLabels';
 import SettingCondition from './model/SettingCondition';
+import Skill from './model/Skill';
+import SkillAgent from './model/SkillAgent';
+import SkillCatalogItem from './model/SkillCatalogItem';
+import SkillSaveMeta from './model/SkillSaveMeta';
+import SkillScript from './model/SkillScript';
+import SkillScriptInput from './model/SkillScriptInput';
+import SkillVersion from './model/SkillVersion';
 import SpamFilterIsDisabled from './model/SpamFilterIsDisabled';
 import SpamFilterIsEnabled from './model/SpamFilterIsEnabled';
 import SpamProtectionIsDisabled from './model/SpamProtectionIsDisabled';
@@ -598,10 +797,32 @@ import StatisticsRequestsInner from './model/StatisticsRequestsInner';
 import StatisticsTrafficInner from './model/StatisticsTrafficInner';
 import Status from './model/Status';
 import StatusCompanyInfo from './model/StatusCompanyInfo';
+import StopAiSolutionChat from './model/StopAiSolutionChat';
+import StreamError from './model/StreamError';
 import Subdomain from './model/Subdomain';
+import SyncAgentEntityLimits from './model/SyncAgentEntityLimits';
+import SyncAgentEntityLimitsLimitsInner from './model/SyncAgentEntityLimitsLimitsInner';
+import SyncAgentSkillAgentsVersions200Response from './model/SyncAgentSkillAgentsVersions200Response';
+import SyncAgentSkillAgentsVersions200ResponseMeta from './model/SyncAgentSkillAgentsVersions200ResponseMeta';
+import SyncAgentSkillVersionsForAgent200Response from './model/SyncAgentSkillVersionsForAgent200Response';
+import SyncAiKeyLimits from './model/SyncAiKeyLimits';
+import SyncAiKeyLimitsLimitsInner from './model/SyncAiKeyLimitsLimitsInner';
 import Tags from './model/Tags';
+import TextContent from './model/TextContent';
 import TokenPackage from './model/TokenPackage';
-import TokenStatistic from './model/TokenStatistic';
+import Tool from './model/Tool';
+import Tool2 from './model/Tool2';
+import Tool2Annotations from './model/Tool2Annotations';
+import ToolAuthData from './model/ToolAuthData';
+import ToolAuthDataParams from './model/ToolAuthDataParams';
+import ToolConfigField from './model/ToolConfigField';
+import ToolMethod from './model/ToolMethod';
+import ToolPrice from './model/ToolPrice';
+import ToolTemplate from './model/ToolTemplate';
+import ToolTemplateConfigSchema from './model/ToolTemplateConfigSchema';
+import ToolsCallParams from './model/ToolsCallParams';
+import ToolsCallResult from './model/ToolsCallResult';
+import ToolsListResult from './model/ToolsListResult';
 import TopLevelDomain from './model/TopLevelDomain';
 import TopLevelDomainAllowedBuyPeriodsInner from './model/TopLevelDomainAllowedBuyPeriodsInner';
 import TrafficUsage from './model/TrafficUsage';
@@ -611,11 +832,17 @@ import TransferStorageRequest from './model/TransferStorageRequest';
 import URLType from './model/URLType';
 import UpdateAdmin from './model/UpdateAdmin';
 import UpdateAgent from './model/UpdateAgent';
-import UpdateAgentSettings from './model/UpdateAgentSettings';
+import UpdateAgentEntityLimit from './model/UpdateAgentEntityLimit';
+import UpdateAgentTool from './model/UpdateAgentTool';
+import UpdateAiKey from './model/UpdateAiKey';
+import UpdateAiKey200Response from './model/UpdateAiKey200Response';
+import UpdateAiKeyLimit from './model/UpdateAiKeyLimit';
+import UpdateAiSolution from './model/UpdateAiSolution';
 import UpdateAppSettings200Response from './model/UpdateAppSettings200Response';
 import UpdateAuthRestrictionsByCountriesRequest from './model/UpdateAuthRestrictionsByCountriesRequest';
 import UpdateAutoBackup from './model/UpdateAutoBackup';
 import UpdateBalancer from './model/UpdateBalancer';
+import UpdateBot from './model/UpdateBot';
 import UpdateCluster from './model/UpdateCluster';
 import UpdateClusterConfiguration from './model/UpdateClusterConfiguration';
 import UpdateClusterV2 from './model/UpdateClusterV2';
@@ -624,6 +851,7 @@ import UpdateClusterV2MaintenanceSlot from './model/UpdateClusterV2MaintenanceSl
 import UpdateDatabaseCluster200Response from './model/UpdateDatabaseCluster200Response';
 import UpdateDatabaseInstance409Response from './model/UpdateDatabaseInstance409Response';
 import UpdateDedicatedServerRequest from './model/UpdateDedicatedServerRequest';
+import UpdateDocument from './model/UpdateDocument';
 import UpdateDomain from './model/UpdateDomain';
 import UpdateDomainAutoProlongation200Response from './model/UpdateDomainAutoProlongation200Response';
 import UpdateDomainMailInfoRequest from './model/UpdateDomainMailInfoRequest';
@@ -638,6 +866,7 @@ import UpdateKnowledgebase from './model/UpdateKnowledgebase';
 import UpdateMailbox from './model/UpdateMailbox';
 import UpdateMailboxV2 from './model/UpdateMailboxV2';
 import UpdateMailboxV2200Response from './model/UpdateMailboxV2200Response';
+import UpdateMaxBot from './model/UpdateMaxBot';
 import UpdateNetworkDrive from './model/UpdateNetworkDrive';
 import UpdateNotificationSettingsRequest from './model/UpdateNotificationSettingsRequest';
 import UpdateNotificationSettingsRequestSettingsInner from './model/UpdateNotificationSettingsRequestSettingsInner';
@@ -654,12 +883,14 @@ import UpdateServerIPRequest from './model/UpdateServerIPRequest';
 import UpdateServerNATRequest from './model/UpdateServerNATRequest';
 import UpdateServerOSBootModeRequest from './model/UpdateServerOSBootModeRequest';
 import UpdateSettings from './model/UpdateSettings';
+import UpdateSkill from './model/UpdateSkill';
 import UpdateStorageRequest from './model/UpdateStorageRequest';
 import UpdateStorageRequestConfigurator from './model/UpdateStorageRequestConfigurator';
 import UpdateStorageUser200Response from './model/UpdateStorageUser200Response';
 import UpdateStorageUserRequest from './model/UpdateStorageUserRequest';
+import UpdateTool from './model/UpdateTool';
 import UpdateVpc from './model/UpdateVpc';
-import UploadFilesToKnowledgebase200Response from './model/UploadFilesToKnowledgebase200Response';
+import UploadResult from './model/UploadResult';
 import UploadSuccessful from './model/UploadSuccessful';
 import UploadSuccessfulResponse from './model/UploadSuccessfulResponse';
 import UrlStatus from './model/UrlStatus';
@@ -678,7 +909,14 @@ import VpcPort from './model/VpcPort';
 import VpcPortService from './model/VpcPortService';
 import VpcService from './model/VpcService';
 import WorkerPresetOutApi from './model/WorkerPresetOutApi';
+import AIAgentIntegrationsApi from './api/AIAgentIntegrationsApi';
+import AIAgentSkillsApi from './api/AIAgentSkillsApi';
+import AIAgentToolsApi from './api/AIAgentToolsApi';
 import AIAgentsApi from './api/AIAgentsApi';
+import AIGatewayApi from './api/AIGatewayApi';
+import AIGatewayInferenceApi from './api/AIGatewayInferenceApi';
+import AIModelsApi from './api/AIModelsApi';
+import AISolutionsApi from './api/AISolutionsApi';
 import AccountApi from './api/AccountApi';
 import AppsApi from './api/AppsApi';
 import BalancersApi from './api/BalancersApi';
@@ -693,6 +931,7 @@ import ImagesApi from './api/ImagesApi';
 import KnowledgeBasesApi from './api/KnowledgeBasesApi';
 import KubernetesApi from './api/KubernetesApi';
 import LocationsApi from './api/LocationsApi';
+import MCPApi from './api/MCPApi';
 import MailApi from './api/MailApi';
 import NetworkDrivesApi from './api/NetworkDrivesApi';
 import PaymentsApi from './api/PaymentsApi';
@@ -741,6 +980,12 @@ export {
      * @property {module:ApiClient}
      */
     ApiClient,
+
+    /**
+     * The AddAiSolutionTelegramBot201Response model constructor.
+     * @property {module:model/AddAiSolutionTelegramBot201Response}
+     */
+    AddAiSolutionTelegramBot201Response,
 
     /**
      * The AddBalancerToProject200Response model constructor.
@@ -953,6 +1198,18 @@ export {
     Agent,
 
     /**
+     * The AgentAdditionalModel model constructor.
+     * @property {module:model/AgentAdditionalModel}
+     */
+    AgentAdditionalModel,
+
+    /**
+     * The AgentEntityLimit model constructor.
+     * @property {module:model/AgentEntityLimit}
+     */
+    AgentEntityLimit,
+
+    /**
      * The AgentModelSettings model constructor.
      * @property {module:model/AgentModelSettings}
      */
@@ -965,10 +1222,370 @@ export {
     AgentSettings,
 
     /**
-     * The AgentSettingsWidget model constructor.
-     * @property {module:model/AgentSettingsWidget}
+     * The AgentSkill model constructor.
+     * @property {module:model/AgentSkill}
      */
-    AgentSettingsWidget,
+    AgentSkill,
+
+    /**
+     * The AgentTokenStatistic model constructor.
+     * @property {module:model/AgentTokenStatistic}
+     */
+    AgentTokenStatistic,
+
+    /**
+     * The AgentToolsInner model constructor.
+     * @property {module:model/AgentToolsInner}
+     */
+    AgentToolsInner,
+
+    /**
+     * The AgentV3 model constructor.
+     * @property {module:model/AgentV3}
+     */
+    AgentV3,
+
+    /**
+     * The AgentV3KnowledgeBasesInner model constructor.
+     * @property {module:model/AgentV3KnowledgeBasesInner}
+     */
+    AgentV3KnowledgeBasesInner,
+
+    /**
+     * The AgentWidgetSettings model constructor.
+     * @property {module:model/AgentWidgetSettings}
+     */
+    AgentWidgetSettings,
+
+    /**
+     * The AiGatewayBatch model constructor.
+     * @property {module:model/AiGatewayBatch}
+     */
+    AiGatewayBatch,
+
+    /**
+     * The AiGatewayBatchCreateRequest model constructor.
+     * @property {module:model/AiGatewayBatchCreateRequest}
+     */
+    AiGatewayBatchCreateRequest,
+
+    /**
+     * The AiGatewayBatchList model constructor.
+     * @property {module:model/AiGatewayBatchList}
+     */
+    AiGatewayBatchList,
+
+    /**
+     * The AiGatewayBatchRequestCounts model constructor.
+     * @property {module:model/AiGatewayBatchRequestCounts}
+     */
+    AiGatewayBatchRequestCounts,
+
+    /**
+     * The AiGatewayChatCompletion model constructor.
+     * @property {module:model/AiGatewayChatCompletion}
+     */
+    AiGatewayChatCompletion,
+
+    /**
+     * The AiGatewayChatCompletionChoicesInner model constructor.
+     * @property {module:model/AiGatewayChatCompletionChoicesInner}
+     */
+    AiGatewayChatCompletionChoicesInner,
+
+    /**
+     * The AiGatewayChatCompletionChunk model constructor.
+     * @property {module:model/AiGatewayChatCompletionChunk}
+     */
+    AiGatewayChatCompletionChunk,
+
+    /**
+     * The AiGatewayChatCompletionChunkChoicesInner model constructor.
+     * @property {module:model/AiGatewayChatCompletionChunkChoicesInner}
+     */
+    AiGatewayChatCompletionChunkChoicesInner,
+
+    /**
+     * The AiGatewayChatCompletionRequest model constructor.
+     * @property {module:model/AiGatewayChatCompletionRequest}
+     */
+    AiGatewayChatCompletionRequest,
+
+    /**
+     * The AiGatewayChatCompletionRequestStreamOptions model constructor.
+     * @property {module:model/AiGatewayChatCompletionRequestStreamOptions}
+     */
+    AiGatewayChatCompletionRequestStreamOptions,
+
+    /**
+     * The AiGatewayChatMessage model constructor.
+     * @property {module:model/AiGatewayChatMessage}
+     */
+    AiGatewayChatMessage,
+
+    /**
+     * The AiGatewayCompletion model constructor.
+     * @property {module:model/AiGatewayCompletion}
+     */
+    AiGatewayCompletion,
+
+    /**
+     * The AiGatewayCompletionChoicesInner model constructor.
+     * @property {module:model/AiGatewayCompletionChoicesInner}
+     */
+    AiGatewayCompletionChoicesInner,
+
+    /**
+     * The AiGatewayCompletionRequest model constructor.
+     * @property {module:model/AiGatewayCompletionRequest}
+     */
+    AiGatewayCompletionRequest,
+
+    /**
+     * The AiGatewayEmbeddingList model constructor.
+     * @property {module:model/AiGatewayEmbeddingList}
+     */
+    AiGatewayEmbeddingList,
+
+    /**
+     * The AiGatewayEmbeddingListDataInner model constructor.
+     * @property {module:model/AiGatewayEmbeddingListDataInner}
+     */
+    AiGatewayEmbeddingListDataInner,
+
+    /**
+     * The AiGatewayEmbeddingListUsage model constructor.
+     * @property {module:model/AiGatewayEmbeddingListUsage}
+     */
+    AiGatewayEmbeddingListUsage,
+
+    /**
+     * The AiGatewayEmbeddingRequest model constructor.
+     * @property {module:model/AiGatewayEmbeddingRequest}
+     */
+    AiGatewayEmbeddingRequest,
+
+    /**
+     * The AiGatewayError model constructor.
+     * @property {module:model/AiGatewayError}
+     */
+    AiGatewayError,
+
+    /**
+     * The AiGatewayErrorError model constructor.
+     * @property {module:model/AiGatewayErrorError}
+     */
+    AiGatewayErrorError,
+
+    /**
+     * The AiGatewayFile model constructor.
+     * @property {module:model/AiGatewayFile}
+     */
+    AiGatewayFile,
+
+    /**
+     * The AiGatewayFileDeleted model constructor.
+     * @property {module:model/AiGatewayFileDeleted}
+     */
+    AiGatewayFileDeleted,
+
+    /**
+     * The AiGatewayImageGenerationRequest model constructor.
+     * @property {module:model/AiGatewayImageGenerationRequest}
+     */
+    AiGatewayImageGenerationRequest,
+
+    /**
+     * The AiGatewayImagesResponse model constructor.
+     * @property {module:model/AiGatewayImagesResponse}
+     */
+    AiGatewayImagesResponse,
+
+    /**
+     * The AiGatewayImagesResponseDataInner model constructor.
+     * @property {module:model/AiGatewayImagesResponseDataInner}
+     */
+    AiGatewayImagesResponseDataInner,
+
+    /**
+     * The AiGatewayModel model constructor.
+     * @property {module:model/AiGatewayModel}
+     */
+    AiGatewayModel,
+
+    /**
+     * The AiGatewayModelList model constructor.
+     * @property {module:model/AiGatewayModelList}
+     */
+    AiGatewayModelList,
+
+    /**
+     * The AiGatewayResponse model constructor.
+     * @property {module:model/AiGatewayResponse}
+     */
+    AiGatewayResponse,
+
+    /**
+     * The AiGatewayResponseCreateRequest model constructor.
+     * @property {module:model/AiGatewayResponseCreateRequest}
+     */
+    AiGatewayResponseCreateRequest,
+
+    /**
+     * The AiGatewayResponseCreateRequestReasoning model constructor.
+     * @property {module:model/AiGatewayResponseCreateRequestReasoning}
+     */
+    AiGatewayResponseCreateRequestReasoning,
+
+    /**
+     * The AiGatewayResponseDeleted model constructor.
+     * @property {module:model/AiGatewayResponseDeleted}
+     */
+    AiGatewayResponseDeleted,
+
+    /**
+     * The AiGatewayResponseIncompleteDetails model constructor.
+     * @property {module:model/AiGatewayResponseIncompleteDetails}
+     */
+    AiGatewayResponseIncompleteDetails,
+
+    /**
+     * The AiGatewayResponseUsage model constructor.
+     * @property {module:model/AiGatewayResponseUsage}
+     */
+    AiGatewayResponseUsage,
+
+    /**
+     * The AiGatewaySpeechRequest model constructor.
+     * @property {module:model/AiGatewaySpeechRequest}
+     */
+    AiGatewaySpeechRequest,
+
+    /**
+     * The AiGatewayToolCall model constructor.
+     * @property {module:model/AiGatewayToolCall}
+     */
+    AiGatewayToolCall,
+
+    /**
+     * The AiGatewayToolCallFunction model constructor.
+     * @property {module:model/AiGatewayToolCallFunction}
+     */
+    AiGatewayToolCallFunction,
+
+    /**
+     * The AiGatewayTranscription model constructor.
+     * @property {module:model/AiGatewayTranscription}
+     */
+    AiGatewayTranscription,
+
+    /**
+     * The AiGatewayUsage model constructor.
+     * @property {module:model/AiGatewayUsage}
+     */
+    AiGatewayUsage,
+
+    /**
+     * The AiGatewayUsageCompletionTokensDetails model constructor.
+     * @property {module:model/AiGatewayUsageCompletionTokensDetails}
+     */
+    AiGatewayUsageCompletionTokensDetails,
+
+    /**
+     * The AiGatewayUsagePromptTokensDetails model constructor.
+     * @property {module:model/AiGatewayUsagePromptTokensDetails}
+     */
+    AiGatewayUsagePromptTokensDetails,
+
+    /**
+     * The AiGatewayValidationError model constructor.
+     * @property {module:model/AiGatewayValidationError}
+     */
+    AiGatewayValidationError,
+
+    /**
+     * The AiKey model constructor.
+     * @property {module:model/AiKey}
+     */
+    AiKey,
+
+    /**
+     * The AiKeyCallsStatisticPoint model constructor.
+     * @property {module:model/AiKeyCallsStatisticPoint}
+     */
+    AiKeyCallsStatisticPoint,
+
+    /**
+     * The AiKeyLimit model constructor.
+     * @property {module:model/AiKeyLimit}
+     */
+    AiKeyLimit,
+
+    /**
+     * The AiKeyTokenStatisticPoint model constructor.
+     * @property {module:model/AiKeyTokenStatisticPoint}
+     */
+    AiKeyTokenStatisticPoint,
+
+    /**
+     * The AiProvider model constructor.
+     * @property {module:model/AiProvider}
+     */
+    AiProvider,
+
+    /**
+     * The AiSolution model constructor.
+     * @property {module:model/AiSolution}
+     */
+    AiSolution,
+
+    /**
+     * The AiSolutionAiKey model constructor.
+     * @property {module:model/AiSolutionAiKey}
+     */
+    AiSolutionAiKey,
+
+    /**
+     * The AiSolutionChatMessage model constructor.
+     * @property {module:model/AiSolutionChatMessage}
+     */
+    AiSolutionChatMessage,
+
+    /**
+     * The AiSolutionChatReply model constructor.
+     * @property {module:model/AiSolutionChatReply}
+     */
+    AiSolutionChatReply,
+
+    /**
+     * The AiSolutionChatStatus model constructor.
+     * @property {module:model/AiSolutionChatStatus}
+     */
+    AiSolutionChatStatus,
+
+    /**
+     * The AiSolutionConversation model constructor.
+     * @property {module:model/AiSolutionConversation}
+     */
+    AiSolutionConversation,
+
+    /**
+     * The AiSolutionTelegramBot model constructor.
+     * @property {module:model/AiSolutionTelegramBot}
+     */
+    AiSolutionTelegramBot,
+
+    /**
+     * The AiSolutionType model constructor.
+     * @property {module:model/AiSolutionType}
+     */
+    AiSolutionType,
+
+    /**
+     * The AiSolutionTypeRequirements model constructor.
+     * @property {module:model/AiSolutionTypeRequirements}
+     */
+    AiSolutionTypeRequirements,
 
     /**
      * The App model constructor.
@@ -1001,6 +1618,12 @@ export {
     AppProvider,
 
     /**
+     * The ApproveTelegramPairing model constructor.
+     * @property {module:model/ApproveTelegramPairing}
+     */
+    ApproveTelegramPairing,
+
+    /**
      * The AppsPresets model constructor.
      * @property {module:model/AppsPresets}
      */
@@ -1017,6 +1640,12 @@ export {
      * @property {module:model/AppsPresetsFrontendPresetsInner}
      */
     AppsPresetsFrontendPresetsInner,
+
+    /**
+     * The AuthorizeUrl model constructor.
+     * @property {module:model/AuthorizeUrl}
+     */
+    AuthorizeUrl,
 
     /**
      * The AutoBackup model constructor.
@@ -1157,6 +1786,12 @@ export {
     Bonus,
 
     /**
+     * The Bot model constructor.
+     * @property {module:model/Bot}
+     */
+    Bot,
+
+    /**
      * The Branch model constructor.
      * @property {module:model/Branch}
      */
@@ -1203,6 +1838,48 @@ export {
      * @property {module:model/CertificateTask}
      */
     CertificateTask,
+
+    /**
+     * The ChangeAgentModel model constructor.
+     * @property {module:model/ChangeAgentModel}
+     */
+    ChangeAgentModel,
+
+    /**
+     * The Chat model constructor.
+     * @property {module:model/Chat}
+     */
+    Chat,
+
+    /**
+     * The ChatFirstMessage model constructor.
+     * @property {module:model/ChatFirstMessage}
+     */
+    ChatFirstMessage,
+
+    /**
+     * The ChatListMetrics model constructor.
+     * @property {module:model/ChatListMetrics}
+     */
+    ChatListMetrics,
+
+    /**
+     * The ChatMessage model constructor.
+     * @property {module:model/ChatMessage}
+     */
+    ChatMessage,
+
+    /**
+     * The ChatMessageFile model constructor.
+     * @property {module:model/ChatMessageFile}
+     */
+    ChatMessageFile,
+
+    /**
+     * The ChatsCsv model constructor.
+     * @property {module:model/ChatsCsv}
+     */
+    ChatsCsv,
 
     /**
      * The CheckDomain200Response model constructor.
@@ -1433,6 +2110,30 @@ export {
     ConfigSecuritySecureToken,
 
     /**
+     * The ConnectAgentTool model constructor.
+     * @property {module:model/ConnectAgentTool}
+     */
+    ConnectAgentTool,
+
+    /**
+     * The ConnectSkillItem model constructor.
+     * @property {module:model/ConnectSkillItem}
+     */
+    ConnectSkillItem,
+
+    /**
+     * The ConnectSkills model constructor.
+     * @property {module:model/ConnectSkills}
+     */
+    ConnectSkills,
+
+    /**
+     * The ConnectTelegram model constructor.
+     * @property {module:model/ConnectTelegram}
+     */
+    ConnectTelegram,
+
+    /**
      * The ContainerRegistryPresetsInner model constructor.
      * @property {module:model/ContainerRegistryPresetsInner}
      */
@@ -1463,10 +2164,76 @@ export {
     CreateAgent201Response,
 
     /**
+     * The CreateAgentBotTelegramBot201Response model constructor.
+     * @property {module:model/CreateAgentBotTelegramBot201Response}
+     */
+    CreateAgentBotTelegramBot201Response,
+
+    /**
+     * The CreateAgentEntityLimit model constructor.
+     * @property {module:model/CreateAgentEntityLimit}
+     */
+    CreateAgentEntityLimit,
+
+    /**
+     * The CreateAgentEntityLimit201Response model constructor.
+     * @property {module:model/CreateAgentEntityLimit201Response}
+     */
+    CreateAgentEntityLimit201Response,
+
+    /**
+     * The CreateAgentSkill201Response model constructor.
+     * @property {module:model/CreateAgentSkill201Response}
+     */
+    CreateAgentSkill201Response,
+
+    /**
+     * The CreateAgentTool201Response model constructor.
+     * @property {module:model/CreateAgentTool201Response}
+     */
+    CreateAgentTool201Response,
+
+    /**
      * The CreateAgentV2 model constructor.
      * @property {module:model/CreateAgentV2}
      */
     CreateAgentV2,
+
+    /**
+     * The CreateAiKey model constructor.
+     * @property {module:model/CreateAiKey}
+     */
+    CreateAiKey,
+
+    /**
+     * The CreateAiKey201Response model constructor.
+     * @property {module:model/CreateAiKey201Response}
+     */
+    CreateAiKey201Response,
+
+    /**
+     * The CreateAiKeyLimit model constructor.
+     * @property {module:model/CreateAiKeyLimit}
+     */
+    CreateAiKeyLimit,
+
+    /**
+     * The CreateAiKeyLimit201Response model constructor.
+     * @property {module:model/CreateAiKeyLimit201Response}
+     */
+    CreateAiKeyLimit201Response,
+
+    /**
+     * The CreateAiSolution model constructor.
+     * @property {module:model/CreateAiSolution}
+     */
+    CreateAiSolution,
+
+    /**
+     * The CreateAiSolution201Response model constructor.
+     * @property {module:model/CreateAiSolution201Response}
+     */
+    CreateAiSolution201Response,
 
     /**
      * The CreateApp model constructor.
@@ -1503,6 +2270,12 @@ export {
      * @property {module:model/CreateBalancerRule200Response}
      */
     CreateBalancerRule200Response,
+
+    /**
+     * The CreateBot model constructor.
+     * @property {module:model/CreateBot}
+     */
+    CreateBot,
 
     /**
      * The CreateCdnResource201Response model constructor.
@@ -1551,6 +2324,12 @@ export {
      * @property {module:model/CreateClusterMaintenanceSlot}
      */
     CreateClusterMaintenanceSlot,
+
+    /**
+     * The CreateCrispIntegration model constructor.
+     * @property {module:model/CreateCrispIntegration}
+     */
+    CreateCrispIntegration,
 
     /**
      * The CreateDatabaseBackup201Response model constructor.
@@ -1631,6 +2410,12 @@ export {
     CreateDnsV2,
 
     /**
+     * The CreateDocument model constructor.
+     * @property {module:model/CreateDocument}
+     */
+    CreateDocument,
+
+    /**
      * The CreateDomainDNSRecord201Response model constructor.
      * @property {module:model/CreateDomainDNSRecord201Response}
      */
@@ -1697,6 +2482,12 @@ export {
     CreateInstance,
 
     /**
+     * The CreateJivoIntegration model constructor.
+     * @property {module:model/CreateJivoIntegration}
+     */
+    CreateJivoIntegration,
+
+    /**
      * The CreateKey201Response model constructor.
      * @property {module:model/CreateKey201Response}
      */
@@ -1719,6 +2510,18 @@ export {
      * @property {module:model/CreateKnowledgebase201Response}
      */
     CreateKnowledgebase201Response,
+
+    /**
+     * The CreateKnowledgebaseDocument201Response model constructor.
+     * @property {module:model/CreateKnowledgebaseDocument201Response}
+     */
+    CreateKnowledgebaseDocument201Response,
+
+    /**
+     * The CreateMaxBot model constructor.
+     * @property {module:model/CreateMaxBot}
+     */
+    CreateMaxBot,
 
     /**
      * The CreateMultipleDomainMailboxes201Response model constructor.
@@ -1841,6 +2644,12 @@ export {
     CreateServerNetwork,
 
     /**
+     * The CreateSkill model constructor.
+     * @property {module:model/CreateSkill}
+     */
+    CreateSkill,
+
+    /**
      * The CreateStorage201Response model constructor.
      * @property {module:model/CreateStorage201Response}
      */
@@ -1859,6 +2668,12 @@ export {
     CreateStorageRequestConfigurator,
 
     /**
+     * The CreateTool model constructor.
+     * @property {module:model/CreateTool}
+     */
+    CreateTool,
+
+    /**
      * The CreateVPC201Response model constructor.
      * @property {module:model/CreateVPC201Response}
      */
@@ -1869,6 +2684,12 @@ export {
      * @property {module:model/CreateVpc}
      */
     CreateVpc,
+
+    /**
+     * The CrispIntegration model constructor.
+     * @property {module:model/CrispIntegration}
+     */
+    CrispIntegration,
 
     /**
      * The DatabaseAdmin model constructor.
@@ -2079,6 +2900,12 @@ export {
      * @property {module:model/DedicatedServerPresetMemory}
      */
     DedicatedServerPresetMemory,
+
+    /**
+     * The DeleteAgent model constructor.
+     * @property {module:model/DeleteAgent}
+     */
+    DeleteAgent,
 
     /**
      * The DeleteBalancer200Response model constructor.
@@ -2315,6 +3142,18 @@ export {
     DomainTransfer,
 
     /**
+     * The ErrorResponse model constructor.
+     * @property {module:model/ErrorResponse}
+     */
+    ErrorResponse,
+
+    /**
+     * The ExportAgentChatsCsv200Response model constructor.
+     * @property {module:model/ExportAgentChatsCsv200Response}
+     */
+    ExportAgentChatsCsv200Response,
+
+    /**
      * The Finances model constructor.
      * @property {module:model/Finances}
      */
@@ -2465,6 +3304,162 @@ export {
     GetAccountStatus403Response,
 
     /**
+     * The GetAgentBotMaxBots200Response model constructor.
+     * @property {module:model/GetAgentBotMaxBots200Response}
+     */
+    GetAgentBotMaxBots200Response,
+
+    /**
+     * The GetAgentBotMaxBots200ResponseMeta model constructor.
+     * @property {module:model/GetAgentBotMaxBots200ResponseMeta}
+     */
+    GetAgentBotMaxBots200ResponseMeta,
+
+    /**
+     * The GetAgentBotMaxBotsByAgent200Response model constructor.
+     * @property {module:model/GetAgentBotMaxBotsByAgent200Response}
+     */
+    GetAgentBotMaxBotsByAgent200Response,
+
+    /**
+     * The GetAgentBotMaxBotsByAgent200ResponseMeta model constructor.
+     * @property {module:model/GetAgentBotMaxBotsByAgent200ResponseMeta}
+     */
+    GetAgentBotMaxBotsByAgent200ResponseMeta,
+
+    /**
+     * The GetAgentBotTelegramBots200Response model constructor.
+     * @property {module:model/GetAgentBotTelegramBots200Response}
+     */
+    GetAgentBotTelegramBots200Response,
+
+    /**
+     * The GetAgentBotTelegramBots200ResponseMeta model constructor.
+     * @property {module:model/GetAgentBotTelegramBots200ResponseMeta}
+     */
+    GetAgentBotTelegramBots200ResponseMeta,
+
+    /**
+     * The GetAgentBotTelegramBotsByAgent200Response model constructor.
+     * @property {module:model/GetAgentBotTelegramBotsByAgent200Response}
+     */
+    GetAgentBotTelegramBotsByAgent200Response,
+
+    /**
+     * The GetAgentBotTelegramBotsByAgent200ResponseMeta model constructor.
+     * @property {module:model/GetAgentBotTelegramBotsByAgent200ResponseMeta}
+     */
+    GetAgentBotTelegramBotsByAgent200ResponseMeta,
+
+    /**
+     * The GetAgentChatList200Response model constructor.
+     * @property {module:model/GetAgentChatList200Response}
+     */
+    GetAgentChatList200Response,
+
+    /**
+     * The GetAgentChatList200ResponseMeta model constructor.
+     * @property {module:model/GetAgentChatList200ResponseMeta}
+     */
+    GetAgentChatList200ResponseMeta,
+
+    /**
+     * The GetAgentChatMessages200Response model constructor.
+     * @property {module:model/GetAgentChatMessages200Response}
+     */
+    GetAgentChatMessages200Response,
+
+    /**
+     * The GetAgentChatMessages200ResponseMeta model constructor.
+     * @property {module:model/GetAgentChatMessages200ResponseMeta}
+     */
+    GetAgentChatMessages200ResponseMeta,
+
+    /**
+     * The GetAgentEntityLimits200Response model constructor.
+     * @property {module:model/GetAgentEntityLimits200Response}
+     */
+    GetAgentEntityLimits200Response,
+
+    /**
+     * The GetAgentEntityLimits200ResponseMeta model constructor.
+     * @property {module:model/GetAgentEntityLimits200ResponseMeta}
+     */
+    GetAgentEntityLimits200ResponseMeta,
+
+    /**
+     * The GetAgentIntegrationCrisp200Response model constructor.
+     * @property {module:model/GetAgentIntegrationCrisp200Response}
+     */
+    GetAgentIntegrationCrisp200Response,
+
+    /**
+     * The GetAgentIntegrationJivo200Response model constructor.
+     * @property {module:model/GetAgentIntegrationJivo200Response}
+     */
+    GetAgentIntegrationJivo200Response,
+
+    /**
+     * The GetAgentSkill200Response model constructor.
+     * @property {module:model/GetAgentSkill200Response}
+     */
+    GetAgentSkill200Response,
+
+    /**
+     * The GetAgentSkillCatalog200Response model constructor.
+     * @property {module:model/GetAgentSkillCatalog200Response}
+     */
+    GetAgentSkillCatalog200Response,
+
+    /**
+     * The GetAgentSkillCatalog200ResponseMeta model constructor.
+     * @property {module:model/GetAgentSkillCatalog200ResponseMeta}
+     */
+    GetAgentSkillCatalog200ResponseMeta,
+
+    /**
+     * The GetAgentSkillLibrary200Response model constructor.
+     * @property {module:model/GetAgentSkillLibrary200Response}
+     */
+    GetAgentSkillLibrary200Response,
+
+    /**
+     * The GetAgentSkillLibrary200ResponseMeta model constructor.
+     * @property {module:model/GetAgentSkillLibrary200ResponseMeta}
+     */
+    GetAgentSkillLibrary200ResponseMeta,
+
+    /**
+     * The GetAgentSkillVersion200Response model constructor.
+     * @property {module:model/GetAgentSkillVersion200Response}
+     */
+    GetAgentSkillVersion200Response,
+
+    /**
+     * The GetAgentSkillVersions200Response model constructor.
+     * @property {module:model/GetAgentSkillVersions200Response}
+     */
+    GetAgentSkillVersions200Response,
+
+    /**
+     * The GetAgentSkillVersions200ResponseMeta model constructor.
+     * @property {module:model/GetAgentSkillVersions200ResponseMeta}
+     */
+    GetAgentSkillVersions200ResponseMeta,
+
+    /**
+     * The GetAgentSkillsForAgent200Response model constructor.
+     * @property {module:model/GetAgentSkillsForAgent200Response}
+     */
+    GetAgentSkillsForAgent200Response,
+
+    /**
+     * The GetAgentSkillsForAgent200ResponseMeta model constructor.
+     * @property {module:model/GetAgentSkillsForAgent200ResponseMeta}
+     */
+    GetAgentSkillsForAgent200ResponseMeta,
+
+    /**
      * The GetAgentStatistics200Response model constructor.
      * @property {module:model/GetAgentStatistics200Response}
      */
@@ -2475,6 +3470,54 @@ export {
      * @property {module:model/GetAgentStatistics200ResponseMeta}
      */
     GetAgentStatistics200ResponseMeta,
+
+    /**
+     * The GetAgentToolTemplatePrices200Response model constructor.
+     * @property {module:model/GetAgentToolTemplatePrices200Response}
+     */
+    GetAgentToolTemplatePrices200Response,
+
+    /**
+     * The GetAgentToolTemplates200Response model constructor.
+     * @property {module:model/GetAgentToolTemplates200Response}
+     */
+    GetAgentToolTemplates200Response,
+
+    /**
+     * The GetAgentToolTemplates200ResponseMeta model constructor.
+     * @property {module:model/GetAgentToolTemplates200ResponseMeta}
+     */
+    GetAgentToolTemplates200ResponseMeta,
+
+    /**
+     * The GetAgentTools200Response model constructor.
+     * @property {module:model/GetAgentTools200Response}
+     */
+    GetAgentTools200Response,
+
+    /**
+     * The GetAgentTools200ResponseMeta model constructor.
+     * @property {module:model/GetAgentTools200ResponseMeta}
+     */
+    GetAgentTools200ResponseMeta,
+
+    /**
+     * The GetAgentToolsByAgent200Response model constructor.
+     * @property {module:model/GetAgentToolsByAgent200Response}
+     */
+    GetAgentToolsByAgent200Response,
+
+    /**
+     * The GetAgentToolsByAgent200ResponseMeta model constructor.
+     * @property {module:model/GetAgentToolsByAgent200ResponseMeta}
+     */
+    GetAgentToolsByAgent200ResponseMeta,
+
+    /**
+     * The GetAgentV3200Response model constructor.
+     * @property {module:model/GetAgentV3200Response}
+     */
+    GetAgentV3200Response,
 
     /**
      * The GetAgents200Response model constructor.
@@ -2499,6 +3542,120 @@ export {
      * @property {module:model/GetAgentsTokenPackages200ResponseMeta}
      */
     GetAgentsTokenPackages200ResponseMeta,
+
+    /**
+     * The GetAgentsV3200Response model constructor.
+     * @property {module:model/GetAgentsV3200Response}
+     */
+    GetAgentsV3200Response,
+
+    /**
+     * The GetAiKeyCallsStatistic200Response model constructor.
+     * @property {module:model/GetAiKeyCallsStatistic200Response}
+     */
+    GetAiKeyCallsStatistic200Response,
+
+    /**
+     * The GetAiKeyLimits200Response model constructor.
+     * @property {module:model/GetAiKeyLimits200Response}
+     */
+    GetAiKeyLimits200Response,
+
+    /**
+     * The GetAiKeyLimits200ResponseMeta model constructor.
+     * @property {module:model/GetAiKeyLimits200ResponseMeta}
+     */
+    GetAiKeyLimits200ResponseMeta,
+
+    /**
+     * The GetAiKeyModelsStatistic200Response model constructor.
+     * @property {module:model/GetAiKeyModelsStatistic200Response}
+     */
+    GetAiKeyModelsStatistic200Response,
+
+    /**
+     * The GetAiKeyModelsStatistic200ResponseMeta model constructor.
+     * @property {module:model/GetAiKeyModelsStatistic200ResponseMeta}
+     */
+    GetAiKeyModelsStatistic200ResponseMeta,
+
+    /**
+     * The GetAiKeyTokenUsageStatistic200Response model constructor.
+     * @property {module:model/GetAiKeyTokenUsageStatistic200Response}
+     */
+    GetAiKeyTokenUsageStatistic200Response,
+
+    /**
+     * The GetAiKeyTokenUsageStatistic200ResponseMeta model constructor.
+     * @property {module:model/GetAiKeyTokenUsageStatistic200ResponseMeta}
+     */
+    GetAiKeyTokenUsageStatistic200ResponseMeta,
+
+    /**
+     * The GetAiKeys200Response model constructor.
+     * @property {module:model/GetAiKeys200Response}
+     */
+    GetAiKeys200Response,
+
+    /**
+     * The GetAiKeys200ResponseMeta model constructor.
+     * @property {module:model/GetAiKeys200ResponseMeta}
+     */
+    GetAiKeys200ResponseMeta,
+
+    /**
+     * The GetAiModelParameters200Response model constructor.
+     * @property {module:model/GetAiModelParameters200Response}
+     */
+    GetAiModelParameters200Response,
+
+    /**
+     * The GetAiModelParameters200ResponseMeta model constructor.
+     * @property {module:model/GetAiModelParameters200ResponseMeta}
+     */
+    GetAiModelParameters200ResponseMeta,
+
+    /**
+     * The GetAiModelTokenPackages200Response model constructor.
+     * @property {module:model/GetAiModelTokenPackages200Response}
+     */
+    GetAiModelTokenPackages200Response,
+
+    /**
+     * The GetAiModelTokenPackages200ResponseMeta model constructor.
+     * @property {module:model/GetAiModelTokenPackages200ResponseMeta}
+     */
+    GetAiModelTokenPackages200ResponseMeta,
+
+    /**
+     * The GetAiProvider200Response model constructor.
+     * @property {module:model/GetAiProvider200Response}
+     */
+    GetAiProvider200Response,
+
+    /**
+     * The GetAiProviders200Response model constructor.
+     * @property {module:model/GetAiProviders200Response}
+     */
+    GetAiProviders200Response,
+
+    /**
+     * The GetAiProviders200ResponseMeta model constructor.
+     * @property {module:model/GetAiProviders200ResponseMeta}
+     */
+    GetAiProviders200ResponseMeta,
+
+    /**
+     * The GetAiSolutionChatStatus200Response model constructor.
+     * @property {module:model/GetAiSolutionChatStatus200Response}
+     */
+    GetAiSolutionChatStatus200Response,
+
+    /**
+     * The GetAiSolutionMainChatHistory200Response model constructor.
+     * @property {module:model/GetAiSolutionMainChatHistory200Response}
+     */
+    GetAiSolutionMainChatHistory200Response,
 
     /**
      * The GetAllMailboxesV2200Response model constructor.
@@ -2861,10 +4018,10 @@ export {
     GetKnowledgebaseDocumentsV2200ResponseMeta,
 
     /**
-     * The GetKnowledgebaseStatistics200Response model constructor.
-     * @property {module:model/GetKnowledgebaseStatistics200Response}
+     * The GetKnowledgebaseV3200Response model constructor.
+     * @property {module:model/GetKnowledgebaseV3200Response}
      */
-    GetKnowledgebaseStatistics200Response,
+    GetKnowledgebaseV3200Response,
 
     /**
      * The GetKnowledgebases200Response model constructor.
@@ -2873,16 +4030,34 @@ export {
     GetKnowledgebases200Response,
 
     /**
+     * The GetKnowledgebasesTokenPackages200Response model constructor.
+     * @property {module:model/GetKnowledgebasesTokenPackages200Response}
+     */
+    GetKnowledgebasesTokenPackages200Response,
+
+    /**
+     * The GetKnowledgebasesTokenPackages200ResponseMeta model constructor.
+     * @property {module:model/GetKnowledgebasesTokenPackages200ResponseMeta}
+     */
+    GetKnowledgebasesTokenPackages200ResponseMeta,
+
+    /**
      * The GetKnowledgebasesV2200Response model constructor.
      * @property {module:model/GetKnowledgebasesV2200Response}
      */
     GetKnowledgebasesV2200Response,
 
     /**
-     * The GetKnowledgebasesV2200ResponseMeta model constructor.
-     * @property {module:model/GetKnowledgebasesV2200ResponseMeta}
+     * The GetKnowledgebasesV3200Response model constructor.
+     * @property {module:model/GetKnowledgebasesV3200Response}
      */
-    GetKnowledgebasesV2200ResponseMeta,
+    GetKnowledgebasesV3200Response,
+
+    /**
+     * The GetKnowledgebasesV3200ResponseMeta model constructor.
+     * @property {module:model/GetKnowledgebasesV3200ResponseMeta}
+     */
+    GetKnowledgebasesV3200ResponseMeta,
 
     /**
      * The GetLocations200Response model constructor.
@@ -3251,10 +4426,70 @@ export {
     IncreaseNodes,
 
     /**
+     * The IndexingSchedule model constructor.
+     * @property {module:model/IndexingSchedule}
+     */
+    IndexingSchedule,
+
+    /**
      * The InfoServicePrice model constructor.
      * @property {module:model/InfoServicePrice}
      */
     InfoServicePrice,
+
+    /**
+     * The InitializeParams model constructor.
+     * @property {module:model/InitializeParams}
+     */
+    InitializeParams,
+
+    /**
+     * The InitializeParamsClientInfo model constructor.
+     * @property {module:model/InitializeParamsClientInfo}
+     */
+    InitializeParamsClientInfo,
+
+    /**
+     * The InitializeResult model constructor.
+     * @property {module:model/InitializeResult}
+     */
+    InitializeResult,
+
+    /**
+     * The InitializeResultServerInfo model constructor.
+     * @property {module:model/InitializeResultServerInfo}
+     */
+    InitializeResultServerInfo,
+
+    /**
+     * The InstallAgentSkillFromCatalog200Response model constructor.
+     * @property {module:model/InstallAgentSkillFromCatalog200Response}
+     */
+    InstallAgentSkillFromCatalog200Response,
+
+    /**
+     * The InstallAgentSkillFromCatalog200ResponseMeta model constructor.
+     * @property {module:model/InstallAgentSkillFromCatalog200ResponseMeta}
+     */
+    InstallAgentSkillFromCatalog200ResponseMeta,
+
+    /**
+     * The InstallAndConnectAgentSkill200Response model constructor.
+     * @property {module:model/InstallAndConnectAgentSkill200Response}
+     */
+    InstallAndConnectAgentSkill200Response,
+
+    /**
+     * The InstallAndConnectSkill model constructor.
+     * @property {module:model/InstallAndConnectSkill}
+     */
+    InstallAndConnectSkill,
+
+    /**
+     * The InstallTool model constructor.
+     * @property {module:model/InstallTool}
+     */
+    InstallTool,
 
     /**
      * The Invoice model constructor.
@@ -3273,6 +4508,42 @@ export {
      * @property {module:model/IssueCertificate}
      */
     IssueCertificate,
+
+    /**
+     * The JivoIntegration model constructor.
+     * @property {module:model/JivoIntegration}
+     */
+    JivoIntegration,
+
+    /**
+     * The JsonRpcError model constructor.
+     * @property {module:model/JsonRpcError}
+     */
+    JsonRpcError,
+
+    /**
+     * The JsonRpcErrorResponse model constructor.
+     * @property {module:model/JsonRpcErrorResponse}
+     */
+    JsonRpcErrorResponse,
+
+    /**
+     * The JsonRpcNotification model constructor.
+     * @property {module:model/JsonRpcNotification}
+     */
+    JsonRpcNotification,
+
+    /**
+     * The JsonRpcRequest model constructor.
+     * @property {module:model/JsonRpcRequest}
+     */
+    JsonRpcRequest,
+
+    /**
+     * The JsonRpcResultResponse model constructor.
+     * @property {module:model/JsonRpcResultResponse}
+     */
+    JsonRpcResultResponse,
 
     /**
      * The K8SVersionsResponse model constructor.
@@ -3299,10 +4570,52 @@ export {
     Knowledgebase,
 
     /**
+     * The KnowledgebaseAddTokenPackage model constructor.
+     * @property {module:model/KnowledgebaseAddTokenPackage}
+     */
+    KnowledgebaseAddTokenPackage,
+
+    /**
      * The KnowledgebaseV2 model constructor.
      * @property {module:model/KnowledgebaseV2}
      */
     KnowledgebaseV2,
+
+    /**
+     * The KnowledgebaseV3 model constructor.
+     * @property {module:model/KnowledgebaseV3}
+     */
+    KnowledgebaseV3,
+
+    /**
+     * The LinkKnowledgebase model constructor.
+     * @property {module:model/LinkKnowledgebase}
+     */
+    LinkKnowledgebase,
+
+    /**
+     * The ListAiSolutionConversations200Response model constructor.
+     * @property {module:model/ListAiSolutionConversations200Response}
+     */
+    ListAiSolutionConversations200Response,
+
+    /**
+     * The ListAiSolutionTelegramBots200Response model constructor.
+     * @property {module:model/ListAiSolutionTelegramBots200Response}
+     */
+    ListAiSolutionTelegramBots200Response,
+
+    /**
+     * The ListAiSolutionTypes200Response model constructor.
+     * @property {module:model/ListAiSolutionTypes200Response}
+     */
+    ListAiSolutionTypes200Response,
+
+    /**
+     * The ListAiSolutions200Response model constructor.
+     * @property {module:model/ListAiSolutions200Response}
+     */
+    ListAiSolutions200Response,
 
     /**
      * The Location model constructor.
@@ -3389,28 +4702,28 @@ export {
     Model,
 
     /**
-     * The ModelParamsInfo model constructor.
-     * @property {module:model/ModelParamsInfo}
+     * The ModelBatch model constructor.
+     * @property {module:model/ModelBatch}
      */
-    ModelParamsInfo,
+    ModelBatch,
 
     /**
-     * The ModelParamsInfoMaxTokens model constructor.
-     * @property {module:model/ModelParamsInfoMaxTokens}
+     * The ModelParamInfo model constructor.
+     * @property {module:model/ModelParamInfo}
      */
-    ModelParamsInfoMaxTokens,
+    ModelParamInfo,
 
     /**
-     * The ModelParamsInfoReasoningEffort model constructor.
-     * @property {module:model/ModelParamsInfoReasoningEffort}
+     * The ModelParameter model constructor.
+     * @property {module:model/ModelParameter}
      */
-    ModelParamsInfoReasoningEffort,
+    ModelParameter,
 
     /**
-     * The ModelParamsInfoTemperature model constructor.
-     * @property {module:model/ModelParamsInfoTemperature}
+     * The ModelPriceTier model constructor.
+     * @property {module:model/ModelPriceTier}
      */
-    ModelParamsInfoTemperature,
+    ModelPriceTier,
 
     /**
      * The ModelV3 model constructor.
@@ -3755,6 +5068,12 @@ export {
     ReduceNodes,
 
     /**
+     * The RegenerateAiSolutionAiKey200Response model constructor.
+     * @property {module:model/RegenerateAiSolutionAiKey200Response}
+     */
+    RegenerateAiSolutionAiKey200Response,
+
+    /**
      * The RegistriesResponse model constructor.
      * @property {module:model/RegistriesResponse}
      */
@@ -3833,6 +5152,18 @@ export {
     Repository,
 
     /**
+     * The ResetAiSolutionChat model constructor.
+     * @property {module:model/ResetAiSolutionChat}
+     */
+    ResetAiSolutionChat,
+
+    /**
+     * The ResetAiSolutionChat200Response model constructor.
+     * @property {module:model/ResetAiSolutionChat200Response}
+     */
+    ResetAiSolutionChat200Response,
+
+    /**
      * The Resource model constructor.
      * @property {module:model/Resource}
      */
@@ -3857,6 +5188,30 @@ export {
     Resources,
 
     /**
+     * The ResourcesListResult model constructor.
+     * @property {module:model/ResourcesListResult}
+     */
+    ResourcesListResult,
+
+    /**
+     * The ResourcesReadParams model constructor.
+     * @property {module:model/ResourcesReadParams}
+     */
+    ResourcesReadParams,
+
+    /**
+     * The ResourcesReadResult model constructor.
+     * @property {module:model/ResourcesReadResult}
+     */
+    ResourcesReadResult,
+
+    /**
+     * The ResourcesReadResultContentsInner model constructor.
+     * @property {module:model/ResourcesReadResultContentsInner}
+     */
+    ResourcesReadResultContentsInner,
+
+    /**
      * The ResourcesResponse model constructor.
      * @property {module:model/ResourcesResponse}
      */
@@ -3867,6 +5222,18 @@ export {
      * @property {module:model/RestorePoint}
      */
     RestorePoint,
+
+    /**
+     * The RetrievalMode model constructor.
+     * @property {module:model/RetrievalMode}
+     */
+    RetrievalMode,
+
+    /**
+     * The RetrievalModeRef model constructor.
+     * @property {module:model/RetrievalModeRef}
+     */
+    RetrievalModeRef,
 
     /**
      * The RouterEdit model constructor.
@@ -4031,6 +5398,18 @@ export {
     SchemasPresetsResponse,
 
     /**
+     * The SendAiSolutionMessage model constructor.
+     * @property {module:model/SendAiSolutionMessage}
+     */
+    SendAiSolutionMessage,
+
+    /**
+     * The SendAiSolutionMessage200Response model constructor.
+     * @property {module:model/SendAiSolutionMessage200Response}
+     */
+    SendAiSolutionMessage200Response,
+
+    /**
      * The ServerBackup model constructor.
      * @property {module:model/ServerBackup}
      */
@@ -4151,6 +5530,18 @@ export {
     ServiceServicePriceNodeGroupsInner,
 
     /**
+     * The SetAgentSkill model constructor.
+     * @property {module:model/SetAgentSkill}
+     */
+    SetAgentSkill,
+
+    /**
+     * The SetAgentSkillForAgent200Response model constructor.
+     * @property {module:model/SetAgentSkillForAgent200Response}
+     */
+    SetAgentSkillForAgent200Response,
+
+    /**
      * The SetLabels model constructor.
      * @property {module:model/SetLabels}
      */
@@ -4161,6 +5552,48 @@ export {
      * @property {module:model/SettingCondition}
      */
     SettingCondition,
+
+    /**
+     * The Skill model constructor.
+     * @property {module:model/Skill}
+     */
+    Skill,
+
+    /**
+     * The SkillAgent model constructor.
+     * @property {module:model/SkillAgent}
+     */
+    SkillAgent,
+
+    /**
+     * The SkillCatalogItem model constructor.
+     * @property {module:model/SkillCatalogItem}
+     */
+    SkillCatalogItem,
+
+    /**
+     * The SkillSaveMeta model constructor.
+     * @property {module:model/SkillSaveMeta}
+     */
+    SkillSaveMeta,
+
+    /**
+     * The SkillScript model constructor.
+     * @property {module:model/SkillScript}
+     */
+    SkillScript,
+
+    /**
+     * The SkillScriptInput model constructor.
+     * @property {module:model/SkillScriptInput}
+     */
+    SkillScriptInput,
+
+    /**
+     * The SkillVersion model constructor.
+     * @property {module:model/SkillVersion}
+     */
+    SkillVersion,
 
     /**
      * The SpamFilterIsDisabled model constructor.
@@ -4253,10 +5686,64 @@ export {
     StatusCompanyInfo,
 
     /**
+     * The StopAiSolutionChat model constructor.
+     * @property {module:model/StopAiSolutionChat}
+     */
+    StopAiSolutionChat,
+
+    /**
+     * The StreamError model constructor.
+     * @property {module:model/StreamError}
+     */
+    StreamError,
+
+    /**
      * The Subdomain model constructor.
      * @property {module:model/Subdomain}
      */
     Subdomain,
+
+    /**
+     * The SyncAgentEntityLimits model constructor.
+     * @property {module:model/SyncAgentEntityLimits}
+     */
+    SyncAgentEntityLimits,
+
+    /**
+     * The SyncAgentEntityLimitsLimitsInner model constructor.
+     * @property {module:model/SyncAgentEntityLimitsLimitsInner}
+     */
+    SyncAgentEntityLimitsLimitsInner,
+
+    /**
+     * The SyncAgentSkillAgentsVersions200Response model constructor.
+     * @property {module:model/SyncAgentSkillAgentsVersions200Response}
+     */
+    SyncAgentSkillAgentsVersions200Response,
+
+    /**
+     * The SyncAgentSkillAgentsVersions200ResponseMeta model constructor.
+     * @property {module:model/SyncAgentSkillAgentsVersions200ResponseMeta}
+     */
+    SyncAgentSkillAgentsVersions200ResponseMeta,
+
+    /**
+     * The SyncAgentSkillVersionsForAgent200Response model constructor.
+     * @property {module:model/SyncAgentSkillVersionsForAgent200Response}
+     */
+    SyncAgentSkillVersionsForAgent200Response,
+
+    /**
+     * The SyncAiKeyLimits model constructor.
+     * @property {module:model/SyncAiKeyLimits}
+     */
+    SyncAiKeyLimits,
+
+    /**
+     * The SyncAiKeyLimitsLimitsInner model constructor.
+     * @property {module:model/SyncAiKeyLimitsLimitsInner}
+     */
+    SyncAiKeyLimitsLimitsInner,
 
     /**
      * The Tags model constructor.
@@ -4265,16 +5752,94 @@ export {
     Tags,
 
     /**
+     * The TextContent model constructor.
+     * @property {module:model/TextContent}
+     */
+    TextContent,
+
+    /**
      * The TokenPackage model constructor.
      * @property {module:model/TokenPackage}
      */
     TokenPackage,
 
     /**
-     * The TokenStatistic model constructor.
-     * @property {module:model/TokenStatistic}
+     * The Tool model constructor.
+     * @property {module:model/Tool}
      */
-    TokenStatistic,
+    Tool,
+
+    /**
+     * The Tool2 model constructor.
+     * @property {module:model/Tool2}
+     */
+    Tool2,
+
+    /**
+     * The Tool2Annotations model constructor.
+     * @property {module:model/Tool2Annotations}
+     */
+    Tool2Annotations,
+
+    /**
+     * The ToolAuthData model constructor.
+     * @property {module:model/ToolAuthData}
+     */
+    ToolAuthData,
+
+    /**
+     * The ToolAuthDataParams model constructor.
+     * @property {module:model/ToolAuthDataParams}
+     */
+    ToolAuthDataParams,
+
+    /**
+     * The ToolConfigField model constructor.
+     * @property {module:model/ToolConfigField}
+     */
+    ToolConfigField,
+
+    /**
+     * The ToolMethod model constructor.
+     * @property {module:model/ToolMethod}
+     */
+    ToolMethod,
+
+    /**
+     * The ToolPrice model constructor.
+     * @property {module:model/ToolPrice}
+     */
+    ToolPrice,
+
+    /**
+     * The ToolTemplate model constructor.
+     * @property {module:model/ToolTemplate}
+     */
+    ToolTemplate,
+
+    /**
+     * The ToolTemplateConfigSchema model constructor.
+     * @property {module:model/ToolTemplateConfigSchema}
+     */
+    ToolTemplateConfigSchema,
+
+    /**
+     * The ToolsCallParams model constructor.
+     * @property {module:model/ToolsCallParams}
+     */
+    ToolsCallParams,
+
+    /**
+     * The ToolsCallResult model constructor.
+     * @property {module:model/ToolsCallResult}
+     */
+    ToolsCallResult,
+
+    /**
+     * The ToolsListResult model constructor.
+     * @property {module:model/ToolsListResult}
+     */
+    ToolsListResult,
 
     /**
      * The TopLevelDomain model constructor.
@@ -4331,10 +5896,40 @@ export {
     UpdateAgent,
 
     /**
-     * The UpdateAgentSettings model constructor.
-     * @property {module:model/UpdateAgentSettings}
+     * The UpdateAgentEntityLimit model constructor.
+     * @property {module:model/UpdateAgentEntityLimit}
      */
-    UpdateAgentSettings,
+    UpdateAgentEntityLimit,
+
+    /**
+     * The UpdateAgentTool model constructor.
+     * @property {module:model/UpdateAgentTool}
+     */
+    UpdateAgentTool,
+
+    /**
+     * The UpdateAiKey model constructor.
+     * @property {module:model/UpdateAiKey}
+     */
+    UpdateAiKey,
+
+    /**
+     * The UpdateAiKey200Response model constructor.
+     * @property {module:model/UpdateAiKey200Response}
+     */
+    UpdateAiKey200Response,
+
+    /**
+     * The UpdateAiKeyLimit model constructor.
+     * @property {module:model/UpdateAiKeyLimit}
+     */
+    UpdateAiKeyLimit,
+
+    /**
+     * The UpdateAiSolution model constructor.
+     * @property {module:model/UpdateAiSolution}
+     */
+    UpdateAiSolution,
 
     /**
      * The UpdateAppSettings200Response model constructor.
@@ -4359,6 +5954,12 @@ export {
      * @property {module:model/UpdateBalancer}
      */
     UpdateBalancer,
+
+    /**
+     * The UpdateBot model constructor.
+     * @property {module:model/UpdateBot}
+     */
+    UpdateBot,
 
     /**
      * The UpdateCluster model constructor.
@@ -4407,6 +6008,12 @@ export {
      * @property {module:model/UpdateDedicatedServerRequest}
      */
     UpdateDedicatedServerRequest,
+
+    /**
+     * The UpdateDocument model constructor.
+     * @property {module:model/UpdateDocument}
+     */
+    UpdateDocument,
 
     /**
      * The UpdateDomain model constructor.
@@ -4491,6 +6098,12 @@ export {
      * @property {module:model/UpdateMailboxV2200Response}
      */
     UpdateMailboxV2200Response,
+
+    /**
+     * The UpdateMaxBot model constructor.
+     * @property {module:model/UpdateMaxBot}
+     */
+    UpdateMaxBot,
 
     /**
      * The UpdateNetworkDrive model constructor.
@@ -4589,6 +6202,12 @@ export {
     UpdateSettings,
 
     /**
+     * The UpdateSkill model constructor.
+     * @property {module:model/UpdateSkill}
+     */
+    UpdateSkill,
+
+    /**
      * The UpdateStorageRequest model constructor.
      * @property {module:model/UpdateStorageRequest}
      */
@@ -4613,16 +6232,22 @@ export {
     UpdateStorageUserRequest,
 
     /**
+     * The UpdateTool model constructor.
+     * @property {module:model/UpdateTool}
+     */
+    UpdateTool,
+
+    /**
      * The UpdateVpc model constructor.
      * @property {module:model/UpdateVpc}
      */
     UpdateVpc,
 
     /**
-     * The UploadFilesToKnowledgebase200Response model constructor.
-     * @property {module:model/UploadFilesToKnowledgebase200Response}
+     * The UploadResult model constructor.
+     * @property {module:model/UploadResult}
      */
-    UploadFilesToKnowledgebase200Response,
+    UploadResult,
 
     /**
      * The UploadSuccessful model constructor.
@@ -4733,10 +6358,52 @@ export {
     WorkerPresetOutApi,
 
     /**
+    * The AIAgentIntegrationsApi service constructor.
+    * @property {module:api/AIAgentIntegrationsApi}
+    */
+    AIAgentIntegrationsApi,
+
+    /**
+    * The AIAgentSkillsApi service constructor.
+    * @property {module:api/AIAgentSkillsApi}
+    */
+    AIAgentSkillsApi,
+
+    /**
+    * The AIAgentToolsApi service constructor.
+    * @property {module:api/AIAgentToolsApi}
+    */
+    AIAgentToolsApi,
+
+    /**
     * The AIAgentsApi service constructor.
     * @property {module:api/AIAgentsApi}
     */
     AIAgentsApi,
+
+    /**
+    * The AIGatewayApi service constructor.
+    * @property {module:api/AIGatewayApi}
+    */
+    AIGatewayApi,
+
+    /**
+    * The AIGatewayInferenceApi service constructor.
+    * @property {module:api/AIGatewayInferenceApi}
+    */
+    AIGatewayInferenceApi,
+
+    /**
+    * The AIModelsApi service constructor.
+    * @property {module:api/AIModelsApi}
+    */
+    AIModelsApi,
+
+    /**
+    * The AISolutionsApi service constructor.
+    * @property {module:api/AISolutionsApi}
+    */
+    AISolutionsApi,
 
     /**
     * The AccountApi service constructor.
@@ -4821,6 +6488,12 @@ export {
     * @property {module:api/LocationsApi}
     */
     LocationsApi,
+
+    /**
+    * The MCPApi service constructor.
+    * @property {module:api/MCPApi}
+    */
+    MCPApi,
 
     /**
     * The MailApi service constructor.

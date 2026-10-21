@@ -13,9 +13,10 @@
 
 
 import ApiClient from "../ApiClient";
-import AddTokenPackage from '../model/AddTokenPackage';
+import CreateDocument from '../model/CreateDocument';
 import CreateKnowledgebase from '../model/CreateKnowledgebase';
 import CreateKnowledgebase201Response from '../model/CreateKnowledgebase201Response';
+import CreateKnowledgebaseDocument201Response from '../model/CreateKnowledgebaseDocument201Response';
 import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
@@ -23,11 +24,15 @@ import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetImage404Response from '../model/GetImage404Response';
 import GetKnowledgebaseDocumentsV2200Response from '../model/GetKnowledgebaseDocumentsV2200Response';
-import GetKnowledgebaseStatistics200Response from '../model/GetKnowledgebaseStatistics200Response';
+import GetKnowledgebaseV3200Response from '../model/GetKnowledgebaseV3200Response';
 import GetKnowledgebases200Response from '../model/GetKnowledgebases200Response';
 import GetKnowledgebasesV2200Response from '../model/GetKnowledgebasesV2200Response';
+import GetKnowledgebasesV3200Response from '../model/GetKnowledgebasesV3200Response';
+import KnowledgebaseAddTokenPackage from '../model/KnowledgebaseAddTokenPackage';
+import LinkKnowledgebase from '../model/LinkKnowledgebase';
+import UpdateDocument from '../model/UpdateDocument';
 import UpdateKnowledgebase from '../model/UpdateKnowledgebase';
-import UploadFilesToKnowledgebase200Response from '../model/UploadFilesToKnowledgebase200Response';
+import UploadResult from '../model/UploadResult';
 
 /**
 * KnowledgeBases service.
@@ -57,16 +62,16 @@ export default class KnowledgeBasesApi {
      */
 
     /**
-     * Добавление дополнительного пакета токенов
-     * Чтобы добавить дополнительный пакет токенов для базы знаний, отправьте POST-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package`.
+     * Покупка дополнительных пакетов токенов
+     * Чтобы докупить токены для базы знаний, отправьте POST-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package`.  Покупается дополнительный пакет (`package_type: additional`) из `GET /api/v1/cloud-ai/token-packages/knowledge-bases` в количестве `count`. Стоимость списывается с баланса, токены добавляются к текущему периоду подписки, заблокированная база знаний разблокируется.  Возможные ошибки: - `400 insufficient_balance` — на балансе недостаточно средств - `400 subscription_expired` — база знаний заблокирована и дата продления подписки прошла: продлите подписку в панели управления - `404 additional_token_package_not_found` — дополнительный пакет недоступен
      * @param {Number} id ID базы знаний
      * @param {Object} opts Optional parameters
-     * @param {module:model/AddTokenPackage} [addTokenPackage] 
+     * @param {module:model/KnowledgebaseAddTokenPackage} [knowledgebaseAddTokenPackage] 
      * @param {module:api/KnowledgeBasesApi~addAdditionalTokenPackageToKnowledgebaseCallback} callback The callback function, accepting three arguments: error, data, response
      */
     addAdditionalTokenPackageToKnowledgebase(id, opts, callback) {
       opts = opts || {};
-      let postBody = opts['addTokenPackage'];
+      let postBody = opts['knowledgebaseAddTokenPackage'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling addAdditionalTokenPackageToKnowledgebase");
@@ -103,7 +108,7 @@ export default class KnowledgeBasesApi {
 
     /**
      * Создание базы знаний
-     * Чтобы создать базу знаний, отправьте POST-запрос на `/api/v1/cloud-ai/knowledge-bases`, задав необходимые атрибуты.  База знаний будет создана с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданной базе знаний.
+     * Чтобы создать базу знаний, отправьте POST-запрос на `/api/v1/cloud-ai/knowledge-bases`, задав необходимые атрибуты.  Для базы знаний в вашем аккаунте создаётся кластер базы данных OpenSearch по выбранному тарифу в указанной приватной сети, а с баланса сразу списывается стоимость пакета токенов. Подписка продлевается автоматически раз в период пакета.  Пока кластер создаётся, база знаний находится в статусе `creating`; документы, добавленные в это время, будут проиндексированы после перехода в `active`.  Возможные ошибки: - `404 token_package_not_found` — пакет токенов не найден или недоступен - `400 invalid_token_package_type` — пакет не является базовым пакетом для баз знаний - `400 insufficient_balance` — на балансе недостаточно средств для оплаты пакета  Тело ответа будет представлять собой объект JSON с ключом `knowledge_base`.
      * @param {module:model/CreateKnowledgebase} createKnowledgebase 
      * @param {module:api/KnowledgeBasesApi~createKnowledgebaseCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateKnowledgebase201Response}
@@ -136,6 +141,54 @@ export default class KnowledgeBasesApi {
     }
 
     /**
+     * Callback function to receive the result of the createKnowledgebaseDocument operation.
+     * @callback module:api/KnowledgeBasesApi~createKnowledgebaseDocumentCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateKnowledgebaseDocument201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Добавление документа по ссылке
+     * Чтобы добавить в базу знаний документ по ссылке, отправьте POST-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/documents`.  Перед добавлением выполняется HEAD-запрос к `url`: адрес должен быть публично доступен, а ответ — содержать заголовок `Content-Type` одного из поддерживаемых форматов (текст, Markdown, HTML, XML, CSV, PDF, DOC, DOCX, XLS, XLSX; JSON не поддерживается). Документ сразу ставится в очередь на индексацию. Чтобы содержимое по ссылке переиндексировалось автоматически, задайте `indexing_schedule`.  Возможные ошибки: - `400 url_is_not_accessible` — адрес недоступен или вернул ошибку - `400 unsupported_file_type` — неподдерживаемый `Content-Type`  Тело ответа будет представлять собой объект JSON с ключом `document`.
+     * @param {Number} id ID базы знаний
+     * @param {module:model/CreateDocument} createDocument 
+     * @param {module:api/KnowledgeBasesApi~createKnowledgebaseDocumentCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateKnowledgebaseDocument201Response}
+     */
+    createKnowledgebaseDocument(id, createDocument, callback) {
+      let postBody = createDocument;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling createKnowledgebaseDocument");
+      }
+      // verify the required parameter 'createDocument' is set
+      if (createDocument === undefined || createDocument === null) {
+        throw new Error("Missing the required parameter 'createDocument' when calling createKnowledgebaseDocument");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateKnowledgebaseDocument201Response;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/knowledge-bases/{id}/documents', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the deleteDocument operation.
      * @callback module:api/KnowledgeBasesApi~deleteDocumentCallback
      * @param {String} error Error message, if any.
@@ -145,7 +198,7 @@ export default class KnowledgeBasesApi {
 
     /**
      * Удаление документа из базы знаний
-     * Чтобы удалить документ из базы знаний, отправьте DELETE-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}`.
+     * Чтобы удалить документ из базы знаний, отправьте DELETE-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}`.  Документ удаляется вместе с его фрагментами в поисковом индексе.
      * @param {Number} id ID базы знаний
      * @param {Number} documentId ID документа
      * @param {module:api/KnowledgeBasesApi~deleteDocumentCallback} callback The callback function, accepting three arguments: error, data, response
@@ -193,7 +246,7 @@ export default class KnowledgeBasesApi {
 
     /**
      * Удаление базы знаний
-     * Чтобы удалить базу знаний, отправьте DELETE-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}`.
+     * Чтобы удалить базу знаний, отправьте DELETE-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}`.  База знаний отвязывается от всех агентов, её кластер базы данных OpenSearch удаляется, подписка закрывается.
      * @param {Number} id ID базы знаний
      * @param {module:api/KnowledgeBasesApi~deleteKnowledgebaseCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -234,8 +287,8 @@ export default class KnowledgeBasesApi {
      */
 
     /**
-     * Скачивание документа из базы знаний
-     * Чтобы скачать документ из базы знаний, отправьте GET-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download`.
+     * Скачивание файла документа
+     * Чтобы скачать загруженный файл документа, отправьте GET-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download`.  Доступно только для документов типа `file`. Файл возвращается потоком с исходным MIME-типом в заголовке `Content-Type` и именем в `Content-Disposition`.
      * @param {Number} id ID базы знаний
      * @param {Number} documentId ID документа
      * @param {module:api/KnowledgeBasesApi~downloadDocumentCallback} callback The callback function, accepting three arguments: error, data, response
@@ -283,8 +336,8 @@ export default class KnowledgeBasesApi {
      */
 
     /**
-     * Получение базы знаний
-     * Чтобы получить информацию о базе знаний, отправьте GET-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}`.
+     * Получение базы знаний со списком документов
+     * Чтобы получить информацию о базе знаний вместе со всеми её документами, отправьте GET-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}`.  Тело ответа будет представлять собой объект JSON с ключом `knowledge_base`.
      * @param {Number} id ID базы знаний
      * @param {module:api/KnowledgeBasesApi~getKnowledgebaseCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateKnowledgebase201Response}
@@ -327,13 +380,14 @@ export default class KnowledgeBasesApi {
 
     /**
      * Получение списка документов базы знаний
-     * Чтобы получить список документов базы знаний, отправьте GET-запрос на `/api/v2/cloud-ai/knowledge-bases/{id}/documents`.  Тело ответа будет представлять собой объект JSON с ключами `knowledgebase_documents` и `meta`.
+     * Чтобы получить список документов базы знаний с пагинацией, отправьте GET-запрос на `/api/v2/cloud-ai/knowledge-bases/{id}/documents`.  Некорректные значения параметров пагинации и сортировки не приводят к ошибке — вместо них применяются значения по умолчанию.  Тело ответа будет представлять собой объект JSON с ключами `knowledgebase_documents` и `meta`.
      * @param {Number} id ID базы знаний
      * @param {Object} opts Optional parameters
-     * @param {Number} [limit = 10)] Количество документов на странице (по умолчанию: 10, максимум: 100)
-     * @param {Number} [offset = 0)] Количество документов для пропуска (по умолчанию: 0)
-     * @param {module:model/String} [sortBy = 'indexing_timestamp')] Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа)
-     * @param {module:model/String} [sortOrder = 'DESC')] Порядок сортировки (по умолчанию: DESC)
+     * @param {Number} [limit = 10)] Количество документов на странице. Значения больше 100 уменьшаются до 100
+     * @param {Number} [offset = 0)] Количество документов, которые нужно пропустить
+     * @param {module:model/String} [sortBy = 'indexing_timestamp')] Поле сортировки. `indexing_timestamp` — время последнего изменения документа
+     * @param {module:model/String} [sortOrder = 'DESC')] Порядок сортировки
+     * @param {String} [search] Фильтр по подстроке в названии документа
      * @param {module:api/KnowledgeBasesApi~getKnowledgebaseDocumentsV2Callback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetKnowledgebaseDocumentsV2200Response}
      */
@@ -352,7 +406,8 @@ export default class KnowledgeBasesApi {
         'limit': opts['limit'],
         'offset': opts['offset'],
         'sort_by': opts['sortBy'],
-        'sort_order': opts['sortOrder']
+        'sort_order': opts['sortOrder'],
+        'search': opts['search']
       };
       let headerParams = {
       };
@@ -371,39 +426,31 @@ export default class KnowledgeBasesApi {
     }
 
     /**
-     * Callback function to receive the result of the getKnowledgebaseStatistics operation.
-     * @callback module:api/KnowledgeBasesApi~getKnowledgebaseStatisticsCallback
+     * Callback function to receive the result of the getKnowledgebaseV3 operation.
+     * @callback module:api/KnowledgeBasesApi~getKnowledgebaseV3Callback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetKnowledgebaseStatistics200Response} data The data returned by the service call.
+     * @param {module:model/GetKnowledgebaseV3200Response} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Получение статистики использования токенов базы знаний
-     * Чтобы получить статистику использования токенов базы знаний, отправьте GET-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/statistic`.  Можно указать временной диапазон и интервал агрегации.
+     * Получение базы знаний
+     * Чтобы получить информацию о базе знаний, отправьте GET-запрос на `/api/v3/cloud-ai/knowledge-bases/{id}`.  Тело ответа будет представлять собой объект JSON с ключом `knowledge_base`.
      * @param {Number} id ID базы знаний
-     * @param {Object} opts Optional parameters
-     * @param {Date} [startTime] Начало временного диапазона (ISO 8601)
-     * @param {Date} [endTime] Конец временного диапазона (ISO 8601)
-     * @param {Number} [interval = 60)] Интервал в минутах (по умолчанию 60)
-     * @param {module:api/KnowledgeBasesApi~getKnowledgebaseStatisticsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetKnowledgebaseStatistics200Response}
+     * @param {module:api/KnowledgeBasesApi~getKnowledgebaseV3Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetKnowledgebaseV3200Response}
      */
-    getKnowledgebaseStatistics(id, opts, callback) {
-      opts = opts || {};
+    getKnowledgebaseV3(id, callback) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getKnowledgebaseStatistics");
+        throw new Error("Missing the required parameter 'id' when calling getKnowledgebaseV3");
       }
 
       let pathParams = {
         'id': id
       };
       let queryParams = {
-        'startTime': opts['startTime'],
-        'endTime': opts['endTime'],
-        'interval': opts['interval']
       };
       let headerParams = {
       };
@@ -413,9 +460,9 @@ export default class KnowledgeBasesApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetKnowledgebaseStatistics200Response;
+      let returnType = GetKnowledgebaseV3200Response;
       return this.apiClient.callApi(
-        '/api/v1/cloud-ai/knowledge-bases/{id}/statistic', 'GET',
+        '/api/v3/cloud-ai/knowledge-bases/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -430,8 +477,8 @@ export default class KnowledgeBasesApi {
      */
 
     /**
-     * Получение списка баз знаний
-     * Чтобы получить список баз знаний, отправьте GET-запрос на `/api/v1/cloud-ai/knowledge-bases`.  Тело ответа будет представлять собой объект JSON с ключом `knowledgebases`.
+     * Получение списка баз знаний (v1)
+     * Метод устарел — используйте `GET /api/v3/cloud-ai/knowledge-bases`.  Чтобы получить список баз знаний вместе со всеми их документами, отправьте GET-запрос на `/api/v1/cloud-ai/knowledge-bases`.  Тело ответа будет представлять собой объект JSON с ключами `knowledge_bases` и `meta`.
      * @param {module:api/KnowledgeBasesApi~getKnowledgebasesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetKnowledgebases200Response}
      */
@@ -468,7 +515,7 @@ export default class KnowledgeBasesApi {
 
     /**
      * Получение списка баз знаний (v2)
-     * Чтобы получить список баз знаний, отправьте GET-запрос на `/api/v2/cloud-ai/knowledge-bases`.  Версия API v2 возвращает оптимизированный ответ с количеством документов вместо полного списка документов.  Тело ответа будет представлять собой объект JSON с ключом `knowledgebases`.
+     * Чтобы получить список баз знаний, отправьте GET-запрос на `/api/v2/cloud-ai/knowledge-bases`.  Вместо списка документов возвращается их количество, привязанные агенты — списком ID. Режим поиска для каждого агента возвращает `GET /api/v3/cloud-ai/knowledge-bases`.  Тело ответа будет представлять собой объект JSON с ключами `knowledge_bases` и `meta`.
      * @param {module:api/KnowledgeBasesApi~getKnowledgebasesV2Callback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetKnowledgebasesV2200Response}
      */
@@ -496,6 +543,43 @@ export default class KnowledgeBasesApi {
     }
 
     /**
+     * Callback function to receive the result of the getKnowledgebasesV3 operation.
+     * @callback module:api/KnowledgeBasesApi~getKnowledgebasesV3Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetKnowledgebasesV3200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка баз знаний
+     * Чтобы получить список баз знаний, отправьте GET-запрос на `/api/v3/cloud-ai/knowledge-bases`.  Ответ содержит количество документов и привязанных агентов с режимом поиска. Документы базы знаний запрашивайте отдельно — `GET /api/v2/cloud-ai/knowledge-bases/{id}/documents`.  Тело ответа будет представлять собой объект JSON с ключами `knowledge_bases` и `meta`.
+     * @param {module:api/KnowledgeBasesApi~getKnowledgebasesV3Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetKnowledgebasesV3200Response}
+     */
+    getKnowledgebasesV3(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetKnowledgebasesV3200Response;
+      return this.apiClient.callApi(
+        '/api/v3/cloud-ai/knowledge-bases', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the linkKnowledgebaseToAgent operation.
      * @callback module:api/KnowledgeBasesApi~linkKnowledgebaseToAgentCallback
      * @param {String} error Error message, if any.
@@ -505,13 +589,16 @@ export default class KnowledgeBasesApi {
 
     /**
      * Привязка базы знаний к агенту
-     * Чтобы привязать базу знаний к AI агенту, отправьте POST-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}`.
+     * Чтобы привязать базу знаний к AI агенту, отправьте POST-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}`.  Тело запроса необязательно: в нём можно выбрать режим поиска `retrievalMode` (по умолчанию `agentic`). Изменить режим для существующей привязки можно запросом PATCH на тот же адрес.  Возможные ошибки: `404 knowledgebase_not_found`, `404 agent_not_found`.
      * @param {Number} id ID базы знаний
-     * @param {Number} agentId ID агента
+     * @param {Number} agentId ID AI агента
+     * @param {Object} opts Optional parameters
+     * @param {module:model/LinkKnowledgebase} [linkKnowledgebase] 
      * @param {module:api/KnowledgeBasesApi~linkKnowledgebaseToAgentCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    linkKnowledgebaseToAgent(id, agentId, callback) {
-      let postBody = null;
+    linkKnowledgebaseToAgent(id, agentId, opts, callback) {
+      opts = opts || {};
+      let postBody = opts['linkKnowledgebase'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling linkKnowledgebaseToAgent");
@@ -533,7 +620,7 @@ export default class KnowledgeBasesApi {
       };
 
       let authNames = ['Bearer'];
-      let contentTypes = [];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = null;
       return this.apiClient.callApi(
@@ -553,7 +640,7 @@ export default class KnowledgeBasesApi {
 
     /**
      * Переиндексация документа
-     * Чтобы переиндексировать документ в базе знаний, отправьте POST-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex`.
+     * Чтобы переиндексировать документ, отправьте POST-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex`.  Документ ставится в очередь на индексацию; следите за полем `status` документа. Для документа по ссылке содержимое скачивается заново. Если база знаний не в статусе `active`, документ будет проиндексирован после активации.  Возможные ошибки: `404 knowledgebase_not_found`, `404 document_not_found`.
      * @param {Number} id ID базы знаний
      * @param {Number} documentId ID документа
      * @param {module:api/KnowledgeBasesApi~reindexDocumentCallback} callback The callback function, accepting three arguments: error, data, response
@@ -601,9 +688,9 @@ export default class KnowledgeBasesApi {
 
     /**
      * Отвязка базы знаний от агента
-     * Чтобы отвязать базу знаний от AI агента, отправьте DELETE-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}`.
+     * Чтобы отвязать базу знаний от AI агента, отправьте DELETE-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}`.  Возможные ошибки: `404 knowledgebase_not_found`, `404 agent_not_found`.
      * @param {Number} id ID базы знаний
-     * @param {Number} agentId ID агента
+     * @param {Number} agentId ID AI агента
      * @param {module:api/KnowledgeBasesApi~unlinkKnowledgebaseFromAgentCallback} callback The callback function, accepting three arguments: error, data, response
      */
     unlinkKnowledgebaseFromAgent(id, agentId, callback) {
@@ -648,8 +735,8 @@ export default class KnowledgeBasesApi {
      */
 
     /**
-     * Обновление базы знаний
-     * Чтобы обновить базу знаний, отправьте PATCH-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}`.
+     * Изменение базы знаний
+     * Чтобы изменить название или описание базы знаний, отправьте PATCH-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}`.  Тело ответа будет представлять собой объект JSON с ключом `knowledge_base`.
      * @param {Number} id ID базы знаний
      * @param {module:model/UpdateKnowledgebase} updateKnowledgebase 
      * @param {module:api/KnowledgeBasesApi~updateKnowledgebaseCallback} callback The callback function, accepting three arguments: error, data, response
@@ -688,20 +775,125 @@ export default class KnowledgeBasesApi {
     }
 
     /**
+     * Callback function to receive the result of the updateKnowledgebaseAgentLink operation.
+     * @callback module:api/KnowledgeBasesApi~updateKnowledgebaseAgentLinkCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Изменение режима поиска по базе знаний для агента
+     * Чтобы изменить режим поиска по привязанной базе знаний для AI агента, отправьте PATCH-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}`.  Если `retrievalMode` не передан, устанавливается `agentic`. Если база знаний не привязана к агенту, запрос ничего не меняет и также возвращает `204`.  Возможные ошибки: `404 knowledgebase_not_found`, `404 agent_not_found`.
+     * @param {Number} id ID базы знаний
+     * @param {Number} agentId ID AI агента
+     * @param {Object} opts Optional parameters
+     * @param {module:model/LinkKnowledgebase} [linkKnowledgebase] 
+     * @param {module:api/KnowledgeBasesApi~updateKnowledgebaseAgentLinkCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    updateKnowledgebaseAgentLink(id, agentId, opts, callback) {
+      opts = opts || {};
+      let postBody = opts['linkKnowledgebase'];
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling updateKnowledgebaseAgentLink");
+      }
+      // verify the required parameter 'agentId' is set
+      if (agentId === undefined || agentId === null) {
+        throw new Error("Missing the required parameter 'agentId' when calling updateKnowledgebaseAgentLink");
+      }
+
+      let pathParams = {
+        'id': id,
+        'agent_id': agentId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updateKnowledgebaseDocument operation.
+     * @callback module:api/KnowledgeBasesApi~updateKnowledgebaseDocumentCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateKnowledgebaseDocument201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Изменение документа
+     * Чтобы изменить документ базы знаний, отправьте PATCH-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}`.  Можно изменить название, расписание переиндексации и — только для документов типа `link` — адрес. После смены адреса документ переиндексируется; изменение названия и расписания переиндексацию не запускает. Новый адрес проверяется так же, как при добавлении документа.  Тело ответа будет представлять собой объект JSON с ключом `document`.
+     * @param {Number} id ID базы знаний
+     * @param {Number} documentId ID документа
+     * @param {module:model/UpdateDocument} updateDocument 
+     * @param {module:api/KnowledgeBasesApi~updateKnowledgebaseDocumentCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateKnowledgebaseDocument201Response}
+     */
+    updateKnowledgebaseDocument(id, documentId, updateDocument, callback) {
+      let postBody = updateDocument;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling updateKnowledgebaseDocument");
+      }
+      // verify the required parameter 'documentId' is set
+      if (documentId === undefined || documentId === null) {
+        throw new Error("Missing the required parameter 'documentId' when calling updateKnowledgebaseDocument");
+      }
+      // verify the required parameter 'updateDocument' is set
+      if (updateDocument === undefined || updateDocument === null) {
+        throw new Error("Missing the required parameter 'updateDocument' when calling updateKnowledgebaseDocument");
+      }
+
+      let pathParams = {
+        'id': id,
+        'document_id': documentId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateKnowledgebaseDocument201Response;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the uploadFilesToKnowledgebase operation.
      * @callback module:api/KnowledgeBasesApi~uploadFilesToKnowledgebaseCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/UploadFilesToKnowledgebase200Response} data The data returned by the service call.
+     * @param {module:model/UploadResult} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Загрузка файлов в базу знаний
-     * Чтобы загрузить файлы в базу знаний, отправьте POST-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/upload` с файлами в формате multipart/form-data.  Поддерживаемые форматы: CSV, XML, Markdown (md), HTML, TXT. JSON не поддерживается. Максимум 10 файлов, до 10 МБ каждый.
+     * Чтобы загрузить файлы в базу знаний, отправьте POST-запрос на `/api/v1/cloud-ai/knowledge-bases/{id}/upload` с файлами в поле `files` формата `multipart/form-data`. Для каждого файла создаётся документ типа `file`, после загрузки документы ставятся в очередь на индексацию (если база знаний в статусе `active`; иначе — после активации).  Поддерживаемые форматы: TXT, Markdown (`md`, `markdown`), HTML (`html`, `htm`), XML, CSV, PDF, DOC, DOCX, XLS, XLSX, а также другие файлы с MIME-типом `text/_*`. JSON (`json`, `jsonl`, `ndjson`) не поддерживается. Размер одного файла — не более 50 МБ.  Если хотя бы один файл неподдерживаемого формата, запрос завершается ошибкой.  Тело ответа будет представлять собой объект JSON с ключами `uploadedFiles` и `documents`.
      * @param {Number} id ID базы знаний
-     * @param {Array.<File>} files Файлы для загрузки (максимум 10 файлов, 10 МБ каждый)
+     * @param {Array.<File>} files Файлы для загрузки
      * @param {module:api/KnowledgeBasesApi~uploadFilesToKnowledgebaseCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/UploadFilesToKnowledgebase200Response}
+     * data is of type: {@link module:model/UploadResult}
      */
     uploadFilesToKnowledgebase(id, files, callback) {
       let postBody = null;
@@ -728,7 +920,7 @@ export default class KnowledgeBasesApi {
       let authNames = ['Bearer'];
       let contentTypes = ['multipart/form-data'];
       let accepts = ['application/json'];
-      let returnType = UploadFilesToKnowledgebase200Response;
+      let returnType = UploadResult;
       return this.apiClient.callApi(
         '/api/v1/cloud-ai/knowledge-bases/{id}/upload', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

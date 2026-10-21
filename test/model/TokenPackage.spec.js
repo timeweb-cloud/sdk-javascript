@@ -66,6 +66,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property serviceTypeId (base name: "service_type_id")', function() {
+      // uncomment below and update the code to test the property serviceTypeId
+      //var instance = new TimewebCloudApi.TokenPackage();
+      //expect(instance).to.be();
+    });
+
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
       //var instance = new TimewebCloudApi.TokenPackage();

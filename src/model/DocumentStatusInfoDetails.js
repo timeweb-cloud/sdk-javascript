@@ -21,8 +21,9 @@ import ApiClient from '../ApiClient';
 class DocumentStatusInfoDetails {
     /**
      * Constructs a new <code>DocumentStatusInfoDetails</code>.
-     * Дополнительные детали, зависящие от типа статуса
+     * Подробности, набор полей зависит от состояния. Могут присутствовать и другие поля
      * @alias module:model/DocumentStatusInfoDetails
+     * @extends Object
      */
     constructor() { 
         
@@ -48,6 +49,9 @@ class DocumentStatusInfoDetails {
         if (data) {
             obj = obj || new DocumentStatusInfoDetails();
 
+            ApiClient.constructFromObject(data, obj, 'Object');
+            
+
             if (data.hasOwnProperty('started_at')) {
                 obj['started_at'] = ApiClient.convertToType(data['started_at'], 'Date');
             }
@@ -56,6 +60,33 @@ class DocumentStatusInfoDetails {
             }
             if (data.hasOwnProperty('progress')) {
                 obj['progress'] = ApiClient.convertToType(data['progress'], 'Number');
+            }
+            if (data.hasOwnProperty('indexing_duration_ms')) {
+                obj['indexing_duration_ms'] = ApiClient.convertToType(data['indexing_duration_ms'], 'Number');
+            }
+            if (data.hasOwnProperty('tokens_used')) {
+                obj['tokens_used'] = ApiClient.convertToType(data['tokens_used'], 'Number');
+            }
+            if (data.hasOwnProperty('tokens_estimated')) {
+                obj['tokens_estimated'] = ApiClient.convertToType(data['tokens_estimated'], 'Number');
+            }
+            if (data.hasOwnProperty('chunks_count')) {
+                obj['chunks_count'] = ApiClient.convertToType(data['chunks_count'], 'Number');
+            }
+            if (data.hasOwnProperty('needed')) {
+                obj['needed'] = ApiClient.convertToType(data['needed'], 'Number');
+            }
+            if (data.hasOwnProperty('available')) {
+                obj['available'] = ApiClient.convertToType(data['available'], 'Number');
+            }
+            if (data.hasOwnProperty('estimated')) {
+                obj['estimated'] = ApiClient.convertToType(data['estimated'], 'Number');
+            }
+            if (data.hasOwnProperty('balance')) {
+                obj['balance'] = ApiClient.convertToType(data['balance'], 'Number');
+            }
+            if (data.hasOwnProperty('min_required')) {
+                obj['min_required'] = ApiClient.convertToType(data['min_required'], 'Number');
             }
         }
         return obj;
@@ -81,22 +112,76 @@ class DocumentStatusInfoDetails {
 
 
 /**
- * Время начала индексации
+ * `indexing`: время начала индексации
  * @member {Date} started_at
  */
 DocumentStatusInfoDetails.prototype['started_at'] = undefined;
 
 /**
- * Текущий этап индексации
+ * `indexing`: текущий этап
  * @member {String} current_stage
  */
 DocumentStatusInfoDetails.prototype['current_stage'] = undefined;
 
 /**
- * Прогресс в процентах (0-100)
+ * `indexing`: прогресс в процентах
  * @member {Number} progress
  */
 DocumentStatusInfoDetails.prototype['progress'] = undefined;
+
+/**
+ * `indexed`: длительность индексации в миллисекундах
+ * @member {Number} indexing_duration_ms
+ */
+DocumentStatusInfoDetails.prototype['indexing_duration_ms'] = undefined;
+
+/**
+ * `indexed`: израсходовано токенов
+ * @member {Number} tokens_used
+ */
+DocumentStatusInfoDetails.prototype['tokens_used'] = undefined;
+
+/**
+ * `indexed`: оценка количества токенов перед индексацией
+ * @member {Number} tokens_estimated
+ */
+DocumentStatusInfoDetails.prototype['tokens_estimated'] = undefined;
+
+/**
+ * `indexed`: количество фрагментов, на которые разбит документ
+ * @member {Number} chunks_count
+ */
+DocumentStatusInfoDetails.prototype['chunks_count'] = undefined;
+
+/**
+ * `INSUFFICIENT_TOKENS`: сколько токенов нужно
+ * @member {Number} needed
+ */
+DocumentStatusInfoDetails.prototype['needed'] = undefined;
+
+/**
+ * `INSUFFICIENT_TOKENS`: сколько токенов доступно
+ * @member {Number} available
+ */
+DocumentStatusInfoDetails.prototype['available'] = undefined;
+
+/**
+ * `INSUFFICIENT_TOKENS`: оценка без запаса
+ * @member {Number} estimated
+ */
+DocumentStatusInfoDetails.prototype['estimated'] = undefined;
+
+/**
+ * `CRITICAL_BALANCE`, `NEGATIVE_BALANCE`: текущий остаток токенов
+ * @member {Number} balance
+ */
+DocumentStatusInfoDetails.prototype['balance'] = undefined;
+
+/**
+ * `CRITICAL_BALANCE`: минимально необходимый остаток
+ * @member {Number} min_required
+ */
+DocumentStatusInfoDetails.prototype['min_required'] = undefined;
 
 
 

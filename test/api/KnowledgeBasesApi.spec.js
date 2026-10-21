@@ -68,6 +68,16 @@
         done();
       });
     });
+    describe('createKnowledgebaseDocument', function() {
+      it('should call createKnowledgebaseDocument successfully', function(done) {
+        //uncomment below and update the code to test createKnowledgebaseDocument
+        //instance.createKnowledgebaseDocument(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('deleteDocument', function() {
       it('should call deleteDocument successfully', function(done) {
         //uncomment below and update the code to test deleteDocument
@@ -118,10 +128,10 @@
         done();
       });
     });
-    describe('getKnowledgebaseStatistics', function() {
-      it('should call getKnowledgebaseStatistics successfully', function(done) {
-        //uncomment below and update the code to test getKnowledgebaseStatistics
-        //instance.getKnowledgebaseStatistics(function(error) {
+    describe('getKnowledgebaseV3', function() {
+      it('should call getKnowledgebaseV3 successfully', function(done) {
+        //uncomment below and update the code to test getKnowledgebaseV3
+        //instance.getKnowledgebaseV3(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -142,6 +152,16 @@
       it('should call getKnowledgebasesV2 successfully', function(done) {
         //uncomment below and update the code to test getKnowledgebasesV2
         //instance.getKnowledgebasesV2(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getKnowledgebasesV3', function() {
+      it('should call getKnowledgebasesV3 successfully', function(done) {
+        //uncomment below and update the code to test getKnowledgebasesV3
+        //instance.getKnowledgebasesV3(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -182,6 +202,26 @@
       it('should call updateKnowledgebase successfully', function(done) {
         //uncomment below and update the code to test updateKnowledgebase
         //instance.updateKnowledgebase(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('updateKnowledgebaseAgentLink', function() {
+      it('should call updateKnowledgebaseAgentLink successfully', function(done) {
+        //uncomment below and update the code to test updateKnowledgebaseAgentLink
+        //instance.updateKnowledgebaseAgentLink(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('updateKnowledgebaseDocument', function() {
+      it('should call updateKnowledgebaseDocument successfully', function(done) {
+        //uncomment below and update the code to test updateKnowledgebaseDocument
+        //instance.updateKnowledgebaseDocument(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

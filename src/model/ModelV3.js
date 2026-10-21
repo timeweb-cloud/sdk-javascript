@@ -12,6 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import ModelBatch from './ModelBatch';
+import ModelParamInfo from './ModelParamInfo';
+import ModelPriceTier from './ModelPriceTier';
 
 /**
  * The ModelV3 model module.
@@ -21,24 +24,28 @@ import ApiClient from '../ApiClient';
 class ModelV3 {
     /**
      * Constructs a new <code>ModelV3</code>.
-     * Модель AI (v3). Идентификация и управляющие поля находятся на верхнем уровне, все сравнимые характеристики (цены, лимиты, возможности) — в словаре &#x60;parameter_values&#x60;
+     * AI модель с характеристиками для сравнения (v3). Цены и характеристики — в &#x60;parameter_values&#x60;
      * @alias module:model/ModelV3
-     * @param id {Number} Уникальный идентификатор модели
-     * @param providerId {Number} ID провайдера, который предоставляет модель
-     * @param name {String} Название модели
-     * @param publicName {String} Публичное имя модели
-     * @param modelName {String} Идентификатор модели, который передаётся в поле `model` тела запроса
-     * @param type {module:model/ModelV3.TypeEnum} Тип модели (llm — языковая модель, hosted-llm — self-hosted языковая модель, embedding — модель для эмбеддингов, image — генерация изображений, audio — работа с аудио, moderation — модерация контента)
+     * @param id {Number} ID модели
+     * @param providerId {Number} ID провайдера модели
+     * @param name {String} Семейство модели
+     * @param publicName {String} Отображаемое название модели
+     * @param modelName {String} Идентификатор модели с префиксом провайдера — передаётся в поле `model` запросов к AI Gateway
+     * @param type {module:model/ModelV3.TypeEnum} Тип модели: - `llm` — языковая модель - `hosted-llm` — языковая модель, размещённая в Timeweb Cloud - `embedding` — модель эмбеддингов - `image` — генерация изображений - `audio` — работа с аудио - `video` — генерация видео - `moderation` — модерация контента - `system-one` — служебная модель с собственным API
      * @param version {String} Версия модели
-     * @param isDeprecated {Boolean} Признак, что модель устарела
-     * @param isStopped {Boolean} Признак, что поддержка модели остановлена
+     * @param isDeprecated {Boolean} Модель устарела и недоступна для выбора в новых агентах
+     * @param isStopped {Boolean} Поддержка модели остановлена: запросы к ней не выполняются
+     * @param deprecationDate {Date} Дата отключения модели у провайдера. `null`, если отключение не запланировано
      * @param createdAt {Date} Дата и время добавления модели
-     * @param updatedAt {Date} Дата и время последнего обновления модели
-     * @param parameterValues {Object.<String, Object>} Характеристики модели. Ключ — код характеристики, значение — число, строка, булево значение или массив строк.  Основные коды: - `cost_in` — цена за 1 входной токен в рублях - `cost_out` — цена за 1 выходной токен в рублях - `context_window` — размер контекстного окна в токенах - `max_output_tokens` — максимальное количество токенов в ответе - `is_reasoning` — поддержка режима рассуждений - `supports_function_calling` — поддержка function calling - `supported_input_modalities` — поддерживаемые входные модальности (например, `text`, `image`) - `supported_output_modalities` — поддерживаемые выходные модальности - `avg_speed` — средняя скорость генерации в токенах в секунду - `aa_intelligence_index`, `aa_coding_index`, `aa_agentic_index` — индексы качества Artificial Analysis - `release_date` — дата релиза модели
+     * @param updatedAt {Date} Дата и время последнего изменения модели
+     * @param paramsInfo {Object.<String, module:model/ModelParamInfo>} Параметры генерации, которые можно настроить у агента с этой моделью. Ключ — имя параметра (`temperature`, `top_p`, `max_tokens`, `reasoning_effort` и т.д.). `null`, если параметры не заданы
+     * @param parameterValues {Object.<String, Number>} Характеристики модели. Ключ — `code` из справочника `GET /api/v3/cloud-ai/model-parameters`, значение — число, строка, булево значение или массив строк. Если значение неизвестно, ключа нет.  Основные коды: - `cost_in`, `cost_out` — цена 1 входного / выходного токена в рублях - `cost_cache_read`, `cost_cache_write` — цена 1 токена чтения / записи кэша промпта в рублях; ключа нет, если отдельной цены нет (тарифицируется по `cost_in`) - `pricing_unit` — единица тарификации: `token` (по умолчанию), `megapixel`, `credit` - `cost_per_image` — цена изображения базового размера (1 МП) в рублях - `credits_from`, `cost_per_second_from` — минимальная ставка в кредитах провайдера и цена от, в рублях, за секунду видео - `context_window`, `max_output_tokens` — размер контекста и максимум токенов в ответе - `is_reasoning`, `supports_function_calling` — поддержка рассуждений и вызова инструментов - `supported_input_modalities`, `supported_output_modalities` — входные и выходные модальности (`text`, `image`, ...) - `avg_speed` — средняя скорость генерации, токенов в секунду - `aa_intelligence_index`, `aa_coding_index`, `aa_agentic_index` — индексы Artificial Analysis - `release_date` — дата релиза (`YYYY-MM-DD`)
+     * @param priceTiers {Array.<module:model/ModelPriceTier>} Ступени цены по размеру входного контекста, по возрастанию порога. Пустой массив — у модели одна цена при любом контексте
+     * @param batch {module:model/ModelBatch} 
      */
-    constructor(id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, createdAt, updatedAt, parameterValues) { 
+    constructor(id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, deprecationDate, createdAt, updatedAt, paramsInfo, parameterValues, priceTiers, batch) { 
         
-        ModelV3.initialize(this, id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, createdAt, updatedAt, parameterValues);
+        ModelV3.initialize(this, id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, deprecationDate, createdAt, updatedAt, paramsInfo, parameterValues, priceTiers, batch);
     }
 
     /**
@@ -46,7 +53,7 @@ class ModelV3 {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, createdAt, updatedAt, parameterValues) { 
+    static initialize(obj, id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, deprecationDate, createdAt, updatedAt, paramsInfo, parameterValues, priceTiers, batch) { 
         obj['id'] = id;
         obj['provider_id'] = providerId;
         obj['name'] = name;
@@ -56,9 +63,13 @@ class ModelV3 {
         obj['version'] = version;
         obj['is_deprecated'] = isDeprecated;
         obj['is_stopped'] = isStopped;
+        obj['deprecation_date'] = deprecationDate;
         obj['created_at'] = createdAt;
         obj['updated_at'] = updatedAt;
+        obj['params_info'] = paramsInfo;
         obj['parameter_values'] = parameterValues;
+        obj['price_tiers'] = priceTiers;
+        obj['batch'] = batch;
     }
 
     /**
@@ -109,10 +120,16 @@ class ModelV3 {
                 obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'Date');
             }
             if (data.hasOwnProperty('params_info')) {
-                obj['params_info'] = ApiClient.convertToType(data['params_info'], Object);
+                obj['params_info'] = ApiClient.convertToType(data['params_info'], {'String': ModelParamInfo});
             }
             if (data.hasOwnProperty('parameter_values')) {
-                obj['parameter_values'] = ApiClient.convertToType(data['parameter_values'], {'String': Object});
+                obj['parameter_values'] = ApiClient.convertToType(data['parameter_values'], {'String': 'Number'});
+            }
+            if (data.hasOwnProperty('price_tiers')) {
+                obj['price_tiers'] = ApiClient.convertToType(data['price_tiers'], [ModelPriceTier]);
+            }
+            if (data.hasOwnProperty('batch')) {
+                obj['batch'] = ModelBatch.constructFromObject(data['batch']);
             }
         }
         return obj;
@@ -150,6 +167,20 @@ class ModelV3 {
         if (data['version'] && !(typeof data['version'] === 'string' || data['version'] instanceof String)) {
             throw new Error("Expected the field `version` to be a primitive type in the JSON string but got " + data['version']);
         }
+        if (data['price_tiers']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['price_tiers'])) {
+                throw new Error("Expected the field `price_tiers` to be an array in the JSON data but got " + data['price_tiers']);
+            }
+            // validate the optional field `price_tiers` (array)
+            for (const item of data['price_tiers']) {
+                ModelPriceTier.validateJSON(item);
+            };
+        }
+        // validate the optional field `batch`
+        if (data['batch']) { // data not null
+          ModelBatch.validateJSON(data['batch']);
+        }
 
         return true;
     }
@@ -157,40 +188,40 @@ class ModelV3 {
 
 }
 
-ModelV3.RequiredProperties = ["id", "provider_id", "name", "public_name", "model_name", "type", "version", "is_deprecated", "is_stopped", "created_at", "updated_at", "parameter_values"];
+ModelV3.RequiredProperties = ["id", "provider_id", "name", "public_name", "model_name", "type", "version", "is_deprecated", "is_stopped", "deprecation_date", "created_at", "updated_at", "params_info", "parameter_values", "price_tiers", "batch"];
 
 /**
- * Уникальный идентификатор модели
+ * ID модели
  * @member {Number} id
  */
 ModelV3.prototype['id'] = undefined;
 
 /**
- * ID провайдера, который предоставляет модель
+ * ID провайдера модели
  * @member {Number} provider_id
  */
 ModelV3.prototype['provider_id'] = undefined;
 
 /**
- * Название модели
+ * Семейство модели
  * @member {String} name
  */
 ModelV3.prototype['name'] = undefined;
 
 /**
- * Публичное имя модели
+ * Отображаемое название модели
  * @member {String} public_name
  */
 ModelV3.prototype['public_name'] = undefined;
 
 /**
- * Идентификатор модели, который передаётся в поле `model` тела запроса
+ * Идентификатор модели с префиксом провайдера — передаётся в поле `model` запросов к AI Gateway
  * @member {String} model_name
  */
 ModelV3.prototype['model_name'] = undefined;
 
 /**
- * Тип модели (llm — языковая модель, hosted-llm — self-hosted языковая модель, embedding — модель для эмбеддингов, image — генерация изображений, audio — работа с аудио, moderation — модерация контента)
+ * Тип модели: - `llm` — языковая модель - `hosted-llm` — языковая модель, размещённая в Timeweb Cloud - `embedding` — модель эмбеддингов - `image` — генерация изображений - `audio` — работа с аудио - `video` — генерация видео - `moderation` — модерация контента - `system-one` — служебная модель с собственным API
  * @member {module:model/ModelV3.TypeEnum} type
  */
 ModelV3.prototype['type'] = undefined;
@@ -202,13 +233,13 @@ ModelV3.prototype['type'] = undefined;
 ModelV3.prototype['version'] = undefined;
 
 /**
- * Признак, что модель устарела
+ * Модель устарела и недоступна для выбора в новых агентах
  * @member {Boolean} is_deprecated
  */
 ModelV3.prototype['is_deprecated'] = undefined;
 
 /**
- * Признак, что поддержка модели остановлена
+ * Поддержка модели остановлена: запросы к ней не выполняются
  * @member {Boolean} is_stopped
  */
 ModelV3.prototype['is_stopped'] = undefined;
@@ -226,22 +257,33 @@ ModelV3.prototype['deprecation_date'] = undefined;
 ModelV3.prototype['created_at'] = undefined;
 
 /**
- * Дата и время последнего обновления модели
+ * Дата и время последнего изменения модели
  * @member {Date} updated_at
  */
 ModelV3.prototype['updated_at'] = undefined;
 
 /**
- * Информация о доступных параметрах модели с их ограничениями. Ключ — название параметра, значение — его тип, ограничения и значение по умолчанию
- * @member {Object} params_info
+ * Параметры генерации, которые можно настроить у агента с этой моделью. Ключ — имя параметра (`temperature`, `top_p`, `max_tokens`, `reasoning_effort` и т.д.). `null`, если параметры не заданы
+ * @member {Object.<String, module:model/ModelParamInfo>} params_info
  */
 ModelV3.prototype['params_info'] = undefined;
 
 /**
- * Характеристики модели. Ключ — код характеристики, значение — число, строка, булево значение или массив строк.  Основные коды: - `cost_in` — цена за 1 входной токен в рублях - `cost_out` — цена за 1 выходной токен в рублях - `context_window` — размер контекстного окна в токенах - `max_output_tokens` — максимальное количество токенов в ответе - `is_reasoning` — поддержка режима рассуждений - `supports_function_calling` — поддержка function calling - `supported_input_modalities` — поддерживаемые входные модальности (например, `text`, `image`) - `supported_output_modalities` — поддерживаемые выходные модальности - `avg_speed` — средняя скорость генерации в токенах в секунду - `aa_intelligence_index`, `aa_coding_index`, `aa_agentic_index` — индексы качества Artificial Analysis - `release_date` — дата релиза модели
- * @member {Object.<String, Object>} parameter_values
+ * Характеристики модели. Ключ — `code` из справочника `GET /api/v3/cloud-ai/model-parameters`, значение — число, строка, булево значение или массив строк. Если значение неизвестно, ключа нет.  Основные коды: - `cost_in`, `cost_out` — цена 1 входного / выходного токена в рублях - `cost_cache_read`, `cost_cache_write` — цена 1 токена чтения / записи кэша промпта в рублях; ключа нет, если отдельной цены нет (тарифицируется по `cost_in`) - `pricing_unit` — единица тарификации: `token` (по умолчанию), `megapixel`, `credit` - `cost_per_image` — цена изображения базового размера (1 МП) в рублях - `credits_from`, `cost_per_second_from` — минимальная ставка в кредитах провайдера и цена от, в рублях, за секунду видео - `context_window`, `max_output_tokens` — размер контекста и максимум токенов в ответе - `is_reasoning`, `supports_function_calling` — поддержка рассуждений и вызова инструментов - `supported_input_modalities`, `supported_output_modalities` — входные и выходные модальности (`text`, `image`, ...) - `avg_speed` — средняя скорость генерации, токенов в секунду - `aa_intelligence_index`, `aa_coding_index`, `aa_agentic_index` — индексы Artificial Analysis - `release_date` — дата релиза (`YYYY-MM-DD`)
+ * @member {Object.<String, Number>} parameter_values
  */
 ModelV3.prototype['parameter_values'] = undefined;
+
+/**
+ * Ступени цены по размеру входного контекста, по возрастанию порога. Пустой массив — у модели одна цена при любом контексте
+ * @member {Array.<module:model/ModelPriceTier>} price_tiers
+ */
+ModelV3.prototype['price_tiers'] = undefined;
+
+/**
+ * @member {module:model/ModelBatch} batch
+ */
+ModelV3.prototype['batch'] = undefined;
 
 
 
@@ -285,10 +327,22 @@ ModelV3['TypeEnum'] = {
     "audio": "audio",
 
     /**
+     * value: "video"
+     * @const
+     */
+    "video": "video",
+
+    /**
      * value: "moderation"
      * @const
      */
-    "moderation": "moderation"
+    "moderation": "moderation",
+
+    /**
+     * value: "system-one"
+     * @const
+     */
+    "system-one": "system-one"
 };
 
 

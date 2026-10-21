@@ -22,7 +22,7 @@ class GetAgents200ResponseMeta {
     /**
      * Constructs a new <code>GetAgents200ResponseMeta</code>.
      * @alias module:model/GetAgents200ResponseMeta
-     * @param total {Number} Общее количество агентов
+     * @param total {Number} Количество агентов
      */
     constructor(total) { 
         
@@ -78,7 +78,7 @@ class GetAgents200ResponseMeta {
 GetAgents200ResponseMeta.RequiredProperties = ["total"];
 
 /**
- * Общее количество агентов
+ * Количество агентов
  * @member {Number} total
  */
 GetAgents200ResponseMeta.prototype['total'] = undefined;

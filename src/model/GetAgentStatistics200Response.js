@@ -12,8 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import AgentTokenStatistic from './AgentTokenStatistic';
 import GetAgentStatistics200ResponseMeta from './GetAgentStatistics200ResponseMeta';
-import TokenStatistic from './TokenStatistic';
 
 /**
  * The GetAgentStatistics200Response model module.
@@ -24,7 +24,7 @@ class GetAgentStatistics200Response {
     /**
      * Constructs a new <code>GetAgentStatistics200Response</code>.
      * @alias module:model/GetAgentStatistics200Response
-     * @param agentStatistics {Array.<module:model/TokenStatistic>} 
+     * @param agentStatistics {Array.<module:model/AgentTokenStatistic>} 
      * @param meta {module:model/GetAgentStatistics200ResponseMeta} 
      */
     constructor(agentStatistics, meta) { 
@@ -54,7 +54,7 @@ class GetAgentStatistics200Response {
             obj = obj || new GetAgentStatistics200Response();
 
             if (data.hasOwnProperty('agent_statistics')) {
-                obj['agent_statistics'] = ApiClient.convertToType(data['agent_statistics'], [TokenStatistic]);
+                obj['agent_statistics'] = ApiClient.convertToType(data['agent_statistics'], [AgentTokenStatistic]);
             }
             if (data.hasOwnProperty('meta')) {
                 obj['meta'] = GetAgentStatistics200ResponseMeta.constructFromObject(data['meta']);
@@ -82,7 +82,7 @@ class GetAgentStatistics200Response {
             }
             // validate the optional field `agent_statistics` (array)
             for (const item of data['agent_statistics']) {
-                TokenStatistic.validateJSON(item);
+                AgentTokenStatistic.validateJSON(item);
             };
         }
         // validate the optional field `meta`
@@ -99,7 +99,7 @@ class GetAgentStatistics200Response {
 GetAgentStatistics200Response.RequiredProperties = ["agent_statistics", "meta"];
 
 /**
- * @member {Array.<module:model/TokenStatistic>} agent_statistics
+ * @member {Array.<module:model/AgentTokenStatistic>} agent_statistics
  */
 GetAgentStatistics200Response.prototype['agent_statistics'] = undefined;
 

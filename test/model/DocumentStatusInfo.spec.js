@@ -72,6 +72,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property stage (base name: "stage")', function() {
+      // uncomment below and update the code to test the property stage
+      //var instance = new TimewebCloudApi.DocumentStatusInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property traceId (base name: "trace_id")', function() {
+      // uncomment below and update the code to test the property traceId
+      //var instance = new TimewebCloudApi.DocumentStatusInfo();
+      //expect(instance).to.be();
+    });
+
     it('should have the property details (base name: "details")', function() {
       // uncomment below and update the code to test the property details
       //var instance = new TimewebCloudApi.DocumentStatusInfo();

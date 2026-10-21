@@ -78,8 +78,20 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property modelName (base name: "model_name")', function() {
+      // uncomment below and update the code to test the property modelName
+      //var instance = new TimewebCloudApi.Model();
+      //expect(instance).to.be();
+    });
+
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
+      //var instance = new TimewebCloudApi.Model();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property version (base name: "version")', function() {
+      // uncomment below and update the code to test the property version
       //var instance = new TimewebCloudApi.Model();
       //expect(instance).to.be();
     });
@@ -104,12 +116,6 @@
 
     it('should have the property isReasoning (base name: "is_reasoning")', function() {
       // uncomment below and update the code to test the property isReasoning
-      //var instance = new TimewebCloudApi.Model();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property version (base name: "version")', function() {
-      // uncomment below and update the code to test the property version
       //var instance = new TimewebCloudApi.Model();
       //expect(instance).to.be();
     });

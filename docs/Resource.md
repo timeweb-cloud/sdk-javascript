@@ -4,9 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**requested** | **Number** | Запрошенное количество ресурса | [optional] [default to 0]
-**allocatable** | **Number** | Доступное количество | [optional] [default to 0]
-**capacity** | **Number** | Общее количество | [optional] [default to 0]
-**used** | **Number** | Используемое количество | [optional] [default to 0]
+**uri** | **String** | URI ресурса | 
+**name** | **String** | Имя ресурса | 
+**description** | **String** | Описание ресурса | [optional] 
+**mimeType** | **String** | Тип содержимого | [optional] 
+
+
+
+## Enum: UriEnum
+
+
+* `billing://me/finances` (value: `"billing://me/finances"`)
+
+* `services://me/active` (value: `"services://me/active"`)
+
+* `services://cloud/catalog` (value: `"services://cloud/catalog"`)
+
+* `locations://cloud/list` (value: `"locations://cloud/list"`)
+
+
 
 

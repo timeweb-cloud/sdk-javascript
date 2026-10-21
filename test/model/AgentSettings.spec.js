@@ -72,8 +72,26 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property memoryEnabled (base name: "memory_enabled")', function() {
+      // uncomment below and update the code to test the property memoryEnabled
+      //var instance = new TimewebCloudApi.AgentSettings();
+      //expect(instance).to.be();
+    });
+
     it('should have the property widget (base name: "widget")', function() {
       // uncomment below and update the code to test the property widget
+      //var instance = new TimewebCloudApi.AgentSettings();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property webSearchAllowedSites (base name: "web_search_allowed_sites")', function() {
+      // uncomment below and update the code to test the property webSearchAllowedSites
+      //var instance = new TimewebCloudApi.AgentSettings();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property additionalModels (base name: "additional_models")', function() {
+      // uncomment below and update the code to test the property additionalModels
       //var instance = new TimewebCloudApi.AgentSettings();
       //expect(instance).to.be();
     });

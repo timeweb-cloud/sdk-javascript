@@ -24,6 +24,7 @@ class Status {
      * Constructs a new <code>Status</code>.
      * Статус аккаунта
      * @alias module:model/Status
+     * @param login {String} Логин аккаунта.
      * @param isBlocked {Boolean} Это логическое значение, которое показывает, заблокирован ли аккаунт.
      * @param isPermanentBlocked {Boolean} Это логическое значение, которое показывает, заблокирован ли аккаунт навсегда.
      * @param isSendBillLetters {Boolean} Это логическое значение, которое показывает, требуется ли отправлять счета на почту.
@@ -31,9 +32,9 @@ class Status {
      * @param lastPasswordChangedAt {String} Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда последний раз изменялся пароль.
      * @param ymClientId {String} ID аккаунта для яндекс метрики.
      */
-    constructor(isBlocked, isPermanentBlocked, isSendBillLetters, companyInfo, lastPasswordChangedAt, ymClientId) { 
+    constructor(login, isBlocked, isPermanentBlocked, isSendBillLetters, companyInfo, lastPasswordChangedAt, ymClientId) { 
         
-        Status.initialize(this, isBlocked, isPermanentBlocked, isSendBillLetters, companyInfo, lastPasswordChangedAt, ymClientId);
+        Status.initialize(this, login, isBlocked, isPermanentBlocked, isSendBillLetters, companyInfo, lastPasswordChangedAt, ymClientId);
     }
 
     /**
@@ -41,7 +42,8 @@ class Status {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, isBlocked, isPermanentBlocked, isSendBillLetters, companyInfo, lastPasswordChangedAt, ymClientId) { 
+    static initialize(obj, login, isBlocked, isPermanentBlocked, isSendBillLetters, companyInfo, lastPasswordChangedAt, ymClientId) { 
+        obj['login'] = login;
         obj['is_blocked'] = isBlocked;
         obj['is_permanent_blocked'] = isPermanentBlocked;
         obj['is_send_bill_letters'] = isSendBillLetters;
@@ -61,6 +63,9 @@ class Status {
         if (data) {
             obj = obj || new Status();
 
+            if (data.hasOwnProperty('login')) {
+                obj['login'] = ApiClient.convertToType(data['login'], 'String');
+            }
             if (data.hasOwnProperty('is_blocked')) {
                 obj['is_blocked'] = ApiClient.convertToType(data['is_blocked'], 'Boolean');
             }
@@ -95,6 +100,10 @@ class Status {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
+        // ensure the json data is a string
+        if (data['login'] && !(typeof data['login'] === 'string' || data['login'] instanceof String)) {
+            throw new Error("Expected the field `login` to be a primitive type in the JSON string but got " + data['login']);
+        }
         // validate the optional field `company_info`
         if (data['company_info']) { // data not null
           StatusCompanyInfo.validateJSON(data['company_info']);
@@ -114,7 +123,13 @@ class Status {
 
 }
 
-Status.RequiredProperties = ["is_blocked", "is_permanent_blocked", "is_send_bill_letters", "company_info", "last_password_changed_at", "ym_client_id"];
+Status.RequiredProperties = ["login", "is_blocked", "is_permanent_blocked", "is_send_bill_letters", "company_info", "last_password_changed_at", "ym_client_id"];
+
+/**
+ * Логин аккаунта.
+ * @member {String} login
+ */
+Status.prototype['login'] = undefined;
 
 /**
  * Это логическое значение, которое показывает, заблокирован ли аккаунт.

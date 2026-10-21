@@ -251,19 +251,16 @@ var defaultClient = TimewebCloudApi.ApiClient.instance;
 var Bearer = defaultClient.authentications['Bearer'];
 Bearer.accessToken = "YOUR ACCESS TOKEN"
 
-var api = new TimewebCloudApi.AIAgentsApi()
-var id = 1; // {Number} ID агента
-var opts = {
-  'addTokenPackage': new TimewebCloudApi.AddTokenPackage() // {AddTokenPackage} 
-};
+var api = new TimewebCloudApi.AIAgentIntegrationsApi()
+var createMaxBot = new TimewebCloudApi.CreateMaxBot(); // {CreateMaxBot} 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.addAdditionalTokenPackage(id, opts, callback);
+api.createAgentBotMaxBot(createMaxBot, callback);
 
 ```
 
@@ -273,18 +270,142 @@ All URIs are relative to *https://api.timeweb.cloud*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**createAgentBotMaxBot**](docs/AIAgentIntegrationsApi.md#createAgentBotMaxBot) | **POST** /api/v1/cloud-ai/max-bots | Подключение бота MAX к агенту
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**createAgentBotTelegramBot**](docs/AIAgentIntegrationsApi.md#createAgentBotTelegramBot) | **POST** /api/v1/cloud-ai/bots | Подключение Telegram-бота к агенту
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**createAgentIntegrationCrisp**](docs/AIAgentIntegrationsApi.md#createAgentIntegrationCrisp) | **POST** /api/v1/cloud-ai/agent/{agent_id}/crisp | Подключение агента к Crisp
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**createAgentIntegrationJivo**](docs/AIAgentIntegrationsApi.md#createAgentIntegrationJivo) | **POST** /api/v1/cloud-ai/agent/{agent_id}/jivo | Подключение агента к Jivo
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**deleteAgentBotMaxBot**](docs/AIAgentIntegrationsApi.md#deleteAgentBotMaxBot) | **DELETE** /api/v1/cloud-ai/max-bots/{bot_id} | Отключение бота MAX
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**deleteAgentBotTelegramBot**](docs/AIAgentIntegrationsApi.md#deleteAgentBotTelegramBot) | **DELETE** /api/v1/cloud-ai/bots/{bot_id} | Отключение Telegram-бота
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**deleteAgentIntegrationCrisp**](docs/AIAgentIntegrationsApi.md#deleteAgentIntegrationCrisp) | **DELETE** /api/v1/cloud-ai/agent/{agent_id}/crisp | Отключение агента от Crisp
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**deleteAgentIntegrationJivo**](docs/AIAgentIntegrationsApi.md#deleteAgentIntegrationJivo) | **DELETE** /api/v1/cloud-ai/agent/{agent_id}/jivo | Отключение агента от Jivo
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**getAgentBotMaxBot**](docs/AIAgentIntegrationsApi.md#getAgentBotMaxBot) | **GET** /api/v1/cloud-ai/max-bots/{bot_id} | Получение информации о боте MAX
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**getAgentBotMaxBots**](docs/AIAgentIntegrationsApi.md#getAgentBotMaxBots) | **GET** /api/v1/cloud-ai/max-bots | Получение списка ботов MAX
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**getAgentBotMaxBotsByAgent**](docs/AIAgentIntegrationsApi.md#getAgentBotMaxBotsByAgent) | **GET** /api/v1/cloud-ai/agents/{agent_id}/max-bots | Получение списка ботов MAX агента
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**getAgentBotTelegramBot**](docs/AIAgentIntegrationsApi.md#getAgentBotTelegramBot) | **GET** /api/v1/cloud-ai/bots/{bot_id} | Получение информации о Telegram-боте
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**getAgentBotTelegramBots**](docs/AIAgentIntegrationsApi.md#getAgentBotTelegramBots) | **GET** /api/v1/cloud-ai/bots | Получение списка Telegram-ботов
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**getAgentBotTelegramBotsByAgent**](docs/AIAgentIntegrationsApi.md#getAgentBotTelegramBotsByAgent) | **GET** /api/v1/cloud-ai/agents/{agent_id}/bots | Получение списка Telegram-ботов агента
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**getAgentIntegrationCrisp**](docs/AIAgentIntegrationsApi.md#getAgentIntegrationCrisp) | **GET** /api/v1/cloud-ai/agent/{agent_id}/crisp | Получение интеграции агента с Crisp
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**getAgentIntegrationJivo**](docs/AIAgentIntegrationsApi.md#getAgentIntegrationJivo) | **GET** /api/v1/cloud-ai/agent/{agent_id}/jivo | Получение интеграции агента с Jivo
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**updateAgentBotMaxBot**](docs/AIAgentIntegrationsApi.md#updateAgentBotMaxBot) | **PATCH** /api/v1/cloud-ai/max-bots/{bot_id} | Изменение бота MAX
+*TimewebCloudApi.AIAgentIntegrationsApi* | [**updateAgentBotTelegramBot**](docs/AIAgentIntegrationsApi.md#updateAgentBotTelegramBot) | **PATCH** /api/v1/cloud-ai/bots/{bot_id} | Изменение Telegram-бота
+*TimewebCloudApi.AIAgentSkillsApi* | [**applyAgentSkillCatalogUpdate**](docs/AIAgentSkillsApi.md#applyAgentSkillCatalogUpdate) | **POST** /api/v1/cloud-ai/skills/{skill_id}/apply-catalog-update | Применение обновления навыка из каталога
+*TimewebCloudApi.AIAgentSkillsApi* | [**connectAgentSkillsToAgent**](docs/AIAgentSkillsApi.md#connectAgentSkillsToAgent) | **POST** /api/v1/cloud-ai/agents/{agent_id}/skills/connect | Подключение нескольких навыков к агенту
+*TimewebCloudApi.AIAgentSkillsApi* | [**createAgentSkill**](docs/AIAgentSkillsApi.md#createAgentSkill) | **POST** /api/v1/cloud-ai/skills | Создание навыка
+*TimewebCloudApi.AIAgentSkillsApi* | [**deleteAgentSkill**](docs/AIAgentSkillsApi.md#deleteAgentSkill) | **DELETE** /api/v1/cloud-ai/skills/{skill_id} | Удаление навыка
+*TimewebCloudApi.AIAgentSkillsApi* | [**disconnectAgentSkillFromAgent**](docs/AIAgentSkillsApi.md#disconnectAgentSkillFromAgent) | **DELETE** /api/v1/cloud-ai/agents/{agent_id}/skills/{skill_id} | Отключение навыка от агента
+*TimewebCloudApi.AIAgentSkillsApi* | [**duplicateAgentSkill**](docs/AIAgentSkillsApi.md#duplicateAgentSkill) | **POST** /api/v1/cloud-ai/skills/{skill_id}/duplicate | Копирование навыка
+*TimewebCloudApi.AIAgentSkillsApi* | [**getAgentSkill**](docs/AIAgentSkillsApi.md#getAgentSkill) | **GET** /api/v1/cloud-ai/skills/{skill_id} | Получение навыка
+*TimewebCloudApi.AIAgentSkillsApi* | [**getAgentSkillCatalog**](docs/AIAgentSkillsApi.md#getAgentSkillCatalog) | **GET** /api/v1/cloud-ai/skill-catalog | Получение каталога навыков
+*TimewebCloudApi.AIAgentSkillsApi* | [**getAgentSkillLibrary**](docs/AIAgentSkillsApi.md#getAgentSkillLibrary) | **GET** /api/v1/cloud-ai/skills | Получение списка навыков
+*TimewebCloudApi.AIAgentSkillsApi* | [**getAgentSkillVersion**](docs/AIAgentSkillsApi.md#getAgentSkillVersion) | **GET** /api/v1/cloud-ai/skills/{skill_id}/versions/{version} | Получение версии навыка
+*TimewebCloudApi.AIAgentSkillsApi* | [**getAgentSkillVersions**](docs/AIAgentSkillsApi.md#getAgentSkillVersions) | **GET** /api/v1/cloud-ai/skills/{skill_id}/versions | Получение истории версий навыка
+*TimewebCloudApi.AIAgentSkillsApi* | [**getAgentSkillsForAgent**](docs/AIAgentSkillsApi.md#getAgentSkillsForAgent) | **GET** /api/v1/cloud-ai/agents/{agent_id}/skills | Получение навыков агента
+*TimewebCloudApi.AIAgentSkillsApi* | [**installAgentSkillFromCatalog**](docs/AIAgentSkillsApi.md#installAgentSkillFromCatalog) | **POST** /api/v1/cloud-ai/skill-catalog/{catalog_item_id}/install | Установка навыка из каталога
+*TimewebCloudApi.AIAgentSkillsApi* | [**installAndConnectAgentSkill**](docs/AIAgentSkillsApi.md#installAndConnectAgentSkill) | **POST** /api/v1/cloud-ai/agents/{agent_id}/skills/install-and-connect | Установка навыка из каталога и включение у агента
+*TimewebCloudApi.AIAgentSkillsApi* | [**rollbackAgentSkillVersion**](docs/AIAgentSkillsApi.md#rollbackAgentSkillVersion) | **POST** /api/v1/cloud-ai/skills/{skill_id}/versions/{version}/rollback | Переключение навыка на версию из истории
+*TimewebCloudApi.AIAgentSkillsApi* | [**setAgentSkillForAgent**](docs/AIAgentSkillsApi.md#setAgentSkillForAgent) | **PUT** /api/v1/cloud-ai/agents/{agent_id}/skills/{skill_id} | Включение и выключение навыка у агента
+*TimewebCloudApi.AIAgentSkillsApi* | [**syncAgentSkillAgentsVersions**](docs/AIAgentSkillsApi.md#syncAgentSkillAgentsVersions) | **POST** /api/v1/cloud-ai/skills/{skill_id}/agents/sync-versions | Перевод всех агентов навыка на текущую версию
+*TimewebCloudApi.AIAgentSkillsApi* | [**syncAgentSkillVersionsForAgent**](docs/AIAgentSkillsApi.md#syncAgentSkillVersionsForAgent) | **POST** /api/v1/cloud-ai/agents/{agent_id}/skills/sync-versions | Перевод всех навыков агента на текущие версии
+*TimewebCloudApi.AIAgentSkillsApi* | [**updateAgentSkill**](docs/AIAgentSkillsApi.md#updateAgentSkill) | **PATCH** /api/v1/cloud-ai/skills/{skill_id} | Изменение навыка
+*TimewebCloudApi.AIAgentSkillsApi* | [**updateAgentSkillVersionForAgent**](docs/AIAgentSkillsApi.md#updateAgentSkillVersionForAgent) | **POST** /api/v1/cloud-ai/agents/{agent_id}/skills/{skill_id}/update-version | Перевод агента на текущую версию навыка
+*TimewebCloudApi.AIAgentToolsApi* | [**connectAgentToolToAgent**](docs/AIAgentToolsApi.md#connectAgentToolToAgent) | **POST** /api/v1/cloud-ai/agents/{agent_id}/tools | Подключение MCP-инструмента к агенту
+*TimewebCloudApi.AIAgentToolsApi* | [**createAgentTool**](docs/AIAgentToolsApi.md#createAgentTool) | **POST** /api/v1/cloud-ai/tools | Подключение собственного MCP-сервера
+*TimewebCloudApi.AIAgentToolsApi* | [**deleteAgentTool**](docs/AIAgentToolsApi.md#deleteAgentTool) | **DELETE** /api/v1/cloud-ai/tools/{id} | Удаление MCP-инструмента
+*TimewebCloudApi.AIAgentToolsApi* | [**disconnectAgentToolFromAgent**](docs/AIAgentToolsApi.md#disconnectAgentToolFromAgent) | **DELETE** /api/v1/cloud-ai/agents/{agent_id}/tools/{tool_id} | Отключение MCP-инструмента от агента
+*TimewebCloudApi.AIAgentToolsApi* | [**getAgentTool**](docs/AIAgentToolsApi.md#getAgentTool) | **GET** /api/v1/cloud-ai/tools/{id} | Получение MCP-инструмента
+*TimewebCloudApi.AIAgentToolsApi* | [**getAgentToolOAuth2AuthorizeUrl**](docs/AIAgentToolsApi.md#getAgentToolOAuth2AuthorizeUrl) | **GET** /api/v1/cloud-ai/tools/oauth2/authorize-url/{tool_id} | Получение ссылки на OAuth2-авторизацию инструмента
+*TimewebCloudApi.AIAgentToolsApi* | [**getAgentToolTemplatePrices**](docs/AIAgentToolsApi.md#getAgentToolTemplatePrices) | **GET** /api/v1/cloud-ai/tools/templates/prices | Получение цен системных инструментов
+*TimewebCloudApi.AIAgentToolsApi* | [**getAgentToolTemplates**](docs/AIAgentToolsApi.md#getAgentToolTemplates) | **GET** /api/v1/cloud-ai/tools/templates/marketplace | Получение шаблонов MCP-инструментов из маркетплейса
+*TimewebCloudApi.AIAgentToolsApi* | [**getAgentTools**](docs/AIAgentToolsApi.md#getAgentTools) | **GET** /api/v1/cloud-ai/tools | Получение списка MCP-инструментов
+*TimewebCloudApi.AIAgentToolsApi* | [**getAgentToolsByAgent**](docs/AIAgentToolsApi.md#getAgentToolsByAgent) | **GET** /api/v1/cloud-ai/agents/{agent_id}/tools | Получение MCP-инструментов агента
+*TimewebCloudApi.AIAgentToolsApi* | [**installAgentToolFromTemplate**](docs/AIAgentToolsApi.md#installAgentToolFromTemplate) | **POST** /api/v1/cloud-ai/tools/install | Установка MCP-инструмента из маркетплейса
+*TimewebCloudApi.AIAgentToolsApi* | [**refreshAgentToolMethods**](docs/AIAgentToolsApi.md#refreshAgentToolMethods) | **POST** /api/v1/cloud-ai/tools/{id}/refresh-methods | Обновление списка методов MCP-инструмента
+*TimewebCloudApi.AIAgentToolsApi* | [**updateAgentTool**](docs/AIAgentToolsApi.md#updateAgentTool) | **PUT** /api/v1/cloud-ai/tools/{id} | Изменение MCP-инструмента
+*TimewebCloudApi.AIAgentToolsApi* | [**updateAgentToolConnection**](docs/AIAgentToolsApi.md#updateAgentToolConnection) | **PUT** /api/v1/cloud-ai/agents/{agent_id}/tools/{tool_id} | Изменение разрешённых методов MCP-инструмента у агента
 *TimewebCloudApi.AIAgentsApi* | [**addAdditionalTokenPackage**](docs/AIAgentsApi.md#addAdditionalTokenPackage) | **POST** /api/v1/cloud-ai/agents/{id}/add-additional-token-package | Добавление дополнительного пакета токенов
+*TimewebCloudApi.AIAgentsApi* | [**changeAgentModel**](docs/AIAgentsApi.md#changeAgentModel) | **PATCH** /api/v1/cloud-ai/agents/{id}/model | Смена модели AI агента
 *TimewebCloudApi.AIAgentsApi* | [**createAgent**](docs/AIAgentsApi.md#createAgent) | **POST** /api/v1/cloud-ai/agents | Создание AI агента
+*TimewebCloudApi.AIAgentsApi* | [**createAgentEntityLimit**](docs/AIAgentsApi.md#createAgentEntityLimit) | **POST** /api/v1/cloud-ai/agents/{id}/entity-limits | Создание лимита агента
 *TimewebCloudApi.AIAgentsApi* | [**createAgentV2**](docs/AIAgentsApi.md#createAgentV2) | **POST** /api/v2/cloud-ai/agents | Создание AI агента
 *TimewebCloudApi.AIAgentsApi* | [**deleteAgent**](docs/AIAgentsApi.md#deleteAgent) | **DELETE** /api/v1/cloud-ai/agents/{id} | Удаление AI агента
+*TimewebCloudApi.AIAgentsApi* | [**deleteAgentEntityLimit**](docs/AIAgentsApi.md#deleteAgentEntityLimit) | **DELETE** /api/v1/cloud-ai/agents/{id}/entity-limits/{limit_id} | Удаление лимита агента
+*TimewebCloudApi.AIAgentsApi* | [**exportAgentChatsCsv**](docs/AIAgentsApi.md#exportAgentChatsCsv) | **GET** /api/v1/cloud-ai/agents/{id}/chats/docs | Выгрузка чатов агента в CSV
 *TimewebCloudApi.AIAgentsApi* | [**getAgent**](docs/AIAgentsApi.md#getAgent) | **GET** /api/v1/cloud-ai/agents/{id} | Получение AI агента
+*TimewebCloudApi.AIAgentsApi* | [**getAgentChatList**](docs/AIAgentsApi.md#getAgentChatList) | **GET** /api/v1/cloud-ai/agents/{id}/chat-list | Получение списка чатов агента
+*TimewebCloudApi.AIAgentsApi* | [**getAgentChatMessages**](docs/AIAgentsApi.md#getAgentChatMessages) | **GET** /api/v1/cloud-ai/agents/{id}/chat-list/{chat_id}/messages | Получение сообщений чата агента
+*TimewebCloudApi.AIAgentsApi* | [**getAgentEntityLimit**](docs/AIAgentsApi.md#getAgentEntityLimit) | **GET** /api/v1/cloud-ai/agents/{id}/entity-limits/{limit_id} | Получение лимита агента
+*TimewebCloudApi.AIAgentsApi* | [**getAgentEntityLimits**](docs/AIAgentsApi.md#getAgentEntityLimits) | **GET** /api/v1/cloud-ai/agents/{id}/entity-limits | Получение лимитов агента
 *TimewebCloudApi.AIAgentsApi* | [**getAgentStatistics**](docs/AIAgentsApi.md#getAgentStatistics) | **GET** /api/v1/cloud-ai/agents/{id}/statistic | Получение статистики использования токенов агента
+*TimewebCloudApi.AIAgentsApi* | [**getAgentV3**](docs/AIAgentsApi.md#getAgentV3) | **GET** /api/v3/cloud-ai/agents/{id} | Получение AI агента (v3)
 *TimewebCloudApi.AIAgentsApi* | [**getAgents**](docs/AIAgentsApi.md#getAgents) | **GET** /api/v1/cloud-ai/agents | Получение списка AI агентов
-*TimewebCloudApi.AIAgentsApi* | [**getAgentsTokenPackages**](docs/AIAgentsApi.md#getAgentsTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/agents | Получение списка пакетов токенов для агентов
-*TimewebCloudApi.AIAgentsApi* | [**getKnowledgebasesTokenPackages**](docs/AIAgentsApi.md#getKnowledgebasesTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/knowledge-bases | Получение списка пакетов токенов для баз знаний
-*TimewebCloudApi.AIAgentsApi* | [**getModels**](docs/AIAgentsApi.md#getModels) | **GET** /api/v1/cloud-ai/models | Получение списка моделей
-*TimewebCloudApi.AIAgentsApi* | [**getModelsV3**](docs/AIAgentsApi.md#getModelsV3) | **GET** /api/v3/cloud-ai/models | Получение списка моделей
+*TimewebCloudApi.AIAgentsApi* | [**getAgentsV3**](docs/AIAgentsApi.md#getAgentsV3) | **GET** /api/v3/cloud-ai/agents | Получение списка AI агентов (v3)
+*TimewebCloudApi.AIAgentsApi* | [**syncAgentEntityLimits**](docs/AIAgentsApi.md#syncAgentEntityLimits) | **PUT** /api/v1/cloud-ai/agents/{id}/entity-limits/sync | Синхронизация лимитов агента за период
 *TimewebCloudApi.AIAgentsApi* | [**updateAgent**](docs/AIAgentsApi.md#updateAgent) | **PATCH** /api/v1/cloud-ai/agents/{id} | Обновление AI агента
+*TimewebCloudApi.AIAgentsApi* | [**updateAgentEntityLimit**](docs/AIAgentsApi.md#updateAgentEntityLimit) | **PATCH** /api/v1/cloud-ai/agents/{id}/entity-limits/{limit_id} | Изменение лимита агента
+*TimewebCloudApi.AIGatewayApi* | [**createAiKey**](docs/AIGatewayApi.md#createAiKey) | **POST** /api/v1/cloud-ai/ai-keys | Создание ключа AI Gateway
+*TimewebCloudApi.AIGatewayApi* | [**createAiKeyLimit**](docs/AIGatewayApi.md#createAiKeyLimit) | **POST** /api/v1/cloud-ai/ai-keys/{key_id}/entity-limits | Создание лимита ключа AI Gateway
+*TimewebCloudApi.AIGatewayApi* | [**deleteAiKey**](docs/AIGatewayApi.md#deleteAiKey) | **DELETE** /api/v1/cloud-ai/ai-keys/{key_id} | Удаление ключа AI Gateway
+*TimewebCloudApi.AIGatewayApi* | [**deleteAiKeyLimit**](docs/AIGatewayApi.md#deleteAiKeyLimit) | **DELETE** /api/v1/cloud-ai/ai-keys/{key_id}/entity-limits/{limit_id} | Удаление лимита ключа AI Gateway
+*TimewebCloudApi.AIGatewayApi* | [**getAiKeyCallsStatistic**](docs/AIGatewayApi.md#getAiKeyCallsStatistic) | **GET** /api/v1/cloud-ai/ai-keys/statistic/calls | Получение статистики запросов ключа AI Gateway
+*TimewebCloudApi.AIGatewayApi* | [**getAiKeyLimit**](docs/AIGatewayApi.md#getAiKeyLimit) | **GET** /api/v1/cloud-ai/ai-keys/{key_id}/entity-limits/{limit_id} | Получение лимита ключа AI Gateway
+*TimewebCloudApi.AIGatewayApi* | [**getAiKeyLimits**](docs/AIGatewayApi.md#getAiKeyLimits) | **GET** /api/v1/cloud-ai/ai-keys/{key_id}/entity-limits | Получение списка лимитов ключа AI Gateway
+*TimewebCloudApi.AIGatewayApi* | [**getAiKeyModelsStatistic**](docs/AIGatewayApi.md#getAiKeyModelsStatistic) | **GET** /api/v1/cloud-ai/ai-keys/statistic/models | Получение списка моделей, использованных ключом AI Gateway
+*TimewebCloudApi.AIGatewayApi* | [**getAiKeyTokenUsageStatistic**](docs/AIGatewayApi.md#getAiKeyTokenUsageStatistic) | **GET** /api/v1/cloud-ai/ai-keys/statistic/token-usage | Получение статистики расхода токенов ключа AI Gateway
+*TimewebCloudApi.AIGatewayApi* | [**getAiKeys**](docs/AIGatewayApi.md#getAiKeys) | **GET** /api/v1/cloud-ai/ai-keys | Получение списка ключей AI Gateway
+*TimewebCloudApi.AIGatewayApi* | [**regenerateAiKey**](docs/AIGatewayApi.md#regenerateAiKey) | **PUT** /api/v1/cloud-ai/ai-keys/{key_id}/regenerate | Перевыпуск ключа AI Gateway
+*TimewebCloudApi.AIGatewayApi* | [**syncAiKeyLimits**](docs/AIGatewayApi.md#syncAiKeyLimits) | **PUT** /api/v1/cloud-ai/ai-keys/{key_id}/entity-limits/sync | Синхронизация лимитов ключа AI Gateway
+*TimewebCloudApi.AIGatewayApi* | [**updateAiKey**](docs/AIGatewayApi.md#updateAiKey) | **PATCH** /api/v1/cloud-ai/ai-keys/{key_id} | Изменение ключа AI Gateway
+*TimewebCloudApi.AIGatewayApi* | [**updateAiKeyLimit**](docs/AIGatewayApi.md#updateAiKeyLimit) | **PATCH** /api/v1/cloud-ai/ai-keys/{key_id}/entity-limits/{limit_id} | Изменение лимита ключа AI Gateway
+*TimewebCloudApi.AIGatewayInferenceApi* | [**cancelAiGatewayBatch**](docs/AIGatewayInferenceApi.md#cancelAiGatewayBatch) | **POST** /v1/batches/{batch_id}/cancel | Отмена батча
+*TimewebCloudApi.AIGatewayInferenceApi* | [**cancelAiGatewayResponse**](docs/AIGatewayInferenceApi.md#cancelAiGatewayResponse) | **POST** /v1/responses/{response_id}/cancel | Отмена фонового ответа (Responses API)
+*TimewebCloudApi.AIGatewayInferenceApi* | [**createAiGatewayBatch**](docs/AIGatewayInferenceApi.md#createAiGatewayBatch) | **POST** /v1/batches | Создание батча
+*TimewebCloudApi.AIGatewayInferenceApi* | [**createAiGatewayChatCompletion**](docs/AIGatewayInferenceApi.md#createAiGatewayChatCompletion) | **POST** /v1/chat/completions | Генерация ответа в диалоге (Chat Completions)
+*TimewebCloudApi.AIGatewayInferenceApi* | [**createAiGatewayCompletion**](docs/AIGatewayInferenceApi.md#createAiGatewayCompletion) | **POST** /v1/completions | Продолжение текста (Completions)
+*TimewebCloudApi.AIGatewayInferenceApi* | [**createAiGatewayEmbedding**](docs/AIGatewayInferenceApi.md#createAiGatewayEmbedding) | **POST** /v1/embeddings | Получение эмбеддингов
+*TimewebCloudApi.AIGatewayInferenceApi* | [**createAiGatewayImage**](docs/AIGatewayInferenceApi.md#createAiGatewayImage) | **POST** /v1/images/generations | Генерация изображений
+*TimewebCloudApi.AIGatewayInferenceApi* | [**createAiGatewayImageEdit**](docs/AIGatewayInferenceApi.md#createAiGatewayImageEdit) | **POST** /v1/images/edits | Редактирование изображений
+*TimewebCloudApi.AIGatewayInferenceApi* | [**createAiGatewayResponse**](docs/AIGatewayInferenceApi.md#createAiGatewayResponse) | **POST** /v1/responses | Создание ответа (Responses API)
+*TimewebCloudApi.AIGatewayInferenceApi* | [**createAiGatewaySpeech**](docs/AIGatewayInferenceApi.md#createAiGatewaySpeech) | **POST** /v1/audio/speech | Синтез речи
+*TimewebCloudApi.AIGatewayInferenceApi* | [**createAiGatewayTranscription**](docs/AIGatewayInferenceApi.md#createAiGatewayTranscription) | **POST** /v1/audio/transcriptions | Распознавание речи
+*TimewebCloudApi.AIGatewayInferenceApi* | [**deleteAiGatewayFile**](docs/AIGatewayInferenceApi.md#deleteAiGatewayFile) | **DELETE** /v1/files/{file_id} | Удаление файла
+*TimewebCloudApi.AIGatewayInferenceApi* | [**deleteAiGatewayResponse**](docs/AIGatewayInferenceApi.md#deleteAiGatewayResponse) | **DELETE** /v1/responses/{response_id} | Удаление ответа (Responses API)
+*TimewebCloudApi.AIGatewayInferenceApi* | [**downloadAiGatewayFileContent**](docs/AIGatewayInferenceApi.md#downloadAiGatewayFileContent) | **GET** /v1/files/{file_id}/content | Скачивание файла
+*TimewebCloudApi.AIGatewayInferenceApi* | [**getAiGatewayBatch**](docs/AIGatewayInferenceApi.md#getAiGatewayBatch) | **GET** /v1/batches/{batch_id} | Получение батча
+*TimewebCloudApi.AIGatewayInferenceApi* | [**getAiGatewayBatches**](docs/AIGatewayInferenceApi.md#getAiGatewayBatches) | **GET** /v1/batches | Получение списка батчей
+*TimewebCloudApi.AIGatewayInferenceApi* | [**getAiGatewayFile**](docs/AIGatewayInferenceApi.md#getAiGatewayFile) | **GET** /v1/files/{file_id} | Получение информации о файле
+*TimewebCloudApi.AIGatewayInferenceApi* | [**getAiGatewayModels**](docs/AIGatewayInferenceApi.md#getAiGatewayModels) | **GET** /v1/models | Получение списка моделей AI Gateway
+*TimewebCloudApi.AIGatewayInferenceApi* | [**getAiGatewayResponse**](docs/AIGatewayInferenceApi.md#getAiGatewayResponse) | **GET** /v1/responses/{response_id} | Получение ответа (Responses API)
+*TimewebCloudApi.AIGatewayInferenceApi* | [**uploadAiGatewayFile**](docs/AIGatewayInferenceApi.md#uploadAiGatewayFile) | **POST** /v1/files | Загрузка файла
+*TimewebCloudApi.AIModelsApi* | [**getAgentsTokenPackages**](docs/AIModelsApi.md#getAgentsTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/agents | Получение списка пакетов токенов для агентов
+*TimewebCloudApi.AIModelsApi* | [**getAiModelParameters**](docs/AIModelsApi.md#getAiModelParameters) | **GET** /api/v3/cloud-ai/model-parameters | Получение справочника характеристик моделей
+*TimewebCloudApi.AIModelsApi* | [**getAiModelTokenPackages**](docs/AIModelsApi.md#getAiModelTokenPackages) | **GET** /api/v1/cloud-ai/models/{id}/token-packages | Получение пакетов токенов модели
+*TimewebCloudApi.AIModelsApi* | [**getAiProvider**](docs/AIModelsApi.md#getAiProvider) | **GET** /api/v1/cloud-ai/providers/{id} | Получение провайдера моделей
+*TimewebCloudApi.AIModelsApi* | [**getAiProviders**](docs/AIModelsApi.md#getAiProviders) | **GET** /api/v1/cloud-ai/providers | Получение списка провайдеров моделей
+*TimewebCloudApi.AIModelsApi* | [**getKnowledgebasesTokenPackages**](docs/AIModelsApi.md#getKnowledgebasesTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/knowledge-bases | Получение списка пакетов токенов для баз знаний
+*TimewebCloudApi.AIModelsApi* | [**getModels**](docs/AIModelsApi.md#getModels) | **GET** /api/v1/cloud-ai/models | Получение списка моделей (v1)
+*TimewebCloudApi.AIModelsApi* | [**getModelsV3**](docs/AIModelsApi.md#getModelsV3) | **GET** /api/v3/cloud-ai/models | Получение списка моделей
+*TimewebCloudApi.AISolutionsApi* | [**addAiSolutionTelegramBot**](docs/AISolutionsApi.md#addAiSolutionTelegramBot) | **POST** /api/v1/cloud-ai/solutions/{solution_id}/telegram/bots | Подключение Telegram-бота к AI-решению
+*TimewebCloudApi.AISolutionsApi* | [**approveAiSolutionTelegramPairing**](docs/AISolutionsApi.md#approveAiSolutionTelegramPairing) | **POST** /api/v1/cloud-ai/solutions/{solution_id}/telegram/bots/{account_key}/pairing/approve | Подтверждение владельца Telegram-бота AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**createAiSolution**](docs/AISolutionsApi.md#createAiSolution) | **POST** /api/v1/cloud-ai/solutions | Создание AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**deleteAiSolution**](docs/AISolutionsApi.md#deleteAiSolution) | **DELETE** /api/v1/cloud-ai/solutions/{solution_id} | Удаление AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**getAiSolution**](docs/AISolutionsApi.md#getAiSolution) | **GET** /api/v1/cloud-ai/solutions/{solution_id} | Получение AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**getAiSolutionChatFullHistory**](docs/AISolutionsApi.md#getAiSolutionChatFullHistory) | **GET** /api/v1/cloud-ai/solutions/{solution_id}/chat/history | Получение всей истории чата AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**getAiSolutionChatHistory**](docs/AISolutionsApi.md#getAiSolutionChatHistory) | **GET** /api/v1/cloud-ai/solutions/{solution_id}/chat/conversations/{conversation_id}/messages | Получение истории разговора AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**getAiSolutionChatStatus**](docs/AISolutionsApi.md#getAiSolutionChatStatus) | **GET** /api/v1/cloud-ai/solutions/{solution_id}/chat/status | Получение статуса чата AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**getAiSolutionMainChatHistory**](docs/AISolutionsApi.md#getAiSolutionMainChatHistory) | **GET** /api/v1/cloud-ai/solutions/{solution_id}/chat/messages | Получение истории основного разговора AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**listAiSolutionConversations**](docs/AISolutionsApi.md#listAiSolutionConversations) | **GET** /api/v1/cloud-ai/solutions/{solution_id}/chat/conversations | Получение списка разговоров AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**listAiSolutionTelegramBots**](docs/AISolutionsApi.md#listAiSolutionTelegramBots) | **GET** /api/v1/cloud-ai/solutions/{solution_id}/telegram/bots | Получение списка Telegram-ботов AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**listAiSolutionTypes**](docs/AISolutionsApi.md#listAiSolutionTypes) | **GET** /api/v1/cloud-ai/solutions/types | Получение списка типов AI-решений
+*TimewebCloudApi.AISolutionsApi* | [**listAiSolutions**](docs/AISolutionsApi.md#listAiSolutions) | **GET** /api/v1/cloud-ai/solutions | Получение списка AI-решений
+*TimewebCloudApi.AISolutionsApi* | [**regenerateAiSolutionAiKey**](docs/AISolutionsApi.md#regenerateAiSolutionAiKey) | **POST** /api/v1/cloud-ai/solutions/{solution_id}/ai-key/regenerate | Перевыпуск ключа AI Gateway решения
+*TimewebCloudApi.AISolutionsApi* | [**removeAiSolutionTelegramBot**](docs/AISolutionsApi.md#removeAiSolutionTelegramBot) | **DELETE** /api/v1/cloud-ai/solutions/{solution_id}/telegram/bots/{account_key} | Отключение Telegram-бота от AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**resetAiSolutionChat**](docs/AISolutionsApi.md#resetAiSolutionChat) | **POST** /api/v1/cloud-ai/solutions/{solution_id}/chat/reset | Сброс контекста разговора AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**sendAiSolutionMessage**](docs/AISolutionsApi.md#sendAiSolutionMessage) | **POST** /api/v1/cloud-ai/solutions/{solution_id}/chat/messages | Отправка сообщения агенту AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**shutdownAiSolution**](docs/AISolutionsApi.md#shutdownAiSolution) | **POST** /api/v1/cloud-ai/solutions/{solution_id}/shutdown | Выключение AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**startAiSolution**](docs/AISolutionsApi.md#startAiSolution) | **POST** /api/v1/cloud-ai/solutions/{solution_id}/start | Запуск AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**stopAiSolutionChat**](docs/AISolutionsApi.md#stopAiSolutionChat) | **POST** /api/v1/cloud-ai/solutions/{solution_id}/chat/stop | Остановка хода агента AI-решения
+*TimewebCloudApi.AISolutionsApi* | [**streamAiSolutionChat**](docs/AISolutionsApi.md#streamAiSolutionChat) | **POST** /api/v1/cloud-ai/solutions/{solution_id}/chat/stream | Отправка сообщения агенту AI-решения с потоковым ответом
+*TimewebCloudApi.AISolutionsApi* | [**updateAiSolution**](docs/AISolutionsApi.md#updateAiSolution) | **PATCH** /api/v1/cloud-ai/solutions/{solution_id} | Изменение AI-решения
 *TimewebCloudApi.AccountApi* | [**addCountriesToAllowedList**](docs/AccountApi.md#addCountriesToAllowedList) | **POST** /api/v1/auth/access/countries | Добавление стран в список разрешенных
 *TimewebCloudApi.AccountApi* | [**addIPsToAllowedList**](docs/AccountApi.md#addIPsToAllowedList) | **POST** /api/v1/auth/access/ips | Добавление IP-адресов в список разрешенных
 *TimewebCloudApi.AccountApi* | [**deleteCountriesFromAllowedList**](docs/AccountApi.md#deleteCountriesFromAllowedList) | **DELETE** /api/v1/auth/access/countries | Удаление стран из списка разрешенных
@@ -464,20 +585,24 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.ImagesApi* | [**getImages**](docs/ImagesApi.md#getImages) | **GET** /api/v1/images | Получение списка образов
 *TimewebCloudApi.ImagesApi* | [**updateImage**](docs/ImagesApi.md#updateImage) | **PATCH** /api/v1/images/{image_id} | Обновление информации о образе
 *TimewebCloudApi.ImagesApi* | [**uploadImage**](docs/ImagesApi.md#uploadImage) | **POST** /api/v1/images/{image_id} | Загрузка образа
-*TimewebCloudApi.KnowledgeBasesApi* | [**addAdditionalTokenPackageToKnowledgebase**](docs/KnowledgeBasesApi.md#addAdditionalTokenPackageToKnowledgebase) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package | Добавление дополнительного пакета токенов
+*TimewebCloudApi.KnowledgeBasesApi* | [**addAdditionalTokenPackageToKnowledgebase**](docs/KnowledgeBasesApi.md#addAdditionalTokenPackageToKnowledgebase) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package | Покупка дополнительных пакетов токенов
 *TimewebCloudApi.KnowledgeBasesApi* | [**createKnowledgebase**](docs/KnowledgeBasesApi.md#createKnowledgebase) | **POST** /api/v1/cloud-ai/knowledge-bases | Создание базы знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**createKnowledgebaseDocument**](docs/KnowledgeBasesApi.md#createKnowledgebaseDocument) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/documents | Добавление документа по ссылке
 *TimewebCloudApi.KnowledgeBasesApi* | [**deleteDocument**](docs/KnowledgeBasesApi.md#deleteDocument) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id} | Удаление документа из базы знаний
 *TimewebCloudApi.KnowledgeBasesApi* | [**deleteKnowledgebase**](docs/KnowledgeBasesApi.md#deleteKnowledgebase) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id} | Удаление базы знаний
-*TimewebCloudApi.KnowledgeBasesApi* | [**downloadDocument**](docs/KnowledgeBasesApi.md#downloadDocument) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download | Скачивание документа из базы знаний
-*TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebase**](docs/KnowledgeBasesApi.md#getKnowledgebase) | **GET** /api/v1/cloud-ai/knowledge-bases/{id} | Получение базы знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**downloadDocument**](docs/KnowledgeBasesApi.md#downloadDocument) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download | Скачивание файла документа
+*TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebase**](docs/KnowledgeBasesApi.md#getKnowledgebase) | **GET** /api/v1/cloud-ai/knowledge-bases/{id} | Получение базы знаний со списком документов
 *TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebaseDocumentsV2**](docs/KnowledgeBasesApi.md#getKnowledgebaseDocumentsV2) | **GET** /api/v2/cloud-ai/knowledge-bases/{id}/documents | Получение списка документов базы знаний
-*TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebaseStatistics**](docs/KnowledgeBasesApi.md#getKnowledgebaseStatistics) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/statistic | Получение статистики использования токенов базы знаний
-*TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebases**](docs/KnowledgeBasesApi.md#getKnowledgebases) | **GET** /api/v1/cloud-ai/knowledge-bases | Получение списка баз знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebaseV3**](docs/KnowledgeBasesApi.md#getKnowledgebaseV3) | **GET** /api/v3/cloud-ai/knowledge-bases/{id} | Получение базы знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebases**](docs/KnowledgeBasesApi.md#getKnowledgebases) | **GET** /api/v1/cloud-ai/knowledge-bases | Получение списка баз знаний (v1)
 *TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebasesV2**](docs/KnowledgeBasesApi.md#getKnowledgebasesV2) | **GET** /api/v2/cloud-ai/knowledge-bases | Получение списка баз знаний (v2)
+*TimewebCloudApi.KnowledgeBasesApi* | [**getKnowledgebasesV3**](docs/KnowledgeBasesApi.md#getKnowledgebasesV3) | **GET** /api/v3/cloud-ai/knowledge-bases | Получение списка баз знаний
 *TimewebCloudApi.KnowledgeBasesApi* | [**linkKnowledgebaseToAgent**](docs/KnowledgeBasesApi.md#linkKnowledgebaseToAgent) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Привязка базы знаний к агенту
 *TimewebCloudApi.KnowledgeBasesApi* | [**reindexDocument**](docs/KnowledgeBasesApi.md#reindexDocument) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex | Переиндексация документа
 *TimewebCloudApi.KnowledgeBasesApi* | [**unlinkKnowledgebaseFromAgent**](docs/KnowledgeBasesApi.md#unlinkKnowledgebaseFromAgent) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Отвязка базы знаний от агента
-*TimewebCloudApi.KnowledgeBasesApi* | [**updateKnowledgebase**](docs/KnowledgeBasesApi.md#updateKnowledgebase) | **PATCH** /api/v1/cloud-ai/knowledge-bases/{id} | Обновление базы знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**updateKnowledgebase**](docs/KnowledgeBasesApi.md#updateKnowledgebase) | **PATCH** /api/v1/cloud-ai/knowledge-bases/{id} | Изменение базы знаний
+*TimewebCloudApi.KnowledgeBasesApi* | [**updateKnowledgebaseAgentLink**](docs/KnowledgeBasesApi.md#updateKnowledgebaseAgentLink) | **PATCH** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Изменение режима поиска по базе знаний для агента
+*TimewebCloudApi.KnowledgeBasesApi* | [**updateKnowledgebaseDocument**](docs/KnowledgeBasesApi.md#updateKnowledgebaseDocument) | **PATCH** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id} | Изменение документа
 *TimewebCloudApi.KnowledgeBasesApi* | [**uploadFilesToKnowledgebase**](docs/KnowledgeBasesApi.md#uploadFilesToKnowledgebase) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/upload | Загрузка файлов в базу знаний
 *TimewebCloudApi.KubernetesApi* | [**createCluster**](docs/KubernetesApi.md#createCluster) | **POST** /api/v1/k8s/clusters | Создание кластера
 *TimewebCloudApi.KubernetesApi* | [**createClusterNodeGroup**](docs/KubernetesApi.md#createClusterNodeGroup) | **POST** /api/v1/k8s/clusters/{cluster_id}/groups | Создание группы нод
@@ -505,6 +630,12 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.KubernetesApi* | [**updateCluster**](docs/KubernetesApi.md#updateCluster) | **PATCH** /api/v1/k8s/clusters/{cluster_id} | Обновление информации о кластере
 *TimewebCloudApi.KubernetesApi* | [**updateClusterVersion**](docs/KubernetesApi.md#updateClusterVersion) | **PATCH** /api/v1/k8s/clusters/{cluster_id}/versions/update | Обновление версии кластера
 *TimewebCloudApi.LocationsApi* | [**getLocations**](docs/LocationsApi.md#getLocations) | **GET** /api/v2/locations | Получение списка локаций
+*TimewebCloudApi.MCPApi* | [**deleteMcpSearchSession**](docs/MCPApi.md#deleteMcpSearchSession) | **DELETE** /api/v1/mcp/search | Завершение сессии сервера MCP с поиском инструментов
+*TimewebCloudApi.MCPApi* | [**deleteMcpSession**](docs/MCPApi.md#deleteMcpSession) | **DELETE** /api/v1/mcp | Завершение сессии сервера MCP
+*TimewebCloudApi.MCPApi* | [**openMcpSearchStream**](docs/MCPApi.md#openMcpSearchStream) | **GET** /api/v1/mcp/search | Открытие потока событий сервера MCP с поиском инструментов
+*TimewebCloudApi.MCPApi* | [**openMcpStream**](docs/MCPApi.md#openMcpStream) | **GET** /api/v1/mcp | Открытие потока событий сервера MCP
+*TimewebCloudApi.MCPApi* | [**sendMcpMessage**](docs/MCPApi.md#sendMcpMessage) | **POST** /api/v1/mcp | Отправка JSON-RPC-сообщения серверу MCP
+*TimewebCloudApi.MCPApi* | [**sendMcpSearchMessage**](docs/MCPApi.md#sendMcpSearchMessage) | **POST** /api/v1/mcp/search | Отправка JSON-RPC-сообщения серверу MCP с поиском инструментов
 *TimewebCloudApi.MailApi* | [**createDomainMailbox**](docs/MailApi.md#createDomainMailbox) | **POST** /api/v1/mail/domains/{domain} | Создание почтового ящика
 *TimewebCloudApi.MailApi* | [**createDomainMailboxV2**](docs/MailApi.md#createDomainMailboxV2) | **POST** /api/v2/mail/domains/{domain} | Создание почтового ящика
 *TimewebCloudApi.MailApi* | [**createMultipleDomainMailboxes**](docs/MailApi.md#createMultipleDomainMailboxes) | **POST** /api/v1/mail/domains/{domain}/batch | Множественное создание почтовых ящиков
@@ -655,6 +786,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [TimewebCloudApi.AddAiSolutionTelegramBot201Response](docs/AddAiSolutionTelegramBot201Response.md)
  - [TimewebCloudApi.AddBalancerToProject200Response](docs/AddBalancerToProject200Response.md)
  - [TimewebCloudApi.AddBalancerToProjectRequest](docs/AddBalancerToProjectRequest.md)
  - [TimewebCloudApi.AddBitbucket](docs/AddBitbucket.md)
@@ -690,17 +822,81 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.AddonsConfigResponse](docs/AddonsConfigResponse.md)
  - [TimewebCloudApi.AddonsResponse](docs/AddonsResponse.md)
  - [TimewebCloudApi.Agent](docs/Agent.md)
+ - [TimewebCloudApi.AgentAdditionalModel](docs/AgentAdditionalModel.md)
+ - [TimewebCloudApi.AgentEntityLimit](docs/AgentEntityLimit.md)
  - [TimewebCloudApi.AgentModelSettings](docs/AgentModelSettings.md)
  - [TimewebCloudApi.AgentSettings](docs/AgentSettings.md)
- - [TimewebCloudApi.AgentSettingsWidget](docs/AgentSettingsWidget.md)
+ - [TimewebCloudApi.AgentSkill](docs/AgentSkill.md)
+ - [TimewebCloudApi.AgentTokenStatistic](docs/AgentTokenStatistic.md)
+ - [TimewebCloudApi.AgentToolsInner](docs/AgentToolsInner.md)
+ - [TimewebCloudApi.AgentV3](docs/AgentV3.md)
+ - [TimewebCloudApi.AgentV3KnowledgeBasesInner](docs/AgentV3KnowledgeBasesInner.md)
+ - [TimewebCloudApi.AgentWidgetSettings](docs/AgentWidgetSettings.md)
+ - [TimewebCloudApi.AiGatewayBatch](docs/AiGatewayBatch.md)
+ - [TimewebCloudApi.AiGatewayBatchCreateRequest](docs/AiGatewayBatchCreateRequest.md)
+ - [TimewebCloudApi.AiGatewayBatchList](docs/AiGatewayBatchList.md)
+ - [TimewebCloudApi.AiGatewayBatchRequestCounts](docs/AiGatewayBatchRequestCounts.md)
+ - [TimewebCloudApi.AiGatewayChatCompletion](docs/AiGatewayChatCompletion.md)
+ - [TimewebCloudApi.AiGatewayChatCompletionChoicesInner](docs/AiGatewayChatCompletionChoicesInner.md)
+ - [TimewebCloudApi.AiGatewayChatCompletionChunk](docs/AiGatewayChatCompletionChunk.md)
+ - [TimewebCloudApi.AiGatewayChatCompletionChunkChoicesInner](docs/AiGatewayChatCompletionChunkChoicesInner.md)
+ - [TimewebCloudApi.AiGatewayChatCompletionRequest](docs/AiGatewayChatCompletionRequest.md)
+ - [TimewebCloudApi.AiGatewayChatCompletionRequestStreamOptions](docs/AiGatewayChatCompletionRequestStreamOptions.md)
+ - [TimewebCloudApi.AiGatewayChatMessage](docs/AiGatewayChatMessage.md)
+ - [TimewebCloudApi.AiGatewayCompletion](docs/AiGatewayCompletion.md)
+ - [TimewebCloudApi.AiGatewayCompletionChoicesInner](docs/AiGatewayCompletionChoicesInner.md)
+ - [TimewebCloudApi.AiGatewayCompletionRequest](docs/AiGatewayCompletionRequest.md)
+ - [TimewebCloudApi.AiGatewayEmbeddingList](docs/AiGatewayEmbeddingList.md)
+ - [TimewebCloudApi.AiGatewayEmbeddingListDataInner](docs/AiGatewayEmbeddingListDataInner.md)
+ - [TimewebCloudApi.AiGatewayEmbeddingListUsage](docs/AiGatewayEmbeddingListUsage.md)
+ - [TimewebCloudApi.AiGatewayEmbeddingRequest](docs/AiGatewayEmbeddingRequest.md)
+ - [TimewebCloudApi.AiGatewayError](docs/AiGatewayError.md)
+ - [TimewebCloudApi.AiGatewayErrorError](docs/AiGatewayErrorError.md)
+ - [TimewebCloudApi.AiGatewayFile](docs/AiGatewayFile.md)
+ - [TimewebCloudApi.AiGatewayFileDeleted](docs/AiGatewayFileDeleted.md)
+ - [TimewebCloudApi.AiGatewayImageGenerationRequest](docs/AiGatewayImageGenerationRequest.md)
+ - [TimewebCloudApi.AiGatewayImagesResponse](docs/AiGatewayImagesResponse.md)
+ - [TimewebCloudApi.AiGatewayImagesResponseDataInner](docs/AiGatewayImagesResponseDataInner.md)
+ - [TimewebCloudApi.AiGatewayModel](docs/AiGatewayModel.md)
+ - [TimewebCloudApi.AiGatewayModelList](docs/AiGatewayModelList.md)
+ - [TimewebCloudApi.AiGatewayResponse](docs/AiGatewayResponse.md)
+ - [TimewebCloudApi.AiGatewayResponseCreateRequest](docs/AiGatewayResponseCreateRequest.md)
+ - [TimewebCloudApi.AiGatewayResponseCreateRequestReasoning](docs/AiGatewayResponseCreateRequestReasoning.md)
+ - [TimewebCloudApi.AiGatewayResponseDeleted](docs/AiGatewayResponseDeleted.md)
+ - [TimewebCloudApi.AiGatewayResponseIncompleteDetails](docs/AiGatewayResponseIncompleteDetails.md)
+ - [TimewebCloudApi.AiGatewayResponseUsage](docs/AiGatewayResponseUsage.md)
+ - [TimewebCloudApi.AiGatewaySpeechRequest](docs/AiGatewaySpeechRequest.md)
+ - [TimewebCloudApi.AiGatewayToolCall](docs/AiGatewayToolCall.md)
+ - [TimewebCloudApi.AiGatewayToolCallFunction](docs/AiGatewayToolCallFunction.md)
+ - [TimewebCloudApi.AiGatewayTranscription](docs/AiGatewayTranscription.md)
+ - [TimewebCloudApi.AiGatewayUsage](docs/AiGatewayUsage.md)
+ - [TimewebCloudApi.AiGatewayUsageCompletionTokensDetails](docs/AiGatewayUsageCompletionTokensDetails.md)
+ - [TimewebCloudApi.AiGatewayUsagePromptTokensDetails](docs/AiGatewayUsagePromptTokensDetails.md)
+ - [TimewebCloudApi.AiGatewayValidationError](docs/AiGatewayValidationError.md)
+ - [TimewebCloudApi.AiKey](docs/AiKey.md)
+ - [TimewebCloudApi.AiKeyCallsStatisticPoint](docs/AiKeyCallsStatisticPoint.md)
+ - [TimewebCloudApi.AiKeyLimit](docs/AiKeyLimit.md)
+ - [TimewebCloudApi.AiKeyTokenStatisticPoint](docs/AiKeyTokenStatisticPoint.md)
+ - [TimewebCloudApi.AiProvider](docs/AiProvider.md)
+ - [TimewebCloudApi.AiSolution](docs/AiSolution.md)
+ - [TimewebCloudApi.AiSolutionAiKey](docs/AiSolutionAiKey.md)
+ - [TimewebCloudApi.AiSolutionChatMessage](docs/AiSolutionChatMessage.md)
+ - [TimewebCloudApi.AiSolutionChatReply](docs/AiSolutionChatReply.md)
+ - [TimewebCloudApi.AiSolutionChatStatus](docs/AiSolutionChatStatus.md)
+ - [TimewebCloudApi.AiSolutionConversation](docs/AiSolutionConversation.md)
+ - [TimewebCloudApi.AiSolutionTelegramBot](docs/AiSolutionTelegramBot.md)
+ - [TimewebCloudApi.AiSolutionType](docs/AiSolutionType.md)
+ - [TimewebCloudApi.AiSolutionTypeRequirements](docs/AiSolutionTypeRequirements.md)
  - [TimewebCloudApi.App](docs/App.md)
  - [TimewebCloudApi.AppConfiguration](docs/AppConfiguration.md)
  - [TimewebCloudApi.AppDiskStatus](docs/AppDiskStatus.md)
  - [TimewebCloudApi.AppDomainsInner](docs/AppDomainsInner.md)
  - [TimewebCloudApi.AppProvider](docs/AppProvider.md)
+ - [TimewebCloudApi.ApproveTelegramPairing](docs/ApproveTelegramPairing.md)
  - [TimewebCloudApi.AppsPresets](docs/AppsPresets.md)
  - [TimewebCloudApi.AppsPresetsBackendPresetsInner](docs/AppsPresetsBackendPresetsInner.md)
  - [TimewebCloudApi.AppsPresetsFrontendPresetsInner](docs/AppsPresetsFrontendPresetsInner.md)
+ - [TimewebCloudApi.AuthorizeUrl](docs/AuthorizeUrl.md)
  - [TimewebCloudApi.AutoBackup](docs/AutoBackup.md)
  - [TimewebCloudApi.AutoReplyIsDisabled](docs/AutoReplyIsDisabled.md)
  - [TimewebCloudApi.AutoReplyIsEnabled](docs/AutoReplyIsEnabled.md)
@@ -724,6 +920,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.BaseError](docs/BaseError.md)
  - [TimewebCloudApi.BindFloatingIp](docs/BindFloatingIp.md)
  - [TimewebCloudApi.Bonus](docs/Bonus.md)
+ - [TimewebCloudApi.Bot](docs/Bot.md)
  - [TimewebCloudApi.Branch](docs/Branch.md)
  - [TimewebCloudApi.Bucket](docs/Bucket.md)
  - [TimewebCloudApi.BucketDiskStats](docs/BucketDiskStats.md)
@@ -732,6 +929,13 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.BucketWebsiteConfigErrorPagesInner](docs/BucketWebsiteConfigErrorPagesInner.md)
  - [TimewebCloudApi.Certificate](docs/Certificate.md)
  - [TimewebCloudApi.CertificateTask](docs/CertificateTask.md)
+ - [TimewebCloudApi.ChangeAgentModel](docs/ChangeAgentModel.md)
+ - [TimewebCloudApi.Chat](docs/Chat.md)
+ - [TimewebCloudApi.ChatFirstMessage](docs/ChatFirstMessage.md)
+ - [TimewebCloudApi.ChatListMetrics](docs/ChatListMetrics.md)
+ - [TimewebCloudApi.ChatMessage](docs/ChatMessage.md)
+ - [TimewebCloudApi.ChatMessageFile](docs/ChatMessageFile.md)
+ - [TimewebCloudApi.ChatsCsv](docs/ChatsCsv.md)
  - [TimewebCloudApi.CheckDomain200Response](docs/CheckDomain200Response.md)
  - [TimewebCloudApi.ClearCache](docs/ClearCache.md)
  - [TimewebCloudApi.Clickhouse](docs/Clickhouse.md)
@@ -770,18 +974,34 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ConfigRobots](docs/ConfigRobots.md)
  - [TimewebCloudApi.ConfigSecurity](docs/ConfigSecurity.md)
  - [TimewebCloudApi.ConfigSecuritySecureToken](docs/ConfigSecuritySecureToken.md)
+ - [TimewebCloudApi.ConnectAgentTool](docs/ConnectAgentTool.md)
+ - [TimewebCloudApi.ConnectSkillItem](docs/ConnectSkillItem.md)
+ - [TimewebCloudApi.ConnectSkills](docs/ConnectSkills.md)
+ - [TimewebCloudApi.ConnectTelegram](docs/ConnectTelegram.md)
  - [TimewebCloudApi.ContainerRegistryPresetsInner](docs/ContainerRegistryPresetsInner.md)
  - [TimewebCloudApi.ContainerRegistryRepositoriesInner](docs/ContainerRegistryRepositoriesInner.md)
  - [TimewebCloudApi.CreateAdmin](docs/CreateAdmin.md)
  - [TimewebCloudApi.CreateAgent](docs/CreateAgent.md)
  - [TimewebCloudApi.CreateAgent201Response](docs/CreateAgent201Response.md)
+ - [TimewebCloudApi.CreateAgentBotTelegramBot201Response](docs/CreateAgentBotTelegramBot201Response.md)
+ - [TimewebCloudApi.CreateAgentEntityLimit](docs/CreateAgentEntityLimit.md)
+ - [TimewebCloudApi.CreateAgentEntityLimit201Response](docs/CreateAgentEntityLimit201Response.md)
+ - [TimewebCloudApi.CreateAgentSkill201Response](docs/CreateAgentSkill201Response.md)
+ - [TimewebCloudApi.CreateAgentTool201Response](docs/CreateAgentTool201Response.md)
  - [TimewebCloudApi.CreateAgentV2](docs/CreateAgentV2.md)
+ - [TimewebCloudApi.CreateAiKey](docs/CreateAiKey.md)
+ - [TimewebCloudApi.CreateAiKey201Response](docs/CreateAiKey201Response.md)
+ - [TimewebCloudApi.CreateAiKeyLimit](docs/CreateAiKeyLimit.md)
+ - [TimewebCloudApi.CreateAiKeyLimit201Response](docs/CreateAiKeyLimit201Response.md)
+ - [TimewebCloudApi.CreateAiSolution](docs/CreateAiSolution.md)
+ - [TimewebCloudApi.CreateAiSolution201Response](docs/CreateAiSolution201Response.md)
  - [TimewebCloudApi.CreateApp](docs/CreateApp.md)
  - [TimewebCloudApi.CreateApp201Response](docs/CreateApp201Response.md)
  - [TimewebCloudApi.CreateBalancer](docs/CreateBalancer.md)
  - [TimewebCloudApi.CreateBalancer200Response](docs/CreateBalancer200Response.md)
  - [TimewebCloudApi.CreateBalancerCertificates](docs/CreateBalancerCertificates.md)
  - [TimewebCloudApi.CreateBalancerRule200Response](docs/CreateBalancerRule200Response.md)
+ - [TimewebCloudApi.CreateBot](docs/CreateBot.md)
  - [TimewebCloudApi.CreateCdnResource201Response](docs/CreateCdnResource201Response.md)
  - [TimewebCloudApi.CreateCluster](docs/CreateCluster.md)
  - [TimewebCloudApi.CreateClusterAdmin](docs/CreateClusterAdmin.md)
@@ -790,6 +1010,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateClusterDiskAutoscaling](docs/CreateClusterDiskAutoscaling.md)
  - [TimewebCloudApi.CreateClusterInstance](docs/CreateClusterInstance.md)
  - [TimewebCloudApi.CreateClusterMaintenanceSlot](docs/CreateClusterMaintenanceSlot.md)
+ - [TimewebCloudApi.CreateCrispIntegration](docs/CreateCrispIntegration.md)
  - [TimewebCloudApi.CreateDatabaseBackup201Response](docs/CreateDatabaseBackup201Response.md)
  - [TimewebCloudApi.CreateDatabaseBackupDownloadUrl201Response](docs/CreateDatabaseBackupDownloadUrl201Response.md)
  - [TimewebCloudApi.CreateDatabaseCluster201Response](docs/CreateDatabaseCluster201Response.md)
@@ -803,6 +1024,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateDeployRequest](docs/CreateDeployRequest.md)
  - [TimewebCloudApi.CreateDns](docs/CreateDns.md)
  - [TimewebCloudApi.CreateDnsV2](docs/CreateDnsV2.md)
+ - [TimewebCloudApi.CreateDocument](docs/CreateDocument.md)
  - [TimewebCloudApi.CreateDomainDNSRecord201Response](docs/CreateDomainDNSRecord201Response.md)
  - [TimewebCloudApi.CreateDomainDNSRecordV2201Response](docs/CreateDomainDNSRecordV2201Response.md)
  - [TimewebCloudApi.CreateDomainMailbox201Response](docs/CreateDomainMailbox201Response.md)
@@ -814,10 +1036,13 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateFloatingIp201Response](docs/CreateFloatingIp201Response.md)
  - [TimewebCloudApi.CreateHttpResource](docs/CreateHttpResource.md)
  - [TimewebCloudApi.CreateInstance](docs/CreateInstance.md)
+ - [TimewebCloudApi.CreateJivoIntegration](docs/CreateJivoIntegration.md)
  - [TimewebCloudApi.CreateKey201Response](docs/CreateKey201Response.md)
  - [TimewebCloudApi.CreateKeyRequest](docs/CreateKeyRequest.md)
  - [TimewebCloudApi.CreateKnowledgebase](docs/CreateKnowledgebase.md)
  - [TimewebCloudApi.CreateKnowledgebase201Response](docs/CreateKnowledgebase201Response.md)
+ - [TimewebCloudApi.CreateKnowledgebaseDocument201Response](docs/CreateKnowledgebaseDocument201Response.md)
+ - [TimewebCloudApi.CreateMaxBot](docs/CreateMaxBot.md)
  - [TimewebCloudApi.CreateMultipleDomainMailboxes201Response](docs/CreateMultipleDomainMailboxes201Response.md)
  - [TimewebCloudApi.CreateMultipleDomainMailboxesRequest](docs/CreateMultipleDomainMailboxesRequest.md)
  - [TimewebCloudApi.CreateMultipleDomainMailboxesRequestMailboxesInner](docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md)
@@ -838,11 +1063,14 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateServerDiskBackupRequest](docs/CreateServerDiskBackupRequest.md)
  - [TimewebCloudApi.CreateServerDiskRequest](docs/CreateServerDiskRequest.md)
  - [TimewebCloudApi.CreateServerNetwork](docs/CreateServerNetwork.md)
+ - [TimewebCloudApi.CreateSkill](docs/CreateSkill.md)
  - [TimewebCloudApi.CreateStorage201Response](docs/CreateStorage201Response.md)
  - [TimewebCloudApi.CreateStorageRequest](docs/CreateStorageRequest.md)
  - [TimewebCloudApi.CreateStorageRequestConfigurator](docs/CreateStorageRequestConfigurator.md)
+ - [TimewebCloudApi.CreateTool](docs/CreateTool.md)
  - [TimewebCloudApi.CreateVPC201Response](docs/CreateVPC201Response.md)
  - [TimewebCloudApi.CreateVpc](docs/CreateVpc.md)
+ - [TimewebCloudApi.CrispIntegration](docs/CrispIntegration.md)
  - [TimewebCloudApi.DatabaseAdmin](docs/DatabaseAdmin.md)
  - [TimewebCloudApi.DatabaseAdminInstancesInner](docs/DatabaseAdminInstancesInner.md)
  - [TimewebCloudApi.DatabaseCluster](docs/DatabaseCluster.md)
@@ -878,6 +1106,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DedicatedServerPresetCpu](docs/DedicatedServerPresetCpu.md)
  - [TimewebCloudApi.DedicatedServerPresetDisk](docs/DedicatedServerPresetDisk.md)
  - [TimewebCloudApi.DedicatedServerPresetMemory](docs/DedicatedServerPresetMemory.md)
+ - [TimewebCloudApi.DeleteAgent](docs/DeleteAgent.md)
  - [TimewebCloudApi.DeleteBalancer200Response](docs/DeleteBalancer200Response.md)
  - [TimewebCloudApi.DeleteCluster200Response](docs/DeleteCluster200Response.md)
  - [TimewebCloudApi.DeleteCountriesFromAllowedList200Response](docs/DeleteCountriesFromAllowedList200Response.md)
@@ -917,6 +1146,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.DomainRegister](docs/DomainRegister.md)
  - [TimewebCloudApi.DomainRequest](docs/DomainRequest.md)
  - [TimewebCloudApi.DomainTransfer](docs/DomainTransfer.md)
+ - [TimewebCloudApi.ErrorResponse](docs/ErrorResponse.md)
+ - [TimewebCloudApi.ExportAgentChatsCsv200Response](docs/ExportAgentChatsCsv200Response.md)
  - [TimewebCloudApi.Finances](docs/Finances.md)
  - [TimewebCloudApi.FirewallGroup](docs/FirewallGroup.md)
  - [TimewebCloudApi.FirewallGroupInAPI](docs/FirewallGroupInAPI.md)
@@ -942,12 +1173,65 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Free](docs/Free.md)
  - [TimewebCloudApi.GetAccountStatus200Response](docs/GetAccountStatus200Response.md)
  - [TimewebCloudApi.GetAccountStatus403Response](docs/GetAccountStatus403Response.md)
+ - [TimewebCloudApi.GetAgentBotMaxBots200Response](docs/GetAgentBotMaxBots200Response.md)
+ - [TimewebCloudApi.GetAgentBotMaxBots200ResponseMeta](docs/GetAgentBotMaxBots200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentBotMaxBotsByAgent200Response](docs/GetAgentBotMaxBotsByAgent200Response.md)
+ - [TimewebCloudApi.GetAgentBotMaxBotsByAgent200ResponseMeta](docs/GetAgentBotMaxBotsByAgent200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentBotTelegramBots200Response](docs/GetAgentBotTelegramBots200Response.md)
+ - [TimewebCloudApi.GetAgentBotTelegramBots200ResponseMeta](docs/GetAgentBotTelegramBots200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentBotTelegramBotsByAgent200Response](docs/GetAgentBotTelegramBotsByAgent200Response.md)
+ - [TimewebCloudApi.GetAgentBotTelegramBotsByAgent200ResponseMeta](docs/GetAgentBotTelegramBotsByAgent200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentChatList200Response](docs/GetAgentChatList200Response.md)
+ - [TimewebCloudApi.GetAgentChatList200ResponseMeta](docs/GetAgentChatList200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentChatMessages200Response](docs/GetAgentChatMessages200Response.md)
+ - [TimewebCloudApi.GetAgentChatMessages200ResponseMeta](docs/GetAgentChatMessages200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentEntityLimits200Response](docs/GetAgentEntityLimits200Response.md)
+ - [TimewebCloudApi.GetAgentEntityLimits200ResponseMeta](docs/GetAgentEntityLimits200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentIntegrationCrisp200Response](docs/GetAgentIntegrationCrisp200Response.md)
+ - [TimewebCloudApi.GetAgentIntegrationJivo200Response](docs/GetAgentIntegrationJivo200Response.md)
+ - [TimewebCloudApi.GetAgentSkill200Response](docs/GetAgentSkill200Response.md)
+ - [TimewebCloudApi.GetAgentSkillCatalog200Response](docs/GetAgentSkillCatalog200Response.md)
+ - [TimewebCloudApi.GetAgentSkillCatalog200ResponseMeta](docs/GetAgentSkillCatalog200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentSkillLibrary200Response](docs/GetAgentSkillLibrary200Response.md)
+ - [TimewebCloudApi.GetAgentSkillLibrary200ResponseMeta](docs/GetAgentSkillLibrary200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentSkillVersion200Response](docs/GetAgentSkillVersion200Response.md)
+ - [TimewebCloudApi.GetAgentSkillVersions200Response](docs/GetAgentSkillVersions200Response.md)
+ - [TimewebCloudApi.GetAgentSkillVersions200ResponseMeta](docs/GetAgentSkillVersions200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentSkillsForAgent200Response](docs/GetAgentSkillsForAgent200Response.md)
+ - [TimewebCloudApi.GetAgentSkillsForAgent200ResponseMeta](docs/GetAgentSkillsForAgent200ResponseMeta.md)
  - [TimewebCloudApi.GetAgentStatistics200Response](docs/GetAgentStatistics200Response.md)
  - [TimewebCloudApi.GetAgentStatistics200ResponseMeta](docs/GetAgentStatistics200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentToolTemplatePrices200Response](docs/GetAgentToolTemplatePrices200Response.md)
+ - [TimewebCloudApi.GetAgentToolTemplates200Response](docs/GetAgentToolTemplates200Response.md)
+ - [TimewebCloudApi.GetAgentToolTemplates200ResponseMeta](docs/GetAgentToolTemplates200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentTools200Response](docs/GetAgentTools200Response.md)
+ - [TimewebCloudApi.GetAgentTools200ResponseMeta](docs/GetAgentTools200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentToolsByAgent200Response](docs/GetAgentToolsByAgent200Response.md)
+ - [TimewebCloudApi.GetAgentToolsByAgent200ResponseMeta](docs/GetAgentToolsByAgent200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentV3200Response](docs/GetAgentV3200Response.md)
  - [TimewebCloudApi.GetAgents200Response](docs/GetAgents200Response.md)
  - [TimewebCloudApi.GetAgents200ResponseMeta](docs/GetAgents200ResponseMeta.md)
  - [TimewebCloudApi.GetAgentsTokenPackages200Response](docs/GetAgentsTokenPackages200Response.md)
  - [TimewebCloudApi.GetAgentsTokenPackages200ResponseMeta](docs/GetAgentsTokenPackages200ResponseMeta.md)
+ - [TimewebCloudApi.GetAgentsV3200Response](docs/GetAgentsV3200Response.md)
+ - [TimewebCloudApi.GetAiKeyCallsStatistic200Response](docs/GetAiKeyCallsStatistic200Response.md)
+ - [TimewebCloudApi.GetAiKeyLimits200Response](docs/GetAiKeyLimits200Response.md)
+ - [TimewebCloudApi.GetAiKeyLimits200ResponseMeta](docs/GetAiKeyLimits200ResponseMeta.md)
+ - [TimewebCloudApi.GetAiKeyModelsStatistic200Response](docs/GetAiKeyModelsStatistic200Response.md)
+ - [TimewebCloudApi.GetAiKeyModelsStatistic200ResponseMeta](docs/GetAiKeyModelsStatistic200ResponseMeta.md)
+ - [TimewebCloudApi.GetAiKeyTokenUsageStatistic200Response](docs/GetAiKeyTokenUsageStatistic200Response.md)
+ - [TimewebCloudApi.GetAiKeyTokenUsageStatistic200ResponseMeta](docs/GetAiKeyTokenUsageStatistic200ResponseMeta.md)
+ - [TimewebCloudApi.GetAiKeys200Response](docs/GetAiKeys200Response.md)
+ - [TimewebCloudApi.GetAiKeys200ResponseMeta](docs/GetAiKeys200ResponseMeta.md)
+ - [TimewebCloudApi.GetAiModelParameters200Response](docs/GetAiModelParameters200Response.md)
+ - [TimewebCloudApi.GetAiModelParameters200ResponseMeta](docs/GetAiModelParameters200ResponseMeta.md)
+ - [TimewebCloudApi.GetAiModelTokenPackages200Response](docs/GetAiModelTokenPackages200Response.md)
+ - [TimewebCloudApi.GetAiModelTokenPackages200ResponseMeta](docs/GetAiModelTokenPackages200ResponseMeta.md)
+ - [TimewebCloudApi.GetAiProvider200Response](docs/GetAiProvider200Response.md)
+ - [TimewebCloudApi.GetAiProviders200Response](docs/GetAiProviders200Response.md)
+ - [TimewebCloudApi.GetAiProviders200ResponseMeta](docs/GetAiProviders200ResponseMeta.md)
+ - [TimewebCloudApi.GetAiSolutionChatStatus200Response](docs/GetAiSolutionChatStatus200Response.md)
+ - [TimewebCloudApi.GetAiSolutionMainChatHistory200Response](docs/GetAiSolutionMainChatHistory200Response.md)
  - [TimewebCloudApi.GetAllMailboxesV2200Response](docs/GetAllMailboxesV2200Response.md)
  - [TimewebCloudApi.GetAllProjectResources200Response](docs/GetAllProjectResources200Response.md)
  - [TimewebCloudApi.GetAppDeploys200Response](docs/GetAppDeploys200Response.md)
@@ -1008,10 +1292,13 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetKeys200Response](docs/GetKeys200Response.md)
  - [TimewebCloudApi.GetKnowledgebaseDocumentsV2200Response](docs/GetKnowledgebaseDocumentsV2200Response.md)
  - [TimewebCloudApi.GetKnowledgebaseDocumentsV2200ResponseMeta](docs/GetKnowledgebaseDocumentsV2200ResponseMeta.md)
- - [TimewebCloudApi.GetKnowledgebaseStatistics200Response](docs/GetKnowledgebaseStatistics200Response.md)
+ - [TimewebCloudApi.GetKnowledgebaseV3200Response](docs/GetKnowledgebaseV3200Response.md)
  - [TimewebCloudApi.GetKnowledgebases200Response](docs/GetKnowledgebases200Response.md)
+ - [TimewebCloudApi.GetKnowledgebasesTokenPackages200Response](docs/GetKnowledgebasesTokenPackages200Response.md)
+ - [TimewebCloudApi.GetKnowledgebasesTokenPackages200ResponseMeta](docs/GetKnowledgebasesTokenPackages200ResponseMeta.md)
  - [TimewebCloudApi.GetKnowledgebasesV2200Response](docs/GetKnowledgebasesV2200Response.md)
- - [TimewebCloudApi.GetKnowledgebasesV2200ResponseMeta](docs/GetKnowledgebasesV2200ResponseMeta.md)
+ - [TimewebCloudApi.GetKnowledgebasesV3200Response](docs/GetKnowledgebasesV3200Response.md)
+ - [TimewebCloudApi.GetKnowledgebasesV3200ResponseMeta](docs/GetKnowledgebasesV3200ResponseMeta.md)
  - [TimewebCloudApi.GetLocations200Response](docs/GetLocations200Response.md)
  - [TimewebCloudApi.GetMailboxes200Response](docs/GetMailboxes200Response.md)
  - [TimewebCloudApi.GetModels200Response](docs/GetModels200Response.md)
@@ -1073,15 +1360,38 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ImageUrlIn](docs/ImageUrlIn.md)
  - [TimewebCloudApi.ImagesOutResponse](docs/ImagesOutResponse.md)
  - [TimewebCloudApi.IncreaseNodes](docs/IncreaseNodes.md)
+ - [TimewebCloudApi.IndexingSchedule](docs/IndexingSchedule.md)
  - [TimewebCloudApi.InfoServicePrice](docs/InfoServicePrice.md)
+ - [TimewebCloudApi.InitializeParams](docs/InitializeParams.md)
+ - [TimewebCloudApi.InitializeParamsClientInfo](docs/InitializeParamsClientInfo.md)
+ - [TimewebCloudApi.InitializeResult](docs/InitializeResult.md)
+ - [TimewebCloudApi.InitializeResultServerInfo](docs/InitializeResultServerInfo.md)
+ - [TimewebCloudApi.InstallAgentSkillFromCatalog200Response](docs/InstallAgentSkillFromCatalog200Response.md)
+ - [TimewebCloudApi.InstallAgentSkillFromCatalog200ResponseMeta](docs/InstallAgentSkillFromCatalog200ResponseMeta.md)
+ - [TimewebCloudApi.InstallAndConnectAgentSkill200Response](docs/InstallAndConnectAgentSkill200Response.md)
+ - [TimewebCloudApi.InstallAndConnectSkill](docs/InstallAndConnectSkill.md)
+ - [TimewebCloudApi.InstallTool](docs/InstallTool.md)
  - [TimewebCloudApi.Invoice](docs/Invoice.md)
  - [TimewebCloudApi.Ip](docs/Ip.md)
  - [TimewebCloudApi.IssueCertificate](docs/IssueCertificate.md)
+ - [TimewebCloudApi.JivoIntegration](docs/JivoIntegration.md)
+ - [TimewebCloudApi.JsonRpcError](docs/JsonRpcError.md)
+ - [TimewebCloudApi.JsonRpcErrorResponse](docs/JsonRpcErrorResponse.md)
+ - [TimewebCloudApi.JsonRpcNotification](docs/JsonRpcNotification.md)
+ - [TimewebCloudApi.JsonRpcRequest](docs/JsonRpcRequest.md)
+ - [TimewebCloudApi.JsonRpcResultResponse](docs/JsonRpcResultResponse.md)
  - [TimewebCloudApi.K8SVersionsResponse](docs/K8SVersionsResponse.md)
  - [TimewebCloudApi.Kafka](docs/Kafka.md)
  - [TimewebCloudApi.KafkaConfigParameters](docs/KafkaConfigParameters.md)
  - [TimewebCloudApi.Knowledgebase](docs/Knowledgebase.md)
+ - [TimewebCloudApi.KnowledgebaseAddTokenPackage](docs/KnowledgebaseAddTokenPackage.md)
  - [TimewebCloudApi.KnowledgebaseV2](docs/KnowledgebaseV2.md)
+ - [TimewebCloudApi.KnowledgebaseV3](docs/KnowledgebaseV3.md)
+ - [TimewebCloudApi.LinkKnowledgebase](docs/LinkKnowledgebase.md)
+ - [TimewebCloudApi.ListAiSolutionConversations200Response](docs/ListAiSolutionConversations200Response.md)
+ - [TimewebCloudApi.ListAiSolutionTelegramBots200Response](docs/ListAiSolutionTelegramBots200Response.md)
+ - [TimewebCloudApi.ListAiSolutionTypes200Response](docs/ListAiSolutionTypes200Response.md)
+ - [TimewebCloudApi.ListAiSolutions200Response](docs/ListAiSolutions200Response.md)
  - [TimewebCloudApi.Location](docs/Location.md)
  - [TimewebCloudApi.LocationDto](docs/LocationDto.md)
  - [TimewebCloudApi.Mailbox](docs/Mailbox.md)
@@ -1096,10 +1406,10 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Meta](docs/Meta.md)
  - [TimewebCloudApi.Meta1](docs/Meta1.md)
  - [TimewebCloudApi.Model](docs/Model.md)
- - [TimewebCloudApi.ModelParamsInfo](docs/ModelParamsInfo.md)
- - [TimewebCloudApi.ModelParamsInfoMaxTokens](docs/ModelParamsInfoMaxTokens.md)
- - [TimewebCloudApi.ModelParamsInfoReasoningEffort](docs/ModelParamsInfoReasoningEffort.md)
- - [TimewebCloudApi.ModelParamsInfoTemperature](docs/ModelParamsInfoTemperature.md)
+ - [TimewebCloudApi.ModelBatch](docs/ModelBatch.md)
+ - [TimewebCloudApi.ModelParamInfo](docs/ModelParamInfo.md)
+ - [TimewebCloudApi.ModelParameter](docs/ModelParameter.md)
+ - [TimewebCloudApi.ModelPriceTier](docs/ModelPriceTier.md)
  - [TimewebCloudApi.ModelV3](docs/ModelV3.md)
  - [TimewebCloudApi.Mongodb](docs/Mongodb.md)
  - [TimewebCloudApi.MountNetworkDrive](docs/MountNetworkDrive.md)
@@ -1157,6 +1467,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.Providers](docs/Providers.md)
  - [TimewebCloudApi.Rabbitmq](docs/Rabbitmq.md)
  - [TimewebCloudApi.ReduceNodes](docs/ReduceNodes.md)
+ - [TimewebCloudApi.RegenerateAiSolutionAiKey200Response](docs/RegenerateAiSolutionAiKey200Response.md)
  - [TimewebCloudApi.RegistriesResponse](docs/RegistriesResponse.md)
  - [TimewebCloudApi.RegistryEdit](docs/RegistryEdit.md)
  - [TimewebCloudApi.RegistryIn](docs/RegistryIn.md)
@@ -1170,12 +1481,20 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ReplicaDisk](docs/ReplicaDisk.md)
  - [TimewebCloudApi.RepositoriesResponse](docs/RepositoriesResponse.md)
  - [TimewebCloudApi.Repository](docs/Repository.md)
+ - [TimewebCloudApi.ResetAiSolutionChat](docs/ResetAiSolutionChat.md)
+ - [TimewebCloudApi.ResetAiSolutionChat200Response](docs/ResetAiSolutionChat200Response.md)
  - [TimewebCloudApi.Resource](docs/Resource.md)
  - [TimewebCloudApi.ResourceTransfer](docs/ResourceTransfer.md)
  - [TimewebCloudApi.ResourceType](docs/ResourceType.md)
  - [TimewebCloudApi.Resources](docs/Resources.md)
+ - [TimewebCloudApi.ResourcesListResult](docs/ResourcesListResult.md)
+ - [TimewebCloudApi.ResourcesReadParams](docs/ResourcesReadParams.md)
+ - [TimewebCloudApi.ResourcesReadResult](docs/ResourcesReadResult.md)
+ - [TimewebCloudApi.ResourcesReadResultContentsInner](docs/ResourcesReadResultContentsInner.md)
  - [TimewebCloudApi.ResourcesResponse](docs/ResourcesResponse.md)
  - [TimewebCloudApi.RestorePoint](docs/RestorePoint.md)
+ - [TimewebCloudApi.RetrievalMode](docs/RetrievalMode.md)
+ - [TimewebCloudApi.RetrievalModeRef](docs/RetrievalModeRef.md)
  - [TimewebCloudApi.RouterEdit](docs/RouterEdit.md)
  - [TimewebCloudApi.RouterIn](docs/RouterIn.md)
  - [TimewebCloudApi.RouterInIpsInner](docs/RouterInIpsInner.md)
@@ -1203,6 +1522,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.SchemasBaseError](docs/SchemasBaseError.md)
  - [TimewebCloudApi.SchemasMeta](docs/SchemasMeta.md)
  - [TimewebCloudApi.SchemasPresetsResponse](docs/SchemasPresetsResponse.md)
+ - [TimewebCloudApi.SendAiSolutionMessage](docs/SendAiSolutionMessage.md)
+ - [TimewebCloudApi.SendAiSolutionMessage200Response](docs/SendAiSolutionMessage200Response.md)
  - [TimewebCloudApi.ServerBackup](docs/ServerBackup.md)
  - [TimewebCloudApi.ServerDisk](docs/ServerDisk.md)
  - [TimewebCloudApi.ServerIp](docs/ServerIp.md)
@@ -1223,8 +1544,17 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.ServicePriceType](docs/ServicePriceType.md)
  - [TimewebCloudApi.ServiceServicePrice](docs/ServiceServicePrice.md)
  - [TimewebCloudApi.ServiceServicePriceNodeGroupsInner](docs/ServiceServicePriceNodeGroupsInner.md)
+ - [TimewebCloudApi.SetAgentSkill](docs/SetAgentSkill.md)
+ - [TimewebCloudApi.SetAgentSkillForAgent200Response](docs/SetAgentSkillForAgent200Response.md)
  - [TimewebCloudApi.SetLabels](docs/SetLabels.md)
  - [TimewebCloudApi.SettingCondition](docs/SettingCondition.md)
+ - [TimewebCloudApi.Skill](docs/Skill.md)
+ - [TimewebCloudApi.SkillAgent](docs/SkillAgent.md)
+ - [TimewebCloudApi.SkillCatalogItem](docs/SkillCatalogItem.md)
+ - [TimewebCloudApi.SkillSaveMeta](docs/SkillSaveMeta.md)
+ - [TimewebCloudApi.SkillScript](docs/SkillScript.md)
+ - [TimewebCloudApi.SkillScriptInput](docs/SkillScriptInput.md)
+ - [TimewebCloudApi.SkillVersion](docs/SkillVersion.md)
  - [TimewebCloudApi.SpamFilterIsDisabled](docs/SpamFilterIsDisabled.md)
  - [TimewebCloudApi.SpamFilterIsEnabled](docs/SpamFilterIsEnabled.md)
  - [TimewebCloudApi.SpamProtectionIsDisabled](docs/SpamProtectionIsDisabled.md)
@@ -1240,10 +1570,32 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.StatisticsTrafficInner](docs/StatisticsTrafficInner.md)
  - [TimewebCloudApi.Status](docs/Status.md)
  - [TimewebCloudApi.StatusCompanyInfo](docs/StatusCompanyInfo.md)
+ - [TimewebCloudApi.StopAiSolutionChat](docs/StopAiSolutionChat.md)
+ - [TimewebCloudApi.StreamError](docs/StreamError.md)
  - [TimewebCloudApi.Subdomain](docs/Subdomain.md)
+ - [TimewebCloudApi.SyncAgentEntityLimits](docs/SyncAgentEntityLimits.md)
+ - [TimewebCloudApi.SyncAgentEntityLimitsLimitsInner](docs/SyncAgentEntityLimitsLimitsInner.md)
+ - [TimewebCloudApi.SyncAgentSkillAgentsVersions200Response](docs/SyncAgentSkillAgentsVersions200Response.md)
+ - [TimewebCloudApi.SyncAgentSkillAgentsVersions200ResponseMeta](docs/SyncAgentSkillAgentsVersions200ResponseMeta.md)
+ - [TimewebCloudApi.SyncAgentSkillVersionsForAgent200Response](docs/SyncAgentSkillVersionsForAgent200Response.md)
+ - [TimewebCloudApi.SyncAiKeyLimits](docs/SyncAiKeyLimits.md)
+ - [TimewebCloudApi.SyncAiKeyLimitsLimitsInner](docs/SyncAiKeyLimitsLimitsInner.md)
  - [TimewebCloudApi.Tags](docs/Tags.md)
+ - [TimewebCloudApi.TextContent](docs/TextContent.md)
  - [TimewebCloudApi.TokenPackage](docs/TokenPackage.md)
- - [TimewebCloudApi.TokenStatistic](docs/TokenStatistic.md)
+ - [TimewebCloudApi.Tool](docs/Tool.md)
+ - [TimewebCloudApi.Tool2](docs/Tool2.md)
+ - [TimewebCloudApi.Tool2Annotations](docs/Tool2Annotations.md)
+ - [TimewebCloudApi.ToolAuthData](docs/ToolAuthData.md)
+ - [TimewebCloudApi.ToolAuthDataParams](docs/ToolAuthDataParams.md)
+ - [TimewebCloudApi.ToolConfigField](docs/ToolConfigField.md)
+ - [TimewebCloudApi.ToolMethod](docs/ToolMethod.md)
+ - [TimewebCloudApi.ToolPrice](docs/ToolPrice.md)
+ - [TimewebCloudApi.ToolTemplate](docs/ToolTemplate.md)
+ - [TimewebCloudApi.ToolTemplateConfigSchema](docs/ToolTemplateConfigSchema.md)
+ - [TimewebCloudApi.ToolsCallParams](docs/ToolsCallParams.md)
+ - [TimewebCloudApi.ToolsCallResult](docs/ToolsCallResult.md)
+ - [TimewebCloudApi.ToolsListResult](docs/ToolsListResult.md)
  - [TimewebCloudApi.TopLevelDomain](docs/TopLevelDomain.md)
  - [TimewebCloudApi.TopLevelDomainAllowedBuyPeriodsInner](docs/TopLevelDomainAllowedBuyPeriodsInner.md)
  - [TimewebCloudApi.TrafficUsage](docs/TrafficUsage.md)
@@ -1253,11 +1605,17 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.URLType](docs/URLType.md)
  - [TimewebCloudApi.UpdateAdmin](docs/UpdateAdmin.md)
  - [TimewebCloudApi.UpdateAgent](docs/UpdateAgent.md)
- - [TimewebCloudApi.UpdateAgentSettings](docs/UpdateAgentSettings.md)
+ - [TimewebCloudApi.UpdateAgentEntityLimit](docs/UpdateAgentEntityLimit.md)
+ - [TimewebCloudApi.UpdateAgentTool](docs/UpdateAgentTool.md)
+ - [TimewebCloudApi.UpdateAiKey](docs/UpdateAiKey.md)
+ - [TimewebCloudApi.UpdateAiKey200Response](docs/UpdateAiKey200Response.md)
+ - [TimewebCloudApi.UpdateAiKeyLimit](docs/UpdateAiKeyLimit.md)
+ - [TimewebCloudApi.UpdateAiSolution](docs/UpdateAiSolution.md)
  - [TimewebCloudApi.UpdateAppSettings200Response](docs/UpdateAppSettings200Response.md)
  - [TimewebCloudApi.UpdateAuthRestrictionsByCountriesRequest](docs/UpdateAuthRestrictionsByCountriesRequest.md)
  - [TimewebCloudApi.UpdateAutoBackup](docs/UpdateAutoBackup.md)
  - [TimewebCloudApi.UpdateBalancer](docs/UpdateBalancer.md)
+ - [TimewebCloudApi.UpdateBot](docs/UpdateBot.md)
  - [TimewebCloudApi.UpdateCluster](docs/UpdateCluster.md)
  - [TimewebCloudApi.UpdateClusterConfiguration](docs/UpdateClusterConfiguration.md)
  - [TimewebCloudApi.UpdateClusterV2](docs/UpdateClusterV2.md)
@@ -1266,6 +1624,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateDatabaseCluster200Response](docs/UpdateDatabaseCluster200Response.md)
  - [TimewebCloudApi.UpdateDatabaseInstance409Response](docs/UpdateDatabaseInstance409Response.md)
  - [TimewebCloudApi.UpdateDedicatedServerRequest](docs/UpdateDedicatedServerRequest.md)
+ - [TimewebCloudApi.UpdateDocument](docs/UpdateDocument.md)
  - [TimewebCloudApi.UpdateDomain](docs/UpdateDomain.md)
  - [TimewebCloudApi.UpdateDomainAutoProlongation200Response](docs/UpdateDomainAutoProlongation200Response.md)
  - [TimewebCloudApi.UpdateDomainMailInfoRequest](docs/UpdateDomainMailInfoRequest.md)
@@ -1280,6 +1639,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateMailbox](docs/UpdateMailbox.md)
  - [TimewebCloudApi.UpdateMailboxV2](docs/UpdateMailboxV2.md)
  - [TimewebCloudApi.UpdateMailboxV2200Response](docs/UpdateMailboxV2200Response.md)
+ - [TimewebCloudApi.UpdateMaxBot](docs/UpdateMaxBot.md)
  - [TimewebCloudApi.UpdateNetworkDrive](docs/UpdateNetworkDrive.md)
  - [TimewebCloudApi.UpdateNotificationSettingsRequest](docs/UpdateNotificationSettingsRequest.md)
  - [TimewebCloudApi.UpdateNotificationSettingsRequestSettingsInner](docs/UpdateNotificationSettingsRequestSettingsInner.md)
@@ -1296,12 +1656,14 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.UpdateServerNATRequest](docs/UpdateServerNATRequest.md)
  - [TimewebCloudApi.UpdateServerOSBootModeRequest](docs/UpdateServerOSBootModeRequest.md)
  - [TimewebCloudApi.UpdateSettings](docs/UpdateSettings.md)
+ - [TimewebCloudApi.UpdateSkill](docs/UpdateSkill.md)
  - [TimewebCloudApi.UpdateStorageRequest](docs/UpdateStorageRequest.md)
  - [TimewebCloudApi.UpdateStorageRequestConfigurator](docs/UpdateStorageRequestConfigurator.md)
  - [TimewebCloudApi.UpdateStorageUser200Response](docs/UpdateStorageUser200Response.md)
  - [TimewebCloudApi.UpdateStorageUserRequest](docs/UpdateStorageUserRequest.md)
+ - [TimewebCloudApi.UpdateTool](docs/UpdateTool.md)
  - [TimewebCloudApi.UpdateVpc](docs/UpdateVpc.md)
- - [TimewebCloudApi.UploadFilesToKnowledgebase200Response](docs/UploadFilesToKnowledgebase200Response.md)
+ - [TimewebCloudApi.UploadResult](docs/UploadResult.md)
  - [TimewebCloudApi.UploadSuccessful](docs/UploadSuccessful.md)
  - [TimewebCloudApi.UploadSuccessfulResponse](docs/UploadSuccessfulResponse.md)
  - [TimewebCloudApi.UrlStatus](docs/UrlStatus.md)
@@ -1329,4 +1691,8 @@ Authentication schemes defined for the API:
 ### Bearer
 
 - **Type**: Bearer authentication (JWT)
+
+### AiGatewayKey
+
+- **Type**: Bearer authentication
 

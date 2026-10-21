@@ -12,7 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
-import UpdateAgentSettings from './UpdateAgentSettings';
+import AgentAdditionalModel from './AgentAdditionalModel';
+import AgentSettings from './AgentSettings';
 
 /**
  * The UpdateAgent model module.
@@ -22,7 +23,7 @@ import UpdateAgentSettings from './UpdateAgentSettings';
 class UpdateAgent {
     /**
      * Constructs a new <code>UpdateAgent</code>.
-     * Данные для обновления AI агента
+     * Данные для обновления AI агента. Передавайте только изменяемые поля.
      * @alias module:model/UpdateAgent
      */
     constructor() { 
@@ -61,14 +62,26 @@ class UpdateAgent {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = ApiClient.convertToType(data['status'], 'String');
             }
-            if (data.hasOwnProperty('token_package_id')) {
-                obj['token_package_id'] = ApiClient.convertToType(data['token_package_id'], 'Number');
-            }
             if (data.hasOwnProperty('settings')) {
-                obj['settings'] = UpdateAgentSettings.constructFromObject(data['settings']);
+                obj['settings'] = AgentSettings.constructFromObject(data['settings']);
             }
             if (data.hasOwnProperty('project_id')) {
                 obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            }
+            if (data.hasOwnProperty('additional_model_ids')) {
+                obj['additional_model_ids'] = ApiClient.convertToType(data['additional_model_ids'], ['Number']);
+            }
+            if (data.hasOwnProperty('additional_models')) {
+                obj['additional_models'] = ApiClient.convertToType(data['additional_models'], [AgentAdditionalModel]);
+            }
+            if (data.hasOwnProperty('is_web_search_enabled')) {
+                obj['is_web_search_enabled'] = ApiClient.convertToType(data['is_web_search_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('ai_gateway_key_id')) {
+                obj['ai_gateway_key_id'] = ApiClient.convertToType(data['ai_gateway_key_id'], 'String');
+            }
+            if (data.hasOwnProperty('token_package_id')) {
+                obj['token_package_id'] = ApiClient.convertToType(data['token_package_id'], 'Number');
             }
         }
         return obj;
@@ -98,7 +111,25 @@ class UpdateAgent {
         }
         // validate the optional field `settings`
         if (data['settings']) { // data not null
-          UpdateAgentSettings.validateJSON(data['settings']);
+          AgentSettings.validateJSON(data['settings']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['additional_model_ids'])) {
+            throw new Error("Expected the field `additional_model_ids` to be an array in the JSON data but got " + data['additional_model_ids']);
+        }
+        if (data['additional_models']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['additional_models'])) {
+                throw new Error("Expected the field `additional_models` to be an array in the JSON data but got " + data['additional_models']);
+            }
+            // validate the optional field `additional_models` (array)
+            for (const item of data['additional_models']) {
+                AgentAdditionalModel.validateJSON(item);
+            };
+        }
+        // ensure the json data is a string
+        if (data['ai_gateway_key_id'] && !(typeof data['ai_gateway_key_id'] === 'string' || data['ai_gateway_key_id'] instanceof String)) {
+            throw new Error("Expected the field `ai_gateway_key_id` to be a primitive type in the JSON string but got " + data['ai_gateway_key_id']);
         }
 
         return true;
@@ -122,33 +153,57 @@ UpdateAgent.prototype['name'] = undefined;
 UpdateAgent.prototype['description'] = undefined;
 
 /**
- * Тип доступа к агенту
+ * Тип доступа
  * @member {module:model/UpdateAgent.AccessTypeEnum} access_type
  */
 UpdateAgent.prototype['access_type'] = undefined;
 
 /**
- * Статус агента
+ * Статус агента: `suspended` — приостановить, `active` — возобновить. Статус заблокированного или удалённого агента изменить нельзя.
  * @member {module:model/UpdateAgent.StatusEnum} status
  */
 UpdateAgent.prototype['status'] = undefined;
 
 /**
- * ID пакета токенов
- * @member {Number} token_package_id
- */
-UpdateAgent.prototype['token_package_id'] = undefined;
-
-/**
- * @member {module:model/UpdateAgentSettings} settings
+ * @member {module:model/AgentSettings} settings
  */
 UpdateAgent.prototype['settings'] = undefined;
 
 /**
- * ID проекта
+ * Не используется: перенести агента в другой проект можно методами проектов.
  * @member {Number} project_id
  */
 UpdateAgent.prototype['project_id'] = undefined;
+
+/**
+ * ID дополнительных моделей агента (например, для генерации изображений). Список заменяет текущий целиком.
+ * @member {Array.<Number>} additional_model_ids
+ */
+UpdateAgent.prototype['additional_model_ids'] = undefined;
+
+/**
+ * Дополнительные модели вместе с настройками (для моделей генерации изображений — `width`/`height`). Если переданы и `additional_models`, и `additional_model_ids`, используется `additional_models`.
+ * @member {Array.<module:model/AgentAdditionalModel>} additional_models
+ */
+UpdateAgent.prototype['additional_models'] = undefined;
+
+/**
+ * Включить или выключить веб-поиск
+ * @member {Boolean} is_web_search_enabled
+ */
+UpdateAgent.prototype['is_web_search_enabled'] = undefined;
+
+/**
+ * ID ключа AI Gateway, к которому нужно привязать агента. Привязка доступна, только если в ответе агента `ai_gateway_key_id` равен `null` (агент без баз знаний, инструментов и интеграций, созданный до 9 октября 2026 года), и делается один раз. При первой привязке на аккаунт однократно начисляется временная скидка 10% на запросы через ключи AI Gateway.
+ * @member {String} ai_gateway_key_id
+ */
+UpdateAgent.prototype['ai_gateway_key_id'] = undefined;
+
+/**
+ * Новый пакет токенов. Только для агентов с пакетом токенов (устаревшая схема оплаты): пакет должен относиться к модели агента и быть не меньше текущего, его стоимость сразу списывается с баланса.
+ * @member {Number} token_package_id
+ */
+UpdateAgent.prototype['token_package_id'] = undefined;
 
 
 

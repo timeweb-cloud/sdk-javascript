@@ -72,6 +72,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property projectId (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property projectId
+      //var instance = new TimewebCloudApi.Agent();
+      //expect(instance).to.be();
+    });
+
     it('should have the property modelId (base name: "model_id")', function() {
       // uncomment below and update the code to test the property modelId
       //var instance = new TimewebCloudApi.Agent();
@@ -98,6 +104,18 @@
 
     it('should have the property accessType (base name: "access_type")', function() {
       // uncomment below and update the code to test the property accessType
+      //var instance = new TimewebCloudApi.Agent();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property accessId (base name: "access_id")', function() {
+      // uncomment below and update the code to test the property accessId
+      //var instance = new TimewebCloudApi.Agent();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tokenLimit (base name: "token_limit")', function() {
+      // uncomment below and update the code to test the property tokenLimit
       //var instance = new TimewebCloudApi.Agent();
       //expect(instance).to.be();
     });
@@ -132,20 +150,50 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property knowledgeBasesIds (base name: "knowledge_bases_ids")', function() {
-      // uncomment below and update the code to test the property knowledgeBasesIds
+    it('should have the property autoBuyAdditionalTokens (base name: "auto_buy_additional_tokens")', function() {
+      // uncomment below and update the code to test the property autoBuyAdditionalTokens
       //var instance = new TimewebCloudApi.Agent();
       //expect(instance).to.be();
     });
 
-    it('should have the property accessId (base name: "access_id")', function() {
-      // uncomment below and update the code to test the property accessId
+    it('should have the property tools (base name: "tools")', function() {
+      // uncomment below and update the code to test the property tools
+      //var instance = new TimewebCloudApi.Agent();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property additionalModelIds (base name: "additional_model_ids")', function() {
+      // uncomment below and update the code to test the property additionalModelIds
+      //var instance = new TimewebCloudApi.Agent();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property additionalModels (base name: "additional_models")', function() {
+      // uncomment below and update the code to test the property additionalModels
+      //var instance = new TimewebCloudApi.Agent();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isWebSearchEnabled (base name: "is_web_search_enabled")', function() {
+      // uncomment below and update the code to test the property isWebSearchEnabled
+      //var instance = new TimewebCloudApi.Agent();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property aiGatewayKeyId (base name: "ai_gateway_key_id")', function() {
+      // uncomment below and update the code to test the property aiGatewayKeyId
       //var instance = new TimewebCloudApi.Agent();
       //expect(instance).to.be();
     });
 
     it('should have the property createdAt (base name: "created_at")', function() {
       // uncomment below and update the code to test the property createdAt
+      //var instance = new TimewebCloudApi.Agent();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property knowledgeBasesIds (base name: "knowledge_bases_ids")', function() {
+      // uncomment below and update the code to test the property knowledgeBasesIds
       //var instance = new TimewebCloudApi.Agent();
       //expect(instance).to.be();
     });

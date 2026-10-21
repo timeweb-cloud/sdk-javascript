@@ -54,26 +54,26 @@
       //expect(instance).to.be.a(TimewebCloudApi.Resource);
     });
 
-    it('should have the property requested (base name: "requested")', function() {
-      // uncomment below and update the code to test the property requested
+    it('should have the property uri (base name: "uri")', function() {
+      // uncomment below and update the code to test the property uri
       //var instance = new TimewebCloudApi.Resource();
       //expect(instance).to.be();
     });
 
-    it('should have the property allocatable (base name: "allocatable")', function() {
-      // uncomment below and update the code to test the property allocatable
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
       //var instance = new TimewebCloudApi.Resource();
       //expect(instance).to.be();
     });
 
-    it('should have the property capacity (base name: "capacity")', function() {
-      // uncomment below and update the code to test the property capacity
+    it('should have the property description (base name: "description")', function() {
+      // uncomment below and update the code to test the property description
       //var instance = new TimewebCloudApi.Resource();
       //expect(instance).to.be();
     });
 
-    it('should have the property used (base name: "used")', function() {
-      // uncomment below and update the code to test the property used
+    it('should have the property mimeType (base name: "mimeType")', function() {
+      // uncomment below and update the code to test the property mimeType
       //var instance = new TimewebCloudApi.Resource();
       //expect(instance).to.be();
     });

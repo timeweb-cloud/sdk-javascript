@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | Название базы знаний | [optional] 
-**description** | **String** | Описание базы знаний | [optional] 
+**name** | **String** | Новое название. Пустая строка игнорируется | [optional] 
+**description** | **String** | Новое описание | [optional] 
 
 

@@ -54,8 +54,8 @@
       //expect(instance).to.be.a(TimewebCloudApi.CreateKnowledgebase201Response);
     });
 
-    it('should have the property knowledgebase (base name: "knowledgebase")', function() {
-      // uncomment below and update the code to test the property knowledgebase
+    it('should have the property knowledgeBase (base name: "knowledge_base")', function() {
+      // uncomment below and update the code to test the property knowledgeBase
       //var instance = new TimewebCloudApi.CreateKnowledgebase201Response();
       //expect(instance).to.be();
     });

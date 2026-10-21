@@ -22,7 +22,7 @@ class GetAgentsTokenPackages200ResponseMeta {
     /**
      * Constructs a new <code>GetAgentsTokenPackages200ResponseMeta</code>.
      * @alias module:model/GetAgentsTokenPackages200ResponseMeta
-     * @param total {Number} Общее количество пакетов токенов
+     * @param total {Number} Количество пакетов токенов
      */
     constructor(total) { 
         
@@ -78,7 +78,7 @@ class GetAgentsTokenPackages200ResponseMeta {
 GetAgentsTokenPackages200ResponseMeta.RequiredProperties = ["total"];
 
 /**
- * Общее количество пакетов токенов
+ * Количество пакетов токенов
  * @member {Number} total
  */
 GetAgentsTokenPackages200ResponseMeta.prototype['total'] = undefined;

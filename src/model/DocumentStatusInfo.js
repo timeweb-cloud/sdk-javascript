@@ -22,10 +22,10 @@ import DocumentStatusInfoDetails from './DocumentStatusInfoDetails';
 class DocumentStatusInfo {
     /**
      * Constructs a new <code>DocumentStatusInfo</code>.
-     * Детальная информация о текущем состоянии документа в базе знаний
+     * Подробности о состоянии индексации документа. &#x60;null&#x60;, если информации нет
      * @alias module:model/DocumentStatusInfo
-     * @param type {module:model/DocumentStatusInfo.TypeEnum} Тип статуса документа
-     * @param timestamp {Date} Время записи информации (ISO string)
+     * @param type {module:model/DocumentStatusInfo.TypeEnum} Тип состояния, совпадает со статусом документа
+     * @param timestamp {Date} Время, когда записано состояние
      */
     constructor(type, timestamp) { 
         
@@ -62,6 +62,12 @@ class DocumentStatusInfo {
             if (data.hasOwnProperty('error_code')) {
                 obj['error_code'] = ApiClient.convertToType(data['error_code'], 'String');
             }
+            if (data.hasOwnProperty('stage')) {
+                obj['stage'] = ApiClient.convertToType(data['stage'], 'String');
+            }
+            if (data.hasOwnProperty('trace_id')) {
+                obj['trace_id'] = ApiClient.convertToType(data['trace_id'], 'String');
+            }
             if (data.hasOwnProperty('details')) {
                 obj['details'] = DocumentStatusInfoDetails.constructFromObject(data['details']);
             }
@@ -89,9 +95,13 @@ class DocumentStatusInfo {
         if (data['error_code'] && !(typeof data['error_code'] === 'string' || data['error_code'] instanceof String)) {
             throw new Error("Expected the field `error_code` to be a primitive type in the JSON string but got " + data['error_code']);
         }
-        // validate the optional field `details`
-        if (data['details']) { // data not null
-          DocumentStatusInfoDetails.validateJSON(data['details']);
+        // ensure the json data is a string
+        if (data['stage'] && !(typeof data['stage'] === 'string' || data['stage'] instanceof String)) {
+            throw new Error("Expected the field `stage` to be a primitive type in the JSON string but got " + data['stage']);
+        }
+        // ensure the json data is a string
+        if (data['trace_id'] && !(typeof data['trace_id'] === 'string' || data['trace_id'] instanceof String)) {
+            throw new Error("Expected the field `trace_id` to be a primitive type in the JSON string but got " + data['trace_id']);
         }
 
         return true;
@@ -103,22 +113,34 @@ class DocumentStatusInfo {
 DocumentStatusInfo.RequiredProperties = ["type", "timestamp"];
 
 /**
- * Тип статуса документа
+ * Тип состояния, совпадает со статусом документа
  * @member {module:model/DocumentStatusInfo.TypeEnum} type
  */
 DocumentStatusInfo.prototype['type'] = undefined;
 
 /**
- * Время записи информации (ISO string)
+ * Время, когда записано состояние
  * @member {Date} timestamp
  */
 DocumentStatusInfo.prototype['timestamp'] = undefined;
 
 /**
- * Код ошибки (только для type: 'error')
+ * Код ошибки, только для `type: error`: - `INSUFFICIENT_TOKENS` — недостаточно токенов для индексации - `CRITICAL_BALANCE` — критически низкий остаток токенов - `NEGATIVE_BALANCE` — отрицательный остаток токенов - `INDEXING_ERROR` — не удалось обработать документ
  * @member {module:model/DocumentStatusInfo.ErrorCodeEnum} error_code
  */
 DocumentStatusInfo.prototype['error_code'] = undefined;
+
+/**
+ * Этап индексации, на котором произошла ошибка
+ * @member {String} stage
+ */
+DocumentStatusInfo.prototype['stage'] = undefined;
+
+/**
+ * Идентификатор операции индексации — укажите его при обращении в поддержку
+ * @member {String} trace_id
+ */
+DocumentStatusInfo.prototype['trace_id'] = undefined;
 
 /**
  * @member {module:model/DocumentStatusInfoDetails} details

@@ -78,12 +78,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property tokenPackageId (base name: "token_package_id")', function() {
-      // uncomment below and update the code to test the property tokenPackageId
-      //var instance = new TimewebCloudApi.CreateAgent();
-      //expect(instance).to.be();
-    });
-
     it('should have the property settings (base name: "settings")', function() {
       // uncomment below and update the code to test the property settings
       //var instance = new TimewebCloudApi.CreateAgent();
@@ -92,6 +86,18 @@
 
     it('should have the property projectId (base name: "project_id")', function() {
       // uncomment below and update the code to test the property projectId
+      //var instance = new TimewebCloudApi.CreateAgent();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isWebSearchEnabled (base name: "is_web_search_enabled")', function() {
+      // uncomment below and update the code to test the property isWebSearchEnabled
+      //var instance = new TimewebCloudApi.CreateAgent();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tokenPackageId (base name: "token_package_id")', function() {
+      // uncomment below and update the code to test the property tokenPackageId
       //var instance = new TimewebCloudApi.CreateAgent();
       //expect(instance).to.be();
     });

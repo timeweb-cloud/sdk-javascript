@@ -78,12 +78,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property tokenLimit (base name: "token_limit")', function() {
-      // uncomment below and update the code to test the property tokenLimit
-      //var instance = new TimewebCloudApi.CreateAgentV2();
-      //expect(instance).to.be();
-    });
-
     it('should have the property settings (base name: "settings")', function() {
       // uncomment below and update the code to test the property settings
       //var instance = new TimewebCloudApi.CreateAgentV2();
@@ -96,14 +90,44 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isWebSearchEnabled (base name: "is_web_search_enabled")', function() {
+      // uncomment below and update the code to test the property isWebSearchEnabled
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property moneyLimit (base name: "money_limit")', function() {
+      // uncomment below and update the code to test the property moneyLimit
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tokenLimit (base name: "token_limit")', function() {
+      // uncomment below and update the code to test the property tokenLimit
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tokenPackageId (base name: "token_package_id")', function() {
+      // uncomment below and update the code to test the property tokenPackageId
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be();
+    });
+
     it('should have the property additionalModelIds (base name: "additional_model_ids")', function() {
       // uncomment below and update the code to test the property additionalModelIds
       //var instance = new TimewebCloudApi.CreateAgentV2();
       //expect(instance).to.be();
     });
 
-    it('should have the property isWebSearchEnabled (base name: "is_web_search_enabled")', function() {
-      // uncomment below and update the code to test the property isWebSearchEnabled
+    it('should have the property additionalModels (base name: "additional_models")', function() {
+      // uncomment below and update the code to test the property additionalModels
+      //var instance = new TimewebCloudApi.CreateAgentV2();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property skillIds (base name: "skill_ids")', function() {
+      // uncomment below and update the code to test the property skillIds
       //var instance = new TimewebCloudApi.CreateAgentV2();
       //expect(instance).to.be();
     });

@@ -12,8 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import AgentAdditionalModel from './AgentAdditionalModel';
 import AgentModelSettings from './AgentModelSettings';
-import AgentSettingsWidget from './AgentSettingsWidget';
+import AgentWidgetSettings from './AgentWidgetSettings';
 
 /**
  * The AgentSettings model module.
@@ -26,8 +27,8 @@ class AgentSettings {
      * Настройки агента
      * @alias module:model/AgentSettings
      * @param model {module:model/AgentModelSettings} 
-     * @param systemPrompt {String} Системный промпт
-     * @param refineQuery {Boolean} Уточнять ли запрос перед обработкой
+     * @param systemPrompt {String} Системный промпт (инструкция) агента
+     * @param refineQuery {Boolean} Уточнять (переформулировать) запрос пользователя перед поиском по базам знаний
      */
     constructor(model, systemPrompt, refineQuery) { 
         
@@ -65,8 +66,17 @@ class AgentSettings {
             if (data.hasOwnProperty('refine_query')) {
                 obj['refine_query'] = ApiClient.convertToType(data['refine_query'], 'Boolean');
             }
+            if (data.hasOwnProperty('memory_enabled')) {
+                obj['memory_enabled'] = ApiClient.convertToType(data['memory_enabled'], 'Boolean');
+            }
             if (data.hasOwnProperty('widget')) {
-                obj['widget'] = AgentSettingsWidget.constructFromObject(data['widget']);
+                obj['widget'] = AgentWidgetSettings.constructFromObject(data['widget']);
+            }
+            if (data.hasOwnProperty('web_search_allowed_sites')) {
+                obj['web_search_allowed_sites'] = ApiClient.convertToType(data['web_search_allowed_sites'], ['String']);
+            }
+            if (data.hasOwnProperty('additional_models')) {
+                obj['additional_models'] = ApiClient.convertToType(data['additional_models'], [AgentAdditionalModel]);
             }
         }
         return obj;
@@ -84,17 +94,27 @@ class AgentSettings {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // validate the optional field `model`
-        if (data['model']) { // data not null
-          AgentModelSettings.validateJSON(data['model']);
-        }
         // ensure the json data is a string
         if (data['system_prompt'] && !(typeof data['system_prompt'] === 'string' || data['system_prompt'] instanceof String)) {
             throw new Error("Expected the field `system_prompt` to be a primitive type in the JSON string but got " + data['system_prompt']);
         }
         // validate the optional field `widget`
         if (data['widget']) { // data not null
-          AgentSettingsWidget.validateJSON(data['widget']);
+          AgentWidgetSettings.validateJSON(data['widget']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['web_search_allowed_sites'])) {
+            throw new Error("Expected the field `web_search_allowed_sites` to be an array in the JSON data but got " + data['web_search_allowed_sites']);
+        }
+        if (data['additional_models']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['additional_models'])) {
+                throw new Error("Expected the field `additional_models` to be an array in the JSON data but got " + data['additional_models']);
+            }
+            // validate the optional field `additional_models` (array)
+            for (const item of data['additional_models']) {
+                AgentAdditionalModel.validateJSON(item);
+            };
         }
 
         return true;
@@ -111,21 +131,40 @@ AgentSettings.RequiredProperties = ["model", "system_prompt", "refine_query"];
 AgentSettings.prototype['model'] = undefined;
 
 /**
- * Системный промпт
+ * Системный промпт (инструкция) агента
  * @member {String} system_prompt
  */
 AgentSettings.prototype['system_prompt'] = undefined;
 
 /**
- * Уточнять ли запрос перед обработкой
+ * Уточнять (переформулировать) запрос пользователя перед поиском по базам знаний
  * @member {Boolean} refine_query
  */
 AgentSettings.prototype['refine_query'] = undefined;
 
 /**
- * @member {module:model/AgentSettingsWidget} widget
+ * Запоминать факты о каждом авторизованном пользователе и учитывать их в ответах. В виджете не работает.
+ * @member {Boolean} memory_enabled
+ * @default false
+ */
+AgentSettings.prototype['memory_enabled'] = false;
+
+/**
+ * @member {module:model/AgentWidgetSettings} widget
  */
 AgentSettings.prototype['widget'] = undefined;
+
+/**
+ * Домены, которыми ограничивается веб-поиск агента (не более 5). Каждый элемент — домен (`timeweb.ru`) или домен с путём (`timeweb.ru/docs`). Если поле не передано при обновлении, сохранённый список не меняется.
+ * @member {Array.<String>} web_search_allowed_sites
+ */
+AgentSettings.prototype['web_search_allowed_sites'] = undefined;
+
+/**
+ * Настройки дополнительных моделей. Заполняется автоматически из поля `additional_models` запроса создания или обновления агента, передавать здесь не нужно.
+ * @member {Array.<module:model/AgentAdditionalModel>} additional_models
+ */
+AgentSettings.prototype['additional_models'] = undefined;
 
 
 

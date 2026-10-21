@@ -58,10 +58,30 @@
         done();
       });
     });
+    describe('changeAgentModel', function() {
+      it('should call changeAgentModel successfully', function(done) {
+        //uncomment below and update the code to test changeAgentModel
+        //instance.changeAgentModel(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('createAgent', function() {
       it('should call createAgent successfully', function(done) {
         //uncomment below and update the code to test createAgent
         //instance.createAgent(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('createAgentEntityLimit', function() {
+      it('should call createAgentEntityLimit successfully', function(done) {
+        //uncomment below and update the code to test createAgentEntityLimit
+        //instance.createAgentEntityLimit(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -88,10 +108,70 @@
         done();
       });
     });
+    describe('deleteAgentEntityLimit', function() {
+      it('should call deleteAgentEntityLimit successfully', function(done) {
+        //uncomment below and update the code to test deleteAgentEntityLimit
+        //instance.deleteAgentEntityLimit(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportAgentChatsCsv', function() {
+      it('should call exportAgentChatsCsv successfully', function(done) {
+        //uncomment below and update the code to test exportAgentChatsCsv
+        //instance.exportAgentChatsCsv(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getAgent', function() {
       it('should call getAgent successfully', function(done) {
         //uncomment below and update the code to test getAgent
         //instance.getAgent(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getAgentChatList', function() {
+      it('should call getAgentChatList successfully', function(done) {
+        //uncomment below and update the code to test getAgentChatList
+        //instance.getAgentChatList(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getAgentChatMessages', function() {
+      it('should call getAgentChatMessages successfully', function(done) {
+        //uncomment below and update the code to test getAgentChatMessages
+        //instance.getAgentChatMessages(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getAgentEntityLimit', function() {
+      it('should call getAgentEntityLimit successfully', function(done) {
+        //uncomment below and update the code to test getAgentEntityLimit
+        //instance.getAgentEntityLimit(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getAgentEntityLimits', function() {
+      it('should call getAgentEntityLimits successfully', function(done) {
+        //uncomment below and update the code to test getAgentEntityLimits
+        //instance.getAgentEntityLimits(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -108,6 +188,16 @@
         done();
       });
     });
+    describe('getAgentV3', function() {
+      it('should call getAgentV3 successfully', function(done) {
+        //uncomment below and update the code to test getAgentV3
+        //instance.getAgentV3(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getAgents', function() {
       it('should call getAgents successfully', function(done) {
         //uncomment below and update the code to test getAgents
@@ -118,40 +208,20 @@
         done();
       });
     });
-    describe('getAgentsTokenPackages', function() {
-      it('should call getAgentsTokenPackages successfully', function(done) {
-        //uncomment below and update the code to test getAgentsTokenPackages
-        //instance.getAgentsTokenPackages(function(error) {
+    describe('getAgentsV3', function() {
+      it('should call getAgentsV3 successfully', function(done) {
+        //uncomment below and update the code to test getAgentsV3
+        //instance.getAgentsV3(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getKnowledgebasesTokenPackages', function() {
-      it('should call getKnowledgebasesTokenPackages successfully', function(done) {
-        //uncomment below and update the code to test getKnowledgebasesTokenPackages
-        //instance.getKnowledgebasesTokenPackages(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getModels', function() {
-      it('should call getModels successfully', function(done) {
-        //uncomment below and update the code to test getModels
-        //instance.getModels(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getModelsV3', function() {
-      it('should call getModelsV3 successfully', function(done) {
-        //uncomment below and update the code to test getModelsV3
-        //instance.getModelsV3(function(error) {
+    describe('syncAgentEntityLimits', function() {
+      it('should call syncAgentEntityLimits successfully', function(done) {
+        //uncomment below and update the code to test syncAgentEntityLimits
+        //instance.syncAgentEntityLimits(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -162,6 +232,16 @@
       it('should call updateAgent successfully', function(done) {
         //uncomment below and update the code to test updateAgent
         //instance.updateAgent(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('updateAgentEntityLimit', function() {
+      it('should call updateAgentEntityLimit successfully', function(done) {
+        //uncomment below and update the code to test updateAgentEntityLimit
+        //instance.updateAgentEntityLimit(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

@@ -14,21 +14,31 @@
 
 import ApiClient from "../ApiClient";
 import AddTokenPackage from '../model/AddTokenPackage';
+import ChangeAgentModel from '../model/ChangeAgentModel';
 import CreateAgent from '../model/CreateAgent';
 import CreateAgent201Response from '../model/CreateAgent201Response';
+import CreateAgentEntityLimit from '../model/CreateAgentEntityLimit';
+import CreateAgentEntityLimit201Response from '../model/CreateAgentEntityLimit201Response';
 import CreateAgentV2 from '../model/CreateAgentV2';
+import DeleteAgent from '../model/DeleteAgent';
+import ExportAgentChatsCsv200Response from '../model/ExportAgentChatsCsv200Response';
 import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
+import GetAgentChatList200Response from '../model/GetAgentChatList200Response';
+import GetAgentChatMessages200Response from '../model/GetAgentChatMessages200Response';
+import GetAgentEntityLimits200Response from '../model/GetAgentEntityLimits200Response';
 import GetAgentStatistics200Response from '../model/GetAgentStatistics200Response';
+import GetAgentV3200Response from '../model/GetAgentV3200Response';
 import GetAgents200Response from '../model/GetAgents200Response';
-import GetAgentsTokenPackages200Response from '../model/GetAgentsTokenPackages200Response';
+import GetAgentsV3200Response from '../model/GetAgentsV3200Response';
 import GetFinances400Response from '../model/GetFinances400Response';
 import GetFinances401Response from '../model/GetFinances401Response';
 import GetFinances429Response from '../model/GetFinances429Response';
 import GetFinances500Response from '../model/GetFinances500Response';
 import GetImage404Response from '../model/GetImage404Response';
-import GetModels200Response from '../model/GetModels200Response';
-import GetModelsV3200Response from '../model/GetModelsV3200Response';
+import SyncAgentEntityLimits from '../model/SyncAgentEntityLimits';
 import UpdateAgent from '../model/UpdateAgent';
+import UpdateAgentEntityLimit from '../model/UpdateAgentEntityLimit';
+import UpdateDatabaseInstance409Response from '../model/UpdateDatabaseInstance409Response';
 
 /**
 * AIAgents service.
@@ -59,7 +69,7 @@ export default class AIAgentsApi {
 
     /**
      * Добавление дополнительного пакета токенов
-     * Чтобы добавить дополнительный пакет токенов для AI агента, отправьте POST-запрос на `/api/v1/cloud-ai/agents/{id}/add-additional-token-package`.
+     * Чтобы докупить дополнительные пакеты токенов для AI агента, отправьте POST-запрос на `/api/v1/cloud-ai/agents/{id}/add-additional-token-package`.  Метод относится к устаревшей схеме оплаты пакетами токенов и работает только для агентов с пакетом (`token_package_id` в ответе агента). Для агентов с поресурсной оплатой вернётся 400 `per-resource_agents_do_not_support_additional_token_packages`. Стоимость (цена дополнительного пакета модели агента × `count`) сразу списывается с баланса; при нехватке средств — 400 `insufficient_balance`, если подписка агента истекла — 400 `subscription_expired`. После покупки заблокированный агент разблокируется.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:write`.
      * @param {Number} id ID агента
      * @param {Object} opts Optional parameters
      * @param {module:model/AddTokenPackage} [addTokenPackage] 
@@ -95,6 +105,54 @@ export default class AIAgentsApi {
     }
 
     /**
+     * Callback function to receive the result of the changeAgentModel operation.
+     * @callback module:api/AIAgentsApi~changeAgentModelCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateAgent201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Смена модели AI агента
+     * Чтобы сменить основную модель AI агента, отправьте PATCH-запрос на `/api/v1/cloud-ai/agents/{id}/model`.  Параметры модели из `settings.model`, которые новая модель не поддерживает, отбрасываются. Смена модели доступна только агентам с поресурсной оплатой (для агента с пакетом токенов — 400 `model_change_is_allowed_only_for_per-resource_account_and_agent`). Если модель не найдена или недоступна — 404 `model_not_found`.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:write`.
+     * @param {Number} id ID агента
+     * @param {module:model/ChangeAgentModel} changeAgentModel 
+     * @param {module:api/AIAgentsApi~changeAgentModelCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateAgent201Response}
+     */
+    changeAgentModel(id, changeAgentModel, callback) {
+      let postBody = changeAgentModel;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling changeAgentModel");
+      }
+      // verify the required parameter 'changeAgentModel' is set
+      if (changeAgentModel === undefined || changeAgentModel === null) {
+        throw new Error("Missing the required parameter 'changeAgentModel' when calling changeAgentModel");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateAgent201Response;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/agents/{id}/model', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the createAgent operation.
      * @callback module:api/AIAgentsApi~createAgentCallback
      * @param {String} error Error message, if any.
@@ -104,7 +162,7 @@ export default class AIAgentsApi {
 
     /**
      * Создание AI агента
-     * Чтобы создать AI агента, отправьте POST-запрос на `/api/v1/cloud-ai/agents`, задав необходимые атрибуты.  Агент будет создан с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданном агенте.
+     * Чтобы создать AI агента, отправьте POST-запрос на `/api/v1/cloud-ai/agents`, задав необходимые атрибуты.  Метод устарел — используйте `POST /api/v2/cloud-ai/agents`. Поле `token_package_id` обязательно, но не учитывается: агент всегда создаётся с поресурсной оплатой (оплачиваются фактические запросы к модели).  Для токенов дополнительных пользователей аккаунта нужна роль `ai:write`.
      * @param {module:model/CreateAgent} createAgent 
      * @param {module:api/AIAgentsApi~createAgentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateAgent201Response}
@@ -137,6 +195,54 @@ export default class AIAgentsApi {
     }
 
     /**
+     * Callback function to receive the result of the createAgentEntityLimit operation.
+     * @callback module:api/AIAgentsApi~createAgentEntityLimitCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateAgentEntityLimit201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Создание лимита агента
+     * Чтобы создать лимит AI агента, отправьте POST-запрос на `/api/v1/cloud-ai/agents/{id}/entity-limits`.  Лимиты агента ограничивают расход на его запросы за период (`hour`, `day`, `week`, `month`) — в токенах (`limit`) или в деньгах (`money_limit`, приоритетнее). Лимит действует на все модели агента (`model_id` = `null`) или на одну модель. При достижении лимита запросы к агенту отклоняются до конца периода.  Нужно передать `limit` или `money_limit` (иначе — 400 `entity_keys_limit_value_required`). Если лимит с тем же периодом и моделью уже есть — 409 `entity_keys_limit_already_exists` (измените его или используйте синхронизацию).  Для токенов дополнительных пользователей аккаунта нужна роль `ai:write`.
+     * @param {Number} id ID агента
+     * @param {module:model/CreateAgentEntityLimit} createAgentEntityLimit 
+     * @param {module:api/AIAgentsApi~createAgentEntityLimitCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateAgentEntityLimit201Response}
+     */
+    createAgentEntityLimit(id, createAgentEntityLimit, callback) {
+      let postBody = createAgentEntityLimit;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling createAgentEntityLimit");
+      }
+      // verify the required parameter 'createAgentEntityLimit' is set
+      if (createAgentEntityLimit === undefined || createAgentEntityLimit === null) {
+        throw new Error("Missing the required parameter 'createAgentEntityLimit' when calling createAgentEntityLimit");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateAgentEntityLimit201Response;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/agents/{id}/entity-limits', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the createAgentV2 operation.
      * @callback module:api/AIAgentsApi~createAgentV2Callback
      * @param {String} error Error message, if any.
@@ -146,7 +252,7 @@ export default class AIAgentsApi {
 
     /**
      * Создание AI агента
-     * Чтобы создать AI агента, отправьте POST-запрос на `/api/v2/cloud-ai/agents`, задав необходимые атрибуты.  Агент будет создан с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданном агенте.
+     * Чтобы создать AI агента, отправьте POST-запрос на `/api/v2/cloud-ai/agents`, задав необходимые атрибуты.  Агент создаётся с поресурсной оплатой: оплачиваются фактические запросы к модели. Если не переданы настройки виджета, подставляются значения по умолчанию. Дневной лимит расходов можно задать сразу полем `money_limit`, остальные лимиты — через лимиты агента (`/api/v1/cloud-ai/agents/{id}/entity-limits`).  Если модель не найдена или недоступна, вернётся 404 `model_not_found`; если модель не поддерживается — 400 `model_not_supported`; недопустимые параметры модели в `settings.model` — 400.  Вызывать созданного агента из своих приложений можно через OpenAI-совместимое API по его `access_id` — см. [документацию](https://agent.timeweb.cloud/docs).  Для токенов дополнительных пользователей аккаунта нужна роль `ai:write`.
      * @param {module:model/CreateAgentV2} createAgentV2 
      * @param {module:api/AIAgentsApi~createAgentV2Callback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateAgent201Response}
@@ -188,12 +294,15 @@ export default class AIAgentsApi {
 
     /**
      * Удаление AI агента
-     * Чтобы удалить AI агента, отправьте DELETE-запрос на `/api/v1/cloud-ai/agents/{id}`.
+     * Чтобы удалить AI агента, отправьте DELETE-запрос на `/api/v1/cloud-ai/agents/{id}`.  Вместе с агентом отключаются его базы знаний, навыки и интеграции (Telegram, MAX, Jivo, Crisp). В теле запроса можно необязательно указать причину удаления.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:write`.
      * @param {Number} id ID агента
+     * @param {Object} opts Optional parameters
+     * @param {module:model/DeleteAgent} [deleteAgent] 
      * @param {module:api/AIAgentsApi~deleteAgentCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    deleteAgent(id, callback) {
-      let postBody = null;
+    deleteAgent(id, opts, callback) {
+      opts = opts || {};
+      let postBody = opts['deleteAgent'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling deleteAgent");
@@ -210,11 +319,116 @@ export default class AIAgentsApi {
       };
 
       let authNames = ['Bearer'];
-      let contentTypes = [];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = null;
       return this.apiClient.callApi(
         '/api/v1/cloud-ai/agents/{id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deleteAgentEntityLimit operation.
+     * @callback module:api/AIAgentsApi~deleteAgentEntityLimitCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Удаление лимита агента
+     * Чтобы удалить лимит AI агента, отправьте DELETE-запрос на `/api/v1/cloud-ai/agents/{id}/entity-limits/{limit_id}`.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:write`.
+     * @param {Number} id ID агента
+     * @param {String} limitId ID лимита агента
+     * @param {module:api/AIAgentsApi~deleteAgentEntityLimitCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    deleteAgentEntityLimit(id, limitId, callback) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling deleteAgentEntityLimit");
+      }
+      // verify the required parameter 'limitId' is set
+      if (limitId === undefined || limitId === null) {
+        throw new Error("Missing the required parameter 'limitId' when calling deleteAgentEntityLimit");
+      }
+
+      let pathParams = {
+        'id': id,
+        'limit_id': limitId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/agents/{id}/entity-limits/{limit_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the exportAgentChatsCsv operation.
+     * @callback module:api/AIAgentsApi~exportAgentChatsCsvCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ExportAgentChatsCsv200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Выгрузка чатов агента в CSV
+     * Чтобы выгрузить чаты AI агента в формате CSV, отправьте GET-запрос на `/api/v1/cloud-ai/agents/{id}/chats/docs`.  CSV возвращается строкой в поле `chats_csv.csv` тела JSON. `limit` и `offset` применяются к сообщениям, а не к чатам. Если передан `from`, выгружаются сообщения от `from` до `to` (по умолчанию — до текущего момента). Чаты внешнего чата не выгружаются.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:read`.
+     * @param {Number} id ID агента
+     * @param {Object} opts Optional parameters
+     * @param {Number} [offset = 0)] Смещение относительно начала списка
+     * @param {Number} [limit = 100)] Количество сообщений в ответе
+     * @param {module:model/String} [order = 'desc')] Сортировка по дате сообщения
+     * @param {Date} [from] Начало периода (дата и время в формате ISO 8601)
+     * @param {Date} [to] Конец периода (дата и время в формате ISO 8601)
+     * @param {module:model/String} [locale = 'ru')] Язык заголовков и значений CSV
+     * @param {module:api/AIAgentsApi~exportAgentChatsCsvCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ExportAgentChatsCsv200Response}
+     */
+    exportAgentChatsCsv(id, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling exportAgentChatsCsv");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+        'offset': opts['offset'],
+        'limit': opts['limit'],
+        'order': opts['order'],
+        'from': opts['from'],
+        'to': opts['to'],
+        'locale': opts['locale']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ExportAgentChatsCsv200Response;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/agents/{id}/chats/docs', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -230,7 +444,7 @@ export default class AIAgentsApi {
 
     /**
      * Получение AI агента
-     * Чтобы получить информацию об AI агенте, отправьте GET-запрос на `/api/v1/cloud-ai/agents/{id}`.
+     * Чтобы получить информацию об AI агенте, отправьте GET-запрос на `/api/v1/cloud-ai/agents/{id}`.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:read`.
      * @param {Number} id ID агента
      * @param {module:api/AIAgentsApi~getAgentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateAgent201Response}
@@ -264,6 +478,222 @@ export default class AIAgentsApi {
     }
 
     /**
+     * Callback function to receive the result of the getAgentChatList operation.
+     * @callback module:api/AIAgentsApi~getAgentChatListCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetAgentChatList200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение списка чатов агента
+     * Чтобы получить список чатов (диалогов) AI агента, отправьте GET-запрос на `/api/v1/cloud-ai/agents/{id}/chat-list`.  Для каждого чата возвращаются первое сообщение пользователя, количество оценок и среднее время ответа. Чаты внешнего чата сюда не входят. Фильтр по периоду применяется, только если переданы оба параметра `from` и `to`. В `meta.metrics` — сводка по чатам для фильтров.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:read`.
+     * @param {Number} id ID агента
+     * @param {Object} opts Optional parameters
+     * @param {Number} [offset = 0)] Смещение относительно начала списка
+     * @param {Number} [limit = 100)] Количество чатов в ответе
+     * @param {module:model/String} [order = 'asc')] Сортировка по дате первого сообщения
+     * @param {Date} [from] Начало периода (дата и время в формате ISO 8601)
+     * @param {Date} [to] Конец периода (дата и время в формате ISO 8601)
+     * @param {module:model/String} [reactionType] Фильтр по оценкам: `likes` — есть положительная, `dislikes` — есть отрицательная, `with` — есть любая, `none` — без оценок
+     * @param {Array.<String>} [responseTimeRanges] Фильтр по среднему времени ответа в секундах: диапазоны `мин-макс` или `мин-` («от мин и больше»). Можно передать несколько диапазонов — они объединяются по ИЛИ.
+     * @param {module:api/AIAgentsApi~getAgentChatListCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetAgentChatList200Response}
+     */
+    getAgentChatList(id, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getAgentChatList");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+        'offset': opts['offset'],
+        'limit': opts['limit'],
+        'order': opts['order'],
+        'from': opts['from'],
+        'to': opts['to'],
+        'reaction_type': opts['reactionType'],
+        'response_time_ranges': this.apiClient.buildCollectionParam(opts['responseTimeRanges'], 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetAgentChatList200Response;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/agents/{id}/chat-list', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getAgentChatMessages operation.
+     * @callback module:api/AIAgentsApi~getAgentChatMessagesCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetAgentChatMessages200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение сообщений чата агента
+     * Чтобы получить сообщения чата AI агента, отправьте GET-запрос на `/api/v1/cloud-ai/agents/{id}/chat-list/{chat_id}/messages`.  Возвращаются сообщения пользователя и ответы агента. Фильтр по периоду применяется, только если переданы оба параметра `from` и `to`.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:read`.
+     * @param {Number} id ID агента
+     * @param {String} chatId ID чата (диалога) из поля `id` списка чатов агента
+     * @param {Object} opts Optional parameters
+     * @param {Number} [offset = 0)] Смещение относительно начала списка
+     * @param {Number} [limit = 100)] Количество сообщений в ответе
+     * @param {module:model/String} [order = 'desc')] Сортировка по дате сообщения
+     * @param {Date} [from] Начало периода (дата и время в формате ISO 8601)
+     * @param {Date} [to] Конец периода (дата и время в формате ISO 8601)
+     * @param {module:api/AIAgentsApi~getAgentChatMessagesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetAgentChatMessages200Response}
+     */
+    getAgentChatMessages(id, chatId, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getAgentChatMessages");
+      }
+      // verify the required parameter 'chatId' is set
+      if (chatId === undefined || chatId === null) {
+        throw new Error("Missing the required parameter 'chatId' when calling getAgentChatMessages");
+      }
+
+      let pathParams = {
+        'id': id,
+        'chat_id': chatId
+      };
+      let queryParams = {
+        'offset': opts['offset'],
+        'limit': opts['limit'],
+        'order': opts['order'],
+        'from': opts['from'],
+        'to': opts['to']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetAgentChatMessages200Response;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/agents/{id}/chat-list/{chat_id}/messages', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getAgentEntityLimit operation.
+     * @callback module:api/AIAgentsApi~getAgentEntityLimitCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateAgentEntityLimit201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение лимита агента
+     * Чтобы получить лимит AI агента, отправьте GET-запрос на `/api/v1/cloud-ai/agents/{id}/entity-limits/{limit_id}`.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:read`.
+     * @param {Number} id ID агента
+     * @param {String} limitId ID лимита агента
+     * @param {module:api/AIAgentsApi~getAgentEntityLimitCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateAgentEntityLimit201Response}
+     */
+    getAgentEntityLimit(id, limitId, callback) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getAgentEntityLimit");
+      }
+      // verify the required parameter 'limitId' is set
+      if (limitId === undefined || limitId === null) {
+        throw new Error("Missing the required parameter 'limitId' when calling getAgentEntityLimit");
+      }
+
+      let pathParams = {
+        'id': id,
+        'limit_id': limitId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CreateAgentEntityLimit201Response;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/agents/{id}/entity-limits/{limit_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getAgentEntityLimits operation.
+     * @callback module:api/AIAgentsApi~getAgentEntityLimitsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetAgentEntityLimits200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение лимитов агента
+     * Чтобы получить лимиты AI агента, отправьте GET-запрос на `/api/v1/cloud-ai/agents/{id}/entity-limits`.  Лимиты агента ограничивают расход на его запросы за период (`hour`, `day`, `week`, `month`) — в токенах (`limit`) или в деньгах (`money_limit`, приоритетнее). Лимит действует на все модели агента (`model_id` = `null`) или на одну модель. При достижении лимита запросы к агенту отклоняются до конца периода.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:read`.
+     * @param {Number} id ID агента
+     * @param {Object} opts Optional parameters
+     * @param {module:model/String} [limitType] Фильтр по периоду лимита
+     * @param {module:api/AIAgentsApi~getAgentEntityLimitsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetAgentEntityLimits200Response}
+     */
+    getAgentEntityLimits(id, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getAgentEntityLimits");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+        'limit_type': opts['limitType']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetAgentEntityLimits200Response;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/agents/{id}/entity-limits', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getAgentStatistics operation.
      * @callback module:api/AIAgentsApi~getAgentStatisticsCallback
      * @param {String} error Error message, if any.
@@ -273,12 +703,12 @@ export default class AIAgentsApi {
 
     /**
      * Получение статистики использования токенов агента
-     * Чтобы получить статистику использования токенов AI агента, отправьте GET-запрос на `/api/v1/cloud-ai/agents/{id}/statistic`.  Можно указать временной диапазон и интервал агрегации.
+     * Чтобы получить статистику использования токенов AI агента, отправьте GET-запрос на `/api/v1/cloud-ai/agents/{id}/statistic`.  Статистика разбита на интервалы длиной `interval` минут: для каждого интервала возвращается по точке на каждую модель, к которой были запросы за период, а для интервалов без запросов — одна нулевая точка без `model_name`. По умолчанию возвращаются последние 24 часа.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:read`.
      * @param {Number} id ID агента
      * @param {Object} opts Optional parameters
-     * @param {Date} [startTime] Начало временного диапазона (ISO 8601)
-     * @param {Date} [endTime] Конец временного диапазона (ISO 8601)
-     * @param {Number} [interval = 60)] Интервал в минутах (по умолчанию 60)
+     * @param {Date} [startTime] Начало периода (ISO 8601). По умолчанию — за 24 часа до `endTime`.
+     * @param {Date} [endTime] Конец периода (ISO 8601). По умолчанию — текущий момент.
+     * @param {Number} [interval = 60)] Длина интервала агрегации в минутах
      * @param {module:api/AIAgentsApi~getAgentStatisticsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetAgentStatistics200Response}
      */
@@ -315,6 +745,49 @@ export default class AIAgentsApi {
     }
 
     /**
+     * Callback function to receive the result of the getAgentV3 operation.
+     * @callback module:api/AIAgentsApi~getAgentV3Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetAgentV3200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение AI агента (v3)
+     * Чтобы получить информацию об AI агенте, отправьте GET-запрос на `/api/v3/cloud-ai/agents/{id}`.  Отличается от `/api/v1/cloud-ai/agents/{id}` тем, что вместо `knowledge_bases_ids` возвращает `knowledge_bases` — подключённые базы знаний с режимом поиска.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:read`.
+     * @param {Number} id ID агента
+     * @param {module:api/AIAgentsApi~getAgentV3Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetAgentV3200Response}
+     */
+    getAgentV3(id, callback) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getAgentV3");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetAgentV3200Response;
+      return this.apiClient.callApi(
+        '/api/v3/cloud-ai/agents/{id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getAgents operation.
      * @callback module:api/AIAgentsApi~getAgentsCallback
      * @param {String} error Error message, if any.
@@ -324,7 +797,7 @@ export default class AIAgentsApi {
 
     /**
      * Получение списка AI агентов
-     * Чтобы получить список AI агентов, отправьте GET-запрос на `/api/v1/cloud-ai/agents`.  Тело ответа будет представлять собой объект JSON с ключом `agents`.
+     * Чтобы получить список AI агентов, отправьте GET-запрос на `/api/v1/cloud-ai/agents`.  Возвращаются все агенты аккаунта (без пагинации), включая приостановленных и заблокированных. Тело ответа будет представлять собой объект JSON с ключами `agents` и `meta`. Подключённые базы знаний вместе с режимом поиска возвращает метод `/api/v3/cloud-ai/agents`.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:read`.
      * @param {module:api/AIAgentsApi~getAgentsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GetAgents200Response}
      */
@@ -352,20 +825,20 @@ export default class AIAgentsApi {
     }
 
     /**
-     * Callback function to receive the result of the getAgentsTokenPackages operation.
-     * @callback module:api/AIAgentsApi~getAgentsTokenPackagesCallback
+     * Callback function to receive the result of the getAgentsV3 operation.
+     * @callback module:api/AIAgentsApi~getAgentsV3Callback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetAgentsTokenPackages200Response} data The data returned by the service call.
+     * @param {module:model/GetAgentsV3200Response} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Получение списка пакетов токенов для агентов
-     * Метод устарел.  Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на `/api/v1/cloud-ai/token-packages/agents`.  Тело ответа будет представлять собой объект JSON с ключом `token_packages`.
-     * @param {module:api/AIAgentsApi~getAgentsTokenPackagesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetAgentsTokenPackages200Response}
+     * Получение списка AI агентов (v3)
+     * Чтобы получить список AI агентов, отправьте GET-запрос на `/api/v3/cloud-ai/agents`.  Отличается от `/api/v1/cloud-ai/agents` тем, что вместо `knowledge_bases_ids` возвращает `knowledge_bases` — подключённые базы знаний с режимом поиска.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:read`.
+     * @param {module:api/AIAgentsApi~getAgentsV3Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetAgentsV3200Response}
      */
-    getAgentsTokenPackages(callback) {
+    getAgentsV3(callback) {
       let postBody = null;
 
       let pathParams = {
@@ -380,32 +853,43 @@ export default class AIAgentsApi {
       let authNames = ['Bearer'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetAgentsTokenPackages200Response;
+      let returnType = GetAgentsV3200Response;
       return this.apiClient.callApi(
-        '/api/v1/cloud-ai/token-packages/agents', 'GET',
+        '/api/v3/cloud-ai/agents', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the getKnowledgebasesTokenPackages operation.
-     * @callback module:api/AIAgentsApi~getKnowledgebasesTokenPackagesCallback
+     * Callback function to receive the result of the syncAgentEntityLimits operation.
+     * @callback module:api/AIAgentsApi~syncAgentEntityLimitsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GetAgentsTokenPackages200Response} data The data returned by the service call.
+     * @param {module:model/GetAgentEntityLimits200Response} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Получение списка пакетов токенов для баз знаний
-     * Чтобы получить список доступных пакетов токенов для баз знаний, отправьте GET-запрос на `/api/v1/cloud-ai/token-packages/knowledge-bases`.  Тело ответа будет представлять собой объект JSON с ключом `token_packages`.
-     * @param {module:api/AIAgentsApi~getKnowledgebasesTokenPackagesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetAgentsTokenPackages200Response}
+     * Синхронизация лимитов агента за период
+     * Чтобы задать полный набор лимитов AI агента за период, отправьте PUT-запрос на `/api/v1/cloud-ai/agents/{id}/entity-limits/sync`.  Лимиты из запроса создаются или обновляются (сопоставление по `model_id`), а лимиты этого периода, которых нет в запросе, удаляются. Лимиты других периодов не затрагиваются. В ответе — актуальные лимиты периода. Если лимиты одновременно изменил другой запрос, вернётся 409 `entity_keys_limits_sync_conflict` — повторите запрос.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:write`.
+     * @param {Number} id ID агента
+     * @param {module:model/SyncAgentEntityLimits} syncAgentEntityLimits 
+     * @param {module:api/AIAgentsApi~syncAgentEntityLimitsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetAgentEntityLimits200Response}
      */
-    getKnowledgebasesTokenPackages(callback) {
-      let postBody = null;
+    syncAgentEntityLimits(id, syncAgentEntityLimits, callback) {
+      let postBody = syncAgentEntityLimits;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling syncAgentEntityLimits");
+      }
+      // verify the required parameter 'syncAgentEntityLimits' is set
+      if (syncAgentEntityLimits === undefined || syncAgentEntityLimits === null) {
+        throw new Error("Missing the required parameter 'syncAgentEntityLimits' when calling syncAgentEntityLimits");
+      }
 
       let pathParams = {
+        'id': id
       };
       let queryParams = {
       };
@@ -415,85 +899,11 @@ export default class AIAgentsApi {
       };
 
       let authNames = ['Bearer'];
-      let contentTypes = [];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = GetAgentsTokenPackages200Response;
+      let returnType = GetAgentEntityLimits200Response;
       return this.apiClient.callApi(
-        '/api/v1/cloud-ai/token-packages/knowledge-bases', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getModels operation.
-     * @callback module:api/AIAgentsApi~getModelsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/GetModels200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение списка моделей
-     * Метод устарел — используйте `GET /api/v3/cloud-ai/models`.  Чтобы получить список доступных AI моделей, отправьте GET-запрос на `/api/v1/cloud-ai/models`.  Тело ответа будет представлять собой объект JSON с ключом `models`.
-     * @param {module:api/AIAgentsApi~getModelsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetModels200Response}
-     */
-    getModels(callback) {
-      let postBody = null;
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetModels200Response;
-      return this.apiClient.callApi(
-        '/api/v1/cloud-ai/models', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getModelsV3 operation.
-     * @callback module:api/AIAgentsApi~getModelsV3Callback
-     * @param {String} error Error message, if any.
-     * @param {module:model/GetModelsV3200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Получение списка моделей
-     * Чтобы получить список доступных AI моделей с их характеристиками, отправьте GET-запрос на `/api/v3/cloud-ai/models`.  Тело ответа будет представлять собой объект JSON с ключом `models`.  Характеристики модели (цены, лимиты, возможности) возвращаются в словаре `parameter_values`. Актуальные цены за токены — в ключах `parameter_values.cost_in` и `parameter_values.cost_out` (в рублях за 1 токен).
-     * @param {module:api/AIAgentsApi~getModelsV3Callback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GetModelsV3200Response}
-     */
-    getModelsV3(callback) {
-      let postBody = null;
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['Bearer'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetModelsV3200Response;
-      return this.apiClient.callApi(
-        '/api/v3/cloud-ai/models', 'GET',
+        '/api/v1/cloud-ai/agents/{id}/entity-limits/sync', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -509,7 +919,7 @@ export default class AIAgentsApi {
 
     /**
      * Обновление AI агента
-     * Чтобы обновить AI агента, отправьте PATCH-запрос на `/api/v1/cloud-ai/agents/{id}`.
+     * Чтобы обновить AI агента, отправьте PATCH-запрос на `/api/v1/cloud-ai/agents/{id}`, передав изменяемые поля.  Особенности: - `settings` заменяются целиком (кроме `web_search_allowed_sites`, `additional_models` и `memory_enabled`, которые сохраняются, если не переданы) — передавайте полный объект настроек, включая `widget`; - основную модель меняет отдельный метод `PATCH /api/v1/cloud-ai/agents/{id}/model`; - поле `token_limit` больше не поддерживается: запрос с ним отклоняется с кодом 410 — лимиты задаются через `/api/v1/cloud-ai/agents/{id}/entity-limits`; - ошибки привязки `ai_gateway_key_id`: 400 `ai_gateway_key_not_found`, `agent_is_already_migrated_to_another_ai_gateway_key`, `agent_is_not_eligible_for_ai_gateway_migration`; 503 — проверку временно не удалось выполнить; - изменить статус заблокированного или удалённого агента нельзя (400 `agent_can't_change_status`).  Для токенов дополнительных пользователей аккаунта нужна роль `ai:write`.
      * @param {Number} id ID агента
      * @param {module:model/UpdateAgent} updateAgent 
      * @param {module:api/AIAgentsApi~updateAgentCallback} callback The callback function, accepting three arguments: error, data, response
@@ -542,6 +952,60 @@ export default class AIAgentsApi {
       let returnType = CreateAgent201Response;
       return this.apiClient.callApi(
         '/api/v1/cloud-ai/agents/{id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updateAgentEntityLimit operation.
+     * @callback module:api/AIAgentsApi~updateAgentEntityLimitCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateAgentEntityLimit201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Изменение лимита агента
+     * Чтобы изменить значение лимита AI агента, отправьте PATCH-запрос на `/api/v1/cloud-ai/agents/{id}/entity-limits/{limit_id}`.  Непереданные поля не меняются. Снять денежный лимит (`money_limit`: `null`) можно только вместе с передачей `limit`.  Для токенов дополнительных пользователей аккаунта нужна роль `ai:write`.
+     * @param {Number} id ID агента
+     * @param {String} limitId ID лимита агента
+     * @param {module:model/UpdateAgentEntityLimit} updateAgentEntityLimit 
+     * @param {module:api/AIAgentsApi~updateAgentEntityLimitCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateAgentEntityLimit201Response}
+     */
+    updateAgentEntityLimit(id, limitId, updateAgentEntityLimit, callback) {
+      let postBody = updateAgentEntityLimit;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling updateAgentEntityLimit");
+      }
+      // verify the required parameter 'limitId' is set
+      if (limitId === undefined || limitId === null) {
+        throw new Error("Missing the required parameter 'limitId' when calling updateAgentEntityLimit");
+      }
+      // verify the required parameter 'updateAgentEntityLimit' is set
+      if (updateAgentEntityLimit === undefined || updateAgentEntityLimit === null) {
+        throw new Error("Missing the required parameter 'updateAgentEntityLimit' when calling updateAgentEntityLimit");
+      }
+
+      let pathParams = {
+        'id': id,
+        'limit_id': limitId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateAgentEntityLimit201Response;
+      return this.apiClient.callApi(
+        '/api/v1/cloud-ai/agents/{id}/entity-limits/{limit_id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

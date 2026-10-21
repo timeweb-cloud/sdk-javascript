@@ -21,24 +21,26 @@ import ApiClient from '../ApiClient';
 class KnowledgebaseV2 {
     /**
      * Constructs a new <code>KnowledgebaseV2</code>.
-     * База знаний (версия API v2)
+     * База знаний (v2): вместо списка документов — их количество
      * @alias module:model/KnowledgebaseV2
-     * @param id {Number} Уникальный идентификатор базы знаний
+     * @param id {Number} ID базы знаний
      * @param name {String} Название базы знаний
-     * @param dbaasId {Number} ID базы данных opensearch
-     * @param status {module:model/KnowledgebaseV2.StatusEnum} Статус базы знаний
-     * @param totalTokens {Number} Всего токенов выделено
-     * @param usedTokens {Number} Использовано токенов
-     * @param remainingTokens {Number} Осталось токенов
-     * @param tokenPackageId {Number} ID пакета токенов
-     * @param subscriptionRenewalDate {Date} Дата обновления подписки
-     * @param documentsCount {Number} Общее количество документов в базе знаний
-     * @param agentsIds {Array.<Number>} ID агентов, связанных с базой знаний
-     * @param createdAt {Date} Дата создания базы знаний
+     * @param description {String} Описание базы знаний
+     * @param dbaasId {Number} ID кластера базы данных OpenSearch, который создан для базы знаний в вашем аккаунте
+     * @param status {module:model/KnowledgebaseV2.StatusEnum} Статус базы знаний: - `creating` — создаётся кластер базы данных, документы будут проиндексированы после перехода в `active` - `active` — база знаний работает - `blocked` — заблокирована: закончились токены или не удалось продлить подписку - `deleted` — удалена
+     * @param lastSync {Date} Дата и время последней синхронизации. `null`, если синхронизации не было
+     * @param totalTokens {Number} Количество токенов, доступных в текущем периоде подписки (пакет подписки и докупленные пакеты)
+     * @param usedTokens {Number} Количество израсходованных токенов
+     * @param remainingTokens {Number} Количество оставшихся токенов
+     * @param tokenPackageId {Number} ID пакета токенов подписки базы знаний
+     * @param subscriptionRenewalDate {Date} Дата следующего продления подписки (списания стоимости пакета токенов)
+     * @param documentsCount {Number} Количество документов в базе знаний
+     * @param agentsIds {Array.<Number>} ID агентов, к которым привязана база знаний
+     * @param createdAt {Date} Дата и время создания базы знаний
      */
-    constructor(id, name, dbaasId, status, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, documentsCount, agentsIds, createdAt) { 
+    constructor(id, name, description, dbaasId, status, lastSync, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, documentsCount, agentsIds, createdAt) { 
         
-        KnowledgebaseV2.initialize(this, id, name, dbaasId, status, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, documentsCount, agentsIds, createdAt);
+        KnowledgebaseV2.initialize(this, id, name, description, dbaasId, status, lastSync, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, documentsCount, agentsIds, createdAt);
     }
 
     /**
@@ -46,11 +48,13 @@ class KnowledgebaseV2 {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, dbaasId, status, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, documentsCount, agentsIds, createdAt) { 
+    static initialize(obj, id, name, description, dbaasId, status, lastSync, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, documentsCount, agentsIds, createdAt) { 
         obj['id'] = id;
         obj['name'] = name;
+        obj['description'] = description;
         obj['dbaas_id'] = dbaasId;
         obj['status'] = status;
+        obj['last_sync'] = lastSync;
         obj['total_tokens'] = totalTokens;
         obj['used_tokens'] = usedTokens;
         obj['remaining_tokens'] = remainingTokens;
@@ -80,6 +84,9 @@ class KnowledgebaseV2 {
             }
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
             }
             if (data.hasOwnProperty('dbaas_id')) {
                 obj['dbaas_id'] = ApiClient.convertToType(data['dbaas_id'], 'Number');
@@ -153,10 +160,10 @@ class KnowledgebaseV2 {
 
 }
 
-KnowledgebaseV2.RequiredProperties = ["id", "name", "dbaas_id", "status", "total_tokens", "used_tokens", "remaining_tokens", "token_package_id", "subscription_renewal_date", "documents_count", "agents_ids", "created_at"];
+KnowledgebaseV2.RequiredProperties = ["id", "name", "description", "dbaas_id", "status", "last_sync", "total_tokens", "used_tokens", "remaining_tokens", "token_package_id", "subscription_renewal_date", "documents_count", "agents_ids", "created_at"];
 
 /**
- * Уникальный идентификатор базы знаний
+ * ID базы знаний
  * @member {Number} id
  */
 KnowledgebaseV2.prototype['id'] = undefined;
@@ -174,67 +181,73 @@ KnowledgebaseV2.prototype['name'] = undefined;
 KnowledgebaseV2.prototype['description'] = undefined;
 
 /**
- * ID базы данных opensearch
+ * ID проекта, в котором находится база знаний. Поля нет, если проект не определён
+ * @member {Number} project_id
+ */
+KnowledgebaseV2.prototype['project_id'] = undefined;
+
+/**
+ * ID кластера базы данных OpenSearch, который создан для базы знаний в вашем аккаунте
  * @member {Number} dbaas_id
  */
 KnowledgebaseV2.prototype['dbaas_id'] = undefined;
 
 /**
- * Статус базы знаний
+ * Статус базы знаний: - `creating` — создаётся кластер базы данных, документы будут проиндексированы после перехода в `active` - `active` — база знаний работает - `blocked` — заблокирована: закончились токены или не удалось продлить подписку - `deleted` — удалена
  * @member {module:model/KnowledgebaseV2.StatusEnum} status
  */
 KnowledgebaseV2.prototype['status'] = undefined;
 
 /**
- * Дата последней синхронизации
+ * Дата и время последней синхронизации. `null`, если синхронизации не было
  * @member {Date} last_sync
  */
 KnowledgebaseV2.prototype['last_sync'] = undefined;
 
 /**
- * Всего токенов выделено
+ * Количество токенов, доступных в текущем периоде подписки (пакет подписки и докупленные пакеты)
  * @member {Number} total_tokens
  */
 KnowledgebaseV2.prototype['total_tokens'] = undefined;
 
 /**
- * Использовано токенов
+ * Количество израсходованных токенов
  * @member {Number} used_tokens
  */
 KnowledgebaseV2.prototype['used_tokens'] = undefined;
 
 /**
- * Осталось токенов
+ * Количество оставшихся токенов
  * @member {Number} remaining_tokens
  */
 KnowledgebaseV2.prototype['remaining_tokens'] = undefined;
 
 /**
- * ID пакета токенов
+ * ID пакета токенов подписки базы знаний
  * @member {Number} token_package_id
  */
 KnowledgebaseV2.prototype['token_package_id'] = undefined;
 
 /**
- * Дата обновления подписки
+ * Дата следующего продления подписки (списания стоимости пакета токенов)
  * @member {Date} subscription_renewal_date
  */
 KnowledgebaseV2.prototype['subscription_renewal_date'] = undefined;
 
 /**
- * Общее количество документов в базе знаний
+ * Количество документов в базе знаний
  * @member {Number} documents_count
  */
 KnowledgebaseV2.prototype['documents_count'] = undefined;
 
 /**
- * ID агентов, связанных с базой знаний
+ * ID агентов, к которым привязана база знаний
  * @member {Array.<Number>} agents_ids
  */
 KnowledgebaseV2.prototype['agents_ids'] = undefined;
 
 /**
- * Дата создания базы знаний
+ * Дата и время создания базы знаний
  * @member {Date} created_at
  */
 KnowledgebaseV2.prototype['created_at'] = undefined;

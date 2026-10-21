@@ -24,9 +24,9 @@ class CreateKnowledgebase {
      * Данные для создания базы знаний
      * @alias module:model/CreateKnowledgebase
      * @param name {String} Название базы знаний
-     * @param dbaasPresetId {Number} ID пресета базы данных
-     * @param networkId {String} ID сети
-     * @param tokenPackageId {Number} ID пакета токенов
+     * @param dbaasPresetId {Number} ID тарифа кластера OpenSearch, который будет создан для базы знаний. Список тарифов баз данных — `GET /api/v2/presets/dbs`
+     * @param networkId {String} ID приватной сети (VPC), в которой будет создан кластер
+     * @param tokenPackageId {Number} ID пакета токенов подписки. Подходят только базовые пакеты (`package_type: base`) из `GET /api/v1/cloud-ai/token-packages/knowledge-bases`
      */
     constructor(name, dbaasPresetId, networkId, tokenPackageId) { 
         
@@ -124,25 +124,25 @@ CreateKnowledgebase.prototype['name'] = undefined;
 CreateKnowledgebase.prototype['description'] = undefined;
 
 /**
- * ID пресета базы данных
+ * ID тарифа кластера OpenSearch, который будет создан для базы знаний. Список тарифов баз данных — `GET /api/v2/presets/dbs`
  * @member {Number} dbaas_preset_id
  */
 CreateKnowledgebase.prototype['dbaas_preset_id'] = undefined;
 
 /**
- * ID сети
+ * ID приватной сети (VPC), в которой будет создан кластер
  * @member {String} network_id
  */
 CreateKnowledgebase.prototype['network_id'] = undefined;
 
 /**
- * ID пакета токенов
+ * ID пакета токенов подписки. Подходят только базовые пакеты (`package_type: base`) из `GET /api/v1/cloud-ai/token-packages/knowledge-bases`
  * @member {Number} token_package_id
  */
 CreateKnowledgebase.prototype['token_package_id'] = undefined;
 
 /**
- * ID проекта
+ * ID проекта, в который нужно добавить базу знаний
  * @member {Number} project_id
  */
 CreateKnowledgebase.prototype['project_id'] = undefined;

@@ -22,7 +22,7 @@ class GetAgentStatistics200ResponseMeta {
     /**
      * Constructs a new <code>GetAgentStatistics200ResponseMeta</code>.
      * @alias module:model/GetAgentStatistics200ResponseMeta
-     * @param total {Number} Количество полученных временных отрезков
+     * @param total {Number} Количество точек статистики
      */
     constructor(total) { 
         
@@ -78,7 +78,7 @@ class GetAgentStatistics200ResponseMeta {
 GetAgentStatistics200ResponseMeta.RequiredProperties = ["total"];
 
 /**
- * Количество полученных временных отрезков
+ * Количество точек статистики
  * @member {Number} total
  */
 GetAgentStatistics200ResponseMeta.prototype['total'] = undefined;

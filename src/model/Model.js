@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import ModelParamsInfo from './ModelParamsInfo';
+import ModelParamInfo from './ModelParamInfo';
 
 /**
  * The Model model module.
@@ -22,21 +22,24 @@ import ModelParamsInfo from './ModelParamsInfo';
 class Model {
     /**
      * Constructs a new <code>Model</code>.
-     * Модель AI
+     * AI модель
      * @alias module:model/Model
-     * @param id {Number} Уникальный идентификатор модели
-     * @param providerId {Number} ID провайдера, который предоставляет модель
-     * @param name {String} Название модели
-     * @param publicName {String} Публичное имя модели
-     * @param type {module:model/Model.TypeEnum} Тип модели (llm - языковая модель, embedding - модель для эмбеддингов)
-     * @param isDeprecated {Boolean} Признак, что модель устарела
-     * @param isStopped {Boolean} Признак, что поддержка модели остановлена в системе
-     * @param isReasoning {Boolean} Признак поддержки режима рассуждения
+     * @param id {Number} ID модели
+     * @param providerId {Number} ID провайдера модели
+     * @param name {String} Семейство модели
+     * @param publicName {String} Отображаемое название модели
+     * @param modelName {String} Идентификатор модели с префиксом провайдера — передаётся в поле `model` запросов к AI Gateway
+     * @param type {module:model/Model.TypeEnum} Тип модели: - `llm` — языковая модель - `hosted-llm` — языковая модель, размещённая в Timeweb Cloud - `embedding` — модель эмбеддингов - `image` — генерация изображений - `audio` — работа с аудио - `video` — генерация видео - `moderation` — модерация контента - `system-one` — служебная модель с собственным API
      * @param version {String} Версия модели
+     * @param isDeprecated {Boolean} Модель устарела и недоступна для выбора в новых агентах
+     * @param isStopped {Boolean} Поддержка модели остановлена: запросы к ней не выполняются
+     * @param deprecationDate {Date} Дата отключения модели у провайдера. `null`, если отключение не запланировано
+     * @param isReasoning {Boolean} Модель поддерживает режим рассуждений
+     * @param paramsInfo {Object.<String, module:model/ModelParamInfo>} Параметры генерации, которые можно настроить у агента с этой моделью. Ключ — имя параметра (`temperature`, `top_p`, `max_tokens`, `reasoning_effort` и т.д.). `null`, если параметры не заданы
      */
-    constructor(id, providerId, name, publicName, type, isDeprecated, isStopped, isReasoning, version) { 
+    constructor(id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, deprecationDate, isReasoning, paramsInfo) { 
         
-        Model.initialize(this, id, providerId, name, publicName, type, isDeprecated, isStopped, isReasoning, version);
+        Model.initialize(this, id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, deprecationDate, isReasoning, paramsInfo);
     }
 
     /**
@@ -44,16 +47,19 @@ class Model {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, providerId, name, publicName, type, isDeprecated, isStopped, isReasoning, version) { 
+    static initialize(obj, id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, deprecationDate, isReasoning, paramsInfo) { 
         obj['id'] = id;
         obj['provider_id'] = providerId;
         obj['name'] = name;
         obj['public_name'] = publicName;
+        obj['model_name'] = modelName;
         obj['type'] = type;
+        obj['version'] = version;
         obj['is_deprecated'] = isDeprecated;
         obj['is_stopped'] = isStopped;
+        obj['deprecation_date'] = deprecationDate;
         obj['is_reasoning'] = isReasoning;
-        obj['version'] = version;
+        obj['params_info'] = paramsInfo;
     }
 
     /**
@@ -79,8 +85,14 @@ class Model {
             if (data.hasOwnProperty('public_name')) {
                 obj['public_name'] = ApiClient.convertToType(data['public_name'], 'String');
             }
+            if (data.hasOwnProperty('model_name')) {
+                obj['model_name'] = ApiClient.convertToType(data['model_name'], 'String');
+            }
             if (data.hasOwnProperty('type')) {
                 obj['type'] = ApiClient.convertToType(data['type'], 'String');
+            }
+            if (data.hasOwnProperty('version')) {
+                obj['version'] = ApiClient.convertToType(data['version'], 'String');
             }
             if (data.hasOwnProperty('is_deprecated')) {
                 obj['is_deprecated'] = ApiClient.convertToType(data['is_deprecated'], 'Boolean');
@@ -94,11 +106,8 @@ class Model {
             if (data.hasOwnProperty('is_reasoning')) {
                 obj['is_reasoning'] = ApiClient.convertToType(data['is_reasoning'], 'Boolean');
             }
-            if (data.hasOwnProperty('version')) {
-                obj['version'] = ApiClient.convertToType(data['version'], 'String');
-            }
             if (data.hasOwnProperty('params_info')) {
-                obj['params_info'] = ModelParamsInfo.constructFromObject(data['params_info']);
+                obj['params_info'] = ApiClient.convertToType(data['params_info'], {'String': ModelParamInfo});
             }
         }
         return obj;
@@ -125,16 +134,16 @@ class Model {
             throw new Error("Expected the field `public_name` to be a primitive type in the JSON string but got " + data['public_name']);
         }
         // ensure the json data is a string
+        if (data['model_name'] && !(typeof data['model_name'] === 'string' || data['model_name'] instanceof String)) {
+            throw new Error("Expected the field `model_name` to be a primitive type in the JSON string but got " + data['model_name']);
+        }
+        // ensure the json data is a string
         if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
             throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
         }
         // ensure the json data is a string
         if (data['version'] && !(typeof data['version'] === 'string' || data['version'] instanceof String)) {
             throw new Error("Expected the field `version` to be a primitive type in the JSON string but got " + data['version']);
-        }
-        // validate the optional field `params_info`
-        if (data['params_info']) { // data not null
-          ModelParamsInfo.validateJSON(data['params_info']);
         }
 
         return true;
@@ -143,61 +152,43 @@ class Model {
 
 }
 
-Model.RequiredProperties = ["id", "provider_id", "name", "public_name", "type", "is_deprecated", "is_stopped", "is_reasoning", "version"];
+Model.RequiredProperties = ["id", "provider_id", "name", "public_name", "model_name", "type", "version", "is_deprecated", "is_stopped", "deprecation_date", "is_reasoning", "params_info"];
 
 /**
- * Уникальный идентификатор модели
+ * ID модели
  * @member {Number} id
  */
 Model.prototype['id'] = undefined;
 
 /**
- * ID провайдера, который предоставляет модель
+ * ID провайдера модели
  * @member {Number} provider_id
  */
 Model.prototype['provider_id'] = undefined;
 
 /**
- * Название модели
+ * Семейство модели
  * @member {String} name
  */
 Model.prototype['name'] = undefined;
 
 /**
- * Публичное имя модели
+ * Отображаемое название модели
  * @member {String} public_name
  */
 Model.prototype['public_name'] = undefined;
 
 /**
- * Тип модели (llm - языковая модель, embedding - модель для эмбеддингов)
+ * Идентификатор модели с префиксом провайдера — передаётся в поле `model` запросов к AI Gateway
+ * @member {String} model_name
+ */
+Model.prototype['model_name'] = undefined;
+
+/**
+ * Тип модели: - `llm` — языковая модель - `hosted-llm` — языковая модель, размещённая в Timeweb Cloud - `embedding` — модель эмбеддингов - `image` — генерация изображений - `audio` — работа с аудио - `video` — генерация видео - `moderation` — модерация контента - `system-one` — служебная модель с собственным API
  * @member {module:model/Model.TypeEnum} type
  */
 Model.prototype['type'] = undefined;
-
-/**
- * Признак, что модель устарела
- * @member {Boolean} is_deprecated
- */
-Model.prototype['is_deprecated'] = undefined;
-
-/**
- * Признак, что поддержка модели остановлена в системе
- * @member {Boolean} is_stopped
- */
-Model.prototype['is_stopped'] = undefined;
-
-/**
- * Дата депрекейта модели у провайдера
- * @member {Date} deprecation_date
- */
-Model.prototype['deprecation_date'] = undefined;
-
-/**
- * Признак поддержки режима рассуждения
- * @member {Boolean} is_reasoning
- */
-Model.prototype['is_reasoning'] = undefined;
 
 /**
  * Версия модели
@@ -206,7 +197,32 @@ Model.prototype['is_reasoning'] = undefined;
 Model.prototype['version'] = undefined;
 
 /**
- * @member {module:model/ModelParamsInfo} params_info
+ * Модель устарела и недоступна для выбора в новых агентах
+ * @member {Boolean} is_deprecated
+ */
+Model.prototype['is_deprecated'] = undefined;
+
+/**
+ * Поддержка модели остановлена: запросы к ней не выполняются
+ * @member {Boolean} is_stopped
+ */
+Model.prototype['is_stopped'] = undefined;
+
+/**
+ * Дата отключения модели у провайдера. `null`, если отключение не запланировано
+ * @member {Date} deprecation_date
+ */
+Model.prototype['deprecation_date'] = undefined;
+
+/**
+ * Модель поддерживает режим рассуждений
+ * @member {Boolean} is_reasoning
+ */
+Model.prototype['is_reasoning'] = undefined;
+
+/**
+ * Параметры генерации, которые можно настроить у агента с этой моделью. Ключ — имя параметра (`temperature`, `top_p`, `max_tokens`, `reasoning_effort` и т.д.). `null`, если параметры не заданы
+ * @member {Object.<String, module:model/ModelParamInfo>} params_info
  */
 Model.prototype['params_info'] = undefined;
 
@@ -228,10 +244,46 @@ Model['TypeEnum'] = {
     "llm": "llm",
 
     /**
+     * value: "hosted-llm"
+     * @const
+     */
+    "hosted-llm": "hosted-llm",
+
+    /**
      * value: "embedding"
      * @const
      */
-    "embedding": "embedding"
+    "embedding": "embedding",
+
+    /**
+     * value: "image"
+     * @const
+     */
+    "image": "image",
+
+    /**
+     * value: "audio"
+     * @const
+     */
+    "audio": "audio",
+
+    /**
+     * value: "video"
+     * @const
+     */
+    "video": "video",
+
+    /**
+     * value: "moderation"
+     * @const
+     */
+    "moderation": "moderation",
+
+    /**
+     * value: "system-one"
+     * @const
+     */
+    "system-one": "system-one"
 };
 
 

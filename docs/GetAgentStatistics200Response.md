@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**agentStatistics** | [**[TokenStatistic]**](TokenStatistic.md) |  | 
+**agentStatistics** | [**[AgentTokenStatistic]**](AgentTokenStatistic.md) |  | 
 **meta** | [**GetAgentStatistics200ResponseMeta**](GetAgentStatistics200ResponseMeta.md) |  | 
 
 

@@ -12,7 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import AgentAdditionalModel from './AgentAdditionalModel';
 import AgentSettings from './AgentSettings';
+import AgentToolsInner from './AgentToolsInner';
 
 /**
  * The Agent model module.
@@ -22,28 +24,30 @@ import AgentSettings from './AgentSettings';
 class Agent {
     /**
      * Constructs a new <code>Agent</code>.
-     * AI Agent
+     * AI агент
      * @alias module:model/Agent
-     * @param id {Number} Уникальный идентификатор агента
+     * @param id {Number} ID агента
      * @param name {String} Название агента
      * @param description {String} Описание агента
-     * @param modelId {Number} ID модели
-     * @param providerId {Number} ID провайдера
+     * @param modelId {Number} ID основной модели агента
+     * @param providerId {Number} ID провайдера модели
      * @param settings {module:model/AgentSettings} 
-     * @param status {module:model/Agent.StatusEnum} Статус агента
-     * @param accessType {module:model/Agent.AccessTypeEnum} Тип доступа к агенту
-     * @param totalTokens {Number} Всего токенов выделено агенту
-     * @param usedTokens {Number} Использовано токенов
-     * @param remainingTokens {Number} Осталось токенов
-     * @param tokenPackageId {Number} ID пакета токенов
-     * @param subscriptionRenewalDate {Date} Дата обновления подписки
-     * @param knowledgeBasesIds {Array.<Number>} ID баз знаний, связанных с агентом
-     * @param accessId {Number} ID доступа
+     * @param status {module:model/Agent.StatusEnum} Статус агента: - `active` — работает; - `suspended` — приостановлен владельцем; - `blocked` — заблокирован (для агентов с пакетом токенов — закончились токены или подписка); - `deleted` — удалён.
+     * @param accessType {module:model/Agent.AccessTypeEnum} Тип доступа: `public` — агент отвечает анонимным посетителям сайта через виджет; `private` — только по токену аккаунта.
+     * @param accessId {String} Идентификатор доступа агента. Используется для вызова агента из своих приложений через OpenAI-совместимое API (см. https://agent.timeweb.cloud/docs) и для встраивания виджета.
+     * @param tokenLimit {Number} Устарело. Дневной лимит агента в токенах без привязки к модели, если он задан; `0` — такого лимита нет. Лимиты в деньгах, по моделям и за другие периоды здесь не отражаются — используйте лимиты агента (`/api/v1/cloud-ai/agents/{id}/entity-limits`).
+     * @param usedTokens {Number} Использовано токенов пакета. Для агентов с поресурсной оплатой — `null`.
+     * @param autoBuyAdditionalTokens {Boolean} Включена ли автоматическая докупка пакетов токенов
+     * @param tools {Array.<module:model/AgentToolsInner>} Инструменты, подключённые к агенту
+     * @param additionalModelIds {Array.<Number>} ID дополнительных моделей агента
+     * @param additionalModels {Array.<module:model/AgentAdditionalModel>} Дополнительные модели агента с настройками
+     * @param isWebSearchEnabled {Boolean} Включён ли веб-поиск
      * @param createdAt {Date} Дата создания агента
+     * @param knowledgeBasesIds {Array.<Number>} ID баз знаний, подключённых к агенту
      */
-    constructor(id, name, description, modelId, providerId, settings, status, accessType, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, knowledgeBasesIds, accessId, createdAt) { 
+    constructor(id, name, description, modelId, providerId, settings, status, accessType, accessId, tokenLimit, usedTokens, autoBuyAdditionalTokens, tools, additionalModelIds, additionalModels, isWebSearchEnabled, createdAt, knowledgeBasesIds) { 
         
-        Agent.initialize(this, id, name, description, modelId, providerId, settings, status, accessType, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, knowledgeBasesIds, accessId, createdAt);
+        Agent.initialize(this, id, name, description, modelId, providerId, settings, status, accessType, accessId, tokenLimit, usedTokens, autoBuyAdditionalTokens, tools, additionalModelIds, additionalModels, isWebSearchEnabled, createdAt, knowledgeBasesIds);
     }
 
     /**
@@ -51,7 +55,7 @@ class Agent {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, description, modelId, providerId, settings, status, accessType, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, knowledgeBasesIds, accessId, createdAt) { 
+    static initialize(obj, id, name, description, modelId, providerId, settings, status, accessType, accessId, tokenLimit, usedTokens, autoBuyAdditionalTokens, tools, additionalModelIds, additionalModels, isWebSearchEnabled, createdAt, knowledgeBasesIds) { 
         obj['id'] = id;
         obj['name'] = name;
         obj['description'] = description;
@@ -60,14 +64,16 @@ class Agent {
         obj['settings'] = settings;
         obj['status'] = status;
         obj['access_type'] = accessType;
-        obj['total_tokens'] = totalTokens;
-        obj['used_tokens'] = usedTokens;
-        obj['remaining_tokens'] = remainingTokens;
-        obj['token_package_id'] = tokenPackageId;
-        obj['subscription_renewal_date'] = subscriptionRenewalDate;
-        obj['knowledge_bases_ids'] = knowledgeBasesIds;
         obj['access_id'] = accessId;
+        obj['token_limit'] = tokenLimit;
+        obj['used_tokens'] = usedTokens;
+        obj['auto_buy_additional_tokens'] = autoBuyAdditionalTokens;
+        obj['tools'] = tools;
+        obj['additional_model_ids'] = additionalModelIds;
+        obj['additional_models'] = additionalModels;
+        obj['is_web_search_enabled'] = isWebSearchEnabled;
         obj['created_at'] = createdAt;
+        obj['knowledge_bases_ids'] = knowledgeBasesIds;
     }
 
     /**
@@ -90,6 +96,9 @@ class Agent {
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            }
             if (data.hasOwnProperty('model_id')) {
                 obj['model_id'] = ApiClient.convertToType(data['model_id'], 'Number');
             }
@@ -104,6 +113,12 @@ class Agent {
             }
             if (data.hasOwnProperty('access_type')) {
                 obj['access_type'] = ApiClient.convertToType(data['access_type'], 'String');
+            }
+            if (data.hasOwnProperty('access_id')) {
+                obj['access_id'] = ApiClient.convertToType(data['access_id'], 'String');
+            }
+            if (data.hasOwnProperty('token_limit')) {
+                obj['token_limit'] = ApiClient.convertToType(data['token_limit'], 'Number');
             }
             if (data.hasOwnProperty('total_tokens')) {
                 obj['total_tokens'] = ApiClient.convertToType(data['total_tokens'], 'Number');
@@ -120,14 +135,29 @@ class Agent {
             if (data.hasOwnProperty('subscription_renewal_date')) {
                 obj['subscription_renewal_date'] = ApiClient.convertToType(data['subscription_renewal_date'], 'Date');
             }
-            if (data.hasOwnProperty('knowledge_bases_ids')) {
-                obj['knowledge_bases_ids'] = ApiClient.convertToType(data['knowledge_bases_ids'], ['Number']);
+            if (data.hasOwnProperty('auto_buy_additional_tokens')) {
+                obj['auto_buy_additional_tokens'] = ApiClient.convertToType(data['auto_buy_additional_tokens'], 'Boolean');
             }
-            if (data.hasOwnProperty('access_id')) {
-                obj['access_id'] = ApiClient.convertToType(data['access_id'], 'Number');
+            if (data.hasOwnProperty('tools')) {
+                obj['tools'] = ApiClient.convertToType(data['tools'], [AgentToolsInner]);
+            }
+            if (data.hasOwnProperty('additional_model_ids')) {
+                obj['additional_model_ids'] = ApiClient.convertToType(data['additional_model_ids'], ['Number']);
+            }
+            if (data.hasOwnProperty('additional_models')) {
+                obj['additional_models'] = ApiClient.convertToType(data['additional_models'], [AgentAdditionalModel]);
+            }
+            if (data.hasOwnProperty('is_web_search_enabled')) {
+                obj['is_web_search_enabled'] = ApiClient.convertToType(data['is_web_search_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('ai_gateway_key_id')) {
+                obj['ai_gateway_key_id'] = ApiClient.convertToType(data['ai_gateway_key_id'], 'String');
             }
             if (data.hasOwnProperty('created_at')) {
                 obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
+            }
+            if (data.hasOwnProperty('knowledge_bases_ids')) {
+                obj['knowledge_bases_ids'] = ApiClient.convertToType(data['knowledge_bases_ids'], ['Number']);
             }
         }
         return obj;
@@ -165,6 +195,38 @@ class Agent {
         if (data['access_type'] && !(typeof data['access_type'] === 'string' || data['access_type'] instanceof String)) {
             throw new Error("Expected the field `access_type` to be a primitive type in the JSON string but got " + data['access_type']);
         }
+        // ensure the json data is a string
+        if (data['access_id'] && !(typeof data['access_id'] === 'string' || data['access_id'] instanceof String)) {
+            throw new Error("Expected the field `access_id` to be a primitive type in the JSON string but got " + data['access_id']);
+        }
+        if (data['tools']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['tools'])) {
+                throw new Error("Expected the field `tools` to be an array in the JSON data but got " + data['tools']);
+            }
+            // validate the optional field `tools` (array)
+            for (const item of data['tools']) {
+                AgentToolsInner.validateJSON(item);
+            };
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['additional_model_ids'])) {
+            throw new Error("Expected the field `additional_model_ids` to be an array in the JSON data but got " + data['additional_model_ids']);
+        }
+        if (data['additional_models']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['additional_models'])) {
+                throw new Error("Expected the field `additional_models` to be an array in the JSON data but got " + data['additional_models']);
+            }
+            // validate the optional field `additional_models` (array)
+            for (const item of data['additional_models']) {
+                AgentAdditionalModel.validateJSON(item);
+            };
+        }
+        // ensure the json data is a string
+        if (data['ai_gateway_key_id'] && !(typeof data['ai_gateway_key_id'] === 'string' || data['ai_gateway_key_id'] instanceof String)) {
+            throw new Error("Expected the field `ai_gateway_key_id` to be a primitive type in the JSON string but got " + data['ai_gateway_key_id']);
+        }
         // ensure the json data is an array
         if (!Array.isArray(data['knowledge_bases_ids'])) {
             throw new Error("Expected the field `knowledge_bases_ids` to be an array in the JSON data but got " + data['knowledge_bases_ids']);
@@ -176,10 +238,10 @@ class Agent {
 
 }
 
-Agent.RequiredProperties = ["id", "name", "description", "model_id", "provider_id", "settings", "status", "access_type", "total_tokens", "used_tokens", "remaining_tokens", "token_package_id", "subscription_renewal_date", "knowledge_bases_ids", "access_id", "created_at"];
+Agent.RequiredProperties = ["id", "name", "description", "model_id", "provider_id", "settings", "status", "access_type", "access_id", "token_limit", "used_tokens", "auto_buy_additional_tokens", "tools", "additional_model_ids", "additional_models", "is_web_search_enabled", "created_at", "knowledge_bases_ids"];
 
 /**
- * Уникальный идентификатор агента
+ * ID агента
  * @member {Number} id
  */
 Agent.prototype['id'] = undefined;
@@ -197,13 +259,19 @@ Agent.prototype['name'] = undefined;
 Agent.prototype['description'] = undefined;
 
 /**
- * ID модели
+ * ID проекта, в котором находится агент
+ * @member {Number} project_id
+ */
+Agent.prototype['project_id'] = undefined;
+
+/**
+ * ID основной модели агента
  * @member {Number} model_id
  */
 Agent.prototype['model_id'] = undefined;
 
 /**
- * ID провайдера
+ * ID провайдера модели
  * @member {Number} provider_id
  */
 Agent.prototype['provider_id'] = undefined;
@@ -214,64 +282,106 @@ Agent.prototype['provider_id'] = undefined;
 Agent.prototype['settings'] = undefined;
 
 /**
- * Статус агента
+ * Статус агента: - `active` — работает; - `suspended` — приостановлен владельцем; - `blocked` — заблокирован (для агентов с пакетом токенов — закончились токены или подписка); - `deleted` — удалён.
  * @member {module:model/Agent.StatusEnum} status
  */
 Agent.prototype['status'] = undefined;
 
 /**
- * Тип доступа к агенту
+ * Тип доступа: `public` — агент отвечает анонимным посетителям сайта через виджет; `private` — только по токену аккаунта.
  * @member {module:model/Agent.AccessTypeEnum} access_type
  */
 Agent.prototype['access_type'] = undefined;
 
 /**
- * Всего токенов выделено агенту
+ * Идентификатор доступа агента. Используется для вызова агента из своих приложений через OpenAI-совместимое API (см. https://agent.timeweb.cloud/docs) и для встраивания виджета.
+ * @member {String} access_id
+ */
+Agent.prototype['access_id'] = undefined;
+
+/**
+ * Устарело. Дневной лимит агента в токенах без привязки к модели, если он задан; `0` — такого лимита нет. Лимиты в деньгах, по моделям и за другие периоды здесь не отражаются — используйте лимиты агента (`/api/v1/cloud-ai/agents/{id}/entity-limits`).
+ * @member {Number} token_limit
+ */
+Agent.prototype['token_limit'] = undefined;
+
+/**
+ * Всего токенов в пакете. Только для агентов с пакетом токенов (устаревшая схема оплаты).
  * @member {Number} total_tokens
  */
 Agent.prototype['total_tokens'] = undefined;
 
 /**
- * Использовано токенов
+ * Использовано токенов пакета. Для агентов с поресурсной оплатой — `null`.
  * @member {Number} used_tokens
  */
 Agent.prototype['used_tokens'] = undefined;
 
 /**
- * Осталось токенов
+ * Осталось токенов в пакете. Только для агентов с пакетом токенов.
  * @member {Number} remaining_tokens
  */
 Agent.prototype['remaining_tokens'] = undefined;
 
 /**
- * ID пакета токенов
+ * ID пакета токенов. Только для агентов с пакетом токенов; у агентов с поресурсной оплатой поле отсутствует.
  * @member {Number} token_package_id
  */
 Agent.prototype['token_package_id'] = undefined;
 
 /**
- * Дата обновления подписки
+ * Дата продления подписки на пакет токенов. Только для агентов с пакетом токенов.
  * @member {Date} subscription_renewal_date
  */
 Agent.prototype['subscription_renewal_date'] = undefined;
 
 /**
- * ID баз знаний, связанных с агентом
- * @member {Array.<Number>} knowledge_bases_ids
+ * Включена ли автоматическая докупка пакетов токенов
+ * @member {Boolean} auto_buy_additional_tokens
  */
-Agent.prototype['knowledge_bases_ids'] = undefined;
+Agent.prototype['auto_buy_additional_tokens'] = undefined;
 
 /**
- * ID доступа
- * @member {Number} access_id
+ * Инструменты, подключённые к агенту
+ * @member {Array.<module:model/AgentToolsInner>} tools
  */
-Agent.prototype['access_id'] = undefined;
+Agent.prototype['tools'] = undefined;
+
+/**
+ * ID дополнительных моделей агента
+ * @member {Array.<Number>} additional_model_ids
+ */
+Agent.prototype['additional_model_ids'] = undefined;
+
+/**
+ * Дополнительные модели агента с настройками
+ * @member {Array.<module:model/AgentAdditionalModel>} additional_models
+ */
+Agent.prototype['additional_models'] = undefined;
+
+/**
+ * Включён ли веб-поиск
+ * @member {Boolean} is_web_search_enabled
+ */
+Agent.prototype['is_web_search_enabled'] = undefined;
+
+/**
+ * ID ключа AI Gateway, к которому привязан агент. `null` — агента можно привязать к ключу (см. обновление агента); поле отсутствует — привязка недоступна.
+ * @member {String} ai_gateway_key_id
+ */
+Agent.prototype['ai_gateway_key_id'] = undefined;
 
 /**
  * Дата создания агента
  * @member {Date} created_at
  */
 Agent.prototype['created_at'] = undefined;
+
+/**
+ * ID баз знаний, подключённых к агенту
+ * @member {Array.<Number>} knowledge_bases_ids
+ */
+Agent.prototype['knowledge_bases_ids'] = undefined;
 
 
 

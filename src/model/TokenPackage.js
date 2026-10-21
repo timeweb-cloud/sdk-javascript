@@ -23,18 +23,20 @@ class TokenPackage {
      * Constructs a new <code>TokenPackage</code>.
      * Пакет токенов
      * @alias module:model/TokenPackage
-     * @param id {Number} Уникальный идентификатор пакета
-     * @param modelId {Number} ID модели, к которой применяется пакет токенов
-     * @param name {String} Название пакета токенов
-     * @param packageType {module:model/TokenPackage.PackageTypeEnum} Тип пакета (base - базовый, additional - дополнительный, promo - промо)
-     * @param type {module:model/TokenPackage.TypeEnum} Тип сущности, к которой относится пакет (agent - агент, knowledgebase - база знаний)
+     * @param id {Number} ID пакета
+     * @param modelId {Number} ID модели, к которой относится пакет
+     * @param serviceTypeId {Number} ID тарифа пакета в биллинге
+     * @param name {String} Название пакета
+     * @param packageType {module:model/TokenPackage.PackageTypeEnum} Тип пакета: `base` — пакет подписки, `additional` — дополнительный пакет, `promo` — промо-пакет
+     * @param type {module:model/TokenPackage.TypeEnum} Для чего пакет: `agent` — AI агент, `knowledgebase` — база знаний
      * @param tokenAmount {Number} Количество токенов в пакете
-     * @param price {Number} Цена пакета в целых единицах
-     * @param isAvailable {Boolean} Флаг, указывающий доступность пакета
+     * @param price {Number} Цена пакета в рублях
+     * @param durationDays {Number} Период подписки в днях. `null` для дополнительных пакетов
+     * @param isAvailable {Boolean} Пакет доступен для покупки
      */
-    constructor(id, modelId, name, packageType, type, tokenAmount, price, isAvailable) { 
+    constructor(id, modelId, serviceTypeId, name, packageType, type, tokenAmount, price, durationDays, isAvailable) { 
         
-        TokenPackage.initialize(this, id, modelId, name, packageType, type, tokenAmount, price, isAvailable);
+        TokenPackage.initialize(this, id, modelId, serviceTypeId, name, packageType, type, tokenAmount, price, durationDays, isAvailable);
     }
 
     /**
@@ -42,14 +44,16 @@ class TokenPackage {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, modelId, name, packageType, type, tokenAmount, price, isAvailable) { 
+    static initialize(obj, id, modelId, serviceTypeId, name, packageType, type, tokenAmount, price, durationDays, isAvailable) { 
         obj['id'] = id;
         obj['model_id'] = modelId;
+        obj['service_type_id'] = serviceTypeId;
         obj['name'] = name;
         obj['package_type'] = packageType;
         obj['type'] = type;
         obj['token_amount'] = tokenAmount;
         obj['price'] = price;
+        obj['duration_days'] = durationDays;
         obj['is_available'] = isAvailable;
     }
 
@@ -69,6 +73,9 @@ class TokenPackage {
             }
             if (data.hasOwnProperty('model_id')) {
                 obj['model_id'] = ApiClient.convertToType(data['model_id'], 'Number');
+            }
+            if (data.hasOwnProperty('service_type_id')) {
+                obj['service_type_id'] = ApiClient.convertToType(data['service_type_id'], 'Number');
             }
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -126,34 +133,40 @@ class TokenPackage {
 
 }
 
-TokenPackage.RequiredProperties = ["id", "model_id", "name", "package_type", "type", "token_amount", "price", "is_available"];
+TokenPackage.RequiredProperties = ["id", "model_id", "service_type_id", "name", "package_type", "type", "token_amount", "price", "duration_days", "is_available"];
 
 /**
- * Уникальный идентификатор пакета
+ * ID пакета
  * @member {Number} id
  */
 TokenPackage.prototype['id'] = undefined;
 
 /**
- * ID модели, к которой применяется пакет токенов
+ * ID модели, к которой относится пакет
  * @member {Number} model_id
  */
 TokenPackage.prototype['model_id'] = undefined;
 
 /**
- * Название пакета токенов
+ * ID тарифа пакета в биллинге
+ * @member {Number} service_type_id
+ */
+TokenPackage.prototype['service_type_id'] = undefined;
+
+/**
+ * Название пакета
  * @member {String} name
  */
 TokenPackage.prototype['name'] = undefined;
 
 /**
- * Тип пакета (base - базовый, additional - дополнительный, promo - промо)
+ * Тип пакета: `base` — пакет подписки, `additional` — дополнительный пакет, `promo` — промо-пакет
  * @member {module:model/TokenPackage.PackageTypeEnum} package_type
  */
 TokenPackage.prototype['package_type'] = undefined;
 
 /**
- * Тип сущности, к которой относится пакет (agent - агент, knowledgebase - база знаний)
+ * Для чего пакет: `agent` — AI агент, `knowledgebase` — база знаний
  * @member {module:model/TokenPackage.TypeEnum} type
  */
 TokenPackage.prototype['type'] = undefined;
@@ -165,19 +178,19 @@ TokenPackage.prototype['type'] = undefined;
 TokenPackage.prototype['token_amount'] = undefined;
 
 /**
- * Цена пакета в целых единицах
+ * Цена пакета в рублях
  * @member {Number} price
  */
 TokenPackage.prototype['price'] = undefined;
 
 /**
- * Продолжительность пакета в днях (null для дополнительных пакетов)
+ * Период подписки в днях. `null` для дополнительных пакетов
  * @member {Number} duration_days
  */
 TokenPackage.prototype['duration_days'] = undefined;
 
 /**
- * Флаг, указывающий доступность пакета
+ * Пакет доступен для покупки
  * @member {Boolean} is_available
  */
 TokenPackage.prototype['is_available'] = undefined;

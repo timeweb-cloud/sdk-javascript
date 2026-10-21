@@ -22,17 +22,17 @@ import AgentSettings from './AgentSettings';
 class CreateAgent {
     /**
      * Constructs a new <code>CreateAgent</code>.
-     * Данные для создания AI агента
+     * Данные для создания AI агента (устаревший метод API v1)
      * @alias module:model/CreateAgent
      * @param name {String} Название агента
-     * @param accessType {module:model/CreateAgent.AccessTypeEnum} Тип доступа к агенту
-     * @param modelId {Number} ID модели
-     * @param tokenPackageId {Number} ID пакета токенов
+     * @param accessType {module:model/CreateAgent.AccessTypeEnum} Тип доступа: `public` — агент отвечает анонимным посетителям сайта через виджет; `private` — только по токену аккаунта.
+     * @param modelId {Number} ID основной модели агента
      * @param settings {module:model/AgentSettings} 
+     * @param tokenPackageId {Number} ID пакета токенов. Обязателен для совместимости, но не учитывается: агент всегда создаётся с поресурсной оплатой.
      */
-    constructor(name, accessType, modelId, tokenPackageId, settings) { 
+    constructor(name, accessType, modelId, settings, tokenPackageId) { 
         
-        CreateAgent.initialize(this, name, accessType, modelId, tokenPackageId, settings);
+        CreateAgent.initialize(this, name, accessType, modelId, settings, tokenPackageId);
     }
 
     /**
@@ -40,12 +40,12 @@ class CreateAgent {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, accessType, modelId, tokenPackageId, settings) { 
+    static initialize(obj, name, accessType, modelId, settings, tokenPackageId) { 
         obj['name'] = name;
         obj['access_type'] = accessType;
         obj['model_id'] = modelId;
-        obj['token_package_id'] = tokenPackageId;
         obj['settings'] = settings;
+        obj['token_package_id'] = tokenPackageId;
     }
 
     /**
@@ -71,14 +71,17 @@ class CreateAgent {
             if (data.hasOwnProperty('model_id')) {
                 obj['model_id'] = ApiClient.convertToType(data['model_id'], 'Number');
             }
-            if (data.hasOwnProperty('token_package_id')) {
-                obj['token_package_id'] = ApiClient.convertToType(data['token_package_id'], 'Number');
-            }
             if (data.hasOwnProperty('settings')) {
                 obj['settings'] = AgentSettings.constructFromObject(data['settings']);
             }
             if (data.hasOwnProperty('project_id')) {
                 obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
+            }
+            if (data.hasOwnProperty('is_web_search_enabled')) {
+                obj['is_web_search_enabled'] = ApiClient.convertToType(data['is_web_search_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('token_package_id')) {
+                obj['token_package_id'] = ApiClient.convertToType(data['token_package_id'], 'Number');
             }
         }
         return obj;
@@ -119,7 +122,7 @@ class CreateAgent {
 
 }
 
-CreateAgent.RequiredProperties = ["name", "access_type", "model_id", "token_package_id", "settings"];
+CreateAgent.RequiredProperties = ["name", "access_type", "model_id", "settings", "token_package_id"];
 
 /**
  * Название агента
@@ -134,22 +137,16 @@ CreateAgent.prototype['name'] = undefined;
 CreateAgent.prototype['description'] = undefined;
 
 /**
- * Тип доступа к агенту
+ * Тип доступа: `public` — агент отвечает анонимным посетителям сайта через виджет; `private` — только по токену аккаунта.
  * @member {module:model/CreateAgent.AccessTypeEnum} access_type
  */
 CreateAgent.prototype['access_type'] = undefined;
 
 /**
- * ID модели
+ * ID основной модели агента
  * @member {Number} model_id
  */
 CreateAgent.prototype['model_id'] = undefined;
-
-/**
- * ID пакета токенов
- * @member {Number} token_package_id
- */
-CreateAgent.prototype['token_package_id'] = undefined;
 
 /**
  * @member {module:model/AgentSettings} settings
@@ -157,10 +154,23 @@ CreateAgent.prototype['token_package_id'] = undefined;
 CreateAgent.prototype['settings'] = undefined;
 
 /**
- * ID проекта
+ * ID проекта, в который нужно добавить агента. По умолчанию — проект по умолчанию.
  * @member {Number} project_id
  */
 CreateAgent.prototype['project_id'] = undefined;
+
+/**
+ * Включить веб-поиск
+ * @member {Boolean} is_web_search_enabled
+ * @default false
+ */
+CreateAgent.prototype['is_web_search_enabled'] = false;
+
+/**
+ * ID пакета токенов. Обязателен для совместимости, но не учитывается: агент всегда создаётся с поресурсной оплатой.
+ * @member {Number} token_package_id
+ */
+CreateAgent.prototype['token_package_id'] = undefined;
 
 
 

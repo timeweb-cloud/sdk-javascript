@@ -21,11 +21,14 @@ import ApiClient from '../ApiClient';
 class Resource {
     /**
      * Constructs a new <code>Resource</code>.
+     * Ресурс MCP
      * @alias module:model/Resource
+     * @param uri {module:model/Resource.UriEnum} URI ресурса
+     * @param name {String} Имя ресурса
      */
-    constructor() { 
+    constructor(uri, name) { 
         
-        Resource.initialize(this);
+        Resource.initialize(this, uri, name);
     }
 
     /**
@@ -33,7 +36,9 @@ class Resource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, uri, name) { 
+        obj['uri'] = uri;
+        obj['name'] = name;
     }
 
     /**
@@ -47,17 +52,17 @@ class Resource {
         if (data) {
             obj = obj || new Resource();
 
-            if (data.hasOwnProperty('requested')) {
-                obj['requested'] = ApiClient.convertToType(data['requested'], 'Number');
+            if (data.hasOwnProperty('uri')) {
+                obj['uri'] = ApiClient.convertToType(data['uri'], 'String');
             }
-            if (data.hasOwnProperty('allocatable')) {
-                obj['allocatable'] = ApiClient.convertToType(data['allocatable'], 'Number');
+            if (data.hasOwnProperty('name')) {
+                obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
-            if (data.hasOwnProperty('capacity')) {
-                obj['capacity'] = ApiClient.convertToType(data['capacity'], 'Number');
+            if (data.hasOwnProperty('description')) {
+                obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
-            if (data.hasOwnProperty('used')) {
-                obj['used'] = ApiClient.convertToType(data['used'], 'Number');
+            if (data.hasOwnProperty('mimeType')) {
+                obj['mimeType'] = ApiClient.convertToType(data['mimeType'], 'String');
             }
         }
         return obj;
@@ -69,6 +74,28 @@ class Resource {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Resource</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of Resource.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['uri'] && !(typeof data['uri'] === 'string' || data['uri'] instanceof String)) {
+            throw new Error("Expected the field `uri` to be a primitive type in the JSON string but got " + data['uri']);
+        }
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
+        // ensure the json data is a string
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // ensure the json data is a string
+        if (data['mimeType'] && !(typeof data['mimeType'] === 'string' || data['mimeType'] instanceof String)) {
+            throw new Error("Expected the field `mimeType` to be a primitive type in the JSON string but got " + data['mimeType']);
+        }
 
         return true;
     }
@@ -76,38 +103,67 @@ class Resource {
 
 }
 
+Resource.RequiredProperties = ["uri", "name"];
+
+/**
+ * URI ресурса
+ * @member {module:model/Resource.UriEnum} uri
+ */
+Resource.prototype['uri'] = undefined;
+
+/**
+ * Имя ресурса
+ * @member {String} name
+ */
+Resource.prototype['name'] = undefined;
+
+/**
+ * Описание ресурса
+ * @member {String} description
+ */
+Resource.prototype['description'] = undefined;
+
+/**
+ * Тип содержимого
+ * @member {String} mimeType
+ */
+Resource.prototype['mimeType'] = undefined;
+
+
+
 
 
 /**
- * Запрошенное количество ресурса
- * @member {Number} requested
- * @default 0
+ * Allowed values for the <code>uri</code> property.
+ * @enum {String}
+ * @readonly
  */
-Resource.prototype['requested'] = 0;
+Resource['UriEnum'] = {
 
-/**
- * Доступное количество
- * @member {Number} allocatable
- * @default 0
- */
-Resource.prototype['allocatable'] = 0;
+    /**
+     * value: "billing://me/finances"
+     * @const
+     */
+    "billing://me/finances": "billing://me/finances",
 
-/**
- * Общее количество
- * @member {Number} capacity
- * @default 0
- */
-Resource.prototype['capacity'] = 0;
+    /**
+     * value: "services://me/active"
+     * @const
+     */
+    "services://me/active": "services://me/active",
 
-/**
- * Используемое количество
- * @member {Number} used
- * @default 0
- */
-Resource.prototype['used'] = 0;
+    /**
+     * value: "services://cloud/catalog"
+     * @const
+     */
+    "services://cloud/catalog": "services://cloud/catalog",
 
-
-
+    /**
+     * value: "locations://cloud/list"
+     * @const
+     */
+    "locations://cloud/list": "locations://cloud/list"
+};
 
 
 

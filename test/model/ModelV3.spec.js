@@ -138,6 +138,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property priceTiers (base name: "price_tiers")', function() {
+      // uncomment below and update the code to test the property priceTiers
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property batch (base name: "batch")', function() {
+      // uncomment below and update the code to test the property batch
+      //var instance = new TimewebCloudApi.ModelV3();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -21,8 +21,9 @@ import ApiClient from '../ApiClient';
 class AgentModelSettings {
     /**
      * Constructs a new <code>AgentModelSettings</code>.
-     * Настройки модели агента
+     * Параметры модели агента. Допустимые параметры и их границы зависят от модели (см. параметры модели в разделе «AI Модели»): параметры, которые модель не поддерживает, отбрасываются при сохранении, а значения вне допустимых границ отклоняются с ошибкой 400.
      * @alias module:model/AgentModelSettings
+     * @extends Object
      */
     constructor() { 
         
@@ -48,6 +49,9 @@ class AgentModelSettings {
         if (data) {
             obj = obj || new AgentModelSettings();
 
+            ApiClient.constructFromObject(data, obj, 'Object');
+            
+
             if (data.hasOwnProperty('temperature')) {
                 obj['temperature'] = ApiClient.convertToType(data['temperature'], 'Number');
             }
@@ -62,6 +66,9 @@ class AgentModelSettings {
             }
             if (data.hasOwnProperty('presence_penalty')) {
                 obj['presence_penalty'] = ApiClient.convertToType(data['presence_penalty'], 'Number');
+            }
+            if (data.hasOwnProperty('enable_thinking')) {
+                obj['enable_thinking'] = ApiClient.convertToType(data['enable_thinking'], 'Boolean');
             }
         }
         return obj;
@@ -83,34 +90,40 @@ class AgentModelSettings {
 
 
 /**
- * Контролирует случайность вывода модели.
+ * Температура: чем выше, тем случайнее ответы модели.
  * @member {Number} temperature
  */
 AgentModelSettings.prototype['temperature'] = undefined;
 
 /**
- * Контролирует разнообразие вывода модели.
+ * Nucleus sampling: доля вероятностной массы, из которой выбираются токены.
  * @member {Number} top_p
  */
 AgentModelSettings.prototype['top_p'] = undefined;
 
 /**
- * Максимальное количество токенов в выводе.
+ * Максимальное количество токенов в ответе модели.
  * @member {Number} max_tokens
  */
 AgentModelSettings.prototype['max_tokens'] = undefined;
 
 /**
- * Положительные значения штрафуют новые токены на основе их существующей частоты.
+ * Штраф за частоту: положительные значения снижают повторы уже использованных токенов.
  * @member {Number} frequency_penalty
  */
 AgentModelSettings.prototype['frequency_penalty'] = undefined;
 
 /**
- * Положительные значения штрафуют новые токены на основе того, встречались ли они в тексте ранее.
+ * Штраф за присутствие: положительные значения поощряют новые темы.
  * @member {Number} presence_penalty
  */
 AgentModelSettings.prototype['presence_penalty'] = undefined;
+
+/**
+ * Включает режим рассуждений (thinking) для моделей, которые его поддерживают.
+ * @member {Boolean} enable_thinking
+ */
+AgentModelSettings.prototype['enable_thinking'] = undefined;
 
 
 

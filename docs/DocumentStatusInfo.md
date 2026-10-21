@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Тип статуса документа | 
-**timestamp** | **Date** | Время записи информации (ISO string) | 
-**errorCode** | **String** | Код ошибки (только для type: &#39;error&#39;) | [optional] 
+**type** | **String** | Тип состояния, совпадает со статусом документа | 
+**timestamp** | **Date** | Время, когда записано состояние | 
+**errorCode** | **String** | Код ошибки, только для &#x60;type: error&#x60;: - &#x60;INSUFFICIENT_TOKENS&#x60; — недостаточно токенов для индексации - &#x60;CRITICAL_BALANCE&#x60; — критически низкий остаток токенов - &#x60;NEGATIVE_BALANCE&#x60; — отрицательный остаток токенов - &#x60;INDEXING_ERROR&#x60; — не удалось обработать документ | [optional] 
+**stage** | **String** | Этап индексации, на котором произошла ошибка | [optional] 
+**traceId** | **String** | Идентификатор операции индексации — укажите его при обращении в поддержку | [optional] 
 **details** | [**DocumentStatusInfoDetails**](DocumentStatusInfoDetails.md) |  | [optional] 
 
 

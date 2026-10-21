@@ -54,6 +54,12 @@
       //expect(instance).to.be.a(TimewebCloudApi.Status);
     });
 
+    it('should have the property login (base name: "login")', function() {
+      // uncomment below and update the code to test the property login
+      //var instance = new TimewebCloudApi.Status();
+      //expect(instance).to.be();
+    });
+
     it('should have the property isBlocked (base name: "is_blocked")', function() {
       // uncomment below and update the code to test the property isBlocked
       //var instance = new TimewebCloudApi.Status();

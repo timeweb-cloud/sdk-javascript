@@ -72,6 +72,60 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property indexingDurationMs (base name: "indexing_duration_ms")', function() {
+      // uncomment below and update the code to test the property indexingDurationMs
+      //var instance = new TimewebCloudApi.DocumentStatusInfoDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tokensUsed (base name: "tokens_used")', function() {
+      // uncomment below and update the code to test the property tokensUsed
+      //var instance = new TimewebCloudApi.DocumentStatusInfoDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tokensEstimated (base name: "tokens_estimated")', function() {
+      // uncomment below and update the code to test the property tokensEstimated
+      //var instance = new TimewebCloudApi.DocumentStatusInfoDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property chunksCount (base name: "chunks_count")', function() {
+      // uncomment below and update the code to test the property chunksCount
+      //var instance = new TimewebCloudApi.DocumentStatusInfoDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property needed (base name: "needed")', function() {
+      // uncomment below and update the code to test the property needed
+      //var instance = new TimewebCloudApi.DocumentStatusInfoDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property available (base name: "available")', function() {
+      // uncomment below and update the code to test the property available
+      //var instance = new TimewebCloudApi.DocumentStatusInfoDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property estimated (base name: "estimated")', function() {
+      // uncomment below and update the code to test the property estimated
+      //var instance = new TimewebCloudApi.DocumentStatusInfoDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property balance (base name: "balance")', function() {
+      // uncomment below and update the code to test the property balance
+      //var instance = new TimewebCloudApi.DocumentStatusInfoDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property minRequired (base name: "min_required")', function() {
+      // uncomment below and update the code to test the property minRequired
+      //var instance = new TimewebCloudApi.DocumentStatusInfoDetails();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

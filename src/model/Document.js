@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import DocumentStatusInfo from './DocumentStatusInfo';
+import IndexingSchedule from './IndexingSchedule';
 
 /**
  * The Document model module.
@@ -22,18 +23,22 @@ import DocumentStatusInfo from './DocumentStatusInfo';
 class Document {
     /**
      * Constructs a new <code>Document</code>.
-     * Документ в базе знаний
+     * Документ базы знаний
      * @alias module:model/Document
-     * @param id {Number} Уникальный идентификатор документа
+     * @param id {Number} ID документа
      * @param name {String} Название документа
-     * @param size {Number} Размер документа в байтах
-     * @param status {module:model/Document.StatusEnum} Статус индексации документа
-     * @param createdAt {Date} Дата создания документа
-     * @param updatedAt {Date} Дата обновления документа
+     * @param size {Number} Размер в байтах. Для документа по ссылке — значение заголовка `Content-Length` на момент добавления, `0`, если сервер его не вернул
+     * @param status {module:model/Document.StatusEnum} Статус индексации: - `new` — документ добавлен и ждёт индексации - `indexing` — индексируется - `indexed` — проиндексирован, используется в поиске - `error` — ошибка индексации, подробности в `status_info`
+     * @param type {module:model/Document.TypeEnum} Тип документа: `file` — загруженный файл, `link` — документ по ссылке
+     * @param indexingSchedule {module:model/IndexingSchedule} 
+     * @param indexingVersion {String} Версия индексации документа
+     * @param statusInfo {module:model/DocumentStatusInfo} 
+     * @param createdAt {Date} Дата и время добавления документа
+     * @param updatedAt {Date} Дата и время последнего изменения документа
      */
-    constructor(id, name, size, status, createdAt, updatedAt) { 
+    constructor(id, name, size, status, type, indexingSchedule, indexingVersion, statusInfo, createdAt, updatedAt) { 
         
-        Document.initialize(this, id, name, size, status, createdAt, updatedAt);
+        Document.initialize(this, id, name, size, status, type, indexingSchedule, indexingVersion, statusInfo, createdAt, updatedAt);
     }
 
     /**
@@ -41,11 +46,15 @@ class Document {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, size, status, createdAt, updatedAt) { 
+    static initialize(obj, id, name, size, status, type, indexingSchedule, indexingVersion, statusInfo, createdAt, updatedAt) { 
         obj['id'] = id;
         obj['name'] = name;
         obj['size'] = size;
         obj['status'] = status;
+        obj['type'] = type;
+        obj['indexing_schedule'] = indexingSchedule;
+        obj['indexing_version'] = indexingVersion;
+        obj['status_info'] = statusInfo;
         obj['created_at'] = createdAt;
         obj['updated_at'] = updatedAt;
     }
@@ -73,11 +82,20 @@ class Document {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = ApiClient.convertToType(data['status'], 'String');
             }
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = ApiClient.convertToType(data['type'], 'String');
+            }
+            if (data.hasOwnProperty('indexing_schedule')) {
+                obj['indexing_schedule'] = IndexingSchedule.constructFromObject(data['indexing_schedule']);
+            }
             if (data.hasOwnProperty('indexing_version')) {
                 obj['indexing_version'] = ApiClient.convertToType(data['indexing_version'], 'String');
             }
             if (data.hasOwnProperty('status_info')) {
                 obj['status_info'] = DocumentStatusInfo.constructFromObject(data['status_info']);
+            }
+            if (data.hasOwnProperty('link')) {
+                obj['link'] = ApiClient.convertToType(data['link'], 'String');
             }
             if (data.hasOwnProperty('created_at')) {
                 obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
@@ -110,12 +128,24 @@ class Document {
             throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
         }
         // ensure the json data is a string
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
+        }
+        // validate the optional field `indexing_schedule`
+        if (data['indexing_schedule']) { // data not null
+          IndexingSchedule.validateJSON(data['indexing_schedule']);
+        }
+        // ensure the json data is a string
         if (data['indexing_version'] && !(typeof data['indexing_version'] === 'string' || data['indexing_version'] instanceof String)) {
             throw new Error("Expected the field `indexing_version` to be a primitive type in the JSON string but got " + data['indexing_version']);
         }
         // validate the optional field `status_info`
         if (data['status_info']) { // data not null
           DocumentStatusInfo.validateJSON(data['status_info']);
+        }
+        // ensure the json data is a string
+        if (data['link'] && !(typeof data['link'] === 'string' || data['link'] instanceof String)) {
+            throw new Error("Expected the field `link` to be a primitive type in the JSON string but got " + data['link']);
         }
 
         return true;
@@ -124,10 +154,10 @@ class Document {
 
 }
 
-Document.RequiredProperties = ["id", "name", "size", "status", "created_at", "updated_at"];
+Document.RequiredProperties = ["id", "name", "size", "status", "type", "indexing_schedule", "indexing_version", "status_info", "created_at", "updated_at"];
 
 /**
- * Уникальный идентификатор документа
+ * ID документа
  * @member {Number} id
  */
 Document.prototype['id'] = undefined;
@@ -139,19 +169,30 @@ Document.prototype['id'] = undefined;
 Document.prototype['name'] = undefined;
 
 /**
- * Размер документа в байтах
+ * Размер в байтах. Для документа по ссылке — значение заголовка `Content-Length` на момент добавления, `0`, если сервер его не вернул
  * @member {Number} size
  */
 Document.prototype['size'] = undefined;
 
 /**
- * Статус индексации документа
+ * Статус индексации: - `new` — документ добавлен и ждёт индексации - `indexing` — индексируется - `indexed` — проиндексирован, используется в поиске - `error` — ошибка индексации, подробности в `status_info`
  * @member {module:model/Document.StatusEnum} status
  */
 Document.prototype['status'] = undefined;
 
 /**
- * Версия индексации
+ * Тип документа: `file` — загруженный файл, `link` — документ по ссылке
+ * @member {module:model/Document.TypeEnum} type
+ */
+Document.prototype['type'] = undefined;
+
+/**
+ * @member {module:model/IndexingSchedule} indexing_schedule
+ */
+Document.prototype['indexing_schedule'] = undefined;
+
+/**
+ * Версия индексации документа
  * @member {String} indexing_version
  */
 Document.prototype['indexing_version'] = undefined;
@@ -162,13 +203,19 @@ Document.prototype['indexing_version'] = undefined;
 Document.prototype['status_info'] = undefined;
 
 /**
- * Дата создания документа
+ * URL документа. Только для документов типа `link`
+ * @member {String} link
+ */
+Document.prototype['link'] = undefined;
+
+/**
+ * Дата и время добавления документа
  * @member {Date} created_at
  */
 Document.prototype['created_at'] = undefined;
 
 /**
- * Дата обновления документа
+ * Дата и время последнего изменения документа
  * @member {Date} updated_at
  */
 Document.prototype['updated_at'] = undefined;
@@ -191,22 +238,43 @@ Document['StatusEnum'] = {
     "new": "new",
 
     /**
-     * value: "indexed"
-     * @const
-     */
-    "indexed": "indexed",
-
-    /**
      * value: "indexing"
      * @const
      */
     "indexing": "indexing",
 
     /**
+     * value: "indexed"
+     * @const
+     */
+    "indexed": "indexed",
+
+    /**
      * value: "error"
      * @const
      */
     "error": "error"
+};
+
+
+/**
+ * Allowed values for the <code>type</code> property.
+ * @enum {String}
+ * @readonly
+ */
+Document['TypeEnum'] = {
+
+    /**
+     * value: "file"
+     * @const
+     */
+    "file": "file",
+
+    /**
+     * value: "link"
+     * @const
+     */
+    "link": "link"
 };
 
 

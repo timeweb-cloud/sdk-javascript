@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**knowledgebases** | [**[KnowledgebaseV2]**](KnowledgebaseV2.md) |  | 
-**meta** | [**GetKnowledgebasesV2200ResponseMeta**](GetKnowledgebasesV2200ResponseMeta.md) |  | 
+**knowledgeBases** | [**[KnowledgebaseV2]**](KnowledgebaseV2.md) |  | 
+**meta** | [**GetKnowledgebasesV3200ResponseMeta**](GetKnowledgebasesV3200ResponseMeta.md) |  | 
 
 

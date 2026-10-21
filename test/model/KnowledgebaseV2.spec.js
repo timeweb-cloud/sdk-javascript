@@ -72,6 +72,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property projectId (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property projectId
+      //var instance = new TimewebCloudApi.KnowledgebaseV2();
+      //expect(instance).to.be();
+    });
+
     it('should have the property dbaasId (base name: "dbaas_id")', function() {
       // uncomment below and update the code to test the property dbaasId
       //var instance = new TimewebCloudApi.KnowledgebaseV2();

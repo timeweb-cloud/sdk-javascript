@@ -21,7 +21,7 @@ import ApiClient from '../ApiClient';
 class UpdateKnowledgebase {
     /**
      * Constructs a new <code>UpdateKnowledgebase</code>.
-     * Данные для обновления базы знаний
+     * Данные для изменения базы знаний. Передайте только поля, которые нужно изменить
      * @alias module:model/UpdateKnowledgebase
      */
     constructor() { 
@@ -82,13 +82,13 @@ class UpdateKnowledgebase {
 
 
 /**
- * Название базы знаний
+ * Новое название. Пустая строка игнорируется
  * @member {String} name
  */
 UpdateKnowledgebase.prototype['name'] = undefined;
 
 /**
- * Описание базы знаний
+ * Новое описание
  * @member {String} description
  */
 UpdateKnowledgebase.prototype['description'] = undefined;

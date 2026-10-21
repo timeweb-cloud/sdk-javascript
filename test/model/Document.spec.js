@@ -78,6 +78,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instance = new TimewebCloudApi.Document();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property indexingSchedule (base name: "indexing_schedule")', function() {
+      // uncomment below and update the code to test the property indexingSchedule
+      //var instance = new TimewebCloudApi.Document();
+      //expect(instance).to.be();
+    });
+
     it('should have the property indexingVersion (base name: "indexing_version")', function() {
       // uncomment below and update the code to test the property indexingVersion
       //var instance = new TimewebCloudApi.Document();
@@ -86,6 +98,12 @@
 
     it('should have the property statusInfo (base name: "status_info")', function() {
       // uncomment below and update the code to test the property statusInfo
+      //var instance = new TimewebCloudApi.Document();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property link (base name: "link")', function() {
+      // uncomment below and update the code to test the property link
       //var instance = new TimewebCloudApi.Document();
       //expect(instance).to.be();
     });

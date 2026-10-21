@@ -24,7 +24,7 @@ class GetKnowledgebaseDocumentsV2200Response {
     /**
      * Constructs a new <code>GetKnowledgebaseDocumentsV2200Response</code>.
      * @alias module:model/GetKnowledgebaseDocumentsV2200Response
-     * @param knowledgebaseDocuments {Array.<module:model/Document>} Список документов
+     * @param knowledgebaseDocuments {Array.<module:model/Document>} Документы
      * @param meta {module:model/GetKnowledgebaseDocumentsV2200ResponseMeta} 
      */
     constructor(knowledgebaseDocuments, meta) { 
@@ -99,7 +99,7 @@ class GetKnowledgebaseDocumentsV2200Response {
 GetKnowledgebaseDocumentsV2200Response.RequiredProperties = ["knowledgebase_documents", "meta"];
 
 /**
- * Список документов
+ * Документы
  * @member {Array.<module:model/Document>} knowledgebase_documents
  */
 GetKnowledgebaseDocumentsV2200Response.prototype['knowledgebase_documents'] = undefined;

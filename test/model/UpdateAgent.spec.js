@@ -78,12 +78,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property tokenPackageId (base name: "token_package_id")', function() {
-      // uncomment below and update the code to test the property tokenPackageId
-      //var instance = new TimewebCloudApi.UpdateAgent();
-      //expect(instance).to.be();
-    });
-
     it('should have the property settings (base name: "settings")', function() {
       // uncomment below and update the code to test the property settings
       //var instance = new TimewebCloudApi.UpdateAgent();
@@ -92,6 +86,36 @@
 
     it('should have the property projectId (base name: "project_id")', function() {
       // uncomment below and update the code to test the property projectId
+      //var instance = new TimewebCloudApi.UpdateAgent();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property additionalModelIds (base name: "additional_model_ids")', function() {
+      // uncomment below and update the code to test the property additionalModelIds
+      //var instance = new TimewebCloudApi.UpdateAgent();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property additionalModels (base name: "additional_models")', function() {
+      // uncomment below and update the code to test the property additionalModels
+      //var instance = new TimewebCloudApi.UpdateAgent();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isWebSearchEnabled (base name: "is_web_search_enabled")', function() {
+      // uncomment below and update the code to test the property isWebSearchEnabled
+      //var instance = new TimewebCloudApi.UpdateAgent();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property aiGatewayKeyId (base name: "ai_gateway_key_id")', function() {
+      // uncomment below and update the code to test the property aiGatewayKeyId
+      //var instance = new TimewebCloudApi.UpdateAgent();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tokenPackageId (base name: "token_package_id")', function() {
+      // uncomment below and update the code to test the property tokenPackageId
       //var instance = new TimewebCloudApi.UpdateAgent();
       //expect(instance).to.be();
     });

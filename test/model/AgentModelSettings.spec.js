@@ -84,6 +84,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property enableThinking (base name: "enable_thinking")', function() {
+      // uncomment below and update the code to test the property enableThinking
+      //var instance = new TimewebCloudApi.AgentModelSettings();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

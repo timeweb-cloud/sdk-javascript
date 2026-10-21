@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import AgentAdditionalModel from './AgentAdditionalModel';
 import AgentSettings from './AgentSettings';
 
 /**
@@ -22,11 +23,11 @@ import AgentSettings from './AgentSettings';
 class CreateAgentV2 {
     /**
      * Constructs a new <code>CreateAgentV2</code>.
-     * Данные для создания AI агента через API v2
+     * Данные для создания AI агента
      * @alias module:model/CreateAgentV2
      * @param name {String} Название агента
-     * @param accessType {module:model/CreateAgentV2.AccessTypeEnum} Тип доступа к агенту
-     * @param modelId {Number} ID основной модели
+     * @param accessType {module:model/CreateAgentV2.AccessTypeEnum} Тип доступа: `public` — агент отвечает анонимным посетителям сайта через виджет; `private` — только по токену аккаунта.
+     * @param modelId {Number} ID основной модели агента
      * @param settings {module:model/AgentSettings} 
      */
     constructor(name, accessType, modelId, settings) { 
@@ -69,20 +70,32 @@ class CreateAgentV2 {
             if (data.hasOwnProperty('model_id')) {
                 obj['model_id'] = ApiClient.convertToType(data['model_id'], 'Number');
             }
-            if (data.hasOwnProperty('token_limit')) {
-                obj['token_limit'] = ApiClient.convertToType(data['token_limit'], 'Number');
-            }
             if (data.hasOwnProperty('settings')) {
                 obj['settings'] = AgentSettings.constructFromObject(data['settings']);
             }
             if (data.hasOwnProperty('project_id')) {
                 obj['project_id'] = ApiClient.convertToType(data['project_id'], 'Number');
             }
+            if (data.hasOwnProperty('is_web_search_enabled')) {
+                obj['is_web_search_enabled'] = ApiClient.convertToType(data['is_web_search_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('money_limit')) {
+                obj['money_limit'] = ApiClient.convertToType(data['money_limit'], 'Number');
+            }
+            if (data.hasOwnProperty('token_limit')) {
+                obj['token_limit'] = ApiClient.convertToType(data['token_limit'], 'Number');
+            }
+            if (data.hasOwnProperty('token_package_id')) {
+                obj['token_package_id'] = ApiClient.convertToType(data['token_package_id'], 'Number');
+            }
             if (data.hasOwnProperty('additional_model_ids')) {
                 obj['additional_model_ids'] = ApiClient.convertToType(data['additional_model_ids'], ['Number']);
             }
-            if (data.hasOwnProperty('is_web_search_enabled')) {
-                obj['is_web_search_enabled'] = ApiClient.convertToType(data['is_web_search_enabled'], 'Boolean');
+            if (data.hasOwnProperty('additional_models')) {
+                obj['additional_models'] = ApiClient.convertToType(data['additional_models'], [AgentAdditionalModel]);
+            }
+            if (data.hasOwnProperty('skill_ids')) {
+                obj['skill_ids'] = ApiClient.convertToType(data['skill_ids'], ['Number']);
             }
         }
         return obj;
@@ -120,6 +133,20 @@ class CreateAgentV2 {
         if (!Array.isArray(data['additional_model_ids'])) {
             throw new Error("Expected the field `additional_model_ids` to be an array in the JSON data but got " + data['additional_model_ids']);
         }
+        if (data['additional_models']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['additional_models'])) {
+                throw new Error("Expected the field `additional_models` to be an array in the JSON data but got " + data['additional_models']);
+            }
+            // validate the optional field `additional_models` (array)
+            for (const item of data['additional_models']) {
+                AgentAdditionalModel.validateJSON(item);
+            };
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['skill_ids'])) {
+            throw new Error("Expected the field `skill_ids` to be an array in the JSON data but got " + data['skill_ids']);
+        }
 
         return true;
     }
@@ -142,22 +169,16 @@ CreateAgentV2.prototype['name'] = undefined;
 CreateAgentV2.prototype['description'] = undefined;
 
 /**
- * Тип доступа к агенту
+ * Тип доступа: `public` — агент отвечает анонимным посетителям сайта через виджет; `private` — только по токену аккаунта.
  * @member {module:model/CreateAgentV2.AccessTypeEnum} access_type
  */
 CreateAgentV2.prototype['access_type'] = undefined;
 
 /**
- * ID основной модели
+ * ID основной модели агента
  * @member {Number} model_id
  */
 CreateAgentV2.prototype['model_id'] = undefined;
-
-/**
- * Дневной лимит токенов для агента (0 — без лимита)
- * @member {Number} token_limit
- */
-CreateAgentV2.prototype['token_limit'] = undefined;
 
 /**
  * @member {module:model/AgentSettings} settings
@@ -165,22 +186,53 @@ CreateAgentV2.prototype['token_limit'] = undefined;
 CreateAgentV2.prototype['settings'] = undefined;
 
 /**
- * ID проекта
+ * ID проекта, в который нужно добавить агента. По умолчанию — проект по умолчанию.
  * @member {Number} project_id
  */
 CreateAgentV2.prototype['project_id'] = undefined;
 
 /**
- * Список ID дополнительных моделей агента
+ * Включить веб-поиск
+ * @member {Boolean} is_web_search_enabled
+ * @default false
+ */
+CreateAgentV2.prototype['is_web_search_enabled'] = false;
+
+/**
+ * Дневной лимит расходов агента в валюте аккаунта. `0` или не передан — без лимита. Создаётся как лимит агента с периодом `day`; изменить его можно через лимиты агента.
+ * @member {Number} money_limit
+ */
+CreateAgentV2.prototype['money_limit'] = undefined;
+
+/**
+ * Устарело: дневной лимит агента в токенах. `0` или не передан — без лимита. Не учитывается, если передан `money_limit`.
+ * @member {Number} token_limit
+ */
+CreateAgentV2.prototype['token_limit'] = undefined;
+
+/**
+ * Устарело и не учитывается: агент всегда создаётся с поресурсной оплатой.
+ * @member {Number} token_package_id
+ */
+CreateAgentV2.prototype['token_package_id'] = undefined;
+
+/**
+ * ID дополнительных моделей агента (например, для генерации изображений). Список заменяет текущий целиком.
  * @member {Array.<Number>} additional_model_ids
  */
 CreateAgentV2.prototype['additional_model_ids'] = undefined;
 
 /**
- * Признак использования веб-поиска агентом
- * @member {Boolean} is_web_search_enabled
+ * Дополнительные модели вместе с настройками (для моделей генерации изображений — `width`/`height`). Если переданы и `additional_models`, и `additional_model_ids`, используется `additional_models`.
+ * @member {Array.<module:model/AgentAdditionalModel>} additional_models
  */
-CreateAgentV2.prototype['is_web_search_enabled'] = undefined;
+CreateAgentV2.prototype['additional_models'] = undefined;
+
+/**
+ * ID навыков, которые нужно подключить к агенту сразу после создания (текущие версии навыков). Неизвестные ID пропускаются; ошибка подключения навыков не отменяет создание агента.
+ * @member {Array.<Number>} skill_ids
+ */
+CreateAgentV2.prototype['skill_ids'] = undefined;
 
 
 

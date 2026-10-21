@@ -22,7 +22,7 @@ class GetModelsV3200ResponseMeta {
     /**
      * Constructs a new <code>GetModelsV3200ResponseMeta</code>.
      * @alias module:model/GetModelsV3200ResponseMeta
-     * @param total {Number} Общее количество моделей
+     * @param total {Number} Количество моделей
      */
     constructor(total) { 
         
@@ -78,7 +78,7 @@ class GetModelsV3200ResponseMeta {
 GetModelsV3200ResponseMeta.RequiredProperties = ["total"];
 
 /**
- * Общее количество моделей
+ * Количество моделей
  * @member {Number} total
  */
 GetModelsV3200ResponseMeta.prototype['total'] = undefined;
