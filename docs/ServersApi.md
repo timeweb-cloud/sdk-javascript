@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**createServer**](ServersApi.md#createServer) | **POST** /api/v1/servers | Создание сервера
 [**createServerDisk**](ServersApi.md#createServerDisk) | **POST** /api/v1/servers/{server_id}/disks | Создание диска сервера
 [**createServerDiskBackup**](ServersApi.md#createServerDiskBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups | Создание бэкапа диска сервера
+[**createServerDiskBackupDownloadUrl**](ServersApi.md#createServerDiskBackupDownloadUrl) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/download-url | Получение ссылки для скачивания бэкапа диска сервера
 [**deleteServer**](ServersApi.md#deleteServer) | **DELETE** /api/v1/servers/{server_id} | Удаление сервера
 [**deleteServerDisk**](ServersApi.md#deleteServerDisk) | **DELETE** /api/v1/servers/{server_id}/disks/{disk_id} | Удаление диска сервера
 [**deleteServerDiskBackup**](ServersApi.md#deleteServerDiskBackup) | **DELETE** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id} | Удаление бэкапа диска сервера
@@ -396,6 +397,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateServerDiskBackup201Response**](CreateServerDiskBackup201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## createServerDiskBackupDownloadUrl
+
+> CreateServerDiskBackupDownloadUrl201Response createServerDiskBackupDownloadUrl(serverId, diskId, backupId, serverBackupDownloadUrlRequest)
+
+Получение ссылки для скачивания бэкапа диска сервера
+
+Чтобы получить ссылку для скачивания бэкапа диска сервера, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/download-url&#x60;.   Скачивание бэкапов доступно для серверов в локациях &#x60;ru-1&#x60; (Санкт-Петербург) и &#x60;ru-3&#x60; (Москва). Для серверов в других локациях метод вернет ошибку со статусом &#x60;400&#x60;.   Ссылка действует 7 дней. Скачать бэкап по ней может любой, у кого она есть, поэтому не передавайте ее третьим лицам.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.ServersApi();
+let serverId = 1051; // Number | ID облачного сервера.
+let diskId = 1051; // Number | ID диска сервера.
+let backupId = 1051; // Number | ID бэкапа сервера.
+let serverBackupDownloadUrlRequest = new TimewebCloudApi.ServerBackupDownloadUrlRequest(); // ServerBackupDownloadUrlRequest | 
+apiInstance.createServerDiskBackupDownloadUrl(serverId, diskId, backupId, serverBackupDownloadUrlRequest, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **serverId** | **Number**| ID облачного сервера. | 
+ **diskId** | **Number**| ID диска сервера. | 
+ **backupId** | **Number**| ID бэкапа сервера. | 
+ **serverBackupDownloadUrlRequest** | [**ServerBackupDownloadUrlRequest**](ServerBackupDownloadUrlRequest.md)|  | 
+
+### Return type
+
+[**CreateServerDiskBackupDownloadUrl201Response**](CreateServerDiskBackupDownloadUrl201Response.md)
 
 ### Authorization
 

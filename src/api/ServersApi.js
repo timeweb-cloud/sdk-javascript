@@ -20,6 +20,7 @@ import CreateServer from '../model/CreateServer';
 import CreateServer201Response from '../model/CreateServer201Response';
 import CreateServerDisk201Response from '../model/CreateServerDisk201Response';
 import CreateServerDiskBackup201Response from '../model/CreateServerDiskBackup201Response';
+import CreateServerDiskBackupDownloadUrl201Response from '../model/CreateServerDiskBackupDownloadUrl201Response';
 import CreateServerDiskBackupRequest from '../model/CreateServerDiskBackupRequest';
 import CreateServerDiskRequest from '../model/CreateServerDiskRequest';
 import DeleteServer200Response from '../model/DeleteServer200Response';
@@ -47,6 +48,7 @@ import GetServersPresets200Response from '../model/GetServersPresets200Response'
 import GetSoftware200Response from '../model/GetSoftware200Response';
 import PerformActionOnBackupRequest from '../model/PerformActionOnBackupRequest';
 import PerformActionOnServerRequest from '../model/PerformActionOnServerRequest';
+import ServerBackupDownloadUrlRequest from '../model/ServerBackupDownloadUrlRequest';
 import UpdateDatabaseInstance409Response from '../model/UpdateDatabaseInstance409Response';
 import UpdateServer from '../model/UpdateServer';
 import UpdateServerDiskBackupRequest from '../model/UpdateServerDiskBackupRequest';
@@ -385,6 +387,66 @@ export default class ServersApi {
       let returnType = CreateServerDiskBackup201Response;
       return this.apiClient.callApi(
         '/api/v1/servers/{server_id}/disks/{disk_id}/backups', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the createServerDiskBackupDownloadUrl operation.
+     * @callback module:api/ServersApi~createServerDiskBackupDownloadUrlCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateServerDiskBackupDownloadUrl201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получение ссылки для скачивания бэкапа диска сервера
+     * Чтобы получить ссылку для скачивания бэкапа диска сервера, отправьте POST-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/download-url`.   Скачивание бэкапов доступно для серверов в локациях `ru-1` (Санкт-Петербург) и `ru-3` (Москва). Для серверов в других локациях метод вернет ошибку со статусом `400`.   Ссылка действует 7 дней. Скачать бэкап по ней может любой, у кого она есть, поэтому не передавайте ее третьим лицам.   Тело ответа будет представлять собой объект JSON с ключом `backup_url`.
+     * @param {Number} serverId ID облачного сервера.
+     * @param {Number} diskId ID диска сервера.
+     * @param {Number} backupId ID бэкапа сервера.
+     * @param {module:model/ServerBackupDownloadUrlRequest} serverBackupDownloadUrlRequest 
+     * @param {module:api/ServersApi~createServerDiskBackupDownloadUrlCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateServerDiskBackupDownloadUrl201Response}
+     */
+    createServerDiskBackupDownloadUrl(serverId, diskId, backupId, serverBackupDownloadUrlRequest, callback) {
+      let postBody = serverBackupDownloadUrlRequest;
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling createServerDiskBackupDownloadUrl");
+      }
+      // verify the required parameter 'diskId' is set
+      if (diskId === undefined || diskId === null) {
+        throw new Error("Missing the required parameter 'diskId' when calling createServerDiskBackupDownloadUrl");
+      }
+      // verify the required parameter 'backupId' is set
+      if (backupId === undefined || backupId === null) {
+        throw new Error("Missing the required parameter 'backupId' when calling createServerDiskBackupDownloadUrl");
+      }
+      // verify the required parameter 'serverBackupDownloadUrlRequest' is set
+      if (serverBackupDownloadUrlRequest === undefined || serverBackupDownloadUrlRequest === null) {
+        throw new Error("Missing the required parameter 'serverBackupDownloadUrlRequest' when calling createServerDiskBackupDownloadUrl");
+      }
+
+      let pathParams = {
+        'server_id': serverId,
+        'disk_id': diskId,
+        'backup_id': backupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateServerDiskBackupDownloadUrl201Response;
+      return this.apiClient.callApi(
+        '/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/download-url', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

@@ -118,6 +118,16 @@
         done();
       });
     });
+    describe('createServerDiskBackupDownloadUrl', function() {
+      it('should call createServerDiskBackupDownloadUrl successfully', function(done) {
+        //uncomment below and update the code to test createServerDiskBackupDownloadUrl
+        //instance.createServerDiskBackupDownloadUrl(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('deleteServer', function() {
       it('should call deleteServer successfully', function(done) {
         //uncomment below and update the code to test deleteServer

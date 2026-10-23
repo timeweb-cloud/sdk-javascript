@@ -290,6 +290,7 @@ docs/CreateServer201Response.md
 docs/CreateServerConfiguration.md
 docs/CreateServerDisk201Response.md
 docs/CreateServerDiskBackup201Response.md
+docs/CreateServerDiskBackupDownloadUrl201Response.md
 docs/CreateServerDiskBackupRequest.md
 docs/CreateServerDiskRequest.md
 docs/CreateServerNetwork.md
@@ -772,6 +773,8 @@ docs/SchemasPresetsResponse.md
 docs/SendAiSolutionMessage.md
 docs/SendAiSolutionMessage200Response.md
 docs/ServerBackup.md
+docs/ServerBackupDownloadUrl.md
+docs/ServerBackupDownloadUrlRequest.md
 docs/ServerDisk.md
 docs/ServerIp.md
 docs/ServerLog.md
@@ -1242,6 +1245,7 @@ src/model/CreateServer201Response.js
 src/model/CreateServerConfiguration.js
 src/model/CreateServerDisk201Response.js
 src/model/CreateServerDiskBackup201Response.js
+src/model/CreateServerDiskBackupDownloadUrl201Response.js
 src/model/CreateServerDiskBackupRequest.js
 src/model/CreateServerDiskRequest.js
 src/model/CreateServerNetwork.js
@@ -1707,6 +1711,8 @@ src/model/SchemasPresetsResponse.js
 src/model/SendAiSolutionMessage.js
 src/model/SendAiSolutionMessage200Response.js
 src/model/ServerBackup.js
+src/model/ServerBackupDownloadUrl.js
+src/model/ServerBackupDownloadUrlRequest.js
 src/model/ServerDisk.js
 src/model/ServerIp.js
 src/model/ServerLog.js
@@ -2170,6 +2176,7 @@ test/model/CreateServer201Response.spec.js
 test/model/CreateServerConfiguration.spec.js
 test/model/CreateServerDisk201Response.spec.js
 test/model/CreateServerDiskBackup201Response.spec.js
+test/model/CreateServerDiskBackupDownloadUrl201Response.spec.js
 test/model/CreateServerDiskBackupRequest.spec.js
 test/model/CreateServerDiskRequest.spec.js
 test/model/CreateServerNetwork.spec.js
@@ -2635,6 +2642,8 @@ test/model/SchemasPresetsResponse.spec.js
 test/model/SendAiSolutionMessage.spec.js
 test/model/SendAiSolutionMessage200Response.spec.js
 test/model/ServerBackup.spec.js
+test/model/ServerBackupDownloadUrl.spec.js
+test/model/ServerBackupDownloadUrlRequest.spec.js
 test/model/ServerDisk.spec.js
 test/model/ServerIp.spec.js
 test/model/ServerLog.spec.js

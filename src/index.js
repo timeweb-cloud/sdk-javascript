@@ -287,6 +287,7 @@ import CreateServer201Response from './model/CreateServer201Response';
 import CreateServerConfiguration from './model/CreateServerConfiguration';
 import CreateServerDisk201Response from './model/CreateServerDisk201Response';
 import CreateServerDiskBackup201Response from './model/CreateServerDiskBackup201Response';
+import CreateServerDiskBackupDownloadUrl201Response from './model/CreateServerDiskBackupDownloadUrl201Response';
 import CreateServerDiskBackupRequest from './model/CreateServerDiskBackupRequest';
 import CreateServerDiskRequest from './model/CreateServerDiskRequest';
 import CreateServerNetwork from './model/CreateServerNetwork';
@@ -752,6 +753,8 @@ import SchemasPresetsResponse from './model/SchemasPresetsResponse';
 import SendAiSolutionMessage from './model/SendAiSolutionMessage';
 import SendAiSolutionMessage200Response from './model/SendAiSolutionMessage200Response';
 import ServerBackup from './model/ServerBackup';
+import ServerBackupDownloadUrl from './model/ServerBackupDownloadUrl';
+import ServerBackupDownloadUrlRequest from './model/ServerBackupDownloadUrlRequest';
 import ServerDisk from './model/ServerDisk';
 import ServerIp from './model/ServerIp';
 import ServerLog from './model/ServerLog';
@@ -2624,6 +2627,12 @@ export {
      * @property {module:model/CreateServerDiskBackup201Response}
      */
     CreateServerDiskBackup201Response,
+
+    /**
+     * The CreateServerDiskBackupDownloadUrl201Response model constructor.
+     * @property {module:model/CreateServerDiskBackupDownloadUrl201Response}
+     */
+    CreateServerDiskBackupDownloadUrl201Response,
 
     /**
      * The CreateServerDiskBackupRequest model constructor.
@@ -5414,6 +5423,18 @@ export {
      * @property {module:model/ServerBackup}
      */
     ServerBackup,
+
+    /**
+     * The ServerBackupDownloadUrl model constructor.
+     * @property {module:model/ServerBackupDownloadUrl}
+     */
+    ServerBackupDownloadUrl,
+
+    /**
+     * The ServerBackupDownloadUrlRequest model constructor.
+     * @property {module:model/ServerBackupDownloadUrlRequest}
+     */
+    ServerBackupDownloadUrlRequest,
 
     /**
      * The ServerDisk model constructor.

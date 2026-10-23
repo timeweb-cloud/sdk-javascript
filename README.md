@@ -737,6 +737,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.ServersApi* | [**createServer**](docs/ServersApi.md#createServer) | **POST** /api/v1/servers | Создание сервера
 *TimewebCloudApi.ServersApi* | [**createServerDisk**](docs/ServersApi.md#createServerDisk) | **POST** /api/v1/servers/{server_id}/disks | Создание диска сервера
 *TimewebCloudApi.ServersApi* | [**createServerDiskBackup**](docs/ServersApi.md#createServerDiskBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups | Создание бэкапа диска сервера
+*TimewebCloudApi.ServersApi* | [**createServerDiskBackupDownloadUrl**](docs/ServersApi.md#createServerDiskBackupDownloadUrl) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/download-url | Получение ссылки для скачивания бэкапа диска сервера
 *TimewebCloudApi.ServersApi* | [**deleteServer**](docs/ServersApi.md#deleteServer) | **DELETE** /api/v1/servers/{server_id} | Удаление сервера
 *TimewebCloudApi.ServersApi* | [**deleteServerDisk**](docs/ServersApi.md#deleteServerDisk) | **DELETE** /api/v1/servers/{server_id}/disks/{disk_id} | Удаление диска сервера
 *TimewebCloudApi.ServersApi* | [**deleteServerDiskBackup**](docs/ServersApi.md#deleteServerDiskBackup) | **DELETE** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id} | Удаление бэкапа диска сервера
@@ -1060,6 +1061,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateServerConfiguration](docs/CreateServerConfiguration.md)
  - [TimewebCloudApi.CreateServerDisk201Response](docs/CreateServerDisk201Response.md)
  - [TimewebCloudApi.CreateServerDiskBackup201Response](docs/CreateServerDiskBackup201Response.md)
+ - [TimewebCloudApi.CreateServerDiskBackupDownloadUrl201Response](docs/CreateServerDiskBackupDownloadUrl201Response.md)
  - [TimewebCloudApi.CreateServerDiskBackupRequest](docs/CreateServerDiskBackupRequest.md)
  - [TimewebCloudApi.CreateServerDiskRequest](docs/CreateServerDiskRequest.md)
  - [TimewebCloudApi.CreateServerNetwork](docs/CreateServerNetwork.md)
@@ -1525,6 +1527,8 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.SendAiSolutionMessage](docs/SendAiSolutionMessage.md)
  - [TimewebCloudApi.SendAiSolutionMessage200Response](docs/SendAiSolutionMessage200Response.md)
  - [TimewebCloudApi.ServerBackup](docs/ServerBackup.md)
+ - [TimewebCloudApi.ServerBackupDownloadUrl](docs/ServerBackupDownloadUrl.md)
+ - [TimewebCloudApi.ServerBackupDownloadUrlRequest](docs/ServerBackupDownloadUrlRequest.md)
  - [TimewebCloudApi.ServerDisk](docs/ServerDisk.md)
  - [TimewebCloudApi.ServerIp](docs/ServerIp.md)
  - [TimewebCloudApi.ServerLog](docs/ServerLog.md)
