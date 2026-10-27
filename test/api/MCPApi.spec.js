@@ -48,6 +48,36 @@
   }
 
   describe('MCPApi', function() {
+    describe('connectAgentToolToAgent', function() {
+      it('should call connectAgentToolToAgent successfully', function(done) {
+        //uncomment below and update the code to test connectAgentToolToAgent
+        //instance.connectAgentToolToAgent(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('createAgentTool', function() {
+      it('should call createAgentTool successfully', function(done) {
+        //uncomment below and update the code to test createAgentTool
+        //instance.createAgentTool(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('deleteAgentTool', function() {
+      it('should call deleteAgentTool successfully', function(done) {
+        //uncomment below and update the code to test deleteAgentTool
+        //instance.deleteAgentTool(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('deleteMcpSearchSession', function() {
       it('should call deleteMcpSearchSession successfully', function(done) {
         //uncomment below and update the code to test deleteMcpSearchSession
@@ -62,6 +92,86 @@
       it('should call deleteMcpSession successfully', function(done) {
         //uncomment below and update the code to test deleteMcpSession
         //instance.deleteMcpSession(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('disconnectAgentToolFromAgent', function() {
+      it('should call disconnectAgentToolFromAgent successfully', function(done) {
+        //uncomment below and update the code to test disconnectAgentToolFromAgent
+        //instance.disconnectAgentToolFromAgent(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getAgentTool', function() {
+      it('should call getAgentTool successfully', function(done) {
+        //uncomment below and update the code to test getAgentTool
+        //instance.getAgentTool(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getAgentToolOAuth2AuthorizeUrl', function() {
+      it('should call getAgentToolOAuth2AuthorizeUrl successfully', function(done) {
+        //uncomment below and update the code to test getAgentToolOAuth2AuthorizeUrl
+        //instance.getAgentToolOAuth2AuthorizeUrl(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getAgentToolTemplatePrices', function() {
+      it('should call getAgentToolTemplatePrices successfully', function(done) {
+        //uncomment below and update the code to test getAgentToolTemplatePrices
+        //instance.getAgentToolTemplatePrices(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getAgentToolTemplates', function() {
+      it('should call getAgentToolTemplates successfully', function(done) {
+        //uncomment below and update the code to test getAgentToolTemplates
+        //instance.getAgentToolTemplates(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getAgentTools', function() {
+      it('should call getAgentTools successfully', function(done) {
+        //uncomment below and update the code to test getAgentTools
+        //instance.getAgentTools(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getAgentToolsByAgent', function() {
+      it('should call getAgentToolsByAgent successfully', function(done) {
+        //uncomment below and update the code to test getAgentToolsByAgent
+        //instance.getAgentToolsByAgent(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('installAgentToolFromTemplate', function() {
+      it('should call installAgentToolFromTemplate successfully', function(done) {
+        //uncomment below and update the code to test installAgentToolFromTemplate
+        //instance.installAgentToolFromTemplate(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -88,6 +198,16 @@
         done();
       });
     });
+    describe('refreshAgentToolMethods', function() {
+      it('should call refreshAgentToolMethods successfully', function(done) {
+        //uncomment below and update the code to test refreshAgentToolMethods
+        //instance.refreshAgentToolMethods(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('sendMcpMessage', function() {
       it('should call sendMcpMessage successfully', function(done) {
         //uncomment below and update the code to test sendMcpMessage
@@ -102,6 +222,26 @@
       it('should call sendMcpSearchMessage successfully', function(done) {
         //uncomment below and update the code to test sendMcpSearchMessage
         //instance.sendMcpSearchMessage(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('updateAgentTool', function() {
+      it('should call updateAgentTool successfully', function(done) {
+        //uncomment below and update the code to test updateAgentTool
+        //instance.updateAgentTool(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('updateAgentToolConnection', function() {
+      it('should call updateAgentToolConnection successfully', function(done) {
+        //uncomment below and update the code to test updateAgentToolConnection
+        //instance.updateAgentToolConnection(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

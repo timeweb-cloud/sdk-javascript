@@ -914,7 +914,6 @@ import VpcService from './model/VpcService';
 import WorkerPresetOutApi from './model/WorkerPresetOutApi';
 import AIAgentIntegrationsApi from './api/AIAgentIntegrationsApi';
 import AIAgentSkillsApi from './api/AIAgentSkillsApi';
-import AIAgentToolsApi from './api/AIAgentToolsApi';
 import AIAgentsApi from './api/AIAgentsApi';
 import AIGatewayApi from './api/AIGatewayApi';
 import AIGatewayInferenceApi from './api/AIGatewayInferenceApi';
@@ -6389,12 +6388,6 @@ export {
     * @property {module:api/AIAgentSkillsApi}
     */
     AIAgentSkillsApi,
-
-    /**
-    * The AIAgentToolsApi service constructor.
-    * @property {module:api/AIAgentToolsApi}
-    */
-    AIAgentToolsApi,
 
     /**
     * The AIAgentsApi service constructor.

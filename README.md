@@ -308,20 +308,6 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.AIAgentSkillsApi* | [**syncAgentSkillVersionsForAgent**](docs/AIAgentSkillsApi.md#syncAgentSkillVersionsForAgent) | **POST** /api/v1/cloud-ai/agents/{agent_id}/skills/sync-versions | Перевод всех навыков агента на текущие версии
 *TimewebCloudApi.AIAgentSkillsApi* | [**updateAgentSkill**](docs/AIAgentSkillsApi.md#updateAgentSkill) | **PATCH** /api/v1/cloud-ai/skills/{skill_id} | Изменение навыка
 *TimewebCloudApi.AIAgentSkillsApi* | [**updateAgentSkillVersionForAgent**](docs/AIAgentSkillsApi.md#updateAgentSkillVersionForAgent) | **POST** /api/v1/cloud-ai/agents/{agent_id}/skills/{skill_id}/update-version | Перевод агента на текущую версию навыка
-*TimewebCloudApi.AIAgentToolsApi* | [**connectAgentToolToAgent**](docs/AIAgentToolsApi.md#connectAgentToolToAgent) | **POST** /api/v1/cloud-ai/agents/{agent_id}/tools | Подключение MCP-инструмента к агенту
-*TimewebCloudApi.AIAgentToolsApi* | [**createAgentTool**](docs/AIAgentToolsApi.md#createAgentTool) | **POST** /api/v1/cloud-ai/tools | Подключение собственного MCP-сервера
-*TimewebCloudApi.AIAgentToolsApi* | [**deleteAgentTool**](docs/AIAgentToolsApi.md#deleteAgentTool) | **DELETE** /api/v1/cloud-ai/tools/{id} | Удаление MCP-инструмента
-*TimewebCloudApi.AIAgentToolsApi* | [**disconnectAgentToolFromAgent**](docs/AIAgentToolsApi.md#disconnectAgentToolFromAgent) | **DELETE** /api/v1/cloud-ai/agents/{agent_id}/tools/{tool_id} | Отключение MCP-инструмента от агента
-*TimewebCloudApi.AIAgentToolsApi* | [**getAgentTool**](docs/AIAgentToolsApi.md#getAgentTool) | **GET** /api/v1/cloud-ai/tools/{id} | Получение MCP-инструмента
-*TimewebCloudApi.AIAgentToolsApi* | [**getAgentToolOAuth2AuthorizeUrl**](docs/AIAgentToolsApi.md#getAgentToolOAuth2AuthorizeUrl) | **GET** /api/v1/cloud-ai/tools/oauth2/authorize-url/{tool_id} | Получение ссылки на OAuth2-авторизацию инструмента
-*TimewebCloudApi.AIAgentToolsApi* | [**getAgentToolTemplatePrices**](docs/AIAgentToolsApi.md#getAgentToolTemplatePrices) | **GET** /api/v1/cloud-ai/tools/templates/prices | Получение цен системных инструментов
-*TimewebCloudApi.AIAgentToolsApi* | [**getAgentToolTemplates**](docs/AIAgentToolsApi.md#getAgentToolTemplates) | **GET** /api/v1/cloud-ai/tools/templates/marketplace | Получение шаблонов MCP-инструментов из маркетплейса
-*TimewebCloudApi.AIAgentToolsApi* | [**getAgentTools**](docs/AIAgentToolsApi.md#getAgentTools) | **GET** /api/v1/cloud-ai/tools | Получение списка MCP-инструментов
-*TimewebCloudApi.AIAgentToolsApi* | [**getAgentToolsByAgent**](docs/AIAgentToolsApi.md#getAgentToolsByAgent) | **GET** /api/v1/cloud-ai/agents/{agent_id}/tools | Получение MCP-инструментов агента
-*TimewebCloudApi.AIAgentToolsApi* | [**installAgentToolFromTemplate**](docs/AIAgentToolsApi.md#installAgentToolFromTemplate) | **POST** /api/v1/cloud-ai/tools/install | Установка MCP-инструмента из маркетплейса
-*TimewebCloudApi.AIAgentToolsApi* | [**refreshAgentToolMethods**](docs/AIAgentToolsApi.md#refreshAgentToolMethods) | **POST** /api/v1/cloud-ai/tools/{id}/refresh-methods | Обновление списка методов MCP-инструмента
-*TimewebCloudApi.AIAgentToolsApi* | [**updateAgentTool**](docs/AIAgentToolsApi.md#updateAgentTool) | **PUT** /api/v1/cloud-ai/tools/{id} | Изменение MCP-инструмента
-*TimewebCloudApi.AIAgentToolsApi* | [**updateAgentToolConnection**](docs/AIAgentToolsApi.md#updateAgentToolConnection) | **PUT** /api/v1/cloud-ai/agents/{agent_id}/tools/{tool_id} | Изменение разрешённых методов MCP-инструмента у агента
 *TimewebCloudApi.AIAgentsApi* | [**addAdditionalTokenPackage**](docs/AIAgentsApi.md#addAdditionalTokenPackage) | **POST** /api/v1/cloud-ai/agents/{id}/add-additional-token-package | Добавление дополнительного пакета токенов
 *TimewebCloudApi.AIAgentsApi* | [**changeAgentModel**](docs/AIAgentsApi.md#changeAgentModel) | **PATCH** /api/v1/cloud-ai/agents/{id}/model | Смена модели AI агента
 *TimewebCloudApi.AIAgentsApi* | [**createAgent**](docs/AIAgentsApi.md#createAgent) | **POST** /api/v1/cloud-ai/agents | Создание AI агента
@@ -630,12 +616,26 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.KubernetesApi* | [**updateCluster**](docs/KubernetesApi.md#updateCluster) | **PATCH** /api/v1/k8s/clusters/{cluster_id} | Обновление информации о кластере
 *TimewebCloudApi.KubernetesApi* | [**updateClusterVersion**](docs/KubernetesApi.md#updateClusterVersion) | **PATCH** /api/v1/k8s/clusters/{cluster_id}/versions/update | Обновление версии кластера
 *TimewebCloudApi.LocationsApi* | [**getLocations**](docs/LocationsApi.md#getLocations) | **GET** /api/v2/locations | Получение списка локаций
+*TimewebCloudApi.MCPApi* | [**connectAgentToolToAgent**](docs/MCPApi.md#connectAgentToolToAgent) | **POST** /api/v1/cloud-ai/agents/{agent_id}/tools | Подключение MCP-инструмента к агенту
+*TimewebCloudApi.MCPApi* | [**createAgentTool**](docs/MCPApi.md#createAgentTool) | **POST** /api/v1/cloud-ai/tools | Подключение собственного MCP-сервера
+*TimewebCloudApi.MCPApi* | [**deleteAgentTool**](docs/MCPApi.md#deleteAgentTool) | **DELETE** /api/v1/cloud-ai/tools/{id} | Удаление MCP-инструмента
 *TimewebCloudApi.MCPApi* | [**deleteMcpSearchSession**](docs/MCPApi.md#deleteMcpSearchSession) | **DELETE** /api/v1/mcp/search | Завершение сессии сервера MCP с поиском инструментов
 *TimewebCloudApi.MCPApi* | [**deleteMcpSession**](docs/MCPApi.md#deleteMcpSession) | **DELETE** /api/v1/mcp | Завершение сессии сервера MCP
+*TimewebCloudApi.MCPApi* | [**disconnectAgentToolFromAgent**](docs/MCPApi.md#disconnectAgentToolFromAgent) | **DELETE** /api/v1/cloud-ai/agents/{agent_id}/tools/{tool_id} | Отключение MCP-инструмента от агента
+*TimewebCloudApi.MCPApi* | [**getAgentTool**](docs/MCPApi.md#getAgentTool) | **GET** /api/v1/cloud-ai/tools/{id} | Получение MCP-инструмента
+*TimewebCloudApi.MCPApi* | [**getAgentToolOAuth2AuthorizeUrl**](docs/MCPApi.md#getAgentToolOAuth2AuthorizeUrl) | **GET** /api/v1/cloud-ai/tools/oauth2/authorize-url/{tool_id} | Получение ссылки на OAuth2-авторизацию инструмента
+*TimewebCloudApi.MCPApi* | [**getAgentToolTemplatePrices**](docs/MCPApi.md#getAgentToolTemplatePrices) | **GET** /api/v1/cloud-ai/tools/templates/prices | Получение цен системных инструментов
+*TimewebCloudApi.MCPApi* | [**getAgentToolTemplates**](docs/MCPApi.md#getAgentToolTemplates) | **GET** /api/v1/cloud-ai/tools/templates/marketplace | Получение шаблонов MCP-инструментов из маркетплейса
+*TimewebCloudApi.MCPApi* | [**getAgentTools**](docs/MCPApi.md#getAgentTools) | **GET** /api/v1/cloud-ai/tools | Получение списка MCP-инструментов
+*TimewebCloudApi.MCPApi* | [**getAgentToolsByAgent**](docs/MCPApi.md#getAgentToolsByAgent) | **GET** /api/v1/cloud-ai/agents/{agent_id}/tools | Получение MCP-инструментов агента
+*TimewebCloudApi.MCPApi* | [**installAgentToolFromTemplate**](docs/MCPApi.md#installAgentToolFromTemplate) | **POST** /api/v1/cloud-ai/tools/install | Установка MCP-инструмента из маркетплейса
 *TimewebCloudApi.MCPApi* | [**openMcpSearchStream**](docs/MCPApi.md#openMcpSearchStream) | **GET** /api/v1/mcp/search | Открытие потока событий сервера MCP с поиском инструментов
 *TimewebCloudApi.MCPApi* | [**openMcpStream**](docs/MCPApi.md#openMcpStream) | **GET** /api/v1/mcp | Открытие потока событий сервера MCP
+*TimewebCloudApi.MCPApi* | [**refreshAgentToolMethods**](docs/MCPApi.md#refreshAgentToolMethods) | **POST** /api/v1/cloud-ai/tools/{id}/refresh-methods | Обновление списка методов MCP-инструмента
 *TimewebCloudApi.MCPApi* | [**sendMcpMessage**](docs/MCPApi.md#sendMcpMessage) | **POST** /api/v1/mcp | Отправка JSON-RPC-сообщения серверу MCP
 *TimewebCloudApi.MCPApi* | [**sendMcpSearchMessage**](docs/MCPApi.md#sendMcpSearchMessage) | **POST** /api/v1/mcp/search | Отправка JSON-RPC-сообщения серверу MCP с поиском инструментов
+*TimewebCloudApi.MCPApi* | [**updateAgentTool**](docs/MCPApi.md#updateAgentTool) | **PUT** /api/v1/cloud-ai/tools/{id} | Изменение MCP-инструмента
+*TimewebCloudApi.MCPApi* | [**updateAgentToolConnection**](docs/MCPApi.md#updateAgentToolConnection) | **PUT** /api/v1/cloud-ai/agents/{agent_id}/tools/{tool_id} | Изменение разрешённых методов MCP-инструмента у агента
 *TimewebCloudApi.MailApi* | [**createDomainMailbox**](docs/MailApi.md#createDomainMailbox) | **POST** /api/v1/mail/domains/{domain} | Создание почтового ящика
 *TimewebCloudApi.MailApi* | [**createDomainMailboxV2**](docs/MailApi.md#createDomainMailboxV2) | **POST** /api/v2/mail/domains/{domain} | Создание почтового ящика
 *TimewebCloudApi.MailApi* | [**createMultipleDomainMailboxes**](docs/MailApi.md#createMultipleDomainMailboxes) | **POST** /api/v1/mail/domains/{domain}/batch | Множественное создание почтовых ящиков

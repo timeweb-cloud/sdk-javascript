@@ -5,7 +5,6 @@
 README.md
 docs/AIAgentIntegrationsApi.md
 docs/AIAgentSkillsApi.md
-docs/AIAgentToolsApi.md
 docs/AIAgentsApi.md
 docs/AIGatewayApi.md
 docs/AIGatewayInferenceApi.md
@@ -940,7 +939,6 @@ package.json
 src/ApiClient.js
 src/api/AIAgentIntegrationsApi.js
 src/api/AIAgentSkillsApi.js
-src/api/AIAgentToolsApi.js
 src/api/AIAgentsApi.js
 src/api/AIGatewayApi.js
 src/api/AIGatewayInferenceApi.js
@@ -1872,7 +1870,6 @@ src/model/VpcService.js
 src/model/WorkerPresetOutApi.js
 test/api/AIAgentIntegrationsApi.spec.js
 test/api/AIAgentSkillsApi.spec.js
-test/api/AIAgentToolsApi.spec.js
 test/api/AIAgentsApi.spec.js
 test/api/AIGatewayApi.spec.js
 test/api/AIGatewayInferenceApi.spec.js
