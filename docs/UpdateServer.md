@@ -13,6 +13,6 @@ Name | Type | Description | Notes
 **avatarId** | **String** | ID аватара сервера. Описание методов работы с аватарами появится позднее. | [optional] 
 **comment** | **String** | Комментарий к облачному серверу. Максимальная длина — 255 символов. | [optional] 
 **imageId** | **String** | ID образа, который будет установлен на облачный сервер. Нельзя передавать вместе с &#x60;os_id&#x60;. | [optional] 
-**cloudInit** | **String** | Cloud-init скрипт | [optional] 
+**cloudInit** | **String** | Cloud-init скрипт. Максимальный размер — 65 535 байт в UTF-8. | [optional] 
 
 

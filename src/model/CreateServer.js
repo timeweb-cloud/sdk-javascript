@@ -241,7 +241,7 @@ CreateServer.prototype['is_local_network'] = undefined;
 CreateServer.prototype['network'] = undefined;
 
 /**
- * Cloud-init скрипт
+ * Cloud-init скрипт. Максимальный размер — 65 535 байт в UTF-8.
  * @member {String} cloud_init
  */
 CreateServer.prototype['cloud_init'] = undefined;

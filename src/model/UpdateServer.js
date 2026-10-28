@@ -175,7 +175,7 @@ UpdateServer.prototype['comment'] = undefined;
 UpdateServer.prototype['image_id'] = undefined;
 
 /**
- * Cloud-init скрипт
+ * Cloud-init скрипт. Максимальный размер — 65 535 байт в UTF-8.
  * @member {String} cloud_init
  */
 UpdateServer.prototype['cloud_init'] = undefined;
