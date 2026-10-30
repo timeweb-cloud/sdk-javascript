@@ -68,6 +68,16 @@
         done();
       });
     });
+    describe('createAppV2', function() {
+      it('should call createAppV2 successfully', function(done) {
+        //uncomment below and update the code to test createAppV2
+        //instance.createAppV2(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('createDeploy', function() {
       it('should call createDeploy successfully', function(done) {
         //uncomment below and update the code to test createDeploy

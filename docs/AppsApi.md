@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addProvider**](AppsApi.md#addProvider) | **POST** /api/v1/vcs-provider | Привязка vcs провайдера
 [**createApp**](AppsApi.md#createApp) | **POST** /api/v1/apps | Создание приложения
+[**createAppV2**](AppsApi.md#createAppV2) | **POST** /api/v2/apps | Создание приложения (v2)
 [**createDeploy**](AppsApi.md#createDeploy) | **POST** /api/v1/apps/{app_id}/deploy | Запуск деплоя приложения
 [**deleteApp**](AppsApi.md#deleteApp) | **DELETE** /api/v1/apps/{app_id} | Удаление приложения
 [**deleteProvider**](AppsApi.md#deleteProvider) | **DELETE** /api/v1/vcs-provider/{provider_id} | Отвязка vcs провайдера от аккаунта
@@ -83,7 +84,7 @@ Name | Type | Description  | Notes
 
 Создание приложения
 
-Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v1/apps&#x60;, задав необходимые атрибуты.
+Метод устарел. Используйте [POST /api/v2/apps](#operation/createAppV2).  Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v1/apps&#x60;, задав необходимые атрибуты.
 
 ### Example
 
@@ -115,6 +116,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateApp201Response**](CreateApp201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## createAppV2
+
+> CreateAppV2201Response createAppV2(createAppV2)
+
+Создание приложения (v2)
+
+Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v2/apps&#x60;.  Создание сервера, настройка окружения и первый деплой выполняются асинхронно. Ответ &#x60;201 Created&#x60; содержит запись приложения в статусе &#x60;new&#x60; и не означает, что приложение уже готово к работе. До создания инфраструктуры в ответе могут отсутствовать &#x60;ip&#x60;, &#x60;location&#x60;, &#x60;configuration&#x60;, &#x60;disk_status&#x60;, &#x60;language&#x60;, &#x60;framework&#x60;, &#x60;envs&#x60;, &#x60;env_version&#x60;, &#x60;build_cmd&#x60;, &#x60;run_cmd&#x60; и &#x60;index_dir&#x60;. Состояние приложения можно проверять через &#x60;GET /api/v2/apps/{app_id}&#x60;.  В v2 обязательно поле &#x60;language&#x60;, а в ответе ветка репозитория называется &#x60;branch&#x60;. Для Git-репозитория передайте параметры провайдера, репозитория, ветки, коммита и сборки. Для готового Docker-образа используйте &#x60;type: backend&#x60;, &#x60;language: custom-image&#x60;, &#x60;docker_image&#x60; и &#x60;docker_image_tag&#x60;. Для frontend обязателен &#x60;preset_id&#x60;, для backend — либо &#x60;preset_id&#x60;, либо &#x60;configuration&#x60;. ID тарифа можно получить через &#x60;GET /api/v1/presets/apps&#x60;.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.AppsApi();
+let createAppV2 = {"type":"backend","provider_id":"b392b624-ee80-496e-8b61-47276acac2da","repository_id":"eb4e1796-78ce-4232-a824-3c3f4dfaf98f","branch_name":"master","commit_sha":"7d3a6dcca79d2c29e3fe7456ca1598e70d484d7c","build_cmd":"npm ci","run_cmd":"npm start","is_auto_deploy":true,"name":"app_example","comment":"","preset_id":42,"language":"node","framework":"express","env_version":"22","envs":{"NODE_ENV":"production"}}; // CreateAppV2 | 
+apiInstance.createAppV2(createAppV2, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createAppV2** | [**CreateAppV2**](CreateAppV2.md)|  | 
+
+### Return type
+
+[**CreateAppV2201Response**](CreateAppV2201Response.md)
 
 ### Authorization
 

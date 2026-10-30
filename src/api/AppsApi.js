@@ -19,6 +19,8 @@ import AppsPresets from '../model/AppsPresets';
 import AvailableFrameworks from '../model/AvailableFrameworks';
 import CreateApp from '../model/CreateApp';
 import CreateApp201Response from '../model/CreateApp201Response';
+import CreateAppV2 from '../model/CreateAppV2';
+import CreateAppV2201Response from '../model/CreateAppV2201Response';
 import CreateDeploy201Response from '../model/CreateDeploy201Response';
 import CreateDeployRequest from '../model/CreateDeployRequest';
 import GetAccountStatus403Response from '../model/GetAccountStatus403Response';
@@ -112,7 +114,7 @@ export default class AppsApi {
 
     /**
      * Создание приложения
-     * Чтобы создать приложение, отправьте POST-запрос в `/api/v1/apps`, задав необходимые атрибуты.
+     * Метод устарел. Используйте [POST /api/v2/apps](#operation/createAppV2).  Чтобы создать приложение, отправьте POST-запрос в `/api/v1/apps`, задав необходимые атрибуты.
      * @param {module:model/CreateApp} createApp 
      * @param {module:api/AppsApi~createAppCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CreateApp201Response}
@@ -139,6 +141,48 @@ export default class AppsApi {
       let returnType = CreateApp201Response;
       return this.apiClient.callApi(
         '/api/v1/apps', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the createAppV2 operation.
+     * @callback module:api/AppsApi~createAppV2Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CreateAppV2201Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Создание приложения (v2)
+     * Чтобы создать приложение, отправьте POST-запрос в `/api/v2/apps`.  Создание сервера, настройка окружения и первый деплой выполняются асинхронно. Ответ `201 Created` содержит запись приложения в статусе `new` и не означает, что приложение уже готово к работе. До создания инфраструктуры в ответе могут отсутствовать `ip`, `location`, `configuration`, `disk_status`, `language`, `framework`, `envs`, `env_version`, `build_cmd`, `run_cmd` и `index_dir`. Состояние приложения можно проверять через `GET /api/v2/apps/{app_id}`.  В v2 обязательно поле `language`, а в ответе ветка репозитория называется `branch`. Для Git-репозитория передайте параметры провайдера, репозитория, ветки, коммита и сборки. Для готового Docker-образа используйте `type: backend`, `language: custom-image`, `docker_image` и `docker_image_tag`. Для frontend обязателен `preset_id`, для backend — либо `preset_id`, либо `configuration`. ID тарифа можно получить через `GET /api/v1/presets/apps`.
+     * @param {module:model/CreateAppV2} createAppV2 
+     * @param {module:api/AppsApi~createAppV2Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CreateAppV2201Response}
+     */
+    createAppV2(createAppV2, callback) {
+      let postBody = createAppV2;
+      // verify the required parameter 'createAppV2' is set
+      if (createAppV2 === undefined || createAppV2 === null) {
+        throw new Error("Missing the required parameter 'createAppV2' when calling createAppV2");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateAppV2201Response;
+      return this.apiClient.callApi(
+        '/api/v2/apps', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

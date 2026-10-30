@@ -119,6 +119,11 @@ import AppConfiguration from './model/AppConfiguration';
 import AppDiskStatus from './model/AppDiskStatus';
 import AppDomainsInner from './model/AppDomainsInner';
 import AppProvider from './model/AppProvider';
+import AppV2 from './model/AppV2';
+import AppV2Configuration from './model/AppV2Configuration';
+import AppV2DiskStatus from './model/AppV2DiskStatus';
+import AppV2DomainsInner from './model/AppV2DomainsInner';
+import AppV2Provider from './model/AppV2Provider';
 import ApproveTelegramPairing from './model/ApproveTelegramPairing';
 import AppsPresets from './model/AppsPresets';
 import AppsPresetsBackendPresetsInner from './model/AppsPresetsBackendPresetsInner';
@@ -224,6 +229,10 @@ import CreateAiSolution from './model/CreateAiSolution';
 import CreateAiSolution201Response from './model/CreateAiSolution201Response';
 import CreateApp from './model/CreateApp';
 import CreateApp201Response from './model/CreateApp201Response';
+import CreateAppV2 from './model/CreateAppV2';
+import CreateAppV2201Response from './model/CreateAppV2201Response';
+import CreateAppV2Configuration from './model/CreateAppV2Configuration';
+import CreateAppV2Network from './model/CreateAppV2Network';
 import CreateBalancer from './model/CreateBalancer';
 import CreateBalancer200Response from './model/CreateBalancer200Response';
 import CreateBalancerCertificates from './model/CreateBalancerCertificates';
@@ -1620,6 +1629,36 @@ export {
     AppProvider,
 
     /**
+     * The AppV2 model constructor.
+     * @property {module:model/AppV2}
+     */
+    AppV2,
+
+    /**
+     * The AppV2Configuration model constructor.
+     * @property {module:model/AppV2Configuration}
+     */
+    AppV2Configuration,
+
+    /**
+     * The AppV2DiskStatus model constructor.
+     * @property {module:model/AppV2DiskStatus}
+     */
+    AppV2DiskStatus,
+
+    /**
+     * The AppV2DomainsInner model constructor.
+     * @property {module:model/AppV2DomainsInner}
+     */
+    AppV2DomainsInner,
+
+    /**
+     * The AppV2Provider model constructor.
+     * @property {module:model/AppV2Provider}
+     */
+    AppV2Provider,
+
+    /**
      * The ApproveTelegramPairing model constructor.
      * @property {module:model/ApproveTelegramPairing}
      */
@@ -2248,6 +2287,30 @@ export {
      * @property {module:model/CreateApp201Response}
      */
     CreateApp201Response,
+
+    /**
+     * The CreateAppV2 model constructor.
+     * @property {module:model/CreateAppV2}
+     */
+    CreateAppV2,
+
+    /**
+     * The CreateAppV2201Response model constructor.
+     * @property {module:model/CreateAppV2201Response}
+     */
+    CreateAppV2201Response,
+
+    /**
+     * The CreateAppV2Configuration model constructor.
+     * @property {module:model/CreateAppV2Configuration}
+     */
+    CreateAppV2Configuration,
+
+    /**
+     * The CreateAppV2Network model constructor.
+     * @property {module:model/CreateAppV2Network}
+     */
+    CreateAppV2Network,
 
     /**
      * The CreateBalancer model constructor.

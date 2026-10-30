@@ -405,6 +405,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.AccountApi* | [**updateNotificationSettings**](docs/AccountApi.md#updateNotificationSettings) | **PATCH** /api/v1/account/notification-settings | Изменение настроек уведомлений аккаунта
 *TimewebCloudApi.AppsApi* | [**addProvider**](docs/AppsApi.md#addProvider) | **POST** /api/v1/vcs-provider | Привязка vcs провайдера
 *TimewebCloudApi.AppsApi* | [**createApp**](docs/AppsApi.md#createApp) | **POST** /api/v1/apps | Создание приложения
+*TimewebCloudApi.AppsApi* | [**createAppV2**](docs/AppsApi.md#createAppV2) | **POST** /api/v2/apps | Создание приложения (v2)
 *TimewebCloudApi.AppsApi* | [**createDeploy**](docs/AppsApi.md#createDeploy) | **POST** /api/v1/apps/{app_id}/deploy | Запуск деплоя приложения
 *TimewebCloudApi.AppsApi* | [**deleteApp**](docs/AppsApi.md#deleteApp) | **DELETE** /api/v1/apps/{app_id} | Удаление приложения
 *TimewebCloudApi.AppsApi* | [**deleteProvider**](docs/AppsApi.md#deleteProvider) | **DELETE** /api/v1/vcs-provider/{provider_id} | Отвязка vcs провайдера от аккаунта
@@ -893,6 +894,11 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.AppDiskStatus](docs/AppDiskStatus.md)
  - [TimewebCloudApi.AppDomainsInner](docs/AppDomainsInner.md)
  - [TimewebCloudApi.AppProvider](docs/AppProvider.md)
+ - [TimewebCloudApi.AppV2](docs/AppV2.md)
+ - [TimewebCloudApi.AppV2Configuration](docs/AppV2Configuration.md)
+ - [TimewebCloudApi.AppV2DiskStatus](docs/AppV2DiskStatus.md)
+ - [TimewebCloudApi.AppV2DomainsInner](docs/AppV2DomainsInner.md)
+ - [TimewebCloudApi.AppV2Provider](docs/AppV2Provider.md)
  - [TimewebCloudApi.ApproveTelegramPairing](docs/ApproveTelegramPairing.md)
  - [TimewebCloudApi.AppsPresets](docs/AppsPresets.md)
  - [TimewebCloudApi.AppsPresetsBackendPresetsInner](docs/AppsPresetsBackendPresetsInner.md)
@@ -998,6 +1004,10 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.CreateAiSolution201Response](docs/CreateAiSolution201Response.md)
  - [TimewebCloudApi.CreateApp](docs/CreateApp.md)
  - [TimewebCloudApi.CreateApp201Response](docs/CreateApp201Response.md)
+ - [TimewebCloudApi.CreateAppV2](docs/CreateAppV2.md)
+ - [TimewebCloudApi.CreateAppV2201Response](docs/CreateAppV2201Response.md)
+ - [TimewebCloudApi.CreateAppV2Configuration](docs/CreateAppV2Configuration.md)
+ - [TimewebCloudApi.CreateAppV2Network](docs/CreateAppV2Network.md)
  - [TimewebCloudApi.CreateBalancer](docs/CreateBalancer.md)
  - [TimewebCloudApi.CreateBalancer200Response](docs/CreateBalancer200Response.md)
  - [TimewebCloudApi.CreateBalancerCertificates](docs/CreateBalancerCertificates.md)
