@@ -514,6 +514,7 @@ import GetDeployLogs200Response from './model/GetDeployLogs200Response';
 import GetDeploySettings200Response from './model/GetDeploySettings200Response';
 import GetDomain200Response from './model/GetDomain200Response';
 import GetDomainDNSRecords200Response from './model/GetDomainDNSRecords200Response';
+import GetDomainDNSRecordsV2200Response from './model/GetDomainDNSRecordsV2200Response';
 import GetDomainMailInfo200Response from './model/GetDomainMailInfo200Response';
 import GetDomainNameServers200Response from './model/GetDomainNameServers200Response';
 import GetDomainRequests200Response from './model/GetDomainRequests200Response';
@@ -3997,6 +3998,12 @@ export {
      * @property {module:model/GetDomainDNSRecords200Response}
      */
     GetDomainDNSRecords200Response,
+
+    /**
+     * The GetDomainDNSRecordsV2200Response model constructor.
+     * @property {module:model/GetDomainDNSRecordsV2200Response}
+     */
+    GetDomainDNSRecordsV2200Response,
 
     /**
      * The GetDomainMailInfo200Response model constructor.

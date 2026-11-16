@@ -188,6 +188,16 @@
         done();
       });
     });
+    describe('getDomainDNSRecordsV2', function() {
+      it('should call getDomainDNSRecordsV2 successfully', function(done) {
+        //uncomment below and update the code to test getDomainDNSRecordsV2
+        //instance.getDomainDNSRecordsV2(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getDomainDefaultDNSRecords', function() {
       it('should call getDomainDefaultDNSRecords successfully', function(done) {
         //uncomment below and update the code to test getDomainDefaultDNSRecords

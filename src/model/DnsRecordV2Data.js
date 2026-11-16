@@ -109,19 +109,19 @@ class DnsRecordV2Data {
 
 
 /**
- * Приоритет DNS-записи (для MX и SRV записей).
+ * Приоритет DNS-записи (для MX, SRV, HTTPS и SVCB записей).
  * @member {Number} priority
  */
 DnsRecordV2Data.prototype['priority'] = undefined;
 
 /**
- * Имя поддомена (только поддомен без основного домена, например `sub` для `sub.example.com`). Для записей на основном домене это поле отсутствует в ответе.
+ * Имя записи относительно `fqdn`, например `sub` для `sub.example.com` или `mail._domainkey`. Для записей самого `fqdn` это поле отсутствует в ответе.
  * @member {String} subdomain
  */
 DnsRecordV2Data.prototype['subdomain'] = undefined;
 
 /**
- * Значение DNS-записи (для A, AAAA, TXT, CNAME, MX записей).
+ * Значение DNS-записи (для всех типов, кроме SRV: у SRV цель записи в поле `host`).
  * @member {String} value
  */
 DnsRecordV2Data.prototype['value'] = undefined;

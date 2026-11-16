@@ -24,12 +24,15 @@ class DnsRecordV2 {
      * Constructs a new <code>DnsRecordV2</code>.
      * DNS-запись.
      * @alias module:model/DnsRecordV2
+     * @param id {Number} ID DNS-записи.
      * @param type {module:model/DnsRecordV2.TypeEnum} Тип DNS-записи.
      * @param data {module:model/DnsRecordV2Data} 
+     * @param fqdn {String} Домен, относительно которого указано `data.subdomain`. Полное имя записи — `data.subdomain` + `.` + `fqdn`, а если `data.subdomain` нет — `fqdn`.
+     * @param ttl {Number} Время жизни DNS-записи в секундах.
      */
-    constructor(type, data) { 
+    constructor(id, type, data, fqdn, ttl) { 
         
-        DnsRecordV2.initialize(this, type, data);
+        DnsRecordV2.initialize(this, id, type, data, fqdn, ttl);
     }
 
     /**
@@ -37,9 +40,12 @@ class DnsRecordV2 {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, type, data) { 
+    static initialize(obj, id, type, data, fqdn, ttl) { 
+        obj['id'] = id;
         obj['type'] = type;
         obj['data'] = data;
+        obj['fqdn'] = fqdn;
+        obj['ttl'] = ttl;
     }
 
     /**
@@ -53,17 +59,17 @@ class DnsRecordV2 {
         if (data) {
             obj = obj || new DnsRecordV2();
 
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], 'String');
-            }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'Number');
             }
-            if (data.hasOwnProperty('fqdn')) {
-                obj['fqdn'] = ApiClient.convertToType(data['fqdn'], 'String');
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = ApiClient.convertToType(data['type'], 'String');
             }
             if (data.hasOwnProperty('data')) {
                 obj['data'] = DnsRecordV2Data.constructFromObject(data['data']);
+            }
+            if (data.hasOwnProperty('fqdn')) {
+                obj['fqdn'] = ApiClient.convertToType(data['fqdn'], 'String');
             }
             if (data.hasOwnProperty('ttl')) {
                 obj['ttl'] = ApiClient.convertToType(data['ttl'], 'Number');
@@ -88,13 +94,13 @@ class DnsRecordV2 {
         if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
             throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
         }
-        // ensure the json data is a string
-        if (data['fqdn'] && !(typeof data['fqdn'] === 'string' || data['fqdn'] instanceof String)) {
-            throw new Error("Expected the field `fqdn` to be a primitive type in the JSON string but got " + data['fqdn']);
-        }
         // validate the optional field `data`
         if (data['data']) { // data not null
           DnsRecordV2Data.validateJSON(data['data']);
+        }
+        // ensure the json data is a string
+        if (data['fqdn'] && !(typeof data['fqdn'] === 'string' || data['fqdn'] instanceof String)) {
+            throw new Error("Expected the field `fqdn` to be a primitive type in the JSON string but got " + data['fqdn']);
         }
 
         return true;
@@ -103,13 +109,7 @@ class DnsRecordV2 {
 
 }
 
-DnsRecordV2.RequiredProperties = ["type", "data"];
-
-/**
- * Тип DNS-записи.
- * @member {module:model/DnsRecordV2.TypeEnum} type
- */
-DnsRecordV2.prototype['type'] = undefined;
+DnsRecordV2.RequiredProperties = ["id", "type", "data", "fqdn", "ttl"];
 
 /**
  * ID DNS-записи.
@@ -118,10 +118,10 @@ DnsRecordV2.prototype['type'] = undefined;
 DnsRecordV2.prototype['id'] = undefined;
 
 /**
- * Полное имя основного домена.
- * @member {String} fqdn
+ * Тип DNS-записи.
+ * @member {module:model/DnsRecordV2.TypeEnum} type
  */
-DnsRecordV2.prototype['fqdn'] = undefined;
+DnsRecordV2.prototype['type'] = undefined;
 
 /**
  * @member {module:model/DnsRecordV2Data} data
@@ -129,7 +129,13 @@ DnsRecordV2.prototype['fqdn'] = undefined;
 DnsRecordV2.prototype['data'] = undefined;
 
 /**
- * Время жизни DNS-записи.
+ * Домен, относительно которого указано `data.subdomain`. Полное имя записи — `data.subdomain` + `.` + `fqdn`, а если `data.subdomain` нет — `fqdn`.
+ * @member {String} fqdn
+ */
+DnsRecordV2.prototype['fqdn'] = undefined;
+
+/**
+ * Время жизни DNS-записи в секундах.
  * @member {Number} ttl
  */
 DnsRecordV2.prototype['ttl'] = undefined;
@@ -179,7 +185,31 @@ DnsRecordV2['TypeEnum'] = {
      * value: "A"
      * @const
      */
-    "A": "A"
+    "A": "A",
+
+    /**
+     * value: "PTR"
+     * @const
+     */
+    "PTR": "PTR",
+
+    /**
+     * value: "HTTPS"
+     * @const
+     */
+    "HTTPS": "HTTPS",
+
+    /**
+     * value: "SVCB"
+     * @const
+     */
+    "SVCB": "SVCB",
+
+    /**
+     * value: "CAA"
+     * @const
+     */
+    "CAA": "CAA"
 };
 
 

@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**deleteSubdomain**](DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain} | Удаление поддомена
 [**getDomain**](DomainsApi.md#getDomain) | **GET** /api/v1/domains/{fqdn} | Получение информации о домене
 [**getDomainDNSRecords**](DomainsApi.md#getDomainDNSRecords) | **GET** /api/v1/domains/{fqdn}/dns-records | Получить информацию обо всех пользовательских DNS-записях домена или поддомена
+[**getDomainDNSRecordsV2**](DomainsApi.md#getDomainDNSRecordsV2) | **GET** /api/v2/domains/{fqdn}/dns-records | Получить информацию обо всех пользовательских DNS-записях домена или поддомена
 [**getDomainDefaultDNSRecords**](DomainsApi.md#getDomainDefaultDNSRecords) | **GET** /api/v1/domains/{fqdn}/default-dns-records | Получить информацию обо всех DNS-записях по умолчанию домена или поддомена
 [**getDomainNameServers**](DomainsApi.md#getDomainNameServers) | **GET** /api/v1/domains/{fqdn}/name-servers | Получение списка name-серверов домена
 [**getDomainRequest**](DomainsApi.md#getDomainRequest) | **GET** /api/v1/domains-requests/{request_id} | Получение заявки на регистрацию/продление/трансфер домена
@@ -691,7 +692,7 @@ Name | Type | Description  | Notes
 
 Получить информацию обо всех пользовательских DNS-записях домена или поддомена
 
-Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v1/domains/{fqdn}/dns-records&#x60;.
+Метод устарел. Используйте [GET /api/v2/domains/{fqdn}/dns-records](#operation/getDomainDNSRecordsV2).  Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v1/domains/{fqdn}/dns-records&#x60;.
 
 ### Example
 
@@ -729,6 +730,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetDomainDNSRecords200Response**](GetDomainDNSRecords200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getDomainDNSRecordsV2
+
+> GetDomainDNSRecordsV2200Response getDomainDNSRecordsV2(fqdn)
+
+Получить информацию обо всех пользовательских DNS-записях домена или поддомена
+
+Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v2/domains/{fqdn}/dns-records&#x60;.  По основному домену возвращаются записи всей зоны, включая записи поддоменов: у них &#x60;fqdn&#x60; — основной домен, а &#x60;data.subdomain&#x60; — имя поддомена. По поддомену возвращаются только записи этого поддомена, без вложенных поддоменов: у них &#x60;fqdn&#x60; — сам поддомен, а поля &#x60;data.subdomain&#x60; нет. Полное имя записи — &#x60;data.subdomain&#x60; + &#x60;.&#x60; + &#x60;fqdn&#x60;.  Возвращаются все записи сразу, без пагинации.  Заменяет устаревший &#x60;GET /api/v1/domains/{fqdn}/dns-records&#x60;: тот по поддомену не возвращает его TXT-записи.
+
+### Example
+
+```javascript
+import TimewebCloudApi from 'timeweb_cloud_api';
+let defaultClient = TimewebCloudApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new TimewebCloudApi.DomainsApi();
+let fqdn = somedomain.ru; // String | Полное имя домена или поддомена.
+apiInstance.getDomainDNSRecordsV2(fqdn, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fqdn** | **String**| Полное имя домена или поддомена. | 
+
+### Return type
+
+[**GetDomainDNSRecordsV2200Response**](GetDomainDNSRecordsV2200Response.md)
 
 ### Authorization
 

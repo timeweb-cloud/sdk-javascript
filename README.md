@@ -526,6 +526,7 @@ Class | Method | HTTP request | Description
 *TimewebCloudApi.DomainsApi* | [**deleteSubdomain**](docs/DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain} | Удаление поддомена
 *TimewebCloudApi.DomainsApi* | [**getDomain**](docs/DomainsApi.md#getDomain) | **GET** /api/v1/domains/{fqdn} | Получение информации о домене
 *TimewebCloudApi.DomainsApi* | [**getDomainDNSRecords**](docs/DomainsApi.md#getDomainDNSRecords) | **GET** /api/v1/domains/{fqdn}/dns-records | Получить информацию обо всех пользовательских DNS-записях домена или поддомена
+*TimewebCloudApi.DomainsApi* | [**getDomainDNSRecordsV2**](docs/DomainsApi.md#getDomainDNSRecordsV2) | **GET** /api/v2/domains/{fqdn}/dns-records | Получить информацию обо всех пользовательских DNS-записях домена или поддомена
 *TimewebCloudApi.DomainsApi* | [**getDomainDefaultDNSRecords**](docs/DomainsApi.md#getDomainDefaultDNSRecords) | **GET** /api/v1/domains/{fqdn}/default-dns-records | Получить информацию обо всех DNS-записях по умолчанию домена или поддомена
 *TimewebCloudApi.DomainsApi* | [**getDomainNameServers**](docs/DomainsApi.md#getDomainNameServers) | **GET** /api/v1/domains/{fqdn}/name-servers | Получение списка name-серверов домена
 *TimewebCloudApi.DomainsApi* | [**getDomainRequest**](docs/DomainsApi.md#getDomainRequest) | **GET** /api/v1/domains-requests/{request_id} | Получение заявки на регистрацию/продление/трансфер домена
@@ -1289,6 +1290,7 @@ Class | Method | HTTP request | Description
  - [TimewebCloudApi.GetDeploySettings200Response](docs/GetDeploySettings200Response.md)
  - [TimewebCloudApi.GetDomain200Response](docs/GetDomain200Response.md)
  - [TimewebCloudApi.GetDomainDNSRecords200Response](docs/GetDomainDNSRecords200Response.md)
+ - [TimewebCloudApi.GetDomainDNSRecordsV2200Response](docs/GetDomainDNSRecordsV2200Response.md)
  - [TimewebCloudApi.GetDomainMailInfo200Response](docs/GetDomainMailInfo200Response.md)
  - [TimewebCloudApi.GetDomainNameServers200Response](docs/GetDomainNameServers200Response.md)
  - [TimewebCloudApi.GetDomainRequests200Response](docs/GetDomainRequests200Response.md)

@@ -54,26 +54,26 @@
       //expect(instance).to.be.a(TimewebCloudApi.DnsRecordV2);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instance = new TimewebCloudApi.DnsRecordV2();
-      //expect(instance).to.be();
-    });
-
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
       //var instance = new TimewebCloudApi.DnsRecordV2();
       //expect(instance).to.be();
     });
 
-    it('should have the property fqdn (base name: "fqdn")', function() {
-      // uncomment below and update the code to test the property fqdn
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
       //var instance = new TimewebCloudApi.DnsRecordV2();
       //expect(instance).to.be();
     });
 
     it('should have the property data (base name: "data")', function() {
       // uncomment below and update the code to test the property data
+      //var instance = new TimewebCloudApi.DnsRecordV2();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fqdn (base name: "fqdn")', function() {
+      // uncomment below and update the code to test the property fqdn
       //var instance = new TimewebCloudApi.DnsRecordV2();
       //expect(instance).to.be();
     });

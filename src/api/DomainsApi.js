@@ -24,6 +24,7 @@ import CreatePerson201Response from '../model/CreatePerson201Response';
 import DomainRegister from '../model/DomainRegister';
 import GetDomain200Response from '../model/GetDomain200Response';
 import GetDomainDNSRecords200Response from '../model/GetDomainDNSRecords200Response';
+import GetDomainDNSRecordsV2200Response from '../model/GetDomainDNSRecordsV2200Response';
 import GetDomainNameServers200Response from '../model/GetDomainNameServers200Response';
 import GetDomainRequests200Response from '../model/GetDomainRequests200Response';
 import GetDomains200Response from '../model/GetDomains200Response';
@@ -657,7 +658,7 @@ export default class DomainsApi {
 
     /**
      * Получить информацию обо всех пользовательских DNS-записях домена или поддомена
-     * Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на `/api/v1/domains/{fqdn}/dns-records`.
+     * Метод устарел. Используйте [GET /api/v2/domains/{fqdn}/dns-records](#operation/getDomainDNSRecordsV2).  Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на `/api/v1/domains/{fqdn}/dns-records`.
      * @param {String} fqdn Полное имя домена или поддомена.
      * @param {Object} opts Optional parameters
      * @param {Number} [limit = 100)] Обозначает количество записей, которое необходимо вернуть.
@@ -691,6 +692,49 @@ export default class DomainsApi {
       let returnType = GetDomainDNSRecords200Response;
       return this.apiClient.callApi(
         '/api/v1/domains/{fqdn}/dns-records', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getDomainDNSRecordsV2 operation.
+     * @callback module:api/DomainsApi~getDomainDNSRecordsV2Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GetDomainDNSRecordsV2200Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Получить информацию обо всех пользовательских DNS-записях домена или поддомена
+     * Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на `/api/v2/domains/{fqdn}/dns-records`.  По основному домену возвращаются записи всей зоны, включая записи поддоменов: у них `fqdn` — основной домен, а `data.subdomain` — имя поддомена. По поддомену возвращаются только записи этого поддомена, без вложенных поддоменов: у них `fqdn` — сам поддомен, а поля `data.subdomain` нет. Полное имя записи — `data.subdomain` + `.` + `fqdn`.  Возвращаются все записи сразу, без пагинации.  Заменяет устаревший `GET /api/v1/domains/{fqdn}/dns-records`: тот по поддомену не возвращает его TXT-записи.
+     * @param {String} fqdn Полное имя домена или поддомена.
+     * @param {module:api/DomainsApi~getDomainDNSRecordsV2Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GetDomainDNSRecordsV2200Response}
+     */
+    getDomainDNSRecordsV2(fqdn, callback) {
+      let postBody = null;
+      // verify the required parameter 'fqdn' is set
+      if (fqdn === undefined || fqdn === null) {
+        throw new Error("Missing the required parameter 'fqdn' when calling getDomainDNSRecordsV2");
+      }
+
+      let pathParams = {
+        'fqdn': fqdn
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['Bearer'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetDomainDNSRecordsV2200Response;
+      return this.apiClient.callApi(
+        '/api/v2/domains/{fqdn}/dns-records', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
