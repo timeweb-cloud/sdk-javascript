@@ -52,6 +52,9 @@ class ConfigDelivery {
             if (data.hasOwnProperty('http3')) {
                 obj['http3'] = ApiClient.convertToType(data['http3'], 'Boolean');
             }
+            if (data.hasOwnProperty('http2')) {
+                obj['http2'] = ApiClient.convertToType(data['http2'], 'Boolean');
+            }
             if (data.hasOwnProperty('gzip')) {
                 obj['gzip'] = ApiClient.convertToType(data['gzip'], 'Boolean');
             }
@@ -95,6 +98,12 @@ class ConfigDelivery {
  * @member {Boolean} http3
  */
 ConfigDelivery.prototype['http3'] = undefined;
+
+/**
+ * Раздавать контент по HTTP/2.
+ * @member {Boolean} http2
+ */
+ConfigDelivery.prototype['http2'] = undefined;
 
 /**
  * Сжимать ответы алгоритмом gzip.

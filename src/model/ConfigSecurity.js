@@ -55,6 +55,9 @@ class ConfigSecurity {
             if (data.hasOwnProperty('certificate_id')) {
                 obj['certificate_id'] = ApiClient.convertToType(data['certificate_id'], 'Number');
             }
+            if (data.hasOwnProperty('ssl_protocols')) {
+                obj['ssl_protocols'] = ApiClient.convertToType(data['ssl_protocols'], ['String']);
+            }
             if (data.hasOwnProperty('secure_token')) {
                 obj['secure_token'] = ConfigSecuritySecureToken.constructFromObject(data['secure_token']);
             }
@@ -68,6 +71,10 @@ class ConfigSecurity {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ConfigSecurity</code>.
      */
     static validateJSON(data) {
+        // ensure the json data is an array
+        if (!Array.isArray(data['ssl_protocols'])) {
+            throw new Error("Expected the field `ssl_protocols` to be an array in the JSON data but got " + data['ssl_protocols']);
+        }
         // validate the optional field `secure_token`
         if (data['secure_token']) { // data not null
           ConfigSecuritySecureToken.validateJSON(data['secure_token']);
@@ -94,12 +101,57 @@ ConfigSecurity.prototype['redirect'] = undefined;
 ConfigSecurity.prototype['certificate_id'] = undefined;
 
 /**
+ * Версии SSL/TLS, по которым CDN принимает HTTPS-подключения. `null` — принимать все версии.
+ * @member {Array.<module:model/ConfigSecurity.SslProtocolsEnum>} ssl_protocols
+ */
+ConfigSecurity.prototype['ssl_protocols'] = undefined;
+
+/**
  * @member {module:model/ConfigSecuritySecureToken} secure_token
  */
 ConfigSecurity.prototype['secure_token'] = undefined;
 
 
 
+
+
+/**
+ * Allowed values for the <code>sslProtocols</code> property.
+ * @enum {String}
+ * @readonly
+ */
+ConfigSecurity['SslProtocolsEnum'] = {
+
+    /**
+     * value: "TLSv1"
+     * @const
+     */
+    "TLSv1": "TLSv1",
+
+    /**
+     * value: "TLSv1.1"
+     * @const
+     */
+    "TLSv1.1": "TLSv1.1",
+
+    /**
+     * value: "TLSv1.2"
+     * @const
+     */
+    "TLSv1.2": "TLSv1.2",
+
+    /**
+     * value: "TLSv1.3"
+     * @const
+     */
+    "TLSv1.3": "TLSv1.3",
+
+    /**
+     * value: "SSLv3"
+     * @const
+     */
+    "SSLv3": "SSLv3"
+};
 
 
 

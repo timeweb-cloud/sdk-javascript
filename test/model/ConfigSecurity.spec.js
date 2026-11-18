@@ -66,6 +66,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property sslProtocols (base name: "ssl_protocols")', function() {
+      // uncomment below and update the code to test the property sslProtocols
+      //var instance = new TimewebCloudApi.ConfigSecurity();
+      //expect(instance).to.be();
+    });
+
     it('should have the property secureToken (base name: "secure_token")', function() {
       // uncomment below and update the code to test the property secureToken
       //var instance = new TimewebCloudApi.ConfigSecurity();

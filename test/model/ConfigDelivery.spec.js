@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property http2 (base name: "http2")', function() {
+      // uncomment below and update the code to test the property http2
+      //var instance = new TimewebCloudApi.ConfigDelivery();
+      //expect(instance).to.be();
+    });
+
     it('should have the property gzip (base name: "gzip")', function() {
       // uncomment below and update the code to test the property gzip
       //var instance = new TimewebCloudApi.ConfigDelivery();
